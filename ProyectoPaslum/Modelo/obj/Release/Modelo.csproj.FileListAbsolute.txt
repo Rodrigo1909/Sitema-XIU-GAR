@@ -1,0 +1,11 @@
+C:\Users\oscar\Documents\GitHub\ProyectoPaslum\Modelo\bin\Release\Modelo.dll.config
+C:\Users\oscar\Documents\GitHub\ProyectoPaslum\Modelo\bin\Release\Modelo.dll
+C:\Users\oscar\Documents\GitHub\ProyectoPaslum\Modelo\bin\Release\Modelo.pdb
+C:\Users\oscar\Documents\GitHub\ProyectoPaslum\Modelo\obj\Release\Modelo.dll
+C:\Users\oscar\Documents\GitHub\ProyectoPaslum\Modelo\obj\Release\Modelo.pdb
+C:\Users\RodrigoM\Desktop\ProyectoPaslum\Modelo\bin\Release\Modelo.dll.config
+C:\Users\RodrigoM\Desktop\ProyectoPaslum\Modelo\bin\Release\Modelo.dll
+C:\Users\RodrigoM\Desktop\ProyectoPaslum\Modelo\bin\Release\Modelo.pdb
+C:\Users\RodrigoM\Desktop\ProyectoPaslum\Modelo\obj\Release\Modelo.csprojResolveAssemblyReference.cache
+C:\Users\RodrigoM\Desktop\ProyectoPaslum\Modelo\obj\Release\Modelo.dll
+C:\Users\RodrigoM\Desktop\ProyectoPaslum\Modelo\obj\Release\Modelo.pdb

@@ -1,0 +1,145 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Alumno.master.cs" Inherits="ProjectPaslum.Alumno.Alumno" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <link href="https://fonts.googleapis.com/css?family=Work+Sans:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Fredericka+the+Great" rel="stylesheet">
+    <link href="../css/open-iconic-bootstrap.min.css" rel="stylesheet" />
+    <link href="../css/animate.css" rel="stylesheet" />
+    <link href="../css/owl.carousel.min.css" rel="stylesheet" />
+    <link href="../css/owl.theme.default.min.css" rel="stylesheet" />
+    <link href="../css/magnific-popup.css" rel="stylesheet" />
+    <link href="../css/aos.css" rel="stylesheet" />
+    <link href="../css/ionicons.min.css" rel="stylesheet" />
+    <link href="../css/flaticon.css" rel="stylesheet" />
+    <link href="../css/icomoon.css" rel="stylesheet" />
+    <link href="../css/style.css" rel="stylesheet" />
+  
+    <title>Paslum</title>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div class="py-2 bg-primary">
+    	<div class="container">
+    		<div class="row no-gutters d-flex align-items-start align-items-center px-3 px-md-0">
+	    		<div class="col-lg-12 d-block">
+		    		<div class="row d-flex">
+			    		<div class="col-md-5 pr-4 d-flex topper align-items-center">
+			    			<div class="icon bg-fifth mr-2 d-flex justify-content-center align-items-center"><span class="icon-map"></span></div>
+						    <span class="text">PASLUM</span>
+					    </div>
+					    <div class="col-md pr-4 d-flex topper align-items-center">
+					    	<div class="icon bg-secondary mr-2 d-flex justify-content-center align-items-center"><span class="icon-paper-plane"></span></div>
+						    <span class="text">Paslum@domain.edu.mx</span>
+					    </div>
+					    <div class="col-md pr-4 d-flex topper align-items-center">
+					    	<div class="icon bg-tertiary mr-2 d-flex justify-content-center align-items-center"><span class="icon-phone2"></span></div>
+						    <span class="text">73124156</span>
+					    </div>
+				    </div>
+			    </div>
+		    </div>
+		  </div>
+    </div>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark ftco_navbar ftco-navbar-light" id="ftco-navbar">
+	    <div class="container d-flex align-items-center">
+				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+	        <span class="oi oi-menu"></span> Menu
+	      </button>
+	      <div class="collapse navbar-collapse" id="ftco-nav">
+	        <ul class="navbar-nav ml-auto">
+	        <li class="nav-item "><a href="PrincipalAlumno.aspx" class="nav-link pl-0">Inicio</a></li>
+            <li class="nav-item"><a class="nav-link" data-toggle="modal" href="#justifi">Justificantes</a></li>
+            <li class="nav-item"><a href="../IndexPaslum.aspx" class="nav-link pl-0" >Cerrar Sesion</a></li>	   
+	        </ul>
+	      </div>
+	    </div>
+	  </nav>
+          <div class="modal fade" id="justifi">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">                     
+                        <h4 class="modal-title">Agregar Justificantes</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">       
+                            <asp:Label ID="Label3" runat="server" Text="Motivo"></asp:Label>
+                            <asp:TextBox ID="txtMotivo" runat="server"></asp:TextBox>
+                             </div>
+                            <div class="form-group">
+                       	    <asp:FileUpload ID="FileUPArchivo" runat="server" />
+                            </div>
+                            <div class="form-group">
+                                    <div class="col-xs-6">
+                                    Fecha a justificar:
+                                <asp:TextBox id="fechajus" runat="server" TextMode="Date" required="required"></asp:TextBox>
+                            
+                            </div>
+                            </div>
+                    </div>
+                    <div class="modal-footer">
+                        <asp:Button ID="Button1" runat="server" Text="Cancelar" />
+                        <asp:Button ID="Button2" runat="server" Text="Guardar" class="btn btn-success" OnClick="Button2_Click" />
+                    </div>
+                </div>
+            </div>
+        </div> 
+     <div class="container body-content">
+         <asp:ContentPlaceHolder ID="MainContent" runat="server">
+            </asp:ContentPlaceHolder>
+            <hr />
+        </div>
+      <footer class="ftco-footer ftco-bg-dark ftco-section">
+      <div class="container">
+        <div class="row mb-5">
+          <div class="col-md-6 col-lg-3">
+            <div class="ftco-footer-widget mb-5">
+            	<h2 class="ftco-heading-2">UBICACIÓN</h2>
+            	<div class="block-23 mb-3">
+	              <ul>
+	                <li><span class="icon icon-map-marker"></span><span class="text">UTTT</span></li>
+	                <li><a href="#"><span class="icon icon-phone"></span><span class="text">+2 392 3929 210</span></a></li>
+	                <li><a href="#"><span class="icon icon-envelope"></span><span class="text">paslum@yourdomain.com</span></a></li>
+	              </ul>
+	            </div>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-3">
+            <div class="ftco-footer-widget mb-5">
+              <h2 class="ftco-heading-2">INFORMES RECIENTES</h2>
+              <div class="block-21 mb-4 d-flex">
+                <a class="blog-img mr-4" style="background-image: url(images/image_1.jpg);"></a>
+                <div class="text">
+                  <h3 class="heading"><a href="#">Servicios:</a></h3>
+                  <div class="meta">
+                    <div><a href="#"><span class="icon-calendar"></span> Calendario de evaluaciones</a></div>
+                    <div><a href="#"><span class="icon-person"></span>Pase de lista QR</a></div>
+                    <div><a href="#"><span class="icon-chat"></span> Informes de Justificantes</a></div>
+                  </div>
+                </div>
+              </div>
+             </div>
+          </div>
+          <div class="col-md-6 col-lg-3">
+            <div class="ftco-footer-widget mb-5 ml-md-4">
+              <h2 class="ftco-heading-2">Menu</h2>
+              <ul class="list-unstyled">
+                <li><a href="Principal.aspx"><span class="ion-ios-arrow-round-forward mr-2"></span>Inicio</a></li>
+                <li><a href="Tutores.aspx"><span class="ion-ios-arrow-round-forward mr-2"></span>Servicios</a></li>
+                <li><a href="#"><span class="ion-ios-arrow-round-forward mr-2"></span>Contactos</a></li>
+                <li><a data-toggle="modal" href="#popUpWindow"><span class="ion-ios-arrow-round-forward mr-2"></span>Iniciar sesión</a></li>                
+              </ul>
+            </div>
+          </div>
+          </div>
+      </div>         
+    </footer>         
+    </form>
+</body>
+</html>
+

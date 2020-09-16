@@ -1,0 +1,14 @@
+C:\Users\oscar\Documents\GitHub\ProyectoPaslum\Controller\bin\Release\Controller.dll
+C:\Users\oscar\Documents\GitHub\ProyectoPaslum\Controller\bin\Release\Controller.pdb
+C:\Users\oscar\Documents\GitHub\ProyectoPaslum\Controller\bin\Release\Modelo.dll
+C:\Users\oscar\Documents\GitHub\ProyectoPaslum\Controller\bin\Release\Modelo.pdb
+C:\Users\oscar\Documents\GitHub\ProyectoPaslum\Controller\obj\Release\Controller.csprojResolveAssemblyReference.cache
+C:\Users\oscar\Documents\GitHub\ProyectoPaslum\Controller\obj\Release\Controller.dll
+C:\Users\oscar\Documents\GitHub\ProyectoPaslum\Controller\obj\Release\Controller.pdb
+C:\Users\RodrigoM\Desktop\ProyectoPaslum\Controller\bin\Release\Controller.dll
+C:\Users\RodrigoM\Desktop\ProyectoPaslum\Controller\bin\Release\Controller.pdb
+C:\Users\RodrigoM\Desktop\ProyectoPaslum\Controller\bin\Release\Modelo.dll
+C:\Users\RodrigoM\Desktop\ProyectoPaslum\Controller\bin\Release\Modelo.pdb
+C:\Users\RodrigoM\Desktop\ProyectoPaslum\Controller\obj\Release\Controller.csprojResolveAssemblyReference.cache
+C:\Users\RodrigoM\Desktop\ProyectoPaslum\Controller\obj\Release\Controller.dll
+C:\Users\RodrigoM\Desktop\ProyectoPaslum\Controller\obj\Release\Controller.pdb

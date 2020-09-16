@@ -1,0 +1,216 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="ProjectPaslum.SiteMaster" %>
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+    <title>XIU-GAR</title>
+    <link rel="shortcut icon" href="images/Iconos/icon_pas.png"/>
+  
+     
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <link href="https://fonts.googleapis.com/css?family=Work+Sans:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Fredericka+the+Great" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/open-iconic-bootstrap.min.css">
+    <link rel="stylesheet" href="css/animate.css">
+    
+    <link rel="stylesheet" href="css/owl.carousel.min.css">
+    <link rel="stylesheet" href="css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="css/magnific-popup.css">
+
+    <link rel="stylesheet" href="css/aos.css">
+
+    <link rel="stylesheet" href="css/ionicons.min.css">
+    
+    <link rel="stylesheet" href="css/flaticon.css">
+    <link rel="stylesheet" href="css/icomoon.css">
+    <link rel="stylesheet" href="css/style.css">
+  </head>
+    
+<style>
+   body{
+    margin: 0;
+    padding: 0;
+    background: url(image.jpg);
+    background-size: cover;
+    background-position: center;
+    font-family: sans-serif;
+}
+   .transpatxt  {
+    border: none;
+    border-bottom: 1px solid #fff;
+    background: transparent;
+    outline: none;
+    height: 40px;
+    color: #000000;
+    font-size: 16px;
+}
+.login-box{
+    width: 320px;
+    height: 500px;
+    background:#fff;
+    top: 50%;
+    left: 50%;
+    position: absolute;
+    transform: translate(-50%,-50%);
+    box-sizing: border-box;
+    padding: 70px 30px;
+}
+.avatar{
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    position: absolute;
+    top: -50px;
+    left: calc(50% - 50px);
+}
+h1{
+    margin: 0;
+    color:#000000;
+    font-weight: bold;
+    padding: 0 0 20px;
+    text-align: center;
+    font-size: 22px;
+}
+.login-box p{
+    margin: 0;
+    padding: 0;
+    font-weight: bold;
+}
+.login-box input{
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.login-box input[type="submit"]
+{
+    border: none;
+    outline: none;
+    height: 40px;
+    background: #1c8adb;
+    color: #000000;
+    font-size: 18px;
+    border-radius: 20px;
+}
+.login-box input[type="submit"]:hover
+{
+    cursor: pointer;
+    background:#0a0889;
+    color: #000000
+}
+
+.login-box a{
+    text-decoration: none;
+    font-size: 14px;
+    color: #fff;
+}
+.login-box a:hover
+{
+    color: #39dc79;
+}
+    </style>
+
+  <body>
+         <form runat="server">
+	<div class="py-2 bg-primary">
+    	<div class="container">
+    		<div class="row no-gutters d-flex align-items-start align-items-center px-3 px-md-0">
+	    		<div class="col-lg-12 d-block">
+		    		<div class="row d-flex">
+			    		<div class="col-md-5 pr-4 d-flex topper align-items-center">
+			    			<div class="icon bg-fifth mr-2 d-flex justify-content-center align-items-center"><span class="icon-map"></span></div>
+						    <span class="text">Carr. Pachuca - Cd. Sahagún km. 5.5 s/n; Pachuca, Hidalgo.</span>
+                           
+					    </div>
+					    <div class="col-md pr-4 d-flex topper align-items-center">
+					    	<div class="icon bg-secondary mr-2 d-flex justify-content-center align-items-center"><span class="icon-paper-plane"></span></div>
+						    <span class="text">xiugarmx@gmail.com</span>
+					    </div>
+					    <div class="col-md pr-4 d-flex topper align-items-center">
+					    	<div class="icon bg-tertiary mr-2 d-flex justify-content-center align-items-center"><span class="icon-phone2"></span></div>
+						    <span class="text">(771) 718-4185</span>
+					    </div>
+				    </div>
+			    </div>
+		    </div>
+		  </div>
+    </div>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark ftco_navbar ftco-navbar-light" id="ftco-navbar">
+	    <div class="container d-flex align-items-center">
+	    	<%--<a class="navbar-brand" href="IndexPaslum.aspx"><img src="images/Iconos/icon_logo.png" /></a> --%>
+				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+	        <span class="oi oi-menu"></span> Menu
+	      </button>
+	      <div class="collapse navbar-collapse" id="ftco-nav">
+	        <ul class="navbar-nav ml-auto">
+	        <li class="nav-item "><a href="Principal.aspx" class="nav-link pl-0">Inicio</a></li>
+            <li class="nav-item"><a href="Tutores.aspx" class="nav-link">Servicios</a></li>            
+            <li class="nav-item"><a  class="nav-link" data-toggle="modal" href="#popUpWindow">Iniciar Sesion</a></li>
+	   
+	        </ul>
+	      </div>
+	    </div>
+	  </nav>
+       <div class="modal fade" id="popUpWindow">
+            <div class="modal-dialog-centered">
+               
+                    <div class="login-box">
+                        <img src="images/avatar.png" class="avatar">
+                     
+                        <h1 class="modal-title">Iniciar Sesión</h1>
+                  
+                     <div class="modal-body">
+                        <div class="form-group">
+                            <asp:Label ID="lblUsuario" runat="server" Text="Usuario:"></asp:Label>
+                            <asp:TextBox ID="txtUsuario" runat="server" CssClass="transpatxt"
+                                placeholder="Ingresa tu usuario"></asp:TextBox>
+                        </div>
+                        <div class="form-group ">
+                            <asp:Label ID="lblPass" runat="server" Text="Contraseña:"></asp:Label>
+                            <asp:TextBox ID="txtPass" runat="server" CssClass="transpatxt"
+                                placeholder="Ingresa tu contraseña " TextMode="Password"></asp:TextBox>
+                        </div>
+                      <div class="form-group ">
+                        <asp:Button ID="btnLogin" runat="server" href="PrincipalAdmon.aspx" OnClick="btnLogin_Click" Text="Ingresar" class="btn btn-primary" type="submit" />
+                        <asp:Button ID="btnCancel" runat="server" Text="Cancelar" class="btn btn-default" data-dismiss="popUpWindow" />
+                       
+                      </div>
+         </div>
+        </div>
+            </div>
+        </div>
+            
+     <div class="container body-content">
+            <asp:ContentPlaceHolder ID="MainContent" runat="server">
+            </asp:ContentPlaceHolder>
+            <hr />
+        </div>
+      <footer class="ftco-footer ftco-bg-dark ftco-section">
+      <div class="container">        
+          <div class="col-md-10 col-lg-10">
+            <div class="ftco-footer-widget mb-5">
+            	<h2 class="ftco-heading-2">UBICACIÓN</h2>
+                <div class="form-inline">
+            	<div class="block-23 mb-3">
+	              <ul>
+	                <li><span class="icon icon-map-marker"></span><span class="text">XIU-GAR</span></li>
+	                <li><span class="icon icon-phone"></span><span class="text">(771) 718-4185</span></li>
+	                <li><span class="icon icon-envelope"></span><span class="text">xiugarmx@gmail.com</span></li>
+	              </ul>
+	            </div>
+                </div>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3049.470179830925!2d-98.74740448577091!3d20.084386524721193!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85d1a74e2a3b61f5%3A0xc5302637f891170b!2sXIUGAR%20MX!5e1!3m2!1ses!2smx!4v1600192071023!5m2!1ses!2smx" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+            </div>
+          </div>
+      </div>
+          
+    </footer>    
+      
+    </form>
+
+</body>
+</html>

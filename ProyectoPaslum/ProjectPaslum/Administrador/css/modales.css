@@ -1,0 +1,66 @@
+﻿.table-title {
+    padding-bottom: 15px;
+    background: #435d7d;
+    color: #fff;
+    padding: 16px 30px;
+    margin: -20px -25px 10px;
+    border-radius: 3px 3px 0 0;
+    vertical-align: text-top;
+}
+.modal-header {
+    background: #435d7d;
+}
+
+.modalfooter {
+    float: right;
+    margin: 0 0 5px;
+}
+
+.left {
+    margin: 0 auto;
+    display: inline-block
+}
+/*Cajas de texto*/
+
+.form-control {
+    color: #000000
+}
+/* Modal styles */
+.modal .modal-header, .modal .modal-body, .modal .modal-footer {
+    padding: 20px 30px;
+    color: #000000;
+}
+
+.modal .modal-content {
+    border-radius: 3px;
+    
+}
+
+.modal .modal-title {
+    display:inline
+}
+
+.modal .form-control {
+    border: 1px solid #DBE1EB;
+    font-size: 15px;
+    font-family: Arial, Verdana;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+    background: #FFFFFF;
+    background: linear-gradient(left, #FFFFFF, #F7F9FA);
+    background: -moz-linear-gradient(left, #FFFFFF, #F7F9FA);
+    background: -webkit-linear-gradient(left, #FFFFFF, #F7F9FA);
+    background: -o-linear-gradient(left, #FFFFFF, #F7F9FA);
+    color: #000000;
+}
+
+.modal textarea.form-control {
+    resize: vertical;
+}
+
+.modal .btn {
+    border-radius: 2px;
+    min-width: 100px;
+}
+/*Modo Nocturno*/
+
