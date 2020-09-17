@@ -29,10 +29,9 @@
               <%-- Registro de nuevo empleado --%>   
     <div class="container">
         <div class="panel panel-default">
-            <div class="panel-heading" role="tab" id="headingPrincipal">
+            <div class="panel-heading"  >
                 <h4 class="panel-title">
-                    <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapsePrincipal" aria-expanded="false" aria-controls="collapsePrincipal">REGISTRO DE NUEVO CLIENTE
-                    </a>
+                    <a>REGISTRO DE NUEVO CLIENTE</a>
                 </h4>            
                     <%-- Empleado --%>
                     <div class="panel panel-default">
@@ -51,73 +50,65 @@
 
 
                                         <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-                                            <br />
                                             <div class="panel panel-default">
                                                 <div class="panel-body">
-                                                    <div class="form-inline">
-
-                                                         <div class="form-group">
+                                                    <div class="form-inline">                                                        
+                                                       
+                                                       <div class="form-group">
                                                             <label>Nombre: </label>
-                                                            <asp:TextBox ID="txtNombre" runat="server" CssClass="form-control input-sm">
-                                                            </asp:TextBox>
-                                                              <asp:RegularExpressionValidator ID="RegularExpressionValidator5" runat="server" ControlToValidate="txtNombre"
-                                                                ErrorMessage="Ingrese solo letras" ForeColor="Red" ValidationExpression="[A-Za-z]*$">
-                                                              </asp:RegularExpressionValidator>
-                                                        </div>
-
-
+                                                            <asp:TextBox ID="txtNombre" runat="server" CssClass="form-control"></asp:TextBox>   
+                                                            <asp:RegularExpressionValidator ID="RegularExpressionValidator5" runat="server" ControlToValidate="txtNombre"
+                                                                ErrorMessage="Ingrese solo letras" ForeColor="Red" ValidationExpression="[a-zA-ZñÑáéíóúÁÉÍÓÚ\s]*$">
+                                                            </asp:RegularExpressionValidator>                                                         
+                                                        </div>    
+                                                        <br /> <br />
+                                                        
                                                         <div class="form-group">
                                                             <label>Apellido Paterno: </label>
-                                                            <asp:TextBox ID="txtAPaterno" runat="server" CssClass="form-control input-sm">
-                                                            </asp:TextBox>
+                                                            <asp:TextBox ID="txtAPaterno" runat="server" CssClass="form-control"></asp:TextBox>
                                                             <asp:RegularExpressionValidator ID="validarPaterno" runat="server" ControlToValidate="txtAPaterno"
-                                                                ErrorMessage="Ingrese solo letras" ForeColor="Red" ValidationExpression="[A-Za-z]*$">
+                                                                ErrorMessage="Ingrese solo letras" ForeColor="Red" ValidationExpression="[a-zA-ZñÑáéíóúÁÉÍÓÚ\s]*$">
                                                             </asp:RegularExpressionValidator>
-                                                            </div>
+                                                        </div>
+                                                        <br /> <br />
 
 
                                                         <div class="form-group">
                                                             <label>Apellido Materno: </label>
-                                                            <asp:TextBox ID="txtAMaterno" runat="server" CssClass="form-control input-sm">
-                                                            </asp:TextBox>
+                                                            <asp:TextBox ID="txtAMaterno" runat="server" CssClass="form-control input-sm"></asp:TextBox>
                                                             <asp:RegularExpressionValidator ID="validarMaterno" runat="server" ControlToValidate="txtAMaterno"
-                                                                ErrorMessage="Ingrese solo letras" ForeColor="Red" ValidationExpression="[A-Za-z]*$">
+                                                                ErrorMessage="Ingrese solo letras" ForeColor="Red" ValidationExpression="[a-zA-ZñÑáéíóúÁÉÍÓÚ\s]*$">
                                                             </asp:RegularExpressionValidator>
-                                                            </div>
+                                                        </div>
+                                                        <br /> <br />
 
                                             
                                                         <div class="form-group">
                                                             <label>Edad: </label>
-                                                            <asp:TextBox ID="txtEdad" runat="server" CssClass="form-control input-sm" >
-                                                            </asp:TextBox>
+                                                            <asp:TextBox ID="txtEdad" runat="server" CssClass="form-control input-sm" ></asp:TextBox>
                                                             <asp:RegularExpressionValidator ID="RegularExpressionValidator6" runat="server" ControlToValidate="txtEdad"
-                                                                ErrorMessage="Ingrese solo numeros" ForeColor="Red" ValidationExpression="^[0-9]*"></asp:RegularExpressionValidator>
+                                                                ErrorMessage="Ingrese solo numeros" ForeColor="Red" ValidationExpression="^[0-9]*">
+                                                            </asp:RegularExpressionValidator>
                                                         </div>
+                                                        <br /> <br />
 
                                                         <div class="form-group">
                                                             <label>Sexo: </label>
-                                                            <asp:TextBox ID="txtSexo" runat="server" CssClass="form-control input-sm" >
-                                                            </asp:TextBox>
+                                                            <asp:DropDownList id="ddlSexo" AutoPostBack="True" runat="server" CssClass="form-control input-md">
+                                                                <asp:ListItem Selected="True" Value="hombre"> Hombre </asp:ListItem>
+                                                                <asp:ListItem Value="mujer"> Mujer </asp:ListItem>
+                                                                <asp:ListItem Value="otros"> Otros </asp:ListItem>
+                                                            </asp:DropDownList>
                                                         </div>
+                                                        <br /> <br />
 
                                                          <div class="form-group">
                                                             <label>Correo: </label>
                                                             <asp:TextBox ID="txtCorreo" runat="server" placeholder="Ejemplo@gmail.com: " required="required"
-                                                                    CssClass="form-control input-sm" TextMode="Email" >
+                                                                 CssClass="form-control input-sm" TextMode="Email" >
                                                             </asp:TextBox>
                                                         </div>
-
-                                                         <div class="form-group">
-                                                            <label>Cedula: </label>
-                                                            <asp:TextBox ID="txtCedula" runat="server" placeholder="Cedula" CssClass="form-control input-sm"  >
-                                                            </asp:TextBox>
-                                                        </div>
-                                                                                                                                                         
-                                                        <hr />  
-                                                         <div class="form-group">
-                                                            <label>Foto del Perfil: </label>
-                                                            <asp:FileUpload ID="FotoPerfil" runat="server" CssClass="form-control input-sm" />  
-                                                         </div>
+                                                        <br /> <br />
                                                     </div>
                                                 </div>
                                             </div>
@@ -137,19 +128,19 @@
                                                         <div class="form-inline">
 
                                                             <div class="form-group">
-                                                                <label>Nombre de Usuario: </label>
+                                                                <label>Usuario: </label>
                                                                 <asp:TextBox ID="txtUsuario" runat="server"
-                                                                    placeholder="Ejemplo" required="required"
+                                                                    placeholder="Usuario" required="required"
                                                                     CssClass="form-control input-sm" ></asp:TextBox>
                                                             </div>
-
+                                                            <br /> <br />
                                                             <div class="form-group">
                                                                 <label>Contraseña: </label>
                                                                 <asp:TextBox ID="txtPass" runat="server"
-                                                                    placeholder="Contraseña: " required="required"
+                                                                    placeholder="Contraseña" required="required"
                                                                     CssClass="form-control input-sm" TextMode="Password"></asp:TextBox>
                                                             </div>
-                                                              <hr />
+                                                             <hr />
                                                                                                 
                                                         <a  href="/InicioAdmin.aspx" class="nav-link" >
                                                             <asp:Button ID="btnRegistrar" runat="server" Text="Registrar" CssClass="btn btn-block btn-sm btn-success" />
@@ -172,7 +163,7 @@
                                     </a>
                                 </h4>
                             </div>
-                            <div id="collapse1" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingDireccion">
+                            <div id="collapseDireccion" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingDireccion">
                                 <div class="panel-body">
                                     <div class="row">
                                         <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
@@ -204,6 +195,7 @@
                                                             <asp:TextBox ID="txtCalle" runat="server" CssClass="form-control input-sm" required="required">
                                                             </asp:TextBox>
                                                          </div>
+                                                        <br /> <br />
 
                                                          <div class="form-group">
                                                             <label>Colonia: </label>
@@ -223,6 +215,7 @@
                                                             <asp:TextBox ID="txtNumExt" runat="server" CssClass="form-control input-sm">
                                                             </asp:TextBox>
                                                         </div>   
+                                                        <br /> <br />
 
                                                         <div class="form-group">
                                                             <label>Codigo Postal: </label>
@@ -248,11 +241,11 @@
                             </div>
                         </div>
 
-                    <%-- Téléfono --%>  
+                    <%-- Télefono --%>  
                     <div class="panel panel-default">
                             <div class="panel-heading" role="tab" id="headingTelefono">
                                 <h4 class="panel-title">
-                                    <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTelefono" aria-expanded="true" aria-controls="collapseTelefono">TELEFONO
+                                    <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTelefono" aria-expanded="true" aria-controls="collapseTelefono">TELÉFONO
                                     </a>
                                 </h4>
                             </div>
@@ -287,8 +280,8 @@
                                                                 ErrorMessage="Ingrese solo numeros" ForeColor="Red" ValidationExpression="^[0-9]*"></asp:RegularExpressionValidator>
                                            
                                                          </div>
-
-                                             
+                                                        <br /><br />
+                                                         
                                                          <div class="form-group">
                                                             <label>Otro: </label>
                                                             <asp:TextBox ID="txtTelOtro" runat="server" CssClass="form-control input-sm" >
@@ -305,8 +298,8 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>  
-                    </div>    
+                                    </div>  
+                                </div>    
                </div>
              </div>
             </div>

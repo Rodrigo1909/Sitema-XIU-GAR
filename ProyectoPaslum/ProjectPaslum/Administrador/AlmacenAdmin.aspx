@@ -35,11 +35,7 @@
             <div class="modal-content">
 
                 <div class="modal-header">
-                    <h4 class="modal-title">REGISTRO DE NUEVO ALMACÉN </h4>
-                    <button aria-hidden="true" class="close" data-dismiss="modal" type="button">
-                                ×
-                            </button>
-
+                    <h3 class="table-title">REGISTRO DE NUEVO ALMACÉN </h3>
                 </div>
 
                 <div class="modal-body">
@@ -64,14 +60,13 @@
                      
                          <!-- Seleccion de Carrera  -->
                         <div class="form-group">
-                            <div class="col-xs-4">
-                                 <br />
+                            <div class="col-xs-10">
                                 Encargado de almacén
                                 <asp:DropDownList ID="ddlCarrera" runat="server" AppendDataBoundItems="True"  Height="100%" CssClass=" form-control" AutoPostBack="true"></asp:DropDownList>      
                               </div>
                          </div>
                        
-                         
+                        <br /> <br /> 
                         <br /> <br />  <br /> <br />
                         <br /> <br />  <br /> <br />
                        <div class="modal-footer">
@@ -81,7 +76,7 @@
                                  <asp:Button ID="btnaceptar" runat="server" class="btn btn-success"  Text="Aceptar"  />
                               </div>
                            </div>
-                            </div> </div>
+                </div> </div>
             </div>
         </div>
           </div>
@@ -89,7 +84,7 @@
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="heading">
             <h4 class="panel-title">
-                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse" aria-expanded="false" aria-controls="collapse">Consulta de Materias
+                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse" aria-expanded="false" aria-controls="collapse">Almacenes disponibles
                 </a>
             </h4>
         </div>

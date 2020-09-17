@@ -35,12 +35,8 @@
         <div class="modal-dialog">
             <div class="modal-content">
 
-                <div class="modal-header">
-                    <h4 class="modal-title">Nuevo Producto</h4>
-                    <button aria-hidden="true" class="close" data-dismiss="modal" type="button">
-                                ×
-                            </button>
-
+                  <div class="modal-header">
+                    <h3 class="table-title">REGISTRO DE NUEVO PRODUCTO</h3>
                 </div>
 
                 <div class="modal-body">
@@ -57,16 +53,16 @@
                         </div>
                     </div>
                       <div class="form-group">
-                    <div class="col-xs-3">
+                    <div class="col-xs-5">
                         Presentación
                         <asp:TextBox runat="server" ID="txtPresentacion" class="form-control" required="required" type="text" TextMode="Number"></asp:TextBox>
                         <asp:RegularExpressionValidator ID="validarPresentacion" runat="server" ControlToValidate="txtPresentacion"
                             ErrorMessage="Ingrese solo numeros" ForeColor="Red" ValidationExpression="^[0-9]*"></asp:RegularExpressionValidator>
                     </div>
                    <div class="col-xs-5">
-                           <!-- Seleccion de Presentación  -->
-                                 Unidad de medida
-                                <asp:DropDownList ID="ddlUnidadMedida" runat="server" AppendDataBoundItems="True"  Height="50%" CssClass=" form-control"></asp:DropDownList>      
+                    <!-- Seleccion de Presentación  -->
+                            Unidad de medida
+                        <asp:DropDownList ID="ddlUnidadMedida" runat="server" AppendDataBoundItems="True"  Height="50%" CssClass=" form-control"></asp:DropDownList>      
                    </div> 
                    </div>
 

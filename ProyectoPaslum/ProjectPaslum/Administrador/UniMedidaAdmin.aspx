@@ -34,31 +34,27 @@
         <div class="modal-dialog">
             <div class="modal-content">
 
-                <div class="modal-header">
-                    <h4 class="modal-title">Nueva Unidad de Medida</h4>
-                    <button aria-hidden="true" class="close" data-dismiss="modal" type="button">
-                                ×
-                            </button>
-
+                  <div class="modal-header">
+                    <h3 class="table-title">REGISTRO DE UNIDAD DE MEDIDA</h3>
                 </div>
 
                 <div class="modal-body">
                     <div class="form-group">
-                        <div class="col-xs-10">
+                        <div class="col-xs-7">
                             Nombre
                             <asp:TextBox runat="server" ID="txtNombre" class="form-control" required="" type="text"></asp:TextBox>
                         </div>
                     </div>
+                    <br /> <br />                  
                       <div class="form-group">
-                    <div class="col-xs-3">
+                    <div class="col-xs-7">
                             Abreviatura
                         <asp:TextBox runat="server" ID="txtPresentacion" class="form-control" required="required" type="text" ></asp:TextBox>                        
                     </div>
                     </div>
                        
                       
-                        <br /> <br />  <br /> <br />
-                        <br /> <br />  <br /> <br />
+                        <br /> <br />  
                        <div class="modal-footer">
                             <div class="modalfooter">
                              

@@ -94,13 +94,13 @@ namespace ProjectPaslum.Administrador {
         protected global::System.Web.UI.WebControls.RegularExpressionValidator RegularExpressionValidator6;
         
         /// <summary>
-        /// Control txtSexo.
+        /// Control ddlSexo.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtSexo;
+        protected global::System.Web.UI.WebControls.DropDownList ddlSexo;
         
         /// <summary>
         /// Control txtCorreo.
@@ -110,24 +110,6 @@ namespace ProjectPaslum.Administrador {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtCorreo;
-        
-        /// <summary>
-        /// Control txtCedula.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtCedula;
-        
-        /// <summary>
-        /// Control FotoPerfil.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.FileUpload FotoPerfil;
         
         /// <summary>
         /// Control txtUsuario.
