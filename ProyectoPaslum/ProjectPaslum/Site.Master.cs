@@ -107,6 +107,12 @@ namespace ProjectPaslum
                 Session["user"] = txtUsuario.Text;
                 this.Response.Redirect("./Administrador/PrincipalAdministrador.aspx", true);
             }
+            if (this.txtUsuario.Text.Equals("vendedor") && this.txtPass.Text.Equals("1234"))
+            {
+                Session["user"] = txtUsuario.Text;
+                this.Response.Redirect("./Venta/PrincipalVendedor.aspx", true);
+            }
+
             ControllerAutenticacion ctrlAutenticacion = new ControllerAutenticacion();
             TblUser UsuarioLoggeado = ctrlAutenticacion.ValidarLogin(usuario);
 

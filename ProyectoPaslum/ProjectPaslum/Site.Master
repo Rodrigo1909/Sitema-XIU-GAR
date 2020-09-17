@@ -189,27 +189,30 @@ h1{
             </asp:ContentPlaceHolder>
             <hr />
         </div>
-      <footer class="ftco-footer ftco-bg-dark ftco-section">
-      <div class="container">        
-          <div class="col-md-10 col-lg-10">
-            <div class="ftco-footer-widget mb-5">
-            	<h2 class="ftco-heading-2">UBICACIÓN</h2>
-                <div class="form-inline">
-            	<div class="block-23 mb-3">
-	              <ul>
-	                <li><span class="icon icon-map-marker"></span><span class="text">XIU-GAR</span></li>
-	                <li><span class="icon icon-phone"></span><span class="text">(771) 718-4185</span></li>
-	                <li><span class="icon icon-envelope"></span><span class="text">xiugarmx@gmail.com</span></li>
-	              </ul>
-	            </div>
+
+             <footer class="ftco-footer ftco-bg-dark ftco-section">
+            <div class="container">
+                <div class="row mb-5">
+                    <div class="col-md-6 col-lg-3">
+                        <div class="ftco-footer-widget mb-5">
+                            <h2 class="ftco-heading-2">UBICACIÓN</h2>
+                            <div class="block-23 mb-3">
+                                <ul>
+                                  	<li><span class="icon icon-map-marker"></span><span class="text">XIU-GAR</span></li>
+	                                <li><span class="icon icon-phone"></span><span class="text">(771) 718-4185</span></li>
+	                                <li><span class="icon icon-envelope"></span><span class="text">xiugarmx@gmail.com</span></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3">
+                        <div class="ftco-footer-widget mb-5">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3049.470179830925!2d-98.74740448577091!3d20.084386524721193!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85d1a74e2a3b61f5%3A0xc5302637f891170b!2sXIUGAR%20MX!5e1!3m2!1ses!2smx!4v1600192071023!5m2!1ses!2smx" width="500" height="200"  style="border:0;" aria-hidden="false" tabindex="0"></iframe>
+                        </div>
+                    </div>
                 </div>
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3049.470179830925!2d-98.74740448577091!3d20.084386524721193!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85d1a74e2a3b61f5%3A0xc5302637f891170b!2sXIUGAR%20MX!5e1!3m2!1ses!2smx!4v1600192071023!5m2!1ses!2smx" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
             </div>
-          </div>
-      </div>
-          
-    </footer>    
-      
+        </footer>
     </form>
 
 </body>

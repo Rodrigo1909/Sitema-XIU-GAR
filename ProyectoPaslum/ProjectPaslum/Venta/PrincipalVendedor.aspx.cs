@@ -5,9 +5,9 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace ProjectPaslum.Account
+namespace ProjectPaslum.Venta
 {
-    public partial class Lockout : System.Web.UI.Page
+    public partial class PrincipalVendedor : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {

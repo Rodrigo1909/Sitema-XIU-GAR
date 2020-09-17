@@ -7,9 +7,9 @@
 // </generado automáticamente>
 //------------------------------------------------------------------------------
 
-namespace ProjectPaslum {
+namespace ProjectPaslum.Venta {
     
     
-    public partial class Contact {
+    public partial class PrincipalVendedor {
     }
 }
