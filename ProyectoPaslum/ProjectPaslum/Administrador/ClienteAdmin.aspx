@@ -56,56 +56,41 @@
                                                        
                                                        <div class="form-group">
                                                             <label>Nombre: </label>
-                                                            <asp:TextBox ID="txtNombre" runat="server" CssClass="form-control"></asp:TextBox>   
-                                                            <asp:RegularExpressionValidator ID="RegularExpressionValidator5" runat="server" ControlToValidate="txtNombre"
-                                                                ErrorMessage="Ingrese solo letras" ForeColor="Red" ValidationExpression="[a-zA-ZñÑáéíóúÁÉÍÓÚ\s]*$">
-                                                            </asp:RegularExpressionValidator>                                                         
-                                                        </div>    
+                                                            <asp:TextBox ID="txtNombre" runat="server" width="410px" CssClass="form-control" 
+                                                                type="Text" pattern="^[a-zA-ZñÑáéíóúÁÉÍÓÚ\s]+$" title="Ingrese solo letras">
+                                                            </asp:TextBox>   
+                                                         </div>    
                                                         <br /> <br />
                                                         
                                                         <div class="form-group">
                                                             <label>Apellido Paterno: </label>
-                                                            <asp:TextBox ID="txtAPaterno" runat="server" CssClass="form-control"></asp:TextBox>
-                                                            <asp:RegularExpressionValidator ID="validarPaterno" runat="server" ControlToValidate="txtAPaterno"
-                                                                ErrorMessage="Ingrese solo letras" ForeColor="Red" ValidationExpression="[a-zA-ZñÑáéíóúÁÉÍÓÚ\s]*$">
-                                                            </asp:RegularExpressionValidator>
+                                                            <asp:TextBox ID="txtAPaterno" runat="server" width="350px" CssClass="form-control" 
+                                                                type="Text" pattern="^[a-zA-ZñÑáéíóúÁÉÍÓÚ\s]+$" title="Ingrese solo letras">
+                                                            </asp:TextBox>
                                                         </div>
                                                         <br /> <br />
 
 
                                                         <div class="form-group">
                                                             <label>Apellido Materno: </label>
-                                                            <asp:TextBox ID="txtAMaterno" runat="server" CssClass="form-control input-sm"></asp:TextBox>
-                                                            <asp:RegularExpressionValidator ID="validarMaterno" runat="server" ControlToValidate="txtAMaterno"
-                                                                ErrorMessage="Ingrese solo letras" ForeColor="Red" ValidationExpression="[a-zA-ZñÑáéíóúÁÉÍÓÚ\s]*$">
-                                                            </asp:RegularExpressionValidator>
+                                                            <asp:TextBox ID="txtAMaterno" runat="server" width="350px" CssClass="form-control" 
+                                                                type="Text" pattern="^[a-zA-ZñÑáéíóúÁÉÍÓÚ\s]+$" title="Ingrese solo letras">
+                                                            </asp:TextBox>
                                                         </div>
                                                         <br /> <br />
 
                                             
                                                         <div class="form-group">
-                                                            <label>Edad: </label>
-                                                            <asp:TextBox ID="txtEdad" runat="server" CssClass="form-control input-sm" ></asp:TextBox>
-                                                            <asp:RegularExpressionValidator ID="RegularExpressionValidator6" runat="server" ControlToValidate="txtEdad"
-                                                                ErrorMessage="Ingrese solo numeros" ForeColor="Red" ValidationExpression="^[0-9]*">
-                                                            </asp:RegularExpressionValidator>
+                                                            <label>Establecimiento: </label>
+                                                            <asp:TextBox ID="txtEdad" runat="server" width="360px" CssClass="form-control" 
+                                                                type="Text" pattern="^[a-zA-ZñÑáéíóúÁÉÍÓÚ\s]+$" title="Ingrese solo letras" ></asp:TextBox>                                                            
                                                         </div>
                                                         <br /> <br />
-
-                                                        <div class="form-group">
-                                                            <label>Sexo: </label>
-                                                            <asp:DropDownList id="ddlSexo" AutoPostBack="True" runat="server" CssClass="form-control input-md">
-                                                                <asp:ListItem Selected="True" Value="hombre"> Hombre </asp:ListItem>
-                                                                <asp:ListItem Value="mujer"> Mujer </asp:ListItem>
-                                                                <asp:ListItem Value="otros"> Otros </asp:ListItem>
-                                                            </asp:DropDownList>
-                                                        </div>
-                                                        <br /> <br />
-
+                                                       
                                                          <div class="form-group">
                                                             <label>Correo: </label>
-                                                            <asp:TextBox ID="txtCorreo" runat="server" placeholder="Ejemplo@gmail.com: " required="required"
-                                                                 CssClass="form-control input-sm" TextMode="Email" >
+                                                            <asp:TextBox ID="txtCorreo" runat="server" width="420px" placeholder="Ejemplo@ejemplo.com:"
+                                                                 CssClass="form-control" TextMode="Email" title="Ingrese el formato de correo electronico">
                                                             </asp:TextBox>
                                                         </div>
                                                         <br /> <br />
@@ -170,7 +155,7 @@
                                             <asp:Image ID="Image1" runat="server" ImageUrl="~/images/Iconos/IconDireccion.png" CssClass="img-responsive img-rounded" />
                                         </div>
 
-                                        <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
+                                        <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5">
                                             <br />
                                             <div class="panel panel-default">
                                                 <div class="panel-body">
@@ -181,14 +166,14 @@
                                                             <asp:TextBox ID="txtEstado" runat="server" CssClass="form-control input-sm" required="required">
                                                             </asp:TextBox>
                                                          </div>
-
+                                                        <br /> <br />
 
                                                         <div class="form-group">
                                                             <label>Municipio: </label>
                                                             <asp:TextBox ID="txtMunicipio" runat="server" CssClass="form-control input-sm" required="required">
                                                             </asp:TextBox>
                                                         </div>
-
+                                                        <br /> <br />
 
                                                         <div class="form-group">
                                                             <label>Calle: </label>
@@ -202,29 +187,30 @@
                                                             <asp:TextBox ID="txtColonia" runat="server" CssClass="form-control input-sm" required="required">
                                                             </asp:TextBox>
                                                          </div>
-
+                                                        <br /> <br />
                                             
                                                         <div class="form-group">
                                                             <label>Numero Interior: </label>
                                                             <asp:TextBox ID="txtNumInt" runat="server" CssClass="form-control input-sm" >
                                                             </asp:TextBox>
                                                          </div>
+                                                        <br /> <br />
 
                                                         <div class="form-group">
                                                             <label>Numero Exterior: </label>
-                                                            <asp:TextBox ID="txtNumExt" runat="server" CssClass="form-control input-sm">
+                                                            <asp:TextBox ID="txtNumExt" runat="server" CssClass="form-control input-sm"> 
                                                             </asp:TextBox>
                                                         </div>   
                                                         <br /> <br />
 
                                                         <div class="form-group">
                                                             <label>Codigo Postal: </label>
-                                                            <asp:TextBox ID="txtCodPos" runat="server" CssClass="form-control input-sm">
+                                                            <asp:TextBox ID="txtCodPos" runat="server" CssClass="form-control input-sm" type="number"> 
                                                             </asp:TextBox>
                                                             <asp:RegularExpressionValidator ID="ValidarCodPos" runat="server" ControlToValidate="txtCodPos"
                                                                 ErrorMessage="Ingrese solo numeros" ForeColor="Red" ValidationExpression="^[0-9]*"></asp:RegularExpressionValidator>
-                                           
-                                                        </div>   
+                                                       </div>   
+                                                        <br /> 
 
                                                         <div class="form-group">
                                                             <label>Referencias: </label>
@@ -234,7 +220,44 @@
                                                         </div>
                                                      </div>
                                                  </div>
-                                              </div>
+                                        </div>
+
+                                        <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5">
+
+                                            <div class="panel panel-body">
+                                                <div class="panel panel-default">
+                                                    <div class="panel-heading">
+                                                        <div class="panel-title">
+                                                            Bodega
+                                                        </div>
+                                                    </div>
+                                                    <div class="panel-body">
+                                                        <div class="form-inline">
+
+                                                            <div class="form-group">
+                                                                <label>Numero: </label>
+                                                                <asp:TextBox ID="txtNumeroBodega" runat="server" CssClass="form-control input-sm" ></asp:TextBox>
+                                                            </div>
+                                                            <br /> <br />
+                                                            <div class="form-group">
+                                                                <label>Horario de atención: </label>
+                                                                <asp:TextBox ID="txtHorario" runat="server" CssClass="form-control input-sm" ></asp:TextBox>
+                                                            </div>
+                                                            <br /> <br />
+                                                            <div class="form-group">
+                                                                <label>Encargado: </label>
+                                                                <asp:TextBox ID="txtEncargador" runat="server" CssClass="form-control input-sm" ></asp:TextBox>
+                                                            </div>
+                                                            <br /> <br />
+                                                            <div class="form-group">
+                                                                <label>Encargado de pagos: </label>
+                                                                <asp:TextBox ID="txtPagos" runat="server" CssClass="form-control input-sm"></asp:TextBox>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>                                    
+                                            </div>
+                                        </div>
                             
                                     </div>
                                 </div>
@@ -273,10 +296,10 @@
 
                                             
                                                          <div class="form-group">
-                                                            <label>Casa: </label>
-                                                            <asp:TextBox ID="txtTelCasa" runat="server" CssClass="form-control input-sm" >
+                                                            <label>Tel. Encargado: </label>
+                                                            <asp:TextBox ID="txtTelEncargador" runat="server" CssClass="form-control input-sm" >
                                                             </asp:TextBox>
-                                                              <asp:RegularExpressionValidator ID="ValidartxtTelCasa" runat="server" ControlToValidate="txtTelCasa"
+                                                              <asp:RegularExpressionValidator ID="ValidartxtTelCasa" runat="server" ControlToValidate="txtTelEncargador"
                                                                 ErrorMessage="Ingrese solo numeros" ForeColor="Red" ValidationExpression="^[0-9]*"></asp:RegularExpressionValidator>
                                            
                                                          </div>
@@ -290,22 +313,21 @@
                                                                 ErrorMessage="Ingrese solo numeros" ForeColor="Red" ValidationExpression="^[0-9]*"></asp:RegularExpressionValidator>
                                            
                                                          </div>
-                                                    </div>
+                                                       </div>
                                                      </div>
+                                                   </div>
                                                  </div>
-                                              </div>
-                            
-                                    </div>
+                                               </div>
+                                             </div>
+                                           </div>
+                                         </div>  
+                                      </div>    
+                                   </div>
+                                 </div>
                                 </div>
+                              </div>  
                             </div>
-                                    </div>  
-                                </div>    
-               </div>
-             </div>
-            </div>
-          </div>  
-        </div>
-      </div>
+                          </div>
 
     <%--Boton para expandir la información de la tabla --%>
   <div class="col">
@@ -391,5 +413,5 @@ on pro.idTelefono = tel.id;"></asp:SqlDataSource>
             </div>
         </div>
     </div>
-</div>
+</div>    
 </asp:Content>

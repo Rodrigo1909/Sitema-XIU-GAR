@@ -31,15 +31,6 @@ namespace ProjectPaslum.Administrador {
         protected global::System.Web.UI.WebControls.TextBox txtNombre;
         
         /// <summary>
-        /// Control RegularExpressionValidator5.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RegularExpressionValidator RegularExpressionValidator5;
-        
-        /// <summary>
         /// Control txtAPaterno.
         /// </summary>
         /// <remarks>
@@ -47,15 +38,6 @@ namespace ProjectPaslum.Administrador {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtAPaterno;
-        
-        /// <summary>
-        /// Control validarPaterno.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RegularExpressionValidator validarPaterno;
         
         /// <summary>
         /// Control txtAMaterno.
@@ -67,15 +49,6 @@ namespace ProjectPaslum.Administrador {
         protected global::System.Web.UI.WebControls.TextBox txtAMaterno;
         
         /// <summary>
-        /// Control validarMaterno.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RegularExpressionValidator validarMaterno;
-        
-        /// <summary>
         /// Control txtEdad.
         /// </summary>
         /// <remarks>
@@ -83,24 +56,6 @@ namespace ProjectPaslum.Administrador {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtEdad;
-        
-        /// <summary>
-        /// Control RegularExpressionValidator6.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RegularExpressionValidator RegularExpressionValidator6;
-        
-        /// <summary>
-        /// Control ddlSexo.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlSexo;
         
         /// <summary>
         /// Control txtCorreo.
@@ -229,6 +184,42 @@ namespace ProjectPaslum.Administrador {
         protected global::System.Web.UI.WebControls.TextBox txtReferencia;
         
         /// <summary>
+        /// Control txtNumeroBodega.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtNumeroBodega;
+        
+        /// <summary>
+        /// Control txtHorario.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtHorario;
+        
+        /// <summary>
+        /// Control txtEncargador.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtEncargador;
+        
+        /// <summary>
+        /// Control txtPagos.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtPagos;
+        
+        /// <summary>
         /// Control Image6.
         /// </summary>
         /// <remarks>
@@ -256,13 +247,13 @@ namespace ProjectPaslum.Administrador {
         protected global::System.Web.UI.WebControls.RegularExpressionValidator ValidartxtCelular;
         
         /// <summary>
-        /// Control txtTelCasa.
+        /// Control txtTelEncargador.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtTelCasa;
+        protected global::System.Web.UI.WebControls.TextBox txtTelEncargador;
         
         /// <summary>
         /// Control ValidartxtTelCasa.
