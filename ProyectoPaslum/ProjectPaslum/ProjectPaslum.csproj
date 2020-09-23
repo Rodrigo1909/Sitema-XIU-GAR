@@ -364,6 +364,9 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Site.Master" />
+    <Content Include="Venta\CreditoVenta.aspx" />
+    <Content Include="Venta\estilos.css" />
+    <Content Include="Venta\MostradorVenta.aspx" />
     <Content Include="Venta\PrincipalVendedor.aspx" />
     <Content Include="ViewSwitcher.ascx" />
     <Content Include="Web.config" />
@@ -648,6 +651,20 @@
       <DependentUpon>Site.Mobile.Master</DependentUpon>
     </Compile>
     <Compile Include="Startup.cs" />
+    <Compile Include="Venta\CreditoVenta.aspx.cs">
+      <DependentUpon>CreditoVenta.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Venta\CreditoVenta.aspx.designer.cs">
+      <DependentUpon>CreditoVenta.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Venta\MostradorVenta.aspx.cs">
+      <DependentUpon>MostradorVenta.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Venta\MostradorVenta.aspx.designer.cs">
+      <DependentUpon>MostradorVenta.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Venta\PrincipalVendedor.aspx.cs">
       <DependentUpon>PrincipalVendedor.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

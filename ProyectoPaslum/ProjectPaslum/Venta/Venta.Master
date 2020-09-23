@@ -63,13 +63,13 @@
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark ftco_navbar ftco-navbar-light" id="ftco-navbar">
             <div class="container d-flex align-items-center">
                 <ul class="exo-menu">
-                    <li><a class="active" href="PrincipalProfesor.aspx"><i class="icon-home"></i>Inicio</a></li>   
-                    <li class="drop-down"><a href="#"><i class="icon-cogs"></i>Datos Escolares</a>
+                    <li><a class="active" href="PrincipalVendedor.aspx"><i class="icon-home"></i>Inicio</a></li>   
+                    <li class="drop-down"><a href="#"><i class="icon-money"></i>Venta</a>
                         <!--Drop Down-->
                         <ul class="drop-down-ul animated fadeIn">
-                            <li class="flyout-right"><a href="Calificaciones.aspx" class="icon-address-book"> Calificaciones</a></li>
-                            <li><a href="Justificantes.aspx" class="icon-chat"> Justificantes</a></li>
-                            <li><a href="Evaluaciones.aspx" class="icon-calendar">&nbsp;Evaluciones</a></li>
+                            <li><a href="MostradorVenta.aspx" class="icon-add_location"> Mostrador</a></li>
+                            <li><a href="CreditoVenta.aspx" class="icon-archive"> Credito</a></li>
+                            <%--<li><a href="Evaluaciones.aspx" class="icon-calendar">&nbsp;Evaluciones</a></li>--%>
                         </ul>
                         <!--//End drop down-->
                     </li>
