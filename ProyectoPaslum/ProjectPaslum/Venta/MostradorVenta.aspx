@@ -102,19 +102,72 @@
                                          <asp:TextBox ID="txtImporte" runat="server"  width="500px"  ></asp:TextBox> 
                                     </div>
                                      <br /><br />
-
-                                    <div class="col-md-10 col-md-offset-2">
-                                        <asp:Button ID="btnRegistrar" runat="server" Text="Agregar" Font-Size="14px" CssClass="btn btn-block btn-sm btn-success" Width="100px" />
-                                    </div>
                                 </div>
                                </div>
                              </div>
                            </div>
+                <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
+            
+                 </div>
+                <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                           <asp:Button ID="btnRegistrar" runat="server" Text="Agregar" Font-Size="16px" CssClass="btn btn-block btn-sm btn-success" Width="150px"  />
+                </div>
                         </div>
                       </div>
                     </div>
 
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="heading">
+            <h4 class="panel-title">
+                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse" aria-expanded="false" aria-controls="collapse">Descripción de venta
+                </a>
+            </h4>
+        </div>
+        <div id="collapse" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+            <div class="panel-body">
+                <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" Width="100%" AllowPaging="True" DataSourceID="SqlDataSource1" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px">
+                    <Columns>
+                        
+                        <asp:BoundField DataField="strNombre" HeaderText="Materia" SortExpression="strNombre" />
+                        <asp:BoundField DataField="strDescripcion" HeaderText="Descripcion" SortExpression="strDescripcion" />
+                        <asp:BoundField DataField="strnombre1" HeaderText="Carrera" SortExpression="strnombre1" />
+                        <asp:BoundField DataField="strnombre2" HeaderText="Cuatrimestre" SortExpression="strnombre2" />
+
+                    </Columns>
+                     <FooterStyle BackColor="White" ForeColor="#000066" />
+                        <HeaderStyle BackColor="#006699" Font-Bold="True" ForeColor="White" HorizontalAlign="Center"/>
+                        <PagerStyle BackColor="White" ForeColor="#000066" HorizontalAlign="Center" />
+                        <RowStyle ForeColor="#000066" />
+                        <SelectedRowStyle BackColor="#669999" Font-Bold="True" ForeColor="White" />
+                        <SortedAscendingCellStyle BackColor="#F1F1F1" />
+                        <SortedAscendingHeaderStyle BackColor="#007DBB" />
+                        <SortedDescendingCellStyle BackColor="#CAC9C9" />
+                        <SortedDescendingHeaderStyle BackColor="#00547E" />
+                </asp:GridView>
+
+                <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:pase_listaConnectionString %>" SelectCommand="select m.strNombre, m.strDescripcion, c.strnombre,cu.strnombre 
+from TblMateria m
+inner join TblCarrera c 
+on m.idCarrera = c.id
+inner join TblCuatri cu
+on m.idCuatri = cu.id;"></asp:SqlDataSource>
+
+            </div>
+        </div>
+        
+        <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
+            
+        </div>
+        
+        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+            <asp:Button ID="btnFinalizar" runat="server" Text="Finalizar Venta" Font-Size="14px" CssClass="btn btn-block btn-sm btn-success" Width="250px" />
+        </div>
+
+         <br /><br /><br />
+
+
+    </div>
+                     
 </div>
-
-
 </asp:Content>
+

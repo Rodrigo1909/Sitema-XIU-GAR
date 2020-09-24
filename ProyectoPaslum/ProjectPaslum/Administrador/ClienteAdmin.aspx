@@ -33,7 +33,7 @@
                 <h4 class="panel-title">
                     <a>REGISTRO DE NUEVO CLIENTE</a>
                 </h4>            
-                    <%-- Empleado --%>
+                    <%-- Cliente --%>
                     <div class="panel panel-default">
                             <div class="panel-heading" role="tab" id="headingOne">
                                 <h4 class="panel-title">
@@ -163,28 +163,26 @@
 
                                                          <div class="form-group">
                                                             <label>Estado: </label>
-                                                            <asp:TextBox ID="txtEstado" runat="server" CssClass="form-control input-sm" required="required">
-                                                            </asp:TextBox>
+                                                            <asp:DropDownList ID="ddlEstado" runat="server" AppendDataBoundItems="True"  Height="100%" CssClass=" form-control"></asp:DropDownList>   
                                                          </div>
                                                         <br /> <br />
 
                                                         <div class="form-group">
                                                             <label>Municipio: </label>
-                                                            <asp:TextBox ID="txtMunicipio" runat="server" CssClass="form-control input-sm" required="required">
-                                                            </asp:TextBox>
+                                                            <asp:DropDownList ID="ddlMunicipio" runat="server" AppendDataBoundItems="True"  Height="100%" CssClass=" form-control"></asp:DropDownList>
                                                         </div>
                                                         <br /> <br />
 
                                                         <div class="form-group">
                                                             <label>Calle: </label>
-                                                            <asp:TextBox ID="txtCalle" runat="server" CssClass="form-control input-sm" required="required">
+                                                            <asp:TextBox ID="txtCalle" runat="server" CssClass="form-control" width="340px" required="required">
                                                             </asp:TextBox>
                                                          </div>
                                                         <br /> <br />
 
                                                          <div class="form-group">
                                                             <label>Colonia: </label>
-                                                            <asp:TextBox ID="txtColonia" runat="server" CssClass="form-control input-sm" required="required">
+                                                            <asp:TextBox ID="txtColonia" runat="server" CssClass="form-control" width="320px" required="required">
                                                             </asp:TextBox>
                                                          </div>
                                                         <br /> <br />

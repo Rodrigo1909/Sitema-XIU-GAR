@@ -103,22 +103,22 @@ namespace ProjectPaslum.Administrador {
         protected global::System.Web.UI.WebControls.Image Image1;
         
         /// <summary>
-        /// Control txtEstado.
+        /// Control ddlEstado.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtEstado;
+        protected global::System.Web.UI.WebControls.DropDownList ddlEstado;
         
         /// <summary>
-        /// Control txtMunicipio.
+        /// Control ddlMunicipio.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtMunicipio;
+        protected global::System.Web.UI.WebControls.DropDownList ddlMunicipio;
         
         /// <summary>
         /// Control txtCalle.

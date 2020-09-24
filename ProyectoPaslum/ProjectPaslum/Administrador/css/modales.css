@@ -26,9 +26,14 @@
     color: #000000
 }
 /* Modal styles */
-.modal .modal-header, .modal .modal-body, .modal .modal-footer {
+.modal .modal-header, .modal .modal-footer {
     padding: 20px 30px;
-    color: #FFFFFF;
+    color: #ffffff;
+}
+
+.modal .modal-body {
+    padding: 20px 30px;
+    color: #000000;
 }
 
 .modal .modal-content {
