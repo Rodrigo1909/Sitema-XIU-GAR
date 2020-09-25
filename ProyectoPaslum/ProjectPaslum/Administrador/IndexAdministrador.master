@@ -91,7 +91,7 @@
                     <li><a href="ClienteAdmin.aspx"  class="icon-people"><span> Cliente</span></a></li>
                     <li><a href="ProveedorAdmin.aspx" class="icon-address-card"><span> Proveedor</span></a></li>
                     <li><a href="AlmacenAdmin.aspx"  class="icon-add_box"><span> Almacén</span></a></li>
-                    <li><a href="UniMedidaAdmin.aspx"  class="icon-medium"><span> Ud. Medida</span></a></li>
+                    <li><a href="UniMedidaAdmin.aspx"  class="icon-medium"><span> Otros</span></a></li>
                     <li><a href="CatProductoAdmin.aspx"  class="icon-book"><span> Catalogo</span></a></li>
                     <li><a href="../IndexPaslum.aspx" class="icon-close"><span> Salir</span></a></li>    
 

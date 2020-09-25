@@ -367,6 +367,7 @@
     <Content Include="Venta\CreditoVenta.aspx" />
     <Content Include="Venta\estilos.css" />
     <Content Include="Venta\MostradorVenta.aspx" />
+    <Content Include="Venta\OrdenCompraVenta.aspx" />
     <Content Include="Venta\PrincipalVendedor.aspx" />
     <Content Include="ViewSwitcher.ascx" />
     <Content Include="Web.config" />
@@ -664,6 +665,13 @@
     </Compile>
     <Compile Include="Venta\MostradorVenta.aspx.designer.cs">
       <DependentUpon>MostradorVenta.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Venta\OrdenCompraVenta.aspx.cs">
+      <DependentUpon>OrdenCompraVenta.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Venta\OrdenCompraVenta.aspx.designer.cs">
+      <DependentUpon>OrdenCompraVenta.aspx</DependentUpon>
     </Compile>
     <Compile Include="Venta\PrincipalVendedor.aspx.cs">
       <DependentUpon>PrincipalVendedor.aspx</DependentUpon>
