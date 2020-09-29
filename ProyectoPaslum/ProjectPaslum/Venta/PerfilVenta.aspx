@@ -1,74 +1,83 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Venta/Venta.Master" AutoEventWireup="true" CodeBehind="PerfilVenta.aspx.cs" Inherits="ProjectPaslum.Venta.PerfilVenta" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-<link href="../Alumno/scss/PersoDatos.css" rel="stylesheet" />
-<div class="container">
-  <div style="text-align:center">
-    <h2>Datos Personales</h2>
-  </div>
-  <div class="row">
-    <div class="column">
-      <img src="../Alumno/images/Profile.jpg" style="width:50%">
-    </div>
-       <div class="column">
- 
-              <label for="fname">Nombre: </label><asp:Label ID="lbforTel" runat="server" Text="Label" Visible="false"></asp:Label>
-              <asp:TextBox ID="TxtNombre" runat="server" Enabled="false"></asp:TextBox>              
-              <label for="fname">Apellido Paterno: </label><asp:Label ID="lbforDom" runat="server" Text="Label" Visible="false"></asp:Label>
-              <asp:TextBox ID="TxtApellidoP" runat="server" Enabled="false"></asp:TextBox>
-              <label for="fname">Apellido Materno: </label>
-              <asp:TextBox ID="TxtApellidoM" runat="server" Enabled="false"></asp:TextBox>
-              
-              <label for="country">Correo: 
-              <label for="subject">
-              <asp:Label ID="lbcorreo" runat="server"></asp:Label>
-              </label>
-              </label>
-              <asp:TextBox ID="TxtCorreo" runat="server"></asp:TextBox>
-              
-              <label for="country">Calle:
-              <label for="subject">
-              <asp:Label ID="lbCalle" runat="server"></asp:Label>
-              </label>
-              </label>
-              <asp:TextBox ID="TxtCalle" runat="server"></asp:TextBox>
+<link href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+<link href="../Administrador/css/modales.css" rel="stylesheet" />
+<link href="../Content/bootstrap.min.css" rel="stylesheet" />
 
-              <label for="country">Colonia: 
-              <label for="subject">
-              <asp:Label ID="lbColonia" runat="server"></asp:Label>
-              </label>
-              </label>
-              <asp:TextBox ID="TxtColonia" runat="server"></asp:TextBox>
-
-              <label for="country">Municipio: 
-              <label for="subject">
-              <asp:Label ID="lbMunicipio" runat="server"></asp:Label>
-              </label>
-              </label>
-              <asp:TextBox ID="TxtMunicipio" runat="server"></asp:TextBox>
-
-              <label for="country">Telefono:
-              <label for="subject">
-              <asp:Label ID="lbTelefono" runat="server"></asp:Label>
-              </label>
-              </label>
-              <asp:TextBox ID="TxtTelefono" runat="server"></asp:TextBox>
-
-               <label for="country">Celular: 
-              <label for="subject">
-              <asp:Label ID="lbCelular" runat="server"></asp:Label>
-              </label>
-              </label>
-              <asp:TextBox ID="TxtCelular" runat="server"></asp:TextBox>
-
-               <label for="country">Otro Telefono:
-              <label for="subject">
-              <asp:Label ID="lbOtro" runat="server"></asp:Label>
-              </label>
-              </label>
-              <asp:TextBox ID="TxtOtro" runat="server"></asp:TextBox>
-              <asp:Button ID="BtnEditar" class="btn btn-info" runat="server" Text="Editar Datos" ></asp:Button>
-          
+<div class="panel panel-default">
+      <div style="text-align:center">
+        <h2>Datos Personales</h2>
       </div>
-  </div>
-</div>
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                    <asp:Image ID="Image1" runat="server" ImageUrl="../Alumno/images/Profile.jpg" CssClass="img-responsive img-rounded" />
+                </div>
+
+                <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5">
+                    <br />
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            <div class="form-inline">
+
+                                    <div class="form-group">
+                                    <label>Nombre </label>
+                                        <asp:TextBox ID="txtNombre" runat="server" CssClass="form-control" width="410px" Enabled="false"></asp:TextBox>
+                                    </div>
+                                <br /> <br /> 
+                                                       
+                                    <div class="form-group">
+                                    <label>Apellido Paterno </label>
+                                    <asp:TextBox ID="txtApellidoP" runat="server" CssClass="form-control" width="410px" Enabled="false"></asp:TextBox>
+                                    </div>
+                                <br /> <br />
+                                            
+                                    <div class="form-group">
+                                    <label>Apellido Materno </label>
+                                    <asp:TextBox ID="txtApellidoM" runat="server" CssClass="form-control" width="410px" Enabled="false"></asp:TextBox>
+                                    </div>
+                                <br /> <br />                                                        
+
+                                <div class="form-group">
+                                    <label>Correo </label>
+                                    <asp:TextBox ID="txtCorreo" runat="server" CssClass="form-control" width="410px" ></asp:TextBox>
+                                    </div>
+                                <br /> <br />                              
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5">
+                    <br />
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            <div class="form-inline">
+                                                             
+                                <div class="form-group">
+                                    <label>Télefono </label>
+                                    <asp:TextBox ID="txtTelefono" runat="server" CssClass="form-control" width="410px"></asp:TextBox>
+                                </div>                                
+
+                                <div class="form-group">
+                                    <label>Celular </label>
+                                    <asp:TextBox ID="txtCelular" runat="server" CssClass="form-control" width="410px"></asp:TextBox>
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Otro </label>
+                                    <asp:TextBox ID="txtOtro" runat="server" CssClass="form-control" width="410px"></asp:TextBox>
+                                </div>   
+                            </div>
+                        </div>
+                        <a  href="/InicioAdmin.aspx" class="nav-link" >
+                            <asp:Button ID="btnRegistrar" runat="server" Text="Actualizar datos" CssClass="btn btn-block btn-sm btn-success" />
+                        </a>
+                    </div>
+                </div>
+                            
+            </div>
+        </div>
+    </div>
 </asp:Content>

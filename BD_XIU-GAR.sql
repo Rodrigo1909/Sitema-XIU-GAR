@@ -7,8 +7,6 @@ use XIUGAR;
 -- Table structure for table `estados`
 --
 
-create database EstadoMunicipio;
-
 CREATE TABLE tblEstado (
   idEstado int NOT NULL IDENTITY(1,1),
   strEstado varchar(100) NOT NULL,
@@ -999,7 +997,7 @@ INSERT INTO tblMunicipio (strMunicipio) VALUES
 ('Santiago Ixcuintla'),
 ('Acaponeta'),
 ('Tecuala'),
-('Huajicori'),
+('Huajicori');
 INSERT INTO tblMunicipio (strMunicipio) VALUES
 ('Del Nayar'),
 ('La Yesca'),
@@ -1924,7 +1922,7 @@ INSERT INTO tblMunicipio (strMunicipio) VALUES
 ('Rayón'),
 ('Aquismón'),
 ('Lagunillas'),
-('Santa Catarina'),
+('Santa Catarina');
 INSERT INTO tblMunicipio (strMunicipio) VALUES
 ('Tancanhuitz'),
 ('Tanlajás'),
@@ -3546,7 +3544,7 @@ INSERT INTO tblEstado_Municipio (fkEstado,fkMunicipio) VALUES
 (19, 995),
 (19, 996),
 (19, 997),
-(19, 998),
+(19, 998);
 INSERT INTO tblEstado_Municipio (fkEstado,fkMunicipio) VALUES
 (20, 999),
 (20, 1000),
@@ -4547,7 +4545,7 @@ INSERT INTO tblEstado_Municipio (fkEstado,fkMunicipio) VALUES
 (28, 1995),
 (28, 1996),
 (28, 1997),
-(28, 1998),
+(28, 1998);
 INSERT INTO tblEstado_Municipio (fkEstado,fkMunicipio) VALUES
 (28, 1999),
 (28, 2000),
@@ -5038,7 +5036,24 @@ create table tblDireccion (
     constraint fk_Estado_Municipio foreign key(fkEstadoMunicipio) references tblEstado_Municipio(idEstado_Municipio)	
 );
 
-CREATE TABLE tblCliente (
+CREATE TABLE tblEmpleado (
+	idEmpleado int NOT NULL identity(1,1),
+	strNombre varchar(150) NOT NULL,
+	strApellidoP varchar(150) NOT NULL,
+	strApellidoM varchar(150) NOT NULL,
+	strCorreo varchar(150),
+	strSexo varchar(50),
+	strEdad varchar(50),
+    fkDireccion int,
+    fkTelefono int,
+	fkLogin int,
+	constraint pk_Empleado primary key (idEmpleado),   
+	constraint fk_Direccion foreign key(fkDireccion) references tblDireccion(idDireccion),
+	constraint fk_Telefono foreign key(fkTelefono) references tblTelefono(idTelefono),
+	constraint fk_Login foreign key(fkLogin) references tblUsuario(idUsuario)
+);
+
+CREATE TABLE tblCliente(
 	idCliente int NOT NULL identity(1,1),
 	strNombre varchar(150) NOT NULL,
 	strApellidoP varchar(150) NOT NULL,
@@ -5050,9 +5065,11 @@ CREATE TABLE tblCliente (
 	strMetodoPago varchar(150) NOT NULL,
     fkDireccion int,
     fkTelefono int,
+	fkLogin int,
 	constraint pk_Cliente primary key (idCliente),   
-	constraint fk_Direccion foreign key(fkDireccion) references tblDireccion(idDireccion),
-	constraint fk_Telefono foreign key(fkTelefono) references tblTelefono(idTelefono)
+	constraint fk_Direccion_Cliente foreign key(fkDireccion) references tblDireccion(idDireccion),
+	constraint fk_Telefono_Cliente foreign key(fkTelefono) references tblTelefono(idTelefono),
+	constraint fk_Login_Cliente foreign key(fkLogin) references tblUsuario(idUsuario)
 );
 
 CREATE TABLE tblVenta (
@@ -5064,9 +5081,9 @@ CREATE TABLE tblVenta (
   intImporte int NOT NULL,
   strMetodoPago varchar(150) NOT NULL,
   strlapso varchar(150),
-  fkCliente int,
+  fkEmpleado int,
   primary key (idVenta),
-  constraint FK_Cliente foreign key(fkCliente) references tblCliente(idCliente)    
+  constraint FK_Empleado_Venta foreign key(fkEmpleado) references tblEmpleado(idEmpleado)    
 );
 
 CREATE TABLE tblTotalVenta (
@@ -5079,8 +5096,9 @@ CREATE TABLE tblTotalVenta (
 
 /*Consultas*/
 
-select * from tblEstado_Municipio em
-inner join tblEstados e
+select m.strMunicipio from tblEstado_Municipio em
+inner join tblEstado e
 on e.idEstado = em.fkEstado
 inner join TblMunicipio m
 on m.idMunicipio = em.fkMunicipio
+where em.fkEstado = '1'

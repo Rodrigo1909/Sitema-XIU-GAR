@@ -59,44 +59,44 @@ namespace ProjectPaslum.Profesor
 
         private void loadDrop(int idProfe)
         {
-            try
-            {
-                var gfg = (from am in contexto.TblAsignacionMateria
-                           join m in contexto.TblMateria
-                           on am.idMateria equals m.id
-                           join p in contexto.TblProfesor on am.idProfesor equals p.id
-                           where p.id == idProfe
-                           select m).ToList();
+            //try
+            //{
+            //    var gfg = (from am in contexto.TblAsignacionMateria
+            //               join m in contexto.TblMateria
+            //               on am.idMateria equals m.id
+            //               join p in contexto.TblProfesor on am.idProfesor equals p.id
+            //               where p.id == idProfe
+            //               select m).ToList();
 
-                ddlMateria.DataValueField = "id";
-                ddlMateria.DataTextField = "strNombre";
-                ddlMateria.DataSource = gfg;
-                ddlMateria.DataBind();
-                ddlMateria.Items.Insert(0, new ListItem("Seleccionar", "0"));
-            }
-            catch (Exception)
-            {
+            //    ddlMateria.DataValueField = "id";
+            //    ddlMateria.DataTextField = "strNombre";
+            //    ddlMateria.DataSource = gfg;
+            //    ddlMateria.DataBind();
+            //    ddlMateria.Items.Insert(0, new ListItem("Seleccionar", "0"));
+            //}
+            //catch (Exception)
+            //{
 
-                throw;
-            }
+            //    throw;
+            //}
         }
 
 
         protected void ddlMateria_SelectedIndexChanged(object sender, EventArgs e)
         {
-            var parcial = (from par in contexto.TblCatalogoParcial where par.idAsignacionMaeria == Convert.ToInt32(ddlMateria.SelectedValue) select par).ToList();
-            ddlParcial.Items.Add("Seleccionar");
-            ddlParcial.DataSource = parcial;
-            ddlParcial.DataValueField = "id";
-            ddlParcial.DataTextField = "strNombre";
-            ddlParcial.DataBind();
+            //var parcial = (from par in contexto.TblCatalogoParcial where par.idAsignacionMaeria == Convert.ToInt32(ddlMateria.SelectedValue) select par).ToList();
+            //ddlParcial.Items.Add("Seleccionar");
+            //ddlParcial.DataSource = parcial;
+            //ddlParcial.DataValueField = "id";
+            //ddlParcial.DataTextField = "strNombre";
+            //ddlParcial.DataBind();
 
-            var grupo = (from grup in contexto.TblAsignacionGrupo where grup.idAsignacionMateria == Convert.ToInt32(ddlMateria.SelectedValue) select grup).ToList();
-            ddlGrupo.Items.Add("Seleccionar");
-            ddlGrupo.DataSource = parcial;
-            ddlGrupo.DataValueField = "id";
-            ddlGrupo.DataTextField = "id";
-            ddlGrupo.DataBind();
+            //var grupo = (from grup in contexto.TblAsignacionGrupo where grup.idAsignacionMateria == Convert.ToInt32(ddlMateria.SelectedValue) select grup).ToList();
+            //ddlGrupo.Items.Add("Seleccionar");
+            //ddlGrupo.DataSource = parcial;
+            //ddlGrupo.DataValueField = "id";
+            //ddlGrupo.DataTextField = "id";
+            //ddlGrupo.DataBind();
         }
 
 

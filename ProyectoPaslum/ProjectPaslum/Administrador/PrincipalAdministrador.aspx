@@ -26,7 +26,7 @@
         </div>
         <div id="collapse" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
             <div class="panel-body">
-                <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" Width="100%" AllowPaging="True" DataSourceID="SqlDataSource1" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px">
+                <%--<asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" Width="100%" AllowPaging="True" DataSourceID="SqlDataSource1" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px">
                     <Columns>
                         
                         <asp:BoundField DataField="strNombre" HeaderText="Materia" SortExpression="strNombre" />
@@ -51,7 +51,7 @@ from TblMateria m
 inner join TblCarrera c 
 on m.idCarrera = c.id
 inner join TblCuatri cu
-on m.idCuatri = cu.id;"></asp:SqlDataSource>
+on m.idCuatri = cu.id;"></asp:SqlDataSource>--%>
 
             </div>
         </div>

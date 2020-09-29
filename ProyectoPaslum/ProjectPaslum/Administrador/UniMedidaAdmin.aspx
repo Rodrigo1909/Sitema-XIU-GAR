@@ -24,7 +24,7 @@
                         </a> 
                     </div>
                    </div>
-                    &nbsp &nbsp &nbsp &nbsp
+<%--                    &nbsp &nbsp &nbsp &nbsp
                     <div class="button">
                     <div class="col-sm-6">
                         <a class="btn btn-success" data-toggle="modal" href="#addRolTrabajo">
@@ -33,7 +33,7 @@
                               <asp:Label ID="Label2" runat="server" Text="Nuevo Rol"></asp:Label>
                         </a> 
                     </div>
-                   </div>
+                   </div>--%>
                 </div>
             </div>
 
@@ -77,7 +77,7 @@
           </div>
     
     <!-- Agregar Modal de Rol de Trabajo-->
-    <div class="modal fade" id="addRolTrabajo">
+    <%--<div class="modal fade" id="addRolTrabajo">
          <div class="left">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -121,7 +121,7 @@
             </div>
             </div>
         </div>
-          </div>
+          </div>--%>
    
     <%-- Editar o eliminar Unidad de medida --%>
     <div class="panel panel-default">
@@ -133,7 +133,7 @@
         </div>
         <div id="collapse" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
             <div class="panel-body">
-                <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" Width="100%" AllowPaging="True" DataSourceID="SqlDataSource1" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px">
+<%--                <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" Width="100%" AllowPaging="True" DataSourceID="SqlDataSource1" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px">
                     <Columns>
                         
                         <asp:BoundField DataField="strNombre" HeaderText="Materia" SortExpression="strNombre" />
@@ -158,7 +158,7 @@ from TblMateria m
 inner join TblCarrera c 
 on m.idCarrera = c.id
 inner join TblCuatri cu
-on m.idCuatri = cu.id;"></asp:SqlDataSource>
+on m.idCuatri = cu.id;"></asp:SqlDataSource>--%>
 
             </div>
         </div>
@@ -174,7 +174,7 @@ on m.idCuatri = cu.id;"></asp:SqlDataSource>
         </div>
         <div id="collapseRol" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
             <div class="panel-body">
-                <asp:GridView ID="GridView2" runat="server" AutoGenerateColumns="False" Width="100%" AllowPaging="True" DataSourceID="SqlDataSource1" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px">
+                <%--<asp:GridView ID="GridView2" runat="server" AutoGenerateColumns="False" Width="100%" AllowPaging="True" DataSourceID="SqlDataSource1" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px">
                     <Columns>
                         
                         <asp:BoundField DataField="strNombre" HeaderText="Materia" SortExpression="strNombre" />
@@ -199,7 +199,7 @@ from TblMateria m
 inner join TblCarrera c 
 on m.idCarrera = c.id
 inner join TblCuatri cu
-on m.idCuatri = cu.id;"></asp:SqlDataSource>
+on m.idCuatri = cu.id;"></asp:SqlDataSource>--%>
 
             </div>
         </div>

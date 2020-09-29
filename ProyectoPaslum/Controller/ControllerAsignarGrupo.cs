@@ -11,41 +11,41 @@ namespace Controller
     public class ControllerAsignarGrupo
     {
         PaslumBaseDatoDataContext contexto = new PaslumBaseDatoDataContext();
-        public bool InsertarAsignacionGrupo(TblAsignacionGrupo _TBL_AsigGrupo)
-        {
-            bool respuesta = false;
-            try
-            {
-                contexto.TblAsignacionGrupo.InsertOnSubmit(_TBL_AsigGrupo);
-                contexto.SubmitChanges();
-                respuesta = true;
+        //public bool InsertarAsignacionGrupo(TblAsignacionGrupo _TBL_AsigGrupo)
+        //{
+        //    bool respuesta = false;
+        //    try
+        //    {
+        //        contexto.TblAsignacionGrupo.InsertOnSubmit(_TBL_AsigGrupo);
+        //        contexto.SubmitChanges();
+        //        respuesta = true;
 
-            }
-            catch (Exception ex)
-            {
-                System.Console.WriteLine(ex.ToString());
-                respuesta = false;
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        System.Console.WriteLine(ex.ToString());
+        //        respuesta = false;
 
-            }
-            return respuesta;
+        //    }
+        //    return respuesta;
 
-        }
+        //}
 
 
-        public List<TblGrupo> ConsultaGrupo()
-        {
-            return contexto.TblGrupo.ToList<TblGrupo>();
-        }
-        public object ConsultaAsigMateria()
-        {
-            return contexto.TblAsignacionMateria
-                .Select(p => new
-                {
-                    id = p.id,
-                    strNombre = (p.id)
-                })
-                .ToList();
-        }
+        //public List<TblGrupo> ConsultaGrupo()
+        //{
+        //    return contexto.TblGrupo.ToList<TblGrupo>();
+        //}
+        //public object ConsultaAsigMateria()
+        //{
+        //    return contexto.TblAsignacionMateria
+        //        .Select(p => new
+        //        {
+        //            id = p.id,
+        //            strNombre = (p.id)
+        //        })
+        //        .ToList();
+        //}
     }
 }
     

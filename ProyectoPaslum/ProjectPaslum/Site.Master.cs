@@ -88,81 +88,91 @@ namespace ProjectPaslum
             ValidarLogin(GetDatosVista());
         }
 
-        protected TblUser GetDatosVista()
+        protected tblUsuario GetDatosVista()
         {
             String user = txtUsuario.Text;
             String pass = txtPass.Text;
 
-            TblUser usuario = new TblUser();
-            usuario.strusuario = user;
-            usuario.strpass = pass;
+            tblUsuario usuario = new tblUsuario();
+            usuario.strUsuario = user;
+            usuario.strPassword = pass;
             return usuario;
 
         }
 
-        protected void ValidarLogin(TblUser usuario)
+        protected void ValidarLogin(tblUsuario usuario)
         {
-            if (this.txtUsuario.Text.Equals("administrador") && this.txtPass.Text.Equals("1234"))
-            {
-                Session["user"] = txtUsuario.Text;
-                this.Response.Redirect("./Administrador/PrincipalAdministrador.aspx", true);
-            }
-            if (this.txtUsuario.Text.Equals("vendedor") && this.txtPass.Text.Equals("1234"))
-            {
-                Session["user"] = txtUsuario.Text;
-                this.Response.Redirect("./Venta/PrincipalVendedor.aspx", true);
-            }
-
             ControllerAutenticacion ctrlAutenticacion = new ControllerAutenticacion();
-            TblUser UsuarioLoggeado = ctrlAutenticacion.ValidarLogin(usuario);
+            tblUsuario UsuarioLoggeado = ctrlAutenticacion.ValidarLogin(usuario);
 
             if (UsuarioLoggeado != null)
             {
-                if (UsuarioLoggeado.strtipoUsuario == "PROFESOR")
+                if (UsuarioLoggeado.strTipousuario == "ADMINISTRADOR")
                 {
-                    var profesor = (from profe in contexto.TblProfesor where profe.idUser == UsuarioLoggeado.id select profe).FirstOrDefault();
-                    var profesorTel = (from profeTel in contexto.TblProfesor join tel in contexto.TblTelefono on profeTel.idTelefono equals tel.id select new { celular = tel.strcelular, casa = tel.strtelCasa, otro = tel.strotro }).FirstOrDefault();
-                    var profesorDir = (from profeDir in contexto.TblProfesor join dir in contexto.TblDireccion on profeDir.idDireccion equals dir.id select new { calle = dir.strcalle, colonia = dir.strcolonia, municipio = dir.strmunicipio }).FirstOrDefault();
-                    Session["id"] = profesor.id;
-                    Session["nombre"] = profesor.strNombre;
-                    Session["apellido1"] = profesor.strApellidoP;
-                    Session["apellido2"] = profesor.strApellidoM;
-                    Session["matricula"] = profesor.id;
-                    Session["correo"] = profesor.strCorreo;
-                    Session["telefono1"] = profesorTel.celular;
-                    Session["telefono2"] = profesorTel.casa;
-                    Session["telefono3"] = profesorTel.otro;
-                    Session["calle"] = profesorDir.calle;
-                    Session["colonia"] = profesorDir.colonia;
-                    Session["municipio"] = profesorDir.municipio;
-                    Session["forTel"] = profesor.idTelefono;
-                    Session["forDom"] = profesor.idDireccion;
-                    Response.Redirect("./Profesor/PrincipalProfesor.aspx", true);
+                    //var profesor = (from profe in contexto.TblProfesor where profe.idUser == UsuarioLoggeado.id select profe).FirstOrDefault();
+                    //var profesorTel = (from profeTel in contexto.TblProfesor join tel in contexto.TblTelefono on profeTel.idTelefono equals tel.id select new { celular = tel.strcelular, casa = tel.strtelCasa, otro = tel.strotro }).FirstOrDefault();
+                    //var profesorDir = (from profeDir in contexto.TblProfesor join dir in contexto.TblDireccion on profeDir.idDireccion equals dir.id select new { calle = dir.strcalle, colonia = dir.strcolonia, municipio = dir.strmunicipio }).FirstOrDefault();
+                    //Session["id"] = profesor.id;
+                    //Session["nombre"] = profesor.strNombre;
+                    //Session["apellido1"] = profesor.strApellidoP;
+                    //Session["apellido2"] = profesor.strApellidoM;
+                    //Session["matricula"] = profesor.id;
+                    //Session["correo"] = profesor.strCorreo;
+                    //Session["telefono1"] = profesorTel.celular;
+                    //Session["telefono2"] = profesorTel.casa;
+                    //Session["telefono3"] = profesorTel.otro;
+                    //Session["calle"] = profesorDir.calle;
+                    //Session["colonia"] = profesorDir.colonia;
+                    //Session["municipio"] = profesorDir.municipio;
+                    //Session["forTel"] = profesor.idTelefono;
+                    //Session["forDom"] = profesor.idDireccion;
+                    Response.Redirect("./Administrador/PrincipalAdministrador.aspx", true);
                 }
-                else if (UsuarioLoggeado.strtipoUsuario == "ALUMNO")
+                if (UsuarioLoggeado.strTipousuario == "VENDEDOR")
+                {
+                    //var profesor = (from profe in contexto.TblProfesor where profe.idUser == UsuarioLoggeado.id select profe).FirstOrDefault();
+                    //var profesorTel = (from profeTel in contexto.TblProfesor join tel in contexto.TblTelefono on profeTel.idTelefono equals tel.id select new { celular = tel.strcelular, casa = tel.strtelCasa, otro = tel.strotro }).FirstOrDefault();
+                    //var profesorDir = (from profeDir in contexto.TblProfesor join dir in contexto.TblDireccion on profeDir.idDireccion equals dir.id select new { calle = dir.strcalle, colonia = dir.strcolonia, municipio = dir.strmunicipio }).FirstOrDefault();
+                    //Session["id"] = profesor.id;
+                    //Session["nombre"] = profesor.strNombre;
+                    //Session["apellido1"] = profesor.strApellidoP;
+                    //Session["apellido2"] = profesor.strApellidoM;
+                    //Session["matricula"] = profesor.id;
+                    //Session["correo"] = profesor.strCorreo;
+                    //Session["telefono1"] = profesorTel.celular;
+                    //Session["telefono2"] = profesorTel.casa;
+                    //Session["telefono3"] = profesorTel.otro;
+                    //Session["calle"] = profesorDir.calle;
+                    //Session["colonia"] = profesorDir.colonia;
+                    //Session["municipio"] = profesorDir.municipio;
+                    //Session["forTel"] = profesor.idTelefono;
+                    //Session["forDom"] = profesor.idDireccion;
+                    Response.Redirect("./Venta/PrincipalVendedor.aspx", true);
+                }
+                else if (UsuarioLoggeado.strTipousuario == "ALMACÉN")
                 {                    
-                    var alumno = (from alum in contexto.TblAlumno where alum.idUser == UsuarioLoggeado.id select alum).FirstOrDefault();
-                    var alumnoTel = (from al in contexto.TblAlumno join tel in contexto.TblTelefono on al.idTelefono equals tel.id select new { celular = tel.strcelular, casa = tel.strtelCasa, otro =tel.strotro }).FirstOrDefault();
-                    var alumnoCar = (from alcar in contexto.TblAlumno join car in contexto.TblCarrera on alcar.idCarrera equals car.id select new { nombre = car.strNombre, area = car.strArea }).FirstOrDefault();
-                    var alumnoDir = (from aldir in contexto.TblAlumno join dir in contexto.TblDireccion on aldir.idDireccion equals dir.id select new { calle = dir.strcalle, colonia = dir.strcolonia, municipio = dir.strmunicipio}).FirstOrDefault();
-                    Session["id"] = alumno.id;
-                    Session["nombre"] = alumno.strNombre;
-                    Session["apellido1"] = alumno.strApellidoP;
-                    Session["apellido2"] = alumno.strApellidoM;
-                    Session["matricula"] = alumno.id;
-                    Session["correo"] = alumno.strCorreo;
-                    Session["telefono1"] = alumnoTel.celular;
-                    Session["telefono2"] = alumnoTel.casa;
-                    Session["telefono3"] = alumnoTel.otro;
-                    Session["carrera"] = alumnoCar.nombre;
-                    Session["area"] = alumnoCar.area;
-                    Session["calle"] = alumnoDir.calle;
-                    Session["colonia"] = alumnoDir.colonia;
-                    Session["municipio"] = alumnoDir.municipio;
-                    Session["forTel"] = alumno.idTelefono;
-                    Session["forDom"] = alumno.idDireccion;
-                    Session["forGrupo"] = alumno.idGrupo;
-                    Response.Redirect("./Alumno/PrincipalAlumno.aspx", true);
+                    //var alumno = (from alum in contexto.TblAlumno where alum.idUser == UsuarioLoggeado.id select alum).FirstOrDefault();
+                    //var alumnoTel = (from al in contexto.TblAlumno join tel in contexto.TblTelefono on al.idTelefono equals tel.id select new { celular = tel.strcelular, casa = tel.strtelCasa, otro =tel.strotro }).FirstOrDefault();
+                    //var alumnoCar = (from alcar in contexto.TblAlumno join car in contexto.TblCarrera on alcar.idCarrera equals car.id select new { nombre = car.strNombre, area = car.strArea }).FirstOrDefault();
+                    //var alumnoDir = (from aldir in contexto.TblAlumno join dir in contexto.TblDireccion on aldir.idDireccion equals dir.id select new { calle = dir.strcalle, colonia = dir.strcolonia, municipio = dir.strmunicipio}).FirstOrDefault();
+                    //Session["id"] = alumno.id;
+                    //Session["nombre"] = alumno.strNombre;
+                    //Session["apellido1"] = alumno.strApellidoP;
+                    //Session["apellido2"] = alumno.strApellidoM;
+                    //Session["matricula"] = alumno.id;
+                    //Session["correo"] = alumno.strCorreo;
+                    //Session["telefono1"] = alumnoTel.celular;
+                    //Session["telefono2"] = alumnoTel.casa;
+                    //Session["telefono3"] = alumnoTel.otro;
+                    //Session["carrera"] = alumnoCar.nombre;
+                    //Session["area"] = alumnoCar.area;
+                    //Session["calle"] = alumnoDir.calle;
+                    //Session["colonia"] = alumnoDir.colonia;
+                    //Session["municipio"] = alumnoDir.municipio;
+                    //Session["forTel"] = alumno.idTelefono;
+                    //Session["forDom"] = alumno.idDireccion;
+                    //Session["forGrupo"] = alumno.idGrupo;
+                    //Response.Redirect("./Alumno/PrincipalAlumno.aspx", true);
                 }
             }
             else

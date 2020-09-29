@@ -62,7 +62,12 @@
                                                         &nbsp &nbsp &nbsp &nbsp 
                                                         <div class="form-group">
                                                             <label>Sexo: </label>
-                                                            <asp:DropDownList ID="txtSexo" runat="server" AppendDataBoundItems="True"  width="330px" CssClass=" form-control"></asp:DropDownList>   
+                                                            <asp:DropDownList ID="cmbSexo" runat="server" AppendDataBoundItems="True"  width="330px" CssClass=" form-control">
+                                                                    <asp:ListItem Selected="True" Value="SELECCIONA"> --SELECCIONA-- </asp:ListItem>
+                                                                    <asp:ListItem Value="HOMBRE"> HOMBRE </asp:ListItem>
+                                                                    <asp:ListItem Value="MUJER"> MUJER </asp:ListItem>
+                                                                    <asp:ListItem Value="DISTINTO"> DISTINTO </asp:ListItem>
+                                                            </asp:DropDownList>   
                                                          </div>
                                                         <br /> <br />
                                                         
@@ -130,7 +135,7 @@
 
                                                          <div class="form-group">
                                                             <label>Estado: </label>
-                                                            <asp:DropDownList ID="ddlEstado" runat="server" AppendDataBoundItems="True"  width="330px" CssClass=" form-control"></asp:DropDownList>   
+                                                            <asp:DropDownList ID="ddlEstado" runat="server" AppendDataBoundItems="True"  width="330px" CssClass=" form-control" AutoPostBack="true" OnSelectedIndexChanged="ddlEstado_SelectedIndexChanged"></asp:DropDownList>   
                                                          </div>
                                                         <br /> <br /> 
                                                        
@@ -235,7 +240,7 @@
 
                                                          <div class="form-group">
                                                             <label>Tel. Casa: </label>
-                                                            <asp:TextBox ID="txtTelEncargador" runat="server" CssClass="form-control" type="number" 
+                                                            <asp:TextBox ID="txtTelCasa" runat="server" CssClass="form-control" type="number" 
                                                                 pattern="^[0-9]*" title="Ingrese solo numeros" width="315px" >
                                                             </asp:TextBox>                                           
                                                          </div>
@@ -274,9 +279,13 @@
 
                                                             <div class="form-group">
                                                                 <label>Rol: </label>
-                                                                <asp:DropDownList ID="ddlRol" runat="server" 
+                                                                <asp:DropDownList ID="cmbRol" runat="server" 
                                                                     AppendDataBoundItems="True"  width="323px" 
-                                                                    CssClass=" form-control"></asp:DropDownList>   
+                                                                    CssClass=" form-control">
+                                                                    <asp:ListItem Selected="True" Value="SELECCIONA"> --SELECCIONA-- </asp:ListItem>
+                                                                    <asp:ListItem Value="ADMINISTRADOR"> ADMINISTRADOR </asp:ListItem>
+                                                                    <asp:ListItem Value="VENDEDOR"> VENDEDOR </asp:ListItem>    
+                                                                </asp:DropDownList>   
                                                             </div>
                                                             <br /> <br />
 
@@ -289,7 +298,7 @@
                                                              <hr />
                                                                                                 
                                                         <a  href="/InicioAdmin.aspx" class="nav-link" >
-                                                            <asp:Button ID="btnRegistrar" runat="server" Text="Registrar" CssClass="btn btn-block btn-sm btn-success" />
+                                                            <asp:Button ID="btnRegistrar" runat="server" Text="Registrar" CssClass="btn btn-block btn-sm btn-success" OnClick="btnRegistrar_Click" />
                                                         </a>
                                                         </div>
                                                     </div>
@@ -314,7 +323,7 @@
     <div class="collapse multi-collapse" id="multiCollapseExample2">
       <div class="card card-body">
             <%-- Tabla de consulta de trabajadores --%>
-    <div class="panel panel-default">
+    <%--<div class="panel panel-default">
         <div class="panel-heading" role="tab" id="heading">
             <h4 class="panel-title">
                 <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse" aria-expanded="false" aria-controls="collapse">EMPLEADOS ACTIVOS
@@ -372,7 +381,7 @@ on pro.idTelefono = tel.id;"></asp:SqlDataSource>
 
             </div>
         </div>
-    </div>
+    </div>--%>
       </div>
     </div>
   </div>

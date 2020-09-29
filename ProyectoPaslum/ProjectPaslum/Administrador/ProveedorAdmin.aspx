@@ -306,7 +306,7 @@
         </div>
         <div id="collapse" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
             <div class="panel-body">
-                <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" Width="100%" AllowPaging="True" DataKeyNames="id" DataSourceID="SqlDataSource1" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px">
+<%--                <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" Width="100%" AllowPaging="True" DataKeyNames="id" DataSourceID="SqlDataSource1" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px">
                     <Columns>
                             <asp:TemplateField HeaderText="Editar">
                                 <ItemTemplate>
@@ -351,7 +351,7 @@
 	   pro.strEspecialidad, tel.strcelular, tel.strtelCasa 
 FROM TblProfesor as pro
 inner join TblTelefono  as tel 
-on pro.idTelefono = tel.id;"></asp:SqlDataSource>
+on pro.idTelefono = tel.id;"></asp:SqlDataSource>--%>
 
             </div>
         </div>

@@ -12,17 +12,17 @@ namespace Controller
     public class ControllerAutenticacion
     {
         private PaslumBaseDatoDataContext contexto = new PaslumBaseDatoDataContext();
-        public TblUser ValidarLogin(TblUser _user)
+        public tblUsuario ValidarLogin(tblUsuario _user)
         {
-            TblUser respuesta = null;
-            Expression<Func<TblUser, bool>> predicado = p => p.strusuario == _user.strusuario && p.strpass == _user.strpass;
+            tblUsuario respuesta = null;
+            Expression<Func<tblUsuario, bool>> predicado = p => p.strUsuario == _user.strUsuario && p.strPassword == _user.strPassword;
             try
             {
-                TblUser user = contexto.TblUser.Where(predicado).FirstOrDefault<TblUser>();
+                tblUsuario user = contexto.tblUsuario.Where(predicado).FirstOrDefault<tblUsuario>();
                 if (user != null)
                 {
 
-                    if (user.id > 0)
+                    if (user.idUsuario > 0)
                     {
                         respuesta = user;
                     }

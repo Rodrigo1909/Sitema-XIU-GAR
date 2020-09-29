@@ -364,10 +364,12 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Site.Master" />
+    <Content Include="Venta\CotizacionVenta.aspx" />
     <Content Include="Venta\CreditoVenta.aspx" />
     <Content Include="Venta\estilos.css" />
     <Content Include="Venta\MostradorVenta.aspx" />
     <Content Include="Venta\OrdenCompraVenta.aspx" />
+    <Content Include="Venta\PerfilVenta.aspx" />
     <Content Include="Venta\PrincipalVendedor.aspx" />
     <Content Include="ViewSwitcher.ascx" />
     <Content Include="Web.config" />
@@ -652,6 +654,13 @@
       <DependentUpon>Site.Mobile.Master</DependentUpon>
     </Compile>
     <Compile Include="Startup.cs" />
+    <Compile Include="Venta\CotizacionVenta.aspx.cs">
+      <DependentUpon>CotizacionVenta.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Venta\CotizacionVenta.aspx.designer.cs">
+      <DependentUpon>CotizacionVenta.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Venta\CreditoVenta.aspx.cs">
       <DependentUpon>CreditoVenta.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -672,6 +681,13 @@
     </Compile>
     <Compile Include="Venta\OrdenCompraVenta.aspx.designer.cs">
       <DependentUpon>OrdenCompraVenta.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Venta\PerfilVenta.aspx.cs">
+      <DependentUpon>PerfilVenta.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Venta\PerfilVenta.aspx.designer.cs">
+      <DependentUpon>PerfilVenta.aspx</DependentUpon>
     </Compile>
     <Compile Include="Venta\PrincipalVendedor.aspx.cs">
       <DependentUpon>PrincipalVendedor.aspx</DependentUpon>

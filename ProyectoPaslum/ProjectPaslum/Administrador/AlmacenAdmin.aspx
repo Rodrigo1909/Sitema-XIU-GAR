@@ -81,7 +81,7 @@
         </div>
           </div>
        <%-- Editar o eliminar Grupo --%>
-    <div class="panel panel-default">
+    <%--<div class="panel panel-default">
         <div class="panel-heading" role="tab" id="heading">
             <h4 class="panel-title">
                 <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse" aria-expanded="false" aria-controls="collapse">Almacenes disponibles
@@ -119,6 +119,6 @@ on m.idCuatri = cu.id;"></asp:SqlDataSource>
 
             </div>
         </div>
-    </div>
+    </div>--%>
 
 </asp:Content>

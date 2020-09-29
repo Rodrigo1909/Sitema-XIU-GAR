@@ -45,13 +45,8 @@
     <Compile Include="ControllerAsignarGrupo.cs" />
     <Compile Include="ControllerAsignarMateria.cs" />
     <Compile Include="ControllerAutenticacion.cs" />
-    <Compile Include="ControllerCarrera.cs" />
-    <Compile Include="ControllerCuatri.cs" />
-    <Compile Include="ControllerEvaluacion.cs" />
-    <Compile Include="ControllerParcial.cs" />
-    <Compile Include="ControllerGrupo.cs" />
+    <Compile Include="ControllerEmpleado.cs" />
     <Compile Include="ControllerMaestro.cs" />
-    <Compile Include="ControllerMateria.cs" />
     <Compile Include="ControllerQr.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
