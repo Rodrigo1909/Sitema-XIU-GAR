@@ -7,7 +7,7 @@
     <link href="../Alumno/scss/PersoDatos.css" rel="stylesheet" />
 <div class="container">
   <div style="text-align:center">
-    <h2>Venta de Mostrador</h2>
+    <h2>Orden de Compra</h2>
   </div>
  
     <div class="panel panel-default">
@@ -128,8 +128,8 @@
             
                  </div>
                 <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
-                           <asp:Button ID="btnRegistrar" runat="server" Text="Generar OC." Font-Size="16px" CssClass="btn btn-block btn-sm btn-success" Width="150px"  />
-                </div>
+                           <asp:Button ID="btnRegistrar" runat="server" Text="Generar OC." Font-Size="16px" CssClass="btn btn-block btn-sm btn-success" Width="150px" />
+                </div>                
                         </div>
                       </div>
                     </div>

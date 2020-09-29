@@ -49,92 +49,51 @@
                                         </div>
 
 
-                                        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                                        <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
                                             <div class="panel panel-default">
                                                 <div class="panel-body">
                                                     <div class="form-inline">                                                        
-                                                       
-                                                       <div class="form-group">
+                                                        <div class="form-group">
                                                             <label>Nombre: </label>
-                                                            <asp:TextBox ID="txtNombre" runat="server" width="410px" CssClass="form-control" 
+                                                            <asp:TextBox ID="txtNombre" runat="server" width="368px" CssClass="form-control" 
                                                                 type="Text" pattern="^[a-zA-ZñÑáéíóúÁÉÍÓÚ\s]+$" title="Ingrese solo letras">
                                                             </asp:TextBox>   
                                                          </div>    
+                                                        &nbsp &nbsp &nbsp &nbsp 
+                                                        <div class="form-group">
+                                                            <label>Establecimiento: </label>
+                                                            <asp:TextBox ID="txtEdad" runat="server" width="255px" CssClass="form-control" 
+                                                                type="Text" pattern="^[a-zA-ZñÑáéíóúÁÉÍÓÚ\s]+$" title="Ingrese solo letras" ></asp:TextBox>                                                            
+                                                        </div>
                                                         <br /> <br />
                                                         
                                                         <div class="form-group">
                                                             <label>Apellido Paterno: </label>
-                                                            <asp:TextBox ID="txtAPaterno" runat="server" width="350px" CssClass="form-control" 
+                                                            <asp:TextBox ID="txtAPaterno" runat="server" width="310px" CssClass="form-control" 
                                                                 type="Text" pattern="^[a-zA-ZñÑáéíóúÁÉÍÓÚ\s]+$" title="Ingrese solo letras">
                                                             </asp:TextBox>
                                                         </div>
+                                                        &nbsp &nbsp &nbsp &nbsp
+                                                        <div class="form-group">
+                                                            <label>Correo: </label>
+                                                            <asp:TextBox ID="txtCorreo" runat="server" width="316px" placeholder="Ejemplo@ejemplo.com:"
+                                                                 CssClass="form-control" TextMode="Email" title="Ingrese el formato de correo electronico">
+                                                            </asp:TextBox>
+                                                        </div>  
                                                         <br /> <br />
 
 
                                                         <div class="form-group">
                                                             <label>Apellido Materno: </label>
-                                                            <asp:TextBox ID="txtAMaterno" runat="server" width="350px" CssClass="form-control" 
+                                                            <asp:TextBox ID="txtAMaterno" runat="server" width="307px" CssClass="form-control" 
                                                                 type="Text" pattern="^[a-zA-ZñÑáéíóúÁÉÍÓÚ\s]+$" title="Ingrese solo letras">
                                                             </asp:TextBox>
-                                                        </div>
-                                                        <br /> <br />
-
-                                            
-                                                        <div class="form-group">
-                                                            <label>Establecimiento: </label>
-                                                            <asp:TextBox ID="txtEdad" runat="server" width="360px" CssClass="form-control" 
-                                                                type="Text" pattern="^[a-zA-ZñÑáéíóúÁÉÍÓÚ\s]+$" title="Ingrese solo letras" ></asp:TextBox>                                                            
-                                                        </div>
-                                                        <br /> <br />
+                                                        </div>                                                  
                                                        
-                                                         <div class="form-group">
-                                                            <label>Correo: </label>
-                                                            <asp:TextBox ID="txtCorreo" runat="server" width="420px" placeholder="Ejemplo@ejemplo.com:"
-                                                                 CssClass="form-control" TextMode="Email" title="Ingrese el formato de correo electronico">
-                                                            </asp:TextBox>
-                                                        </div>
-                                                        <br /> <br />
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
-
-                            
-                                        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-
-                                            <div class="panel panel-body">
-                                                <div class="panel panel-default">
-                                                    <div class="panel-heading">
-                                                        <div class="panel-title">
-                                                            Registra el Usuario y Constraseña
-                                                        </div>
-                                                    </div>
-                                                    <div class="panel-body">
-                                                        <div class="form-inline">
-
-                                                            <div class="form-group">
-                                                                <label>Usuario: </label>
-                                                                <asp:TextBox ID="txtUsuario" runat="server"
-                                                                    placeholder="Usuario" required="required"
-                                                                    CssClass="form-control input-sm" ></asp:TextBox>
-                                                            </div>
-                                                            <br /> <br />
-                                                            <div class="form-group">
-                                                                <label>Contraseña: </label>
-                                                                <asp:TextBox ID="txtPass" runat="server"
-                                                                    placeholder="Contraseña" required="required"
-                                                                    CssClass="form-control input-sm" TextMode="Password"></asp:TextBox>
-                                                            </div>
-                                                             <hr />
-                                                                                                
-                                                        <a  href="/InicioAdmin.aspx" class="nav-link" >
-                                                            <asp:Button ID="btnRegistrar" runat="server" Text="Registrar" CssClass="btn btn-block btn-sm btn-success" />
-                                                        </a>
-                                                        </div>
-                                                    </div>
-                                                </div>                                    
-                                            </div>
-                                        </div>
+                                        </div>      
                                     </div>
                                 </div>
                             </div>
@@ -163,56 +122,55 @@
 
                                                          <div class="form-group">
                                                             <label>Estado: </label>
-                                                            <asp:DropDownList ID="ddlEstado" runat="server" AppendDataBoundItems="True"  Height="100%" CssClass=" form-control"></asp:DropDownList>   
+                                                            <asp:DropDownList ID="ddlEstado" runat="server" AppendDataBoundItems="True"  width="330px" CssClass=" form-control"></asp:DropDownList>   
                                                          </div>
                                                         <br /> <br />
 
                                                         <div class="form-group">
                                                             <label>Municipio: </label>
-                                                            <asp:DropDownList ID="ddlMunicipio" runat="server" AppendDataBoundItems="True"  Height="100%" CssClass=" form-control"></asp:DropDownList>
+                                                            <asp:DropDownList ID="ddlMunicipio" runat="server" AppendDataBoundItems="True"  width="315px" CssClass=" form-control"></asp:DropDownList>
                                                         </div>
                                                         <br /> <br />
 
                                                         <div class="form-group">
                                                             <label>Calle: </label>
-                                                            <asp:TextBox ID="txtCalle" runat="server" CssClass="form-control" width="340px" required="required">
+                                                            <asp:TextBox ID="txtCalle" runat="server" CssClass="form-control" width="345px" required="required">
                                                             </asp:TextBox>
                                                          </div>
                                                         <br /> <br />
 
                                                          <div class="form-group">
                                                             <label>Colonia: </label>
-                                                            <asp:TextBox ID="txtColonia" runat="server" CssClass="form-control" width="320px" required="required">
+                                                            <asp:TextBox ID="txtColonia" runat="server" CssClass="form-control" width="330px" required="required">
                                                             </asp:TextBox>
                                                          </div>
                                                         <br /> <br />
                                             
                                                         <div class="form-group">
                                                             <label>Numero Interior: </label>
-                                                            <asp:TextBox ID="txtNumInt" runat="server" CssClass="form-control input-sm" >
+                                                            <asp:TextBox ID="txtNumInt" runat="server" CssClass="form-control" width="275px" >
                                                             </asp:TextBox>
                                                          </div>
                                                         <br /> <br />
 
                                                         <div class="form-group">
                                                             <label>Numero Exterior: </label>
-                                                            <asp:TextBox ID="txtNumExt" runat="server" CssClass="form-control input-sm"> 
+                                                            <asp:TextBox ID="txtNumExt" runat="server" CssClass="form-control" width="270px"> 
                                                             </asp:TextBox>
                                                         </div>   
                                                         <br /> <br />
 
                                                         <div class="form-group">
                                                             <label>Codigo Postal: </label>
-                                                            <asp:TextBox ID="txtCodPos" runat="server" CssClass="form-control input-sm" type="number"> 
+                                                            <asp:TextBox ID="txtCodPos" runat="server" CssClass="form-control" type="number" width="285px"
+                                                                pattern="^[0-9]*" title="Ingrese solo numeros"> 
                                                             </asp:TextBox>
-                                                            <asp:RegularExpressionValidator ID="ValidarCodPos" runat="server" ControlToValidate="txtCodPos"
-                                                                ErrorMessage="Ingrese solo numeros" ForeColor="Red" ValidationExpression="^[0-9]*"></asp:RegularExpressionValidator>
                                                        </div>   
-                                                        <br /> 
+                                                        <br /> <br />
 
                                                         <div class="form-group">
                                                             <label>Referencias: </label>
-                                                            <asp:TextBox ID="txtReferencia" runat="server" CssClass="form-control input-sm">
+                                                            <asp:TextBox ID="txtReferencia" runat="server" CssClass="form-control"  width="300px">
                                                             </asp:TextBox>
                                                          </div>                                
                                                         </div>
@@ -234,22 +192,22 @@
 
                                                             <div class="form-group">
                                                                 <label>Numero: </label>
-                                                                <asp:TextBox ID="txtNumeroBodega" runat="server" CssClass="form-control input-sm" ></asp:TextBox>
+                                                                <asp:TextBox ID="txtNumeroBodega" runat="server" CssClass="form-control" Width="293px" ></asp:TextBox>
                                                             </div>
                                                             <br /> <br />
                                                             <div class="form-group">
                                                                 <label>Horario de atención: </label>
-                                                                <asp:TextBox ID="txtHorario" runat="server" CssClass="form-control input-sm" ></asp:TextBox>
+                                                                <asp:TextBox ID="txtHorario" runat="server" CssClass="form-control" Width="213px" ></asp:TextBox>
                                                             </div>
                                                             <br /> <br />
                                                             <div class="form-group">
                                                                 <label>Encargado: </label>
-                                                                <asp:TextBox ID="txtEncargador" runat="server" CssClass="form-control input-sm" ></asp:TextBox>
+                                                                <asp:TextBox ID="txtEncargador" runat="server" CssClass="form-control" Width="273px" ></asp:TextBox>
                                                             </div>
                                                             <br /> <br />
                                                             <div class="form-group">
                                                                 <label>Encargado de pagos: </label>
-                                                                <asp:TextBox ID="txtPagos" runat="server" CssClass="form-control input-sm"></asp:TextBox>
+                                                                <asp:TextBox ID="txtPagos" runat="server" CssClass="form-control" Width="210px"></asp:TextBox>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -278,7 +236,8 @@
                                               <asp:Image ID="Image6" runat="server" ImageUrl="~/images/Iconos/IconTelefono.png" CssClass="img-responsive img-rounded" />
                                         </div>
 
-                                        <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
+                                       
+                                        <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5">
                                             <br />
                                             <div class="panel panel-default">
                                                 <div class="panel-body">
@@ -286,35 +245,68 @@
 
                                                          <div class="form-group">
                                                             <label>Celular: </label>
-                                                            <asp:TextBox ID="txtCelular" runat="server" CssClass="form-control input-sm" >
+                                                            <asp:TextBox ID="txtCelular" runat="server" CssClass="form-control" type="number" 
+                                                                pattern="^[0-9]*" title="Ingrese solo numeros" width="330px">
                                                             </asp:TextBox>
-                                                              <asp:RegularExpressionValidator ID="ValidartxtCelular" runat="server" ControlToValidate="txtCelular"
-                                                                ErrorMessage="Ingrese solo numeros" ForeColor="Red" ValidationExpression="^[0-9]*"></asp:RegularExpressionValidator>
-                                                         </div>
+                                                         </div>                                                       
+                                                         <br /><br />
 
-                                            
                                                          <div class="form-group">
-                                                            <label>Tel. Encargado: </label>
-                                                            <asp:TextBox ID="txtTelEncargador" runat="server" CssClass="form-control input-sm" >
-                                                            </asp:TextBox>
-                                                              <asp:RegularExpressionValidator ID="ValidartxtTelCasa" runat="server" ControlToValidate="txtTelEncargador"
-                                                                ErrorMessage="Ingrese solo numeros" ForeColor="Red" ValidationExpression="^[0-9]*"></asp:RegularExpressionValidator>
-                                           
+                                                            <label>Tel. Casa: </label>
+                                                            <asp:TextBox ID="txtTelEncargador" runat="server" CssClass="form-control" type="number" 
+                                                                pattern="^[0-9]*" title="Ingrese solo numeros" width="315px" >
+                                                            </asp:TextBox>                                           
                                                          </div>
                                                         <br /><br />
                                                          
                                                          <div class="form-group">
                                                             <label>Otro: </label>
-                                                            <asp:TextBox ID="txtTelOtro" runat="server" CssClass="form-control input-sm" >
-                                                            </asp:TextBox>
-                                                              <asp:RegularExpressionValidator ID="ValidartxtTelOtro" runat="server" ControlToValidate="txtTelOtro"
-                                                                ErrorMessage="Ingrese solo numeros" ForeColor="Red" ValidationExpression="^[0-9]*"></asp:RegularExpressionValidator>
-                                           
+                                                            <asp:TextBox ID="txtTelOtro" runat="server" CssClass="form-control" type="number" 
+                                                                pattern="^[0-9]*" title="Ingrese solo numeros" width="345px" >
+                                                            </asp:TextBox>                                           
                                                          </div>
                                                        </div>
                                                      </div>
                                                    </div>
                                                  </div>
+
+                                        <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5">
+
+                                            <div class="panel panel-body">
+                                                <div class="panel panel-default">
+                                                    <div class="panel-heading">
+                                                        <div class="panel-title">
+                                                            Registra el Usuario y Constraseña
+                                                        </div>
+                                                    </div>
+                                                    <div class="panel-body">
+                                                        <div class="form-inline">
+
+                                                            <div class="form-group">
+                                                                <label>Usuario: </label>
+                                                                <asp:TextBox ID="txtUsuario" runat="server"
+                                                                    placeholder="Usuario" required="required"
+                                                                    CssClass="form-control" width="293px" ></asp:TextBox>
+                                                            </div>
+                                                            <br /> <br />
+
+                                                            <div class="form-group">
+                                                                <label>Contraseña: </label>
+                                                                <asp:TextBox ID="txtPass" runat="server"
+                                                                    placeholder="Contraseña" required="required"
+                                                                    CssClass="form-control" TextMode="Password" width="270px" ></asp:TextBox>
+                                                            </div>
+                                                             <hr />
+                                                                                                
+                                                        <a  href="/InicioAdmin.aspx" class="nav-link" >
+                                                            <asp:Button ID="btnRegistrar" runat="server" Text="Registrar" CssClass="btn btn-block btn-sm btn-success" />
+                                                        </a>
+                                                        </div>
+                                                    </div>
+                                                </div>                                    
+                                            </div>
+                                        </div>
+                            
                                                </div>
                                              </div>
                                            </div>
@@ -398,16 +390,19 @@ on pro.idTelefono = tel.id;"></asp:SqlDataSource>
     <%-- Tabla de consulta de trabajadores --%>
     <div class="col">
         <div class="collapse multi-collapse" id="multiCollapseExample3">
-            <div class="form-inline">
-                <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
-                  <div class="card card-body">  
-                  <div class="form-group">
-                    <label>Búsqueda de Cliente: </label>
-                    <asp:TextBox ID="txtBusqueda" runat="server" CssClass="form-control input-sm"></asp:TextBox>
-                    <asp:Button ID="btnBusqueda" runat="server" Text="Buscar" CssClass="btn btn-block btn-sm btn-success" />
-                 </div>
-                 </div>
-               </div>
+              <div class="form-inline">
+                <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5">
+                    <label>Búsqueda de cliente: </label>
+                    <asp:TextBox ID="txtBusqueda" runat="server" CssClass="form-control" Width="270px"></asp:TextBox>  
+               </div>      
+                          
+                <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                    <asp:Button ID="btnBuscar" runat="server" Text="Buscar" Font-Size="14px" CssClass="btn btn-block btn-sm btn-success" Width="170px" />
+                </div>
+
+                <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5">
+                    
+                </div>
             </div>
         </div>
     </div>
