@@ -12,3 +12,10 @@ C:\Users\RodrigoM\Desktop\ProyectoPaslum\Controller\bin\Release\Modelo.pdb
 C:\Users\RodrigoM\Desktop\ProyectoPaslum\Controller\obj\Release\Controller.csprojResolveAssemblyReference.cache
 C:\Users\RodrigoM\Desktop\ProyectoPaslum\Controller\obj\Release\Controller.dll
 C:\Users\RodrigoM\Desktop\ProyectoPaslum\Controller\obj\Release\Controller.pdb
+C:\Users\RodrigoM\Desktop\XIU-GAR\Proyecto-XIU-GAR\Sitema-XIU-GAR\ProyectoPaslum\Controller\obj\Release\Controller.csprojResolveAssemblyReference.cache
+C:\Users\RodrigoM\Desktop\XIU-GAR\Proyecto-XIU-GAR\Sitema-XIU-GAR\ProyectoPaslum\Controller\obj\Release\Controller.dll
+C:\Users\RodrigoM\Desktop\XIU-GAR\Proyecto-XIU-GAR\Sitema-XIU-GAR\ProyectoPaslum\Controller\obj\Release\Controller.pdb
+C:\Users\RodrigoM\Desktop\XIU-GAR\Proyecto-XIU-GAR\Sitema-XIU-GAR\ProyectoPaslum\Controller\bin\Release\Controller.dll
+C:\Users\RodrigoM\Desktop\XIU-GAR\Proyecto-XIU-GAR\Sitema-XIU-GAR\ProyectoPaslum\Controller\bin\Release\Controller.pdb
+C:\Users\RodrigoM\Desktop\XIU-GAR\Proyecto-XIU-GAR\Sitema-XIU-GAR\ProyectoPaslum\Controller\bin\Release\Modelo.dll
+C:\Users\RodrigoM\Desktop\XIU-GAR\Proyecto-XIU-GAR\Sitema-XIU-GAR\ProyectoPaslum\Controller\bin\Release\Modelo.pdb

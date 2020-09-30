@@ -5092,7 +5092,18 @@ CREATE TABLE tblTotalVenta (
   fkVenta int,
   constraint pk_TotalVenta primary key (idTotalVenta),
   CONSTRAINT FK_Venta FOREIGN KEY(fkVenta) REFERENCES tblVenta(idVenta)    
-);                              
+);
+
+CREATE TABLE tblAlmacen (
+  idAlmacen int NOT NULL identity(1,1),
+  strNombre varchar(250) NOT NULL,
+  strDescripcion varchar(250),
+  intCapacidad int,
+  fkEncargado int,
+  constraint pk_Almacen primary key (idAlmacen),
+  CONSTRAINT FK_Encargado FOREIGN KEY(fkEncargado) REFERENCES tblEmpleado(idEmpleado)  
+);
+
 
 /*Consultas*/
 
@@ -5101,4 +5112,19 @@ inner join tblEstado e
 on e.idEstado = em.fkEstado
 inner join TblMunicipio m
 on m.idMunicipio = em.fkMunicipio
-where em.fkEstado = '1'
+where em.fkEstado = '1';
+
+select e.strNombre, e.strApellidoP, e.strApellidoP, e.strCorreo,
+t.strCelular, u.strUsuario, u.strTipousuario from tblEmpleado e
+inner join tblDireccion d
+on e.fkDireccion = d.idDireccion
+inner join tblTelefono t
+on e.fkTelefono = t.idTelefono
+inner join tblUsuario u
+on e.fkLogin = u.idUsuario;
+
+select alm.strNombre, alm.strDescripcion, alm.intCapacidad, 
+(enc.strNombre + ' '+ enc.strApellidoP + ' ' + enc.strApellidoP) as nombre
+from tblAlmacen alm
+inner join tblEmpleado enc
+on alm.fkEncargado = enc.idEmpleado;

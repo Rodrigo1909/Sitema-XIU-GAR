@@ -22,7 +22,7 @@ namespace Modelo
 	using System;
 	
 	
-	[global::System.Data.Linq.Mapping.DatabaseAttribute(Name="pase_lista")]
+	[global::System.Data.Linq.Mapping.DatabaseAttribute(Name="XIUGAR")]
 	public partial class PaslumBaseDatoDataContext : System.Data.Linq.DataContext
 	{
 		
@@ -30,67 +30,43 @@ namespace Modelo
 		
     #region Definiciones de métodos de extensibilidad
     partial void OnCreated();
-    partial void InsertTblAlumno(TblAlumno instance);
-    partial void UpdateTblAlumno(TblAlumno instance);
-    partial void DeleteTblAlumno(TblAlumno instance);
-    partial void InsertTblAlumnoMateria(TblAlumnoMateria instance);
-    partial void UpdateTblAlumnoMateria(TblAlumnoMateria instance);
-    partial void DeleteTblAlumnoMateria(TblAlumnoMateria instance);
-    partial void InsertTblAsignacionGrupo(TblAsignacionGrupo instance);
-    partial void UpdateTblAsignacionGrupo(TblAsignacionGrupo instance);
-    partial void DeleteTblAsignacionGrupo(TblAsignacionGrupo instance);
-    partial void InsertTblAsignacionMateria(TblAsignacionMateria instance);
-    partial void UpdateTblAsignacionMateria(TblAsignacionMateria instance);
-    partial void DeleteTblAsignacionMateria(TblAsignacionMateria instance);
-    partial void InsertTblAsistencia(TblAsistencia instance);
-    partial void UpdateTblAsistencia(TblAsistencia instance);
-    partial void DeleteTblAsistencia(TblAsistencia instance);
-    partial void InsertTblCalificacion(TblCalificacion instance);
-    partial void UpdateTblCalificacion(TblCalificacion instance);
-    partial void DeleteTblCalificacion(TblCalificacion instance);
-    partial void InsertTblCarrera(TblCarrera instance);
-    partial void UpdateTblCarrera(TblCarrera instance);
-    partial void DeleteTblCarrera(TblCarrera instance);
-    partial void InsertTblCatalogoEvaluacion(TblCatalogoEvaluacion instance);
-    partial void UpdateTblCatalogoEvaluacion(TblCatalogoEvaluacion instance);
-    partial void DeleteTblCatalogoEvaluacion(TblCatalogoEvaluacion instance);
-    partial void InsertTblCatalogoParcial(TblCatalogoParcial instance);
-    partial void UpdateTblCatalogoParcial(TblCatalogoParcial instance);
-    partial void DeleteTblCatalogoParcial(TblCatalogoParcial instance);
-    partial void InsertTblCuatri(TblCuatri instance);
-    partial void UpdateTblCuatri(TblCuatri instance);
-    partial void DeleteTblCuatri(TblCuatri instance);
-    partial void InsertTblDireccion(TblDireccion instance);
-    partial void UpdateTblDireccion(TblDireccion instance);
-    partial void DeleteTblDireccion(TblDireccion instance);
-    partial void InsertTblGrupo(TblGrupo instance);
-    partial void UpdateTblGrupo(TblGrupo instance);
-    partial void DeleteTblGrupo(TblGrupo instance);
-    partial void InsertTblJustificante(TblJustificante instance);
-    partial void UpdateTblJustificante(TblJustificante instance);
-    partial void DeleteTblJustificante(TblJustificante instance);
-    partial void InsertTblMateria(TblMateria instance);
-    partial void UpdateTblMateria(TblMateria instance);
-    partial void DeleteTblMateria(TblMateria instance);
-    partial void InsertTblNota(TblNota instance);
-    partial void UpdateTblNota(TblNota instance);
-    partial void DeleteTblNota(TblNota instance);
-    partial void InsertTblProfesor(TblProfesor instance);
-    partial void UpdateTblProfesor(TblProfesor instance);
-    partial void DeleteTblProfesor(TblProfesor instance);
-    partial void InsertTblQR(TblQR instance);
-    partial void UpdateTblQR(TblQR instance);
-    partial void DeleteTblQR(TblQR instance);
-    partial void InsertTblTelefono(TblTelefono instance);
-    partial void UpdateTblTelefono(TblTelefono instance);
-    partial void DeleteTblTelefono(TblTelefono instance);
-    partial void InsertTblUser(TblUser instance);
-    partial void UpdateTblUser(TblUser instance);
-    partial void DeleteTblUser(TblUser instance);
+    partial void InserttblAlmacen(tblAlmacen instance);
+    partial void UpdatetblAlmacen(tblAlmacen instance);
+    partial void DeletetblAlmacen(tblAlmacen instance);
+    partial void InserttblCliente(tblCliente instance);
+    partial void UpdatetblCliente(tblCliente instance);
+    partial void DeletetblCliente(tblCliente instance);
+    partial void InserttblDireccion(tblDireccion instance);
+    partial void UpdatetblDireccion(tblDireccion instance);
+    partial void DeletetblDireccion(tblDireccion instance);
+    partial void InserttblEmpleado(tblEmpleado instance);
+    partial void UpdatetblEmpleado(tblEmpleado instance);
+    partial void DeletetblEmpleado(tblEmpleado instance);
+    partial void InserttblEstado(tblEstado instance);
+    partial void UpdatetblEstado(tblEstado instance);
+    partial void DeletetblEstado(tblEstado instance);
+    partial void InserttblEstado_Municipio(tblEstado_Municipio instance);
+    partial void UpdatetblEstado_Municipio(tblEstado_Municipio instance);
+    partial void DeletetblEstado_Municipio(tblEstado_Municipio instance);
+    partial void InsertTblMunicipio(TblMunicipio instance);
+    partial void UpdateTblMunicipio(TblMunicipio instance);
+    partial void DeleteTblMunicipio(TblMunicipio instance);
+    partial void InserttblTelefono(tblTelefono instance);
+    partial void UpdatetblTelefono(tblTelefono instance);
+    partial void DeletetblTelefono(tblTelefono instance);
+    partial void InserttblTotalVenta(tblTotalVenta instance);
+    partial void UpdatetblTotalVenta(tblTotalVenta instance);
+    partial void DeletetblTotalVenta(tblTotalVenta instance);
+    partial void InserttblUsuario(tblUsuario instance);
+    partial void UpdatetblUsuario(tblUsuario instance);
+    partial void DeletetblUsuario(tblUsuario instance);
+    partial void InserttblVenta(tblVenta instance);
+    partial void UpdatetblVenta(tblVenta instance);
+    partial void DeletetblVenta(tblVenta instance);
     #endregion
 		
 		public PaslumBaseDatoDataContext() : 
-				base(global::Modelo.Properties.Settings.Default.pase_listaConnectionString, mappingSource)
+				base(global::Modelo.Properties.Settings.Default.XIUGARConnectionString, mappingSource)
 		{
 			OnCreated();
 		}
@@ -119,280 +95,156 @@ namespace Modelo
 			OnCreated();
 		}
 		
-		public System.Data.Linq.Table<TblAlumno> TblAlumno
+		public System.Data.Linq.Table<tblAlmacen> tblAlmacen
 		{
 			get
 			{
-				return this.GetTable<TblAlumno>();
+				return this.GetTable<tblAlmacen>();
 			}
 		}
 		
-		public System.Data.Linq.Table<TblAlumnoMateria> TblAlumnoMateria
+		public System.Data.Linq.Table<tblCliente> tblCliente
 		{
 			get
 			{
-				return this.GetTable<TblAlumnoMateria>();
+				return this.GetTable<tblCliente>();
 			}
 		}
 		
-		public System.Data.Linq.Table<TblAsignacionGrupo> TblAsignacionGrupo
+		public System.Data.Linq.Table<tblDireccion> tblDireccion
 		{
 			get
 			{
-				return this.GetTable<TblAsignacionGrupo>();
+				return this.GetTable<tblDireccion>();
 			}
 		}
 		
-		public System.Data.Linq.Table<TblAsignacionMateria> TblAsignacionMateria
+		public System.Data.Linq.Table<tblEmpleado> tblEmpleado
 		{
 			get
 			{
-				return this.GetTable<TblAsignacionMateria>();
+				return this.GetTable<tblEmpleado>();
 			}
 		}
 		
-		public System.Data.Linq.Table<TblAsistencia> TblAsistencia
+		public System.Data.Linq.Table<tblEstado> tblEstado
 		{
 			get
 			{
-				return this.GetTable<TblAsistencia>();
+				return this.GetTable<tblEstado>();
 			}
 		}
 		
-		public System.Data.Linq.Table<TblCalificacion> TblCalificacion
+		public System.Data.Linq.Table<tblEstado_Municipio> tblEstado_Municipio
 		{
 			get
 			{
-				return this.GetTable<TblCalificacion>();
+				return this.GetTable<tblEstado_Municipio>();
 			}
 		}
 		
-		public System.Data.Linq.Table<TblCarrera> TblCarrera
+		public System.Data.Linq.Table<TblMunicipio> TblMunicipio
 		{
 			get
 			{
-				return this.GetTable<TblCarrera>();
+				return this.GetTable<TblMunicipio>();
 			}
 		}
 		
-		public System.Data.Linq.Table<TblCatalogoEvaluacion> TblCatalogoEvaluacion
+		public System.Data.Linq.Table<tblTelefono> tblTelefono
 		{
 			get
 			{
-				return this.GetTable<TblCatalogoEvaluacion>();
+				return this.GetTable<tblTelefono>();
 			}
 		}
 		
-		public System.Data.Linq.Table<TblCatalogoParcial> TblCatalogoParcial
+		public System.Data.Linq.Table<tblTotalVenta> tblTotalVenta
 		{
 			get
 			{
-				return this.GetTable<TblCatalogoParcial>();
+				return this.GetTable<tblTotalVenta>();
 			}
 		}
 		
-		public System.Data.Linq.Table<TblCuatri> TblCuatri
+		public System.Data.Linq.Table<tblUsuario> tblUsuario
 		{
 			get
 			{
-				return this.GetTable<TblCuatri>();
+				return this.GetTable<tblUsuario>();
 			}
 		}
 		
-		public System.Data.Linq.Table<TblDireccion> TblDireccion
+		public System.Data.Linq.Table<tblVenta> tblVenta
 		{
 			get
 			{
-				return this.GetTable<TblDireccion>();
-			}
-		}
-		
-		public System.Data.Linq.Table<TblGrupo> TblGrupo
-		{
-			get
-			{
-				return this.GetTable<TblGrupo>();
-			}
-		}
-		
-		public System.Data.Linq.Table<TblJustificante> TblJustificante
-		{
-			get
-			{
-				return this.GetTable<TblJustificante>();
-			}
-		}
-		
-		public System.Data.Linq.Table<TblMateria> TblMateria
-		{
-			get
-			{
-				return this.GetTable<TblMateria>();
-			}
-		}
-		
-		public System.Data.Linq.Table<TblNota> TblNota
-		{
-			get
-			{
-				return this.GetTable<TblNota>();
-			}
-		}
-		
-		public System.Data.Linq.Table<TblProfesor> TblProfesor
-		{
-			get
-			{
-				return this.GetTable<TblProfesor>();
-			}
-		}
-		
-		public System.Data.Linq.Table<TblQR> TblQR
-		{
-			get
-			{
-				return this.GetTable<TblQR>();
-			}
-		}
-		
-		public System.Data.Linq.Table<TblTelefono> TblTelefono
-		{
-			get
-			{
-				return this.GetTable<TblTelefono>();
-			}
-		}
-		
-		public System.Data.Linq.Table<TblUser> TblUser
-		{
-			get
-			{
-				return this.GetTable<TblUser>();
+				return this.GetTable<tblVenta>();
 			}
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.TblAlumno")]
-	public partial class TblAlumno : INotifyPropertyChanging, INotifyPropertyChanged
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.tblAlmacen")]
+	public partial class tblAlmacen : INotifyPropertyChanging, INotifyPropertyChanged
 	{
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 		
-		private int _id;
+		private int _idAlmacen;
 		
 		private string _strNombre;
 		
-		private string _strApellidoP;
+		private string _strDescripcion;
 		
-		private string _strApellidoM;
+		private System.Nullable<int> _intCapacidad;
 		
-		private System.Nullable<int> _intEdad;
+		private System.Nullable<int> _fkEncargado;
 		
-		private string _strSexo;
-		
-		private string _strCorreo;
-		
-		private string _bitFoto;
-		
-		private System.Nullable<int> _idDireccion;
-		
-		private System.Nullable<int> _idTelefono;
-		
-		private System.Nullable<int> _idUser;
-		
-		private System.Nullable<int> _idCarrera;
-		
-		private System.Nullable<int> _idCuatri;
-		
-		private System.Nullable<int> _idGrupo;
-		
-		private EntitySet<TblAlumnoMateria> _TblAlumnoMateria;
-		
-		private EntitySet<TblAsistencia> _TblAsistencia;
-		
-		private EntitySet<TblCalificacion> _TblCalificacion;
-		
-		private EntityRef<TblCarrera> _TblCarrera;
-		
-		private EntityRef<TblCuatri> _TblCuatri;
-		
-		private EntityRef<TblDireccion> _TblDireccion;
-		
-		private EntityRef<TblGrupo> _TblGrupo;
-		
-		private EntityRef<TblTelefono> _TblTelefono;
-		
-		private EntityRef<TblUser> _TblUser;
+		private EntityRef<tblEmpleado> _tblEmpleado;
 		
     #region Definiciones de métodos de extensibilidad
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
     partial void OnCreated();
-    partial void OnidChanging(int value);
-    partial void OnidChanged();
+    partial void OnidAlmacenChanging(int value);
+    partial void OnidAlmacenChanged();
     partial void OnstrNombreChanging(string value);
     partial void OnstrNombreChanged();
-    partial void OnstrApellidoPChanging(string value);
-    partial void OnstrApellidoPChanged();
-    partial void OnstrApellidoMChanging(string value);
-    partial void OnstrApellidoMChanged();
-    partial void OnintEdadChanging(System.Nullable<int> value);
-    partial void OnintEdadChanged();
-    partial void OnstrSexoChanging(string value);
-    partial void OnstrSexoChanged();
-    partial void OnstrCorreoChanging(string value);
-    partial void OnstrCorreoChanged();
-    partial void OnbitFotoChanging(string value);
-    partial void OnbitFotoChanged();
-    partial void OnidDireccionChanging(System.Nullable<int> value);
-    partial void OnidDireccionChanged();
-    partial void OnidTelefonoChanging(System.Nullable<int> value);
-    partial void OnidTelefonoChanged();
-    partial void OnidUserChanging(System.Nullable<int> value);
-    partial void OnidUserChanged();
-    partial void OnidCarreraChanging(System.Nullable<int> value);
-    partial void OnidCarreraChanged();
-    partial void OnidCuatriChanging(System.Nullable<int> value);
-    partial void OnidCuatriChanged();
-    partial void OnidGrupoChanging(System.Nullable<int> value);
-    partial void OnidGrupoChanged();
+    partial void OnstrDescripcionChanging(string value);
+    partial void OnstrDescripcionChanged();
+    partial void OnintCapacidadChanging(System.Nullable<int> value);
+    partial void OnintCapacidadChanged();
+    partial void OnfkEncargadoChanging(System.Nullable<int> value);
+    partial void OnfkEncargadoChanged();
     #endregion
 		
-		public TblAlumno()
+		public tblAlmacen()
 		{
-			this._TblAlumnoMateria = new EntitySet<TblAlumnoMateria>(new Action<TblAlumnoMateria>(this.attach_TblAlumnoMateria), new Action<TblAlumnoMateria>(this.detach_TblAlumnoMateria));
-			this._TblAsistencia = new EntitySet<TblAsistencia>(new Action<TblAsistencia>(this.attach_TblAsistencia), new Action<TblAsistencia>(this.detach_TblAsistencia));
-			this._TblCalificacion = new EntitySet<TblCalificacion>(new Action<TblCalificacion>(this.attach_TblCalificacion), new Action<TblCalificacion>(this.detach_TblCalificacion));
-			this._TblCarrera = default(EntityRef<TblCarrera>);
-			this._TblCuatri = default(EntityRef<TblCuatri>);
-			this._TblDireccion = default(EntityRef<TblDireccion>);
-			this._TblGrupo = default(EntityRef<TblGrupo>);
-			this._TblTelefono = default(EntityRef<TblTelefono>);
-			this._TblUser = default(EntityRef<TblUser>);
+			this._tblEmpleado = default(EntityRef<tblEmpleado>);
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int id
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_idAlmacen", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int idAlmacen
 		{
 			get
 			{
-				return this._id;
+				return this._idAlmacen;
 			}
 			set
 			{
-				if ((this._id != value))
+				if ((this._idAlmacen != value))
 				{
-					this.OnidChanging(value);
+					this.OnidAlmacenChanging(value);
 					this.SendPropertyChanging();
-					this._id = value;
-					this.SendPropertyChanged("id");
-					this.OnidChanged();
+					this._idAlmacen = value;
+					this.SendPropertyChanged("idAlmacen");
+					this.OnidAlmacenChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_strNombre", DbType="VarChar(200)")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_strNombre", DbType="VarChar(250) NOT NULL", CanBeNull=false)]
 		public string strNombre
 		{
 			get
@@ -412,7 +264,240 @@ namespace Modelo
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_strApellidoP", DbType="VarChar(200)")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_strDescripcion", DbType="VarChar(250)")]
+		public string strDescripcion
+		{
+			get
+			{
+				return this._strDescripcion;
+			}
+			set
+			{
+				if ((this._strDescripcion != value))
+				{
+					this.OnstrDescripcionChanging(value);
+					this.SendPropertyChanging();
+					this._strDescripcion = value;
+					this.SendPropertyChanged("strDescripcion");
+					this.OnstrDescripcionChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_intCapacidad", DbType="Int")]
+		public System.Nullable<int> intCapacidad
+		{
+			get
+			{
+				return this._intCapacidad;
+			}
+			set
+			{
+				if ((this._intCapacidad != value))
+				{
+					this.OnintCapacidadChanging(value);
+					this.SendPropertyChanging();
+					this._intCapacidad = value;
+					this.SendPropertyChanged("intCapacidad");
+					this.OnintCapacidadChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_fkEncargado", DbType="Int")]
+		public System.Nullable<int> fkEncargado
+		{
+			get
+			{
+				return this._fkEncargado;
+			}
+			set
+			{
+				if ((this._fkEncargado != value))
+				{
+					if (this._tblEmpleado.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnfkEncargadoChanging(value);
+					this.SendPropertyChanging();
+					this._fkEncargado = value;
+					this.SendPropertyChanged("fkEncargado");
+					this.OnfkEncargadoChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="tblEmpleado_tblAlmacen", Storage="_tblEmpleado", ThisKey="fkEncargado", OtherKey="idEmpleado", IsForeignKey=true)]
+		public tblEmpleado tblEmpleado
+		{
+			get
+			{
+				return this._tblEmpleado.Entity;
+			}
+			set
+			{
+				tblEmpleado previousValue = this._tblEmpleado.Entity;
+				if (((previousValue != value) 
+							|| (this._tblEmpleado.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._tblEmpleado.Entity = null;
+						previousValue.tblAlmacen.Remove(this);
+					}
+					this._tblEmpleado.Entity = value;
+					if ((value != null))
+					{
+						value.tblAlmacen.Add(this);
+						this._fkEncargado = value.idEmpleado;
+					}
+					else
+					{
+						this._fkEncargado = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("tblEmpleado");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.tblCliente")]
+	public partial class tblCliente : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _idCliente;
+		
+		private string _strNombre;
+		
+		private string _strApellidoP;
+		
+		private string _strApellidoM;
+		
+		private string _strSituacionFiscal;
+		
+		private string _strCorreo;
+		
+		private string _strEntrega;
+		
+		private string _strHorario;
+		
+		private string _strMetodoPago;
+		
+		private System.Nullable<int> _fkDireccion;
+		
+		private System.Nullable<int> _fkTelefono;
+		
+		private System.Nullable<int> _fkLogin;
+		
+		private EntityRef<tblDireccion> _tblDireccion;
+		
+		private EntityRef<tblTelefono> _tblTelefono;
+		
+		private EntityRef<tblUsuario> _tblUsuario;
+		
+    #region Definiciones de métodos de extensibilidad
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnidClienteChanging(int value);
+    partial void OnidClienteChanged();
+    partial void OnstrNombreChanging(string value);
+    partial void OnstrNombreChanged();
+    partial void OnstrApellidoPChanging(string value);
+    partial void OnstrApellidoPChanged();
+    partial void OnstrApellidoMChanging(string value);
+    partial void OnstrApellidoMChanged();
+    partial void OnstrSituacionFiscalChanging(string value);
+    partial void OnstrSituacionFiscalChanged();
+    partial void OnstrCorreoChanging(string value);
+    partial void OnstrCorreoChanged();
+    partial void OnstrEntregaChanging(string value);
+    partial void OnstrEntregaChanged();
+    partial void OnstrHorarioChanging(string value);
+    partial void OnstrHorarioChanged();
+    partial void OnstrMetodoPagoChanging(string value);
+    partial void OnstrMetodoPagoChanged();
+    partial void OnfkDireccionChanging(System.Nullable<int> value);
+    partial void OnfkDireccionChanged();
+    partial void OnfkTelefonoChanging(System.Nullable<int> value);
+    partial void OnfkTelefonoChanged();
+    partial void OnfkLoginChanging(System.Nullable<int> value);
+    partial void OnfkLoginChanged();
+    #endregion
+		
+		public tblCliente()
+		{
+			this._tblDireccion = default(EntityRef<tblDireccion>);
+			this._tblTelefono = default(EntityRef<tblTelefono>);
+			this._tblUsuario = default(EntityRef<tblUsuario>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_idCliente", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int idCliente
+		{
+			get
+			{
+				return this._idCliente;
+			}
+			set
+			{
+				if ((this._idCliente != value))
+				{
+					this.OnidClienteChanging(value);
+					this.SendPropertyChanging();
+					this._idCliente = value;
+					this.SendPropertyChanged("idCliente");
+					this.OnidClienteChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_strNombre", DbType="VarChar(150) NOT NULL", CanBeNull=false)]
+		public string strNombre
+		{
+			get
+			{
+				return this._strNombre;
+			}
+			set
+			{
+				if ((this._strNombre != value))
+				{
+					this.OnstrNombreChanging(value);
+					this.SendPropertyChanging();
+					this._strNombre = value;
+					this.SendPropertyChanged("strNombre");
+					this.OnstrNombreChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_strApellidoP", DbType="VarChar(150) NOT NULL", CanBeNull=false)]
 		public string strApellidoP
 		{
 			get
@@ -432,7 +517,7 @@ namespace Modelo
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_strApellidoM", DbType="VarChar(200)")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_strApellidoM", DbType="VarChar(150) NOT NULL", CanBeNull=false)]
 		public string strApellidoM
 		{
 			get
@@ -452,47 +537,27 @@ namespace Modelo
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_intEdad", DbType="Int")]
-		public System.Nullable<int> intEdad
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_strSituacionFiscal", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string strSituacionFiscal
 		{
 			get
 			{
-				return this._intEdad;
+				return this._strSituacionFiscal;
 			}
 			set
 			{
-				if ((this._intEdad != value))
+				if ((this._strSituacionFiscal != value))
 				{
-					this.OnintEdadChanging(value);
+					this.OnstrSituacionFiscalChanging(value);
 					this.SendPropertyChanging();
-					this._intEdad = value;
-					this.SendPropertyChanged("intEdad");
-					this.OnintEdadChanged();
+					this._strSituacionFiscal = value;
+					this.SendPropertyChanged("strSituacionFiscal");
+					this.OnstrSituacionFiscalChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_strSexo", DbType="VarChar(100)")]
-		public string strSexo
-		{
-			get
-			{
-				return this._strSexo;
-			}
-			set
-			{
-				if ((this._strSexo != value))
-				{
-					this.OnstrSexoChanging(value);
-					this.SendPropertyChanging();
-					this._strSexo = value;
-					this.SendPropertyChanged("strSexo");
-					this.OnstrSexoChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_strCorreo", DbType="VarChar(200)")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_strCorreo", DbType="VarChar(150)")]
 		public string strCorreo
 		{
 			get
@@ -512,28 +577,321 @@ namespace Modelo
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_bitFoto", DbType="VarChar(MAX)")]
-		public string bitFoto
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_strEntrega", DbType="VarChar(150) NOT NULL", CanBeNull=false)]
+		public string strEntrega
 		{
 			get
 			{
-				return this._bitFoto;
+				return this._strEntrega;
 			}
 			set
 			{
-				if ((this._bitFoto != value))
+				if ((this._strEntrega != value))
 				{
-					this.OnbitFotoChanging(value);
+					this.OnstrEntregaChanging(value);
 					this.SendPropertyChanging();
-					this._bitFoto = value;
-					this.SendPropertyChanged("bitFoto");
-					this.OnbitFotoChanged();
+					this._strEntrega = value;
+					this.SendPropertyChanged("strEntrega");
+					this.OnstrEntregaChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_idDireccion", DbType="Int")]
-		public System.Nullable<int> idDireccion
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_strHorario", DbType="VarChar(150) NOT NULL", CanBeNull=false)]
+		public string strHorario
+		{
+			get
+			{
+				return this._strHorario;
+			}
+			set
+			{
+				if ((this._strHorario != value))
+				{
+					this.OnstrHorarioChanging(value);
+					this.SendPropertyChanging();
+					this._strHorario = value;
+					this.SendPropertyChanged("strHorario");
+					this.OnstrHorarioChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_strMetodoPago", DbType="VarChar(150) NOT NULL", CanBeNull=false)]
+		public string strMetodoPago
+		{
+			get
+			{
+				return this._strMetodoPago;
+			}
+			set
+			{
+				if ((this._strMetodoPago != value))
+				{
+					this.OnstrMetodoPagoChanging(value);
+					this.SendPropertyChanging();
+					this._strMetodoPago = value;
+					this.SendPropertyChanged("strMetodoPago");
+					this.OnstrMetodoPagoChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_fkDireccion", DbType="Int")]
+		public System.Nullable<int> fkDireccion
+		{
+			get
+			{
+				return this._fkDireccion;
+			}
+			set
+			{
+				if ((this._fkDireccion != value))
+				{
+					if (this._tblDireccion.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnfkDireccionChanging(value);
+					this.SendPropertyChanging();
+					this._fkDireccion = value;
+					this.SendPropertyChanged("fkDireccion");
+					this.OnfkDireccionChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_fkTelefono", DbType="Int")]
+		public System.Nullable<int> fkTelefono
+		{
+			get
+			{
+				return this._fkTelefono;
+			}
+			set
+			{
+				if ((this._fkTelefono != value))
+				{
+					if (this._tblTelefono.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnfkTelefonoChanging(value);
+					this.SendPropertyChanging();
+					this._fkTelefono = value;
+					this.SendPropertyChanged("fkTelefono");
+					this.OnfkTelefonoChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_fkLogin", DbType="Int")]
+		public System.Nullable<int> fkLogin
+		{
+			get
+			{
+				return this._fkLogin;
+			}
+			set
+			{
+				if ((this._fkLogin != value))
+				{
+					if (this._tblUsuario.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnfkLoginChanging(value);
+					this.SendPropertyChanging();
+					this._fkLogin = value;
+					this.SendPropertyChanged("fkLogin");
+					this.OnfkLoginChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="tblDireccion_tblCliente", Storage="_tblDireccion", ThisKey="fkDireccion", OtherKey="idDireccion", IsForeignKey=true)]
+		public tblDireccion tblDireccion
+		{
+			get
+			{
+				return this._tblDireccion.Entity;
+			}
+			set
+			{
+				tblDireccion previousValue = this._tblDireccion.Entity;
+				if (((previousValue != value) 
+							|| (this._tblDireccion.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._tblDireccion.Entity = null;
+						previousValue.tblCliente.Remove(this);
+					}
+					this._tblDireccion.Entity = value;
+					if ((value != null))
+					{
+						value.tblCliente.Add(this);
+						this._fkDireccion = value.idDireccion;
+					}
+					else
+					{
+						this._fkDireccion = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("tblDireccion");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="tblTelefono_tblCliente", Storage="_tblTelefono", ThisKey="fkTelefono", OtherKey="idTelefono", IsForeignKey=true)]
+		public tblTelefono tblTelefono
+		{
+			get
+			{
+				return this._tblTelefono.Entity;
+			}
+			set
+			{
+				tblTelefono previousValue = this._tblTelefono.Entity;
+				if (((previousValue != value) 
+							|| (this._tblTelefono.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._tblTelefono.Entity = null;
+						previousValue.tblCliente.Remove(this);
+					}
+					this._tblTelefono.Entity = value;
+					if ((value != null))
+					{
+						value.tblCliente.Add(this);
+						this._fkTelefono = value.idTelefono;
+					}
+					else
+					{
+						this._fkTelefono = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("tblTelefono");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="tblUsuario_tblCliente", Storage="_tblUsuario", ThisKey="fkLogin", OtherKey="idUsuario", IsForeignKey=true)]
+		public tblUsuario tblUsuario
+		{
+			get
+			{
+				return this._tblUsuario.Entity;
+			}
+			set
+			{
+				tblUsuario previousValue = this._tblUsuario.Entity;
+				if (((previousValue != value) 
+							|| (this._tblUsuario.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._tblUsuario.Entity = null;
+						previousValue.tblCliente.Remove(this);
+					}
+					this._tblUsuario.Entity = value;
+					if ((value != null))
+					{
+						value.tblCliente.Add(this);
+						this._fkLogin = value.idUsuario;
+					}
+					else
+					{
+						this._fkLogin = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("tblUsuario");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.tblDireccion")]
+	public partial class tblDireccion : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _idDireccion;
+		
+		private string _strColonia;
+		
+		private string _strCalle;
+		
+		private string _intCodpost;
+		
+		private string _strNumInt;
+		
+		private string _strNumExt;
+		
+		private string _strReferencias;
+		
+		private System.Nullable<int> _fkEstadoMunicipio;
+		
+		private EntitySet<tblCliente> _tblCliente;
+		
+		private EntitySet<tblEmpleado> _tblEmpleado;
+		
+		private EntityRef<tblEstado_Municipio> _tblEstado_Municipio;
+		
+    #region Definiciones de métodos de extensibilidad
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnidDireccionChanging(int value);
+    partial void OnidDireccionChanged();
+    partial void OnstrColoniaChanging(string value);
+    partial void OnstrColoniaChanged();
+    partial void OnstrCalleChanging(string value);
+    partial void OnstrCalleChanged();
+    partial void OnintCodpostChanging(string value);
+    partial void OnintCodpostChanged();
+    partial void OnstrNumIntChanging(string value);
+    partial void OnstrNumIntChanged();
+    partial void OnstrNumExtChanging(string value);
+    partial void OnstrNumExtChanged();
+    partial void OnstrReferenciasChanging(string value);
+    partial void OnstrReferenciasChanged();
+    partial void OnfkEstadoMunicipioChanging(System.Nullable<int> value);
+    partial void OnfkEstadoMunicipioChanged();
+    #endregion
+		
+		public tblDireccion()
+		{
+			this._tblCliente = new EntitySet<tblCliente>(new Action<tblCliente>(this.attach_tblCliente), new Action<tblCliente>(this.detach_tblCliente));
+			this._tblEmpleado = new EntitySet<tblEmpleado>(new Action<tblEmpleado>(this.attach_tblEmpleado), new Action<tblEmpleado>(this.detach_tblEmpleado));
+			this._tblEstado_Municipio = default(EntityRef<tblEstado_Municipio>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_idDireccion", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int idDireccion
 		{
 			get
 			{
@@ -543,10 +901,6 @@ namespace Modelo
 			{
 				if ((this._idDireccion != value))
 				{
-					if (this._TblDireccion.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
 					this.OnidDireccionChanging(value);
 					this.SendPropertyChanging();
 					this._idDireccion = value;
@@ -556,365 +910,206 @@ namespace Modelo
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_idTelefono", DbType="Int")]
-		public System.Nullable<int> idTelefono
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_strColonia", DbType="VarChar(150)")]
+		public string strColonia
 		{
 			get
 			{
-				return this._idTelefono;
+				return this._strColonia;
 			}
 			set
 			{
-				if ((this._idTelefono != value))
+				if ((this._strColonia != value))
 				{
-					if (this._TblTelefono.HasLoadedOrAssignedValue)
+					this.OnstrColoniaChanging(value);
+					this.SendPropertyChanging();
+					this._strColonia = value;
+					this.SendPropertyChanged("strColonia");
+					this.OnstrColoniaChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_strCalle", DbType="VarChar(150)")]
+		public string strCalle
+		{
+			get
+			{
+				return this._strCalle;
+			}
+			set
+			{
+				if ((this._strCalle != value))
+				{
+					this.OnstrCalleChanging(value);
+					this.SendPropertyChanging();
+					this._strCalle = value;
+					this.SendPropertyChanged("strCalle");
+					this.OnstrCalleChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_intCodpost", DbType="VarChar(10)")]
+		public string intCodpost
+		{
+			get
+			{
+				return this._intCodpost;
+			}
+			set
+			{
+				if ((this._intCodpost != value))
+				{
+					this.OnintCodpostChanging(value);
+					this.SendPropertyChanging();
+					this._intCodpost = value;
+					this.SendPropertyChanged("intCodpost");
+					this.OnintCodpostChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_strNumInt", DbType="VarChar(50)")]
+		public string strNumInt
+		{
+			get
+			{
+				return this._strNumInt;
+			}
+			set
+			{
+				if ((this._strNumInt != value))
+				{
+					this.OnstrNumIntChanging(value);
+					this.SendPropertyChanging();
+					this._strNumInt = value;
+					this.SendPropertyChanged("strNumInt");
+					this.OnstrNumIntChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_strNumExt", DbType="VarChar(50)")]
+		public string strNumExt
+		{
+			get
+			{
+				return this._strNumExt;
+			}
+			set
+			{
+				if ((this._strNumExt != value))
+				{
+					this.OnstrNumExtChanging(value);
+					this.SendPropertyChanging();
+					this._strNumExt = value;
+					this.SendPropertyChanged("strNumExt");
+					this.OnstrNumExtChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_strReferencias", DbType="VarChar(400)")]
+		public string strReferencias
+		{
+			get
+			{
+				return this._strReferencias;
+			}
+			set
+			{
+				if ((this._strReferencias != value))
+				{
+					this.OnstrReferenciasChanging(value);
+					this.SendPropertyChanging();
+					this._strReferencias = value;
+					this.SendPropertyChanged("strReferencias");
+					this.OnstrReferenciasChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_fkEstadoMunicipio", DbType="Int")]
+		public System.Nullable<int> fkEstadoMunicipio
+		{
+			get
+			{
+				return this._fkEstadoMunicipio;
+			}
+			set
+			{
+				if ((this._fkEstadoMunicipio != value))
+				{
+					if (this._tblEstado_Municipio.HasLoadedOrAssignedValue)
 					{
 						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
 					}
-					this.OnidTelefonoChanging(value);
+					this.OnfkEstadoMunicipioChanging(value);
 					this.SendPropertyChanging();
-					this._idTelefono = value;
-					this.SendPropertyChanged("idTelefono");
-					this.OnidTelefonoChanged();
+					this._fkEstadoMunicipio = value;
+					this.SendPropertyChanged("fkEstadoMunicipio");
+					this.OnfkEstadoMunicipioChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_idUser", DbType="Int")]
-		public System.Nullable<int> idUser
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="tblDireccion_tblCliente", Storage="_tblCliente", ThisKey="idDireccion", OtherKey="fkDireccion")]
+		public EntitySet<tblCliente> tblCliente
 		{
 			get
 			{
-				return this._idUser;
+				return this._tblCliente;
 			}
 			set
 			{
-				if ((this._idUser != value))
-				{
-					if (this._TblUser.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnidUserChanging(value);
-					this.SendPropertyChanging();
-					this._idUser = value;
-					this.SendPropertyChanged("idUser");
-					this.OnidUserChanged();
-				}
+				this._tblCliente.Assign(value);
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_idCarrera", DbType="Int")]
-		public System.Nullable<int> idCarrera
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="tblDireccion_tblEmpleado", Storage="_tblEmpleado", ThisKey="idDireccion", OtherKey="fkDireccion")]
+		public EntitySet<tblEmpleado> tblEmpleado
 		{
 			get
 			{
-				return this._idCarrera;
+				return this._tblEmpleado;
 			}
 			set
 			{
-				if ((this._idCarrera != value))
-				{
-					if (this._TblCarrera.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnidCarreraChanging(value);
-					this.SendPropertyChanging();
-					this._idCarrera = value;
-					this.SendPropertyChanged("idCarrera");
-					this.OnidCarreraChanged();
-				}
+				this._tblEmpleado.Assign(value);
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_idCuatri", DbType="Int")]
-		public System.Nullable<int> idCuatri
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="tblEstado_Municipio_tblDireccion", Storage="_tblEstado_Municipio", ThisKey="fkEstadoMunicipio", OtherKey="idEstado_Municipio", IsForeignKey=true)]
+		public tblEstado_Municipio tblEstado_Municipio
 		{
 			get
 			{
-				return this._idCuatri;
+				return this._tblEstado_Municipio.Entity;
 			}
 			set
 			{
-				if ((this._idCuatri != value))
-				{
-					if (this._TblCuatri.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnidCuatriChanging(value);
-					this.SendPropertyChanging();
-					this._idCuatri = value;
-					this.SendPropertyChanged("idCuatri");
-					this.OnidCuatriChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_idGrupo", DbType="Int")]
-		public System.Nullable<int> idGrupo
-		{
-			get
-			{
-				return this._idGrupo;
-			}
-			set
-			{
-				if ((this._idGrupo != value))
-				{
-					if (this._TblGrupo.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnidGrupoChanging(value);
-					this.SendPropertyChanging();
-					this._idGrupo = value;
-					this.SendPropertyChanged("idGrupo");
-					this.OnidGrupoChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TblAlumno_TblAlumnoMateria", Storage="_TblAlumnoMateria", ThisKey="id", OtherKey="idAlumno")]
-		public EntitySet<TblAlumnoMateria> TblAlumnoMateria
-		{
-			get
-			{
-				return this._TblAlumnoMateria;
-			}
-			set
-			{
-				this._TblAlumnoMateria.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TblAlumno_TblAsistencia", Storage="_TblAsistencia", ThisKey="id", OtherKey="idAlumno")]
-		public EntitySet<TblAsistencia> TblAsistencia
-		{
-			get
-			{
-				return this._TblAsistencia;
-			}
-			set
-			{
-				this._TblAsistencia.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TblAlumno_TblCalificacion", Storage="_TblCalificacion", ThisKey="id", OtherKey="idAlumno")]
-		public EntitySet<TblCalificacion> TblCalificacion
-		{
-			get
-			{
-				return this._TblCalificacion;
-			}
-			set
-			{
-				this._TblCalificacion.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TblCarrera_TblAlumno", Storage="_TblCarrera", ThisKey="idCarrera", OtherKey="id", IsForeignKey=true)]
-		public TblCarrera TblCarrera
-		{
-			get
-			{
-				return this._TblCarrera.Entity;
-			}
-			set
-			{
-				TblCarrera previousValue = this._TblCarrera.Entity;
+				tblEstado_Municipio previousValue = this._tblEstado_Municipio.Entity;
 				if (((previousValue != value) 
-							|| (this._TblCarrera.HasLoadedOrAssignedValue == false)))
+							|| (this._tblEstado_Municipio.HasLoadedOrAssignedValue == false)))
 				{
 					this.SendPropertyChanging();
 					if ((previousValue != null))
 					{
-						this._TblCarrera.Entity = null;
-						previousValue.TblAlumno.Remove(this);
+						this._tblEstado_Municipio.Entity = null;
+						previousValue.tblDireccion.Remove(this);
 					}
-					this._TblCarrera.Entity = value;
+					this._tblEstado_Municipio.Entity = value;
 					if ((value != null))
 					{
-						value.TblAlumno.Add(this);
-						this._idCarrera = value.id;
+						value.tblDireccion.Add(this);
+						this._fkEstadoMunicipio = value.idEstado_Municipio;
 					}
 					else
 					{
-						this._idCarrera = default(Nullable<int>);
+						this._fkEstadoMunicipio = default(Nullable<int>);
 					}
-					this.SendPropertyChanged("TblCarrera");
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TblCuatri_TblAlumno", Storage="_TblCuatri", ThisKey="idCuatri", OtherKey="id", IsForeignKey=true)]
-		public TblCuatri TblCuatri
-		{
-			get
-			{
-				return this._TblCuatri.Entity;
-			}
-			set
-			{
-				TblCuatri previousValue = this._TblCuatri.Entity;
-				if (((previousValue != value) 
-							|| (this._TblCuatri.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._TblCuatri.Entity = null;
-						previousValue.TblAlumno.Remove(this);
-					}
-					this._TblCuatri.Entity = value;
-					if ((value != null))
-					{
-						value.TblAlumno.Add(this);
-						this._idCuatri = value.id;
-					}
-					else
-					{
-						this._idCuatri = default(Nullable<int>);
-					}
-					this.SendPropertyChanged("TblCuatri");
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TblDireccion_TblAlumno", Storage="_TblDireccion", ThisKey="idDireccion", OtherKey="id", IsForeignKey=true)]
-		public TblDireccion TblDireccion
-		{
-			get
-			{
-				return this._TblDireccion.Entity;
-			}
-			set
-			{
-				TblDireccion previousValue = this._TblDireccion.Entity;
-				if (((previousValue != value) 
-							|| (this._TblDireccion.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._TblDireccion.Entity = null;
-						previousValue.TblAlumno.Remove(this);
-					}
-					this._TblDireccion.Entity = value;
-					if ((value != null))
-					{
-						value.TblAlumno.Add(this);
-						this._idDireccion = value.id;
-					}
-					else
-					{
-						this._idDireccion = default(Nullable<int>);
-					}
-					this.SendPropertyChanged("TblDireccion");
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TblGrupo_TblAlumno", Storage="_TblGrupo", ThisKey="idGrupo", OtherKey="id", IsForeignKey=true)]
-		public TblGrupo TblGrupo
-		{
-			get
-			{
-				return this._TblGrupo.Entity;
-			}
-			set
-			{
-				TblGrupo previousValue = this._TblGrupo.Entity;
-				if (((previousValue != value) 
-							|| (this._TblGrupo.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._TblGrupo.Entity = null;
-						previousValue.TblAlumno.Remove(this);
-					}
-					this._TblGrupo.Entity = value;
-					if ((value != null))
-					{
-						value.TblAlumno.Add(this);
-						this._idGrupo = value.id;
-					}
-					else
-					{
-						this._idGrupo = default(Nullable<int>);
-					}
-					this.SendPropertyChanged("TblGrupo");
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TblTelefono_TblAlumno", Storage="_TblTelefono", ThisKey="idTelefono", OtherKey="id", IsForeignKey=true)]
-		public TblTelefono TblTelefono
-		{
-			get
-			{
-				return this._TblTelefono.Entity;
-			}
-			set
-			{
-				TblTelefono previousValue = this._TblTelefono.Entity;
-				if (((previousValue != value) 
-							|| (this._TblTelefono.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._TblTelefono.Entity = null;
-						previousValue.TblAlumno.Remove(this);
-					}
-					this._TblTelefono.Entity = value;
-					if ((value != null))
-					{
-						value.TblAlumno.Add(this);
-						this._idTelefono = value.id;
-					}
-					else
-					{
-						this._idTelefono = default(Nullable<int>);
-					}
-					this.SendPropertyChanged("TblTelefono");
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TblUser_TblAlumno", Storage="_TblUser", ThisKey="idUser", OtherKey="id", IsForeignKey=true)]
-		public TblUser TblUser
-		{
-			get
-			{
-				return this._TblUser.Entity;
-			}
-			set
-			{
-				TblUser previousValue = this._TblUser.Entity;
-				if (((previousValue != value) 
-							|| (this._TblUser.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._TblUser.Entity = null;
-						previousValue.TblAlumno.Remove(this);
-					}
-					this._TblUser.Entity = value;
-					if ((value != null))
-					{
-						value.TblAlumno.Add(this);
-						this._idUser = value.id;
-					}
-					else
-					{
-						this._idUser = default(Nullable<int>);
-					}
-					this.SendPropertyChanged("TblUser");
+					this.SendPropertyChanged("tblEstado_Municipio");
 				}
 			}
 		}
@@ -939,3613 +1134,38 @@ namespace Modelo
 			}
 		}
 		
-		private void attach_TblAlumnoMateria(TblAlumnoMateria entity)
+		private void attach_tblCliente(tblCliente entity)
 		{
 			this.SendPropertyChanging();
-			entity.TblAlumno = this;
+			entity.tblDireccion = this;
 		}
 		
-		private void detach_TblAlumnoMateria(TblAlumnoMateria entity)
+		private void detach_tblCliente(tblCliente entity)
 		{
 			this.SendPropertyChanging();
-			entity.TblAlumno = null;
+			entity.tblDireccion = null;
 		}
 		
-		private void attach_TblAsistencia(TblAsistencia entity)
+		private void attach_tblEmpleado(tblEmpleado entity)
 		{
 			this.SendPropertyChanging();
-			entity.TblAlumno = this;
+			entity.tblDireccion = this;
 		}
 		
-		private void detach_TblAsistencia(TblAsistencia entity)
+		private void detach_tblEmpleado(tblEmpleado entity)
 		{
 			this.SendPropertyChanging();
-			entity.TblAlumno = null;
-		}
-		
-		private void attach_TblCalificacion(TblCalificacion entity)
-		{
-			this.SendPropertyChanging();
-			entity.TblAlumno = this;
-		}
-		
-		private void detach_TblCalificacion(TblCalificacion entity)
-		{
-			this.SendPropertyChanging();
-			entity.TblAlumno = null;
+			entity.tblDireccion = null;
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.TblAlumnoMateria")]
-	public partial class TblAlumnoMateria : INotifyPropertyChanging, INotifyPropertyChanged
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.tblEmpleado")]
+	public partial class tblEmpleado : INotifyPropertyChanging, INotifyPropertyChanged
 	{
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 		
-		private int _id;
-		
-		private System.Nullable<int> _idAlumno;
-		
-		private System.Nullable<int> _idMateria;
-		
-		private System.Nullable<int> _idNotas;
-		
-		private EntityRef<TblAlumno> _TblAlumno;
-		
-		private EntityRef<TblMateria> _TblMateria;
-		
-		private EntityRef<TblNota> _TblNota;
-		
-    #region Definiciones de métodos de extensibilidad
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnidChanging(int value);
-    partial void OnidChanged();
-    partial void OnidAlumnoChanging(System.Nullable<int> value);
-    partial void OnidAlumnoChanged();
-    partial void OnidMateriaChanging(System.Nullable<int> value);
-    partial void OnidMateriaChanged();
-    partial void OnidNotasChanging(System.Nullable<int> value);
-    partial void OnidNotasChanged();
-    #endregion
-		
-		public TblAlumnoMateria()
-		{
-			this._TblAlumno = default(EntityRef<TblAlumno>);
-			this._TblMateria = default(EntityRef<TblMateria>);
-			this._TblNota = default(EntityRef<TblNota>);
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int id
-		{
-			get
-			{
-				return this._id;
-			}
-			set
-			{
-				if ((this._id != value))
-				{
-					this.OnidChanging(value);
-					this.SendPropertyChanging();
-					this._id = value;
-					this.SendPropertyChanged("id");
-					this.OnidChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_idAlumno", DbType="Int")]
-		public System.Nullable<int> idAlumno
-		{
-			get
-			{
-				return this._idAlumno;
-			}
-			set
-			{
-				if ((this._idAlumno != value))
-				{
-					if (this._TblAlumno.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnidAlumnoChanging(value);
-					this.SendPropertyChanging();
-					this._idAlumno = value;
-					this.SendPropertyChanged("idAlumno");
-					this.OnidAlumnoChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_idMateria", DbType="Int")]
-		public System.Nullable<int> idMateria
-		{
-			get
-			{
-				return this._idMateria;
-			}
-			set
-			{
-				if ((this._idMateria != value))
-				{
-					if (this._TblMateria.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnidMateriaChanging(value);
-					this.SendPropertyChanging();
-					this._idMateria = value;
-					this.SendPropertyChanged("idMateria");
-					this.OnidMateriaChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_idNotas", DbType="Int")]
-		public System.Nullable<int> idNotas
-		{
-			get
-			{
-				return this._idNotas;
-			}
-			set
-			{
-				if ((this._idNotas != value))
-				{
-					if (this._TblNota.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnidNotasChanging(value);
-					this.SendPropertyChanging();
-					this._idNotas = value;
-					this.SendPropertyChanged("idNotas");
-					this.OnidNotasChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TblAlumno_TblAlumnoMateria", Storage="_TblAlumno", ThisKey="idAlumno", OtherKey="id", IsForeignKey=true)]
-		public TblAlumno TblAlumno
-		{
-			get
-			{
-				return this._TblAlumno.Entity;
-			}
-			set
-			{
-				TblAlumno previousValue = this._TblAlumno.Entity;
-				if (((previousValue != value) 
-							|| (this._TblAlumno.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._TblAlumno.Entity = null;
-						previousValue.TblAlumnoMateria.Remove(this);
-					}
-					this._TblAlumno.Entity = value;
-					if ((value != null))
-					{
-						value.TblAlumnoMateria.Add(this);
-						this._idAlumno = value.id;
-					}
-					else
-					{
-						this._idAlumno = default(Nullable<int>);
-					}
-					this.SendPropertyChanged("TblAlumno");
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TblMateria_TblAlumnoMateria", Storage="_TblMateria", ThisKey="idMateria", OtherKey="id", IsForeignKey=true)]
-		public TblMateria TblMateria
-		{
-			get
-			{
-				return this._TblMateria.Entity;
-			}
-			set
-			{
-				TblMateria previousValue = this._TblMateria.Entity;
-				if (((previousValue != value) 
-							|| (this._TblMateria.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._TblMateria.Entity = null;
-						previousValue.TblAlumnoMateria.Remove(this);
-					}
-					this._TblMateria.Entity = value;
-					if ((value != null))
-					{
-						value.TblAlumnoMateria.Add(this);
-						this._idMateria = value.id;
-					}
-					else
-					{
-						this._idMateria = default(Nullable<int>);
-					}
-					this.SendPropertyChanged("TblMateria");
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TblNota_TblAlumnoMateria", Storage="_TblNota", ThisKey="idNotas", OtherKey="id", IsForeignKey=true)]
-		public TblNota TblNota
-		{
-			get
-			{
-				return this._TblNota.Entity;
-			}
-			set
-			{
-				TblNota previousValue = this._TblNota.Entity;
-				if (((previousValue != value) 
-							|| (this._TblNota.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._TblNota.Entity = null;
-						previousValue.TblAlumnoMateria.Remove(this);
-					}
-					this._TblNota.Entity = value;
-					if ((value != null))
-					{
-						value.TblAlumnoMateria.Add(this);
-						this._idNotas = value.id;
-					}
-					else
-					{
-						this._idNotas = default(Nullable<int>);
-					}
-					this.SendPropertyChanged("TblNota");
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.TblAsignacionGrupo")]
-	public partial class TblAsignacionGrupo : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _id;
-		
-		private System.Nullable<int> _idGrupo;
-		
-		private System.Nullable<int> _idAsignacionMateria;
-		
-		private EntityRef<TblAsignacionMateria> _TblAsignacionMateria;
-		
-		private EntityRef<TblGrupo> _TblGrupo;
-		
-    #region Definiciones de métodos de extensibilidad
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnidChanging(int value);
-    partial void OnidChanged();
-    partial void OnidGrupoChanging(System.Nullable<int> value);
-    partial void OnidGrupoChanged();
-    partial void OnidAsignacionMateriaChanging(System.Nullable<int> value);
-    partial void OnidAsignacionMateriaChanged();
-    #endregion
-		
-		public TblAsignacionGrupo()
-		{
-			this._TblAsignacionMateria = default(EntityRef<TblAsignacionMateria>);
-			this._TblGrupo = default(EntityRef<TblGrupo>);
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int id
-		{
-			get
-			{
-				return this._id;
-			}
-			set
-			{
-				if ((this._id != value))
-				{
-					this.OnidChanging(value);
-					this.SendPropertyChanging();
-					this._id = value;
-					this.SendPropertyChanged("id");
-					this.OnidChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_idGrupo", DbType="Int")]
-		public System.Nullable<int> idGrupo
-		{
-			get
-			{
-				return this._idGrupo;
-			}
-			set
-			{
-				if ((this._idGrupo != value))
-				{
-					if (this._TblGrupo.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnidGrupoChanging(value);
-					this.SendPropertyChanging();
-					this._idGrupo = value;
-					this.SendPropertyChanged("idGrupo");
-					this.OnidGrupoChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_idAsignacionMateria", DbType="Int")]
-		public System.Nullable<int> idAsignacionMateria
-		{
-			get
-			{
-				return this._idAsignacionMateria;
-			}
-			set
-			{
-				if ((this._idAsignacionMateria != value))
-				{
-					if (this._TblAsignacionMateria.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnidAsignacionMateriaChanging(value);
-					this.SendPropertyChanging();
-					this._idAsignacionMateria = value;
-					this.SendPropertyChanged("idAsignacionMateria");
-					this.OnidAsignacionMateriaChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TblAsignacionMateria_TblAsignacionGrupo", Storage="_TblAsignacionMateria", ThisKey="idAsignacionMateria", OtherKey="id", IsForeignKey=true)]
-		public TblAsignacionMateria TblAsignacionMateria
-		{
-			get
-			{
-				return this._TblAsignacionMateria.Entity;
-			}
-			set
-			{
-				TblAsignacionMateria previousValue = this._TblAsignacionMateria.Entity;
-				if (((previousValue != value) 
-							|| (this._TblAsignacionMateria.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._TblAsignacionMateria.Entity = null;
-						previousValue.TblAsignacionGrupo.Remove(this);
-					}
-					this._TblAsignacionMateria.Entity = value;
-					if ((value != null))
-					{
-						value.TblAsignacionGrupo.Add(this);
-						this._idAsignacionMateria = value.id;
-					}
-					else
-					{
-						this._idAsignacionMateria = default(Nullable<int>);
-					}
-					this.SendPropertyChanged("TblAsignacionMateria");
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TblGrupo_TblAsignacionGrupo", Storage="_TblGrupo", ThisKey="idGrupo", OtherKey="id", IsForeignKey=true)]
-		public TblGrupo TblGrupo
-		{
-			get
-			{
-				return this._TblGrupo.Entity;
-			}
-			set
-			{
-				TblGrupo previousValue = this._TblGrupo.Entity;
-				if (((previousValue != value) 
-							|| (this._TblGrupo.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._TblGrupo.Entity = null;
-						previousValue.TblAsignacionGrupo.Remove(this);
-					}
-					this._TblGrupo.Entity = value;
-					if ((value != null))
-					{
-						value.TblAsignacionGrupo.Add(this);
-						this._idGrupo = value.id;
-					}
-					else
-					{
-						this._idGrupo = default(Nullable<int>);
-					}
-					this.SendPropertyChanged("TblGrupo");
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.TblAsignacionMateria")]
-	public partial class TblAsignacionMateria : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _id;
-		
-		private System.Nullable<int> _idProfesor;
-		
-		private System.Nullable<int> _idMateria;
-		
-		private EntitySet<TblAsignacionGrupo> _TblAsignacionGrupo;
-		
-		private EntitySet<TblCatalogoParcial> _TblCatalogoParcial;
-		
-		private EntitySet<TblQR> _TblQR;
-		
-		private EntityRef<TblMateria> _TblMateria;
-		
-		private EntityRef<TblProfesor> _TblProfesor;
-		
-    #region Definiciones de métodos de extensibilidad
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnidChanging(int value);
-    partial void OnidChanged();
-    partial void OnidProfesorChanging(System.Nullable<int> value);
-    partial void OnidProfesorChanged();
-    partial void OnidMateriaChanging(System.Nullable<int> value);
-    partial void OnidMateriaChanged();
-    #endregion
-		
-		public TblAsignacionMateria()
-		{
-			this._TblAsignacionGrupo = new EntitySet<TblAsignacionGrupo>(new Action<TblAsignacionGrupo>(this.attach_TblAsignacionGrupo), new Action<TblAsignacionGrupo>(this.detach_TblAsignacionGrupo));
-			this._TblCatalogoParcial = new EntitySet<TblCatalogoParcial>(new Action<TblCatalogoParcial>(this.attach_TblCatalogoParcial), new Action<TblCatalogoParcial>(this.detach_TblCatalogoParcial));
-			this._TblQR = new EntitySet<TblQR>(new Action<TblQR>(this.attach_TblQR), new Action<TblQR>(this.detach_TblQR));
-			this._TblMateria = default(EntityRef<TblMateria>);
-			this._TblProfesor = default(EntityRef<TblProfesor>);
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int id
-		{
-			get
-			{
-				return this._id;
-			}
-			set
-			{
-				if ((this._id != value))
-				{
-					this.OnidChanging(value);
-					this.SendPropertyChanging();
-					this._id = value;
-					this.SendPropertyChanged("id");
-					this.OnidChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_idProfesor", DbType="Int")]
-		public System.Nullable<int> idProfesor
-		{
-			get
-			{
-				return this._idProfesor;
-			}
-			set
-			{
-				if ((this._idProfesor != value))
-				{
-					if (this._TblProfesor.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnidProfesorChanging(value);
-					this.SendPropertyChanging();
-					this._idProfesor = value;
-					this.SendPropertyChanged("idProfesor");
-					this.OnidProfesorChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_idMateria", DbType="Int")]
-		public System.Nullable<int> idMateria
-		{
-			get
-			{
-				return this._idMateria;
-			}
-			set
-			{
-				if ((this._idMateria != value))
-				{
-					if (this._TblMateria.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnidMateriaChanging(value);
-					this.SendPropertyChanging();
-					this._idMateria = value;
-					this.SendPropertyChanged("idMateria");
-					this.OnidMateriaChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TblAsignacionMateria_TblAsignacionGrupo", Storage="_TblAsignacionGrupo", ThisKey="id", OtherKey="idAsignacionMateria")]
-		public EntitySet<TblAsignacionGrupo> TblAsignacionGrupo
-		{
-			get
-			{
-				return this._TblAsignacionGrupo;
-			}
-			set
-			{
-				this._TblAsignacionGrupo.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TblAsignacionMateria_TblCatalogoParcial", Storage="_TblCatalogoParcial", ThisKey="id", OtherKey="idAsignacionMaeria")]
-		public EntitySet<TblCatalogoParcial> TblCatalogoParcial
-		{
-			get
-			{
-				return this._TblCatalogoParcial;
-			}
-			set
-			{
-				this._TblCatalogoParcial.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TblAsignacionMateria_TblQR", Storage="_TblQR", ThisKey="id", OtherKey="idAsignacion")]
-		public EntitySet<TblQR> TblQR
-		{
-			get
-			{
-				return this._TblQR;
-			}
-			set
-			{
-				this._TblQR.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TblMateria_TblAsignacionMateria", Storage="_TblMateria", ThisKey="idMateria", OtherKey="id", IsForeignKey=true)]
-		public TblMateria TblMateria
-		{
-			get
-			{
-				return this._TblMateria.Entity;
-			}
-			set
-			{
-				TblMateria previousValue = this._TblMateria.Entity;
-				if (((previousValue != value) 
-							|| (this._TblMateria.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._TblMateria.Entity = null;
-						previousValue.TblAsignacionMateria.Remove(this);
-					}
-					this._TblMateria.Entity = value;
-					if ((value != null))
-					{
-						value.TblAsignacionMateria.Add(this);
-						this._idMateria = value.id;
-					}
-					else
-					{
-						this._idMateria = default(Nullable<int>);
-					}
-					this.SendPropertyChanged("TblMateria");
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TblProfesor_TblAsignacionMateria", Storage="_TblProfesor", ThisKey="idProfesor", OtherKey="id", IsForeignKey=true)]
-		public TblProfesor TblProfesor
-		{
-			get
-			{
-				return this._TblProfesor.Entity;
-			}
-			set
-			{
-				TblProfesor previousValue = this._TblProfesor.Entity;
-				if (((previousValue != value) 
-							|| (this._TblProfesor.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._TblProfesor.Entity = null;
-						previousValue.TblAsignacionMateria.Remove(this);
-					}
-					this._TblProfesor.Entity = value;
-					if ((value != null))
-					{
-						value.TblAsignacionMateria.Add(this);
-						this._idProfesor = value.id;
-					}
-					else
-					{
-						this._idProfesor = default(Nullable<int>);
-					}
-					this.SendPropertyChanged("TblProfesor");
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-		
-		private void attach_TblAsignacionGrupo(TblAsignacionGrupo entity)
-		{
-			this.SendPropertyChanging();
-			entity.TblAsignacionMateria = this;
-		}
-		
-		private void detach_TblAsignacionGrupo(TblAsignacionGrupo entity)
-		{
-			this.SendPropertyChanging();
-			entity.TblAsignacionMateria = null;
-		}
-		
-		private void attach_TblCatalogoParcial(TblCatalogoParcial entity)
-		{
-			this.SendPropertyChanging();
-			entity.TblAsignacionMateria = this;
-		}
-		
-		private void detach_TblCatalogoParcial(TblCatalogoParcial entity)
-		{
-			this.SendPropertyChanging();
-			entity.TblAsignacionMateria = null;
-		}
-		
-		private void attach_TblQR(TblQR entity)
-		{
-			this.SendPropertyChanging();
-			entity.TblAsignacionMateria = this;
-		}
-		
-		private void detach_TblQR(TblQR entity)
-		{
-			this.SendPropertyChanging();
-			entity.TblAsignacionMateria = null;
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.TblAsistencia")]
-	public partial class TblAsistencia : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _id;
-		
-		private System.Nullable<System.DateTime> _dteFecha;
-		
-		private System.Nullable<int> _codigo;
-		
-		private System.Nullable<int> _idMateria;
-		
-		private System.Nullable<int> _idAlumno;
-		
-		private System.Nullable<int> _idJustificante;
-		
-		private EntityRef<TblAlumno> _TblAlumno;
-		
-		private EntityRef<TblJustificante> _TblJustificante;
-		
-		private EntityRef<TblMateria> _TblMateria;
-		
-    #region Definiciones de métodos de extensibilidad
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnidChanging(int value);
-    partial void OnidChanged();
-    partial void OndteFechaChanging(System.Nullable<System.DateTime> value);
-    partial void OndteFechaChanged();
-    partial void OncodigoChanging(System.Nullable<int> value);
-    partial void OncodigoChanged();
-    partial void OnidMateriaChanging(System.Nullable<int> value);
-    partial void OnidMateriaChanged();
-    partial void OnidAlumnoChanging(System.Nullable<int> value);
-    partial void OnidAlumnoChanged();
-    partial void OnidJustificanteChanging(System.Nullable<int> value);
-    partial void OnidJustificanteChanged();
-    #endregion
-		
-		public TblAsistencia()
-		{
-			this._TblAlumno = default(EntityRef<TblAlumno>);
-			this._TblJustificante = default(EntityRef<TblJustificante>);
-			this._TblMateria = default(EntityRef<TblMateria>);
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int id
-		{
-			get
-			{
-				return this._id;
-			}
-			set
-			{
-				if ((this._id != value))
-				{
-					this.OnidChanging(value);
-					this.SendPropertyChanging();
-					this._id = value;
-					this.SendPropertyChanged("id");
-					this.OnidChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_dteFecha", DbType="DateTime")]
-		public System.Nullable<System.DateTime> dteFecha
-		{
-			get
-			{
-				return this._dteFecha;
-			}
-			set
-			{
-				if ((this._dteFecha != value))
-				{
-					this.OndteFechaChanging(value);
-					this.SendPropertyChanging();
-					this._dteFecha = value;
-					this.SendPropertyChanged("dteFecha");
-					this.OndteFechaChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_codigo", DbType="Int")]
-		public System.Nullable<int> codigo
-		{
-			get
-			{
-				return this._codigo;
-			}
-			set
-			{
-				if ((this._codigo != value))
-				{
-					this.OncodigoChanging(value);
-					this.SendPropertyChanging();
-					this._codigo = value;
-					this.SendPropertyChanged("codigo");
-					this.OncodigoChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_idMateria", DbType="Int")]
-		public System.Nullable<int> idMateria
-		{
-			get
-			{
-				return this._idMateria;
-			}
-			set
-			{
-				if ((this._idMateria != value))
-				{
-					if (this._TblMateria.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnidMateriaChanging(value);
-					this.SendPropertyChanging();
-					this._idMateria = value;
-					this.SendPropertyChanged("idMateria");
-					this.OnidMateriaChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_idAlumno", DbType="Int")]
-		public System.Nullable<int> idAlumno
-		{
-			get
-			{
-				return this._idAlumno;
-			}
-			set
-			{
-				if ((this._idAlumno != value))
-				{
-					if (this._TblAlumno.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnidAlumnoChanging(value);
-					this.SendPropertyChanging();
-					this._idAlumno = value;
-					this.SendPropertyChanged("idAlumno");
-					this.OnidAlumnoChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_idJustificante", DbType="Int")]
-		public System.Nullable<int> idJustificante
-		{
-			get
-			{
-				return this._idJustificante;
-			}
-			set
-			{
-				if ((this._idJustificante != value))
-				{
-					if (this._TblJustificante.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnidJustificanteChanging(value);
-					this.SendPropertyChanging();
-					this._idJustificante = value;
-					this.SendPropertyChanged("idJustificante");
-					this.OnidJustificanteChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TblAlumno_TblAsistencia", Storage="_TblAlumno", ThisKey="idAlumno", OtherKey="id", IsForeignKey=true)]
-		public TblAlumno TblAlumno
-		{
-			get
-			{
-				return this._TblAlumno.Entity;
-			}
-			set
-			{
-				TblAlumno previousValue = this._TblAlumno.Entity;
-				if (((previousValue != value) 
-							|| (this._TblAlumno.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._TblAlumno.Entity = null;
-						previousValue.TblAsistencia.Remove(this);
-					}
-					this._TblAlumno.Entity = value;
-					if ((value != null))
-					{
-						value.TblAsistencia.Add(this);
-						this._idAlumno = value.id;
-					}
-					else
-					{
-						this._idAlumno = default(Nullable<int>);
-					}
-					this.SendPropertyChanged("TblAlumno");
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TblJustificante_TblAsistencia", Storage="_TblJustificante", ThisKey="idJustificante", OtherKey="id", IsForeignKey=true)]
-		public TblJustificante TblJustificante
-		{
-			get
-			{
-				return this._TblJustificante.Entity;
-			}
-			set
-			{
-				TblJustificante previousValue = this._TblJustificante.Entity;
-				if (((previousValue != value) 
-							|| (this._TblJustificante.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._TblJustificante.Entity = null;
-						previousValue.TblAsistencia.Remove(this);
-					}
-					this._TblJustificante.Entity = value;
-					if ((value != null))
-					{
-						value.TblAsistencia.Add(this);
-						this._idJustificante = value.id;
-					}
-					else
-					{
-						this._idJustificante = default(Nullable<int>);
-					}
-					this.SendPropertyChanged("TblJustificante");
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TblMateria_TblAsistencia", Storage="_TblMateria", ThisKey="idMateria", OtherKey="id", IsForeignKey=true)]
-		public TblMateria TblMateria
-		{
-			get
-			{
-				return this._TblMateria.Entity;
-			}
-			set
-			{
-				TblMateria previousValue = this._TblMateria.Entity;
-				if (((previousValue != value) 
-							|| (this._TblMateria.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._TblMateria.Entity = null;
-						previousValue.TblAsistencia.Remove(this);
-					}
-					this._TblMateria.Entity = value;
-					if ((value != null))
-					{
-						value.TblAsistencia.Add(this);
-						this._idMateria = value.id;
-					}
-					else
-					{
-						this._idMateria = default(Nullable<int>);
-					}
-					this.SendPropertyChanged("TblMateria");
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.TblCalificacion")]
-	public partial class TblCalificacion : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _id;
-		
-		private System.Nullable<decimal> _valCalificacion;
-		
-		private System.Nullable<int> _idAlumno;
-		
-		private System.Nullable<int> _idCatalogoParcial;
-		
-		private EntityRef<TblAlumno> _TblAlumno;
-		
-		private EntityRef<TblCatalogoParcial> _TblCatalogoParcial;
-		
-    #region Definiciones de métodos de extensibilidad
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnidChanging(int value);
-    partial void OnidChanged();
-    partial void OnvalCalificacionChanging(System.Nullable<decimal> value);
-    partial void OnvalCalificacionChanged();
-    partial void OnidAlumnoChanging(System.Nullable<int> value);
-    partial void OnidAlumnoChanged();
-    partial void OnidCatalogoParcialChanging(System.Nullable<int> value);
-    partial void OnidCatalogoParcialChanged();
-    #endregion
-		
-		public TblCalificacion()
-		{
-			this._TblAlumno = default(EntityRef<TblAlumno>);
-			this._TblCatalogoParcial = default(EntityRef<TblCatalogoParcial>);
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int id
-		{
-			get
-			{
-				return this._id;
-			}
-			set
-			{
-				if ((this._id != value))
-				{
-					this.OnidChanging(value);
-					this.SendPropertyChanging();
-					this._id = value;
-					this.SendPropertyChanged("id");
-					this.OnidChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_valCalificacion", DbType="Decimal(5,2)")]
-		public System.Nullable<decimal> valCalificacion
-		{
-			get
-			{
-				return this._valCalificacion;
-			}
-			set
-			{
-				if ((this._valCalificacion != value))
-				{
-					this.OnvalCalificacionChanging(value);
-					this.SendPropertyChanging();
-					this._valCalificacion = value;
-					this.SendPropertyChanged("valCalificacion");
-					this.OnvalCalificacionChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_idAlumno", DbType="Int")]
-		public System.Nullable<int> idAlumno
-		{
-			get
-			{
-				return this._idAlumno;
-			}
-			set
-			{
-				if ((this._idAlumno != value))
-				{
-					if (this._TblAlumno.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnidAlumnoChanging(value);
-					this.SendPropertyChanging();
-					this._idAlumno = value;
-					this.SendPropertyChanged("idAlumno");
-					this.OnidAlumnoChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_idCatalogoParcial", DbType="Int")]
-		public System.Nullable<int> idCatalogoParcial
-		{
-			get
-			{
-				return this._idCatalogoParcial;
-			}
-			set
-			{
-				if ((this._idCatalogoParcial != value))
-				{
-					if (this._TblCatalogoParcial.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnidCatalogoParcialChanging(value);
-					this.SendPropertyChanging();
-					this._idCatalogoParcial = value;
-					this.SendPropertyChanged("idCatalogoParcial");
-					this.OnidCatalogoParcialChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TblAlumno_TblCalificacion", Storage="_TblAlumno", ThisKey="idAlumno", OtherKey="id", IsForeignKey=true)]
-		public TblAlumno TblAlumno
-		{
-			get
-			{
-				return this._TblAlumno.Entity;
-			}
-			set
-			{
-				TblAlumno previousValue = this._TblAlumno.Entity;
-				if (((previousValue != value) 
-							|| (this._TblAlumno.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._TblAlumno.Entity = null;
-						previousValue.TblCalificacion.Remove(this);
-					}
-					this._TblAlumno.Entity = value;
-					if ((value != null))
-					{
-						value.TblCalificacion.Add(this);
-						this._idAlumno = value.id;
-					}
-					else
-					{
-						this._idAlumno = default(Nullable<int>);
-					}
-					this.SendPropertyChanged("TblAlumno");
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TblCatalogoParcial_TblCalificacion", Storage="_TblCatalogoParcial", ThisKey="idCatalogoParcial", OtherKey="id", IsForeignKey=true)]
-		public TblCatalogoParcial TblCatalogoParcial
-		{
-			get
-			{
-				return this._TblCatalogoParcial.Entity;
-			}
-			set
-			{
-				TblCatalogoParcial previousValue = this._TblCatalogoParcial.Entity;
-				if (((previousValue != value) 
-							|| (this._TblCatalogoParcial.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._TblCatalogoParcial.Entity = null;
-						previousValue.TblCalificacion.Remove(this);
-					}
-					this._TblCatalogoParcial.Entity = value;
-					if ((value != null))
-					{
-						value.TblCalificacion.Add(this);
-						this._idCatalogoParcial = value.id;
-					}
-					else
-					{
-						this._idCatalogoParcial = default(Nullable<int>);
-					}
-					this.SendPropertyChanged("TblCatalogoParcial");
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.TblCarrera")]
-	public partial class TblCarrera : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _id;
-		
-		private string _strClave;
-		
-		private string _strNombre;
-		
-		private string _strArea;
-		
-		private string _bStatus;
-		
-		private EntitySet<TblAlumno> _TblAlumno;
-		
-		private EntitySet<TblGrupo> _TblGrupo;
-		
-		private EntitySet<TblMateria> _TblMateria;
-		
-		private EntitySet<TblQR> _TblQR;
-		
-    #region Definiciones de métodos de extensibilidad
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnidChanging(int value);
-    partial void OnidChanged();
-    partial void OnstrClaveChanging(string value);
-    partial void OnstrClaveChanged();
-    partial void OnstrNombreChanging(string value);
-    partial void OnstrNombreChanged();
-    partial void OnstrAreaChanging(string value);
-    partial void OnstrAreaChanged();
-    partial void OnbStatusChanging(string value);
-    partial void OnbStatusChanged();
-    #endregion
-		
-		public TblCarrera()
-		{
-			this._TblAlumno = new EntitySet<TblAlumno>(new Action<TblAlumno>(this.attach_TblAlumno), new Action<TblAlumno>(this.detach_TblAlumno));
-			this._TblGrupo = new EntitySet<TblGrupo>(new Action<TblGrupo>(this.attach_TblGrupo), new Action<TblGrupo>(this.detach_TblGrupo));
-			this._TblMateria = new EntitySet<TblMateria>(new Action<TblMateria>(this.attach_TblMateria), new Action<TblMateria>(this.detach_TblMateria));
-			this._TblQR = new EntitySet<TblQR>(new Action<TblQR>(this.attach_TblQR), new Action<TblQR>(this.detach_TblQR));
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int id
-		{
-			get
-			{
-				return this._id;
-			}
-			set
-			{
-				if ((this._id != value))
-				{
-					this.OnidChanging(value);
-					this.SendPropertyChanging();
-					this._id = value;
-					this.SendPropertyChanged("id");
-					this.OnidChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_strClave", DbType="VarChar(200)")]
-		public string strClave
-		{
-			get
-			{
-				return this._strClave;
-			}
-			set
-			{
-				if ((this._strClave != value))
-				{
-					this.OnstrClaveChanging(value);
-					this.SendPropertyChanging();
-					this._strClave = value;
-					this.SendPropertyChanged("strClave");
-					this.OnstrClaveChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_strNombre", DbType="VarChar(200)")]
-		public string strNombre
-		{
-			get
-			{
-				return this._strNombre;
-			}
-			set
-			{
-				if ((this._strNombre != value))
-				{
-					this.OnstrNombreChanging(value);
-					this.SendPropertyChanging();
-					this._strNombre = value;
-					this.SendPropertyChanged("strNombre");
-					this.OnstrNombreChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_strArea", DbType="VarChar(200)")]
-		public string strArea
-		{
-			get
-			{
-				return this._strArea;
-			}
-			set
-			{
-				if ((this._strArea != value))
-				{
-					this.OnstrAreaChanging(value);
-					this.SendPropertyChanging();
-					this._strArea = value;
-					this.SendPropertyChanged("strArea");
-					this.OnstrAreaChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_bStatus", DbType="VarChar(10)")]
-		public string bStatus
-		{
-			get
-			{
-				return this._bStatus;
-			}
-			set
-			{
-				if ((this._bStatus != value))
-				{
-					this.OnbStatusChanging(value);
-					this.SendPropertyChanging();
-					this._bStatus = value;
-					this.SendPropertyChanged("bStatus");
-					this.OnbStatusChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TblCarrera_TblAlumno", Storage="_TblAlumno", ThisKey="id", OtherKey="idCarrera")]
-		public EntitySet<TblAlumno> TblAlumno
-		{
-			get
-			{
-				return this._TblAlumno;
-			}
-			set
-			{
-				this._TblAlumno.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TblCarrera_TblGrupo", Storage="_TblGrupo", ThisKey="id", OtherKey="idCarrera")]
-		public EntitySet<TblGrupo> TblGrupo
-		{
-			get
-			{
-				return this._TblGrupo;
-			}
-			set
-			{
-				this._TblGrupo.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TblCarrera_TblMateria", Storage="_TblMateria", ThisKey="id", OtherKey="idCarrera")]
-		public EntitySet<TblMateria> TblMateria
-		{
-			get
-			{
-				return this._TblMateria;
-			}
-			set
-			{
-				this._TblMateria.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TblCarrera_TblQR", Storage="_TblQR", ThisKey="id", OtherKey="idCarrera")]
-		public EntitySet<TblQR> TblQR
-		{
-			get
-			{
-				return this._TblQR;
-			}
-			set
-			{
-				this._TblQR.Assign(value);
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-		
-		private void attach_TblAlumno(TblAlumno entity)
-		{
-			this.SendPropertyChanging();
-			entity.TblCarrera = this;
-		}
-		
-		private void detach_TblAlumno(TblAlumno entity)
-		{
-			this.SendPropertyChanging();
-			entity.TblCarrera = null;
-		}
-		
-		private void attach_TblGrupo(TblGrupo entity)
-		{
-			this.SendPropertyChanging();
-			entity.TblCarrera = this;
-		}
-		
-		private void detach_TblGrupo(TblGrupo entity)
-		{
-			this.SendPropertyChanging();
-			entity.TblCarrera = null;
-		}
-		
-		private void attach_TblMateria(TblMateria entity)
-		{
-			this.SendPropertyChanging();
-			entity.TblCarrera = this;
-		}
-		
-		private void detach_TblMateria(TblMateria entity)
-		{
-			this.SendPropertyChanging();
-			entity.TblCarrera = null;
-		}
-		
-		private void attach_TblQR(TblQR entity)
-		{
-			this.SendPropertyChanging();
-			entity.TblCarrera = this;
-		}
-		
-		private void detach_TblQR(TblQR entity)
-		{
-			this.SendPropertyChanging();
-			entity.TblCarrera = null;
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.TblCatalogoEvaluacion")]
-	public partial class TblCatalogoEvaluacion : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _id;
-		
-		private string _strDescripcion;
-		
-		private System.Nullable<int> _idCatalogoParcial;
-		
-		private EntityRef<TblCatalogoParcial> _TblCatalogoParcial;
-		
-    #region Definiciones de métodos de extensibilidad
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnidChanging(int value);
-    partial void OnidChanged();
-    partial void OnstrDescripcionChanging(string value);
-    partial void OnstrDescripcionChanged();
-    partial void OnidCatalogoParcialChanging(System.Nullable<int> value);
-    partial void OnidCatalogoParcialChanged();
-    #endregion
-		
-		public TblCatalogoEvaluacion()
-		{
-			this._TblCatalogoParcial = default(EntityRef<TblCatalogoParcial>);
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int id
-		{
-			get
-			{
-				return this._id;
-			}
-			set
-			{
-				if ((this._id != value))
-				{
-					this.OnidChanging(value);
-					this.SendPropertyChanging();
-					this._id = value;
-					this.SendPropertyChanged("id");
-					this.OnidChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_strDescripcion", DbType="VarChar(300)")]
-		public string strDescripcion
-		{
-			get
-			{
-				return this._strDescripcion;
-			}
-			set
-			{
-				if ((this._strDescripcion != value))
-				{
-					this.OnstrDescripcionChanging(value);
-					this.SendPropertyChanging();
-					this._strDescripcion = value;
-					this.SendPropertyChanged("strDescripcion");
-					this.OnstrDescripcionChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_idCatalogoParcial", DbType="Int")]
-		public System.Nullable<int> idCatalogoParcial
-		{
-			get
-			{
-				return this._idCatalogoParcial;
-			}
-			set
-			{
-				if ((this._idCatalogoParcial != value))
-				{
-					if (this._TblCatalogoParcial.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnidCatalogoParcialChanging(value);
-					this.SendPropertyChanging();
-					this._idCatalogoParcial = value;
-					this.SendPropertyChanged("idCatalogoParcial");
-					this.OnidCatalogoParcialChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TblCatalogoParcial_TblCatalogoEvaluacion", Storage="_TblCatalogoParcial", ThisKey="idCatalogoParcial", OtherKey="id", IsForeignKey=true)]
-		public TblCatalogoParcial TblCatalogoParcial
-		{
-			get
-			{
-				return this._TblCatalogoParcial.Entity;
-			}
-			set
-			{
-				TblCatalogoParcial previousValue = this._TblCatalogoParcial.Entity;
-				if (((previousValue != value) 
-							|| (this._TblCatalogoParcial.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._TblCatalogoParcial.Entity = null;
-						previousValue.TblCatalogoEvaluacion.Remove(this);
-					}
-					this._TblCatalogoParcial.Entity = value;
-					if ((value != null))
-					{
-						value.TblCatalogoEvaluacion.Add(this);
-						this._idCatalogoParcial = value.id;
-					}
-					else
-					{
-						this._idCatalogoParcial = default(Nullable<int>);
-					}
-					this.SendPropertyChanged("TblCatalogoParcial");
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.TblCatalogoParcial")]
-	public partial class TblCatalogoParcial : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _id;
-		
-		private string _strNombre;
-		
-		private string _strDescripcion;
-		
-		private System.Nullable<int> _intPorcentaje;
-		
-		private System.Nullable<int> _idAsignacionMaeria;
-		
-		private EntitySet<TblCalificacion> _TblCalificacion;
-		
-		private EntitySet<TblCatalogoEvaluacion> _TblCatalogoEvaluacion;
-		
-		private EntitySet<TblQR> _TblQR;
-		
-		private EntityRef<TblAsignacionMateria> _TblAsignacionMateria;
-		
-    #region Definiciones de métodos de extensibilidad
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnidChanging(int value);
-    partial void OnidChanged();
-    partial void OnstrNombreChanging(string value);
-    partial void OnstrNombreChanged();
-    partial void OnstrDescripcionChanging(string value);
-    partial void OnstrDescripcionChanged();
-    partial void OnintPorcentajeChanging(System.Nullable<int> value);
-    partial void OnintPorcentajeChanged();
-    partial void OnidAsignacionMaeriaChanging(System.Nullable<int> value);
-    partial void OnidAsignacionMaeriaChanged();
-    #endregion
-		
-		public TblCatalogoParcial()
-		{
-			this._TblCalificacion = new EntitySet<TblCalificacion>(new Action<TblCalificacion>(this.attach_TblCalificacion), new Action<TblCalificacion>(this.detach_TblCalificacion));
-			this._TblCatalogoEvaluacion = new EntitySet<TblCatalogoEvaluacion>(new Action<TblCatalogoEvaluacion>(this.attach_TblCatalogoEvaluacion), new Action<TblCatalogoEvaluacion>(this.detach_TblCatalogoEvaluacion));
-			this._TblQR = new EntitySet<TblQR>(new Action<TblQR>(this.attach_TblQR), new Action<TblQR>(this.detach_TblQR));
-			this._TblAsignacionMateria = default(EntityRef<TblAsignacionMateria>);
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int id
-		{
-			get
-			{
-				return this._id;
-			}
-			set
-			{
-				if ((this._id != value))
-				{
-					this.OnidChanging(value);
-					this.SendPropertyChanging();
-					this._id = value;
-					this.SendPropertyChanged("id");
-					this.OnidChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_strNombre", DbType="VarChar(300)")]
-		public string strNombre
-		{
-			get
-			{
-				return this._strNombre;
-			}
-			set
-			{
-				if ((this._strNombre != value))
-				{
-					this.OnstrNombreChanging(value);
-					this.SendPropertyChanging();
-					this._strNombre = value;
-					this.SendPropertyChanged("strNombre");
-					this.OnstrNombreChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_strDescripcion", DbType="VarChar(300)")]
-		public string strDescripcion
-		{
-			get
-			{
-				return this._strDescripcion;
-			}
-			set
-			{
-				if ((this._strDescripcion != value))
-				{
-					this.OnstrDescripcionChanging(value);
-					this.SendPropertyChanging();
-					this._strDescripcion = value;
-					this.SendPropertyChanged("strDescripcion");
-					this.OnstrDescripcionChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_intPorcentaje", DbType="Int")]
-		public System.Nullable<int> intPorcentaje
-		{
-			get
-			{
-				return this._intPorcentaje;
-			}
-			set
-			{
-				if ((this._intPorcentaje != value))
-				{
-					this.OnintPorcentajeChanging(value);
-					this.SendPropertyChanging();
-					this._intPorcentaje = value;
-					this.SendPropertyChanged("intPorcentaje");
-					this.OnintPorcentajeChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_idAsignacionMaeria", DbType="Int")]
-		public System.Nullable<int> idAsignacionMaeria
-		{
-			get
-			{
-				return this._idAsignacionMaeria;
-			}
-			set
-			{
-				if ((this._idAsignacionMaeria != value))
-				{
-					if (this._TblAsignacionMateria.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnidAsignacionMaeriaChanging(value);
-					this.SendPropertyChanging();
-					this._idAsignacionMaeria = value;
-					this.SendPropertyChanged("idAsignacionMaeria");
-					this.OnidAsignacionMaeriaChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TblCatalogoParcial_TblCalificacion", Storage="_TblCalificacion", ThisKey="id", OtherKey="idCatalogoParcial")]
-		public EntitySet<TblCalificacion> TblCalificacion
-		{
-			get
-			{
-				return this._TblCalificacion;
-			}
-			set
-			{
-				this._TblCalificacion.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TblCatalogoParcial_TblCatalogoEvaluacion", Storage="_TblCatalogoEvaluacion", ThisKey="id", OtherKey="idCatalogoParcial")]
-		public EntitySet<TblCatalogoEvaluacion> TblCatalogoEvaluacion
-		{
-			get
-			{
-				return this._TblCatalogoEvaluacion;
-			}
-			set
-			{
-				this._TblCatalogoEvaluacion.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TblCatalogoParcial_TblQR", Storage="_TblQR", ThisKey="id", OtherKey="idParcial")]
-		public EntitySet<TblQR> TblQR
-		{
-			get
-			{
-				return this._TblQR;
-			}
-			set
-			{
-				this._TblQR.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TblAsignacionMateria_TblCatalogoParcial", Storage="_TblAsignacionMateria", ThisKey="idAsignacionMaeria", OtherKey="id", IsForeignKey=true)]
-		public TblAsignacionMateria TblAsignacionMateria
-		{
-			get
-			{
-				return this._TblAsignacionMateria.Entity;
-			}
-			set
-			{
-				TblAsignacionMateria previousValue = this._TblAsignacionMateria.Entity;
-				if (((previousValue != value) 
-							|| (this._TblAsignacionMateria.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._TblAsignacionMateria.Entity = null;
-						previousValue.TblCatalogoParcial.Remove(this);
-					}
-					this._TblAsignacionMateria.Entity = value;
-					if ((value != null))
-					{
-						value.TblCatalogoParcial.Add(this);
-						this._idAsignacionMaeria = value.id;
-					}
-					else
-					{
-						this._idAsignacionMaeria = default(Nullable<int>);
-					}
-					this.SendPropertyChanged("TblAsignacionMateria");
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-		
-		private void attach_TblCalificacion(TblCalificacion entity)
-		{
-			this.SendPropertyChanging();
-			entity.TblCatalogoParcial = this;
-		}
-		
-		private void detach_TblCalificacion(TblCalificacion entity)
-		{
-			this.SendPropertyChanging();
-			entity.TblCatalogoParcial = null;
-		}
-		
-		private void attach_TblCatalogoEvaluacion(TblCatalogoEvaluacion entity)
-		{
-			this.SendPropertyChanging();
-			entity.TblCatalogoParcial = this;
-		}
-		
-		private void detach_TblCatalogoEvaluacion(TblCatalogoEvaluacion entity)
-		{
-			this.SendPropertyChanging();
-			entity.TblCatalogoParcial = null;
-		}
-		
-		private void attach_TblQR(TblQR entity)
-		{
-			this.SendPropertyChanging();
-			entity.TblCatalogoParcial = this;
-		}
-		
-		private void detach_TblQR(TblQR entity)
-		{
-			this.SendPropertyChanging();
-			entity.TblCatalogoParcial = null;
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.TblCuatri")]
-	public partial class TblCuatri : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _id;
-		
-		private string _strNombre;
-		
-		private System.Nullable<System.DateTime> _strFechaInicio;
-		
-		private System.Nullable<System.DateTime> _strFechaFin;
-		
-		private EntitySet<TblAlumno> _TblAlumno;
-		
-		private EntitySet<TblMateria> _TblMateria;
-		
-    #region Definiciones de métodos de extensibilidad
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnidChanging(int value);
-    partial void OnidChanged();
-    partial void OnstrNombreChanging(string value);
-    partial void OnstrNombreChanged();
-    partial void OnstrFechaInicioChanging(System.Nullable<System.DateTime> value);
-    partial void OnstrFechaInicioChanged();
-    partial void OnstrFechaFinChanging(System.Nullable<System.DateTime> value);
-    partial void OnstrFechaFinChanged();
-    #endregion
-		
-		public TblCuatri()
-		{
-			this._TblAlumno = new EntitySet<TblAlumno>(new Action<TblAlumno>(this.attach_TblAlumno), new Action<TblAlumno>(this.detach_TblAlumno));
-			this._TblMateria = new EntitySet<TblMateria>(new Action<TblMateria>(this.attach_TblMateria), new Action<TblMateria>(this.detach_TblMateria));
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int id
-		{
-			get
-			{
-				return this._id;
-			}
-			set
-			{
-				if ((this._id != value))
-				{
-					this.OnidChanging(value);
-					this.SendPropertyChanging();
-					this._id = value;
-					this.SendPropertyChanged("id");
-					this.OnidChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_strNombre", DbType="VarChar(200)")]
-		public string strNombre
-		{
-			get
-			{
-				return this._strNombre;
-			}
-			set
-			{
-				if ((this._strNombre != value))
-				{
-					this.OnstrNombreChanging(value);
-					this.SendPropertyChanging();
-					this._strNombre = value;
-					this.SendPropertyChanged("strNombre");
-					this.OnstrNombreChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_strFechaInicio", DbType="Date")]
-		public System.Nullable<System.DateTime> strFechaInicio
-		{
-			get
-			{
-				return this._strFechaInicio;
-			}
-			set
-			{
-				if ((this._strFechaInicio != value))
-				{
-					this.OnstrFechaInicioChanging(value);
-					this.SendPropertyChanging();
-					this._strFechaInicio = value;
-					this.SendPropertyChanged("strFechaInicio");
-					this.OnstrFechaInicioChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_strFechaFin", DbType="Date")]
-		public System.Nullable<System.DateTime> strFechaFin
-		{
-			get
-			{
-				return this._strFechaFin;
-			}
-			set
-			{
-				if ((this._strFechaFin != value))
-				{
-					this.OnstrFechaFinChanging(value);
-					this.SendPropertyChanging();
-					this._strFechaFin = value;
-					this.SendPropertyChanged("strFechaFin");
-					this.OnstrFechaFinChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TblCuatri_TblAlumno", Storage="_TblAlumno", ThisKey="id", OtherKey="idCuatri")]
-		public EntitySet<TblAlumno> TblAlumno
-		{
-			get
-			{
-				return this._TblAlumno;
-			}
-			set
-			{
-				this._TblAlumno.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TblCuatri_TblMateria", Storage="_TblMateria", ThisKey="id", OtherKey="idCuatri")]
-		public EntitySet<TblMateria> TblMateria
-		{
-			get
-			{
-				return this._TblMateria;
-			}
-			set
-			{
-				this._TblMateria.Assign(value);
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-		
-		private void attach_TblAlumno(TblAlumno entity)
-		{
-			this.SendPropertyChanging();
-			entity.TblCuatri = this;
-		}
-		
-		private void detach_TblAlumno(TblAlumno entity)
-		{
-			this.SendPropertyChanging();
-			entity.TblCuatri = null;
-		}
-		
-		private void attach_TblMateria(TblMateria entity)
-		{
-			this.SendPropertyChanging();
-			entity.TblCuatri = this;
-		}
-		
-		private void detach_TblMateria(TblMateria entity)
-		{
-			this.SendPropertyChanging();
-			entity.TblCuatri = null;
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.TblDireccion")]
-	public partial class TblDireccion : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _id;
-		
-		private string _strestado;
-		
-		private string _strmunicipio;
-		
-		private string _strcolonia;
-		
-		private string _strcalle;
-		
-		private System.Nullable<int> _intcodpost;
-		
-		private string _strnumInt;
-		
-		private string _strnumExt;
-		
-		private string _strreferencias;
-		
-		private EntitySet<TblAlumno> _TblAlumno;
-		
-		private EntitySet<TblProfesor> _TblProfesor;
-		
-    #region Definiciones de métodos de extensibilidad
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnidChanging(int value);
-    partial void OnidChanged();
-    partial void OnstrestadoChanging(string value);
-    partial void OnstrestadoChanged();
-    partial void OnstrmunicipioChanging(string value);
-    partial void OnstrmunicipioChanged();
-    partial void OnstrcoloniaChanging(string value);
-    partial void OnstrcoloniaChanged();
-    partial void OnstrcalleChanging(string value);
-    partial void OnstrcalleChanged();
-    partial void OnintcodpostChanging(System.Nullable<int> value);
-    partial void OnintcodpostChanged();
-    partial void OnstrnumIntChanging(string value);
-    partial void OnstrnumIntChanged();
-    partial void OnstrnumExtChanging(string value);
-    partial void OnstrnumExtChanged();
-    partial void OnstrreferenciasChanging(string value);
-    partial void OnstrreferenciasChanged();
-    #endregion
-		
-		public TblDireccion()
-		{
-			this._TblAlumno = new EntitySet<TblAlumno>(new Action<TblAlumno>(this.attach_TblAlumno), new Action<TblAlumno>(this.detach_TblAlumno));
-			this._TblProfesor = new EntitySet<TblProfesor>(new Action<TblProfesor>(this.attach_TblProfesor), new Action<TblProfesor>(this.detach_TblProfesor));
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int id
-		{
-			get
-			{
-				return this._id;
-			}
-			set
-			{
-				if ((this._id != value))
-				{
-					this.OnidChanging(value);
-					this.SendPropertyChanging();
-					this._id = value;
-					this.SendPropertyChanged("id");
-					this.OnidChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_strestado", DbType="VarChar(150)")]
-		public string strestado
-		{
-			get
-			{
-				return this._strestado;
-			}
-			set
-			{
-				if ((this._strestado != value))
-				{
-					this.OnstrestadoChanging(value);
-					this.SendPropertyChanging();
-					this._strestado = value;
-					this.SendPropertyChanged("strestado");
-					this.OnstrestadoChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_strmunicipio", DbType="VarChar(150)")]
-		public string strmunicipio
-		{
-			get
-			{
-				return this._strmunicipio;
-			}
-			set
-			{
-				if ((this._strmunicipio != value))
-				{
-					this.OnstrmunicipioChanging(value);
-					this.SendPropertyChanging();
-					this._strmunicipio = value;
-					this.SendPropertyChanged("strmunicipio");
-					this.OnstrmunicipioChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_strcolonia", DbType="VarChar(150)")]
-		public string strcolonia
-		{
-			get
-			{
-				return this._strcolonia;
-			}
-			set
-			{
-				if ((this._strcolonia != value))
-				{
-					this.OnstrcoloniaChanging(value);
-					this.SendPropertyChanging();
-					this._strcolonia = value;
-					this.SendPropertyChanged("strcolonia");
-					this.OnstrcoloniaChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_strcalle", DbType="VarChar(150)")]
-		public string strcalle
-		{
-			get
-			{
-				return this._strcalle;
-			}
-			set
-			{
-				if ((this._strcalle != value))
-				{
-					this.OnstrcalleChanging(value);
-					this.SendPropertyChanging();
-					this._strcalle = value;
-					this.SendPropertyChanged("strcalle");
-					this.OnstrcalleChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_intcodpost", DbType="Int")]
-		public System.Nullable<int> intcodpost
-		{
-			get
-			{
-				return this._intcodpost;
-			}
-			set
-			{
-				if ((this._intcodpost != value))
-				{
-					this.OnintcodpostChanging(value);
-					this.SendPropertyChanging();
-					this._intcodpost = value;
-					this.SendPropertyChanged("intcodpost");
-					this.OnintcodpostChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_strnumInt", DbType="VarChar(50)")]
-		public string strnumInt
-		{
-			get
-			{
-				return this._strnumInt;
-			}
-			set
-			{
-				if ((this._strnumInt != value))
-				{
-					this.OnstrnumIntChanging(value);
-					this.SendPropertyChanging();
-					this._strnumInt = value;
-					this.SendPropertyChanged("strnumInt");
-					this.OnstrnumIntChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_strnumExt", DbType="VarChar(50)")]
-		public string strnumExt
-		{
-			get
-			{
-				return this._strnumExt;
-			}
-			set
-			{
-				if ((this._strnumExt != value))
-				{
-					this.OnstrnumExtChanging(value);
-					this.SendPropertyChanging();
-					this._strnumExt = value;
-					this.SendPropertyChanged("strnumExt");
-					this.OnstrnumExtChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_strreferencias", DbType="VarChar(400)")]
-		public string strreferencias
-		{
-			get
-			{
-				return this._strreferencias;
-			}
-			set
-			{
-				if ((this._strreferencias != value))
-				{
-					this.OnstrreferenciasChanging(value);
-					this.SendPropertyChanging();
-					this._strreferencias = value;
-					this.SendPropertyChanged("strreferencias");
-					this.OnstrreferenciasChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TblDireccion_TblAlumno", Storage="_TblAlumno", ThisKey="id", OtherKey="idDireccion")]
-		public EntitySet<TblAlumno> TblAlumno
-		{
-			get
-			{
-				return this._TblAlumno;
-			}
-			set
-			{
-				this._TblAlumno.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TblDireccion_TblProfesor", Storage="_TblProfesor", ThisKey="id", OtherKey="idDireccion")]
-		public EntitySet<TblProfesor> TblProfesor
-		{
-			get
-			{
-				return this._TblProfesor;
-			}
-			set
-			{
-				this._TblProfesor.Assign(value);
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-		
-		private void attach_TblAlumno(TblAlumno entity)
-		{
-			this.SendPropertyChanging();
-			entity.TblDireccion = this;
-		}
-		
-		private void detach_TblAlumno(TblAlumno entity)
-		{
-			this.SendPropertyChanging();
-			entity.TblDireccion = null;
-		}
-		
-		private void attach_TblProfesor(TblProfesor entity)
-		{
-			this.SendPropertyChanging();
-			entity.TblDireccion = this;
-		}
-		
-		private void detach_TblProfesor(TblProfesor entity)
-		{
-			this.SendPropertyChanging();
-			entity.TblDireccion = null;
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.TblGrupo")]
-	public partial class TblGrupo : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _id;
-		
-		private string _strNombre;
-		
-		private System.Nullable<int> _strCapacidad;
-		
-		private System.Nullable<int> _idCarrera;
-		
-		private EntitySet<TblAlumno> _TblAlumno;
-		
-		private EntitySet<TblAsignacionGrupo> _TblAsignacionGrupo;
-		
-		private EntitySet<TblQR> _TblQR;
-		
-		private EntityRef<TblCarrera> _TblCarrera;
-		
-    #region Definiciones de métodos de extensibilidad
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnidChanging(int value);
-    partial void OnidChanged();
-    partial void OnstrNombreChanging(string value);
-    partial void OnstrNombreChanged();
-    partial void OnstrCapacidadChanging(System.Nullable<int> value);
-    partial void OnstrCapacidadChanged();
-    partial void OnidCarreraChanging(System.Nullable<int> value);
-    partial void OnidCarreraChanged();
-    #endregion
-		
-		public TblGrupo()
-		{
-			this._TblAlumno = new EntitySet<TblAlumno>(new Action<TblAlumno>(this.attach_TblAlumno), new Action<TblAlumno>(this.detach_TblAlumno));
-			this._TblAsignacionGrupo = new EntitySet<TblAsignacionGrupo>(new Action<TblAsignacionGrupo>(this.attach_TblAsignacionGrupo), new Action<TblAsignacionGrupo>(this.detach_TblAsignacionGrupo));
-			this._TblQR = new EntitySet<TblQR>(new Action<TblQR>(this.attach_TblQR), new Action<TblQR>(this.detach_TblQR));
-			this._TblCarrera = default(EntityRef<TblCarrera>);
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int id
-		{
-			get
-			{
-				return this._id;
-			}
-			set
-			{
-				if ((this._id != value))
-				{
-					this.OnidChanging(value);
-					this.SendPropertyChanging();
-					this._id = value;
-					this.SendPropertyChanged("id");
-					this.OnidChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_strNombre", DbType="VarChar(200)")]
-		public string strNombre
-		{
-			get
-			{
-				return this._strNombre;
-			}
-			set
-			{
-				if ((this._strNombre != value))
-				{
-					this.OnstrNombreChanging(value);
-					this.SendPropertyChanging();
-					this._strNombre = value;
-					this.SendPropertyChanged("strNombre");
-					this.OnstrNombreChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_strCapacidad", DbType="Int")]
-		public System.Nullable<int> strCapacidad
-		{
-			get
-			{
-				return this._strCapacidad;
-			}
-			set
-			{
-				if ((this._strCapacidad != value))
-				{
-					this.OnstrCapacidadChanging(value);
-					this.SendPropertyChanging();
-					this._strCapacidad = value;
-					this.SendPropertyChanged("strCapacidad");
-					this.OnstrCapacidadChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_idCarrera", DbType="Int")]
-		public System.Nullable<int> idCarrera
-		{
-			get
-			{
-				return this._idCarrera;
-			}
-			set
-			{
-				if ((this._idCarrera != value))
-				{
-					if (this._TblCarrera.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnidCarreraChanging(value);
-					this.SendPropertyChanging();
-					this._idCarrera = value;
-					this.SendPropertyChanged("idCarrera");
-					this.OnidCarreraChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TblGrupo_TblAlumno", Storage="_TblAlumno", ThisKey="id", OtherKey="idGrupo")]
-		public EntitySet<TblAlumno> TblAlumno
-		{
-			get
-			{
-				return this._TblAlumno;
-			}
-			set
-			{
-				this._TblAlumno.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TblGrupo_TblAsignacionGrupo", Storage="_TblAsignacionGrupo", ThisKey="id", OtherKey="idGrupo")]
-		public EntitySet<TblAsignacionGrupo> TblAsignacionGrupo
-		{
-			get
-			{
-				return this._TblAsignacionGrupo;
-			}
-			set
-			{
-				this._TblAsignacionGrupo.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TblGrupo_TblQR", Storage="_TblQR", ThisKey="id", OtherKey="idGrupo")]
-		public EntitySet<TblQR> TblQR
-		{
-			get
-			{
-				return this._TblQR;
-			}
-			set
-			{
-				this._TblQR.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TblCarrera_TblGrupo", Storage="_TblCarrera", ThisKey="idCarrera", OtherKey="id", IsForeignKey=true)]
-		public TblCarrera TblCarrera
-		{
-			get
-			{
-				return this._TblCarrera.Entity;
-			}
-			set
-			{
-				TblCarrera previousValue = this._TblCarrera.Entity;
-				if (((previousValue != value) 
-							|| (this._TblCarrera.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._TblCarrera.Entity = null;
-						previousValue.TblGrupo.Remove(this);
-					}
-					this._TblCarrera.Entity = value;
-					if ((value != null))
-					{
-						value.TblGrupo.Add(this);
-						this._idCarrera = value.id;
-					}
-					else
-					{
-						this._idCarrera = default(Nullable<int>);
-					}
-					this.SendPropertyChanged("TblCarrera");
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-		
-		private void attach_TblAlumno(TblAlumno entity)
-		{
-			this.SendPropertyChanging();
-			entity.TblGrupo = this;
-		}
-		
-		private void detach_TblAlumno(TblAlumno entity)
-		{
-			this.SendPropertyChanging();
-			entity.TblGrupo = null;
-		}
-		
-		private void attach_TblAsignacionGrupo(TblAsignacionGrupo entity)
-		{
-			this.SendPropertyChanging();
-			entity.TblGrupo = this;
-		}
-		
-		private void detach_TblAsignacionGrupo(TblAsignacionGrupo entity)
-		{
-			this.SendPropertyChanging();
-			entity.TblGrupo = null;
-		}
-		
-		private void attach_TblQR(TblQR entity)
-		{
-			this.SendPropertyChanging();
-			entity.TblGrupo = this;
-		}
-		
-		private void detach_TblQR(TblQR entity)
-		{
-			this.SendPropertyChanging();
-			entity.TblGrupo = null;
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.TblJustificante")]
-	public partial class TblJustificante : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _id;
-		
-		private string _strMotivo;
-		
-		private string _strArchivo;
-		
-		private System.Nullable<System.DateTime> _fecha;
-		
-		private System.Nullable<System.DateTime> _fechaJusti;
-		
-		private EntitySet<TblAsistencia> _TblAsistencia;
-		
-    #region Definiciones de métodos de extensibilidad
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnidChanging(int value);
-    partial void OnidChanged();
-    partial void OnstrMotivoChanging(string value);
-    partial void OnstrMotivoChanged();
-    partial void OnstrArchivoChanging(string value);
-    partial void OnstrArchivoChanged();
-    partial void OnfechaChanging(System.Nullable<System.DateTime> value);
-    partial void OnfechaChanged();
-    partial void OnfechaJustiChanging(System.Nullable<System.DateTime> value);
-    partial void OnfechaJustiChanged();
-    #endregion
-		
-		public TblJustificante()
-		{
-			this._TblAsistencia = new EntitySet<TblAsistencia>(new Action<TblAsistencia>(this.attach_TblAsistencia), new Action<TblAsistencia>(this.detach_TblAsistencia));
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int id
-		{
-			get
-			{
-				return this._id;
-			}
-			set
-			{
-				if ((this._id != value))
-				{
-					this.OnidChanging(value);
-					this.SendPropertyChanging();
-					this._id = value;
-					this.SendPropertyChanged("id");
-					this.OnidChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_strMotivo", DbType="VarChar(50)")]
-		public string strMotivo
-		{
-			get
-			{
-				return this._strMotivo;
-			}
-			set
-			{
-				if ((this._strMotivo != value))
-				{
-					this.OnstrMotivoChanging(value);
-					this.SendPropertyChanging();
-					this._strMotivo = value;
-					this.SendPropertyChanged("strMotivo");
-					this.OnstrMotivoChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_strArchivo", DbType="VarChar(MAX)")]
-		public string strArchivo
-		{
-			get
-			{
-				return this._strArchivo;
-			}
-			set
-			{
-				if ((this._strArchivo != value))
-				{
-					this.OnstrArchivoChanging(value);
-					this.SendPropertyChanging();
-					this._strArchivo = value;
-					this.SendPropertyChanged("strArchivo");
-					this.OnstrArchivoChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_fecha", DbType="Date")]
-		public System.Nullable<System.DateTime> fecha
-		{
-			get
-			{
-				return this._fecha;
-			}
-			set
-			{
-				if ((this._fecha != value))
-				{
-					this.OnfechaChanging(value);
-					this.SendPropertyChanging();
-					this._fecha = value;
-					this.SendPropertyChanged("fecha");
-					this.OnfechaChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_fechaJusti", DbType="Date")]
-		public System.Nullable<System.DateTime> fechaJusti
-		{
-			get
-			{
-				return this._fechaJusti;
-			}
-			set
-			{
-				if ((this._fechaJusti != value))
-				{
-					this.OnfechaJustiChanging(value);
-					this.SendPropertyChanging();
-					this._fechaJusti = value;
-					this.SendPropertyChanged("fechaJusti");
-					this.OnfechaJustiChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TblJustificante_TblAsistencia", Storage="_TblAsistencia", ThisKey="id", OtherKey="idJustificante")]
-		public EntitySet<TblAsistencia> TblAsistencia
-		{
-			get
-			{
-				return this._TblAsistencia;
-			}
-			set
-			{
-				this._TblAsistencia.Assign(value);
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-		
-		private void attach_TblAsistencia(TblAsistencia entity)
-		{
-			this.SendPropertyChanging();
-			entity.TblJustificante = this;
-		}
-		
-		private void detach_TblAsistencia(TblAsistencia entity)
-		{
-			this.SendPropertyChanging();
-			entity.TblJustificante = null;
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.TblMateria")]
-	public partial class TblMateria : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _id;
-		
-		private string _strNombre;
-		
-		private string _strDescripcion;
-		
-		private string _bStatus;
-		
-		private System.Nullable<int> _idCarrera;
-		
-		private System.Nullable<int> _idCuatri;
-		
-		private EntitySet<TblAlumnoMateria> _TblAlumnoMateria;
-		
-		private EntitySet<TblAsignacionMateria> _TblAsignacionMateria;
-		
-		private EntitySet<TblAsistencia> _TblAsistencia;
-		
-		private EntitySet<TblNota> _TblNota;
-		
-		private EntityRef<TblCarrera> _TblCarrera;
-		
-		private EntityRef<TblCuatri> _TblCuatri;
-		
-    #region Definiciones de métodos de extensibilidad
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnidChanging(int value);
-    partial void OnidChanged();
-    partial void OnstrNombreChanging(string value);
-    partial void OnstrNombreChanged();
-    partial void OnstrDescripcionChanging(string value);
-    partial void OnstrDescripcionChanged();
-    partial void OnbStatusChanging(string value);
-    partial void OnbStatusChanged();
-    partial void OnidCarreraChanging(System.Nullable<int> value);
-    partial void OnidCarreraChanged();
-    partial void OnidCuatriChanging(System.Nullable<int> value);
-    partial void OnidCuatriChanged();
-    #endregion
-		
-		public TblMateria()
-		{
-			this._TblAlumnoMateria = new EntitySet<TblAlumnoMateria>(new Action<TblAlumnoMateria>(this.attach_TblAlumnoMateria), new Action<TblAlumnoMateria>(this.detach_TblAlumnoMateria));
-			this._TblAsignacionMateria = new EntitySet<TblAsignacionMateria>(new Action<TblAsignacionMateria>(this.attach_TblAsignacionMateria), new Action<TblAsignacionMateria>(this.detach_TblAsignacionMateria));
-			this._TblAsistencia = new EntitySet<TblAsistencia>(new Action<TblAsistencia>(this.attach_TblAsistencia), new Action<TblAsistencia>(this.detach_TblAsistencia));
-			this._TblNota = new EntitySet<TblNota>(new Action<TblNota>(this.attach_TblNota), new Action<TblNota>(this.detach_TblNota));
-			this._TblCarrera = default(EntityRef<TblCarrera>);
-			this._TblCuatri = default(EntityRef<TblCuatri>);
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int id
-		{
-			get
-			{
-				return this._id;
-			}
-			set
-			{
-				if ((this._id != value))
-				{
-					this.OnidChanging(value);
-					this.SendPropertyChanging();
-					this._id = value;
-					this.SendPropertyChanged("id");
-					this.OnidChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_strNombre", DbType="VarChar(200)")]
-		public string strNombre
-		{
-			get
-			{
-				return this._strNombre;
-			}
-			set
-			{
-				if ((this._strNombre != value))
-				{
-					this.OnstrNombreChanging(value);
-					this.SendPropertyChanging();
-					this._strNombre = value;
-					this.SendPropertyChanged("strNombre");
-					this.OnstrNombreChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_strDescripcion", DbType="VarChar(200)")]
-		public string strDescripcion
-		{
-			get
-			{
-				return this._strDescripcion;
-			}
-			set
-			{
-				if ((this._strDescripcion != value))
-				{
-					this.OnstrDescripcionChanging(value);
-					this.SendPropertyChanging();
-					this._strDescripcion = value;
-					this.SendPropertyChanged("strDescripcion");
-					this.OnstrDescripcionChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_bStatus", DbType="VarChar(10)")]
-		public string bStatus
-		{
-			get
-			{
-				return this._bStatus;
-			}
-			set
-			{
-				if ((this._bStatus != value))
-				{
-					this.OnbStatusChanging(value);
-					this.SendPropertyChanging();
-					this._bStatus = value;
-					this.SendPropertyChanged("bStatus");
-					this.OnbStatusChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_idCarrera", DbType="Int")]
-		public System.Nullable<int> idCarrera
-		{
-			get
-			{
-				return this._idCarrera;
-			}
-			set
-			{
-				if ((this._idCarrera != value))
-				{
-					if (this._TblCarrera.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnidCarreraChanging(value);
-					this.SendPropertyChanging();
-					this._idCarrera = value;
-					this.SendPropertyChanged("idCarrera");
-					this.OnidCarreraChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_idCuatri", DbType="Int")]
-		public System.Nullable<int> idCuatri
-		{
-			get
-			{
-				return this._idCuatri;
-			}
-			set
-			{
-				if ((this._idCuatri != value))
-				{
-					if (this._TblCuatri.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnidCuatriChanging(value);
-					this.SendPropertyChanging();
-					this._idCuatri = value;
-					this.SendPropertyChanged("idCuatri");
-					this.OnidCuatriChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TblMateria_TblAlumnoMateria", Storage="_TblAlumnoMateria", ThisKey="id", OtherKey="idMateria")]
-		public EntitySet<TblAlumnoMateria> TblAlumnoMateria
-		{
-			get
-			{
-				return this._TblAlumnoMateria;
-			}
-			set
-			{
-				this._TblAlumnoMateria.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TblMateria_TblAsignacionMateria", Storage="_TblAsignacionMateria", ThisKey="id", OtherKey="idMateria")]
-		public EntitySet<TblAsignacionMateria> TblAsignacionMateria
-		{
-			get
-			{
-				return this._TblAsignacionMateria;
-			}
-			set
-			{
-				this._TblAsignacionMateria.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TblMateria_TblAsistencia", Storage="_TblAsistencia", ThisKey="id", OtherKey="idMateria")]
-		public EntitySet<TblAsistencia> TblAsistencia
-		{
-			get
-			{
-				return this._TblAsistencia;
-			}
-			set
-			{
-				this._TblAsistencia.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TblMateria_TblNota", Storage="_TblNota", ThisKey="id", OtherKey="idMateria")]
-		public EntitySet<TblNota> TblNota
-		{
-			get
-			{
-				return this._TblNota;
-			}
-			set
-			{
-				this._TblNota.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TblCarrera_TblMateria", Storage="_TblCarrera", ThisKey="idCarrera", OtherKey="id", IsForeignKey=true)]
-		public TblCarrera TblCarrera
-		{
-			get
-			{
-				return this._TblCarrera.Entity;
-			}
-			set
-			{
-				TblCarrera previousValue = this._TblCarrera.Entity;
-				if (((previousValue != value) 
-							|| (this._TblCarrera.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._TblCarrera.Entity = null;
-						previousValue.TblMateria.Remove(this);
-					}
-					this._TblCarrera.Entity = value;
-					if ((value != null))
-					{
-						value.TblMateria.Add(this);
-						this._idCarrera = value.id;
-					}
-					else
-					{
-						this._idCarrera = default(Nullable<int>);
-					}
-					this.SendPropertyChanged("TblCarrera");
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TblCuatri_TblMateria", Storage="_TblCuatri", ThisKey="idCuatri", OtherKey="id", IsForeignKey=true)]
-		public TblCuatri TblCuatri
-		{
-			get
-			{
-				return this._TblCuatri.Entity;
-			}
-			set
-			{
-				TblCuatri previousValue = this._TblCuatri.Entity;
-				if (((previousValue != value) 
-							|| (this._TblCuatri.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._TblCuatri.Entity = null;
-						previousValue.TblMateria.Remove(this);
-					}
-					this._TblCuatri.Entity = value;
-					if ((value != null))
-					{
-						value.TblMateria.Add(this);
-						this._idCuatri = value.id;
-					}
-					else
-					{
-						this._idCuatri = default(Nullable<int>);
-					}
-					this.SendPropertyChanged("TblCuatri");
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-		
-		private void attach_TblAlumnoMateria(TblAlumnoMateria entity)
-		{
-			this.SendPropertyChanging();
-			entity.TblMateria = this;
-		}
-		
-		private void detach_TblAlumnoMateria(TblAlumnoMateria entity)
-		{
-			this.SendPropertyChanging();
-			entity.TblMateria = null;
-		}
-		
-		private void attach_TblAsignacionMateria(TblAsignacionMateria entity)
-		{
-			this.SendPropertyChanging();
-			entity.TblMateria = this;
-		}
-		
-		private void detach_TblAsignacionMateria(TblAsignacionMateria entity)
-		{
-			this.SendPropertyChanging();
-			entity.TblMateria = null;
-		}
-		
-		private void attach_TblAsistencia(TblAsistencia entity)
-		{
-			this.SendPropertyChanging();
-			entity.TblMateria = this;
-		}
-		
-		private void detach_TblAsistencia(TblAsistencia entity)
-		{
-			this.SendPropertyChanging();
-			entity.TblMateria = null;
-		}
-		
-		private void attach_TblNota(TblNota entity)
-		{
-			this.SendPropertyChanging();
-			entity.TblMateria = this;
-		}
-		
-		private void detach_TblNota(TblNota entity)
-		{
-			this.SendPropertyChanging();
-			entity.TblMateria = null;
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.TblNota")]
-	public partial class TblNota : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _id;
-		
-		private string _strTitulo;
-		
-		private string _strDescripcion;
-		
-		private System.Nullable<System.DateTime> _fecha;
-		
-		private System.Nullable<int> _idProfesor;
-		
-		private System.Nullable<int> _idMateria;
-		
-		private EntitySet<TblAlumnoMateria> _TblAlumnoMateria;
-		
-		private EntityRef<TblMateria> _TblMateria;
-		
-		private EntityRef<TblProfesor> _TblProfesor;
-		
-    #region Definiciones de métodos de extensibilidad
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnidChanging(int value);
-    partial void OnidChanged();
-    partial void OnstrTituloChanging(string value);
-    partial void OnstrTituloChanged();
-    partial void OnstrDescripcionChanging(string value);
-    partial void OnstrDescripcionChanged();
-    partial void OnfechaChanging(System.Nullable<System.DateTime> value);
-    partial void OnfechaChanged();
-    partial void OnidProfesorChanging(System.Nullable<int> value);
-    partial void OnidProfesorChanged();
-    partial void OnidMateriaChanging(System.Nullable<int> value);
-    partial void OnidMateriaChanged();
-    #endregion
-		
-		public TblNota()
-		{
-			this._TblAlumnoMateria = new EntitySet<TblAlumnoMateria>(new Action<TblAlumnoMateria>(this.attach_TblAlumnoMateria), new Action<TblAlumnoMateria>(this.detach_TblAlumnoMateria));
-			this._TblMateria = default(EntityRef<TblMateria>);
-			this._TblProfesor = default(EntityRef<TblProfesor>);
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int id
-		{
-			get
-			{
-				return this._id;
-			}
-			set
-			{
-				if ((this._id != value))
-				{
-					this.OnidChanging(value);
-					this.SendPropertyChanging();
-					this._id = value;
-					this.SendPropertyChanged("id");
-					this.OnidChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_strTitulo", DbType="VarChar(1000)")]
-		public string strTitulo
-		{
-			get
-			{
-				return this._strTitulo;
-			}
-			set
-			{
-				if ((this._strTitulo != value))
-				{
-					this.OnstrTituloChanging(value);
-					this.SendPropertyChanging();
-					this._strTitulo = value;
-					this.SendPropertyChanged("strTitulo");
-					this.OnstrTituloChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_strDescripcion", DbType="VarChar(1000)")]
-		public string strDescripcion
-		{
-			get
-			{
-				return this._strDescripcion;
-			}
-			set
-			{
-				if ((this._strDescripcion != value))
-				{
-					this.OnstrDescripcionChanging(value);
-					this.SendPropertyChanging();
-					this._strDescripcion = value;
-					this.SendPropertyChanged("strDescripcion");
-					this.OnstrDescripcionChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_fecha", DbType="DateTime")]
-		public System.Nullable<System.DateTime> fecha
-		{
-			get
-			{
-				return this._fecha;
-			}
-			set
-			{
-				if ((this._fecha != value))
-				{
-					this.OnfechaChanging(value);
-					this.SendPropertyChanging();
-					this._fecha = value;
-					this.SendPropertyChanged("fecha");
-					this.OnfechaChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_idProfesor", DbType="Int")]
-		public System.Nullable<int> idProfesor
-		{
-			get
-			{
-				return this._idProfesor;
-			}
-			set
-			{
-				if ((this._idProfesor != value))
-				{
-					if (this._TblProfesor.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnidProfesorChanging(value);
-					this.SendPropertyChanging();
-					this._idProfesor = value;
-					this.SendPropertyChanged("idProfesor");
-					this.OnidProfesorChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_idMateria", DbType="Int")]
-		public System.Nullable<int> idMateria
-		{
-			get
-			{
-				return this._idMateria;
-			}
-			set
-			{
-				if ((this._idMateria != value))
-				{
-					if (this._TblMateria.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnidMateriaChanging(value);
-					this.SendPropertyChanging();
-					this._idMateria = value;
-					this.SendPropertyChanged("idMateria");
-					this.OnidMateriaChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TblNota_TblAlumnoMateria", Storage="_TblAlumnoMateria", ThisKey="id", OtherKey="idNotas")]
-		public EntitySet<TblAlumnoMateria> TblAlumnoMateria
-		{
-			get
-			{
-				return this._TblAlumnoMateria;
-			}
-			set
-			{
-				this._TblAlumnoMateria.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TblMateria_TblNota", Storage="_TblMateria", ThisKey="idMateria", OtherKey="id", IsForeignKey=true)]
-		public TblMateria TblMateria
-		{
-			get
-			{
-				return this._TblMateria.Entity;
-			}
-			set
-			{
-				TblMateria previousValue = this._TblMateria.Entity;
-				if (((previousValue != value) 
-							|| (this._TblMateria.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._TblMateria.Entity = null;
-						previousValue.TblNota.Remove(this);
-					}
-					this._TblMateria.Entity = value;
-					if ((value != null))
-					{
-						value.TblNota.Add(this);
-						this._idMateria = value.id;
-					}
-					else
-					{
-						this._idMateria = default(Nullable<int>);
-					}
-					this.SendPropertyChanged("TblMateria");
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TblProfesor_TblNota", Storage="_TblProfesor", ThisKey="idProfesor", OtherKey="id", IsForeignKey=true)]
-		public TblProfesor TblProfesor
-		{
-			get
-			{
-				return this._TblProfesor.Entity;
-			}
-			set
-			{
-				TblProfesor previousValue = this._TblProfesor.Entity;
-				if (((previousValue != value) 
-							|| (this._TblProfesor.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._TblProfesor.Entity = null;
-						previousValue.TblNota.Remove(this);
-					}
-					this._TblProfesor.Entity = value;
-					if ((value != null))
-					{
-						value.TblNota.Add(this);
-						this._idProfesor = value.id;
-					}
-					else
-					{
-						this._idProfesor = default(Nullable<int>);
-					}
-					this.SendPropertyChanged("TblProfesor");
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-		
-		private void attach_TblAlumnoMateria(TblAlumnoMateria entity)
-		{
-			this.SendPropertyChanging();
-			entity.TblNota = this;
-		}
-		
-		private void detach_TblAlumnoMateria(TblAlumnoMateria entity)
-		{
-			this.SendPropertyChanging();
-			entity.TblNota = null;
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.TblProfesor")]
-	public partial class TblProfesor : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _id;
+		private int _idEmpleado;
 		
 		private string _strNombre;
 		
@@ -4553,100 +1173,85 @@ namespace Modelo
 		
 		private string _strApellidoM;
 		
-		private System.Nullable<int> _intEdad;
+		private string _strCorreo;
 		
 		private string _strSexo;
 		
-		private string _strCorreo;
+		private string _strEdad;
 		
-		private string _bitFoto;
+		private System.Nullable<int> _fkDireccion;
 		
-		private string _strCedula;
+		private System.Nullable<int> _fkTelefono;
 		
-		private string _strEspecialidad;
+		private System.Nullable<int> _fkLogin;
 		
-		private System.Nullable<int> _idDireccion;
+		private EntitySet<tblAlmacen> _tblAlmacen;
 		
-		private System.Nullable<int> _idTelefono;
+		private EntitySet<tblVenta> _tblVenta;
 		
-		private System.Nullable<int> _idUser;
+		private EntityRef<tblDireccion> _tblDireccion;
 		
-		private EntitySet<TblAsignacionMateria> _TblAsignacionMateria;
+		private EntityRef<tblTelefono> _tblTelefono;
 		
-		private EntitySet<TblNota> _TblNota;
-		
-		private EntitySet<TblQR> _TblQR;
-		
-		private EntityRef<TblDireccion> _TblDireccion;
-		
-		private EntityRef<TblTelefono> _TblTelefono;
-		
-		private EntityRef<TblUser> _TblUser;
+		private EntityRef<tblUsuario> _tblUsuario;
 		
     #region Definiciones de métodos de extensibilidad
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
     partial void OnCreated();
-    partial void OnidChanging(int value);
-    partial void OnidChanged();
+    partial void OnidEmpleadoChanging(int value);
+    partial void OnidEmpleadoChanged();
     partial void OnstrNombreChanging(string value);
     partial void OnstrNombreChanged();
     partial void OnstrApellidoPChanging(string value);
     partial void OnstrApellidoPChanged();
     partial void OnstrApellidoMChanging(string value);
     partial void OnstrApellidoMChanged();
-    partial void OnintEdadChanging(System.Nullable<int> value);
-    partial void OnintEdadChanged();
-    partial void OnstrSexoChanging(string value);
-    partial void OnstrSexoChanged();
     partial void OnstrCorreoChanging(string value);
     partial void OnstrCorreoChanged();
-    partial void OnbitFotoChanging(string value);
-    partial void OnbitFotoChanged();
-    partial void OnstrCedulaChanging(string value);
-    partial void OnstrCedulaChanged();
-    partial void OnstrEspecialidadChanging(string value);
-    partial void OnstrEspecialidadChanged();
-    partial void OnidDireccionChanging(System.Nullable<int> value);
-    partial void OnidDireccionChanged();
-    partial void OnidTelefonoChanging(System.Nullable<int> value);
-    partial void OnidTelefonoChanged();
-    partial void OnidUserChanging(System.Nullable<int> value);
-    partial void OnidUserChanged();
+    partial void OnstrSexoChanging(string value);
+    partial void OnstrSexoChanged();
+    partial void OnstrEdadChanging(string value);
+    partial void OnstrEdadChanged();
+    partial void OnfkDireccionChanging(System.Nullable<int> value);
+    partial void OnfkDireccionChanged();
+    partial void OnfkTelefonoChanging(System.Nullable<int> value);
+    partial void OnfkTelefonoChanged();
+    partial void OnfkLoginChanging(System.Nullable<int> value);
+    partial void OnfkLoginChanged();
     #endregion
 		
-		public TblProfesor()
+		public tblEmpleado()
 		{
-			this._TblAsignacionMateria = new EntitySet<TblAsignacionMateria>(new Action<TblAsignacionMateria>(this.attach_TblAsignacionMateria), new Action<TblAsignacionMateria>(this.detach_TblAsignacionMateria));
-			this._TblNota = new EntitySet<TblNota>(new Action<TblNota>(this.attach_TblNota), new Action<TblNota>(this.detach_TblNota));
-			this._TblQR = new EntitySet<TblQR>(new Action<TblQR>(this.attach_TblQR), new Action<TblQR>(this.detach_TblQR));
-			this._TblDireccion = default(EntityRef<TblDireccion>);
-			this._TblTelefono = default(EntityRef<TblTelefono>);
-			this._TblUser = default(EntityRef<TblUser>);
+			this._tblAlmacen = new EntitySet<tblAlmacen>(new Action<tblAlmacen>(this.attach_tblAlmacen), new Action<tblAlmacen>(this.detach_tblAlmacen));
+			this._tblVenta = new EntitySet<tblVenta>(new Action<tblVenta>(this.attach_tblVenta), new Action<tblVenta>(this.detach_tblVenta));
+			this._tblDireccion = default(EntityRef<tblDireccion>);
+			this._tblTelefono = default(EntityRef<tblTelefono>);
+			this._tblUsuario = default(EntityRef<tblUsuario>);
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int id
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_idEmpleado", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int idEmpleado
 		{
 			get
 			{
-				return this._id;
+				return this._idEmpleado;
 			}
 			set
 			{
-				if ((this._id != value))
+				if ((this._idEmpleado != value))
 				{
-					this.OnidChanging(value);
+					this.OnidEmpleadoChanging(value);
 					this.SendPropertyChanging();
-					this._id = value;
-					this.SendPropertyChanged("id");
-					this.OnidChanged();
+					this._idEmpleado = value;
+					this.SendPropertyChanged("idEmpleado");
+					this.OnidEmpleadoChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_strNombre", DbType="VarChar(200)")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_strNombre", DbType="VarChar(150) NOT NULL", CanBeNull=false)]
 		public string strNombre
 		{
 			get
@@ -4666,7 +1271,7 @@ namespace Modelo
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_strApellidoP", DbType="VarChar(200)")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_strApellidoP", DbType="VarChar(150) NOT NULL", CanBeNull=false)]
 		public string strApellidoP
 		{
 			get
@@ -4686,7 +1291,7 @@ namespace Modelo
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_strApellidoM", DbType="VarChar(200)")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_strApellidoM", DbType="VarChar(150) NOT NULL", CanBeNull=false)]
 		public string strApellidoM
 		{
 			get
@@ -4706,47 +1311,7 @@ namespace Modelo
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_intEdad", DbType="Int")]
-		public System.Nullable<int> intEdad
-		{
-			get
-			{
-				return this._intEdad;
-			}
-			set
-			{
-				if ((this._intEdad != value))
-				{
-					this.OnintEdadChanging(value);
-					this.SendPropertyChanging();
-					this._intEdad = value;
-					this.SendPropertyChanged("intEdad");
-					this.OnintEdadChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_strSexo", DbType="VarChar(100)")]
-		public string strSexo
-		{
-			get
-			{
-				return this._strSexo;
-			}
-			set
-			{
-				if ((this._strSexo != value))
-				{
-					this.OnstrSexoChanging(value);
-					this.SendPropertyChanging();
-					this._strSexo = value;
-					this.SendPropertyChanged("strSexo");
-					this.OnstrSexoChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_strCorreo", DbType="VarChar(200)")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_strCorreo", DbType="VarChar(150)")]
 		public string strCorreo
 		{
 			get
@@ -4766,92 +1331,780 @@ namespace Modelo
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_bitFoto", DbType="VarChar(MAX)")]
-		public string bitFoto
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_strSexo", DbType="VarChar(50)")]
+		public string strSexo
 		{
 			get
 			{
-				return this._bitFoto;
+				return this._strSexo;
 			}
 			set
 			{
-				if ((this._bitFoto != value))
+				if ((this._strSexo != value))
 				{
-					this.OnbitFotoChanging(value);
+					this.OnstrSexoChanging(value);
 					this.SendPropertyChanging();
-					this._bitFoto = value;
-					this.SendPropertyChanged("bitFoto");
-					this.OnbitFotoChanged();
+					this._strSexo = value;
+					this.SendPropertyChanged("strSexo");
+					this.OnstrSexoChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_strCedula", DbType="VarChar(200)")]
-		public string strCedula
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_strEdad", DbType="VarChar(50)")]
+		public string strEdad
 		{
 			get
 			{
-				return this._strCedula;
+				return this._strEdad;
 			}
 			set
 			{
-				if ((this._strCedula != value))
+				if ((this._strEdad != value))
 				{
-					this.OnstrCedulaChanging(value);
+					this.OnstrEdadChanging(value);
 					this.SendPropertyChanging();
-					this._strCedula = value;
-					this.SendPropertyChanged("strCedula");
-					this.OnstrCedulaChanged();
+					this._strEdad = value;
+					this.SendPropertyChanged("strEdad");
+					this.OnstrEdadChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_strEspecialidad", DbType="VarChar(200)")]
-		public string strEspecialidad
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_fkDireccion", DbType="Int")]
+		public System.Nullable<int> fkDireccion
 		{
 			get
 			{
-				return this._strEspecialidad;
+				return this._fkDireccion;
 			}
 			set
 			{
-				if ((this._strEspecialidad != value))
+				if ((this._fkDireccion != value))
 				{
-					this.OnstrEspecialidadChanging(value);
-					this.SendPropertyChanging();
-					this._strEspecialidad = value;
-					this.SendPropertyChanged("strEspecialidad");
-					this.OnstrEspecialidadChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_idDireccion", DbType="Int")]
-		public System.Nullable<int> idDireccion
-		{
-			get
-			{
-				return this._idDireccion;
-			}
-			set
-			{
-				if ((this._idDireccion != value))
-				{
-					if (this._TblDireccion.HasLoadedOrAssignedValue)
+					if (this._tblDireccion.HasLoadedOrAssignedValue)
 					{
 						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
 					}
-					this.OnidDireccionChanging(value);
+					this.OnfkDireccionChanging(value);
 					this.SendPropertyChanging();
-					this._idDireccion = value;
-					this.SendPropertyChanged("idDireccion");
-					this.OnidDireccionChanged();
+					this._fkDireccion = value;
+					this.SendPropertyChanged("fkDireccion");
+					this.OnfkDireccionChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_idTelefono", DbType="Int")]
-		public System.Nullable<int> idTelefono
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_fkTelefono", DbType="Int")]
+		public System.Nullable<int> fkTelefono
+		{
+			get
+			{
+				return this._fkTelefono;
+			}
+			set
+			{
+				if ((this._fkTelefono != value))
+				{
+					if (this._tblTelefono.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnfkTelefonoChanging(value);
+					this.SendPropertyChanging();
+					this._fkTelefono = value;
+					this.SendPropertyChanged("fkTelefono");
+					this.OnfkTelefonoChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_fkLogin", DbType="Int")]
+		public System.Nullable<int> fkLogin
+		{
+			get
+			{
+				return this._fkLogin;
+			}
+			set
+			{
+				if ((this._fkLogin != value))
+				{
+					if (this._tblUsuario.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnfkLoginChanging(value);
+					this.SendPropertyChanging();
+					this._fkLogin = value;
+					this.SendPropertyChanged("fkLogin");
+					this.OnfkLoginChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="tblEmpleado_tblAlmacen", Storage="_tblAlmacen", ThisKey="idEmpleado", OtherKey="fkEncargado")]
+		public EntitySet<tblAlmacen> tblAlmacen
+		{
+			get
+			{
+				return this._tblAlmacen;
+			}
+			set
+			{
+				this._tblAlmacen.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="tblEmpleado_tblVenta", Storage="_tblVenta", ThisKey="idEmpleado", OtherKey="fkEmpleado")]
+		public EntitySet<tblVenta> tblVenta
+		{
+			get
+			{
+				return this._tblVenta;
+			}
+			set
+			{
+				this._tblVenta.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="tblDireccion_tblEmpleado", Storage="_tblDireccion", ThisKey="fkDireccion", OtherKey="idDireccion", IsForeignKey=true)]
+		public tblDireccion tblDireccion
+		{
+			get
+			{
+				return this._tblDireccion.Entity;
+			}
+			set
+			{
+				tblDireccion previousValue = this._tblDireccion.Entity;
+				if (((previousValue != value) 
+							|| (this._tblDireccion.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._tblDireccion.Entity = null;
+						previousValue.tblEmpleado.Remove(this);
+					}
+					this._tblDireccion.Entity = value;
+					if ((value != null))
+					{
+						value.tblEmpleado.Add(this);
+						this._fkDireccion = value.idDireccion;
+					}
+					else
+					{
+						this._fkDireccion = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("tblDireccion");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="tblTelefono_tblEmpleado", Storage="_tblTelefono", ThisKey="fkTelefono", OtherKey="idTelefono", IsForeignKey=true)]
+		public tblTelefono tblTelefono
+		{
+			get
+			{
+				return this._tblTelefono.Entity;
+			}
+			set
+			{
+				tblTelefono previousValue = this._tblTelefono.Entity;
+				if (((previousValue != value) 
+							|| (this._tblTelefono.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._tblTelefono.Entity = null;
+						previousValue.tblEmpleado.Remove(this);
+					}
+					this._tblTelefono.Entity = value;
+					if ((value != null))
+					{
+						value.tblEmpleado.Add(this);
+						this._fkTelefono = value.idTelefono;
+					}
+					else
+					{
+						this._fkTelefono = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("tblTelefono");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="tblUsuario_tblEmpleado", Storage="_tblUsuario", ThisKey="fkLogin", OtherKey="idUsuario", IsForeignKey=true)]
+		public tblUsuario tblUsuario
+		{
+			get
+			{
+				return this._tblUsuario.Entity;
+			}
+			set
+			{
+				tblUsuario previousValue = this._tblUsuario.Entity;
+				if (((previousValue != value) 
+							|| (this._tblUsuario.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._tblUsuario.Entity = null;
+						previousValue.tblEmpleado.Remove(this);
+					}
+					this._tblUsuario.Entity = value;
+					if ((value != null))
+					{
+						value.tblEmpleado.Add(this);
+						this._fkLogin = value.idUsuario;
+					}
+					else
+					{
+						this._fkLogin = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("tblUsuario");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_tblAlmacen(tblAlmacen entity)
+		{
+			this.SendPropertyChanging();
+			entity.tblEmpleado = this;
+		}
+		
+		private void detach_tblAlmacen(tblAlmacen entity)
+		{
+			this.SendPropertyChanging();
+			entity.tblEmpleado = null;
+		}
+		
+		private void attach_tblVenta(tblVenta entity)
+		{
+			this.SendPropertyChanging();
+			entity.tblEmpleado = this;
+		}
+		
+		private void detach_tblVenta(tblVenta entity)
+		{
+			this.SendPropertyChanging();
+			entity.tblEmpleado = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.tblEstado")]
+	public partial class tblEstado : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _idEstado;
+		
+		private string _strEstado;
+		
+		private EntitySet<tblEstado_Municipio> _tblEstado_Municipio;
+		
+    #region Definiciones de métodos de extensibilidad
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnidEstadoChanging(int value);
+    partial void OnidEstadoChanged();
+    partial void OnstrEstadoChanging(string value);
+    partial void OnstrEstadoChanged();
+    #endregion
+		
+		public tblEstado()
+		{
+			this._tblEstado_Municipio = new EntitySet<tblEstado_Municipio>(new Action<tblEstado_Municipio>(this.attach_tblEstado_Municipio), new Action<tblEstado_Municipio>(this.detach_tblEstado_Municipio));
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_idEstado", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int idEstado
+		{
+			get
+			{
+				return this._idEstado;
+			}
+			set
+			{
+				if ((this._idEstado != value))
+				{
+					this.OnidEstadoChanging(value);
+					this.SendPropertyChanging();
+					this._idEstado = value;
+					this.SendPropertyChanged("idEstado");
+					this.OnidEstadoChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_strEstado", DbType="VarChar(100) NOT NULL", CanBeNull=false)]
+		public string strEstado
+		{
+			get
+			{
+				return this._strEstado;
+			}
+			set
+			{
+				if ((this._strEstado != value))
+				{
+					this.OnstrEstadoChanging(value);
+					this.SendPropertyChanging();
+					this._strEstado = value;
+					this.SendPropertyChanged("strEstado");
+					this.OnstrEstadoChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="tblEstado_tblEstado_Municipio", Storage="_tblEstado_Municipio", ThisKey="idEstado", OtherKey="fkEstado")]
+		public EntitySet<tblEstado_Municipio> tblEstado_Municipio
+		{
+			get
+			{
+				return this._tblEstado_Municipio;
+			}
+			set
+			{
+				this._tblEstado_Municipio.Assign(value);
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_tblEstado_Municipio(tblEstado_Municipio entity)
+		{
+			this.SendPropertyChanging();
+			entity.tblEstado = this;
+		}
+		
+		private void detach_tblEstado_Municipio(tblEstado_Municipio entity)
+		{
+			this.SendPropertyChanging();
+			entity.tblEstado = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.tblEstado_Municipio")]
+	public partial class tblEstado_Municipio : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _idEstado_Municipio;
+		
+		private int _fkEstado;
+		
+		private int _fkMunicipio;
+		
+		private EntitySet<tblDireccion> _tblDireccion;
+		
+		private EntityRef<tblEstado> _tblEstado;
+		
+		private EntityRef<TblMunicipio> _TblMunicipio;
+		
+    #region Definiciones de métodos de extensibilidad
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnidEstado_MunicipioChanging(int value);
+    partial void OnidEstado_MunicipioChanged();
+    partial void OnfkEstadoChanging(int value);
+    partial void OnfkEstadoChanged();
+    partial void OnfkMunicipioChanging(int value);
+    partial void OnfkMunicipioChanged();
+    #endregion
+		
+		public tblEstado_Municipio()
+		{
+			this._tblDireccion = new EntitySet<tblDireccion>(new Action<tblDireccion>(this.attach_tblDireccion), new Action<tblDireccion>(this.detach_tblDireccion));
+			this._tblEstado = default(EntityRef<tblEstado>);
+			this._TblMunicipio = default(EntityRef<TblMunicipio>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_idEstado_Municipio", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int idEstado_Municipio
+		{
+			get
+			{
+				return this._idEstado_Municipio;
+			}
+			set
+			{
+				if ((this._idEstado_Municipio != value))
+				{
+					this.OnidEstado_MunicipioChanging(value);
+					this.SendPropertyChanging();
+					this._idEstado_Municipio = value;
+					this.SendPropertyChanged("idEstado_Municipio");
+					this.OnidEstado_MunicipioChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_fkEstado", DbType="Int NOT NULL")]
+		public int fkEstado
+		{
+			get
+			{
+				return this._fkEstado;
+			}
+			set
+			{
+				if ((this._fkEstado != value))
+				{
+					if (this._tblEstado.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnfkEstadoChanging(value);
+					this.SendPropertyChanging();
+					this._fkEstado = value;
+					this.SendPropertyChanged("fkEstado");
+					this.OnfkEstadoChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_fkMunicipio", DbType="Int NOT NULL")]
+		public int fkMunicipio
+		{
+			get
+			{
+				return this._fkMunicipio;
+			}
+			set
+			{
+				if ((this._fkMunicipio != value))
+				{
+					if (this._TblMunicipio.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnfkMunicipioChanging(value);
+					this.SendPropertyChanging();
+					this._fkMunicipio = value;
+					this.SendPropertyChanged("fkMunicipio");
+					this.OnfkMunicipioChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="tblEstado_Municipio_tblDireccion", Storage="_tblDireccion", ThisKey="idEstado_Municipio", OtherKey="fkEstadoMunicipio")]
+		public EntitySet<tblDireccion> tblDireccion
+		{
+			get
+			{
+				return this._tblDireccion;
+			}
+			set
+			{
+				this._tblDireccion.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="tblEstado_tblEstado_Municipio", Storage="_tblEstado", ThisKey="fkEstado", OtherKey="idEstado", IsForeignKey=true)]
+		public tblEstado tblEstado
+		{
+			get
+			{
+				return this._tblEstado.Entity;
+			}
+			set
+			{
+				tblEstado previousValue = this._tblEstado.Entity;
+				if (((previousValue != value) 
+							|| (this._tblEstado.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._tblEstado.Entity = null;
+						previousValue.tblEstado_Municipio.Remove(this);
+					}
+					this._tblEstado.Entity = value;
+					if ((value != null))
+					{
+						value.tblEstado_Municipio.Add(this);
+						this._fkEstado = value.idEstado;
+					}
+					else
+					{
+						this._fkEstado = default(int);
+					}
+					this.SendPropertyChanged("tblEstado");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TblMunicipio_tblEstado_Municipio", Storage="_TblMunicipio", ThisKey="fkMunicipio", OtherKey="idMunicipio", IsForeignKey=true)]
+		public TblMunicipio TblMunicipio
+		{
+			get
+			{
+				return this._TblMunicipio.Entity;
+			}
+			set
+			{
+				TblMunicipio previousValue = this._TblMunicipio.Entity;
+				if (((previousValue != value) 
+							|| (this._TblMunicipio.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._TblMunicipio.Entity = null;
+						previousValue.tblEstado_Municipio.Remove(this);
+					}
+					this._TblMunicipio.Entity = value;
+					if ((value != null))
+					{
+						value.tblEstado_Municipio.Add(this);
+						this._fkMunicipio = value.idMunicipio;
+					}
+					else
+					{
+						this._fkMunicipio = default(int);
+					}
+					this.SendPropertyChanged("TblMunicipio");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_tblDireccion(tblDireccion entity)
+		{
+			this.SendPropertyChanging();
+			entity.tblEstado_Municipio = this;
+		}
+		
+		private void detach_tblDireccion(tblDireccion entity)
+		{
+			this.SendPropertyChanging();
+			entity.tblEstado_Municipio = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.TblMunicipio")]
+	public partial class TblMunicipio : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _idMunicipio;
+		
+		private string _strMunicipio;
+		
+		private EntitySet<tblEstado_Municipio> _tblEstado_Municipio;
+		
+    #region Definiciones de métodos de extensibilidad
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnidMunicipioChanging(int value);
+    partial void OnidMunicipioChanged();
+    partial void OnstrMunicipioChanging(string value);
+    partial void OnstrMunicipioChanged();
+    #endregion
+		
+		public TblMunicipio()
+		{
+			this._tblEstado_Municipio = new EntitySet<tblEstado_Municipio>(new Action<tblEstado_Municipio>(this.attach_tblEstado_Municipio), new Action<tblEstado_Municipio>(this.detach_tblEstado_Municipio));
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_idMunicipio", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int idMunicipio
+		{
+			get
+			{
+				return this._idMunicipio;
+			}
+			set
+			{
+				if ((this._idMunicipio != value))
+				{
+					this.OnidMunicipioChanging(value);
+					this.SendPropertyChanging();
+					this._idMunicipio = value;
+					this.SendPropertyChanged("idMunicipio");
+					this.OnidMunicipioChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_strMunicipio", DbType="VarChar(100) NOT NULL", CanBeNull=false)]
+		public string strMunicipio
+		{
+			get
+			{
+				return this._strMunicipio;
+			}
+			set
+			{
+				if ((this._strMunicipio != value))
+				{
+					this.OnstrMunicipioChanging(value);
+					this.SendPropertyChanging();
+					this._strMunicipio = value;
+					this.SendPropertyChanged("strMunicipio");
+					this.OnstrMunicipioChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TblMunicipio_tblEstado_Municipio", Storage="_tblEstado_Municipio", ThisKey="idMunicipio", OtherKey="fkMunicipio")]
+		public EntitySet<tblEstado_Municipio> tblEstado_Municipio
+		{
+			get
+			{
+				return this._tblEstado_Municipio;
+			}
+			set
+			{
+				this._tblEstado_Municipio.Assign(value);
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_tblEstado_Municipio(tblEstado_Municipio entity)
+		{
+			this.SendPropertyChanging();
+			entity.TblMunicipio = this;
+		}
+		
+		private void detach_tblEstado_Municipio(tblEstado_Municipio entity)
+		{
+			this.SendPropertyChanging();
+			entity.TblMunicipio = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.tblTelefono")]
+	public partial class tblTelefono : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _idTelefono;
+		
+		private string _strCelular;
+		
+		private string _strTelCasa;
+		
+		private string _strOtro;
+		
+		private EntitySet<tblCliente> _tblCliente;
+		
+		private EntitySet<tblEmpleado> _tblEmpleado;
+		
+    #region Definiciones de métodos de extensibilidad
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnidTelefonoChanging(int value);
+    partial void OnidTelefonoChanged();
+    partial void OnstrCelularChanging(string value);
+    partial void OnstrCelularChanged();
+    partial void OnstrTelCasaChanging(string value);
+    partial void OnstrTelCasaChanged();
+    partial void OnstrOtroChanging(string value);
+    partial void OnstrOtroChanged();
+    #endregion
+		
+		public tblTelefono()
+		{
+			this._tblCliente = new EntitySet<tblCliente>(new Action<tblCliente>(this.attach_tblCliente), new Action<tblCliente>(this.detach_tblCliente));
+			this._tblEmpleado = new EntitySet<tblEmpleado>(new Action<tblEmpleado>(this.attach_tblEmpleado), new Action<tblEmpleado>(this.detach_tblEmpleado));
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_idTelefono", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int idTelefono
 		{
 			get
 			{
@@ -4861,10 +2114,6 @@ namespace Modelo
 			{
 				if ((this._idTelefono != value))
 				{
-					if (this._TblTelefono.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
 					this.OnidTelefonoChanging(value);
 					this.SendPropertyChanging();
 					this._idTelefono = value;
@@ -4874,168 +2123,89 @@ namespace Modelo
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_idUser", DbType="Int")]
-		public System.Nullable<int> idUser
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_strCelular", DbType="VarChar(50)")]
+		public string strCelular
 		{
 			get
 			{
-				return this._idUser;
+				return this._strCelular;
 			}
 			set
 			{
-				if ((this._idUser != value))
+				if ((this._strCelular != value))
 				{
-					if (this._TblUser.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnidUserChanging(value);
+					this.OnstrCelularChanging(value);
 					this.SendPropertyChanging();
-					this._idUser = value;
-					this.SendPropertyChanged("idUser");
-					this.OnidUserChanged();
+					this._strCelular = value;
+					this.SendPropertyChanged("strCelular");
+					this.OnstrCelularChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TblProfesor_TblAsignacionMateria", Storage="_TblAsignacionMateria", ThisKey="id", OtherKey="idProfesor")]
-		public EntitySet<TblAsignacionMateria> TblAsignacionMateria
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_strTelCasa", DbType="VarChar(50)")]
+		public string strTelCasa
 		{
 			get
 			{
-				return this._TblAsignacionMateria;
+				return this._strTelCasa;
 			}
 			set
 			{
-				this._TblAsignacionMateria.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TblProfesor_TblNota", Storage="_TblNota", ThisKey="id", OtherKey="idProfesor")]
-		public EntitySet<TblNota> TblNota
-		{
-			get
-			{
-				return this._TblNota;
-			}
-			set
-			{
-				this._TblNota.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TblProfesor_TblQR", Storage="_TblQR", ThisKey="id", OtherKey="idProfesor")]
-		public EntitySet<TblQR> TblQR
-		{
-			get
-			{
-				return this._TblQR;
-			}
-			set
-			{
-				this._TblQR.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TblDireccion_TblProfesor", Storage="_TblDireccion", ThisKey="idDireccion", OtherKey="id", IsForeignKey=true)]
-		public TblDireccion TblDireccion
-		{
-			get
-			{
-				return this._TblDireccion.Entity;
-			}
-			set
-			{
-				TblDireccion previousValue = this._TblDireccion.Entity;
-				if (((previousValue != value) 
-							|| (this._TblDireccion.HasLoadedOrAssignedValue == false)))
+				if ((this._strTelCasa != value))
 				{
+					this.OnstrTelCasaChanging(value);
 					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._TblDireccion.Entity = null;
-						previousValue.TblProfesor.Remove(this);
-					}
-					this._TblDireccion.Entity = value;
-					if ((value != null))
-					{
-						value.TblProfesor.Add(this);
-						this._idDireccion = value.id;
-					}
-					else
-					{
-						this._idDireccion = default(Nullable<int>);
-					}
-					this.SendPropertyChanged("TblDireccion");
+					this._strTelCasa = value;
+					this.SendPropertyChanged("strTelCasa");
+					this.OnstrTelCasaChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TblTelefono_TblProfesor", Storage="_TblTelefono", ThisKey="idTelefono", OtherKey="id", IsForeignKey=true)]
-		public TblTelefono TblTelefono
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_strOtro", DbType="VarChar(50)")]
+		public string strOtro
 		{
 			get
 			{
-				return this._TblTelefono.Entity;
+				return this._strOtro;
 			}
 			set
 			{
-				TblTelefono previousValue = this._TblTelefono.Entity;
-				if (((previousValue != value) 
-							|| (this._TblTelefono.HasLoadedOrAssignedValue == false)))
+				if ((this._strOtro != value))
 				{
+					this.OnstrOtroChanging(value);
 					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._TblTelefono.Entity = null;
-						previousValue.TblProfesor.Remove(this);
-					}
-					this._TblTelefono.Entity = value;
-					if ((value != null))
-					{
-						value.TblProfesor.Add(this);
-						this._idTelefono = value.id;
-					}
-					else
-					{
-						this._idTelefono = default(Nullable<int>);
-					}
-					this.SendPropertyChanged("TblTelefono");
+					this._strOtro = value;
+					this.SendPropertyChanged("strOtro");
+					this.OnstrOtroChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TblUser_TblProfesor", Storage="_TblUser", ThisKey="idUser", OtherKey="id", IsForeignKey=true)]
-		public TblUser TblUser
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="tblTelefono_tblCliente", Storage="_tblCliente", ThisKey="idTelefono", OtherKey="fkTelefono")]
+		public EntitySet<tblCliente> tblCliente
 		{
 			get
 			{
-				return this._TblUser.Entity;
+				return this._tblCliente;
 			}
 			set
 			{
-				TblUser previousValue = this._TblUser.Entity;
-				if (((previousValue != value) 
-							|| (this._TblUser.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._TblUser.Entity = null;
-						previousValue.TblProfesor.Remove(this);
-					}
-					this._TblUser.Entity = value;
-					if ((value != null))
-					{
-						value.TblProfesor.Add(this);
-						this._idUser = value.id;
-					}
-					else
-					{
-						this._idUser = default(Nullable<int>);
-					}
-					this.SendPropertyChanged("TblUser");
-				}
+				this._tblCliente.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="tblTelefono_tblEmpleado", Storage="_tblEmpleado", ThisKey="idTelefono", OtherKey="fkTelefono")]
+		public EntitySet<tblEmpleado> tblEmpleado
+		{
+			get
+			{
+				return this._tblEmpleado;
+			}
+			set
+			{
+				this._tblEmpleado.Assign(value);
 			}
 		}
 		
@@ -5059,453 +2229,157 @@ namespace Modelo
 			}
 		}
 		
-		private void attach_TblAsignacionMateria(TblAsignacionMateria entity)
+		private void attach_tblCliente(tblCliente entity)
 		{
 			this.SendPropertyChanging();
-			entity.TblProfesor = this;
+			entity.tblTelefono = this;
 		}
 		
-		private void detach_TblAsignacionMateria(TblAsignacionMateria entity)
+		private void detach_tblCliente(tblCliente entity)
 		{
 			this.SendPropertyChanging();
-			entity.TblProfesor = null;
+			entity.tblTelefono = null;
 		}
 		
-		private void attach_TblNota(TblNota entity)
+		private void attach_tblEmpleado(tblEmpleado entity)
 		{
 			this.SendPropertyChanging();
-			entity.TblProfesor = this;
+			entity.tblTelefono = this;
 		}
 		
-		private void detach_TblNota(TblNota entity)
+		private void detach_tblEmpleado(tblEmpleado entity)
 		{
 			this.SendPropertyChanging();
-			entity.TblProfesor = null;
-		}
-		
-		private void attach_TblQR(TblQR entity)
-		{
-			this.SendPropertyChanging();
-			entity.TblProfesor = this;
-		}
-		
-		private void detach_TblQR(TblQR entity)
-		{
-			this.SendPropertyChanging();
-			entity.TblProfesor = null;
+			entity.tblTelefono = null;
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.TblQR")]
-	public partial class TblQR : INotifyPropertyChanging, INotifyPropertyChanged
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.tblTotalVenta")]
+	public partial class tblTotalVenta : INotifyPropertyChanging, INotifyPropertyChanged
 	{
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 		
-		private int _id;
+		private int _idTotalVenta;
 		
-		private string _qr;
+		private System.Nullable<decimal> _dblTotal;
 		
-		private System.Nullable<System.DateTime> _fecha;
+		private System.Nullable<int> _fkVenta;
 		
-		private System.Nullable<int> _idProfesor;
-		
-		private System.Nullable<int> _idGrupo;
-		
-		private System.Nullable<int> _idAsignacion;
-		
-		private System.Nullable<int> _idCarrera;
-		
-		private System.Nullable<int> _idParcial;
-		
-		private EntityRef<TblAsignacionMateria> _TblAsignacionMateria;
-		
-		private EntityRef<TblCarrera> _TblCarrera;
-		
-		private EntityRef<TblGrupo> _TblGrupo;
-		
-		private EntityRef<TblCatalogoParcial> _TblCatalogoParcial;
-		
-		private EntityRef<TblProfesor> _TblProfesor;
+		private EntityRef<tblVenta> _tblVenta;
 		
     #region Definiciones de métodos de extensibilidad
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
     partial void OnCreated();
-    partial void OnidChanging(int value);
-    partial void OnidChanged();
-    partial void OnqrChanging(string value);
-    partial void OnqrChanged();
-    partial void OnfechaChanging(System.Nullable<System.DateTime> value);
-    partial void OnfechaChanged();
-    partial void OnidProfesorChanging(System.Nullable<int> value);
-    partial void OnidProfesorChanged();
-    partial void OnidGrupoChanging(System.Nullable<int> value);
-    partial void OnidGrupoChanged();
-    partial void OnidAsignacionChanging(System.Nullable<int> value);
-    partial void OnidAsignacionChanged();
-    partial void OnidCarreraChanging(System.Nullable<int> value);
-    partial void OnidCarreraChanged();
-    partial void OnidParcialChanging(System.Nullable<int> value);
-    partial void OnidParcialChanged();
+    partial void OnidTotalVentaChanging(int value);
+    partial void OnidTotalVentaChanged();
+    partial void OndblTotalChanging(System.Nullable<decimal> value);
+    partial void OndblTotalChanged();
+    partial void OnfkVentaChanging(System.Nullable<int> value);
+    partial void OnfkVentaChanged();
     #endregion
 		
-		public TblQR()
+		public tblTotalVenta()
 		{
-			this._TblAsignacionMateria = default(EntityRef<TblAsignacionMateria>);
-			this._TblCarrera = default(EntityRef<TblCarrera>);
-			this._TblGrupo = default(EntityRef<TblGrupo>);
-			this._TblCatalogoParcial = default(EntityRef<TblCatalogoParcial>);
-			this._TblProfesor = default(EntityRef<TblProfesor>);
+			this._tblVenta = default(EntityRef<tblVenta>);
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int id
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_idTotalVenta", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int idTotalVenta
 		{
 			get
 			{
-				return this._id;
+				return this._idTotalVenta;
 			}
 			set
 			{
-				if ((this._id != value))
+				if ((this._idTotalVenta != value))
 				{
-					this.OnidChanging(value);
+					this.OnidTotalVentaChanging(value);
 					this.SendPropertyChanging();
-					this._id = value;
-					this.SendPropertyChanged("id");
-					this.OnidChanged();
+					this._idTotalVenta = value;
+					this.SendPropertyChanged("idTotalVenta");
+					this.OnidTotalVentaChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_qr", DbType="VarChar(1000)")]
-		public string qr
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_dblTotal", DbType="Decimal(19,4)")]
+		public System.Nullable<decimal> dblTotal
 		{
 			get
 			{
-				return this._qr;
+				return this._dblTotal;
 			}
 			set
 			{
-				if ((this._qr != value))
+				if ((this._dblTotal != value))
 				{
-					this.OnqrChanging(value);
+					this.OndblTotalChanging(value);
 					this.SendPropertyChanging();
-					this._qr = value;
-					this.SendPropertyChanged("qr");
-					this.OnqrChanged();
+					this._dblTotal = value;
+					this.SendPropertyChanged("dblTotal");
+					this.OndblTotalChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_fecha", DbType="DateTime")]
-		public System.Nullable<System.DateTime> fecha
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_fkVenta", DbType="Int")]
+		public System.Nullable<int> fkVenta
 		{
 			get
 			{
-				return this._fecha;
+				return this._fkVenta;
 			}
 			set
 			{
-				if ((this._fecha != value))
+				if ((this._fkVenta != value))
 				{
-					this.OnfechaChanging(value);
-					this.SendPropertyChanging();
-					this._fecha = value;
-					this.SendPropertyChanged("fecha");
-					this.OnfechaChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_idProfesor", DbType="Int")]
-		public System.Nullable<int> idProfesor
-		{
-			get
-			{
-				return this._idProfesor;
-			}
-			set
-			{
-				if ((this._idProfesor != value))
-				{
-					if (this._TblProfesor.HasLoadedOrAssignedValue)
+					if (this._tblVenta.HasLoadedOrAssignedValue)
 					{
 						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
 					}
-					this.OnidProfesorChanging(value);
+					this.OnfkVentaChanging(value);
 					this.SendPropertyChanging();
-					this._idProfesor = value;
-					this.SendPropertyChanged("idProfesor");
-					this.OnidProfesorChanged();
+					this._fkVenta = value;
+					this.SendPropertyChanged("fkVenta");
+					this.OnfkVentaChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_idGrupo", DbType="Int")]
-		public System.Nullable<int> idGrupo
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="tblVenta_tblTotalVenta", Storage="_tblVenta", ThisKey="fkVenta", OtherKey="idVenta", IsForeignKey=true)]
+		public tblVenta tblVenta
 		{
 			get
 			{
-				return this._idGrupo;
+				return this._tblVenta.Entity;
 			}
 			set
 			{
-				if ((this._idGrupo != value))
-				{
-					if (this._TblGrupo.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnidGrupoChanging(value);
-					this.SendPropertyChanging();
-					this._idGrupo = value;
-					this.SendPropertyChanged("idGrupo");
-					this.OnidGrupoChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_idAsignacion", DbType="Int")]
-		public System.Nullable<int> idAsignacion
-		{
-			get
-			{
-				return this._idAsignacion;
-			}
-			set
-			{
-				if ((this._idAsignacion != value))
-				{
-					if (this._TblAsignacionMateria.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnidAsignacionChanging(value);
-					this.SendPropertyChanging();
-					this._idAsignacion = value;
-					this.SendPropertyChanged("idAsignacion");
-					this.OnidAsignacionChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_idCarrera", DbType="Int")]
-		public System.Nullable<int> idCarrera
-		{
-			get
-			{
-				return this._idCarrera;
-			}
-			set
-			{
-				if ((this._idCarrera != value))
-				{
-					if (this._TblCarrera.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnidCarreraChanging(value);
-					this.SendPropertyChanging();
-					this._idCarrera = value;
-					this.SendPropertyChanged("idCarrera");
-					this.OnidCarreraChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_idParcial", DbType="Int")]
-		public System.Nullable<int> idParcial
-		{
-			get
-			{
-				return this._idParcial;
-			}
-			set
-			{
-				if ((this._idParcial != value))
-				{
-					if (this._TblCatalogoParcial.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnidParcialChanging(value);
-					this.SendPropertyChanging();
-					this._idParcial = value;
-					this.SendPropertyChanged("idParcial");
-					this.OnidParcialChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TblAsignacionMateria_TblQR", Storage="_TblAsignacionMateria", ThisKey="idAsignacion", OtherKey="id", IsForeignKey=true)]
-		public TblAsignacionMateria TblAsignacionMateria
-		{
-			get
-			{
-				return this._TblAsignacionMateria.Entity;
-			}
-			set
-			{
-				TblAsignacionMateria previousValue = this._TblAsignacionMateria.Entity;
+				tblVenta previousValue = this._tblVenta.Entity;
 				if (((previousValue != value) 
-							|| (this._TblAsignacionMateria.HasLoadedOrAssignedValue == false)))
+							|| (this._tblVenta.HasLoadedOrAssignedValue == false)))
 				{
 					this.SendPropertyChanging();
 					if ((previousValue != null))
 					{
-						this._TblAsignacionMateria.Entity = null;
-						previousValue.TblQR.Remove(this);
+						this._tblVenta.Entity = null;
+						previousValue.tblTotalVenta.Remove(this);
 					}
-					this._TblAsignacionMateria.Entity = value;
+					this._tblVenta.Entity = value;
 					if ((value != null))
 					{
-						value.TblQR.Add(this);
-						this._idAsignacion = value.id;
+						value.tblTotalVenta.Add(this);
+						this._fkVenta = value.idVenta;
 					}
 					else
 					{
-						this._idAsignacion = default(Nullable<int>);
+						this._fkVenta = default(Nullable<int>);
 					}
-					this.SendPropertyChanged("TblAsignacionMateria");
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TblCarrera_TblQR", Storage="_TblCarrera", ThisKey="idCarrera", OtherKey="id", IsForeignKey=true)]
-		public TblCarrera TblCarrera
-		{
-			get
-			{
-				return this._TblCarrera.Entity;
-			}
-			set
-			{
-				TblCarrera previousValue = this._TblCarrera.Entity;
-				if (((previousValue != value) 
-							|| (this._TblCarrera.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._TblCarrera.Entity = null;
-						previousValue.TblQR.Remove(this);
-					}
-					this._TblCarrera.Entity = value;
-					if ((value != null))
-					{
-						value.TblQR.Add(this);
-						this._idCarrera = value.id;
-					}
-					else
-					{
-						this._idCarrera = default(Nullable<int>);
-					}
-					this.SendPropertyChanged("TblCarrera");
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TblGrupo_TblQR", Storage="_TblGrupo", ThisKey="idGrupo", OtherKey="id", IsForeignKey=true)]
-		public TblGrupo TblGrupo
-		{
-			get
-			{
-				return this._TblGrupo.Entity;
-			}
-			set
-			{
-				TblGrupo previousValue = this._TblGrupo.Entity;
-				if (((previousValue != value) 
-							|| (this._TblGrupo.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._TblGrupo.Entity = null;
-						previousValue.TblQR.Remove(this);
-					}
-					this._TblGrupo.Entity = value;
-					if ((value != null))
-					{
-						value.TblQR.Add(this);
-						this._idGrupo = value.id;
-					}
-					else
-					{
-						this._idGrupo = default(Nullable<int>);
-					}
-					this.SendPropertyChanged("TblGrupo");
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TblCatalogoParcial_TblQR", Storage="_TblCatalogoParcial", ThisKey="idParcial", OtherKey="id", IsForeignKey=true)]
-		public TblCatalogoParcial TblCatalogoParcial
-		{
-			get
-			{
-				return this._TblCatalogoParcial.Entity;
-			}
-			set
-			{
-				TblCatalogoParcial previousValue = this._TblCatalogoParcial.Entity;
-				if (((previousValue != value) 
-							|| (this._TblCatalogoParcial.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._TblCatalogoParcial.Entity = null;
-						previousValue.TblQR.Remove(this);
-					}
-					this._TblCatalogoParcial.Entity = value;
-					if ((value != null))
-					{
-						value.TblQR.Add(this);
-						this._idParcial = value.id;
-					}
-					else
-					{
-						this._idParcial = default(Nullable<int>);
-					}
-					this.SendPropertyChanged("TblCatalogoParcial");
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TblProfesor_TblQR", Storage="_TblProfesor", ThisKey="idProfesor", OtherKey="id", IsForeignKey=true)]
-		public TblProfesor TblProfesor
-		{
-			get
-			{
-				return this._TblProfesor.Entity;
-			}
-			set
-			{
-				TblProfesor previousValue = this._TblProfesor.Entity;
-				if (((previousValue != value) 
-							|| (this._TblProfesor.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._TblProfesor.Entity = null;
-						previousValue.TblQR.Remove(this);
-					}
-					this._TblProfesor.Entity = value;
-					if ((value != null))
-					{
-						value.TblQR.Add(this);
-						this._idProfesor = value.id;
-					}
-					else
-					{
-						this._idProfesor = default(Nullable<int>);
-					}
-					this.SendPropertyChanged("TblProfesor");
+					this.SendPropertyChanged("tblVenta");
 				}
 			}
 		}
@@ -5531,148 +2405,148 @@ namespace Modelo
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.TblTelefono")]
-	public partial class TblTelefono : INotifyPropertyChanging, INotifyPropertyChanged
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.tblUsuario")]
+	public partial class tblUsuario : INotifyPropertyChanging, INotifyPropertyChanged
 	{
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 		
-		private int _id;
+		private int _idUsuario;
 		
-		private string _strcelular;
+		private string _strUsuario;
 		
-		private string _strtelCasa;
+		private string _strPassword;
 		
-		private string _strotro;
+		private string _strTipousuario;
 		
-		private EntitySet<TblAlumno> _TblAlumno;
+		private EntitySet<tblCliente> _tblCliente;
 		
-		private EntitySet<TblProfesor> _TblProfesor;
+		private EntitySet<tblEmpleado> _tblEmpleado;
 		
     #region Definiciones de métodos de extensibilidad
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
     partial void OnCreated();
-    partial void OnidChanging(int value);
-    partial void OnidChanged();
-    partial void OnstrcelularChanging(string value);
-    partial void OnstrcelularChanged();
-    partial void OnstrtelCasaChanging(string value);
-    partial void OnstrtelCasaChanged();
-    partial void OnstrotroChanging(string value);
-    partial void OnstrotroChanged();
+    partial void OnidUsuarioChanging(int value);
+    partial void OnidUsuarioChanged();
+    partial void OnstrUsuarioChanging(string value);
+    partial void OnstrUsuarioChanged();
+    partial void OnstrPasswordChanging(string value);
+    partial void OnstrPasswordChanged();
+    partial void OnstrTipousuarioChanging(string value);
+    partial void OnstrTipousuarioChanged();
     #endregion
 		
-		public TblTelefono()
+		public tblUsuario()
 		{
-			this._TblAlumno = new EntitySet<TblAlumno>(new Action<TblAlumno>(this.attach_TblAlumno), new Action<TblAlumno>(this.detach_TblAlumno));
-			this._TblProfesor = new EntitySet<TblProfesor>(new Action<TblProfesor>(this.attach_TblProfesor), new Action<TblProfesor>(this.detach_TblProfesor));
+			this._tblCliente = new EntitySet<tblCliente>(new Action<tblCliente>(this.attach_tblCliente), new Action<tblCliente>(this.detach_tblCliente));
+			this._tblEmpleado = new EntitySet<tblEmpleado>(new Action<tblEmpleado>(this.attach_tblEmpleado), new Action<tblEmpleado>(this.detach_tblEmpleado));
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int id
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_idUsuario", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int idUsuario
 		{
 			get
 			{
-				return this._id;
+				return this._idUsuario;
 			}
 			set
 			{
-				if ((this._id != value))
+				if ((this._idUsuario != value))
 				{
-					this.OnidChanging(value);
+					this.OnidUsuarioChanging(value);
 					this.SendPropertyChanging();
-					this._id = value;
-					this.SendPropertyChanged("id");
-					this.OnidChanged();
+					this._idUsuario = value;
+					this.SendPropertyChanged("idUsuario");
+					this.OnidUsuarioChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_strcelular", DbType="VarChar(50)")]
-		public string strcelular
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_strUsuario", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string strUsuario
 		{
 			get
 			{
-				return this._strcelular;
+				return this._strUsuario;
 			}
 			set
 			{
-				if ((this._strcelular != value))
+				if ((this._strUsuario != value))
 				{
-					this.OnstrcelularChanging(value);
+					this.OnstrUsuarioChanging(value);
 					this.SendPropertyChanging();
-					this._strcelular = value;
-					this.SendPropertyChanged("strcelular");
-					this.OnstrcelularChanged();
+					this._strUsuario = value;
+					this.SendPropertyChanged("strUsuario");
+					this.OnstrUsuarioChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_strtelCasa", DbType="VarChar(50)")]
-		public string strtelCasa
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_strPassword", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string strPassword
 		{
 			get
 			{
-				return this._strtelCasa;
+				return this._strPassword;
 			}
 			set
 			{
-				if ((this._strtelCasa != value))
+				if ((this._strPassword != value))
 				{
-					this.OnstrtelCasaChanging(value);
+					this.OnstrPasswordChanging(value);
 					this.SendPropertyChanging();
-					this._strtelCasa = value;
-					this.SendPropertyChanged("strtelCasa");
-					this.OnstrtelCasaChanged();
+					this._strPassword = value;
+					this.SendPropertyChanged("strPassword");
+					this.OnstrPasswordChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_strotro", DbType="VarChar(50)")]
-		public string strotro
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_strTipousuario", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string strTipousuario
 		{
 			get
 			{
-				return this._strotro;
+				return this._strTipousuario;
 			}
 			set
 			{
-				if ((this._strotro != value))
+				if ((this._strTipousuario != value))
 				{
-					this.OnstrotroChanging(value);
+					this.OnstrTipousuarioChanging(value);
 					this.SendPropertyChanging();
-					this._strotro = value;
-					this.SendPropertyChanged("strotro");
-					this.OnstrotroChanged();
+					this._strTipousuario = value;
+					this.SendPropertyChanged("strTipousuario");
+					this.OnstrTipousuarioChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TblTelefono_TblAlumno", Storage="_TblAlumno", ThisKey="id", OtherKey="idTelefono")]
-		public EntitySet<TblAlumno> TblAlumno
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="tblUsuario_tblCliente", Storage="_tblCliente", ThisKey="idUsuario", OtherKey="fkLogin")]
+		public EntitySet<tblCliente> tblCliente
 		{
 			get
 			{
-				return this._TblAlumno;
+				return this._tblCliente;
 			}
 			set
 			{
-				this._TblAlumno.Assign(value);
+				this._tblCliente.Assign(value);
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TblTelefono_TblProfesor", Storage="_TblProfesor", ThisKey="id", OtherKey="idTelefono")]
-		public EntitySet<TblProfesor> TblProfesor
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="tblUsuario_tblEmpleado", Storage="_tblEmpleado", ThisKey="idUsuario", OtherKey="fkLogin")]
+		public EntitySet<tblEmpleado> tblEmpleado
 		{
 			get
 			{
-				return this._TblProfesor;
+				return this._tblEmpleado;
 			}
 			set
 			{
-				this._TblProfesor.Assign(value);
+				this._tblEmpleado.Assign(value);
 			}
 		}
 		
@@ -5696,173 +2570,318 @@ namespace Modelo
 			}
 		}
 		
-		private void attach_TblAlumno(TblAlumno entity)
+		private void attach_tblCliente(tblCliente entity)
 		{
 			this.SendPropertyChanging();
-			entity.TblTelefono = this;
+			entity.tblUsuario = this;
 		}
 		
-		private void detach_TblAlumno(TblAlumno entity)
+		private void detach_tblCliente(tblCliente entity)
 		{
 			this.SendPropertyChanging();
-			entity.TblTelefono = null;
+			entity.tblUsuario = null;
 		}
 		
-		private void attach_TblProfesor(TblProfesor entity)
+		private void attach_tblEmpleado(tblEmpleado entity)
 		{
 			this.SendPropertyChanging();
-			entity.TblTelefono = this;
+			entity.tblUsuario = this;
 		}
 		
-		private void detach_TblProfesor(TblProfesor entity)
+		private void detach_tblEmpleado(tblEmpleado entity)
 		{
 			this.SendPropertyChanging();
-			entity.TblTelefono = null;
+			entity.tblUsuario = null;
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.TblUser")]
-	public partial class TblUser : INotifyPropertyChanging, INotifyPropertyChanged
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.tblVenta")]
+	public partial class tblVenta : INotifyPropertyChanging, INotifyPropertyChanged
 	{
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 		
-		private int _id;
+		private int _idVenta;
 		
-		private string _strusuario;
+		private System.Data.Linq.Binary _Fecha;
 		
-		private string _strpass;
+		private int _intBulto;
 		
-		private string _strtipoUsuario;
+		private int _intKilos;
 		
-		private EntitySet<TblAlumno> _TblAlumno;
+		private string _strDescripcion;
 		
-		private EntitySet<TblProfesor> _TblProfesor;
+		private int _intImporte;
+		
+		private string _strMetodoPago;
+		
+		private string _strlapso;
+		
+		private System.Nullable<int> _fkEmpleado;
+		
+		private EntitySet<tblTotalVenta> _tblTotalVenta;
+		
+		private EntityRef<tblEmpleado> _tblEmpleado;
 		
     #region Definiciones de métodos de extensibilidad
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
     partial void OnCreated();
-    partial void OnidChanging(int value);
-    partial void OnidChanged();
-    partial void OnstrusuarioChanging(string value);
-    partial void OnstrusuarioChanged();
-    partial void OnstrpassChanging(string value);
-    partial void OnstrpassChanged();
-    partial void OnstrtipoUsuarioChanging(string value);
-    partial void OnstrtipoUsuarioChanged();
+    partial void OnidVentaChanging(int value);
+    partial void OnidVentaChanged();
+    partial void OnFechaChanging(System.Data.Linq.Binary value);
+    partial void OnFechaChanged();
+    partial void OnintBultoChanging(int value);
+    partial void OnintBultoChanged();
+    partial void OnintKilosChanging(int value);
+    partial void OnintKilosChanged();
+    partial void OnstrDescripcionChanging(string value);
+    partial void OnstrDescripcionChanged();
+    partial void OnintImporteChanging(int value);
+    partial void OnintImporteChanged();
+    partial void OnstrMetodoPagoChanging(string value);
+    partial void OnstrMetodoPagoChanged();
+    partial void OnstrlapsoChanging(string value);
+    partial void OnstrlapsoChanged();
+    partial void OnfkEmpleadoChanging(System.Nullable<int> value);
+    partial void OnfkEmpleadoChanged();
     #endregion
 		
-		public TblUser()
+		public tblVenta()
 		{
-			this._TblAlumno = new EntitySet<TblAlumno>(new Action<TblAlumno>(this.attach_TblAlumno), new Action<TblAlumno>(this.detach_TblAlumno));
-			this._TblProfesor = new EntitySet<TblProfesor>(new Action<TblProfesor>(this.attach_TblProfesor), new Action<TblProfesor>(this.detach_TblProfesor));
+			this._tblTotalVenta = new EntitySet<tblTotalVenta>(new Action<tblTotalVenta>(this.attach_tblTotalVenta), new Action<tblTotalVenta>(this.detach_tblTotalVenta));
+			this._tblEmpleado = default(EntityRef<tblEmpleado>);
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int id
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_idVenta", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true, UpdateCheck=UpdateCheck.Never)]
+		public int idVenta
 		{
 			get
 			{
-				return this._id;
+				return this._idVenta;
 			}
 			set
 			{
-				if ((this._id != value))
+				if ((this._idVenta != value))
 				{
-					this.OnidChanging(value);
+					this.OnidVentaChanging(value);
 					this.SendPropertyChanging();
-					this._id = value;
-					this.SendPropertyChanged("id");
-					this.OnidChanged();
+					this._idVenta = value;
+					this.SendPropertyChanged("idVenta");
+					this.OnidVentaChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_strusuario", DbType="VarChar(200)")]
-		public string strusuario
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Fecha", AutoSync=AutoSync.Always, DbType="rowversion NOT NULL", CanBeNull=false, IsDbGenerated=true, IsVersion=true, UpdateCheck=UpdateCheck.Never)]
+		public System.Data.Linq.Binary Fecha
 		{
 			get
 			{
-				return this._strusuario;
+				return this._Fecha;
 			}
 			set
 			{
-				if ((this._strusuario != value))
+				if ((this._Fecha != value))
 				{
-					this.OnstrusuarioChanging(value);
+					this.OnFechaChanging(value);
 					this.SendPropertyChanging();
-					this._strusuario = value;
-					this.SendPropertyChanged("strusuario");
-					this.OnstrusuarioChanged();
+					this._Fecha = value;
+					this.SendPropertyChanged("Fecha");
+					this.OnFechaChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_strpass", DbType="VarChar(200)")]
-		public string strpass
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_intBulto", DbType="Int NOT NULL", UpdateCheck=UpdateCheck.Never)]
+		public int intBulto
 		{
 			get
 			{
-				return this._strpass;
+				return this._intBulto;
 			}
 			set
 			{
-				if ((this._strpass != value))
+				if ((this._intBulto != value))
 				{
-					this.OnstrpassChanging(value);
+					this.OnintBultoChanging(value);
 					this.SendPropertyChanging();
-					this._strpass = value;
-					this.SendPropertyChanged("strpass");
-					this.OnstrpassChanged();
+					this._intBulto = value;
+					this.SendPropertyChanged("intBulto");
+					this.OnintBultoChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_strtipoUsuario", DbType="VarChar(150)")]
-		public string strtipoUsuario
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_intKilos", DbType="Int NOT NULL", UpdateCheck=UpdateCheck.Never)]
+		public int intKilos
 		{
 			get
 			{
-				return this._strtipoUsuario;
+				return this._intKilos;
 			}
 			set
 			{
-				if ((this._strtipoUsuario != value))
+				if ((this._intKilos != value))
 				{
-					this.OnstrtipoUsuarioChanging(value);
+					this.OnintKilosChanging(value);
 					this.SendPropertyChanging();
-					this._strtipoUsuario = value;
-					this.SendPropertyChanged("strtipoUsuario");
-					this.OnstrtipoUsuarioChanged();
+					this._intKilos = value;
+					this.SendPropertyChanged("intKilos");
+					this.OnintKilosChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TblUser_TblAlumno", Storage="_TblAlumno", ThisKey="id", OtherKey="idUser")]
-		public EntitySet<TblAlumno> TblAlumno
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_strDescripcion", DbType="VarChar(250)", UpdateCheck=UpdateCheck.Never)]
+		public string strDescripcion
 		{
 			get
 			{
-				return this._TblAlumno;
+				return this._strDescripcion;
 			}
 			set
 			{
-				this._TblAlumno.Assign(value);
+				if ((this._strDescripcion != value))
+				{
+					this.OnstrDescripcionChanging(value);
+					this.SendPropertyChanging();
+					this._strDescripcion = value;
+					this.SendPropertyChanged("strDescripcion");
+					this.OnstrDescripcionChanged();
+				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TblUser_TblProfesor", Storage="_TblProfesor", ThisKey="id", OtherKey="idUser")]
-		public EntitySet<TblProfesor> TblProfesor
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_intImporte", DbType="Int NOT NULL", UpdateCheck=UpdateCheck.Never)]
+		public int intImporte
 		{
 			get
 			{
-				return this._TblProfesor;
+				return this._intImporte;
 			}
 			set
 			{
-				this._TblProfesor.Assign(value);
+				if ((this._intImporte != value))
+				{
+					this.OnintImporteChanging(value);
+					this.SendPropertyChanging();
+					this._intImporte = value;
+					this.SendPropertyChanged("intImporte");
+					this.OnintImporteChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_strMetodoPago", DbType="VarChar(150) NOT NULL", CanBeNull=false, UpdateCheck=UpdateCheck.Never)]
+		public string strMetodoPago
+		{
+			get
+			{
+				return this._strMetodoPago;
+			}
+			set
+			{
+				if ((this._strMetodoPago != value))
+				{
+					this.OnstrMetodoPagoChanging(value);
+					this.SendPropertyChanging();
+					this._strMetodoPago = value;
+					this.SendPropertyChanged("strMetodoPago");
+					this.OnstrMetodoPagoChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_strlapso", DbType="VarChar(150)", UpdateCheck=UpdateCheck.Never)]
+		public string strlapso
+		{
+			get
+			{
+				return this._strlapso;
+			}
+			set
+			{
+				if ((this._strlapso != value))
+				{
+					this.OnstrlapsoChanging(value);
+					this.SendPropertyChanging();
+					this._strlapso = value;
+					this.SendPropertyChanged("strlapso");
+					this.OnstrlapsoChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_fkEmpleado", DbType="Int", UpdateCheck=UpdateCheck.Never)]
+		public System.Nullable<int> fkEmpleado
+		{
+			get
+			{
+				return this._fkEmpleado;
+			}
+			set
+			{
+				if ((this._fkEmpleado != value))
+				{
+					if (this._tblEmpleado.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnfkEmpleadoChanging(value);
+					this.SendPropertyChanging();
+					this._fkEmpleado = value;
+					this.SendPropertyChanged("fkEmpleado");
+					this.OnfkEmpleadoChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="tblVenta_tblTotalVenta", Storage="_tblTotalVenta", ThisKey="idVenta", OtherKey="fkVenta")]
+		public EntitySet<tblTotalVenta> tblTotalVenta
+		{
+			get
+			{
+				return this._tblTotalVenta;
+			}
+			set
+			{
+				this._tblTotalVenta.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="tblEmpleado_tblVenta", Storage="_tblEmpleado", ThisKey="fkEmpleado", OtherKey="idEmpleado", IsForeignKey=true)]
+		public tblEmpleado tblEmpleado
+		{
+			get
+			{
+				return this._tblEmpleado.Entity;
+			}
+			set
+			{
+				tblEmpleado previousValue = this._tblEmpleado.Entity;
+				if (((previousValue != value) 
+							|| (this._tblEmpleado.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._tblEmpleado.Entity = null;
+						previousValue.tblVenta.Remove(this);
+					}
+					this._tblEmpleado.Entity = value;
+					if ((value != null))
+					{
+						value.tblVenta.Add(this);
+						this._fkEmpleado = value.idEmpleado;
+					}
+					else
+					{
+						this._fkEmpleado = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("tblEmpleado");
+				}
 			}
 		}
 		
@@ -5886,28 +2905,16 @@ namespace Modelo
 			}
 		}
 		
-		private void attach_TblAlumno(TblAlumno entity)
+		private void attach_tblTotalVenta(tblTotalVenta entity)
 		{
 			this.SendPropertyChanging();
-			entity.TblUser = this;
+			entity.tblVenta = this;
 		}
 		
-		private void detach_TblAlumno(TblAlumno entity)
+		private void detach_tblTotalVenta(tblTotalVenta entity)
 		{
 			this.SendPropertyChanging();
-			entity.TblUser = null;
-		}
-		
-		private void attach_TblProfesor(TblProfesor entity)
-		{
-			this.SendPropertyChanging();
-			entity.TblUser = this;
-		}
-		
-		private void detach_TblProfesor(TblProfesor entity)
-		{
-			this.SendPropertyChanging();
-			entity.TblUser = null;
+			entity.tblVenta = null;
 		}
 	}
 }

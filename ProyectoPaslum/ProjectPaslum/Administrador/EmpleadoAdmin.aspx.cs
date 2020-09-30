@@ -53,9 +53,10 @@ namespace ProjectPaslum.Administrador
             var random = new Random();
             var value = random.Next(0, 999999);
             var rol = cmbRol.SelectedItem.Value;
+            var EstaMuni = ddlMunicipio.SelectedItem.Value;
 
             tblDireccion direccion = new tblDireccion();
-            //direccion.fkEstadoMunicipio = txtDirecEstado.Text.ToUpper();
+            //direccion.fkEstadoMunicipio = Int32.Parse(ddlMunicipio);
             direccion.strCalle = txtCalle.Text.ToUpper();
             direccion.strColonia = txtColonia.Text.ToUpper();
             direccion.intCodpost = txtCodPos.Text;
@@ -82,22 +83,25 @@ namespace ProjectPaslum.Administrador
 
         protected void ddlEstado_SelectedIndexChanged(object sender, EventArgs e)
         {
-            var municipio = (from estmun in contexto.tblEstado_Municipio
-
-                             join est in contexto.tblEstado
-                             on estmun.fkEstado
-                             equals est.idEstado
+            var municipio = (from munesta in contexto.tblEstado_Municipio
 
                              join mun in contexto.TblMunicipio
-                             on estmun.fkMunicipio
+                             on munesta.fkMunicipio
                              equals mun.idMunicipio
 
-                             where estmun.fkEstado == Convert.ToInt32(ddlEstado.SelectedValue)
-                             select mun.strMunicipio).ToList();
+                             join est in contexto.tblEstado
+                             on munesta.fkEstado
+                             equals est.idEstado
+
+                             where munesta.fkEstado == Convert.ToInt32(ddlEstado.SelectedValue)
+                             select new { nombre = mun.strMunicipio, id = munesta.idEstado_Municipio }).ToList();
+
+
+
             ddlMunicipio.Items.Add("Seleccionar");
+            ddlMunicipio.DataValueField = "id";
+            ddlMunicipio.DataTextField = "nombre";
             ddlMunicipio.DataSource = municipio;
-            ddlMunicipio.DataValueField = "idEstado_Municipio";
-            ddlMunicipio.DataTextField = "fkEstado";
             ddlMunicipio.DataBind();
         }
     }

@@ -63,10 +63,10 @@
                                                         <div class="form-group">
                                                             <label>Sexo: </label>
                                                             <asp:DropDownList ID="cmbSexo" runat="server" AppendDataBoundItems="True"  width="330px" CssClass=" form-control">
-                                                                    <asp:ListItem Selected="True" Value="SELECCIONA"> --SELECCIONA-- </asp:ListItem>
-                                                                    <asp:ListItem Value="HOMBRE"> HOMBRE </asp:ListItem>
-                                                                    <asp:ListItem Value="MUJER"> MUJER </asp:ListItem>
-                                                                    <asp:ListItem Value="DISTINTO"> DISTINTO </asp:ListItem>
+                                                                    <asp:ListItem Selected="True" Value="SELECCIONA"> Seleccionar </asp:ListItem>
+                                                                    <asp:ListItem Value="HOMBRE"> Hombre </asp:ListItem>
+                                                                    <asp:ListItem Value="MUJER"> Mujer </asp:ListItem>
+                                                                    <asp:ListItem Value="DISTINTO"> Otro </asp:ListItem>
                                                             </asp:DropDownList>   
                                                          </div>
                                                         <br /> <br />
@@ -282,9 +282,10 @@
                                                                 <asp:DropDownList ID="cmbRol" runat="server" 
                                                                     AppendDataBoundItems="True"  width="323px" 
                                                                     CssClass=" form-control">
-                                                                    <asp:ListItem Selected="True" Value="SELECCIONA"> --SELECCIONA-- </asp:ListItem>
-                                                                    <asp:ListItem Value="ADMINISTRADOR"> ADMINISTRADOR </asp:ListItem>
-                                                                    <asp:ListItem Value="VENDEDOR"> VENDEDOR </asp:ListItem>    
+                                                                    <asp:ListItem Selected="True" Value="SELECCIONA"> Seleccionar </asp:ListItem>
+                                                                    <asp:ListItem Value="ADMINISTRADOR"> Administrador </asp:ListItem>
+                                                                    <asp:ListItem Value="VENDEDOR"> Vendedor </asp:ListItem>
+                                                                    <asp:ListItem Value="ALMACEN"> Almacén </asp:ListItem>    
                                                                 </asp:DropDownList>   
                                                             </div>
                                                             <br /> <br />
@@ -323,7 +324,7 @@
     <div class="collapse multi-collapse" id="multiCollapseExample2">
       <div class="card card-body">
             <%-- Tabla de consulta de trabajadores --%>
-    <%--<div class="panel panel-default">
+    <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="heading">
             <h4 class="panel-title">
                 <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse" aria-expanded="false" aria-controls="collapse">EMPLEADOS ACTIVOS
@@ -332,33 +333,16 @@
         </div>
         <div id="collapse" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
             <div class="panel-body">
-                <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" Width="100%" AllowPaging="True" DataKeyNames="id" DataSourceID="SqlDataSource1" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px">
+                <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" Width="100%" AllowPaging="True" DataSourceID="SqlDataSource1" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px">
                     <Columns>
-                            <asp:TemplateField HeaderText="Editar">
-                                <ItemTemplate>
-                                    <asp:ImageButton runat="server" ID="imgEditar" CommandName="Editar" ImageUrl="Imagenes/editar.png" />
-                                </ItemTemplate>
-                                <HeaderStyle HorizontalAlign="Center" />
-                                <ItemStyle HorizontalAlign="Center" Width="50px" />
-                            </asp:TemplateField>
-                            <asp:TemplateField HeaderText="Eliminar" Visible="True">
-                                <ItemTemplate>
-                                    <asp:ImageButton runat="server" ID="imgEliminar" CommandName="Eliminar" ImageUrl="Imagenes/borrar.png"
-                   OnClientClick="javascript:return confirm('¿Está seguro de querer eliminar el registro seleccionado?', 'Mensaje de sistema')" />
-                                </ItemTemplate>
-                                <HeaderStyle HorizontalAlign="Center" />
-                                <ItemStyle HorizontalAlign="Center" Width="50px" />
-                            </asp:TemplateField>
 
-                        <asp:BoundField DataField="id" HeaderText="Clave" InsertVisible="False" ReadOnly="True" SortExpression="id" />
-                        <asp:BoundField DataField="strNombre" HeaderText="Nombre" SortExpression="strNombre" />
-                        <asp:BoundField DataField="strApellidoP" HeaderText="Apellido P." SortExpression="strApellidoP" />
-                        <asp:BoundField DataField="strApellidoM" HeaderText="Apellido M." SortExpression="strApellidoM" />
-                        <asp:BoundField DataField="strCorreo" HeaderText="Correo" SortExpression="strCorreo" />
-                        <asp:BoundField DataField="strCedula" HeaderText="Cedula" SortExpression="strCedula" />
-                        <asp:BoundField DataField="strEspecialidad" HeaderText="Especialidad" SortExpression="strEspecialidad" />
-                        <asp:BoundField DataField="strcelular" HeaderText="Celular" SortExpression="strcelular" />
-                        <asp:BoundField DataField="strtelCasa" HeaderText="Tel.Casa" SortExpression="strtelCasa" />
+                        <asp:BoundField DataField="strNombre" HeaderText="strNombre" SortExpression="strNombre" />
+                        <asp:BoundField DataField="strApellidoP" HeaderText="strApellidoP" SortExpression="strApellidoP" />
+                        <asp:BoundField DataField="strApellidoM" HeaderText="strApellidoM" SortExpression="strApellidoM" />
+                        <asp:BoundField DataField="strCorreo" HeaderText="strCorreo" SortExpression="strCorreo" />
+                        <asp:BoundField DataField="strCelular" HeaderText="strCelular" SortExpression="strCelular" />
+                        <asp:BoundField DataField="strUsuario" HeaderText="strUsuario" SortExpression="strUsuario" />
+                        <asp:BoundField DataField="strTipousuario" HeaderText="strTipousuario" SortExpression="strTipousuario" />
 
                     </Columns>
                      <FooterStyle BackColor="White" ForeColor="#000066" />
@@ -372,16 +356,18 @@
                         <SortedDescendingHeaderStyle BackColor="#00547E" />
                 </asp:GridView>
 
-                <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:pase_listaConnectionString %>" SelectCommand="SELECT pro.id ,pro.strNombre, pro.strApellidoP, 
-	   pro.strApellidoM, pro.strCorreo, pro.strCedula,
-	   pro.strEspecialidad, tel.strcelular, tel.strtelCasa 
-FROM TblProfesor as pro
-inner join TblTelefono  as tel 
-on pro.idTelefono = tel.id;"></asp:SqlDataSource>
-
+                <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:XIUGARConnectionString %>" 
+                    SelectCommand="select e.strNombre, e.strApellidoP, e.strApellidoM, e.strCorreo,
+                                    t.strCelular, u.strUsuario, u.strTipousuario from tblEmpleado e
+                                    inner join tblDireccion d
+                                    on e.fkDireccion = d.idDireccion
+                                    inner join tblTelefono t
+                                    on e.fkTelefono = t.idTelefono
+                                    inner join tblUsuario u
+                                    on e.fkLogin = u.idUsuario"></asp:SqlDataSource>
             </div>
         </div>
-    </div>--%>
+    </div>
       </div>
     </div>
   </div>

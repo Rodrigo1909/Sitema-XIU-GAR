@@ -62,7 +62,7 @@
                         <div class="form-group">
                             <div class="col-xs-10">
                                 Encargado de almacén
-                                <asp:DropDownList ID="ddlCarrera" runat="server" AppendDataBoundItems="True"  Height="100%" CssClass=" form-control" AutoPostBack="true"></asp:DropDownList>      
+                                <asp:DropDownList ID="ddlEncargado" runat="server" AppendDataBoundItems="True"  Height="100%" CssClass=" form-control" ></asp:DropDownList>      
                               </div>
                          </div>
                        
@@ -73,15 +73,15 @@
                             <div class="modalfooter">
                              
                                   <asp:Button ID="btncancel" runat="server" CssClass="btn btn-primary"  Text="Cancelar" data-dismiss="modal"  />
-                                 <asp:Button ID="btnaceptar" runat="server" class="btn btn-success"  Text="Aceptar"  />
+                                 <asp:Button ID="btnaceptar" runat="server" class="btn btn-success"  Text="Aceptar" OnClick="btnaceptar_Click" />
                               </div>
                            </div>
                 </div> </div>
             </div>
         </div>
           </div>
-       <%-- Editar o eliminar Grupo --%>
-    <%--<div class="panel panel-default">
+       <%-- Editar o eliminar Almacén --%>
+    <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="heading">
             <h4 class="panel-title">
                 <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse" aria-expanded="false" aria-controls="collapse">Almacenes disponibles
@@ -90,13 +90,13 @@
         </div>
         <div id="collapse" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
             <div class="panel-body">
-                <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" Width="100%" AllowPaging="True" DataSourceID="SqlDataSource1" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px">
+                <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" Width="100%" AllowPaging="True" DataSourceID="SqlDataSource2" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px">
                     <Columns>
                         
-                        <asp:BoundField DataField="strNombre" HeaderText="Materia" SortExpression="strNombre" />
-                        <asp:BoundField DataField="strDescripcion" HeaderText="Descripcion" SortExpression="strDescripcion" />
-                        <asp:BoundField DataField="strnombre1" HeaderText="Carrera" SortExpression="strnombre1" />
-                        <asp:BoundField DataField="strnombre2" HeaderText="Cuatrimestre" SortExpression="strnombre2" />
+                        <asp:BoundField DataField="strNombre" HeaderText="Nombre del Almacén" SortExpression="strNombre" />
+                        <asp:BoundField DataField="strDescripcion" HeaderText="Descripción" SortExpression="strDescripcion" />
+                        <asp:BoundField DataField="intCapacidad" HeaderText="Capacidad" SortExpression="intCapacidad" />
+                        <asp:BoundField DataField="nombre" HeaderText="Encargado" SortExpression="nombre" ReadOnly="True" />
 
                     </Columns>
                      <FooterStyle BackColor="White" ForeColor="#000066" />
@@ -110,15 +110,16 @@
                         <SortedDescendingHeaderStyle BackColor="#00547E" />
                 </asp:GridView>
 
-                <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:pase_listaConnectionString %>" SelectCommand="select m.strNombre, m.strDescripcion, c.strnombre,cu.strnombre 
-from TblMateria m
-inner join TblCarrera c 
-on m.idCarrera = c.id
-inner join TblCuatri cu
-on m.idCuatri = cu.id;"></asp:SqlDataSource>
+                <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:XIUGARConnectionString %>" 
+                    SelectCommand="select alm.strNombre, alm.strDescripcion, alm.intCapacidad, 
+                        (enc.strNombre + ' '+ enc.strApellidoP + ' ' + enc.strApellidoM) as nombre
+                        from tblAlmacen alm
+                        inner join tblEmpleado enc
+                        on alm.fkEncargado = enc.idEmpleado;
+                        "></asp:SqlDataSource>
 
             </div>
         </div>
-    </div>--%>
+    </div>
 
 </asp:Content>

@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ControllerAlmacen.cs" />
     <Compile Include="ControllerAlumno.cs" />
     <Compile Include="ControllerAsignarGrupo.cs" />
     <Compile Include="ControllerAsignarMateria.cs" />

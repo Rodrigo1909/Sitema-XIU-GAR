@@ -1,255 +1,133 @@
-﻿<?xml version="1.0" encoding="utf-8"?><Database Name="pase_lista" Class="PaslumBaseDatoDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="AppSettings" ConnectionString="Data Source=RODRIGO;Initial Catalog=pase_lista;Integrated Security=True" SettingsObjectName="Modelo.Properties.Settings" SettingsPropertyName="pase_listaConnectionString" Provider="System.Data.SqlClient" />
-  <Table Name="dbo.TblAlumno" Member="TblAlumno">
-    <Type Name="TblAlumno">
-      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="strNombre" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
-      <Column Name="strApellidoP" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
-      <Column Name="strApellidoM" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
-      <Column Name="intEdad" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="strSexo" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
-      <Column Name="strCorreo" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
-      <Column Name="bitFoto" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
-      <Column Name="idDireccion" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="idTelefono" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="idUser" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="idCarrera" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="idCuatri" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="idGrupo" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Association Name="TblAlumno_TblAlumnoMateria" Member="TblAlumnoMateria" ThisKey="id" OtherKey="idAlumno" Type="TblAlumnoMateria" />
-      <Association Name="TblAlumno_TblAsistencia" Member="TblAsistencia" ThisKey="id" OtherKey="idAlumno" Type="TblAsistencia" />
-      <Association Name="TblAlumno_TblCalificacion" Member="TblCalificacion" ThisKey="id" OtherKey="idAlumno" Type="TblCalificacion" />
-      <Association Name="TblCarrera_TblAlumno" Member="TblCarrera" ThisKey="idCarrera" OtherKey="id" Type="TblCarrera" IsForeignKey="true" />
-      <Association Name="TblCuatri_TblAlumno" Member="TblCuatri" ThisKey="idCuatri" OtherKey="id" Type="TblCuatri" IsForeignKey="true" />
-      <Association Name="TblDireccion_TblAlumno" Member="TblDireccion" ThisKey="idDireccion" OtherKey="id" Type="TblDireccion" IsForeignKey="true" />
-      <Association Name="TblGrupo_TblAlumno" Member="TblGrupo" ThisKey="idGrupo" OtherKey="id" Type="TblGrupo" IsForeignKey="true" />
-      <Association Name="TblTelefono_TblAlumno" Member="TblTelefono" ThisKey="idTelefono" OtherKey="id" Type="TblTelefono" IsForeignKey="true" />
-      <Association Name="TblUser_TblAlumno" Member="TblUser" ThisKey="idUser" OtherKey="id" Type="TblUser" IsForeignKey="true" />
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="XIUGAR" Class="PaslumBaseDatoDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=.;Initial Catalog=XIUGAR;Integrated Security=True" SettingsObjectName="Modelo.Properties.Settings" SettingsPropertyName="XIUGARConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.tblAlmacen" Member="tblAlmacen">
+    <Type Name="tblAlmacen">
+      <Column Name="idAlmacen" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="strNombre" Type="System.String" DbType="VarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="strDescripcion" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
+      <Column Name="intCapacidad" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="fkEncargado" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="tblEmpleado_tblAlmacen" Member="tblEmpleado" ThisKey="fkEncargado" OtherKey="idEmpleado" Type="tblEmpleado" IsForeignKey="true" />
     </Type>
   </Table>
-  <Table Name="dbo.TblAlumnoMateria" Member="TblAlumnoMateria">
-    <Type Name="TblAlumnoMateria">
-      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="idAlumno" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="idMateria" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="idNotas" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Association Name="TblAlumno_TblAlumnoMateria" Member="TblAlumno" ThisKey="idAlumno" OtherKey="id" Type="TblAlumno" IsForeignKey="true" />
-      <Association Name="TblMateria_TblAlumnoMateria" Member="TblMateria" ThisKey="idMateria" OtherKey="id" Type="TblMateria" IsForeignKey="true" />
-      <Association Name="TblNota_TblAlumnoMateria" Member="TblNota" ThisKey="idNotas" OtherKey="id" Type="TblNota" IsForeignKey="true" />
+  <Table Name="dbo.tblCliente" Member="tblCliente">
+    <Type Name="tblCliente">
+      <Column Name="idCliente" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="strNombre" Type="System.String" DbType="VarChar(150) NOT NULL" CanBeNull="false" />
+      <Column Name="strApellidoP" Type="System.String" DbType="VarChar(150) NOT NULL" CanBeNull="false" />
+      <Column Name="strApellidoM" Type="System.String" DbType="VarChar(150) NOT NULL" CanBeNull="false" />
+      <Column Name="strSituacionFiscal" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="strCorreo" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
+      <Column Name="strEntrega" Type="System.String" DbType="VarChar(150) NOT NULL" CanBeNull="false" />
+      <Column Name="strHorario" Type="System.String" DbType="VarChar(150) NOT NULL" CanBeNull="false" />
+      <Column Name="strMetodoPago" Type="System.String" DbType="VarChar(150) NOT NULL" CanBeNull="false" />
+      <Column Name="fkDireccion" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="fkTelefono" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="fkLogin" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="tblDireccion_tblCliente" Member="tblDireccion" ThisKey="fkDireccion" OtherKey="idDireccion" Type="tblDireccion" IsForeignKey="true" />
+      <Association Name="tblTelefono_tblCliente" Member="tblTelefono" ThisKey="fkTelefono" OtherKey="idTelefono" Type="tblTelefono" IsForeignKey="true" />
+      <Association Name="tblUsuario_tblCliente" Member="tblUsuario" ThisKey="fkLogin" OtherKey="idUsuario" Type="tblUsuario" IsForeignKey="true" />
     </Type>
   </Table>
-  <Table Name="dbo.TblAsignacionGrupo" Member="TblAsignacionGrupo">
-    <Type Name="TblAsignacionGrupo">
-      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="idGrupo" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="idAsignacionMateria" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Association Name="TblAsignacionMateria_TblAsignacionGrupo" Member="TblAsignacionMateria" ThisKey="idAsignacionMateria" OtherKey="id" Type="TblAsignacionMateria" IsForeignKey="true" />
-      <Association Name="TblGrupo_TblAsignacionGrupo" Member="TblGrupo" ThisKey="idGrupo" OtherKey="id" Type="TblGrupo" IsForeignKey="true" />
+  <Table Name="dbo.tblDireccion" Member="tblDireccion">
+    <Type Name="tblDireccion">
+      <Column Name="idDireccion" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="strColonia" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
+      <Column Name="strCalle" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
+      <Column Name="intCodpost" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="strNumInt" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="strNumExt" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="strReferencias" Type="System.String" DbType="VarChar(400)" CanBeNull="true" />
+      <Column Name="fkEstadoMunicipio" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="tblDireccion_tblCliente" Member="tblCliente" ThisKey="idDireccion" OtherKey="fkDireccion" Type="tblCliente" />
+      <Association Name="tblDireccion_tblEmpleado" Member="tblEmpleado" ThisKey="idDireccion" OtherKey="fkDireccion" Type="tblEmpleado" />
+      <Association Name="tblEstado_Municipio_tblDireccion" Member="tblEstado_Municipio" ThisKey="fkEstadoMunicipio" OtherKey="idEstado_Municipio" Type="tblEstado_Municipio" IsForeignKey="true" />
     </Type>
   </Table>
-  <Table Name="dbo.TblAsignacionMateria" Member="TblAsignacionMateria">
-    <Type Name="TblAsignacionMateria">
-      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="idProfesor" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="idMateria" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Association Name="TblAsignacionMateria_TblAsignacionGrupo" Member="TblAsignacionGrupo" ThisKey="id" OtherKey="idAsignacionMateria" Type="TblAsignacionGrupo" />
-      <Association Name="TblAsignacionMateria_TblCatalogoParcial" Member="TblCatalogoParcial" ThisKey="id" OtherKey="idAsignacionMaeria" Type="TblCatalogoParcial" />
-      <Association Name="TblAsignacionMateria_TblQR" Member="TblQR" ThisKey="id" OtherKey="idAsignacion" Type="TblQR" />
-      <Association Name="TblMateria_TblAsignacionMateria" Member="TblMateria" ThisKey="idMateria" OtherKey="id" Type="TblMateria" IsForeignKey="true" />
-      <Association Name="TblProfesor_TblAsignacionMateria" Member="TblProfesor" ThisKey="idProfesor" OtherKey="id" Type="TblProfesor" IsForeignKey="true" />
+  <Table Name="dbo.tblEmpleado" Member="tblEmpleado">
+    <Type Name="tblEmpleado">
+      <Column Name="idEmpleado" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="strNombre" Type="System.String" DbType="VarChar(150) NOT NULL" CanBeNull="false" />
+      <Column Name="strApellidoP" Type="System.String" DbType="VarChar(150) NOT NULL" CanBeNull="false" />
+      <Column Name="strApellidoM" Type="System.String" DbType="VarChar(150) NOT NULL" CanBeNull="false" />
+      <Column Name="strCorreo" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
+      <Column Name="strSexo" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="strEdad" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="fkDireccion" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="fkTelefono" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="fkLogin" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="tblEmpleado_tblAlmacen" Member="tblAlmacen" ThisKey="idEmpleado" OtherKey="fkEncargado" Type="tblAlmacen" />
+      <Association Name="tblEmpleado_tblVenta" Member="tblVenta" ThisKey="idEmpleado" OtherKey="fkEmpleado" Type="tblVenta" />
+      <Association Name="tblDireccion_tblEmpleado" Member="tblDireccion" ThisKey="fkDireccion" OtherKey="idDireccion" Type="tblDireccion" IsForeignKey="true" />
+      <Association Name="tblTelefono_tblEmpleado" Member="tblTelefono" ThisKey="fkTelefono" OtherKey="idTelefono" Type="tblTelefono" IsForeignKey="true" />
+      <Association Name="tblUsuario_tblEmpleado" Member="tblUsuario" ThisKey="fkLogin" OtherKey="idUsuario" Type="tblUsuario" IsForeignKey="true" />
     </Type>
   </Table>
-  <Table Name="dbo.TblAsistencia" Member="TblAsistencia">
-    <Type Name="TblAsistencia">
-      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="dteFecha" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="codigo" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="idMateria" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="idAlumno" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="idJustificante" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Association Name="TblAlumno_TblAsistencia" Member="TblAlumno" ThisKey="idAlumno" OtherKey="id" Type="TblAlumno" IsForeignKey="true" />
-      <Association Name="TblJustificante_TblAsistencia" Member="TblJustificante" ThisKey="idJustificante" OtherKey="id" Type="TblJustificante" IsForeignKey="true" />
-      <Association Name="TblMateria_TblAsistencia" Member="TblMateria" ThisKey="idMateria" OtherKey="id" Type="TblMateria" IsForeignKey="true" />
+  <Table Name="dbo.tblEstado" Member="tblEstado">
+    <Type Name="tblEstado">
+      <Column Name="idEstado" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="strEstado" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Association Name="tblEstado_tblEstado_Municipio" Member="tblEstado_Municipio" ThisKey="idEstado" OtherKey="fkEstado" Type="tblEstado_Municipio" />
     </Type>
   </Table>
-  <Table Name="dbo.TblCalificacion" Member="TblCalificacion">
-    <Type Name="TblCalificacion">
-      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="valCalificacion" Type="System.Decimal" DbType="Decimal(5,2)" CanBeNull="true" />
-      <Column Name="idAlumno" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="idCatalogoParcial" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Association Name="TblAlumno_TblCalificacion" Member="TblAlumno" ThisKey="idAlumno" OtherKey="id" Type="TblAlumno" IsForeignKey="true" />
-      <Association Name="TblCatalogoParcial_TblCalificacion" Member="TblCatalogoParcial" ThisKey="idCatalogoParcial" OtherKey="id" Type="TblCatalogoParcial" IsForeignKey="true" />
+  <Table Name="dbo.tblEstado_Municipio" Member="tblEstado_Municipio">
+    <Type Name="tblEstado_Municipio">
+      <Column Name="idEstado_Municipio" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="fkEstado" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="fkMunicipio" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="tblEstado_Municipio_tblDireccion" Member="tblDireccion" ThisKey="idEstado_Municipio" OtherKey="fkEstadoMunicipio" Type="tblDireccion" />
+      <Association Name="tblEstado_tblEstado_Municipio" Member="tblEstado" ThisKey="fkEstado" OtherKey="idEstado" Type="tblEstado" IsForeignKey="true" />
+      <Association Name="TblMunicipio_tblEstado_Municipio" Member="TblMunicipio" ThisKey="fkMunicipio" OtherKey="idMunicipio" Type="TblMunicipio" IsForeignKey="true" />
     </Type>
   </Table>
-  <Table Name="dbo.TblCarrera" Member="TblCarrera">
-    <Type Name="TblCarrera">
-      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="strClave" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
-      <Column Name="strNombre" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
-      <Column Name="strArea" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
-      <Column Name="bStatus" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
-      <Association Name="TblCarrera_TblAlumno" Member="TblAlumno" ThisKey="id" OtherKey="idCarrera" Type="TblAlumno" />
-      <Association Name="TblCarrera_TblGrupo" Member="TblGrupo" ThisKey="id" OtherKey="idCarrera" Type="TblGrupo" />
-      <Association Name="TblCarrera_TblMateria" Member="TblMateria" ThisKey="id" OtherKey="idCarrera" Type="TblMateria" />
-      <Association Name="TblCarrera_TblQR" Member="TblQR" ThisKey="id" OtherKey="idCarrera" Type="TblQR" />
+  <Table Name="dbo.TblMunicipio" Member="TblMunicipio">
+    <Type Name="TblMunicipio">
+      <Column Name="idMunicipio" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="strMunicipio" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Association Name="TblMunicipio_tblEstado_Municipio" Member="tblEstado_Municipio" ThisKey="idMunicipio" OtherKey="fkMunicipio" Type="tblEstado_Municipio" />
     </Type>
   </Table>
-  <Table Name="dbo.TblCatalogoEvaluacion" Member="TblCatalogoEvaluacion">
-    <Type Name="TblCatalogoEvaluacion">
-      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="strDescripcion" Type="System.String" DbType="VarChar(300)" CanBeNull="true" />
-      <Column Name="idCatalogoParcial" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Association Name="TblCatalogoParcial_TblCatalogoEvaluacion" Member="TblCatalogoParcial" ThisKey="idCatalogoParcial" OtherKey="id" Type="TblCatalogoParcial" IsForeignKey="true" />
+  <Table Name="dbo.tblTelefono" Member="tblTelefono">
+    <Type Name="tblTelefono">
+      <Column Name="idTelefono" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="strCelular" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="strTelCasa" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="strOtro" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Association Name="tblTelefono_tblCliente" Member="tblCliente" ThisKey="idTelefono" OtherKey="fkTelefono" Type="tblCliente" />
+      <Association Name="tblTelefono_tblEmpleado" Member="tblEmpleado" ThisKey="idTelefono" OtherKey="fkTelefono" Type="tblEmpleado" />
     </Type>
   </Table>
-  <Table Name="dbo.TblCatalogoParcial" Member="TblCatalogoParcial">
-    <Type Name="TblCatalogoParcial">
-      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="strNombre" Type="System.String" DbType="VarChar(300)" CanBeNull="true" />
-      <Column Name="strDescripcion" Type="System.String" DbType="VarChar(300)" CanBeNull="true" />
-      <Column Name="intPorcentaje" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="idAsignacionMaeria" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Association Name="TblCatalogoParcial_TblCalificacion" Member="TblCalificacion" ThisKey="id" OtherKey="idCatalogoParcial" Type="TblCalificacion" />
-      <Association Name="TblCatalogoParcial_TblCatalogoEvaluacion" Member="TblCatalogoEvaluacion" ThisKey="id" OtherKey="idCatalogoParcial" Type="TblCatalogoEvaluacion" />
-      <Association Name="TblCatalogoParcial_TblQR" Member="TblQR" ThisKey="id" OtherKey="idParcial" Type="TblQR" />
-      <Association Name="TblAsignacionMateria_TblCatalogoParcial" Member="TblAsignacionMateria" ThisKey="idAsignacionMaeria" OtherKey="id" Type="TblAsignacionMateria" IsForeignKey="true" />
+  <Table Name="dbo.tblTotalVenta" Member="tblTotalVenta">
+    <Type Name="tblTotalVenta">
+      <Column Name="idTotalVenta" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="dblTotal" Type="System.Decimal" DbType="Decimal(19,4)" CanBeNull="true" />
+      <Column Name="fkVenta" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="tblVenta_tblTotalVenta" Member="tblVenta" ThisKey="fkVenta" OtherKey="idVenta" Type="tblVenta" IsForeignKey="true" />
     </Type>
   </Table>
-  <Table Name="dbo.TblCuatri" Member="TblCuatri">
-    <Type Name="TblCuatri">
-      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="strNombre" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
-      <Column Name="strFechaInicio" Type="System.DateTime" DbType="Date" CanBeNull="true" />
-      <Column Name="strFechaFin" Type="System.DateTime" DbType="Date" CanBeNull="true" />
-      <Association Name="TblCuatri_TblAlumno" Member="TblAlumno" ThisKey="id" OtherKey="idCuatri" Type="TblAlumno" />
-      <Association Name="TblCuatri_TblMateria" Member="TblMateria" ThisKey="id" OtherKey="idCuatri" Type="TblMateria" />
+  <Table Name="dbo.tblUsuario" Member="tblUsuario">
+    <Type Name="tblUsuario">
+      <Column Name="idUsuario" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="strUsuario" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="strPassword" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="strTipousuario" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Association Name="tblUsuario_tblCliente" Member="tblCliente" ThisKey="idUsuario" OtherKey="fkLogin" Type="tblCliente" />
+      <Association Name="tblUsuario_tblEmpleado" Member="tblEmpleado" ThisKey="idUsuario" OtherKey="fkLogin" Type="tblEmpleado" />
     </Type>
   </Table>
-  <Table Name="dbo.TblDireccion" Member="TblDireccion">
-    <Type Name="TblDireccion">
-      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="strestado" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
-      <Column Name="strmunicipio" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
-      <Column Name="strcolonia" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
-      <Column Name="strcalle" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
-      <Column Name="intcodpost" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="strnumInt" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="strnumExt" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="strreferencias" Type="System.String" DbType="VarChar(400)" CanBeNull="true" />
-      <Association Name="TblDireccion_TblAlumno" Member="TblAlumno" ThisKey="id" OtherKey="idDireccion" Type="TblAlumno" />
-      <Association Name="TblDireccion_TblProfesor" Member="TblProfesor" ThisKey="id" OtherKey="idDireccion" Type="TblProfesor" />
-    </Type>
-  </Table>
-  <Table Name="dbo.TblGrupo" Member="TblGrupo">
-    <Type Name="TblGrupo">
-      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="strNombre" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
-      <Column Name="strCapacidad" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="idCarrera" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Association Name="TblGrupo_TblAlumno" Member="TblAlumno" ThisKey="id" OtherKey="idGrupo" Type="TblAlumno" />
-      <Association Name="TblGrupo_TblAsignacionGrupo" Member="TblAsignacionGrupo" ThisKey="id" OtherKey="idGrupo" Type="TblAsignacionGrupo" />
-      <Association Name="TblGrupo_TblQR" Member="TblQR" ThisKey="id" OtherKey="idGrupo" Type="TblQR" />
-      <Association Name="TblCarrera_TblGrupo" Member="TblCarrera" ThisKey="idCarrera" OtherKey="id" Type="TblCarrera" IsForeignKey="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.TblJustificante" Member="TblJustificante">
-    <Type Name="TblJustificante">
-      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="strMotivo" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="strArchivo" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
-      <Column Name="fecha" Type="System.DateTime" DbType="Date" CanBeNull="true" />
-      <Column Name="fechaJusti" Type="System.DateTime" DbType="Date" CanBeNull="true" />
-      <Association Name="TblJustificante_TblAsistencia" Member="TblAsistencia" ThisKey="id" OtherKey="idJustificante" Type="TblAsistencia" />
-    </Type>
-  </Table>
-  <Table Name="dbo.TblMateria" Member="TblMateria">
-    <Type Name="TblMateria">
-      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="strNombre" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
-      <Column Name="strDescripcion" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
-      <Column Name="bStatus" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
-      <Column Name="idCarrera" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="idCuatri" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Association Name="TblMateria_TblAlumnoMateria" Member="TblAlumnoMateria" ThisKey="id" OtherKey="idMateria" Type="TblAlumnoMateria" />
-      <Association Name="TblMateria_TblAsignacionMateria" Member="TblAsignacionMateria" ThisKey="id" OtherKey="idMateria" Type="TblAsignacionMateria" />
-      <Association Name="TblMateria_TblAsistencia" Member="TblAsistencia" ThisKey="id" OtherKey="idMateria" Type="TblAsistencia" />
-      <Association Name="TblMateria_TblNota" Member="TblNota" ThisKey="id" OtherKey="idMateria" Type="TblNota" />
-      <Association Name="TblCarrera_TblMateria" Member="TblCarrera" ThisKey="idCarrera" OtherKey="id" Type="TblCarrera" IsForeignKey="true" />
-      <Association Name="TblCuatri_TblMateria" Member="TblCuatri" ThisKey="idCuatri" OtherKey="id" Type="TblCuatri" IsForeignKey="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.TblNota" Member="TblNota">
-    <Type Name="TblNota">
-      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="strTitulo" Type="System.String" DbType="VarChar(1000)" CanBeNull="true" />
-      <Column Name="strDescripcion" Type="System.String" DbType="VarChar(1000)" CanBeNull="true" />
-      <Column Name="fecha" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="idProfesor" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="idMateria" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Association Name="TblNota_TblAlumnoMateria" Member="TblAlumnoMateria" ThisKey="id" OtherKey="idNotas" Type="TblAlumnoMateria" />
-      <Association Name="TblMateria_TblNota" Member="TblMateria" ThisKey="idMateria" OtherKey="id" Type="TblMateria" IsForeignKey="true" />
-      <Association Name="TblProfesor_TblNota" Member="TblProfesor" ThisKey="idProfesor" OtherKey="id" Type="TblProfesor" IsForeignKey="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.TblProfesor" Member="TblProfesor">
-    <Type Name="TblProfesor">
-      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="strNombre" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
-      <Column Name="strApellidoP" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
-      <Column Name="strApellidoM" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
-      <Column Name="intEdad" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="strSexo" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
-      <Column Name="strCorreo" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
-      <Column Name="bitFoto" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
-      <Column Name="strCedula" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
-      <Column Name="strEspecialidad" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
-      <Column Name="idDireccion" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="idTelefono" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="idUser" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Association Name="TblProfesor_TblAsignacionMateria" Member="TblAsignacionMateria" ThisKey="id" OtherKey="idProfesor" Type="TblAsignacionMateria" />
-      <Association Name="TblProfesor_TblNota" Member="TblNota" ThisKey="id" OtherKey="idProfesor" Type="TblNota" />
-      <Association Name="TblProfesor_TblQR" Member="TblQR" ThisKey="id" OtherKey="idProfesor" Type="TblQR" />
-      <Association Name="TblDireccion_TblProfesor" Member="TblDireccion" ThisKey="idDireccion" OtherKey="id" Type="TblDireccion" IsForeignKey="true" />
-      <Association Name="TblTelefono_TblProfesor" Member="TblTelefono" ThisKey="idTelefono" OtherKey="id" Type="TblTelefono" IsForeignKey="true" />
-      <Association Name="TblUser_TblProfesor" Member="TblUser" ThisKey="idUser" OtherKey="id" Type="TblUser" IsForeignKey="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.TblQR" Member="TblQR">
-    <Type Name="TblQR">
-      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="qr" Type="System.String" DbType="VarChar(1000)" CanBeNull="true" />
-      <Column Name="fecha" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="idProfesor" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="idGrupo" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="idAsignacion" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="idCarrera" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="idParcial" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Association Name="TblAsignacionMateria_TblQR" Member="TblAsignacionMateria" ThisKey="idAsignacion" OtherKey="id" Type="TblAsignacionMateria" IsForeignKey="true" />
-      <Association Name="TblCarrera_TblQR" Member="TblCarrera" ThisKey="idCarrera" OtherKey="id" Type="TblCarrera" IsForeignKey="true" />
-      <Association Name="TblGrupo_TblQR" Member="TblGrupo" ThisKey="idGrupo" OtherKey="id" Type="TblGrupo" IsForeignKey="true" />
-      <Association Name="TblCatalogoParcial_TblQR" Member="TblCatalogoParcial" ThisKey="idParcial" OtherKey="id" Type="TblCatalogoParcial" IsForeignKey="true" />
-      <Association Name="TblProfesor_TblQR" Member="TblProfesor" ThisKey="idProfesor" OtherKey="id" Type="TblProfesor" IsForeignKey="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.TblTelefono" Member="TblTelefono">
-    <Type Name="TblTelefono">
-      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="strcelular" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="strtelCasa" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="strotro" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Association Name="TblTelefono_TblAlumno" Member="TblAlumno" ThisKey="id" OtherKey="idTelefono" Type="TblAlumno" />
-      <Association Name="TblTelefono_TblProfesor" Member="TblProfesor" ThisKey="id" OtherKey="idTelefono" Type="TblProfesor" />
-    </Type>
-  </Table>
-  <Table Name="dbo.TblUser" Member="TblUser">
-    <Type Name="TblUser">
-      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="strusuario" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
-      <Column Name="strpass" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
-      <Column Name="strtipoUsuario" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
-      <Association Name="TblUser_TblAlumno" Member="TblAlumno" ThisKey="id" OtherKey="idUser" Type="TblAlumno" />
-      <Association Name="TblUser_TblProfesor" Member="TblProfesor" ThisKey="id" OtherKey="idUser" Type="TblProfesor" />
+  <Table Name="dbo.tblVenta" Member="tblVenta">
+    <Type Name="tblVenta">
+      <Column Name="idVenta" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Fecha" Type="System.Data.Linq.Binary" DbType="rowversion NOT NULL" CanBeNull="false" IsVersion="true" />
+      <Column Name="intBulto" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="intKilos" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="strDescripcion" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
+      <Column Name="intImporte" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="strMetodoPago" Type="System.String" DbType="VarChar(150) NOT NULL" CanBeNull="false" />
+      <Column Name="strlapso" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
+      <Column Name="fkEmpleado" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="tblVenta_tblTotalVenta" Member="tblTotalVenta" ThisKey="idVenta" OtherKey="fkVenta" Type="tblTotalVenta" />
+      <Association Name="tblEmpleado_tblVenta" Member="tblEmpleado" ThisKey="fkEmpleado" OtherKey="idEmpleado" Type="tblEmpleado" IsForeignKey="true" />
     </Type>
   </Table>
 </Database>
