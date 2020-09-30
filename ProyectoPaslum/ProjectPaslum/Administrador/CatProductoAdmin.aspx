@@ -52,38 +52,44 @@
                             <asp:TextBox runat="server" ID="txtDescrip" class="form-control" type="text"></asp:TextBox>
                         </div>
                     </div>
-                      <div class="form-group">
+                    <div class="form-group">
+                        <div class="col-xs-10">
+                            Almacén
+                            <asp:DropDownList ID="ddlAlmacen" runat="server" AppendDataBoundItems="True"  CssClass=" form-control"></asp:DropDownList>      
+                        </div>
+                    </div>
+                      
+                    <div class="form-group">
                     <div class="col-xs-5">
                         Presentación
-                        <asp:TextBox runat="server" ID="txtPresentacion" class="form-control" required="required" type="text" TextMode="Number"></asp:TextBox>
-                        <asp:RegularExpressionValidator ID="validarPresentacion" runat="server" ControlToValidate="txtPresentacion"
-                            ErrorMessage="Ingrese solo numeros" ForeColor="Red" ValidationExpression="^[0-9]*"></asp:RegularExpressionValidator>
+                        <asp:TextBox runat="server" ID="txtPresentacion" class="form-control" required="required" type="text" 
+                              pattern="^[0-9]*" title="Ingrese solo numeros"></asp:TextBox>
+
                     </div>
                    <div class="col-xs-5">
                     <!-- Seleccion de Presentación  -->
                             Unidad de medida
-                        <asp:DropDownList ID="ddlUnidadMedida" runat="server" AppendDataBoundItems="True"  Height="50%" CssClass=" form-control"></asp:DropDownList>      
-                   </div> 
-                   </div>
+                        <asp:DropDownList ID="ddlUnidadMedida" runat="server" AppendDataBoundItems="True" CssClass=" form-control"></asp:DropDownList>      
+                   </div>                     
 
-                         
-                       
-                      
+                   </div>                    
+
+                        <br /> <br />
                         <br /> <br />  <br /> <br />
                         <br /> <br />  <br /> <br />
                        <div class="modal-footer">
                             <div class="modalfooter">
                              
                                   <asp:Button ID="btncancel" runat="server" CssClass="btn btn-primary"  Text="Cancelar" data-dismiss="modal"  />
-                                 <asp:Button ID="btnaceptar" runat="server" class="btn btn-success"  Text="Aceptar" />
+                                 <asp:Button ID="btnaceptar" runat="server" class="btn btn-success"  Text="Aceptar" OnClick="btnaceptar_Click"/>
                               </div>
                            </div>
                             </div> </div>
             </div>
         </div>
           </div>
-       <%-- Editar o eliminar Grupo --%>
-    <%--<div class="panel panel-default">
+       <%-- Editar o eliminar Producto --%>
+    <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="heading">
             <h4 class="panel-title">
                 <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse" aria-expanded="false" aria-controls="collapse">Catalogo
@@ -95,10 +101,11 @@
                 <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" Width="100%" AllowPaging="True" DataSourceID="SqlDataSource1" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px">
                     <Columns>
                         
-                        <asp:BoundField DataField="strNombre" HeaderText="Materia" SortExpression="strNombre" />
+                        <asp:BoundField DataField="strNombre" HeaderText="Producto" SortExpression="strNombre" />
                         <asp:BoundField DataField="strDescripcion" HeaderText="Descripcion" SortExpression="strDescripcion" />
-                        <asp:BoundField DataField="strnombre1" HeaderText="Carrera" SortExpression="strnombre1" />
-                        <asp:BoundField DataField="strnombre2" HeaderText="Cuatrimestre" SortExpression="strnombre2" />
+                        <asp:BoundField DataField="intPresentacion" HeaderText="Presentacion" SortExpression="intPresentacion" />
+                        <asp:BoundField DataField="strNombre1" HeaderText="Unidad Medida" SortExpression="strNombre1" />
+                        <asp:BoundField DataField="strNombre2" HeaderText="Almacén" SortExpression="strNombre2" />
 
                     </Columns>
                      <FooterStyle BackColor="White" ForeColor="#000066" />
@@ -112,15 +119,17 @@
                         <SortedDescendingHeaderStyle BackColor="#00547E" />
                 </asp:GridView>
 
-                <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:pase_listaConnectionString %>" SelectCommand="select m.strNombre, m.strDescripcion, c.strnombre,cu.strnombre 
-from TblMateria m
-inner join TblCarrera c 
-on m.idCarrera = c.id
-inner join TblCuatri cu
-on m.idCuatri = cu.id;"></asp:SqlDataSource>
+                <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:XIUGARConnectionString %>" 
+                    SelectCommand="select prod.strNombre, prod.strDescripcion, prod.intPresentacion,
+                                    uni.strNombre, alm.strNombre
+                                    from tblProducto prod
+                                    inner join tblUnidadMedida uni
+                                    on prod.fkUnidadMedida = uni.idUnidadMedida
+                                    inner join tblAlmacen alm
+                                    on prod.fkAlmacen = alm.idAlmacen"></asp:SqlDataSource>
 
             </div>
         </div>
-    </div>--%>
+    </div>
 
 </asp:Content>

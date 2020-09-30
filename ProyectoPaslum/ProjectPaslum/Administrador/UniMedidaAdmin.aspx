@@ -68,7 +68,7 @@
                     <div class="modal-footer">
                         <div class="modalfooter">                             
                             <asp:Button ID="btncancel" runat="server" CssClass="btn btn-primary"  Text="Cancelar" data-dismiss="modal"  />
-                            <asp:Button ID="btnaceptar" runat="server" class="btn btn-success"  Text="Aceptar" />
+                            <asp:Button ID="btnaceptar" runat="server" class="btn btn-success"  Text="Aceptar" OnClick="btnaceptar_Click" />
                          </div>
                         </div>
                 </div> </div>
@@ -133,13 +133,11 @@
         </div>
         <div id="collapse" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
             <div class="panel-body">
-<%--                <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" Width="100%" AllowPaging="True" DataSourceID="SqlDataSource1" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px">
+                <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" Width="100%" AllowPaging="True" DataSourceID="SqlDataSource2" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px">
                     <Columns>
                         
-                        <asp:BoundField DataField="strNombre" HeaderText="Materia" SortExpression="strNombre" />
-                        <asp:BoundField DataField="strDescripcion" HeaderText="Descripcion" SortExpression="strDescripcion" />
-                        <asp:BoundField DataField="strnombre1" HeaderText="Carrera" SortExpression="strnombre1" />
-                        <asp:BoundField DataField="strnombre2" HeaderText="Cuatrimestre" SortExpression="strnombre2" />
+                        <asp:BoundField DataField="strAbreviatura" HeaderText="Abreviatura" SortExpression="strAbreviatura" />
+                        <asp:BoundField DataField="strNombre" HeaderText="Nombre" SortExpression="strNombre" />
 
                     </Columns>
                      <FooterStyle BackColor="White" ForeColor="#000066" />
@@ -153,19 +151,15 @@
                         <SortedDescendingHeaderStyle BackColor="#00547E" />
                 </asp:GridView>
 
-                <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:pase_listaConnectionString %>" SelectCommand="select m.strNombre, m.strDescripcion, c.strnombre,cu.strnombre 
-from TblMateria m
-inner join TblCarrera c 
-on m.idCarrera = c.id
-inner join TblCuatri cu
-on m.idCuatri = cu.id;"></asp:SqlDataSource>--%>
+                <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:XIUGARConnectionString %>" 
+                    SelectCommand="SELECT [strNombre], [strAbreviatura] FROM [tblUnidadMedida]"></asp:SqlDataSource>
 
             </div>
         </div>
     </div>
 
     <%-- Editar o eliminar Rol de trabajo --%>
-    <div class="panel panel-default">
+<%--    <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="headingRol">
             <h4 class="panel-title">
                 <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseRol" aria-expanded="false" aria-controls="collapse">Roles de trabajo
@@ -173,7 +167,7 @@ on m.idCuatri = cu.id;"></asp:SqlDataSource>--%>
             </h4>
         </div>
         <div id="collapseRol" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
-            <div class="panel-body">
+            <div class="panel-body">--%>
                 <%--<asp:GridView ID="GridView2" runat="server" AutoGenerateColumns="False" Width="100%" AllowPaging="True" DataSourceID="SqlDataSource1" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px">
                     <Columns>
                         
@@ -201,8 +195,8 @@ on m.idCarrera = c.id
 inner join TblCuatri cu
 on m.idCuatri = cu.id;"></asp:SqlDataSource>--%>
 
-            </div>
+           <%-- </div>
         </div>
-    </div>
+    </div>--%>
 
 </asp:Content>

@@ -336,17 +336,17 @@
                 <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" Width="100%" AllowPaging="True" DataSourceID="SqlDataSource1" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px">
                     <Columns>
 
-                        <asp:BoundField DataField="strNombre" HeaderText="strNombre" SortExpression="strNombre" />
-                        <asp:BoundField DataField="strApellidoP" HeaderText="strApellidoP" SortExpression="strApellidoP" />
-                        <asp:BoundField DataField="strApellidoM" HeaderText="strApellidoM" SortExpression="strApellidoM" />
-                        <asp:BoundField DataField="strCorreo" HeaderText="strCorreo" SortExpression="strCorreo" />
-                        <asp:BoundField DataField="strCelular" HeaderText="strCelular" SortExpression="strCelular" />
-                        <asp:BoundField DataField="strUsuario" HeaderText="strUsuario" SortExpression="strUsuario" />
-                        <asp:BoundField DataField="strTipousuario" HeaderText="strTipousuario" SortExpression="strTipousuario" />
+                        <asp:BoundField DataField="strNombre" HeaderText="Nombre" SortExpression="strNombre" />
+                        <asp:BoundField DataField="strApellidoP" HeaderText="ApellidoP" SortExpression="strApellidoP" />
+                        <asp:BoundField DataField="strApellidoM" HeaderText="ApellidoM" SortExpression="strApellidoM" />
+                        <asp:BoundField DataField="strCorreo" HeaderText="Correo" SortExpression="strCorreo" />
+                        <asp:BoundField DataField="strCelular" HeaderText="Celular" SortExpression="strCelular" />
+                        <asp:BoundField DataField="strUsuario" HeaderText="Usuario" SortExpression="strUsuario" />
+                        <asp:BoundField DataField="strTipousuario" HeaderText="Rol" SortExpression="strTipousuario" />
 
                     </Columns>
                      <FooterStyle BackColor="White" ForeColor="#000066" />
-                        <HeaderStyle BackColor="#006699" Font-Bold="True" ForeColor="White" HorizontalAlign="Center"/>
+                        <HeaderStyle BackColor="#006699" Font-Bold="True" ForeColor="White" HorizontalAlign="Center" Font-Size="16px"/>
                         <PagerStyle BackColor="White" ForeColor="#000066" HorizontalAlign="Center" />
                         <RowStyle ForeColor="#000066" />
                         <SelectedRowStyle BackColor="#669999" Font-Bold="True" ForeColor="White" />
@@ -365,9 +365,9 @@
                                     on e.fkTelefono = t.idTelefono
                                     inner join tblUsuario u
                                     on e.fkLogin = u.idUsuario"></asp:SqlDataSource>
+                </div>
             </div>
         </div>
-    </div>
       </div>
     </div>
   </div>

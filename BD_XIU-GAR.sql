@@ -5104,6 +5104,26 @@ CREATE TABLE tblAlmacen (
   CONSTRAINT FK_Encargado FOREIGN KEY(fkEncargado) REFERENCES tblEmpleado(idEmpleado)  
 );
 
+CREATE TABLE tblUnidadMedida (
+  idUnidadMedida int NOT NULL identity(1,1),
+  strNombre varchar(250) NOT NULL,
+  strAbreviatura varchar(250)
+  constraint pk_UnidadMedida primary key (idUnidadMedida)
+);
+
+CREATE TABLE tblProducto (
+  idProducto int NOT NULL identity(1,1),
+  strNombre varchar(250) NOT NULL,
+  strDescripcion varchar(250),
+  intPresentacion int,
+  fkUnidadMedida int,
+  fkAlmacen int,
+  constraint pk_Producto primary key (idProducto),
+  CONSTRAINT FK_UnidadMedida FOREIGN KEY(fkUnidadMedida) REFERENCES tblUnidadMedida(idUnidadMedida),  
+  CONSTRAINT FK_Almacen FOREIGN KEY(fkAlmacen) REFERENCES tblAlmacen(idAlmacen)  
+);
+
+
 
 /*Consultas*/
 
@@ -5128,3 +5148,11 @@ select alm.strNombre, alm.strDescripcion, alm.intCapacidad,
 from tblAlmacen alm
 inner join tblEmpleado enc
 on alm.fkEncargado = enc.idEmpleado;
+
+select prod.strNombre, prod.strDescripcion, prod.intPresentacion,
+uni.strNombre, alm.strNombre
+from tblProducto prod
+inner join tblUnidadMedida uni
+on prod.fkUnidadMedida = uni.idUnidadMedida
+inner join tblAlmacen alm
+on prod.fkAlmacen = alm.idAlmacen
