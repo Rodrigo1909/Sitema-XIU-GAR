@@ -210,6 +210,10 @@
     <Content Include="Administrador\js\scripts.js" />
     <Content Include="Administrador\ProveedorAdmin.aspx" />
     <Content Include="Administrador\UniMedidaAdmin.aspx" />
+    <Content Include="Almacen\EntradaAlmacen.aspx" />
+    <Content Include="Almacen\MovimientoAlmacen.aspx" />
+    <Content Include="Almacen\PrincipalAlmacen.aspx" />
+    <Content Include="Almacen\SalidaAlmacen.aspx" />
     <Content Include="Alumno\DatosEscolares.aspx" />
     <Content Include="Alumno\DatosPersonales.aspx" />
     <Content Include="Alumno\images\FELTOR.jpg" />
@@ -312,6 +316,7 @@
     <Content Include="Profesor\PaseLista.aspx" />
     <Content Include="Profesor\PrincipalProfesor.aspx" />
     <Content Include="Profesor\Profesor.Master" />
+    <Content Include="Almacen\Almacen.Master" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="images\loc.png" />
     <Content Include="js\aos.js" />
@@ -517,6 +522,41 @@
     </Compile>
     <Compile Include="Administrador\UniMedidaAdmin.aspx.designer.cs">
       <DependentUpon>UniMedidaAdmin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Almacen\Almacen.Master.cs">
+      <DependentUpon>Almacen.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Almacen\Almacen.Master.designer.cs">
+      <DependentUpon>Almacen.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Almacen\EntradaAlmacen.aspx.cs">
+      <DependentUpon>EntradaAlmacen.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Almacen\EntradaAlmacen.aspx.designer.cs">
+      <DependentUpon>EntradaAlmacen.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Almacen\MovimientoAlmacen.aspx.cs">
+      <DependentUpon>MovimientoAlmacen.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Almacen\MovimientoAlmacen.aspx.designer.cs">
+      <DependentUpon>MovimientoAlmacen.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Almacen\PrincipalAlmacen.aspx.cs">
+      <DependentUpon>PrincipalAlmacen.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Almacen\PrincipalAlmacen.aspx.designer.cs">
+      <DependentUpon>PrincipalAlmacen.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Almacen\SalidaAlmacen.aspx.cs">
+      <DependentUpon>SalidaAlmacen.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Almacen\SalidaAlmacen.aspx.designer.cs">
+      <DependentUpon>SalidaAlmacen.aspx</DependentUpon>
     </Compile>
     <Compile Include="Alumno\Alumno.Master.cs">
       <DependentUpon>Alumno.Master</DependentUpon>

@@ -149,16 +149,16 @@ namespace ProjectPaslum
                     //Session["forDom"] = profesor.idDireccion;
                     Response.Redirect("./Venta/PrincipalVendedor.aspx", true);
                 }
-                else if (UsuarioLoggeado.strTipousuario == "ALMACÉN")
+                else if (UsuarioLoggeado.strTipousuario == "ALMACEN")
                 {                    
-                    //var alumno = (from alum in contexto.TblAlumno where alum.idUser == UsuarioLoggeado.id select alum).FirstOrDefault();
+                    var empleado = (from empl in contexto.tblEmpleado where empl.idEmpleado == UsuarioLoggeado.idUsuario select empl).FirstOrDefault();
                     //var alumnoTel = (from al in contexto.TblAlumno join tel in contexto.TblTelefono on al.idTelefono equals tel.id select new { celular = tel.strcelular, casa = tel.strtelCasa, otro =tel.strotro }).FirstOrDefault();
                     //var alumnoCar = (from alcar in contexto.TblAlumno join car in contexto.TblCarrera on alcar.idCarrera equals car.id select new { nombre = car.strNombre, area = car.strArea }).FirstOrDefault();
                     //var alumnoDir = (from aldir in contexto.TblAlumno join dir in contexto.TblDireccion on aldir.idDireccion equals dir.id select new { calle = dir.strcalle, colonia = dir.strcolonia, municipio = dir.strmunicipio}).FirstOrDefault();
-                    //Session["id"] = alumno.id;
-                    //Session["nombre"] = alumno.strNombre;
-                    //Session["apellido1"] = alumno.strApellidoP;
-                    //Session["apellido2"] = alumno.strApellidoM;
+                    Session["id"] = empleado.idEmpleado;
+                    Session["nombre"] = empleado.strNombre + " " + empleado.strApellidoP + " " +empleado.strApellidoM;
+                    Session["apellido1"] = empleado.strApellidoP;
+                    Session["apellido2"] = empleado.strApellidoM;
                     //Session["matricula"] = alumno.id;
                     //Session["correo"] = alumno.strCorreo;
                     //Session["telefono1"] = alumnoTel.celular;
@@ -172,7 +172,7 @@ namespace ProjectPaslum
                     //Session["forTel"] = alumno.idTelefono;
                     //Session["forDom"] = alumno.idDireccion;
                     //Session["forGrupo"] = alumno.idGrupo;
-                    //Response.Redirect("./Alumno/PrincipalAlumno.aspx", true);
+                    Response.Redirect("./Almacen/PrincipalAlmacen.aspx", true);
                 }
             }
             else

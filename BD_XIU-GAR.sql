@@ -5123,6 +5123,29 @@ CREATE TABLE tblProducto (
   CONSTRAINT FK_Almacen FOREIGN KEY(fkAlmacen) REFERENCES tblAlmacen(idAlmacen)  
 );
 
+CREATE TABLE tblStock (
+  idStock int NOT NULL identity(1,1),
+  dblCantidad decimal (19,4) NOT NULL,
+  fkProducto int,
+  constraint pk_Stock primary key (idStock),
+  CONSTRAINT FK_StockProducto FOREIGN KEY(fkProducto) REFERENCES tblProducto(idProducto)
+);
+
+/*Crear tabla de proveedores*/
+CREATE TABLE tblMovimiento (
+  idMovimiento int NOT NULL identity(1,1),
+  strTipo varchar(250) NOT NULL,
+  fecha datetime,
+  fkStock int,
+  fkEmpleado int,
+  fkProveedor int,
+  constraint pk_Movimiento primary key (idMovimiento),
+  CONSTRAINT FK_MovimientoStock FOREIGN KEY(fkStock) REFERENCES tblStock(idStock),
+  CONSTRAINT FK_MovimientoEmpleado FOREIGN KEY(fkEmpleado) REFERENCES tblEmpleado(idEmpleado),
+  CONSTRAINT FK_MovimientoProveedor FOREIGN KEY(fkProveedor) REFERENCES tblProveedor(idProveedor)
+);
+
+
 
 
 /*Consultas*/
@@ -5155,4 +5178,8 @@ from tblProducto prod
 inner join tblUnidadMedida uni
 on prod.fkUnidadMedida = uni.idUnidadMedida
 inner join tblAlmacen alm
-on prod.fkAlmacen = alm.idAlmacen
+on prod.fkAlmacen = alm.idAlmacen;
+
+select * from tblUsuario
+select * from tblStock
+select * from tblMovimiento
