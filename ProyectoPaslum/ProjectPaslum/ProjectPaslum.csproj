@@ -37,7 +37,7 @@
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
+    <Optimize>false</Optimize>
     <OutputPath>bin\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
@@ -213,7 +213,7 @@
     <Content Include="Almacen\EntradaAlmacen.aspx" />
     <Content Include="Almacen\MovimientoAlmacen.aspx" />
     <Content Include="Almacen\PrincipalAlmacen.aspx" />
-    <Content Include="Almacen\SalidaAlmacen.aspx" />
+    <Content Include="Almacen\SalidasAlmacen.aspx" />
     <Content Include="Alumno\DatosEscolares.aspx" />
     <Content Include="Alumno\DatosPersonales.aspx" />
     <Content Include="Alumno\images\FELTOR.jpg" />
@@ -234,6 +234,7 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Site.css" />
+    <Content Include="Content\sweetalert.css" />
     <Content Include="css\ajax-loader.gif" />
     <Content Include="css\animate.css" />
     <Content Include="css\aos.css" />
@@ -344,6 +345,7 @@
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\sweetalert.js" />
     <Content Include="Scripts\WebForms\DetailsView.js" />
     <Content Include="Scripts\WebForms\Focus.js" />
     <Content Include="Scripts\WebForms\GridView.js" />
@@ -551,12 +553,12 @@
     <Compile Include="Almacen\PrincipalAlmacen.aspx.designer.cs">
       <DependentUpon>PrincipalAlmacen.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Almacen\SalidaAlmacen.aspx.cs">
-      <DependentUpon>SalidaAlmacen.aspx</DependentUpon>
+    <Compile Include="Almacen\SalidasAlmacen.aspx.cs">
+      <DependentUpon>SalidasAlmacen.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Almacen\SalidaAlmacen.aspx.designer.cs">
-      <DependentUpon>SalidaAlmacen.aspx</DependentUpon>
+    <Compile Include="Almacen\SalidasAlmacen.aspx.designer.cs">
+      <DependentUpon>SalidasAlmacen.aspx</DependentUpon>
     </Compile>
     <Compile Include="Alumno\Alumno.Master.cs">
       <DependentUpon>Alumno.Master</DependentUpon>

@@ -10,7 +10,7 @@
 namespace ProjectPaslum.Almacen {
     
     
-    public partial class SalidaAlmacen {
+    public partial class SalidasAlmacen {
         
         /// <summary>
         /// Control lbEmpleado.
@@ -49,22 +49,13 @@ namespace ProjectPaslum.Almacen {
         protected global::System.Web.UI.WebControls.DropDownList ddlProducto;
         
         /// <summary>
-        /// Control LabExiste.
+        /// Control ddlExistente.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LabExiste;
-        
-        /// <summary>
-        /// Control txtExitencia.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtExitencia;
+        protected global::System.Web.UI.WebControls.DropDownList ddlExistente;
         
         /// <summary>
         /// Control txtCantidad.
