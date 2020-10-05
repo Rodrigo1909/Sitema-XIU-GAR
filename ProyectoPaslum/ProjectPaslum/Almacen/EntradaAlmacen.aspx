@@ -21,13 +21,14 @@
                             <div class="form-inline">
 
                                     <div class="form-group">
-                                        <label>Vendedor </label><asp:Label ID="lbEmpleado" runat="server" Text="Label" Visible="false"></asp:Label>
-                                        <asp:TextBox ID="txtVendedor" runat="server" width="500px" Enabled="false"  ></asp:TextBox>
+                                        <label>Almacenista </label><asp:Label ID="lbEmpleado" runat="server" Text="Label" Visible="false"></asp:Label>
+                                        <asp:TextBox ID="txtAlmacenista" runat="server" width="500px" Enabled="false"  ></asp:TextBox>
                                     </div>
                                     &nbsp &nbsp &nbsp &nbsp 
                                             
                                     <div class="form-group">
-                                         <label>Almacén </label><asp:DropDownList ID="ddlAlmacen" runat="server" AppendDataBoundItems="True"  width="500px" ></asp:DropDownList> 
+                                         <label>Almacén </label><asp:DropDownList ID="ddlAlmacen" runat="server" AppendDataBoundItems="True"  
+                                             width="500px" OnSelectedIndexChanged="ddlAlmacen_SelectedIndexChanged" AutoPostBack="true"></asp:DropDownList> 
                                     </div>
                                 </div>
                                </div>
