@@ -4,6 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Modelo;
+using System.Web;
+using System.Net;
+using System.Net.Mail;
 
 namespace Controller
 {
@@ -81,5 +84,42 @@ namespace Controller
         //    return respuesta;
 
         //}
+
+        MailMessage m = new MailMessage();
+        SmtpClient smtp = new SmtpClient();
+
+        public bool enviarcorreo(string to, string contra)
+        {
+            try
+            {
+                var correo = "rodrigo.montero1909@gmail.com";
+                var pass = "solamente1909";
+
+                m.From = new MailAddress(correo);
+                m.To.Add(new MailAddress(to));
+
+                m.Body = "Bienvenido a la empresa azucarera más grande de México," +
+                    "es un placer tenerte en nuestro equipo, tu usuario es tu correo electronico y tu contraseña es: " + contra;
+
+                m.Subject = "Bienvenido a XIU-GAR";
+
+                smtp.Host = "smtp.gmail.com";
+
+                smtp.Port = 587;
+
+                smtp.Credentials = new NetworkCredential(correo, pass);
+
+                smtp.EnableSsl = true;
+
+                smtp.Send(m);
+
+                return true;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.StackTrace);
+                return false;
+            }
+        }
     }
 }

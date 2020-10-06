@@ -6,6 +6,9 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using Modelo;
 using Controller;
+using System.Threading.Tasks;
+using System.Net;
+using System.Net.Mail;
 
 namespace ProjectPaslum.Administrador
 {
@@ -35,25 +38,38 @@ namespace ProjectPaslum.Administrador
         protected void btnRegistrar_Click(object sender, EventArgs e)
         {
             var sex = cmbSexo.SelectedItem.Value;
+            var usu = (from usua in contexto.tblUsuario
+                       where usua.strUsuario == txtCorreo.Text
+                       select usua).FirstOrDefault();
 
-            tblEmpleado empl = new tblEmpleado();
-            empl.strNombre = txtNombre.Text.ToUpper();
-            empl.strApellidoP = txtAPaterno.Text.ToUpper();
-            empl.strApellidoM = txtAMaterno.Text.ToUpper();
-            empl.strEdad = txtEdad.Text;
-            empl.strSexo = sex;
-            empl.strCorreo = txtCorreo.Text;       
-            ControllerEmpleado ctrlEmpl = new ControllerEmpleado();
-            ctrlEmpl.InsertarEmpleado(GetDatosVista(empl));
+            if (usu == null)
+            {
+                tblEmpleado empl = new tblEmpleado();
+                empl.strNombre = txtNombre.Text.ToUpper();
+                empl.strApellidoP = txtAPaterno.Text.ToUpper();
+                empl.strApellidoM = txtAMaterno.Text.ToUpper();
+                empl.strEdad = txtEdad.Text;
+                empl.strSexo = sex;
+                empl.strCorreo = txtCorreo.Text;
+                ControllerEmpleado ctrlEmpl = new ControllerEmpleado();
+                ctrlEmpl.InsertarEmpleado(GetDatosVista(empl));
+            }
+            else
+            {
+                //sweet poner que ya esta registrado el correo
+            }
+          
             this.Response.Redirect("./EmpleadoAdmin.aspx", true);
         }
 
         protected tblEmpleado GetDatosVista(tblEmpleado empl)
         {
-            var random = new Random();
-            var value = random.Next(0, 999999);
+
             var rol = cmbRol.SelectedItem.Value;
             var EstaMuni = ddlMunicipio.SelectedItem.Value;
+            var random = new Random();
+            var value = random.Next(0, 999999);
+
 
             tblDireccion direccion = new tblDireccion();
             //direccion.fkEstadoMunicipio = Int32.Parse(ddlMunicipio);
@@ -70,9 +86,12 @@ namespace ProjectPaslum.Administrador
             telefono.strOtro = txtTelOtro.Text.ToUpper();
 
             tblUsuario login = new tblUsuario();
-            login.strUsuario = txtUsuario.Text;
-            login.strPassword = txtPass.Text;
+            login.strUsuario = txtCorreo.Text;
+            login.strPassword = value.ToString();
             login.strTipousuario = rol;
+
+            ControllerEmpleado ctrlEmpl = new ControllerEmpleado();
+            ctrlEmpl.enviarcorreo(empl.strCorreo, value.ToString());
 
             empl.tblDireccion = direccion;
             empl.tblTelefono = telefono;
@@ -104,5 +123,7 @@ namespace ProjectPaslum.Administrador
             ddlMunicipio.DataSource = municipio;
             ddlMunicipio.DataBind();
         }
+
+        
     }
 }

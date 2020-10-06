@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Modelo;
+using System.Data.SqlClient;
 
 namespace Controller
 {
@@ -68,17 +69,6 @@ namespace Controller
             }
             return respuesta;
 
-        }
-
-        public void Editar(tblStock empl)
-        {
-            tblStock stockbd = contexto.tblStock
-                .Where(t => t.dblCantidad == empl.dblCantidad).FirstOrDefault();
-            if (stockbd != null)
-            {
-                stockbd.dblCantidad = empl.dblCantidad;
-                contexto.SubmitChanges();
-            }
         }
 
         public List<tblEmpleado> ConsultaEmpleado()
