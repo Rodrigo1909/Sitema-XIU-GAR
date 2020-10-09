@@ -130,36 +130,38 @@ namespace ProjectPaslum
                 }
                 if (UsuarioLoggeado.strTipousuario == "VENDEDOR")
                 {
-                    //var profesor = (from profe in contexto.TblProfesor where profe.idUser == UsuarioLoggeado.id select profe).FirstOrDefault();
-                    //var profesorTel = (from profeTel in contexto.TblProfesor join tel in contexto.TblTelefono on profeTel.idTelefono equals tel.id select new { celular = tel.strcelular, casa = tel.strtelCasa, otro = tel.strotro }).FirstOrDefault();
+                    var vendedor = (from empl in contexto.tblEmpleado
+                                    where empl.fkLogin == UsuarioLoggeado.idUsuario
+                                    select empl).FirstOrDefault();
+
+                    var vendedorTel = (from profeTel in contexto.tblEmpleado
+                                       join tel in contexto.tblTelefono 
+                                       on profeTel.fkTelefono equals tel.idTelefono
+                                       select new { celular = tel.strCelular, casa = tel.strTelCasa}).FirstOrDefault();
                     //var profesorDir = (from profeDir in contexto.TblProfesor join dir in contexto.TblDireccion on profeDir.idDireccion equals dir.id select new { calle = dir.strcalle, colonia = dir.strcolonia, municipio = dir.strmunicipio }).FirstOrDefault();
-                    //Session["id"] = profesor.id;
-                    //Session["nombre"] = profesor.strNombre;
-                    //Session["apellido1"] = profesor.strApellidoP;
-                    //Session["apellido2"] = profesor.strApellidoM;
-                    //Session["matricula"] = profesor.id;
-                    //Session["correo"] = profesor.strCorreo;
-                    //Session["telefono1"] = profesorTel.celular;
-                    //Session["telefono2"] = profesorTel.casa;
-                    //Session["telefono3"] = profesorTel.otro;
-                    //Session["calle"] = profesorDir.calle;
-                    //Session["colonia"] = profesorDir.colonia;
-                    //Session["municipio"] = profesorDir.municipio;
-                    //Session["forTel"] = profesor.idTelefono;
-                    //Session["forDom"] = profesor.idDireccion;
+                    Session["id"] = vendedor.idEmpleado;
+                    Session["CompletoNombre"] = vendedor.strNombre + " " + vendedor.strApellidoP + " " + vendedor.strApellidoM;
+                    Session["nombre"] = vendedor.strNombre;
+                    Session["apellido1"] = vendedor.strApellidoP;
+                    Session["apellido2"] = vendedor.strApellidoM;
+                    Session["correo"] = vendedor.strCorreo;
+                    Session["telefono1"] = vendedorTel.celular;
+                    Session["telefono2"] = vendedorTel.casa;
+                    Session["rol"] = UsuarioLoggeado.strTipousuario;
+
                     Response.Redirect("./Venta/PrincipalVendedor.aspx", true);
                 }
                 else if (UsuarioLoggeado.strTipousuario == "ALMACEN")
                 {                    
-                    var empleado = (from empl in contexto.tblEmpleado where empl.idEmpleado == UsuarioLoggeado.idUsuario select empl).FirstOrDefault();
+                    var almacen = (from empl in contexto.tblEmpleado
+                                    where empl.fkLogin == UsuarioLoggeado.idUsuario
+                                    select empl).FirstOrDefault();
                     //var exitente = (from exi in contexto.tblStock select exi).FirstOrDefault();
                     //var alumnoTel = (from al in contexto.TblAlumno join tel in contexto.TblTelefono on al.idTelefono equals tel.id select new { celular = tel.strcelular, casa = tel.strtelCasa, otro =tel.strotro }).FirstOrDefault();
                     //var alumnoCar = (from alcar in contexto.TblAlumno join car in contexto.TblCarrera on alcar.idCarrera equals car.id select new { nombre = car.strNombre, area = car.strArea }).FirstOrDefault();
                     //var alumnoDir = (from aldir in contexto.TblAlumno join dir in contexto.TblDireccion on aldir.idDireccion equals dir.id select new { calle = dir.strcalle, colonia = dir.strcolonia, municipio = dir.strmunicipio}).FirstOrDefault();
-                    Session["id"] = empleado.idEmpleado;
-                    Session["nombre"] = empleado.strNombre + " " + empleado.strApellidoP + " " +empleado.strApellidoM;
-                    Session["apellido1"] = empleado.strApellidoP;
-                    Session["apellido2"] = empleado.strApellidoM;
+                    Session["id"] = almacen.idEmpleado;
+                    Session["nombre"] = almacen.strNombre + " " + almacen.strApellidoP + " " + almacen.strApellidoM;
                     //Session["existente"] = exitente.dblCantidad;
                     //Session["matricula"] = alumno.id;
                     //Session["correo"] = alumno.strCorreo;

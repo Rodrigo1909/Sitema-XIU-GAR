@@ -41,7 +41,7 @@
 
                                 <div class="form-group">
                                     <label>Correo </label>
-                                    <asp:TextBox ID="txtCorreo" runat="server" CssClass="form-control" width="410px" ></asp:TextBox>
+                                    <asp:TextBox ID="txtCorreo" runat="server" CssClass="form-control" width="410px" Enabled="false"></asp:TextBox>
                                     </div>
                                 <br /> <br />                              
                             </div>
@@ -57,23 +57,20 @@
                                                              
                                 <div class="form-group">
                                     <label>Télefono </label>
-                                    <asp:TextBox ID="txtTelefono" runat="server" CssClass="form-control" width="410px"></asp:TextBox>
+                                    <asp:TextBox ID="txtTelefono" runat="server" CssClass="form-control" width="410px" Enabled="false"></asp:TextBox>
                                 </div>                                
 
                                 <div class="form-group">
                                     <label>Celular </label>
-                                    <asp:TextBox ID="txtCelular" runat="server" CssClass="form-control" width="410px"></asp:TextBox>
+                                    <asp:TextBox ID="txtCelular" runat="server" CssClass="form-control" width="410px" Enabled="false"></asp:TextBox>
                                 </div>
 
                                 <div class="form-group">
-                                    <label>Otro </label>
-                                    <asp:TextBox ID="txtOtro" runat="server" CssClass="form-control" width="410px"></asp:TextBox>
+                                    <label>Rol </label>
+                                    <asp:TextBox ID="txtOtro" runat="server" CssClass="form-control" width="410px" Enabled="false"></asp:TextBox>
                                 </div>   
                             </div>
                         </div>
-                        <a  href="/InicioAdmin.aspx" class="nav-link" >
-                            <asp:Button ID="btnRegistrar" runat="server" Text="Actualizar datos" CssClass="btn btn-block btn-sm btn-success" />
-                        </a>
                     </div>
                 </div>
                             

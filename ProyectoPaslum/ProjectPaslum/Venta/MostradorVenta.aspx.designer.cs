@@ -22,13 +22,13 @@ namespace ProjectPaslum.Venta {
         protected global::System.Web.UI.WebControls.TextBox txtVendedor;
         
         /// <summary>
-        /// Control DropDownList2.
+        /// Control ddlAlmacen.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList2;
+        protected global::System.Web.UI.WebControls.DropDownList ddlAlmacen;
         
         /// <summary>
         /// Control ddlCliente.
@@ -76,13 +76,13 @@ namespace ProjectPaslum.Venta {
         protected global::System.Web.UI.WebControls.DropDownList ddlUnidadMedida;
         
         /// <summary>
-        /// Control ddlDescripcion.
+        /// Control ddlProducto.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlDescripcion;
+        protected global::System.Web.UI.WebControls.DropDownList ddlProducto;
         
         /// <summary>
         /// Control txtImporte.

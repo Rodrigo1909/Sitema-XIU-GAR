@@ -57,7 +57,7 @@ namespace ProjectPaslum.Almacen
             {
                 var resta = ord.dblCantidad - Int32.Parse(txtCantidad.Text);
 
-                if(resta <= 0)
+                if(resta >= 0)
                 {
                     ord.dblCantidad = resta;
                     contexto.SubmitChanges();

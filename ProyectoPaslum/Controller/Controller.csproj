@@ -52,6 +52,7 @@
     <Compile Include="ControllerProducto.cs" />
     <Compile Include="ControllerQr.cs" />
     <Compile Include="ControllerUnidadMedida.cs" />
+    <Compile Include="ControllerVenta.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

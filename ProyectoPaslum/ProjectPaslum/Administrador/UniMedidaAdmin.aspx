@@ -135,15 +135,15 @@
             <div class="panel-body">
                 <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" Width="100%" AllowPaging="True" DataSourceID="SqlDataSource2" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px">
                     <Columns>
-
+                        
                         <asp:CommandField ButtonType="Image" 
-                             CancelImageUrl="~/images/Iconos/IconCancelar.png" 
-                             DeleteImageUrl="~/images/Iconos/IconEliminar.png" ShowDeleteButton="True"
-                             EditImageUrl="~/images/Iconos/IconEditar.png" ShowEditButton="True"
-                             UpdateImageUrl="~/images/Iconos/IconGuardar.png" />
+                        CancelImageUrl="~/images/Iconos/IconCancelar.png" 
+                        DeleteImageUrl="~/images/Iconos/IconEliminar.png" ShowDeleteButton="True"
+                        EditImageUrl="~/images/Iconos/IconEditar.png" ShowEditButton="True"
+                        UpdateImageUrl="~/images/Iconos/IconGuardar.png" />
 
-                        <asp:BoundField DataField="strNombre" HeaderText="strNombre" SortExpression="strNombre" />
-                        <asp:BoundField DataField="strAbreviatura" HeaderText="strAbreviatura" SortExpression="strAbreviatura" />
+                        <asp:BoundField DataField="strNombre" HeaderText="NOMBRE" SortExpression="strNombre" />
+                        <asp:BoundField DataField="strAbreviatura" HeaderText="ABREVIATURA" SortExpression="strAbreviatura" />
 
 
                     </Columns>
@@ -159,16 +159,12 @@
                 </asp:GridView>
 
                 <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:XIUGARConnectionString %>" 
-                    SelectCommand="SELECT [strNombre], [strAbreviatura] FROM [tblUnidadMedida] where idActivo = 1" 
-                    DeleteCommand="UPDATE [tblUnidadMedida] SET idActivo = 0  WHERE (idUnidadMedida = @idUnidadMedida)" 
-                    UpdateCommand="UPDATE tblUnidadMedida SET strNombre = @strNombre, strAbreviatura = @strAbreviatura WHERE (idUnidadMedida = @idUnidadMedida)">
-                    <DeleteParameters>
-                        <asp:Parameter Name="idUnidadMedida" />
-                    </DeleteParameters>
+                    SelectCommand="SELECT strNombre, strAbreviatura FROM tblUnidadMedida WHERE (idActivo = 1)" 
+                    DeleteCommand="UPDATE tblUnidadMedida SET idActivo = 0" 
+                    UpdateCommand="UPDATE tblUnidadMedida SET strNombre = @strNombre, strAbreviatura = @strAbreviatura">
                     <UpdateParameters>
-                        <asp:Parameter Name="strNombre" />
-                        <asp:Parameter Name="strAbreviatura" />
-                        <asp:Parameter Name="idUnidadMedida" />
+                        <asp:Parameter Name="strNombre" Type="String" />
+                        <asp:Parameter Name="strAbreviatura" Type="String" />
                     </UpdateParameters>
                 </asp:SqlDataSource>
 

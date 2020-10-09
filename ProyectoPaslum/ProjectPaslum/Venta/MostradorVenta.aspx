@@ -26,7 +26,7 @@
                                     &nbsp &nbsp &nbsp &nbsp 
                                             
                                     <div class="form-group">
-                                         <label>Almacén </label><asp:DropDownList ID="DropDownList2" runat="server" AppendDataBoundItems="True"  width="500px" ></asp:DropDownList> 
+                                         <label>Almacén </label><asp:DropDownList ID="ddlAlmacen" runat="server" AppendDataBoundItems="True"  width="500px" OnSelectedIndexChanged="ddlAlmacen_SelectedIndexChanged"></asp:DropDownList> 
                                     </div>
                                 </div>
                                </div>
@@ -93,8 +93,8 @@
                                      <br /><br />
                                                          
                                     <div class="form-group">
-                                         <label>Descripción</label>
-                                         <asp:DropDownList ID="ddlDescripcion" runat="server" AppendDataBoundItems="True"  width="500px" ></asp:DropDownList> 
+                                         <label>Producto</label>
+                                         <asp:DropDownList ID="ddlProducto" runat="server" AppendDataBoundItems="True"  width="500px" ></asp:DropDownList> 
                                     </div>
                                     &nbsp &nbsp &nbsp &nbsp
                                     <div class="form-group">

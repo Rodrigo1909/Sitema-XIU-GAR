@@ -21,6 +21,7 @@
     </div>
 
        <%-- Consulta de movimientos --%>
+
     <div class="panel panel-default">
             <div class="panel-body">
                 <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" Width="100%" AllowPaging="True" DataSourceID="SqlDataSource2" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="3px" AllowSorting="True">

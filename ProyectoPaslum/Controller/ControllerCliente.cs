@@ -50,14 +50,16 @@ namespace Controller
         {
             try
             {
-                var correo = "rodrigo.montero1909@gmail.com";
-                var pass = "solamente1909";
+                var correo = "xiugarmx@gmail.com";
+                var pass = "Pakal2019";
 
                 m.From = new MailAddress(correo);
                 m.To.Add(new MailAddress(to));
 
-                m.Body = "Gracias por ser nuestro cliente somos empresa azucarera más grande de México," + 
-                    "es un placer tenerte en nuestro catalogo de clientes, tu usuario es tu correo electronico y tu contraseña es: " + contra;
+                m.Body = "Gracias por ser parte de nuestros clientes, somos empresa azucarera más grande de México," + 
+                    "es un placer tenerte en nuestro catalogo de clientes.\n"+
+                    "Tu usuario es: " + to + "\n" + 
+                    "Tu contraseña es: " + contra;
 
                 m.Subject = "Bienvenido a XIU-GAR";
 
