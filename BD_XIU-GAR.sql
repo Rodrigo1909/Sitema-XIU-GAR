@@ -5009,9 +5009,10 @@ INSERT INTO tblEstado_Municipio (fkEstado,fkMunicipio) VALUES
 
 CREATE TABLE tblUsuario (
   idUsuario int NOT NULL identity(1,1),
-  strUsuario varchar(50) NOT NULL,
-  strPassword varchar(50) NOT NULL,
-  strTipousuario varchar(50) NOT NULL,
+  strUsuario varchar(50),
+  strPassword varchar(50),
+  strTipousuario varchar(50),
+  idActivo int
   constraint pk_Uduario primary key(idUsuario)
 );
 
@@ -5038,15 +5039,16 @@ create table tblDireccion (
 
 CREATE TABLE tblEmpleado (
 	idEmpleado int NOT NULL identity(1,1),
-	strNombre varchar(150) NOT NULL,
-	strApellidoP varchar(150) NOT NULL,
-	strApellidoM varchar(150) NOT NULL,
+	strNombre varchar(150),
+	strApellidoP varchar(150),
+	strApellidoM varchar(150),
 	strCorreo varchar(150),
 	strSexo varchar(50),
 	strEdad varchar(50),
     fkDireccion int,
     fkTelefono int,
 	fkLogin int,
+	idActivo int
 	constraint pk_Empleado primary key (idEmpleado),   
 	constraint fk_Direccion foreign key(fkDireccion) references tblDireccion(idDireccion),
 	constraint fk_Telefono foreign key(fkTelefono) references tblTelefono(idTelefono),
@@ -5055,17 +5057,23 @@ CREATE TABLE tblEmpleado (
 
 CREATE TABLE tblCliente(
 	idCliente int NOT NULL identity(1,1),
-	strNombre varchar(150) NOT NULL,
-	strApellidoP varchar(150) NOT NULL,
-	strApellidoM varchar(150) NOT NULL,
-	strSituacionFiscal varchar(50) NOT NULL,
+	strNombre varchar(150),
+	strApellidoP varchar(150),
+	strApellidoM varchar(150),
+	strSituacionFiscal varchar(150),
 	strCorreo varchar(150),
-	strEntrega varchar(150) NOT NULL,
-	strHorario varchar(150) NOT NULL,
-	strMetodoPago varchar(150) NOT NULL,
+
+	strNumeroBodega varchar(150),
+	strHorarioAtencion varchar(150),
+	strEncargado varchar(150),
+	strPagos varchar(150),
+
+	strEstablecimiento varchar(150),
+	strMetodoPago varchar(150),
     fkDireccion int,
     fkTelefono int,
 	fkLogin int,
+	idActivo int
 	constraint pk_Cliente primary key (idCliente),   
 	constraint fk_Direccion_Cliente foreign key(fkDireccion) references tblDireccion(idDireccion),
 	constraint fk_Telefono_Cliente foreign key(fkTelefono) references tblTelefono(idTelefono),
@@ -5074,12 +5082,12 @@ CREATE TABLE tblCliente(
 
 CREATE TABLE tblVenta (
   idVenta int NOT NULL identity(1,1),
-  Fecha timestamp NOT NULL,
-  intBulto int NOT NULL,
-  intKilos int NOT NULL,
+  Fecha date,
+  intBulto int,
+  intKilos int,
   strDescripcion varchar(250),
-  intImporte int NOT NULL,
-  strMetodoPago varchar(150) NOT NULL,
+  intImporte int,
+  strMetodoPago varchar(150),
   strlapso varchar(150),
   fkEmpleado int,
   primary key (idVenta),
@@ -5096,28 +5104,31 @@ CREATE TABLE tblTotalVenta (
 
 CREATE TABLE tblAlmacen (
   idAlmacen int NOT NULL identity(1,1),
-  strNombre varchar(250) NOT NULL,
+  strNombre varchar(250),
   strDescripcion varchar(250),
   intCapacidad int,
   fkEncargado int,
+  idActivo int
   constraint pk_Almacen primary key (idAlmacen),
   CONSTRAINT FK_Encargado FOREIGN KEY(fkEncargado) REFERENCES tblEmpleado(idEmpleado)  
-);
+); 
 
 CREATE TABLE tblUnidadMedida (
   idUnidadMedida int NOT NULL identity(1,1),
-  strNombre varchar(250) NOT NULL,
-  strAbreviatura varchar(250)
+  strNombre varchar(250),
+  strAbreviatura varchar(250),
+  idActivo int
   constraint pk_UnidadMedida primary key (idUnidadMedida)
 );
 
 CREATE TABLE tblProducto (
   idProducto int NOT NULL identity(1,1),
-  strNombre varchar(250) NOT NULL,
+  strNombre varchar(250),
   strDescripcion varchar(250),
   intPresentacion int,
   fkUnidadMedida int,
   fkAlmacen int,
+  idActivo int
   constraint pk_Producto primary key (idProducto),
   CONSTRAINT FK_UnidadMedida FOREIGN KEY(fkUnidadMedida) REFERENCES tblUnidadMedida(idUnidadMedida),  
   CONSTRAINT FK_Almacen FOREIGN KEY(fkAlmacen) REFERENCES tblAlmacen(idAlmacen)  
@@ -5134,7 +5145,7 @@ CREATE TABLE tblStock (
 /*Crear tabla de proveedores*/
 CREATE TABLE tblMovimiento (
   idMovimiento int NOT NULL identity(1,1),
-  strTipo varchar(250) NOT NULL,
+  strTipo varchar(250),
   fecha datetime,
   fkStock int,
   fkEmpleado int,
@@ -5146,8 +5157,26 @@ CREATE TABLE tblMovimiento (
 );
 
 
+select c.strEstablecimiento, c.strMetodoPago, 
+c.strHorarioAtencion, c.strNumeroBodega, c.strMetodoPago,
+t.strCelular, t.strTelCasa
+from tblCliente c
+inner join tblTelefono t
+on t.idTelefono = c.fkTelefono
+where c.idActivo = 1
 
+select * from tblEmpleado
+select * from tblUsuario
+select * from tblTelefono
 
+select * from tblDireccion d
+inner join tblEstado_Municipio em
+on d.fkEstadoMunicipio = em.idEstado_Municipio
+inner join tblEstado e
+on e.idEstado = em.fkEstado
+inner join tblMunicipio m
+on m.idMunicipio = em.fkMunicipio
+select * from tblUnidadMedida
 /*Consultas*/
 
 select m.strMunicipio from tblEstado_Municipio em
@@ -5181,5 +5210,30 @@ inner join tblAlmacen alm
 on prod.fkAlmacen = alm.idAlmacen;
 
 select * from tblUsuario
-select * from tblStock
-select * from tblMovimiento
+
+select s.dblCantidad, p.strNombre, p.strDescripcion from tblStock s
+inner join tblProducto p
+on s.fkProducto = p.idProducto
+
+select m.strTipo, m.fecha, e.strNombre, e.strApellidoP, e.strApellidoM
+ from tblMovimiento m
+inner join tblEmpleado e
+on m.fkEmpleado = e.idEmpleado;
+
+select p.strNombre, p.strDescripcion, a.strNombre as 'Almacen'
+ from tblProducto p
+inner join tblAlmacen a
+on a.idAlmacen = p.fkAlmacen
+
+select m.strTipo, m.fecha,
+ e.strNombre, e.strApellidoP, e.strApellidoM,
+ a.strNombre, p.strNombre
+from tblMovimiento m
+inner join tblEmpleado e
+on m.fkEmpleado = e.idEmpleado
+inner join tblStock s
+on m.fkStock = m.fkStock
+inner join tblProducto p
+on s.fkProducto = p.idProducto
+inner join tblAlmacen a
+on p.fkAlmacen = a.idAlmacen

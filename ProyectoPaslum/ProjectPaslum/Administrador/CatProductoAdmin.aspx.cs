@@ -55,7 +55,8 @@ namespace ProjectPaslum.Administrador
             prod.strDescripcion = txtDescrip.Text.ToUpper();
             prod.intPresentacion = Int32.Parse(txtPresentacion.Text);
             prod.fkAlmacen = Int32.Parse(almacen);
-            prod.fkUnidadMedida = Int32.Parse(unidad);            
+            prod.fkUnidadMedida = Int32.Parse(unidad);
+            prod.idActivo = 1;       
             ControllerProducto ctrlProd = new ControllerProducto();
             ctrlProd.InsertarProducto(prod);
             this.Response.Redirect("./CatProductoAdmin.aspx", true);

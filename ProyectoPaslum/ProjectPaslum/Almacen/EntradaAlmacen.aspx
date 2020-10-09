@@ -21,7 +21,7 @@
                             <div class="form-inline">
 
                                     <div class="form-group">
-                                        <a href="SalidaAlmacen.aspx">SalidaAlmacen.aspx</a>                                 <label>Almacenista </label><asp:Label ID="lbEmpleado" runat="server" Text="Label" Visible="false"></asp:Label>
+                                        <label>Almacenista </label><asp:Label ID="lbEmpleado" runat="server" Text="Label" Visible="false"></asp:Label>
                                         <asp:TextBox ID="txtAlmacenista" runat="server" width="500px" Enabled="false"  ></asp:TextBox>
                                     </div>
                                     &nbsp &nbsp &nbsp &nbsp 

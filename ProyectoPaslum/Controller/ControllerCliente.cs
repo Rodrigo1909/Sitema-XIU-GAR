@@ -4,21 +4,21 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Modelo;
-using System.Web;
 using System.Net;
 using System.Net.Mail;
+using System.Web;
 
 namespace Controller
 {
-    public class ControllerEmpleado
+    public class ControllerCliente
     {
         PaslumBaseDatoDataContext contexto = new PaslumBaseDatoDataContext();
-        public bool InsertarEmpleado(tblEmpleado _TBL_Empl)
+        public bool InsertarCliente(tblCliente _TBL_Cliente)
         {
             bool respuesta = false;
             try
             {
-                contexto.tblEmpleado.InsertOnSubmit(_TBL_Empl);
+                contexto.tblCliente.InsertOnSubmit(_TBL_Cliente);
                 contexto.SubmitChanges();
                 respuesta = true;
 
@@ -32,7 +32,6 @@ namespace Controller
             return respuesta;
 
         }
-
         public List<tblEstado> ConsultaEstado()
         {
             return contexto.tblEstado.ToList<tblEstado>();
@@ -42,32 +41,6 @@ namespace Controller
         {
             return contexto.tblEstado_Municipio.ToList<tblEstado_Municipio>();
 
-        }
-
-        public void Editar(tblEmpleado empl, tblTelefono tel)
-        {
-            tblEmpleado emplBd = contexto.tblEmpleado
-                .Where(t => t.idEmpleado == empl.idEmpleado).FirstOrDefault();
-            if (emplBd != null)
-            {
-                emplBd.strCorreo = empl.strCorreo;                
-                contexto.SubmitChanges();
-            }
-
-            tblTelefono telBd = contexto.tblTelefono
-                .Where(t => t.idTelefono == tel.idTelefono).FirstOrDefault();
-            if (telBd != null)
-            {
-                telBd.strCelular = tel.strCelular;
-                telBd.strTelCasa = tel.strTelCasa;
-                telBd.strOtro = tel.strOtro;
-                contexto.SubmitChanges();
-            }
-        }
-
-        public tblEmpleado ConsultarEmpleado(int idEmpleado)
-        {
-            return contexto.tblEmpleado.Where(e => e.idEmpleado == idEmpleado).FirstOrDefault<tblEmpleado>();
         }
 
         MailMessage m = new MailMessage();
@@ -83,8 +56,8 @@ namespace Controller
                 m.From = new MailAddress(correo);
                 m.To.Add(new MailAddress(to));
 
-                m.Body = "Bienvenido a la empresa azucarera más grande de México," +
-                    "es un placer tenerte en nuestro equipo, tu usuario es tu correo electronico y tu contraseña es: " + contra;
+                m.Body = "Gracias por ser nuestro cliente somos empresa azucarera más grande de México," + 
+                    "es un placer tenerte en nuestro catalogo de clientes, tu usuario es tu correo electronico y tu contraseña es: " + contra;
 
                 m.Subject = "Bienvenido a XIU-GAR";
 

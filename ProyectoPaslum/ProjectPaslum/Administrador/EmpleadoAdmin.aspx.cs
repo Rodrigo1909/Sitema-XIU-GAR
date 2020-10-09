@@ -51,6 +51,7 @@ namespace ProjectPaslum.Administrador
                 empl.strEdad = txtEdad.Text;
                 empl.strSexo = sex;
                 empl.strCorreo = txtCorreo.Text;
+                empl.idActivo = 1;
                 ControllerEmpleado ctrlEmpl = new ControllerEmpleado();
                 ctrlEmpl.InsertarEmpleado(GetDatosVista(empl));
             }
@@ -72,7 +73,7 @@ namespace ProjectPaslum.Administrador
 
 
             tblDireccion direccion = new tblDireccion();
-            //direccion.fkEstadoMunicipio = Int32.Parse(ddlMunicipio);
+            direccion.fkEstadoMunicipio = Int32.Parse(EstaMuni);
             direccion.strCalle = txtCalle.Text.ToUpper();
             direccion.strColonia = txtColonia.Text.ToUpper();
             direccion.intCodpost = txtCodPos.Text;
@@ -89,9 +90,10 @@ namespace ProjectPaslum.Administrador
             login.strUsuario = txtCorreo.Text;
             login.strPassword = value.ToString();
             login.strTipousuario = rol;
+            login.idActivo = 1;
 
-            ControllerEmpleado ctrlEmpl = new ControllerEmpleado();
-            ctrlEmpl.enviarcorreo(empl.strCorreo, value.ToString());
+            //ControllerEmpleado ctrlEmpl = new ControllerEmpleado();
+            //ctrlEmpl.enviarcorreo(empl.strCorreo, value.ToString());
 
             empl.tblDireccion = direccion;
             empl.tblTelefono = telefono;
@@ -124,6 +126,27 @@ namespace ProjectPaslum.Administrador
             ddlMunicipio.DataBind();
         }
 
-        
+        protected void btnBuscar_Click(object sender, EventArgs e)
+        {
+            int identificador = int.Parse(txtBusqueda.Text);
+            tblEmpleado empleado = this.GetEmpleado(identificador);
+            this.ConfigurarGrid(empleado);
+
+        }
+
+        public tblEmpleado GetEmpleado(int id)
+        {
+            ControllerEmpleado ctrEmpleado = new ControllerEmpleado();
+            return ctrEmpleado.ConsultarEmpleado(id);
+        }
+
+        public void ConfigurarGrid(tblEmpleado emplea)
+        {
+            List<tblEmpleado> empleados = new List<tblEmpleado>();
+            empleados.Add(emplea);
+            this.GridEmpleado.DataSource = empleados;
+            this.GridEmpleado.DataBind();
+        }
+
     }
 }

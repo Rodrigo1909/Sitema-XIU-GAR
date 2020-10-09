@@ -49,6 +49,7 @@ namespace ProjectPaslum.Administrador
             alm.strDescripcion = txtDescrip.Text.ToUpper();
             alm.intCapacidad = Int32.Parse(txtCapacidad.Text);
             alm.fkEncargado = Int32.Parse(encargado);
+            alm.idActivo = 1;
 
             ControllerAlmacen ctrlAlm = new ControllerAlmacen();
             ctrlAlm.InsertarAlmacen(alm);

@@ -58,8 +58,8 @@ namespace ProjectPaslum.Almacen
                 foreach (tblStock ord in cantidadExistente)
                 {
                     actualizar += 1;
-                    decimal suma;
-                    suma = ord.dblCantidad + Int32.Parse(txtCantidad.Text);
+                    var suma = Int32.Parse(txtCantidad.Text) + ord.dblCantidad;       
+                    
                     ord.dblCantidad = suma;
                     contexto.SubmitChanges();
 

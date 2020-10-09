@@ -55,8 +55,7 @@ namespace ProjectPaslum.Almacen
             
             foreach (tblStock ord in cantidadExistente)
             {
-                decimal resta;
-                resta = ord.dblCantidad - Int32.Parse(txtCantidad.Text);
+                var resta = ord.dblCantidad - Int32.Parse(txtCantidad.Text);
 
                 if(resta <= 0)
                 {

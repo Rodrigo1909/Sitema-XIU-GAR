@@ -22,6 +22,7 @@ namespace ProjectPaslum.Administrador
             tblUnidadMedida UniMed = new tblUnidadMedida();
             UniMed.strNombre = txtNombre.Text.ToUpper();
             UniMed.strAbreviatura = txtPresentacion.Text.ToUpper();
+            UniMed.idActivo = 1;
 
             ControllerUnidadMedida ctrlUniMed = new ControllerUnidadMedida();
             ctrlUniMed.InsertarUnidadMedida(UniMed);

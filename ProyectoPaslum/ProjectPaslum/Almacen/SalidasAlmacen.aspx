@@ -8,7 +8,7 @@
     <link href="~/Content/sweetalert.css" rel="stylesheet" />
 
 
-    <script type="text/javascript">
+<%--    <script type="text/javascript">
         function Suspend() { 
             swal({ title: "Are you sure?", text: "You will not be able to recover this imaginary file!", 
                 type: "warning", showCancelButton: true, confirmButtonColor: "#DD6B55", 
@@ -16,7 +16,7 @@
     
             function(){ swal("Deleted!", "Your imaginary file has been deleted.", "success"); }); 
         } 
-    </script>
+    </script>--%>
 
 <script src="~/Scripts/sweetalert.min.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.css" />
