@@ -92,8 +92,8 @@ namespace ProjectPaslum.Administrador
             login.strTipousuario = rol;
             login.idActivo = 1;
 
-            //ControllerEmpleado ctrlEmpl = new ControllerEmpleado();
-            //ctrlEmpl.enviarcorreo(empl.strCorreo, value.ToString());
+            ControllerEmpleado ctrlEmpl = new ControllerEmpleado();
+            ctrlEmpl.enviarcorreo(empl.strCorreo, value.ToString());
 
             empl.tblDireccion = direccion;
             empl.tblTelefono = telefono;
@@ -128,16 +128,16 @@ namespace ProjectPaslum.Administrador
 
         protected void btnBuscar_Click(object sender, EventArgs e)
         {
-            int identificador = int.Parse(txtBusqueda.Text);
+            string identificador = txtBusqueda.Text.ToUpper();
             tblEmpleado empleado = this.GetEmpleado(identificador);
             this.ConfigurarGrid(empleado);
 
         }
 
-        public tblEmpleado GetEmpleado(int id)
+        public tblEmpleado GetEmpleado(string nombre)
         {
             ControllerEmpleado ctrEmpleado = new ControllerEmpleado();
-            return ctrEmpleado.ConsultarEmpleado(id);
+            return ctrEmpleado.ConsultarEmpleado(nombre);
         }
 
         public void ConfigurarGrid(tblEmpleado emplea)

@@ -2,28 +2,23 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <link href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
-    <link href="../css/modales.css" rel="stylesheet" />
+    <%--<link href="../css/modales.css" rel="stylesheet" />--%>
     <link href="../Content/bootstrap.min.css" rel="stylesheet" />
     <link href="../Alumno/scss/PersoDatos.css" rel="stylesheet" />
-    <link href="~/Content/sweetalert.css" rel="stylesheet" />
+<%--    <link href="../Content/sweetalert/sweet-alert.css" rel="stylesheet" />
+    <script src="../js/swalert.js"></script>
+    <script src="../Scripts/jquery-1.10.2.min.js"></script>
+    <script src="../Scripts/sweetalert.js"></script>
 
-
-<%--    <script type="text/javascript">
-        function Suspend() { 
-            swal({ title: "Are you sure?", text: "You will not be able to recover this imaginary file!", 
-                type: "warning", showCancelButton: true, confirmButtonColor: "#DD6B55", 
-                confirmButtonText: "Yes, delete it!", closeOnConfirm: false }, 
-    
-            function(){ swal("Deleted!", "Your imaginary file has been deleted.", "success"); }); 
-        } 
+    <script type="text/javascript">
+        function alerta() {
+            swal({
+                title: "Good job!",
+                text: "You clicked the button!",
+                icon: "success",
+            });
+        }
     </script>--%>
-
-<script src="~/Scripts/sweetalert.min.js"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.css" />
-<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
-
-
 
 
 
@@ -48,7 +43,8 @@
                                     &nbsp &nbsp &nbsp &nbsp 
                                             
                                     <div class="form-group">
-                                         <label>Almacén </label><asp:DropDownList ID="ddlAlmacen" runat="server" AppendDataBoundItems="True"  
+                                         <label>Almacén </label>
+                                        <asp:DropDownList ID="ddlAlmacen" runat="server" AppendDataBoundItems="True"  
                                              width="500px" OnSelectedIndexChanged="ddlAlmacen_SelectedIndexChanged" AutoPostBack="true"></asp:DropDownList> 
                                     </div>
                                 </div>
@@ -101,7 +97,8 @@
                  </div>
 
                 <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
-                           <asp:Button ID="btnRegistrar" runat="server" Text="Agregar" Font-Size="16px" CssClass="btn btn-block btn-sm btn-success" Width="150px" OnClick="btnRegistrar_Click"  />
+                           <asp:Button ID="btnRegistrar" runat="server" Text="Agregar" Font-Size="16px" CssClass="btn btn-block btn-sm btn-success" Width="150px" 
+                               OnClick="btnRegistrar_Click" />
                 </div>
             </div>
           </div>

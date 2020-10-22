@@ -32,7 +32,7 @@
                 <h4 class="panel-title">
                     <a>REGISTRO DE NUEVO PROVEEDOR</a>
                 </h4>            
-                    <%-- Empleado --%>
+                    <%-- Proveedor --%>
                     <div class="panel panel-default">
                             <div class="panel-heading" role="tab" id="headingOne">
                                 <h4 class="panel-title">
@@ -59,9 +59,8 @@
                                                          </div>    
                                                         &nbsp &nbsp &nbsp &nbsp 
                                                         <div class="form-group">
-                                                            <label>Establecimiento: </label>
-                                                            <asp:TextBox ID="txtEdad" runat="server" width="255px" CssClass="form-control" 
-                                                                type="Text" pattern="^[a-zA-ZñÑáéíóúÁÉÍÓÚ\s]+$" title="Ingrese solo letras" ></asp:TextBox>                                                            
+                                                            <label>Razón Social: </label>
+                                                            <asp:TextBox ID="txtRazonSocial" runat="server" width="273px" CssClass="form-control"></asp:TextBox>                                                            
                                                         </div>
                                                         <br /> <br />
                                                         
@@ -86,7 +85,21 @@
                                                             <asp:TextBox ID="txtAMaterno" runat="server" width="307px" CssClass="form-control" 
                                                                 type="Text" pattern="^[a-zA-ZñÑáéíóúÁÉÍÓÚ\s]+$" title="Ingrese solo letras">
                                                             </asp:TextBox>
-                                                        </div>                                                  
+                                                        </div>    
+                                                        
+                                                        &nbsp &nbsp &nbsp &nbsp
+                                                        <div class="form-group">
+                                                            <label>Sitio Web: </label>
+                                                            <asp:TextBox ID="txtWeb" runat="server" width="300px" CssClass="form-control">
+                                                            </asp:TextBox>
+                                                        </div>  
+                                                        <br /> <br />      
+                                                        
+                                                        <div class="form-group">
+                                                            <label>Producto o Servicio: </label>
+                                                            <asp:TextBox ID="txtProdServ" runat="server" width="289px" CssClass="form-control" >
+                                                            </asp:TextBox>
+                                                        </div>                                           
                                                        
                                                     </div>
                                                 </div>
@@ -210,7 +223,7 @@
                                               <asp:Image ID="Image6" runat="server" ImageUrl="~/images/Iconos/IconTelefono.png" CssClass="img-responsive img-rounded" />
                                         </div>
 
-                                        
+                                       
                                         <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5">
                                             <br />
                                             <div class="panel panel-default">
@@ -220,15 +233,15 @@
                                                          <div class="form-group">
                                                             <label>Celular: </label>
                                                             <asp:TextBox ID="txtCelular" runat="server" CssClass="form-control" type="number" 
-                                                                pattern="^[0-9]*" title="Ingrese solo numeros" width="330px">
+                                                                pattern="^[0-9]*" title="Ingrese solo numeros" width="332px">
                                                             </asp:TextBox>
                                                          </div>                                                       
                                                          <br /><br />
 
                                                          <div class="form-group">
-                                                            <label>Tel. Casa: </label>
+                                                            <label>Tel. Alterno: </label>
                                                             <asp:TextBox ID="txtTelEncargador" runat="server" CssClass="form-control" type="number" 
-                                                                pattern="^[0-9]*" title="Ingrese solo numeros" width="315px" >
+                                                                pattern="^[0-9]*" title="Ingrese solo numeros" width="303px" >
                                                             </asp:TextBox>                                           
                                                          </div>
                                                         <br /><br />
@@ -236,7 +249,7 @@
                                                          <div class="form-group">
                                                             <label>Otro: </label>
                                                             <asp:TextBox ID="txtTelOtro" runat="server" CssClass="form-control" type="number" 
-                                                                pattern="^[0-9]*" title="Ingrese solo numeros" width="345px" >
+                                                                pattern="^[0-9]*" title="Ingrese solo numeros" width="349px" >
                                                             </asp:TextBox>                                           
                                                          </div>
                                                        </div>
@@ -250,41 +263,26 @@
                                                 <div class="panel panel-default">
                                                     <div class="panel-heading">
                                                         <div class="panel-title">
-                                                            Registra el Usuario y Constraseña
+                                                            Registrar al proveedor
                                                         </div>
                                                     </div>
                                                     <div class="panel-body">
                                                         <div class="form-inline">
-
-                                                            <div class="form-group">
-                                                                <label>Usuario: </label>
-                                                                <asp:TextBox ID="txtUsuario" runat="server"
-                                                                    placeholder="Usuario" required="required"
-                                                                    CssClass="form-control" width="293px" ></asp:TextBox>
-                                                            </div>
-                                                            <br /> <br />
-
-                                                            <div class="form-group">
-                                                                <label>Contraseña: </label>
-                                                                <asp:TextBox ID="txtPass" runat="server"
-                                                                    placeholder="Contraseña" required="required"
-                                                                    CssClass="form-control" TextMode="Password" width="270px" ></asp:TextBox>
-                                                            </div>
-                                                             <hr />
                                                                                                 
                                                         <a  href="/InicioAdmin.aspx" class="nav-link" >
-                                                            <asp:Button ID="btnRegistrar" runat="server" Text="Registrar" CssClass="btn btn-block btn-sm btn-success" />
+                                                            <asp:Button ID="btnRegistrar" runat="server" Text="Registrar" CssClass="btn btn-block btn-sm btn-success" OnClick="btnRegistrar_Click" />
                                                         </a>
                                                         </div>
                                                     </div>
                                                 </div>                                    
                                             </div>
-                                        </div>                            
-                                    </div>
-                                  </div>
-                                </div>
-                             </div>  
-                        </div>   
+                                        </div>
+                            
+                                               </div>
+                                             </div>
+                                           </div>
+                                         </div>  
+                                      </div>   
                </div>
              </div>
             </div>
@@ -306,37 +304,19 @@
         </div>
         <div id="collapse" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
             <div class="panel-body">
-<%--                <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" Width="100%" AllowPaging="True" DataKeyNames="id" DataSourceID="SqlDataSource1" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px">
-                    <Columns>
-                            <asp:TemplateField HeaderText="Editar">
-                                <ItemTemplate>
-                                    <asp:ImageButton runat="server" ID="imgEditar" CommandName="Editar" ImageUrl="Imagenes/editar.png" />
-                                </ItemTemplate>
-                                <HeaderStyle HorizontalAlign="Center" />
-                                <ItemStyle HorizontalAlign="Center" Width="50px" />
-                            </asp:TemplateField>
-                            <asp:TemplateField HeaderText="Eliminar" Visible="True">
-                                <ItemTemplate>
-                                    <asp:ImageButton runat="server" ID="imgEliminar" CommandName="Eliminar" ImageUrl="Imagenes/borrar.png"
-                   OnClientClick="javascript:return confirm('¿Está seguro de querer eliminar el registro seleccionado?', 'Mensaje de sistema')" />
-                                </ItemTemplate>
-                                <HeaderStyle HorizontalAlign="Center" />
-                                <ItemStyle HorizontalAlign="Center" Width="50px" />
-                            </asp:TemplateField>
-
-                        <asp:BoundField DataField="id" HeaderText="Clave" InsertVisible="False" ReadOnly="True" SortExpression="id" />
-                        <asp:BoundField DataField="strNombre" HeaderText="Nombre" SortExpression="strNombre" />
-                        <asp:BoundField DataField="strApellidoP" HeaderText="Apellido P." SortExpression="strApellidoP" />
-                        <asp:BoundField DataField="strApellidoM" HeaderText="Apellido M." SortExpression="strApellidoM" />
-                        <asp:BoundField DataField="strCorreo" HeaderText="Correo" SortExpression="strCorreo" />
-                        <asp:BoundField DataField="strCedula" HeaderText="Cedula" SortExpression="strCedula" />
-                        <asp:BoundField DataField="strEspecialidad" HeaderText="Especialidad" SortExpression="strEspecialidad" />
-                        <asp:BoundField DataField="strcelular" HeaderText="Celular" SortExpression="strcelular" />
-                        <asp:BoundField DataField="strtelCasa" HeaderText="Tel.Casa" SortExpression="strtelCasa" />
-
-                    </Columns>
-                     <FooterStyle BackColor="White" ForeColor="#000066" />
-                        <HeaderStyle BackColor="#006699" Font-Bold="True" ForeColor="White" HorizontalAlign="Center"/>
+                      <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource1" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px">
+                        <Columns>
+                            <asp:BoundField DataField="strNombre" HeaderText="strNombre" SortExpression="strNombre" />
+                            <asp:BoundField DataField="strApellidoP" HeaderText="strApellidoP" SortExpression="strApellidoP" />
+                            <asp:BoundField DataField="strApellidoM" HeaderText="strApellidoM" SortExpression="strApellidoM" />
+                            <asp:BoundField DataField="strCorreo" HeaderText="strCorreo" SortExpression="strCorreo" />
+                            <asp:BoundField DataField="strCelular" HeaderText="strCelular" SortExpression="strCelular" />
+                            <asp:BoundField DataField="strUsuario" HeaderText="strUsuario" SortExpression="strUsuario" />
+                            <asp:BoundField DataField="strPassword" HeaderText="strPassword" SortExpression="strPassword" />
+                        </Columns>
+                         
+                         <FooterStyle BackColor="White" ForeColor="#000066" />
+                        <HeaderStyle BackColor="#006699" Font-Bold="True" ForeColor="White" HorizontalAlign="Center" Font-Size="16px"/>
                         <PagerStyle BackColor="White" ForeColor="#000066" HorizontalAlign="Center" />
                         <RowStyle ForeColor="#000066" />
                         <SelectedRowStyle BackColor="#669999" Font-Bold="True" ForeColor="White" />
@@ -344,14 +324,19 @@
                         <SortedAscendingHeaderStyle BackColor="#007DBB" />
                         <SortedDescendingCellStyle BackColor="#CAC9C9" />
                         <SortedDescendingHeaderStyle BackColor="#00547E" />
-                </asp:GridView>
+                    </asp:GridView>
 
-                <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:pase_listaConnectionString %>" SelectCommand="SELECT pro.id ,pro.strNombre, pro.strApellidoP, 
-	   pro.strApellidoM, pro.strCorreo, pro.strCedula,
-	   pro.strEspecialidad, tel.strcelular, tel.strtelCasa 
-FROM TblProfesor as pro
-inner join TblTelefono  as tel 
-on pro.idTelefono = tel.id;"></asp:SqlDataSource>--%>
+                    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:XIUGARConnectionString %>" SelectCommand="select e.strNombre, e.strApellidoP, e.strApellidoM, e.strCorreo,
+                                                t.strCelular, u.strUsuario, u.strPassword
+                                                from tblProveedor e
+                                                inner join tblDireccion d
+                                                on e.fkDireccion = d.idDireccion
+                                                inner join tblTelefono t
+                                                on e.fkTelefono = t.idTelefono
+                                                inner join tblUsuario u
+                                                on e.fkLogin = u.idUsuario"></asp:SqlDataSource>
+
+
 
             </div>
         </div>
@@ -363,20 +348,57 @@ on pro.idTelefono = tel.id;"></asp:SqlDataSource>--%>
     <%-- Tabla de consulta de trabajadores --%>
     <div class="col">
         <div class="collapse multi-collapse" id="multiCollapseExample3">
-            <div class="form-inline">
+              <div class="form-inline">
                 <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5">
-                    <label>Búsqueda de Proveedor: </label>
+                    <label class="text-muted">Búsqueda de empleado: </label>
                     <asp:TextBox ID="txtBusqueda" runat="server" CssClass="form-control" Width="270px"></asp:TextBox>  
                </div>      
                           
                 <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
-                    <asp:Button ID="btnBuscar" runat="server" Text="Buscar" Font-Size="14px" CssClass="btn btn-block btn-sm btn-success" Width="170px" />
+                    <asp:Button ID="btnBuscar" runat="server" Text="Buscar" Font-Size="14px" CssClass="btn btn-block btn-sm btn-success" Width="170px" OnClick="btnBuscar_Click"/>
                 </div>
 
                 <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5">
-                    
+
                 </div>
-            </div>
+                 <br /> <br />
+                  <br /> <br />
+                 <div class="panel panel-success">
+                        <asp:GridView ID="GridProveedor" runat="server"  Width="100%" BackColor="White" 
+                    BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" AllowPaging="True" AutoGenerateColumns="false">
+                    
+                    <Columns>
+                        <asp:BoundField DataField="strNombre" HeaderText="NOMBRE" />
+                        <asp:BoundField DataField="strApellidoP" HeaderText="APELLLIDO P." />
+                        <asp:BoundField DataField="strApellidoM" HeaderText="APELLLIDO M." />                        
+                        <asp:BoundField DataField="strCorreo" HeaderText="CORREO" />
+                        
+                        
+                        
+                        <asp:TemplateField HeaderText="EDITAR">
+                            <ItemTemplate>
+                                <asp:ImageButton ID="btnEditar" runat="server" ImageUrl="~/Administrador/Imagenes/editar.png" />
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                        <asp:TemplateField HeaderText="BORRAR">
+                            <ItemTemplate>
+                                <asp:ImageButton ID="btnBorrar" runat="server" ImageUrl="~/Administrador/Imagenes/borrar.png" />
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                    </Columns>
+
+                     <FooterStyle BackColor="White" ForeColor="#000066" />
+                        <HeaderStyle BackColor="#006699" Font-Bold="True" ForeColor="White" HorizontalAlign="Center" Font-Size="16px"/>
+                        <PagerStyle BackColor="White" ForeColor="#000066" HorizontalAlign="Center" />
+                        <RowStyle ForeColor="#000066" />
+                        <SelectedRowStyle BackColor="#669999" Font-Bold="True" ForeColor="White" />
+                        <SortedAscendingCellStyle BackColor="#F1F1F1" />
+                        <SortedAscendingHeaderStyle BackColor="#007DBB" />
+                        <SortedDescendingCellStyle BackColor="#CAC9C9" />
+                        <SortedDescendingHeaderStyle BackColor="#00547E" />
+                </asp:GridView>
+                     </div>  
+                </div>
         </div>
     </div>
 </div>

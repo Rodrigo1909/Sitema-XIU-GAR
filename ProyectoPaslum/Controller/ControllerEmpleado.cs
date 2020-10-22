@@ -65,9 +65,10 @@ namespace Controller
             }
         }
 
-        public tblEmpleado ConsultarEmpleado(int idEmpleado)
+        public tblEmpleado ConsultarEmpleado(string strNombre)
         {
-            return contexto.tblEmpleado.Where(e => e.idEmpleado == idEmpleado).FirstOrDefault<tblEmpleado>();
+            return contexto.tblEmpleado.Where(e => e.strNombre == strNombre).FirstOrDefault<tblEmpleado>();
+
         }
 
         MailMessage m = new MailMessage();

@@ -12,17 +12,31 @@ namespace ProjectPaslum.Almacen
     public partial class SalidasAlmacen : System.Web.UI.Page
     {
         PaslumBaseDatoDataContext contexto = new PaslumBaseDatoDataContext();
+        
         protected void Page_Load(object sender, EventArgs e)
         {
+
             if (!IsPostBack)
             {
+
                 if (Session["id"] != null)
                 {
                     txtAlmacenista.Text = (Session["nombre"].ToString());
                     lbEmpleado.Text = (Session["id"].ToString());
-                    this.LlenarAlmacen();                    
+                    this.LlenarAlmacen();
                 }
             }
+
+           
+            
+            //if (Page.IsPostBack)
+            //{
+
+            //        this.ClientScript.RegisterStartupScript(this.GetType(), "SweetAlert", "alerta()", true);
+            //}
+
+            
+
         }
 
 
@@ -69,10 +83,11 @@ namespace ProjectPaslum.Almacen
                     mov.fkEmpleado = Int32.Parse(lbEmpleado.Text);
 
                     ctrlAlm.InsertarMovimientoAlmacen(mov);
+                    this.Response.Redirect("./AlertaExito.aspx", true);
                 }
                 else
                 {
-   
+                    this.Response.Redirect("./AlertaError.aspx", true);
                 }
 
                     

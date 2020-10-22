@@ -56,14 +56,14 @@
                                                        <div class="form-group">
                                                             <label>Nombre: </label>
                                                             <asp:TextBox ID="txtNombre" runat="server" width="368px" CssClass="form-control" 
-                                                                type="Text" pattern="^[a-zA-ZñÑáéíóúÁÉÍÓÚ\s]+$" title="Ingrese solo letras" required="required">
+                                                                type="Text" pattern="^[a-zA-ZñÑáéíóúÁÉÍÓÚ\s]+$" title="Ingrese solo letras" >
                                                             </asp:TextBox>   
                                                          </div>    
                                                         &nbsp &nbsp &nbsp &nbsp 
                                                         <div class="form-group">
                                                             <label>Sexo: </label>
                                                             <asp:DropDownList ID="cmbSexo" runat="server" AppendDataBoundItems="True"  width="330px" 
-                                                                CssClass=" form-control" required="required">
+                                                                CssClass=" form-control" >
                                                                     <asp:ListItem Selected="True" Value="SELECCIONA"> Seleccionar </asp:ListItem>
                                                                     <asp:ListItem Value="HOMBRE"> Hombre </asp:ListItem>
                                                                     <asp:ListItem Value="MUJER"> Mujer </asp:ListItem>
@@ -75,14 +75,14 @@
                                                         <div class="form-group">
                                                             <label>Apellido Paterno: </label>
                                                             <asp:TextBox ID="txtAPaterno" runat="server" width="310px" CssClass="form-control" 
-                                                                type="Text" pattern="^[a-zA-ZñÑáéíóúÁÉÍÓÚ\s]+$" title="Ingrese solo letras" required="required">
+                                                                type="Text" pattern="^[a-zA-ZñÑáéíóúÁÉÍÓÚ\s]+$" title="Ingrese solo letras" >
                                                             </asp:TextBox>
                                                         </div>
                                                         &nbsp &nbsp &nbsp &nbsp
                                                         <div class="form-group">
                                                             <label>Edad: </label>
                                                             <asp:TextBox ID="txtEdad" runat="server" width="328px" CssClass="form-control" 
-                                                                type="number" pattern="^[0-9]*" title="Ingrese solo numeros" required="required"></asp:TextBox>                                                            
+                                                                type="number" pattern="^[0-9]*" title="Ingrese solo numeros" ></asp:TextBox>                                                            
                                                         </div>
                                                         <br /> <br />
 
@@ -90,14 +90,14 @@
                                                         <div class="form-group">
                                                             <label>Apellido Materno: </label>
                                                             <asp:TextBox ID="txtAMaterno" runat="server" width="307px" CssClass="form-control" 
-                                                                type="Text" pattern="^[a-zA-ZñÑáéíóúÁÉÍÓÚ\s]+$" title="Ingrese solo letras" required="required">
+                                                                type="Text" pattern="^[a-zA-ZñÑáéíóúÁÉÍÓÚ\s]+$" title="Ingrese solo letras" >
                                                             </asp:TextBox>
                                                         </div>
                                                         &nbsp &nbsp &nbsp &nbsp
                                                         <div class="form-group">
                                                             <label>Correo: </label>
                                                             <asp:TextBox ID="txtCorreo" runat="server" width="316px" placeholder="Ejemplo@ejemplo.com:" 
-                                                                 CssClass="form-control" TextMode="Email" title="Ingrese el formato de correo electronico" required="required" >
+                                                                 CssClass="form-control" TextMode="Email" title="Ingrese el formato de correo electronico" >
                                                             </asp:TextBox>
                                                         </div>                                                        
                                                         <br /> <br />
@@ -142,7 +142,7 @@
                                                        
                                                          <div class="form-group">
                                                             <label>Colonia: </label>
-                                                            <asp:TextBox ID="txtColonia" runat="server" CssClass="form-control" width="330px" required="required">
+                                                            <asp:TextBox ID="txtColonia" runat="server" CssClass="form-control" width="330px" >
                                                             </asp:TextBox>
                                                          </div>
                                                         <br /> <br />
@@ -181,7 +181,7 @@
 
                                                         <div class="form-group">
                                                             <label>Calle: </label>
-                                                            <asp:TextBox ID="txtCalle" runat="server" CssClass="form-control" width="345px" required="required">
+                                                            <asp:TextBox ID="txtCalle" runat="server" CssClass="form-control" width="345px" >
                                                             </asp:TextBox>
                                                          </div>
                                                         <br /> <br />
@@ -274,7 +274,7 @@
                                                                 <label>Rol: </label>
                                                                 <asp:DropDownList ID="cmbRol" runat="server" 
                                                                     AppendDataBoundItems="True"  width="323px" 
-                                                                    CssClass=" form-control" required="required">
+                                                                    CssClass=" form-control" >
                                                                     <asp:ListItem Selected="True" Value="SELECCIONA"> Seleccionar </asp:ListItem>
                                                                     <asp:ListItem Value="ADMINISTRADOR"> Administrador </asp:ListItem>
                                                                     <asp:ListItem Value="VENDEDOR"> Vendedor </asp:ListItem>
@@ -362,7 +362,7 @@
         <div class="collapse multi-collapse" id="multiCollapseExample3">
               <div class="form-inline">
                 <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5">
-                    <label>Búsqueda de empleado: </label>
+                    <label class="text-muted">Búsqueda de empleado: </label>
                     <asp:TextBox ID="txtBusqueda" runat="server" CssClass="form-control" Width="270px"></asp:TextBox>  
                </div>      
                           
@@ -371,17 +371,21 @@
                 </div>
 
                 <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5">
-                    
+
                 </div>
-                  
-                <asp:GridView ID="GridEmpleado" runat="server" AutoGenerateColumns="False" Width="100%" AllowPaging="True" BackColor="White" 
-                    BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px">
+                 <br /> <br />
+                  <br /> <br />
+                 <div class="panel panel-success">
+                        <asp:GridView ID="GridEmpleado" runat="server"  Width="100%" BackColor="White" 
+                    BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" AllowPaging="True" AutoGenerateColumns="false">
                     
                     <Columns>
-                        <asp:BoundField DataField="strCorreo" HeaderText="NOMBRE" />
-                        <asp:BoundField DataField="strCelular" HeaderText="APELLIDO P." />
-                        <asp:BoundField DataField="strTelCasa" HeaderText="APELLLIDO M." />
-                        <asp:BoundField DataField="strOtro" HeaderText="APELLLIDO M." />
+                        <asp:BoundField DataField="strNombre" HeaderText="NOMBRE" />
+                        <asp:BoundField DataField="strApellidoP" HeaderText="APELLLIDO P." />
+                        <asp:BoundField DataField="strApellidoM" HeaderText="APELLLIDO M." />                        
+                        <asp:BoundField DataField="strCorreo" HeaderText="CORREO" />
+                        
+                        
                         
                         <asp:TemplateField HeaderText="EDITAR">
                             <ItemTemplate>
@@ -405,8 +409,7 @@
                         <SortedDescendingCellStyle BackColor="#CAC9C9" />
                         <SortedDescendingHeaderStyle BackColor="#00547E" />
                 </asp:GridView>
-
-                
+                     </div>  
                 </div>
         </div>
     </div>

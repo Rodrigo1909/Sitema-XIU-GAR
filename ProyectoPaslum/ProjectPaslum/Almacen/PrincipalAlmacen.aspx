@@ -12,44 +12,18 @@
   </div>
 
        <%-- Consulta de movimientos --%>
-            <div class="panel panel-default">
-        <div class="panel-body">
-            <div class="row">
-
-                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                    <div class="panel panel-default">
-                        <div class="panel-body">
-                            <div class="form-inline">
-
-                                    <div class="form-group">
-                                        <label>Almacenista </label><asp:Label ID="lbEmpleado" runat="server" Text="Label" Visible="false"></asp:Label>
-                                        <asp:TextBox ID="txtAlmacenista" runat="server" width="500px" Enabled="false"  ></asp:TextBox>
-                                    </div>
-                                    &nbsp &nbsp &nbsp &nbsp 
-                                            
-                                    <div class="form-group">
-                                         <label>Almacén </label><asp:DropDownList ID="ddlAlmacen" runat="server" AppendDataBoundItems="True"  
-                                             width="500px" AutoPostBack="true"></asp:DropDownList> 
-                                    </div>
-                                </div>
-                               </div>
-                             </div>
-                           </div>
-                        </div>
-                      </div>
-                    </div>
-
     <div class="panel panel-default">
             <div class="panel-body">
-                <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" Width="100%" AllowPaging="True" DataSourceID="SqlDataSource2" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="3px" AllowSorting="True">
-                    <Columns>
-                        
-                        <asp:BoundField DataField="intPresentacion" HeaderText="PRESENTACIÓN" SortExpression="intPresentacion" />
-                        <asp:BoundField DataField="strNombre" HeaderText="PRODUCTO" SortExpression="strNombre" />
-                        <asp:BoundField DataField="strDescripcion" HeaderText="DESCRIPCIÓN" SortExpression="strDescripcion" />
-                        <asp:BoundField DataField="dblCantidad" HeaderText="CANTIDAD" SortExpression="dblCantidad" />
+                <asp:GridView ID="GridView2" runat="server" AutoGenerateColumns="False" Width="100%" AllowPaging="True" DataSourceID="SqlDataSource1" 
+                    BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="3px" AllowSorting="True">
 
+                    <Columns>
+                        <asp:BoundField DataField="dblCantidad" HeaderText="CANTIDAD" SortExpression="dblCantidad" />
+                        <asp:BoundField DataField="strNombre" HeaderText="NOMBRE" SortExpression="strNombre" />
+                        <asp:BoundField DataField="strDescripcion" HeaderText="DESCRIPCIÓN" SortExpression="strDescripcion" />                        
+                        <asp:BoundField DataField="strNombre1" HeaderText="ALMACÉN" SortExpression="strNombre1" />
                     </Columns>
+                    
                      <FooterStyle BackColor="White" ForeColor="#000066" />
                         <HeaderStyle BackColor="#006699" Font-Bold="True" ForeColor="White" HorizontalAlign="Center"/>
                         <PagerStyle BackColor="White" ForeColor="#000066" HorizontalAlign="Center" Font-Size="Medium" />
@@ -61,14 +35,18 @@
                         <SortedDescendingHeaderStyle BackColor="#00547E" />                    
                 </asp:GridView>
 
-                <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:XIUGARConnectionString %>" 
-                    SelectCommand="select p.intPresentacion, p.strNombre, p.strDescripcion, s.dblCantidad
-                                    from tblStock s
-                                    inner join tblProducto p
-                                    on s.fkProducto = p.idProducto
-                                    where p.fkAlmacen = 1"></asp:SqlDataSource>
+                    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:XIUGARConnectionString %>" 
+                        SelectCommand="select s.dblCantidad, p.strNombre, p.strDescripcion, a.strNombre
+                                        from tblStock s
+                                        inner join tblProducto p
+                                        on s.fkProducto = p.idProducto
+                                        inner join tblAlmacen a
+                                        on p.fkAlmacen = a.idAlmacen
+                                        where a. idActivo = 1"></asp:SqlDataSource>
+
 
             </div>
         </div>
+    
     </div>
 </asp:Content>

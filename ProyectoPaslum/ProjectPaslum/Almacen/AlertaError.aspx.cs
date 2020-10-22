@@ -4,22 +4,14 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using Modelo;
-using Controller;
 
-namespace ProjectPaslum.Almacen
+namespace ProjectPaslum.Almacen.Alertas
 {
-    public partial class PrincipalAlmacen : System.Web.UI.Page
+    public partial class AlertaError : System.Web.UI.Page
     {
-        
         protected void Page_Load(object sender, EventArgs e)
         {
-            
+            this.ClientScript.RegisterStartupScript(this.GetType(), "SweetAlert", "alerta()", true);
         }
-
-
-
-
-
     }
 }

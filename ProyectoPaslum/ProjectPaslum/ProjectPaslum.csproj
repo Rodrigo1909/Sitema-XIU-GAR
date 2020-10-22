@@ -210,6 +210,8 @@
     <Content Include="Administrador\js\scripts.js" />
     <Content Include="Administrador\ProveedorAdmin.aspx" />
     <Content Include="Administrador\UniMedidaAdmin.aspx" />
+    <Content Include="Almacen\AlertaError.aspx" />
+    <Content Include="Almacen\AlertaExito.aspx" />
     <Content Include="Almacen\EntradaAlmacen.aspx" />
     <Content Include="Almacen\MovimientoAlmacen.aspx" />
     <Content Include="Almacen\PrincipalAlmacen.aspx" />
@@ -234,7 +236,10 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Site.css" />
-    <Content Include="Content\sweetalert.css" />
+    <Content Include="Content\sweetalert\bootstrap-sweetalert.png" />
+    <Content Include="Content\sweetalert\docs.css" />
+    <Content Include="Content\sweetalert\sweet-alert.css" />
+    <Content Include="Content\sweetalert\thumbs-up.jpg" />
     <Content Include="css\ajax-loader.gif" />
     <Content Include="css\animate.css" />
     <Content Include="css\aos.css" />
@@ -243,8 +248,8 @@
     <Content Include="css\bootstrap\bootstrap-reboot.css" />
     <Content Include="css\css\bootstrap-reboot.css" />
     <Content Include="css\css\mixins\_text-hide.css" />
+    <Content Include="css\error.css" />
     <Content Include="css\flaticon.css" />
-    <Content Include="css\font-awesome.css" />
     <Content Include="css\icomoon.css" />
     <Content Include="css\ionicons.min.css" />
     <Content Include="css\magnific-popup.css" />
@@ -252,14 +257,11 @@
     <Content Include="css\owl.carousel.min.css" />
     <Content Include="css\owl.theme.default.min.css" />
     <Content Include="css\style.css" />
+    <Content Include="Error404.aspx" />
     <Content Include="fonts\flaticon\backup.txt" />
     <Content Include="fonts\flaticon\font\flaticon.css" />
     <Content Include="fonts\flaticon\font\flaticon.html" />
     <Content Include="fonts\flaticon\font\Flaticon.svg" />
-    <Content Include="fonts\glyphicons-halflings-regular.svg" />
-    <Content Include="fonts\glyphicons-halflings-regular.woff" />
-    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
-    <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -308,6 +310,7 @@
     <Content Include="Administrador\IndexAdministrador.master" />
     <Content Include="Alumno\Alumno.Master" />
     <Content Include="Alumno\scss\style.scss" />
+    <Content Include="js\swalert.js" />
     <Content Include="Profesor\Calificaciones.aspx" />
     <Content Include="Profesor\DatosPersonales.aspx" />
     <Content Include="Profesor\estilos.css" />
@@ -318,6 +321,11 @@
     <Content Include="Profesor\PrincipalProfesor.aspx" />
     <Content Include="Profesor\Profesor.Master" />
     <Content Include="Almacen\Almacen.Master" />
+    <Content Include="Content\sweetalert\sweet-alert.less" />
+    <Content Include="Content\sweetalert\sweet-alert-combine.less" />
+    <Content Include="Content\sweetalert\sweet-alert-animations.less" />
+    <Content Include="Content\bootstrap\variables.less" />
+    <Content Include="Content\bootstrap\mixins.less" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="images\loc.png" />
     <Content Include="js\aos.js" />
@@ -475,6 +483,7 @@
     <Content Include="scss\bootstrap\_variables.scss" />
     <Content Include="scss\style.scss" />
     <Content Include="Venta\Venta.Master" />
+    <Content Include="Views\Sweet\Alert.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -524,6 +533,20 @@
     </Compile>
     <Compile Include="Administrador\UniMedidaAdmin.aspx.designer.cs">
       <DependentUpon>UniMedidaAdmin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Almacen\AlertaError.aspx.cs">
+      <DependentUpon>AlertaError.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Almacen\AlertaError.aspx.designer.cs">
+      <DependentUpon>AlertaError.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Almacen\AlertaExito.aspx.cs">
+      <DependentUpon>AlertaExito.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Almacen\AlertaExito.aspx.designer.cs">
+      <DependentUpon>AlertaExito.aspx</DependentUpon>
     </Compile>
     <Compile Include="Almacen\Almacen.Master.cs">
       <DependentUpon>Almacen.Master</DependentUpon>
@@ -599,6 +622,13 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="Error404.aspx.cs">
+      <DependentUpon>Error404.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Error404.aspx.designer.cs">
+      <DependentUpon>Error404.aspx</DependentUpon>
+    </Compile>
     <Compile Include="IndexPaslum.aspx.cs">
       <DependentUpon>IndexPaslum.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -755,8 +785,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="images\AlumRegistrado\" />
-    <Folder Include="images\ProfeRegistrado\" />
+    <Folder Include="Controllers\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Controller\Controller.csproj">
