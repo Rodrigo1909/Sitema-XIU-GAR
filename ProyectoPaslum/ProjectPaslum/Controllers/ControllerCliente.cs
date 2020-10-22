@@ -1,14 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Web;
 using Modelo;
 using System.Net;
 using System.Net.Mail;
 using System.Web;
 
-namespace Controller
+namespace ProjectPaslum.Controllers
 {
     public class ControllerCliente
     {
@@ -56,9 +55,9 @@ namespace Controller
                 m.From = new MailAddress(correo);
                 m.To.Add(new MailAddress(to));
 
-                m.Body = "Gracias por ser parte de nuestros clientes, somos empresa azucarera más grande de México," + 
-                    "es un placer tenerte en nuestro catalogo de clientes.\n"+
-                    "Tu usuario es: " + to + "\n" + 
+                m.Body = "Gracias por ser parte de nuestros clientes, somos empresa azucarera más grande de México," +
+                    "es un placer tenerte en nuestro catalogo de clientes.\n" +
+                    "Tu usuario es: " + to + "\n" +
                     "Tu contraseña es: " + contra;
 
                 m.Subject = "Bienvenido a XIU-GAR";

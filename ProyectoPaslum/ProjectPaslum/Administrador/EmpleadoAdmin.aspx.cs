@@ -5,10 +5,11 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using Modelo;
-using Controller;
 using System.Threading.Tasks;
 using System.Net;
 using System.Net.Mail;
+using ProjectPaslum.Controllers;
+using Controller;
 
 namespace ProjectPaslum.Administrador
 {

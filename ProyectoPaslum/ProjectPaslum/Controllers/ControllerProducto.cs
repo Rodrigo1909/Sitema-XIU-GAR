@@ -1,21 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Web;
 using Modelo;
 
-namespace Controller
+namespace ProjectPaslum.Controllers
 {
-    public class ControllerUnidadMedida
+    public class ControllerProducto
     {
         PaslumBaseDatoDataContext contexto = new PaslumBaseDatoDataContext();
-        public bool InsertarUnidadMedida(tblUnidadMedida _TBL_UniMedida)
+        public bool InsertarProducto(tblProducto _TBL_Prod)
         {
             bool respuesta = false;
             try
             {
-                contexto.tblUnidadMedida.InsertOnSubmit(_TBL_UniMedida);
+                contexto.tblProducto.InsertOnSubmit(_TBL_Prod);
                 contexto.SubmitChanges();
                 respuesta = true;
 
@@ -30,5 +29,14 @@ namespace Controller
 
         }
 
+        public List<tblAlmacen> ConsultaAlmacen()
+        {
+            return contexto.tblAlmacen.ToList<tblAlmacen>();
+        }
+
+        public List<tblUnidadMedida> ConsultaUnidadMedida()
+        {
+            return contexto.tblUnidadMedida.ToList<tblUnidadMedida>();
+        }
     }
 }

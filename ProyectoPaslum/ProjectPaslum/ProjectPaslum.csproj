@@ -622,6 +622,12 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="Controllers\ControllerAlmacen.cs" />
+    <Compile Include="Controllers\ControllerAutenticacion.cs" />
+    <Compile Include="Controllers\ControllerCliente.cs" />
+    <Compile Include="Controllers\ControllerEmpleado.cs" />
+    <Compile Include="Controllers\ControllerProducto.cs" />
+    <Compile Include="Controllers\ControllerUnidadMedida.cs" />
     <Compile Include="Error404.aspx.cs">
       <DependentUpon>Error404.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -785,7 +791,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Controllers\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Controller\Controller.csproj">

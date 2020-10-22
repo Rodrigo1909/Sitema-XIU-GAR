@@ -41,18 +41,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ControllerAlmacen.cs" />
     <Compile Include="ControllerAlumno.cs" />
     <Compile Include="ControllerAsignarGrupo.cs" />
     <Compile Include="ControllerAsignarMateria.cs" />
-    <Compile Include="ControllerAutenticacion.cs" />
-    <Compile Include="ControllerCliente.cs" />
-    <Compile Include="ControllerEmpleado.cs" />
     <Compile Include="ControllerMaestro.cs" />
-    <Compile Include="ControllerProducto.cs" />
     <Compile Include="ControllerQr.cs" />
-    <Compile Include="ControllerUnidadMedida.cs" />
-    <Compile Include="ControllerVenta.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

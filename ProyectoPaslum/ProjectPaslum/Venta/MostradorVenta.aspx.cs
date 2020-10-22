@@ -6,7 +6,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using Modelo;
-using Controller;
+using ProjectPaslum.Controllers;
 
 namespace ProjectPaslum.Venta
 {

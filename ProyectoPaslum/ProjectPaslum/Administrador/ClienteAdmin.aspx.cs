@@ -9,6 +9,7 @@ using Controller;
 using System.Threading.Tasks;
 using System.Net;
 using System.Net.Mail;
+using ProjectPaslum.Controllers;
 
 namespace ProjectPaslum.Administrador
 {

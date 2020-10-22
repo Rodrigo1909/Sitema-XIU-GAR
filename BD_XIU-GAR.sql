@@ -5055,6 +5055,25 @@ CREATE TABLE tblEmpleado (
 	constraint fk_Login foreign key(fkLogin) references tblUsuario(idUsuario)
 );
 
+CREATE TABLE tblProveedor (
+	idProveedor int NOT NULL identity(1,1),
+	strNombre varchar(150),
+	strApellidoP varchar(150),
+	strApellidoM varchar(150),
+	strRazonSocial varchar(500),
+	strWeb varchar(500),
+	strCorreo varchar(150),
+	strProducto varchar(150),
+    fkDireccion int,
+    fkTelefono int,
+	fkLogin int,
+	idActivo int
+	constraint pk_Proveedor primary key (idProveedor),   
+	constraint fk_Direccion_Proveedor foreign key(fkDireccion) references tblDireccion(idDireccion),
+	constraint fk_Telefono_Proveedor foreign key(fkTelefono) references tblTelefono(idTelefono),
+	constraint fk_Login_Proveedor foreign key(fkLogin) references tblUsuario(idUsuario)
+);
+
 CREATE TABLE tblCliente(
 	idCliente int NOT NULL identity(1,1),
 	strNombre varchar(150),
@@ -5062,12 +5081,10 @@ CREATE TABLE tblCliente(
 	strApellidoM varchar(150),
 	strSituacionFiscal varchar(150),
 	strCorreo varchar(150),
-
 	strNumeroBodega varchar(150),
 	strHorarioAtencion varchar(150),
 	strEncargado varchar(150),
 	strPagos varchar(150),
-
 	strEstablecimiento varchar(150),
 	strMetodoPago varchar(150),
     fkDireccion int,
@@ -5168,6 +5185,13 @@ where c.idActivo = 1
 select * from tblEmpleado
 select * from tblUsuario
 select * from tblTelefono
+select * from tblUnidadMedida
+
+select p.intPresentacion, p.strNombre, p.strDescripcion, s.dblCantidad
+from tblStock s
+inner join tblProducto p
+on s.fkProducto = p.idProducto
+where p.fkAlmacen = 1
 
 select * from tblDireccion d
 inner join tblEstado_Municipio em
@@ -5211,9 +5235,13 @@ on prod.fkAlmacen = alm.idAlmacen;
 
 select * from tblUsuario
 
-select s.dblCantidad, p.strNombre, p.strDescripcion from tblStock s
+select s.dblCantidad, p.strNombre, p.strDescripcion
+from tblStock s
 inner join tblProducto p
 on s.fkProducto = p.idProducto
+inner join tblAlmacen a
+on p.fkAlmacen = a.idAlmacen
+where a.idAlmacen = 1
 
 select m.strTipo, m.fecha, e.strNombre, e.strApellidoP, e.strApellidoM
  from tblMovimiento m

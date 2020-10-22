@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using Modelo;
-using Controller;
+using ProjectPaslum.Controllers;
 using System.Data.SqlClient;
 using System.Data;
 
@@ -46,31 +46,31 @@ namespace ProjectPaslum.Almacen
             var movimiento = ddlMovimiento.SelectedItem.Value;
             DateTime fechact = DateTime.Now;
             ControllerAlmacen ctrlAlm = new ControllerAlmacen();
-            var entrar = 0;            
+               
 
             var cantidadExistente = (from existe in contexto.tblStock
                                      where existe.fkProducto == Int32.Parse(producto)
                                      select existe);
 
-            if(entrar == 0)
-            {
                 var actualizar = 1;
                 foreach (tblStock ord in cantidadExistente)
                 {
                     actualizar += 1;
-                    var suma = Int32.Parse(txtCantidad.Text) + ord.dblCantidad;       
-                    
-                    ord.dblCantidad = suma;
-                    contexto.SubmitChanges();
+                    var suma = Int32.Parse(txtCantidad.Text) + ord.dblCantidad;      
 
                     tblMovimiento mov = new tblMovimiento();
                     mov.strTipo = movimiento;
                     mov.fecha = fechact;
+                    mov.dblValAnt = ord.dblCantidad;
+                    mov.dblValNvo = suma;
                     mov.fkStock = ord.idStock;
                     mov.fkEmpleado = Int32.Parse(lbEmpleado.Text);
 
-                    ctrlAlm.InsertarMovimientoAlmacen(mov);
+                    ord.dblCantidad = suma;
 
+                    ctrlAlm.InsertarMovimientoAlmacen(mov);
+                    contexto.SubmitChanges();
+                    this.Response.Redirect("./AlertaExito.aspx", true);
                 }
                 if(actualizar == 1)
                 {
@@ -79,16 +79,18 @@ namespace ProjectPaslum.Almacen
                     stock.fkProducto = Int32.Parse(producto);
                     ctrlAlm.InsertarEntradaAlmacen(stock);
 
-
                     tblMovimiento mov = new tblMovimiento();
                     mov.strTipo = movimiento;
                     mov.fecha = fechact;
+                    mov.dblValAnt = 0;
+                    mov.dblValNvo = Int32.Parse(txtCantidad.Text);
                     mov.fkStock = stock.idStock;
                     mov.fkEmpleado = Int32.Parse(lbEmpleado.Text);
 
                     ctrlAlm.InsertarMovimientoAlmacen(mov);
+                    this.Response.Redirect("./AlertaExito.aspx", true);
                 }
-            }
+           
 
             this.Response.Redirect("./EntradaAlmacen.aspx", true);
         }

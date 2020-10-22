@@ -8,7 +8,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using Microsoft.AspNet.Identity;
 using Modelo;
-using Controller;
+using ProjectPaslum.Controllers;
 using System.Linq;
 
 namespace ProjectPaslum

@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using Modelo;
-using Controller;
+using ProjectPaslum.Controllers;
 
 namespace ProjectPaslum.Almacen
 {
@@ -73,16 +73,18 @@ namespace ProjectPaslum.Almacen
 
                 if(resta >= 0)
                 {
-                    ord.dblCantidad = resta;
-                    contexto.SubmitChanges();
-
+                   
                     tblMovimiento mov = new tblMovimiento();
                     mov.strTipo = movimiento;
                     mov.fecha = fechact;
+                    mov.dblValAnt = ord.dblCantidad;
+                    mov.dblValNvo = resta;
                     mov.fkStock = ord.idStock;
                     mov.fkEmpleado = Int32.Parse(lbEmpleado.Text);
 
                     ctrlAlm.InsertarMovimientoAlmacen(mov);
+                    ord.dblCantidad = resta;
+                    contexto.SubmitChanges();
                     this.Response.Redirect("./AlertaExito.aspx", true);
                 }
                 else

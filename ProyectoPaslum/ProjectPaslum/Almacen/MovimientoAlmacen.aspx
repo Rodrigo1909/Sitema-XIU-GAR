@@ -27,14 +27,17 @@
                 <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" Width="100%" AllowPaging="True" DataSourceID="SqlDataSource2" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="3px" AllowSorting="True">
                     <Columns>
                         
-                        <asp:BoundField DataField="strTipo" HeaderText="Movimiento" SortExpression="strTipo" />
-                        <asp:BoundField DataField="fecha" HeaderText="Fecha" SortExpression="fecha" />
-                        <asp:BoundField DataField="strNombre" HeaderText="Nombre" SortExpression="strNombre" />
-                        <asp:BoundField DataField="strApellidoP" HeaderText="Apellido P." SortExpression="strApellidoP" />
+                        <asp:BoundField DataField="strTipo" HeaderText="MOVIMIENTO" SortExpression="strTipo" />
+                        <asp:BoundField DataField="fecha" HeaderText="FECHA" SortExpression="fecha" />
+                        <asp:BoundField DataField="strNombre" HeaderText="NOMBRE" SortExpression="strNombre" />
+                        <asp:BoundField DataField="strApellidoP" HeaderText="APELLIDO P." SortExpression="strApellidoP" />
 
-                        <asp:BoundField DataField="strApellidoM" HeaderText="Apellido M." SortExpression="strApellidoM" />
-                        <asp:BoundField DataField="strNombre1" HeaderText="Almacén" SortExpression="strNombre1" />
-                        <asp:BoundField DataField="strNombre2" HeaderText="Producto" SortExpression="strNombre2" />
+                        <asp:BoundField DataField="strApellidoM" HeaderText="APELLIDO M." SortExpression="strApellidoM" />
+                        <asp:BoundField DataField="strNombre1" HeaderText="PRODUCTO" SortExpression="strNombre1" />
+                        <asp:BoundField DataField="strNombre2" HeaderText="ALMACÉN" SortExpression="strNombre2" />
+
+                        <asp:BoundField DataField="dblValAnt" HeaderText="VALOR ANTERIOR" SortExpression="dblValAnt" />
+                        <asp:BoundField DataField="dblValNvo" HeaderText="VALOR NUEVO" SortExpression="dblValNvo" />
 
                     </Columns>
                      <FooterStyle BackColor="White" ForeColor="#000066" />
@@ -50,17 +53,19 @@
 
                 <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:XIUGARConnectionString %>" 
                     SelectCommand="select m.strTipo, m.fecha,
-                                    e.strNombre, e.strApellidoP, e.strApellidoM,
-                                    a.strNombre, p.strNombre
-                                    from tblMovimiento m
-                                    inner join tblEmpleado e
-                                    on m.fkEmpleado = e.idEmpleado
-                                    inner join tblStock s
-                                    on m.fkStock = m.fkStock
-                                    inner join tblProducto p
-                                    on s.fkProducto = p.idProducto
-                                    inner join tblAlmacen a
-                                    on p.fkAlmacen = a.idAlmacen"></asp:SqlDataSource>
+e.strNombre, e.strApellidoP, e.strApellidoM,
+p.strNombre, a.strNombre,m.dblValAnt, m.dblValNvo
+from tblStock s
+inner join tblProducto p
+on s.fkProducto = p.idProducto
+inner join tblMovimiento m
+on m.fkStock = s.idStock
+left join tblEmpleado e
+on m.fkEmpleado = e.idEmpleado
+inner join tblAlmacen a
+on a.idAlmacen = p.fkAlmacen
+ORDER BY m.fecha DESC;
+"></asp:SqlDataSource>
 
             </div>
         </div>

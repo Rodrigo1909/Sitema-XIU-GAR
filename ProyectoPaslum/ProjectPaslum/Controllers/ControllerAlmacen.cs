@@ -1,12 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Web;
 using Modelo;
 using System.Data.SqlClient;
 
-namespace Controller
+namespace ProjectPaslum.Controllers
 {
     public class ControllerAlmacen
     {
@@ -85,6 +84,5 @@ namespace Controller
         {
             return contexto.tblProducto.ToList<tblProducto>();
         }
-
     }
 }
