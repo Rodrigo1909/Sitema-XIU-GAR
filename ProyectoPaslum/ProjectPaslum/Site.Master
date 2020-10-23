@@ -7,8 +7,14 @@
     <head>
     <title>XIU-GAR</title>
     <link rel="shortcut icon" href="images/Iconos/icon_pas.png"/>
-  
      
+     <link href="css/styleProducto.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    <link href="Empleado/css/modales.css" rel="stylesheet" />
+    <link href="Content/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" >
+
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     
@@ -112,7 +118,7 @@ h1{
 {
     color: #39dc79;
 }
-    </style>
+</style>
 
   <body>
          <form runat="server">
@@ -149,7 +155,9 @@ h1{
 	        <ul class="navbar-nav ml-auto">
 	       <%-- <li class="nav-item "><a href="Principal.aspx" class="nav-link pl-0">Inicio</a></li>
             <li class="nav-item"><a href="Tutores.aspx" class="nav-link">Servicios</a></li>    --%>        
-            <li class="nav-item"><a  class="nav-link" data-toggle="modal" href="#popUpWindow">Iniciar Sesion</a></li>
+                <li class="nav-item"><A class="nav-link" href="#Xiugar">Xiu-Gar</A> </li>
+                <li class="nav-item"><A class="nav-link" href="#producto">Productos</A> </li>
+                <li class="nav-item"><a  class="nav-link" data-toggle="modal" href="#popUpWindow">Iniciar Sesion</a></li>
 	   
 	        </ul>
 	      </div>
@@ -190,6 +198,98 @@ h1{
             <hr />
         </div>
 
+             
+    <A name="Xiugar">
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1">
+                    
+            </div>
+            <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5">
+                
+                <div class="panel-body">
+                        <h1>Endulzando los hogares y las industrias hidalguenses desde 1985</h1>
+                        <h2>Somos una empresa comercializadora de azúcar estandar, refinada y 
+                            piloncillo en diferentes presentaciones y productora de mascabado, 
+                            baja en calorias y glas, líder en el mercado regional.</h2>
+                    <br>
+                        <h3>Nos dedicamos a descubrir lo mejor del país para llevarlo a nuestros
+                             clientes, promoviendo los productos orgullo del campo mexicano.</h3>
+                </div>
+
+            </div>
+                        
+            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                    <asp:Image ID="imageCostal" runat="server" ImageUrl="images/costalito-p-500.png" CssClass="img-responsive img-rounded" />
+            </div>
+
+        </div>
+    
+</div>  
+    </A>
+
+
+    <A name="producto">
+        
+            <div class="titulo">
+            <h1>Nuestros Productos</h1>
+            </div>
+        
+        <div class="panel-body">
+        <div class="row">
+            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                    
+            </div>
+            <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5">
+                <div class="card">
+	                <div class="frente"><asp:Image ID="imagenEstandar" runat="server" ImageUrl="images/azucar-estandar2.jpg" CssClass="img-responsive img-rounded" /></div>
+	                <div class="atras">
+		                <div class="informacion">
+			                <h2>Estándar<br><span>De todos los tiempos</span></h2>
+			                <div class="social">
+				                <h3>Color tostado. Sabor firme. Grano táctil. Olor generoso. 
+				                Preferido en casa. La sabiduría de mamá que nos acompaña como el abecedario.</h3>
+			                </div>
+		                </div>
+	                </div>
+                </div>
+                <br /><br />
+                <div class="card">
+	                <div class="frente"><asp:Image ID="image3" runat="server" ImageUrl="images/azucar-mascabado2.jpg" CssClass="img-responsive img-rounded" /></div>
+	                <div class="atras">
+		                <div class="informacion">
+			                <h2>Mascabado<br><span>La miel del sabor</span></h2>
+			                <div class="social">
+				                <h3>Color dominante. Sabor amplio. Grano prensil. Olor miel. 
+                                    La mayor sensación del mercado. Satisfacción por tu sabor propio.</h3>
+			                </div>
+		                </div>
+	                </div>
+                </div>
+            </div>
+                        
+            <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5">
+                    <div class="card">
+	                    <div class="frente"><asp:Image ID="image2" runat="server" ImageUrl="images/azucar-refinada2.jpg" CssClass="img-responsive img-rounded" /></div>
+	                    <div class="atras">
+		                    <div class="informacion">
+			                    <h2>Refinada<br><span>Cristalería fina</span></h2>
+			                    <div class="social">
+				                    <h3>Color claro. Sabor delicado. Grano sutil. Olor descendente. 
+                                        Se integra con belleza.  El deleite de haber crecido.</h3>
+			                    </div>
+		                    </div>
+	                    </div>
+                    </div> 
+                </div>
+
+
+        </div>
+    
+</div>  
+                
+</A>
+             <br /><br /><br /><br /><br /><br /><br /><br />
              <footer class="ftco-footer ftco-bg-dark ftco-section">
             <div class="container">
                 <div class="row mb-5">
