@@ -22,6 +22,7 @@ namespace ProjectPaslum.Venta
                     txtVendedor.Text = (Session["CompletoNombre"].ToString());
                     //lbEmpleado.Text = (Session["id"].ToString());
                     this.LlenarAlmacen();
+                    this.LlenarCliente();
                 }
             }
         }
@@ -33,6 +34,17 @@ namespace ProjectPaslum.Venta
             ddlAlmacen.Items.Add("Seleccionar");
             ddlAlmacen.DataSource = almacen;
             ddlAlmacen.DataValueField = "idAlmacen";
+            ddlAlmacen.DataTextField = "strNombre";
+            ddlAlmacen.DataBind();
+
+        }
+        private void LlenarCliente()
+        {
+            ControllerCliente CtrlACliente = new ControllerCliente();
+            List<tblCliente> cliente = CtrlACliente.ConsultaCliente();
+            ddlAlmacen.Items.Add("Mostrador");
+            ddlAlmacen.DataSource = cliente;
+            ddlAlmacen.DataValueField = "idCliente";
             ddlAlmacen.DataTextField = "strNombre";
             ddlAlmacen.DataBind();
 

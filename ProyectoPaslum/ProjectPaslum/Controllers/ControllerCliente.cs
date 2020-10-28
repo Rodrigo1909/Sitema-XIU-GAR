@@ -80,5 +80,10 @@ namespace ProjectPaslum.Controllers
                 return false;
             }
         }
+
+        public List<tblCliente> ConsultaCliente()
+        {
+            return contexto.tblCliente.ToList<tblCliente>();
+        }
     }
 }
