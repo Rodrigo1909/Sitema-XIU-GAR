@@ -4,6 +4,7 @@ body {
 	padding: 0;
 	font-family: 'Josefin Slab', serif;
 }
+
 .panel-body h1 {
   color: #4FD129;
   font-weight: bold;
@@ -28,11 +29,11 @@ body {
   font-family: Century Schoolbook;
   text-align:center;
 }
-.card
+.row .card
 {
 	position: absolute;
-	top: 50%;
-	left: 30%;
+	/*top: 50%;
+	left: 30%;*/
 	transform: translate(-50%, -50%);
 	width: 300px;
 	height: 400px;
@@ -40,7 +41,7 @@ body {
 	perspective: 600px;
 	transition: 0.5s;
 }
-.card .frente
+.row .card .frente
 {
 	position: absolute;
 	top: 0;
@@ -52,11 +53,11 @@ body {
 	transform: rotateX(0deg);
 	transition: 0.5s;
 }
-.card:hover .frente
+.row .card:hover .frente
 {
 	transform: rotateX(-180deg);
 }
-.card .atras
+.row .card .atras
 {
 	position: absolute;
 	top: 0;
@@ -68,7 +69,7 @@ body {
 	transform: rotateX(180deg);
 	transition: 0.5s;
 }
-.card .atras:before
+.row .card .atras:before
 {
 	content: '';
 	position: absolute;
@@ -78,11 +79,11 @@ body {
 	height: 100%;
 	background: rgba(255, 255, 255, 0.1);
 }
-.card:hover .atras
+.row .card:hover .atras
 {
 	transform: rotateX(0deg);
 }
-.card .atras .informacion
+.row .card .atras .informacion
 {
 	position: absolute;
 	top: 50%;
@@ -93,14 +94,15 @@ body {
 	padding: 20px;
 	box-sizing: border-box;
 }
-.card .atras .informacion h2
+.row .card .atras .informacion h2
 {
 	margin: 0;
 	padding: 0;
 	font-size: 35px;
 	color: #fff;
+    text-align:center;
 }
-.card .atras .informacion h2 span
+.row.card .atras .informacion h2 span
 {
 	color: #fff;
 	font-size: 20px;
@@ -114,6 +116,194 @@ body {
 	font-family: 'Josefin Slab', serif;
 	font-size: 20px;
 	color: #fff;
+    text-align: center;
 }
+
+
+.distribucion{
+    margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: 'Josefin Slab', serif;
+}
+.tercero{
+    display: flex;
+	justify-content: center;
+	align-items: center;
+	min-height: 100vh;
+}
+.tipos
+{
+	width: 1100px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-wrap: wrap;
+}
+
+
+.distribucion .tercero .tipos .tarjeta
+{
+	position: relative;
+	width: 300px;
+	height: 400px;
+	
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin: 30px;
+	box-shadow: 0 20px 50px rgba(0,0,0,0.2);
+	overflow: hidden;
+}
+.distribucion .tercero.tipos:hover .tarjeta
+{
+	opacity: 0.2;
+}
+.distribucion .tercero.tipos .tarjeta:hover
+{
+	opacity: 1;
+}
+.distribucion .tercero .tipos .tarjeta::before
+{
+	content: '';
+	position: absolute;
+	top: 2px;
+	left: 2px;
+	bottom: 2px;
+	width: 50%;
+	background: rgba(255,255,255,0.1);
+}
+.distribucion .tercero .tipos .tarjeta .content
+{
+	padding: 20px;
+	text-align: left;
+}
+
+.distribucion .tercero .tipos .tarjeta .content .imagen
+{
+	text-align: center;
+}
+
+.distribucion .tercero .tipos .tarjeta .content h2
+{
+	right: 9px;
+	text-align: left;
+	font-size: 4em;
+	font-weight: 800;
+	color: #65B84D;
+	z-index: 1;
+	opacity: 0.1;
+	transition: 0.5s;
+}
+.distribucion .tercero .tipos .tarjeta:hover .content h2
+{
+	opacity: 1;
+	transform: translateY(-70px);
+}
+.distribucion .tercero .tipos .tarjeta span
+{
+	transition: 0.5;
+	opacity: 0;
+
+}
+.distribucion .tercero .tipos .tarjeta:hover span
+{
+	opacity: 1;
+	
+}
+.distribucion .tercero .tipos .tarjeta span:nth-child(1)
+{
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 5px;
+	background: linear-gradient(to right,transparent, #2B9D0A);
+	animation: animate1 2s linear infinite;
+}
+@keyframes animate1
+{
+	0%
+	{
+		transform: translateX(-100%);
+	}
+	100%
+	{
+		transform: translateX(100%);
+	}
+}
+.distribucion .tercero .tipos .tarjeta span:nth-child(2)
+{
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: 5px;
+	height: 100%;
+	background: linear-gradient(to bottom,transparent, #2B9D0A);
+	animation: animate2 2s linear infinite;
+	animation-delay: 1s; 
+}
+@keyframes animate2
+{
+	0%
+	{
+		transform: translateY(-100%);
+	}
+	100%
+	{
+		transform: translateY(100%);
+	}
+}
+.distribucion .tercero .tipos .tarjeta span:nth-child(3)
+{
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	height: 5px;
+	background: linear-gradient(to left,transparent, #2B9D0A);
+	animation: animate3 2s linear infinite;
+}
+@keyframes animate3
+{
+	0%
+	{
+		transform: translateX(100%);
+	}
+	100%
+	{
+		transform: translateX(-100%);
+	}
+}
+.distribucion .tercero .tipos .tarjeta span:nth-child(4)
+{
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 5px;
+	height: 100%;
+	background: linear-gradient(to top,transparent, #2B9D0A);
+	animation: animate4 2s linear infinite;
+	animation-delay: 1s; 
+}
+@keyframes animate4
+{
+	0%
+	{
+		transform: translateY(100%);
+	}
+	100%
+	{
+		transform: translateY(-100%);
+	}
+
+}
+.sub
+{
+  font-size: 25px;
+  font-family: Century Schoolbook;
+  text-align:center;
+}
+
 
 

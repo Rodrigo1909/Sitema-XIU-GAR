@@ -102,6 +102,8 @@ namespace ProjectPaslum.Almacen
 
         protected void ddlAlmacen_SelectedIndexChanged(object sender, EventArgs e)
         {
+            ddlProducto.Items.Clear();
+
             var producto = (from prod in contexto.tblProducto
 
                             join alm in contexto.tblAlmacen

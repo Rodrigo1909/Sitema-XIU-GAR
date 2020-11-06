@@ -58,6 +58,12 @@
                             <asp:DropDownList ID="ddlAlmacen" runat="server" AppendDataBoundItems="True"  CssClass=" form-control"></asp:DropDownList>      
                         </div>
                     </div>
+                    <div class="form-group">
+                        <div class="col-xs-10">
+                            Precio
+                            <asp:TextBox runat="server" ID="txtPrecio" class="form-control" type="text"></asp:TextBox>
+                        </div>
+                    </div>
                       
                     <div class="form-group">
                     <div class="col-xs-5">

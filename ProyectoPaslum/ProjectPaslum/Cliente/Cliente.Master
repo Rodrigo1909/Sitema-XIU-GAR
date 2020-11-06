@@ -1,0 +1,98 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Cliente.master.cs" Inherits="ProjectPaslum.Cliente.Cliente" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href="https://fonts.googleapis.com/css?family=Work+Sans:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Fredericka+the+Great" rel="stylesheet">
+    <link rel="stylesheet" href="../css/open-iconic-bootstrap.min.css">
+    <link rel="stylesheet" href="../css/animate.css">
+    <link rel="stylesheet" href="../css/owl.carousel.min.css">
+    <link rel="stylesheet" href="../css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="../css/magnific-popup.css">
+    <link rel="stylesheet" href="../css/aos.css">
+    <link rel="stylesheet" href="../css/ionicons.min.css">
+    <link rel="stylesheet" href="../css/flaticon.css">
+    <link rel="stylesheet" href="../css/icomoon.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <title>XIU-GAR</title>
+     <link rel="shortcut icon" href="../images/Iconos/icon_pas.png"/>
+
+    <link href="../Venta/estilos.css" rel="stylesheet" />
+    <script type="text/javascript">
+        $(function () {
+            $('.toggle-menu').click(function () {
+                $('.exo-menu').toggleClass('display');
+
+            });
+
+        });
+    </script>
+
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div class="py-2 bg-primary">
+            <!--Parte superior de la pagina-->
+            <div class="container">
+                <div class="row no-gutters d-flex align-items-start align-items-center px-3 px-md-0">
+                    <div class="col-lg-12 d-block">
+                        <div class="row d-flex">
+			    		<div class="col-md-5 pr-4 d-flex topper align-items-center">
+			    			<div class="icon bg-fifth mr-2 d-flex justify-content-center align-items-center"><span class="icon-map"></span></div>
+						    <span class="text">Carr. Pachuca - Cd. Sahagún km. 5.5 s/n; Pachuca, Hidalgo.</span>
+                           
+					    </div>
+					    <div class="col-md pr-4 d-flex topper align-items-center">
+					    	<div class="icon bg-secondary mr-2 d-flex justify-content-center align-items-center"><span class="icon-paper-plane"></span></div>
+						    <span class="text">xiugarmx@gmail.com</span>
+					    </div>
+					    <div class="col-md pr-4 d-flex topper align-items-center">
+					    	<div class="icon bg-tertiary mr-2 d-flex justify-content-center align-items-center"><span class="icon-phone2"></span></div>
+						    <span class="text">(771) 718-4185</span>
+					    </div>
+				    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark ftco_navbar ftco-navbar-light" id="ftco-navbar">
+            <div class="container d-flex align-items-center">
+                <ul class="exo-menu">
+                    <li><a class="active" href="PrincipalCliente.aspx"><i class="icon-home"></i>Inicio</a></li>  
+                    <li><a href="CompraCliente.aspx"><i class="icon-account_balance_wallet"></i>Compra</a></li>
+                    <li><a href="CarritoCliente.aspx"><i class="icon-add_shopping_cart"></i>Carrito de Compra</a></li>
+                    <li><a href="../IndexPaslum.aspx"><i class="icon-sign-out"></i><span>Cerrar Sesión</span></a></li>
+                </ul>
+
+            </div>
+        </nav>
+
+        <div class="container body-content">
+            <asp:ContentPlaceHolder ID="MainContent" runat="server">
+            </asp:ContentPlaceHolder>
+            <hr />
+        </div>
+        <footer class="ftco-footer ftco-bg-dark ftco-section">
+            <div class="container">
+                <div class="row mb-5">
+                    <div class="col-md-6 col-lg-3">
+                        <div class="ftco-footer-widget mb-5">
+                            <h2 class="ftco-heading-2">INFORMES RECIENTES</h2>
+                            <div class="block-21 mb-4 d-flex">
+                                <a class="blog-img mr-4" style="background-image: url(images/image_1.jpg);"></a>
+                                <div class="text">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </form>
+</body>
+</html>

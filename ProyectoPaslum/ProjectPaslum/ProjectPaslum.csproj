@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
   <Import Project="..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props" Condition="Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" />
@@ -233,6 +233,8 @@
     <Content Include="Alumno\PrincipalAlumno.aspx" />
     <Content Include="Alumno\scss\Menu.css" />
     <Content Include="Alumno\scss\PersoDatos.css" />
+    <Content Include="Cliente\CarritoCliente.aspx" />
+    <Content Include="Cliente\CompraCliente.aspx" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Site.css" />
@@ -340,6 +342,7 @@
     <Content Include="Content\sweetalert\sweet-alert-animations.less" />
     <Content Include="Content\bootstrap\variables.less" />
     <Content Include="Content\bootstrap\mixins.less" />
+    <Content Include="Cliente\Cliente.Master" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="images\loc.png" />
     <Content Include="js\aos.js" />
@@ -636,11 +639,33 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="Cliente\CarritoCliente.aspx.cs">
+      <DependentUpon>CarritoCliente.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Cliente\CarritoCliente.aspx.designer.cs">
+      <DependentUpon>CarritoCliente.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Cliente\Cliente.Master.cs">
+      <DependentUpon>Cliente.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Cliente\Cliente.Master.designer.cs">
+      <DependentUpon>Cliente.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Cliente\CompraCliente.aspx.cs">
+      <DependentUpon>CompraCliente.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Cliente\CompraCliente.aspx.designer.cs">
+      <DependentUpon>CompraCliente.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Controllers\ControllerAlmacen.cs" />
     <Compile Include="Controllers\ControllerAutenticacion.cs" />
     <Compile Include="Controllers\ControllerCliente.cs" />
     <Compile Include="Controllers\ControllerEmpleado.cs" />
     <Compile Include="Controllers\ControllerProducto.cs" />
+    <Compile Include="Controllers\ControllerProveedor.cs" />
     <Compile Include="Controllers\ControllerUnidadMedida.cs" />
     <Compile Include="Error404.aspx.cs">
       <DependentUpon>Error404.aspx</DependentUpon>

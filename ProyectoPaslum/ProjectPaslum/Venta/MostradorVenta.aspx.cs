@@ -23,6 +23,8 @@ namespace ProjectPaslum.Venta
                     //lbEmpleado.Text = (Session["id"].ToString());
                     this.LlenarAlmacen();
                     this.LlenarCliente();
+
+                    txtFecha.Text = DateTime.Now.ToString("dd/MM/yyyy");
                 }
             }
         }
@@ -42,12 +44,15 @@ namespace ProjectPaslum.Venta
         {
             ControllerCliente CtrlACliente = new ControllerCliente();
             List<tblCliente> cliente = CtrlACliente.ConsultaCliente();
-            ddlAlmacen.Items.Add("Mostrador");
-            ddlAlmacen.DataSource = cliente;
-            ddlAlmacen.DataValueField = "idCliente";
-            ddlAlmacen.DataTextField = "strNombre";
-            ddlAlmacen.DataBind();
+            ddlCliente.Items.Add("MOSTRADOR");
+            ddlCliente.DataSource = cliente;
+            ddlCliente.DataValueField = "idCliente";
+            ddlCliente.DataTextField = "strNombre";
+            ddlCliente.DataBind();
 
+            ddlDomicilio.Items.Add("Oficina XIU-GAR");
+
+            ddlLugar.Items.Add("Oficina XIU-GAR");
         }
 
 
@@ -74,6 +79,40 @@ namespace ProjectPaslum.Venta
             ddlProducto.DataTextField = "nombre";
             ddlProducto.DataSource = producto;
             ddlProducto.DataBind();
+        }
+
+        protected void ddlCliente_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ddlDomicilio.Items.Clear();
+            ddlLugar.Items.Clear();
+
+            if (ddlCliente.SelectedValue != "MOSTRADOR") { 
+            var cliente = (from cli in contexto.tblCliente
+
+                            join dom in contexto.tblDireccion
+                            on cli.fkDireccion
+                            equals dom.idDireccion
+
+                            where cli.idCliente == Convert.ToInt32(ddlCliente.SelectedValue)
+                            select new { colonia = dom.strColonia + ", " + dom.strCalle + ", " + dom.intCodpost , establecimiento = cli.strEstablecimiento }).ToList();
+
+            ddlDomicilio.DataValueField = "colonia";
+            ddlDomicilio.DataTextField = "colonia";
+            ddlDomicilio.DataSource = cliente;
+            ddlDomicilio.DataBind();
+
+            ddlLugar.DataValueField = "establecimiento";
+            ddlLugar.DataTextField = "establecimiento";
+            ddlLugar.DataSource = cliente;
+            ddlLugar.DataBind();
+            }
+            else
+            {
+                ddlDomicilio.Items.Add("Oficina XIU-GAR");
+
+                ddlLugar.Items.Add("Oficina XIU-GAR");
+            }
+
         }
     }
     }

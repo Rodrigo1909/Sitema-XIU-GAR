@@ -26,7 +26,8 @@
                                     &nbsp &nbsp &nbsp &nbsp 
                                             
                                     <div class="form-group">
-                                         <label>Almacén </label><asp:DropDownList ID="ddlAlmacen" runat="server" AppendDataBoundItems="True"  width="500px" OnSelectedIndexChanged="ddlAlmacen_SelectedIndexChanged"></asp:DropDownList> 
+                                         <label>Almacén </label><asp:DropDownList ID="ddlAlmacen" runat="server" AppendDataBoundItems="True"  width="500px" 
+                                             OnSelectedIndexChanged="ddlAlmacen_SelectedIndexChanged" AutoPostBack="true"></asp:DropDownList> 
                                     </div>
                                 </div>
                                </div>
@@ -46,22 +47,23 @@
                             <div class="form-inline">
 
                                     <div class="form-group">
-                                        <label>Nombre </label><asp:DropDownList ID="ddlCliente" runat="server" AppendDataBoundItems="True"  width="500px" ></asp:DropDownList>   
+                                        <label>Nombre </label><asp:DropDownList ID="ddlCliente" runat="server" AppendDataBoundItems="True"  width="500px" 
+                                            OnSelectedIndexChanged="ddlCliente_SelectedIndexChanged" AutoPostBack="true"></asp:DropDownList>   
                                     </div>
                                     &nbsp &nbsp &nbsp &nbsp 
                                             
                                     <div class="form-group">
-                                         <label>Domicilio </label><asp:DropDownList ID="ddlDomicilio" runat="server" AppendDataBoundItems="True"  width="500px" ></asp:DropDownList> 
+                                         <label>Domicilio </label><asp:DropDownList ID="ddlDomicilio" runat="server" AppendDataBoundItems="True"  width="500px" Enabled="false"></asp:DropDownList> 
                                     </div>
                                      <br /><br />
                                                          
                                     <div class="form-group">
-                                          <label>Lugar </label><asp:DropDownList ID="ddlLugar" runat="server" AppendDataBoundItems="True"  width="500px" ></asp:DropDownList> 
+                                          <label>Lugar </label><asp:DropDownList ID="ddlLugar" runat="server" AppendDataBoundItems="True"  width="500px" Enabled="false"></asp:DropDownList> 
                                     </div>
                                     &nbsp &nbsp &nbsp &nbsp
 
                                     <div class="form-group">
-                                          <label>Fecha: 23/09/2019</label>    
+                                          <label>Fecha </label><asp:TextBox ID="txtFecha" runat="server" width="500px"  ></asp:TextBox>        
                                     </div>
                                 </div>
                                </div>

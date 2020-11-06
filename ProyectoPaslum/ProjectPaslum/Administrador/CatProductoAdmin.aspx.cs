@@ -54,6 +54,7 @@ namespace ProjectPaslum.Administrador
             prod.strNombre = txtNombre.Text.ToUpper();
             prod.strDescripcion = txtDescrip.Text.ToUpper();
             prod.intPresentacion = Int32.Parse(txtPresentacion.Text);
+            prod.dblPrecio = decimal.Parse(txtPrecio.Text);
             prod.fkAlmacen = Int32.Parse(almacen);
             prod.fkUnidadMedida = Int32.Parse(unidad);
             prod.idActivo = 1;       
