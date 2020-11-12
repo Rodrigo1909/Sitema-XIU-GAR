@@ -76,6 +76,24 @@ namespace ProjectPaslum.Almacen {
         protected global::System.Web.UI.WebControls.DropDownList ddlMovimiento;
         
         /// <summary>
+        /// Control txtOrdenCompra.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtOrdenCompra;
+        
+        /// <summary>
+        /// Control txtFactura.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtFactura;
+        
+        /// <summary>
         /// Control btnRegistrar.
         /// </summary>
         /// <remarks>

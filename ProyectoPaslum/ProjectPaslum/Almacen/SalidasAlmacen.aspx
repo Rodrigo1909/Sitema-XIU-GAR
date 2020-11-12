@@ -87,6 +87,16 @@
                                                 <asp:ListItem Value="SALIDA POR DEVOLUCIÓN"> Salida por devolución</asp:ListItem>
                                         </asp:DropDownList>   
                                     </div>
+
+
+                                   <div class="form-group">
+                                         <label>Orden de compra </label><asp:TextBox ID="txtOrdenCompra" runat="server" width="500px"  type="text" ></asp:TextBox>
+                                    </div>
+                                &nbsp &nbsp &nbsp &nbsp 
+                                    <div class="form-group">
+                                         <label>Factura </label><asp:TextBox ID="txtFactura" runat="server" width="500px"  type="text" ></asp:TextBox>
+                                    </div>
+
                                 </div>
                                </div>
                              </div>

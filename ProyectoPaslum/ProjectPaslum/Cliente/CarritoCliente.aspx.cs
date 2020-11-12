@@ -17,8 +17,9 @@ namespace ProjectPaslum.Cliente
             if (Page.IsPostBack == false)
             {
                 cargarcarrito();
-                
-                lblFecha.Text = DateTime.Now.Date.ToString().Substring(0, 10);
+                txtCorreo.Text = (Session["correo"].ToString());
+                txtCliente.Text = (Session["nombre"].ToString());
+                txtFecha.Text = DateTime.Now.Date.ToString().Substring(0, 10);
             }
         }
 

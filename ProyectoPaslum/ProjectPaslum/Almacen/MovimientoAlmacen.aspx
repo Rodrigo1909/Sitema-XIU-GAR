@@ -8,23 +8,18 @@
       width: 150% !important;
     }
   </style>
-    
-    <div class="content">
-            <div class="table-title">
-                <div class="row">
-                    <div class="col-sm-6">
-                        <h2>Movimientos de mercancia</h2>
-                    </div>
-                </div>
-            </div>
 
+    <div style="text-align:center">
+        <h2>Movimientos de mercancia</h2>
     </div>
-
+ 
        <%-- Consulta de movimientos --%>
 
     <div class="panel panel-default">
             <div class="panel-body">
-                <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" Width="100%" AllowPaging="True" DataSourceID="SqlDataSource2" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="3px" AllowSorting="True">
+                <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" Width="100%" 
+                    AllowPaging="True" DataSourceID="SqlDataSource2" BackColor="White" BorderColor="#CCCCCC" 
+                    BorderStyle="None" BorderWidth="3px" AllowSorting="True">
                     <Columns>
                         
                         <asp:BoundField DataField="strTipo" HeaderText="MOVIMIENTO" SortExpression="strTipo" />
@@ -40,7 +35,7 @@
                         <asp:BoundField DataField="dblValNvo" HeaderText="VALOR NUEVO" SortExpression="dblValNvo" />
 
                     </Columns>
-                     <FooterStyle BackColor="White" ForeColor="#000066" />
+                        <FooterStyle BackColor="White" ForeColor="#000066" />
                         <HeaderStyle BackColor="#006699" Font-Bold="True" ForeColor="White" HorizontalAlign="Center"/>
                         <PagerStyle BackColor="White" ForeColor="#000066" HorizontalAlign="Center" Font-Size="Medium" />
                         <RowStyle ForeColor="#000066" />
