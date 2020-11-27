@@ -15,9 +15,15 @@
 	<span><span>4</span></span>
 	<span>0</span>
 	<span><span>4</span></span>
-</section>
+    </section>
     </div>
+
+    <div class="bandera">
+    <h2>BUSQUE EN CADA GRANO DE AZÚCAR PERO NO LOGRE </h2>
+    <h2>ENCONTRAR LA PAGINA QUE BUSCABAS, LO SIENTO :(</h2>
+   </div>
     </form>
 </body>
+
 </html>
 

@@ -85,5 +85,46 @@ namespace ProjectPaslum.Controllers
         {
             return contexto.tblCliente.ToList<tblCliente>();
         }
+
+        public bool InsertarVenta(tblVenta _TBL_Venta)
+        {
+            bool respuesta = false;
+            try
+            {
+                contexto.tblVenta.InsertOnSubmit(_TBL_Venta);
+                contexto.SubmitChanges();
+                respuesta = true;
+
+            }
+            catch (Exception ex)
+            {
+                System.Console.WriteLine(ex.ToString());
+                respuesta = false;
+
+            }
+            return respuesta;
+
+        }
+        public bool InsertarDetalle(tblDetalleVenta _TBL_DetalleVenta)
+        {
+            bool respuesta = false;
+            try
+            {
+                contexto.tblDetalleVenta.InsertOnSubmit(_TBL_DetalleVenta);
+                contexto.SubmitChanges();
+                respuesta = true;
+
+            }
+            catch (Exception ex)
+            {
+                System.Console.WriteLine(ex.ToString());
+                respuesta = false;
+
+            }
+            return respuesta;
+
+        }
+
+
     }
 }

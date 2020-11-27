@@ -66,6 +66,7 @@
                     <li><a class="active" href="PrincipalCliente.aspx"><i class="icon-home"></i>Inicio</a></li>  
                     <li><a href="CompraCliente.aspx"><i class="icon-account_balance_wallet"></i>Compra</a></li>
                     <li><a href="CarritoCliente.aspx"><i class="icon-add_shopping_cart"></i>Carrito de Compra</a></li>
+                    <li><a href="HistorialCliente.aspx"><i class="icon-change_history"></i>Historial de Compras</a></li>
                     <li><a href="../IndexPaslum.aspx"><i class="icon-sign-out"></i><span>Cerrar Sesión</span></a></li>
                 </ul>
 

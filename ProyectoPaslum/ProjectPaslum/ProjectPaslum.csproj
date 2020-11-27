@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
   <Import Project="..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props" Condition="Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" />
@@ -233,8 +233,11 @@
     <Content Include="Alumno\PrincipalAlumno.aspx" />
     <Content Include="Alumno\scss\Menu.css" />
     <Content Include="Alumno\scss\PersoDatos.css" />
+    <Content Include="Cliente\AlertaError.aspx" />
+    <Content Include="Cliente\AlertaExito.aspx" />
     <Content Include="Cliente\CarritoCliente.aspx" />
     <Content Include="Cliente\CompraCliente.aspx" />
+    <Content Include="Cliente\HistorialCliente.aspx" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Site.css" />
@@ -399,6 +402,7 @@
     <Content Include="Venta\CotizacionVenta.aspx" />
     <Content Include="Venta\CreditoVenta.aspx" />
     <Content Include="Venta\estilos.css" />
+    <Content Include="Venta\LineaVenta.aspx" />
     <Content Include="Venta\MostradorVenta.aspx" />
     <Content Include="Venta\OrdenCompraVenta.aspx" />
     <Content Include="Venta\PerfilVenta.aspx" />
@@ -639,6 +643,20 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="Cliente\AlertaError.aspx.cs">
+      <DependentUpon>AlertaError.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Cliente\AlertaError.aspx.designer.cs">
+      <DependentUpon>AlertaError.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Cliente\AlertaExito.aspx.cs">
+      <DependentUpon>AlertaExito.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Cliente\AlertaExito.aspx.designer.cs">
+      <DependentUpon>AlertaExito.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Cliente\CarritoCliente.aspx.cs">
       <DependentUpon>CarritoCliente.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -659,6 +677,13 @@
     </Compile>
     <Compile Include="Cliente\CompraCliente.aspx.designer.cs">
       <DependentUpon>CompraCliente.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Cliente\HistorialCliente.aspx.cs">
+      <DependentUpon>HistorialCliente.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Cliente\HistorialCliente.aspx.designer.cs">
+      <DependentUpon>HistorialCliente.aspx</DependentUpon>
     </Compile>
     <Compile Include="Controllers\ControllerAlmacen.cs" />
     <Compile Include="Controllers\ControllerAutenticacion.cs" />
@@ -784,6 +809,13 @@
     </Compile>
     <Compile Include="Venta\CreditoVenta.aspx.designer.cs">
       <DependentUpon>CreditoVenta.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Venta\LineaVenta.aspx.cs">
+      <DependentUpon>LineaVenta.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Venta\LineaVenta.aspx.designer.cs">
+      <DependentUpon>LineaVenta.aspx</DependentUpon>
     </Compile>
     <Compile Include="Venta\MostradorVenta.aspx.cs">
       <DependentUpon>MostradorVenta.aspx</DependentUpon>

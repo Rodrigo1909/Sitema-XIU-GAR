@@ -36,17 +36,17 @@
                                 <ItemTemplate>
                                     <asp:Image ID="Image1" width="140" height="170" runat="server" ImageUrl='<%# "~/images/"+Eval("strNombre")+".jpg" %>' CssClass="img-fluid" />
                                     <br />
-                                    <asp:Label ID="codigo" runat="server" Text="CODIGO:" Font-Size="18px" Font-Italic="true"></asp:Label>                                    
-                                    <asp:Label ID="idProductoLabel" runat="server" Text='<%# Eval("idProducto") %>' ForeColor="#00cc00" Font-Size="16px"/>
+                                    <asp:Label ID="codigo" runat="server" Text="CODIGO:" Font-Size="16px" Font-Italic="true"></asp:Label>                                    
+                                    <asp:Label ID="idProductoLabel" runat="server" Text='<%# Eval("idProducto") %>' ForeColor="#00cc00" Font-Size="15px"/>
                                     <br />
-                                    <asp:Label ID="nombre" runat="server" Text="NOMBRE:" Font-Size="18px" Font-Italic="true"></asp:Label>                                 
-                                    <asp:Label ID="strNombreLabel" runat="server" Text='<%# Eval("strNombre") %>' ForeColor="#00cc00" Font-Size="16px"/>
+                                    <asp:Label ID="nombre" runat="server" Text="NOMBRE:" Font-Size="16px" Font-Italic="true"></asp:Label>                                 
+                                    <asp:Label ID="strNombreLabel" runat="server" Text='<%# Eval("strNombre") %>' ForeColor="#00cc00" Font-Size="15px"/>
                                     <br />                                    
-                                    <asp:Label ID="descripcion" runat="server" Text="DESCRIPCIÓN:" Font-Size="18px" Font-Italic="true"></asp:Label>
-                                    <asp:Label ID="strDescripcionLabel" runat="server" Text='<%# Eval("strDescripcion") %>' ForeColor="#00cc00" Font-Size="16px"/>
+                                    <asp:Label ID="descripcion" runat="server" Text="DESCRIPCIÓN:" Font-Size="16px" Font-Italic="true"></asp:Label>
+                                    <asp:Label ID="strDescripcionLabel" runat="server" Text='<%# Eval("strDescripcion") %>' ForeColor="#00cc00" Font-Size="15px"/>
                                     <br />
-                                    <asp:Label ID="precio" runat="server" Text="PRECIO:" Font-Size="18px" Font-Italic="true"></asp:Label>
-                                    <asp:Label ID="dblPrecioLabel" runat="server" Text='<%# Eval("dblPrecio") %>' ForeColor="#00cc00" Font-Size="16px"/>
+                                    <asp:Label ID="precio" runat="server" Text="PRECIO:" Font-Size="16px" Font-Italic="true"></asp:Label>
+                                    <asp:Label ID="dblPrecioLabel" runat="server" Text='<%# Eval("dblPrecio") %>' ForeColor="#00cc00" Font-Size="15px"/>
                                     <br />
                                     <asp:Button ID="Button1" runat="server" CommandName="Seleccionar" OnClick="Button1_Click" Text="Agregar al Carrito" CssClass="btn btn-success" />
                                     <br />

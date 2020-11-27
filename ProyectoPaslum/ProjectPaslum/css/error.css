@@ -1,4 +1,10 @@
-﻿.error-container {
+﻿.bandera h2{
+    text-align: center;
+    font-family: 'Catamaran', sans-serif;
+    color: #00cc00;
+}
+
+.error-container {
 	text-align: center;
 	font-size: 180px;
 	font-family: 'Catamaran', sans-serif;

@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using Modelo;
 using System.Data;
+using ProjectPaslum.Controllers;
 
 namespace ProjectPaslum.Cliente
 {
@@ -104,8 +105,45 @@ namespace ProjectPaslum.Cliente
 
         protected void Button3_Click(object sender, EventArgs e)
         {
-        
+            var vacio = 0.0000;
 
+            if (double.Parse(lblTotal.Text) == vacio)
+            {
+                this.Response.Redirect("./AlertaError.aspx", true);
+            }
+
+            else
+            {
+                DateTime fechact = DateTime.Now;
+                ControllerCliente ctrlCli = new ControllerCliente();
+
+                tblVenta ven = new tblVenta();
+                ven.Fecha = fechact;
+                ven.dblTotal = decimal.Parse(lblTotal.Text);
+                ven.dblSubTotal = decimal.Parse(lblSubTotal.Text);
+                ven.dblIGV = decimal.Parse(lblIGV.Text);
+                ven.strEstado = "PENDIENTE";
+                ven.fkCliente = int.Parse(Session["id"].ToString());
+                ctrlCli.InsertarVenta(ven);
+
+
+
+                foreach (GridViewRow row in GridView1.Rows)
+                {
+                    ControllerCliente ctrlClie = new ControllerCliente();
+                    tblDetalleVenta detalle = new tblDetalleVenta();
+                    detalle.Fecha = fechact;
+                    detalle.intCantidad = int.Parse(((TextBox)row.Cells[4].FindControl("TextBox1")).Text);
+                    detalle.dblPrecio = decimal.Parse(Convert.ToString(row.Cells[3].Text));
+                    detalle.fkProducto = int.Parse(row.Cells[1].Text);
+                    detalle.fkVenta = ven.idVenta;
+                    detalle.fkEmpleado = null;
+                    ctrlClie.InsertarDetalle(detalle);
+
+                }
+                this.Response.Redirect("./AlertaExito.aspx", true);
+            }
+            
 
         }
 
