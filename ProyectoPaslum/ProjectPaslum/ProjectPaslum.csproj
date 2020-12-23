@@ -399,14 +399,28 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Site.Master" />
+    <Content Include="Venta\CobrarVenta.aspx" />
     <Content Include="Venta\CotizacionVenta.aspx" />
     <Content Include="Venta\CreditoVenta.aspx" />
+    <Content Include="Venta\css\bootstrap.min.css" />
+    <Content Include="Venta\css\font-awesome.css" />
+    <Content Include="Venta\css\modales.css" />
+    <Content Include="Venta\css\style.css" />
+    <Content Include="Venta\DetalleVenta.aspx" />
     <Content Include="Venta\estilos.css" />
+    <Content Include="Venta\js\bootstrap.min.js" />
+    <Content Include="Venta\js\jquery-1.10.2.min.js" />
+    <Content Include="Venta\js\jquery.fn.gantt.js" />
+    <Content Include="Venta\js\jquery.nicescroll.js" />
+    <Content Include="Venta\js\menu_jquery.js" />
+    <Content Include="Venta\js\pie-chart.js" />
+    <Content Include="Venta\js\scripts.js" />
     <Content Include="Venta\LineaVenta.aspx" />
     <Content Include="Venta\MostradorVenta.aspx" />
     <Content Include="Venta\OrdenCompraVenta.aspx" />
     <Content Include="Venta\PerfilVenta.aspx" />
     <Content Include="Venta\PrincipalVendedor.aspx" />
+    <Content Include="Venta\WebVenta.aspx" />
     <Content Include="ViewSwitcher.ascx" />
     <Content Include="Web.config" />
     <Content Include="Bundle.config" />
@@ -796,6 +810,13 @@
       <DependentUpon>Site.Mobile.Master</DependentUpon>
     </Compile>
     <Compile Include="Startup.cs" />
+    <Compile Include="Venta\CobrarVenta.aspx.cs">
+      <DependentUpon>CobrarVenta.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Venta\CobrarVenta.aspx.designer.cs">
+      <DependentUpon>CobrarVenta.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Venta\CotizacionVenta.aspx.cs">
       <DependentUpon>CotizacionVenta.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -809,6 +830,13 @@
     </Compile>
     <Compile Include="Venta\CreditoVenta.aspx.designer.cs">
       <DependentUpon>CreditoVenta.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Venta\DetalleVenta.aspx.cs">
+      <DependentUpon>DetalleVenta.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Venta\DetalleVenta.aspx.designer.cs">
+      <DependentUpon>DetalleVenta.aspx</DependentUpon>
     </Compile>
     <Compile Include="Venta\LineaVenta.aspx.cs">
       <DependentUpon>LineaVenta.aspx</DependentUpon>
@@ -851,6 +879,13 @@
     </Compile>
     <Compile Include="Venta\Venta.Master.designer.cs">
       <DependentUpon>Venta.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Venta\WebVenta.aspx.cs">
+      <DependentUpon>WebVenta.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Venta\WebVenta.aspx.designer.cs">
+      <DependentUpon>WebVenta.aspx</DependentUpon>
     </Compile>
     <Compile Include="ViewSwitcher.ascx.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>

@@ -1,93 +1,67 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Venta/Venta.Master" AutoEventWireup="true" CodeBehind="LineaVenta.aspx.cs" Inherits="ProjectPaslum.Venta.LineaVenta" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/Venta/Venta.Master" AutoEventWireup="true" CodeBehind="LineaVenta.aspx.cs" Inherits="ProjectPaslum.Venta.LineaVenta" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-    <section>
-        <div>
-            <hgroup>
-                <h2>Compras en linea</h2>
-                    </hgroup>
-                    <asp:ListView ID="ListView1" runat="server" DataSourceID="SqlDataSource1" GroupItemCount="3" DataKeyNames="idVenta">
 
-                    <AlternatingItemTemplate>
-                        <td runat="server" style="background-color:#FFF8DC;">ESTABLECIMIENTO:
-                            <asp:Label ID="strEstablecimientoLabel" runat="server" Text='<%# Eval("strEstablecimiento") %>' />
-                            <asp:Label ID="idVentaLabel" runat="server" visible="false" Text='<%# Eval("idVenta") %>' />
-                            <br />FECHA:
-                            <asp:Label ID="FechaLabel" runat="server" Text='<%# Eval("Fecha") %>' />
-                            <br />TOTAL:
-                            <asp:Label ID="dblTotalLabel" runat="server" Text='<%# Eval("dblTotal") %>' />
-                            <br />
-                            ESTADO:
-                            <asp:Label ID="strEstadoLabel" runat="server" Text='<%# Eval("strEstado") %>' />
-                            <br />
-                            <asp:Button ID="Button2" runat="server" OnClick="Button1_Click" Text="Finalizar" CssClass="btn btn-success" />
-                            <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Detalle" CssClass="btn btn-info" />      
-                        </td>
-                        
-                    </AlternatingItemTemplate>
-                    <EmptyDataTemplate>
-                        <table runat="server" style="background-color: #FFFFFF;border-collapse: collapse;border-color: #999999;border-style:none;border-width:1px;">
-                            <tr>
-                                <td>No se han devuelto datos.</td>
-                            </tr>
-                        </table>
-                    </EmptyDataTemplate>
-                    <EmptyItemTemplate>
-                    <td runat="server" />
-                    </EmptyItemTemplate>
-                    <GroupTemplate>
-                        <tr id="itemPlaceholderContainer" runat="server">
-                            <td id="itemPlaceholder" runat="server"></td>
-                        </tr>
-                    </GroupTemplate>
-                    
-                    <ItemTemplate>
-                        <td runat="server" style="background-color:#DCDCDC;color: #000000;">ESTABLECIMIENTO:
-                            <asp:Label ID="strEstablecimientoLabel" runat="server" Text='<%# Eval("strEstablecimiento") %>' />                            
-                            <asp:Label ID="idVentaLabel" runat="server" Visible="false" Text='<%# Eval("idVenta") %>' />
-                            <br />FECHA:
-                            <asp:Label ID="FechaLabel" runat="server" Text='<%# Eval("Fecha") %>' />
-                            <br />TOTAL:
-                            <asp:Label ID="dblTotalLabel" runat="server" Text='<%# Eval("dblTotal") %>' />
-                            <br />
-                            ESTADO:
-                            <asp:Label ID="strEstadoLabel" runat="server" Text='<%# Eval("strEstado") %>' />
-                            <br />
-                            <asp:Button ID="Button2" runat="server" OnClick="Button1_Click" Text="Finalizar" CssClass="btn btn-success" />
-                            <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Detalle" CssClass="btn btn-info" />      
-                        </td>
-                        
-                    </ItemTemplate>
-                    <LayoutTemplate>
-                        <table runat="server">
-                            <tr runat="server">
-                                <td runat="server">
-                                    <table id="groupPlaceholderContainer" runat="server" border="1" style="background-color: #FFFFFF;border-collapse: collapse;border-color: #999999;border-style:none;border-width:1px;font-family: Verdana, Arial, Helvetica, sans-serif;">
-                                        <tr id="groupPlaceholder" runat="server">
-                                        </tr>
-                                    </table>
-                                </td>
-                            </tr>
-                            <tr runat="server">
-                                <td runat="server" style="text-align: center;background-color: #CCCCCC;font-family: Verdana, Arial, Helvetica, sans-serif;color: #000000;">
-                                </td>
-                            </tr>
-                        </table>
-                    </LayoutTemplate>
-                    
-                    </asp:ListView>
-                
-            <hgroup>
-                
-            </hgroup>
+    
+    <style type = "text/css">
+        body
+        {
+            font-family:Arial;
+            font-size:10pt;
+        }
+    </style>
+
+
+    
+<asp:GridView ID="GridView1" HeaderStyle-BackColor="#3AC0F2" HeaderStyle-ForeColor="White"
+    runat="server" AutoGenerateColumns="false">
+    <Columns>
+        <asp:BoundField DataField="Identificador" ItemStyle-CssClass="Num" HeaderText="Id" ItemStyle-Width="30" />
+        <asp:BoundField DataField="Establecimiento" ItemStyle-CssClass="Nombre" HeaderText="Nombre" ItemStyle-Width="200" />
+        <asp:BoundField DataField="Total" ItemStyle-CssClass="Total" HeaderText="Total" ItemStyle-Width="150" />
+        <asp:BoundField DataField="Fecha" ItemStyle-CssClass="Fecha" HeaderText="Fecha" ItemStyle-Width="150" />
+        <asp:BoundField DataField="Estado" ItemStyle-CssClass="Description" HeaderText="Estado" ItemStyle-Width="150" />
+        <asp:TemplateField>
+            <ItemTemplate>
+                <asp:LinkButton Text="Detalle" ID="lnkView" runat="server" />
+            </ItemTemplate>
+        </asp:TemplateField>
+    </Columns>
+</asp:GridView>
+
+<div id="dialog" style="display: none">
+    <b>Num. Venta:</b> <span id="num"></span>
+    <br />
+    <b>Fecha:</b> <span id="fecha"></span>
+    <br />
+    <b>Establecimiento:</b> <span id="nombre"></span>
+    <br />
+    <b>Total:</b> <span id="total"></span>
+</div>
+
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+<script src="http://ajax.aspnetcdn.com/ajax/jquery.ui/1.8.9/jquery-ui.js" type="text/javascript"></script>
+<link href="http://ajax.aspnetcdn.com/ajax/jquery.ui/1.8.9/themes/start/jquery-ui.css" rel="stylesheet" type="text/css" />
+
+<script type="text/javascript">
+    $(document).on("click", "[id*=lnkView]",
+        function () {
 
             
-            <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:XIUGARConnectionString %>" 
-                SelectCommand="select c.strEstablecimiento, v.idVenta,v.Fecha, v.dblTotal, v.strEstado
-                                from tblVenta v
-                                inner join tblCliente c
-                                on v.fkCliente = c.idCliente
-                                where v.strEstado = 'PENDIENTE'
-                                ORDER BY v.Fecha DESC"></asp:SqlDataSource>
-        </div>
-    </section>
+        $("#num").html($(".Num", $(this).closest("tr")).html());
+        $("#fecha").html($(".Fecha", $(this).closest("tr")).html());
+        $("#nombre").html($(".Nombre", $(this).closest("tr")).html());
+        $("#total").html($(".Total", $(this).closest("tr")).html());
+        $("#dialog").dialog({
+            title: "Detalle de la venta",
+            buttons: {
+                Ok: function () {
+                    $(this).dialog('close');
+                }
+            },
+            modal: true
+        });
+        return false;
+    });
+</script>
+
 </asp:Content>
