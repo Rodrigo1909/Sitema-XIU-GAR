@@ -5,6 +5,8 @@
     <link href="../css/modales.css" rel="stylesheet" />
     <link href="../Content/bootstrap.min.css" rel="stylesheet" />
     <link href="../Alumno/scss/PersoDatos.css" rel="stylesheet" />
+    <link href="estilos.css" rel="stylesheet" />
+
 <div class="container">
   <div style="text-align:center">
     <h2>Venta de Mostrador</h2>
@@ -22,11 +24,6 @@
                                     <div class="form-group">
                                         <label>Vendedor </label>
                                         <asp:TextBox ID="txtVendedor" runat="server" width="500px" Enabled="false" ></asp:TextBox>
-                                    </div>
-                                    &nbsp &nbsp &nbsp &nbsp 
-                                            
-                                    <div class="form-group">
-                                         <label>Almacén </label><asp:DropDownList ID="ddlAlmacen" runat="server" AppendDataBoundItems="True"  width="500px" AutoPostBack="true"></asp:DropDownList> 
                                     </div>
                                 </div>
                                </div>

@@ -63,8 +63,7 @@ namespace ProjectPaslum.Venta
                 if (Session["id"] != null)
                 {
                     txtVendedor.Text = (Session["CompletoNombre"].ToString());
-                    //lbEmpleado.Text = (Session["id"].ToString());
-                    this.LlenarAlmacen();
+                    //lbEmpleado.Text = (Session["id"].ToString());                    
                     this.LlenarCliente();
 
                     txtFecha.Text = DateTime.Now.ToString("dd/MM/yyyy");
@@ -77,17 +76,6 @@ namespace ProjectPaslum.Venta
             }
         }
 
-        private void LlenarAlmacen()
-        {
-            ControllerAlmacen CtrlAlmacen = new ControllerAlmacen();
-            List<tblAlmacen> almacen = CtrlAlmacen.ConsultaAlmacen();
-            ddlAlmacen.Items.Add("Seleccionar");
-            ddlAlmacen.DataSource = almacen;
-            ddlAlmacen.DataValueField = "idAlmacen";
-            ddlAlmacen.DataTextField = "strNombre";
-            ddlAlmacen.DataBind();
-
-        }
         private void LlenarCliente()
         {
 

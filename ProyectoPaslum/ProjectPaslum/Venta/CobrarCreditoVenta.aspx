@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Venta/Venta.Master" AutoEventWireup="true" CodeBehind="CobrarVenta.aspx.cs" Inherits="ProjectPaslum.Venta.CobrarVenta" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Venta/Venta.Master" AutoEventWireup="true" CodeBehind="CobrarCreditoVenta.aspx.cs" Inherits="ProjectPaslum.Venta.CobrarCreditoVenta" %>
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
     <link href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
@@ -28,30 +28,42 @@
                             <div class="form-inline">
 
                                     <div class="form-group">
-                                        <label>Fecha </label>
+                                        <label>Fecha Inicio</label>
                                         <asp:TextBox ID="txtFecha" runat="server" width="500px" Enabled="false" style="text-align:center"></asp:TextBox>
                                         
                                     </div>
-                                &nbsp &nbsp &nbsp &nbsp 
+                                &nbsp &nbsp &nbsp &nbsp
+                                    <div class="form-group">
+                                        <label>Fecha Fin </label>
+                                        <asp:TextBox ID="txtFechaFin" runat="server" width="500px" Enabled="false" style="text-align:center"></asp:TextBox>
+                                        
+                                    </div>
+
                                     <div class="form-group">
                                         <label>Vendedor </label>
                                         <asp:TextBox ID="txtVendedor" runat="server" width="500px" Enabled="false" style="text-align:center"></asp:TextBox>
                                     </div>
                                     
-                                            
+                                 &nbsp &nbsp &nbsp &nbsp
                                     <div class="form-group">
                                          <label>Cliente </label>
                                         <asp:TextBox ID="txtCliente" runat="server" width="500px" Enabled="false" style="text-align:center" ></asp:TextBox>
                                     </div>
-                                &nbsp &nbsp &nbsp &nbsp 
+                                
                                      <div class="form-group">
                                          <label>Domicilio </label>
                                         <asp:TextBox ID="txtDomicilio" runat="server" width="500px" Enabled="false" style="text-align:center" ></asp:TextBox>
                                     </div>
 
+                                &nbsp &nbsp &nbsp &nbsp 
                                     <div class="form-group">
                                          <label>Dinero </label>
                                         <asp:TextBox ID="txtDinero" runat="server" width="500px" style="text-align:center" required="true" ></asp:TextBox>
+                                    </div>
+                                
+                                <div class="form-group">
+                                         <label>Interes </label>
+                                        <asp:TextBox ID="txtInteres" runat="server" width="500px" style="text-align:center" required="true" ></asp:TextBox>
                                     </div>
                                 </div>
                                </div>
@@ -161,4 +173,3 @@
         </div>
     </div>
 </asp:Content>
-

@@ -13,7 +13,7 @@ using System.IO;
 
 namespace ProjectPaslum.Venta
 {
-    public partial class CobrarVenta : System.Web.UI.Page
+    public partial class CobrarCreditoVenta : System.Web.UI.Page
     {
         PaslumBaseDatoDataContext contexto = new PaslumBaseDatoDataContext();
         protected void Page_Load(object sender, EventArgs e)
@@ -23,9 +23,11 @@ namespace ProjectPaslum.Venta
                 cargarcarrito();
                 txtVendedor.Text = (Session["CompletoNombre"].ToString());
                 txtDomicilio.Text = (Session["domicilio"].ToString());
+
+                txtFechaFin.Text = (Session["FechaCredito"].ToString().Substring(0, 10));
                 txtFecha.Text = DateTime.Now.Date.ToString().Substring(0, 10);
-                
-                if((Session["cliente"].ToString() == "MOSTRADOR"))
+
+                if ((Session["cliente"].ToString() == "MOSTRADOR"))
                 {
                     txtCliente.Text = (Session["cliente"].ToString());
                 }
@@ -39,8 +41,6 @@ namespace ProjectPaslum.Venta
                 }
             }
         }
-
-
 
         public void cargarcarrito()
         {
@@ -85,8 +85,6 @@ namespace ProjectPaslum.Venta
             lblIGV.Text = igv.ToString("0.00");
             lblSubTotal.Text = subtotal.ToString("0.00");
             lblTotal.Text = total.ToString("0.00");
-
-
         }
 
         public double TotalCarrito(DataTable dt)
@@ -98,6 +96,7 @@ namespace ProjectPaslum.Venta
             }
             return tot;
         }
+
         protected void GridView1_RowCommand(object sender, GridViewCommandEventArgs e)
         {
             if (e.CommandName == "Borrar")
@@ -114,13 +113,15 @@ namespace ProjectPaslum.Venta
 
         }
 
+
         protected void Button2_Click(object sender, EventArgs e)
         {
-            Response.Redirect("MostradorVenta.aspx");
+            Response.Redirect("CobrarCreditoVenta.aspx");
         }
 
         protected void Button3_Click(object sender, EventArgs e)
         {
+
             var vacio = 0.0000;
 
             if (double.Parse(lblTotal.Text) == vacio)
@@ -159,7 +160,7 @@ namespace ProjectPaslum.Venta
                 }
 
             }
-            Response.Redirect("MostradorVenta.aspx");
+            Response.Redirect("CreditoVenta.aspx");
 
         }
 
@@ -176,25 +177,6 @@ namespace ProjectPaslum.Venta
             Session["pedido"] = dt1;
             Button1_Click(Button1, null);
         }
-
-        protected void SendEmail(object sender, EventArgs e)
-        {
-
-
-
-        }
-
-        protected void GridView1_RowDeleted(object sender, GridViewDeletedEventArgs e)
-        {
-
-        }
-
-        protected void GridView1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-
 
         protected void Button4_Click(object sender, EventArgs e)
         {
@@ -282,7 +264,7 @@ namespace ProjectPaslum.Venta
                 document.Add(efectivo);
                 document.Add(cambio);
                 document.Add(gracias);
-               
+
 
             }
 
@@ -293,7 +275,16 @@ namespace ProjectPaslum.Venta
             HttpContext.Current.Response.Write(document);
             Response.Flush();
             Response.End();
-        
-    }
+        }
+
+        protected void GridView1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void GridView1_RowDeleted(object sender, GridViewDeletedEventArgs e)
+        {
+
+        }
     }
 }
