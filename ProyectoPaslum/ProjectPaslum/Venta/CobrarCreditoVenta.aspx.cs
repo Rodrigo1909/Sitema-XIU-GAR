@@ -201,7 +201,7 @@ namespace ProjectPaslum.Venta
 
 
                 Font fontTitle = FontFactory.GetFont(FontFactory.COURIER_BOLD, 25);
-                Font font9 = FontFactory.GetFont(FontFactory.TIMES, 14);
+                Font font9 = FontFactory.GetFont(FontFactory.TIMES, 12);
 
                 PdfPTable table = new PdfPTable(dt.Columns.Count);
 
@@ -265,6 +265,29 @@ namespace ProjectPaslum.Venta
                 document.Add(cambio);
                 document.Add(gracias);
 
+                document.Add(new Chunk("\n"));
+
+                document.Add(new Paragraph(16, "Debo(emos) y pagaré(mos) incondicionalmente por este PAGARE a la orden de FELIPA TORRES HERNÁNDEZ," + 
+                    " precisamente en su domicilio ubicado en Carrretera Pachuca Cd. Sahagún km. 55 S/N Col. Industrial La Paz C.P. 42092 " +
+                    "Pachuca de Soto Hgo., o en cualquier otro lugar donde se me requiera el pago el dia " + 
+                    (Session["FechaCredito"].ToString().Substring(0, 2)) + " de " + (Session["FechaCredito"].ToString().Substring(3, 2)) + " del " + (
+                    Session["FechaCredito"].ToString().Substring(6, 4)) +
+                    " la cantidad de $"+ decimal.Parse(lblTotal.Text) + " MXN, importe de mercancía recibida" + "de conformidad por conducto de " + txtCliente.Text +
+                    " reconociendo de deudor de forma solidaria haber recibido dicho importe y haber facultado a la persona que recibe, para que en su nombre se obligue " +
+                    "respecto de la cantidad referida, firmando este a su ruego. Si no se cubre su vencimiento la suma anterior causará " +
+                    "ínteres monetarios a la razón del "+ txtInteres.Text +"% mensual a partir de la fecha de su vencimiento durante todo el tiempo qué " +
+                    "estuviese insoluto sin que este considere prorroga el plazo para el cumplimiento de esta obligación, más los costos " +
+                    "y gastos que se generan en cobranza de este documento.", font9));
+
+                document.Add(new Chunk("\n"));
+
+                Paragraph linea = new Paragraph(string.Format("_________________________________"), new iTextSharp.text.Font(iTextSharp.text.Font.FontFamily.HELVETICA, 20));
+                Paragraph firma = new Paragraph(string.Format("Nombre y Firma"), new iTextSharp.text.Font(iTextSharp.text.Font.FontFamily.HELVETICA, 15));
+
+                linea.Alignment = Element.ALIGN_CENTER;
+                document.Add(linea);
+                firma.Alignment = Element.ALIGN_CENTER;
+                document.Add(firma);
 
             }
 
