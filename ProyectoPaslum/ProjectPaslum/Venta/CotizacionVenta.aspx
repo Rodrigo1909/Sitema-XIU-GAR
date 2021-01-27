@@ -19,24 +19,20 @@
                         <div class="panel-body">
                             <div class="form-inline">
 
-                                <div class="form-group">
-                                    <label>Vendedor </label>
-                                    <asp:TextBox ID="txtVendedor" runat="server" width="500px"  ></asp:TextBox>
+                                    <div class="form-group">
+                                        <label>Vendedor </label>
+                                        <asp:TextBox ID="txtVendedor" runat="server" width="500px" Enabled="false" ></asp:TextBox>
+                                    </div>    
                                 </div>
-
-                            </div>
+                               </div>
+                             </div>
+                           </div>
                         </div>
+                      </div>
                     </div>
-                </div>
-            </div>
-          </div>
-        </div>
 
     <div class="panel panel-default">
         <div class="panel-body">
-              <div style="text-align:center">
-                    <h2>Datos del cliente</h2>
-               </div>
             <div class="row">
 
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
@@ -45,32 +41,23 @@
                             <div class="form-inline">
 
                                     <div class="form-group">
-                                        <label>Cliente </label><asp:DropDownList ID="ddlProveedor" runat="server" AppendDataBoundItems="True"  width="500px" ></asp:DropDownList>   
+                                        <label>Nombre del cliente </label><asp:DropDownList ID="ddlCliente" runat="server" AppendDataBoundItems="True"  width="500px"
+                                            OnSelectedIndexChanged="ddlCliente_SelectedIndexChanged" AutoPostBack="true" ></asp:DropDownList>   
                                     </div>
                                     &nbsp &nbsp &nbsp &nbsp 
                                             
                                     <div class="form-group">
-                                         <label>Domicilio </label><asp:DropDownList ID="ddlDomicilio" runat="server" AppendDataBoundItems="True"  width="500px" ></asp:DropDownList> 
+                                         <label>Domicilio </label><asp:DropDownList ID="ddlDomicilio" runat="server" AppendDataBoundItems="True"  width="500px" Enabled="false"></asp:DropDownList> 
                                     </div>
                                      <br /><br />
                                                          
                                     <div class="form-group">
-                                          <label>Teléfono </label><asp:DropDownList ID="ddlTelefono" runat="server" AppendDataBoundItems="True"  width="500px" ></asp:DropDownList> 
-                                    </div>
-                                    &nbsp &nbsp &nbsp &nbsp
-
-                                     <div class="form-group">
-                                          <label>Entega en </label><asp:DropDownList ID="ddlEntrega" runat="server" AppendDataBoundItems="True"  width="500px" ></asp:DropDownList> 
-                                    </div>
-                                    <br /><br />
-
-                                     <div class="form-group">
-                                          <label>Correo </label><asp:DropDownList ID="ddlCorreo" runat="server" AppendDataBoundItems="True"  width="500px" ></asp:DropDownList> 
+                                          <label>Lugar </label><asp:DropDownList ID="ddlLugar" runat="server" AppendDataBoundItems="True"  width="500px" Enabled="false"></asp:DropDownList> 
                                     </div>
                                     &nbsp &nbsp &nbsp &nbsp
 
                                     <div class="form-group">
-                                          <label>Fecha: 23/09/2019</label>    
+                                          <label>Fecha </label><asp:TextBox ID="txtFecha" runat="server" width="500px" Enabled="false" ></asp:TextBox>        
                                     </div>
                                 </div>
                                </div>
@@ -90,29 +77,52 @@
                         <div class="panel-body">
                             <div class="form-inline">
 
-                                    <div class="form-group">
-                                         <label>Producto</label>
-                                         <asp:TextBox ID="txtProducto" runat="server" width="500px"  ></asp:TextBox>
-                                    </div>
-                                     &nbsp &nbsp &nbsp &nbsp       
-                                    <div class="form-group">
-                                        <label>Unidad de Medida</label>
-                                        <asp:DropDownList ID="ddlUnidadMedida" runat="server" AppendDataBoundItems="True"  width="500px" ></asp:DropDownList>   
-                                    </div>
-                                     <br /><br />
+                                <div class="jumbotron"  style="background-color:white">
+				<table class="table-responsive">
+				<tbody>     
+                    <tr>
+                        <td>                                        
+                            <asp:Label ID="lblAgregado" runat="server" Text="Label"></asp:Label>
+                        </td>
+                    </tr>               
+						
 
-                                    <div class="form-group">
-                                          <label>Cantidad</label>
-                                         <asp:TextBox ID="txtCantidad" runat="server" width="500px"  ></asp:TextBox>      
-                                    </div>      
-                                    &nbsp &nbsp &nbsp &nbsp
+						    <asp:DataList ID="DataList1" runat="server" DataKeyField="idProducto" DataSourceID="SqlDataSource1" RepeatColumns="4" 
+                                OnItemCommand="DataList1_ItemCommand" CssClass="table table-responsive"  >
+                                <ItemTemplate>
+                                    
+                                    <br />
+                                    <asp:Label ID="codigo" runat="server" Text="CODIGO:" Font-Size="16px" Font-Italic="true"></asp:Label>                                    
+                                    <asp:Label ID="idProductoLabel" runat="server" Text='<%# Eval("idProducto") %>' ForeColor="#00cc00" Font-Size="15px"/>
+                                    <br />
+                                    <asp:Label ID="nombre" runat="server" Text="NOMBRE:" Font-Size="16px" Font-Italic="true"></asp:Label>                                 
+                                    <asp:Label ID="strNombreLabel" runat="server" Text='<%# Eval("strNombre") %>' ForeColor="#00cc00" Font-Size="15px"/>
+                                    <br />                                    
+                                    <asp:Label ID="descripcion" runat="server" Text="DESCRIPCIÓN:" Font-Size="16px" Font-Italic="true"></asp:Label>
+                                    <asp:Label ID="strDescripcionLabel" runat="server" Text='<%# Eval("strDescripcion") %>' ForeColor="#00cc00" Font-Size="15px"/>
+                                    <br />
+                                    <asp:Label ID="precio" runat="server" Text="PRECIO:" Font-Size="16px" Font-Italic="true"></asp:Label>
+                                    <asp:Label ID="dblPrecioLabel" runat="server" Text='<%# Eval("dblPrecio") %>' ForeColor="#00cc00" Font-Size="15px"/>
+                                    <br />
+                                    <asp:Button ID="Button1" runat="server" CommandName="Seleccionar" OnClick="Button1_Click" Text="Agregar" CssClass="btn btn-success" />
+                                    <br />
+                                </ItemTemplate>
+
+                            </asp:DataList>
 
 
-                                    <div class="form-group">
-                                         <label>Costo Unitario</label> 
-                                         <asp:TextBox ID="txtCostoUni" runat="server"  width="500px"  ></asp:TextBox> 
-                                    </div>
-                                    <br /><br />
+						    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:XIUGARConnectionString %>" 
+                                SelectCommand="SELECT [idProducto], [strNombre], [strDescripcion], [dblPrecio] FROM [tblProducto] where fkAlmacen = 3"></asp:SqlDataSource>
+
+						
+
+					
+				</tbody>
+			</table>
+			</div>
+
+
+                                    
                                 </div>
                                </div>
                              </div>
@@ -120,9 +130,9 @@
                 <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
             
                  </div>
-                <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-                           <asp:Button ID="btnRegistrar" runat="server" Text="Generar Cotización" Font-Size="16px" CssClass="btn btn-block btn-sm btn-success" Width="200px" />
-                </div>                
+                <div class="col-xs-4 col-sm-4 col-md-4 col-lg-">
+                           <asp:Button ID="btnRegistrar" runat="server" Text="Finalizar cotización" Font-Size="16px" CssClass="btn btn-block btn-sm btn-success" Width="250px" OnClick="btnRegistrar_Click1" />
+                </div>             
                         </div>
                       </div>
                     </div>

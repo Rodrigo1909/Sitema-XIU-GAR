@@ -134,7 +134,7 @@
 
                                                          <div class="form-group">
                                                             <label>Estado: </label>
-                                                            <asp:DropDownList ID="ddlEstado" runat="server" AppendDataBoundItems="True"  width="330px" CssClass=" form-control"></asp:DropDownList>   
+                                                            <asp:DropDownList ID="ddlEstado" runat="server" AppendDataBoundItems="True"  width="330px" CssClass=" form-control" AutoPostBack="true" OnSelectedIndexChanged="ddlEstado_SelectedIndexChanged"></asp:DropDownList>   
                                                          </div>
                                                         <br /> <br /> 
                                                        

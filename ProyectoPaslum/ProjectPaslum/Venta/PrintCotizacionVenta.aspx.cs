@@ -3,19 +3,20 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
-using System.Web.UI.WebControls;
 using Modelo;
 using System.Data;
-using ProjectPaslum.Controllers;
+using System.Web.UI.WebControls;
 using iTextSharp.text;
 using iTextSharp.text.pdf;
 using System.IO;
+using ProjectPaslum.Controllers;
 
 namespace ProjectPaslum.Venta
 {
-    public partial class CobrarVenta : System.Web.UI.Page
+    public partial class PrintCotizacionVenta : System.Web.UI.Page
     {
         PaslumBaseDatoDataContext contexto = new PaslumBaseDatoDataContext();
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (Page.IsPostBack == false)
@@ -24,8 +25,8 @@ namespace ProjectPaslum.Venta
                 txtVendedor.Text = (Session["CompletoNombre"].ToString());
                 txtDomicilio.Text = (Session["domicilio"].ToString());
                 txtFecha.Text = DateTime.Now.Date.ToString().Substring(0, 10);
-                
-                if((Session["cliente"].ToString() == "MOSTRADOR"))
+
+                if ((Session["cliente"].ToString() == "MOSTRADOR"))
                 {
                     txtCliente.Text = (Session["cliente"].ToString());
                 }
@@ -39,8 +40,6 @@ namespace ProjectPaslum.Venta
                 }
             }
         }
-
-
 
         public void cargarcarrito()
         {
@@ -82,11 +81,9 @@ namespace ProjectPaslum.Venta
             igv = total * 0.18;
             subtotal = total - igv;
 
-            lblIGV.Text = igv.ToString("0.00");
-            lblSubTotal.Text = subtotal.ToString("0.00");
-            lblTotal.Text = total.ToString("0.00");
-
-
+            //lblIGV.Text = igv.ToString("0.00");
+            //lblSubTotal.Text = subtotal.ToString("0.00");
+            //lblTotal.Text = total.ToString("0.00");
         }
 
         public double TotalCarrito(DataTable dt)
@@ -98,6 +95,8 @@ namespace ProjectPaslum.Venta
             }
             return tot;
         }
+
+
         protected void GridView1_RowCommand(object sender, GridViewCommandEventArgs e)
         {
             if (e.CommandName == "Borrar")
@@ -106,38 +105,45 @@ namespace ProjectPaslum.Venta
                 DataTable ocar = new DataTable();
                 ocar = (DataTable)Session["pedido"];
                 ocar.Rows[index].Delete();
-                lblTotal.Text = TotalCarrito(ocar).ToString();
+                //lblTotal.Text = TotalCarrito(ocar).ToString();
                 GridView1.DataSource = ocar;
                 GridView1.DataBind();
                 cargarcarrito();
             }
+        }
 
+        protected void GridView1_RowDeleting(object sender, GridViewDeleteEventArgs e)
+        {
+            int index = e.RowIndex;
+            DataTable dt1 = new DataTable();
+            dt1 = (DataTable)Session["pedido"];
+            dt1.Rows[index].Delete();
+
+            
+            GridView1.DataSource = dt1;
+            GridView1.DataBind();
+            Session["pedido"] = dt1;
+            Button1_Click(Button1, null);
         }
 
         protected void Button2_Click(object sender, EventArgs e)
         {
-            Response.Redirect("MostradorVenta.aspx");
+            Response.Redirect("CotizacionVenta.aspx");
         }
 
         protected void Button3_Click(object sender, EventArgs e)
         {
-            var vacio = 0.0000;
+        
 
-            if (double.Parse(lblTotal.Text) == vacio)
-            {
-                this.Response.Redirect("./AlertaError.aspx", true);
-            }
-
-            else
-            {
+           
                 DateTime fechact = DateTime.Now;
                 ControllerCliente ctrlCli = new ControllerCliente();
 
                 tblVenta ven = new tblVenta();
                 ven.Fecha = fechact;
-                ven.dblTotal = decimal.Parse(lblTotal.Text);
-                ven.dblSubTotal = decimal.Parse(lblSubTotal.Text);
-                ven.dblIGV = decimal.Parse(lblIGV.Text);
+                //ven.dblTotal = decimal.Parse(lblTotal.Text);
+                //ven.dblSubTotal = decimal.Parse(lblSubTotal.Text);
+                //ven.dblIGV = decimal.Parse(lblIGV.Text);
                 ven.strEstado = "FINALIZADO";
                 ven.dblAbono = null;
                 ven.dblInteres = null;
@@ -163,36 +169,15 @@ namespace ProjectPaslum.Venta
                     detalle.dblPrecio = decimal.Parse(Convert.ToString(row.Cells[3].Text));
                     detalle.fkProducto = int.Parse(row.Cells[1].Text);
                     detalle.fkVenta = ven.idVenta;
-                    detalle.fkEmpleado = int.Parse(Session["id"].ToString()); 
+                    detalle.fkEmpleado = int.Parse(Session["id"].ToString());
                     ctrlClie.InsertarDetalle(detalle);
 
                 }
                 Response.Redirect("AlertaExito.aspx");
-            }
+            
             Response.Redirect("MostradorVenta.aspx");
-
         }
 
-        protected void GridView1_RowDeleting(object sender, GridViewDeleteEventArgs e)
-        {
-            int index = e.RowIndex;
-            DataTable dt1 = new DataTable();
-            dt1 = (DataTable)Session["pedido"];
-            dt1.Rows[index].Delete();
-
-            lblTotal.Text = TotalCarrito(dt1).ToString();
-            GridView1.DataSource = dt1;
-            GridView1.DataBind();
-            Session["pedido"] = dt1;
-            Button1_Click(Button1, null);
-        }
-
-        protected void SendEmail(object sender, EventArgs e)
-        {
-
-
-
-        }
 
         protected void GridView1_RowDeleted(object sender, GridViewDeletedEventArgs e)
         {
@@ -204,14 +189,12 @@ namespace ProjectPaslum.Venta
 
         }
 
-
-
         protected void Button4_Click(object sender, EventArgs e)
         {
             DataTable dt = new DataTable();
             Document document = new Document();
             PdfWriter writer = PdfWriter.GetInstance(document, HttpContext.Current.Response.OutputStream);
-            DateTime fechact = DateTime.Now;
+
 
             dt = (DataTable)Session["pedido"];
             if (dt.Rows.Count > 0)
@@ -276,34 +259,33 @@ namespace ProjectPaslum.Venta
                 document.Add(table);
                 document.Add(new Chunk("\n"));
 
-                Paragraph total = new Paragraph(16, "Total: $" + decimal.Parse(lblTotal.Text), font9);
-                Paragraph efectivo = new Paragraph(16, "Efectivo: $" + decimal.Parse(txtDinero.Text), font9);
-                Paragraph cambio = new Paragraph(16, "Cambio: $" + (decimal.Parse(txtDinero.Text) - decimal.Parse(lblTotal.Text)), font9);
+                Paragraph Condiciones = new Paragraph(16, "Condiciones: " + txtCondiciones.Text, font9);
+                Paragraph Carlos = new Paragraph(16, "Lic. Carlos A. Mac Gregor Torres\nDirector General\n(044) 771-747-3620", font9);
+                
                 document.Add(new Chunk("\n"));
-                Paragraph gracias = new Paragraph(18, "Gracias por su compra, vuelva pronto.", font9);
+                Paragraph gracias = new Paragraph(18, "Precio autorizado: Lic. Carlos A. Mac Gregor Torres.", font9);
 
+                document.Add(new Chunk("\n"));
 
-                total.Alignment = Element.ALIGN_RIGHT;
-                efectivo.Alignment = Element.ALIGN_RIGHT;
-                cambio.Alignment = Element.ALIGN_RIGHT;
+                Condiciones.Alignment = Element.ALIGN_LEFT;
+                Carlos.Alignment = Element.ALIGN_RIGHT;
                 gracias.Alignment = Element.ALIGN_CENTER;
 
-                document.Add(total);
-                document.Add(efectivo);
-                document.Add(cambio);
+                document.Add(Condiciones);
+                document.Add(Carlos);
+
                 document.Add(gracias);
-               
+
 
             }
 
             document.Close();
 
             Response.ContentType = "application/pdf";
-            Response.AddHeader("content-disposition", "attachment;filename=Ticket"+ fechact + ".pdf");
+            Response.AddHeader("content-disposition", "attachment;filename=Cotizacion_"+ txtCliente.Text + ".pdf");
             HttpContext.Current.Response.Write(document);
             Response.Flush();
             Response.End();
-        
-    }
+        }
     }
 }

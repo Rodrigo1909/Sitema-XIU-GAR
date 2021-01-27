@@ -68,6 +68,10 @@ namespace ProjectPaslum.Venta
 
                     txtFecha.Text = DateTime.Now.ToString("dd/MM/yyyy");
                 }
+                else
+                {
+                    Response.Redirect("../IndexPaslum.aspx", true);
+                }
             }
             if (Page.IsPostBack == false)
             {
@@ -160,6 +164,11 @@ namespace ProjectPaslum.Venta
         protected void Button1_Click(object sender, EventArgs e)
         {
             
+        }
+
+        protected void btnRegistrar_Click1(object sender, EventArgs e)
+        {
+
         }
     }
     }

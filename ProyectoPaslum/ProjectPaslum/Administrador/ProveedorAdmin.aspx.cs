@@ -59,7 +59,7 @@ namespace ProjectPaslum.Administrador
                 //sweet poner que ya esta registrado el correo
             }
 
-            this.Response.Redirect("./ProveeAdmin.aspx", true);
+            this.Response.Redirect("./ProveedorAdmin.aspx", true);
         }
 
         protected tblProveedor GetDatosVista(tblProveedor provee)

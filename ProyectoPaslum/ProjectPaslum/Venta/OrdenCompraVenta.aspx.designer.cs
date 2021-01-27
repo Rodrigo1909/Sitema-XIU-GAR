@@ -49,13 +49,13 @@ namespace ProjectPaslum.Venta {
         protected global::System.Web.UI.WebControls.DropDownList ddlTelefono;
         
         /// <summary>
-        /// Control ddlEntrega.
+        /// Control txtEntregar.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlEntrega;
+        protected global::System.Web.UI.WebControls.TextBox txtEntregar;
         
         /// <summary>
         /// Control ddlCorreo.
@@ -67,6 +67,15 @@ namespace ProjectPaslum.Venta {
         protected global::System.Web.UI.WebControls.DropDownList ddlCorreo;
         
         /// <summary>
+        /// Control txtFecha.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtFecha;
+        
+        /// <summary>
         /// Control txtCantidad.
         /// </summary>
         /// <remarks>
@@ -76,15 +85,6 @@ namespace ProjectPaslum.Venta {
         protected global::System.Web.UI.WebControls.TextBox txtCantidad;
         
         /// <summary>
-        /// Control ddlUnidadMedida.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlUnidadMedida;
-        
-        /// <summary>
         /// Control txtProducto.
         /// </summary>
         /// <remarks>
@@ -92,6 +92,24 @@ namespace ProjectPaslum.Venta {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtProducto;
+        
+        /// <summary>
+        /// Control txtDescripcion.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtDescripcion;
+        
+        /// <summary>
+        /// Control txtDescuento.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtDescuento;
         
         /// <summary>
         /// Control txtCostoUni.
@@ -112,12 +130,39 @@ namespace ProjectPaslum.Venta {
         protected global::System.Web.UI.WebControls.TextBox txtImporte;
         
         /// <summary>
-        /// Control btnRegistrar.
+        /// Control txtIVA.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnRegistrar;
+        protected global::System.Web.UI.WebControls.TextBox txtIVA;
+        
+        /// <summary>
+        /// Control calEntrega.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Calendar calEntrega;
+        
+        /// <summary>
+        /// Control txtConfirmo.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtConfirmo;
+        
+        /// <summary>
+        /// Control Button1.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button Button1;
     }
 }

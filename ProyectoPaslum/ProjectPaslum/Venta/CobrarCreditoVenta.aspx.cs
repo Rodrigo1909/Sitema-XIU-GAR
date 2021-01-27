@@ -136,13 +136,16 @@ namespace ProjectPaslum.Venta
 
                 tblVenta ven = new tblVenta();
                 ven.Fecha = fechact;
+                ven.FechaCredito = Convert.ToDateTime(txtFechaFin.Text);
                 ven.dblTotal = decimal.Parse(lblTotal.Text);
                 ven.dblSubTotal = decimal.Parse(lblSubTotal.Text);
                 ven.dblIGV = decimal.Parse(lblIGV.Text);
-                ven.strEstado = "Finalizado";
-                ven.fkCliente = int.Parse(Session["id"].ToString());
+                ven.strEstado = "CREDITO";
+                ven.fkCliente = int.Parse(Session["cliente"].ToString());
+                ven.dblInteres = decimal.Parse(txtInteres.Text);
+                ven.dblAbono = decimal.Parse(txtDinero.Text);
                 ctrlCli.InsertarVenta(ven);
-
+                
 
 
                 foreach (GridViewRow row in GridView1.Rows)
@@ -154,10 +157,12 @@ namespace ProjectPaslum.Venta
                     detalle.dblPrecio = decimal.Parse(Convert.ToString(row.Cells[3].Text));
                     detalle.fkProducto = int.Parse(row.Cells[1].Text);
                     detalle.fkVenta = ven.idVenta;
-                    detalle.fkEmpleado = null;
+                    detalle.fkEmpleado = int.Parse(Session["id"].ToString()); 
                     ctrlClie.InsertarDetalle(detalle);
 
                 }
+
+                this.Response.Redirect("./AlertaExito.aspx", true);
 
             }
             Response.Redirect("CreditoVenta.aspx");
@@ -250,19 +255,16 @@ namespace ProjectPaslum.Venta
 
                 Paragraph total = new Paragraph(16, "Total: $" + decimal.Parse(lblTotal.Text), font9);
                 Paragraph efectivo = new Paragraph(16, "Efectivo: $" + decimal.Parse(txtDinero.Text), font9);
-                Paragraph cambio = new Paragraph(16, "Cambio: $" + (decimal.Parse(txtDinero.Text) - decimal.Parse(lblTotal.Text)), font9);
                 document.Add(new Chunk("\n"));
                 Paragraph gracias = new Paragraph(18, "Gracias por su compra, vuelva pronto.", font9);
 
 
                 total.Alignment = Element.ALIGN_RIGHT;
                 efectivo.Alignment = Element.ALIGN_RIGHT;
-                cambio.Alignment = Element.ALIGN_RIGHT;
                 gracias.Alignment = Element.ALIGN_CENTER;
 
                 document.Add(total);
                 document.Add(efectivo);
-                document.Add(cambio);
                 document.Add(gracias);
 
                 document.Add(new Chunk("\n"));
@@ -294,7 +296,7 @@ namespace ProjectPaslum.Venta
             document.Close();
 
             Response.ContentType = "application/pdf";
-            Response.AddHeader("content-disposition", "attachment;filename=Ticket" + ".pdf");
+            Response.AddHeader("content-disposition", "attachment;filename=Credito_"+ txtCliente.Text + ".pdf");
             HttpContext.Current.Response.Write(document);
             Response.Flush();
             Response.End();
