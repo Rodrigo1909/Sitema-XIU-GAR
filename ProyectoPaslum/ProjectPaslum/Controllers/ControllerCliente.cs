@@ -125,6 +125,44 @@ namespace ProjectPaslum.Controllers
 
         }
 
+        public bool InsertarOrdenCompra(tblOrdenCompra _TBL_OrdenCompra)
+        {
+            bool respuesta = false;
+            try
+            {
+                contexto.tblOrdenCompra.InsertOnSubmit(_TBL_OrdenCompra);
+                contexto.SubmitChanges();
+                respuesta = true;
 
+            }
+            catch (Exception ex)
+            {
+                System.Console.WriteLine(ex.ToString());
+                respuesta = false;
+
+            }
+            return respuesta;
+
+        }
+
+        public bool InsertarHistorialAbono(tblHistorialAbono _TBL_HistorialAbono)
+        {
+            bool respuesta = false;
+            try
+            {
+                contexto.tblHistorialAbono.InsertOnSubmit(_TBL_HistorialAbono);
+                contexto.SubmitChanges();
+                respuesta = true;
+
+            }
+            catch (Exception ex)
+            {
+                System.Console.WriteLine(ex.ToString());
+                respuesta = false;
+
+            }
+            return respuesta;
+
+        }
     }
 }

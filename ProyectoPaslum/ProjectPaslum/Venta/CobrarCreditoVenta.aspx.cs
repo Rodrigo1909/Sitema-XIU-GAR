@@ -134,31 +134,23 @@ namespace ProjectPaslum.Venta
                 DateTime fechact = DateTime.Now;
                 ControllerCliente ctrlCli = new ControllerCliente();
 
-                tblVenta ven = new tblVenta();
-                ven.Fecha = fechact;
-                ven.FechaCredito = Convert.ToDateTime(txtFechaFin.Text);
-                ven.dblTotal = decimal.Parse(lblTotal.Text);
-                ven.dblSubTotal = decimal.Parse(lblSubTotal.Text);
-                ven.dblIGV = decimal.Parse(lblIGV.Text);
-                ven.strEstado = "CREDITO";
-                ven.fkCliente = int.Parse(Session["cliente"].ToString());
-                ven.dblInteres = decimal.Parse(txtInteres.Text);
-                ven.dblAbono = decimal.Parse(txtDinero.Text);
-                ctrlCli.InsertarVenta(ven);
-                
-
+                tblHistorialAbono HisAbo = new tblHistorialAbono();
+                HisAbo.Fecha = fechact;
+                HisAbo.dblCantidad = decimal.Parse(txtDinero.Text);
+                HisAbo.dblCantidadAnterior = decimal.Parse(txtDinero.Text);                
+                ctrlCli.InsertarHistorialAbono(GetVenta(HisAbo));
 
                 foreach (GridViewRow row in GridView1.Rows)
                 {
-                    ControllerCliente ctrlClie = new ControllerCliente();
+
                     tblDetalleVenta detalle = new tblDetalleVenta();
                     detalle.Fecha = fechact;
                     detalle.intCantidad = int.Parse(((TextBox)row.Cells[4].FindControl("TextBox1")).Text);
                     detalle.dblPrecio = decimal.Parse(Convert.ToString(row.Cells[3].Text));
-                    detalle.fkProducto = int.Parse(row.Cells[1].Text);
-                    detalle.fkVenta = ven.idVenta;
-                    detalle.fkEmpleado = int.Parse(Session["id"].ToString()); 
-                    ctrlClie.InsertarDetalle(detalle);
+                    detalle.fkProducto = int.Parse(row.Cells[1].Text);                    
+                    detalle.fkEmpleado = int.Parse(Session["id"].ToString());
+                    detalle.fkVenta = HisAbo.fkVenta;
+                    ctrlCli.InsertarDetalle(detalle);
 
                 }
 
@@ -168,6 +160,32 @@ namespace ProjectPaslum.Venta
             Response.Redirect("CreditoVenta.aspx");
 
         }
+
+        protected tblHistorialAbono GetVenta(tblHistorialAbono HisVen)
+        {
+            DateTime fechact = DateTime.Now;
+            ControllerCliente ctrlClie = new ControllerCliente();
+
+            tblVenta ven = new tblVenta();
+            ven.Fecha = fechact;
+            ven.FechaCredito = Convert.ToDateTime(txtFechaFin.Text);
+            ven.dblTotal = decimal.Parse(lblTotal.Text);
+            ven.dblSubTotal = decimal.Parse(lblSubTotal.Text);
+            ven.dblIGV = decimal.Parse(lblIGV.Text);
+            ven.strEstado = "CREDITO";
+            ven.fkCliente = int.Parse(Session["cliente"].ToString());
+            ven.dblInteres = decimal.Parse(txtInteres.Text);
+            ven.dblAbono = decimal.Parse(txtDinero.Text);
+
+            HisVen.tblVenta = ven;
+
+            
+
+            return HisVen;
+
+        }
+
+
 
         protected void GridView1_RowDeleting(object sender, GridViewDeleteEventArgs e)
         {
@@ -235,9 +253,40 @@ namespace ProjectPaslum.Venta
                 PdfPCell cell = new PdfPCell(new Phrase("columns"));
                 cell.Colspan = dt.Columns.Count;
 
+                table.AddCell("CODIGO");
+                table.AddCell("PRODUCTO");
+                table.AddCell("PRECIO");
+                table.AddCell("SUBTOTAL");
+                table.AddCell("CANTIDAD");
+
                 foreach (DataColumn c in dt.Columns)
                 {
-                    table.AddCell(new Phrase(c.ColumnName, font9));
+                    if (c.ColumnName == "idProducto")
+                    {
+
+                    }
+                    else if (c.ColumnName == "strNombre")
+                    {
+
+                    }
+                    else if (c.ColumnName == "dblPrecio")
+                    {
+
+                    }
+                    else if (c.ColumnName == "subtotal")
+                    {
+
+                    }
+                    else if (c.ColumnName == "canproducto")
+                    {
+
+                    }
+
+                    else
+                    {
+
+                        table.AddCell(new Phrase(c.ColumnName, font9));
+                    }
                 }
 
                 foreach (DataRow r in dt.Rows)

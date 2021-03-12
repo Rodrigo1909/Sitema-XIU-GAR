@@ -53,7 +53,7 @@
                                 </ItemTemplate>
                             </asp:DataList>
 
-						    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:XIUGARConnectionString %>" SelectCommand="SELECT [idProducto], [strNombre], [strDescripcion], [dblPrecio] FROM [tblProducto]"></asp:SqlDataSource>
+						    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:XIUGARConnectionString %>" SelectCommand="SELECT [idProducto], [strNombre], [strDescripcion], [dblPrecio] FROM [tblProducto] where fkAlmacen = '1'"></asp:SqlDataSource>
 
 						
 

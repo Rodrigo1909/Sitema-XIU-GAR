@@ -57,7 +57,7 @@
 
                                 &nbsp &nbsp &nbsp &nbsp 
                                     <div class="form-group">
-                                         <label>Dinero </label>
+                                         <label>Abono </label>
                                         <asp:TextBox ID="txtDinero" runat="server" width="500px" style="text-align:center" required="true" ></asp:TextBox>
                                     </div>
                                 

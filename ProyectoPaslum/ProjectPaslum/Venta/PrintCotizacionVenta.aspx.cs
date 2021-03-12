@@ -241,9 +241,39 @@ namespace ProjectPaslum.Venta
                 PdfPCell cell = new PdfPCell(new Phrase("columns"));
                 cell.Colspan = dt.Columns.Count;
 
+                table.AddCell("CODIGO");
+                table.AddCell("PRODUCTO");
+                table.AddCell("PRECIO");
+                table.AddCell("SUBTOTAL");
+                table.AddCell("CANTIDAD");
+
                 foreach (DataColumn c in dt.Columns)
                 {
-                    table.AddCell(new Phrase(c.ColumnName, font9));
+                    if (c.ColumnName == "idProducto")
+                    {
+                        
+                    }
+                    else if(c.ColumnName == "strNombre")
+                    {
+
+                    }
+                    else if (c.ColumnName == "dblPrecio")
+                    {
+
+                    }
+                    else if (c.ColumnName == "subtotal")
+                    {
+
+                    }
+                    else if (c.ColumnName == "canproducto")
+                    {
+
+                    }
+
+                    else {
+                        
+                        table.AddCell(new Phrase(c.ColumnName, font9));
+                    }
                 }
 
                 foreach (DataRow r in dt.Rows)
