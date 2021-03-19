@@ -62,8 +62,11 @@
                                           <label>Fecha </label><asp:TextBox ID="txtFecha" runat="server" width="500px" Enabled="false" ></asp:TextBox>        
                                     </div>
 
+
                                     <div class="form-group">
-                                        <label>Credito Fin </label><asp:Calendar ID="calFin" runat="server" width="500px" ></asp:Calendar>   
+                                         <label>Fin de credito</label>
+                                        <asp:TextBox id="calFin" runat="server" TextMode="Date" required="required" width="500px" 
+                                            style="text-align:center" Height="40px"></asp:TextBox>
                                     </div>
                                     &nbsp &nbsp &nbsp &nbsp 
                                 </div>

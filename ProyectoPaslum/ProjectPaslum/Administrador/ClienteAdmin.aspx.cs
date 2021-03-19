@@ -36,8 +36,34 @@ namespace ProjectPaslum.Administrador
 
         }
 
+        private void LimpiarCampos()
+        {
+            txtNombre.Text = "";
+            txtAMaterno.Text = "";
+            txtAPaterno.Text = "";
+            txtEstablecimiento.Text = "";
+            txtCorreo.Text = "";
+            txtSituacion.Text = "";
+            txtMetodoPago.Text = "";
+            txtCalle.Text = "";
+            txtColonia.Text = "";
+            txtNumExt.Text = "";
+            txtNumInt.Text = "";
+            txtCodPos.Text = "";
+            txtReferencia.Text = "";
+            txtNumeroBodega.Text = "";
+            txtHorario.Text = "";
+            txtEncargador.Text = "";
+            txtPagos.Text = "";
+            txtTelEncargador.Text = "";
+            txtTelOtro.Text = "";
+            txtCelular.Text = "";
+
+        }
+
         protected void ddlEstado_SelectedIndexChanged(object sender, EventArgs e)
         {
+            ddlMunicipio.Items.Clear();
             var municipio = (from munesta in contexto.tblEstado_Municipio
 
                              join mun in contexto.TblMunicipio
@@ -84,13 +110,15 @@ namespace ProjectPaslum.Administrador
                 cli.idActivo = 1;
                 ControllerCliente ctrlCli = new ControllerCliente();
                 ctrlCli.InsertarCliente(GetDatosVista(cli));
+                this.ClientScript.RegisterStartupScript(this.GetType(), "SweetAlert", "exito()", true);
+                this.LimpiarCampos();
+
             }
             else
             {
-                //sweet poner que ya esta registrado el correo
+                this.ClientScript.RegisterStartupScript(this.GetType(), "SweetAlert", "alerta()", true);
             }
-
-            this.Response.Redirect("./ClienteAdmin.aspx", true);
+            
         }
         protected tblCliente GetDatosVista(tblCliente cli)
         {
@@ -121,7 +149,7 @@ namespace ProjectPaslum.Administrador
             login.idActivo = 1;
 
             ControllerCliente ctrlClie = new ControllerCliente();
-            ctrlClie.enviarcorreo(cli.strCorreo, value.ToString());
+            //ctrlClie.enviarcorreo(cli.strCorreo, value.ToString());
 
             cli.tblDireccion = direccion;
             cli.tblTelefono = telefono;

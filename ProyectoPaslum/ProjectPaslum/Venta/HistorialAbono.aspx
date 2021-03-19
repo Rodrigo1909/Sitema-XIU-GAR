@@ -66,10 +66,9 @@
                                                 v.dblTotal as 'Total Venta', v.Fecha as 'Fecha de creación',v.FechaCredito as 'Fin del Credito' 
                                                 from tblVenta v
                                                 inner join tblCliente c
-                                                on c.idCliente = v.fkCliente
-                                                left join tblHistorialAbono ha
-                                                on ha.fkVenta = v.idVenta
-                                                where v.strEstado = 'CREDITO';"></asp:SqlDataSource>
+                                                on c.idCliente = v.fkCliente                                                
+                                                where v.strEstado = 'CREDITO'
+                                                order by v.Fecha asc;"></asp:SqlDataSource>
 				</tbody>
 			</table>
 			                    

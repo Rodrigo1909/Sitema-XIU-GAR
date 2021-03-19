@@ -39,6 +39,16 @@ namespace ProjectPaslum.Almacen
 
         }
 
+        private void LimpiarCampos()
+        {
+            txtCantidad.Text = "";
+            ddlProducto.Items.Clear();
+            ddlStock.Items.Clear();
+            ddlAlmacen.Items.Clear();
+            ddlMovimiento.Items.Clear();
+
+        }
+
         protected void btnRegistrar_Click(object sender, EventArgs e)
         {
             var almacen = ddlAlmacen.SelectedItem.Value;
@@ -70,7 +80,8 @@ namespace ProjectPaslum.Almacen
 
                     ctrlAlm.InsertarMovimientoAlmacen(mov);
                     contexto.SubmitChanges();
-                    this.Response.Redirect("./AlertaExito.aspx", true);
+                    this.ClientScript.RegisterStartupScript(this.GetType(), "SweetAlert", "exito()", true);
+                    this.LimpiarCampos();
                 }
                 if(actualizar == 1)
                 {
@@ -88,11 +99,11 @@ namespace ProjectPaslum.Almacen
                     mov.fkEmpleado = Int32.Parse(lbEmpleado.Text);
 
                     ctrlAlm.InsertarMovimientoAlmacen(mov);
-                    this.Response.Redirect("./AlertaExito.aspx", true);
-                }
+                    this.ClientScript.RegisterStartupScript(this.GetType(), "SweetAlert", "exito()", true);
+                    this.LimpiarCampos();
+            }
            
-
-            this.Response.Redirect("./EntradaAlmacen.aspx", true);
+                
         }
 
         protected void ddlAlmacen_SelectedIndexChanged(object sender, EventArgs e)
@@ -106,8 +117,8 @@ namespace ProjectPaslum.Almacen
                              on prod.fkAlmacen
                              equals alm.idAlmacen
 
-                             where prod.fkAlmacen == Convert.ToInt32(ddlAlmacen.SelectedValue)
-                             select new { nombre = prod.strNombre, id = prod.idProducto }).ToList();
+                             where prod.fkAlmacen == Convert.ToInt32(ddlAlmacen.SelectedValue)                             
+                            select new { nombre = prod.strNombre, id = prod.idProducto }).ToList();
 
 
 
@@ -116,6 +127,28 @@ namespace ProjectPaslum.Almacen
             ddlProducto.DataTextField = "nombre";
             ddlProducto.DataSource = producto;
             ddlProducto.DataBind();
+
+           
+        }
+
+        protected void ddlProducto_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ddlStock.Items.Clear();
+            try
+            {
+                var producto = ddlProducto.SelectedItem.Value;
+                var cantidadExistente = (from existe in contexto.tblStock
+                                         where existe.fkProducto == Int32.Parse(producto)
+                                         select existe.dblCantidad);
+
+        
+                ddlStock.DataSource = cantidadExistente;
+                ddlStock.DataBind();
+            }
+            catch
+            {
+                ddlStock.Text = "0";
+            }
         }
     }
 }

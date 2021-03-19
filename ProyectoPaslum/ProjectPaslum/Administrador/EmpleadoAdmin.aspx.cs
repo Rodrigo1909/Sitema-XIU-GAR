@@ -36,6 +36,28 @@ namespace ProjectPaslum.Administrador
 
         }
 
+        private void LimpiarCampos()
+        {
+            txtNombre.Text = "";
+            txtAMaterno.Text = "";
+            txtAPaterno.Text = "";
+            txtEdad.Text = "";
+            txtCorreo.Text = "";
+
+            txtCalle.Text = "";
+            txtColonia.Text = "";
+            txtNumExt.Text = "";
+            txtNumInt.Text = "";
+            txtCodPos.Text = "";
+            txtReferencia.Text = "";
+            
+            txtTelCasa.Text = "";
+            txtTelOtro.Text = "";
+            txtCelular.Text = "";
+
+        }
+
+
         protected void btnRegistrar_Click(object sender, EventArgs e)
         {
             var sex = cmbSexo.SelectedItem.Value;
@@ -55,13 +77,16 @@ namespace ProjectPaslum.Administrador
                 empl.idActivo = 1;
                 ControllerEmpleado ctrlEmpl = new ControllerEmpleado();
                 ctrlEmpl.InsertarEmpleado(GetDatosVista(empl));
+                this.ClientScript.RegisterStartupScript(this.GetType(), "SweetAlert", "exito()", true);
+                this.LimpiarCampos();
+                
             }
             else
             {
-                //sweet poner que ya esta registrado el correo
+                this.ClientScript.RegisterStartupScript(this.GetType(), "SweetAlert", "alerta()", true);
             }
-          
-            this.Response.Redirect("./EmpleadoAdmin.aspx", true);
+
+            
         }
 
         protected tblEmpleado GetDatosVista(tblEmpleado empl)
@@ -105,6 +130,7 @@ namespace ProjectPaslum.Administrador
 
         protected void ddlEstado_SelectedIndexChanged(object sender, EventArgs e)
         {
+            ddlMunicipio.Items.Clear();
             var municipio = (from munesta in contexto.tblEstado_Municipio
 
                              join mun in contexto.TblMunicipio

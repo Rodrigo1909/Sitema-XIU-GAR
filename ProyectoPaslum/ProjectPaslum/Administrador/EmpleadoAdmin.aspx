@@ -6,6 +6,13 @@
     <link href="css/modales.css" rel="stylesheet" />
     <link href="../Content/bootstrap.min.css" rel="stylesheet" />
 
+    <link href="../../Content/sweetalert/sweet-alert.css" rel="stylesheet" />
+    <script src="../../js/swalert.js"></script>
+    <script src="../../Scripts/jquery-1.10.2.min.js"></script>
+    <script src="../../Scripts/sweetalert.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+
     <div class="content">
         <div class="table-title">
             <div class="row">
@@ -414,5 +421,26 @@
         </div>
     </div>
 </div>
+
+     <script type="text/javascript">
+        function alerta() {
+            swal({
+                title: "ERROR",
+                text: "El correo ya esta registrado, favor de verificar la información.",
+                icon: "error",
+            });
+        }
+
+            
+        function exito() {
+            swal({
+                title: "EXITO",
+                text: "Se registro al empleado con exito.",
+                icon: "success",
+            });
+        }
+    
+    </script>
+
 </asp:Content>
 

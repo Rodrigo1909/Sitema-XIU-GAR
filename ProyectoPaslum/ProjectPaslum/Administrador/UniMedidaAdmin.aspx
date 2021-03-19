@@ -2,6 +2,12 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <link href="css/modales.css" rel="stylesheet" />
      <link href="../Content/bootstrap.min.css" rel="stylesheet" />
+        
+    <link href="../../Content/sweetalert/sweet-alert.css" rel="stylesheet" />
+    <script src="../../js/swalert.js"></script>
+    <script src="../../Scripts/jquery-1.10.2.min.js"></script>
+    <script src="../../Scripts/sweetalert.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
        <style>
     #mdialTamanio{
@@ -24,16 +30,6 @@
                         </a> 
                     </div>
                    </div>
-<%--                    &nbsp &nbsp &nbsp &nbsp
-                    <div class="button">
-                    <div class="col-sm-6">
-                        <a class="btn btn-success" data-toggle="modal" href="#addRolTrabajo">
-                            <i class="icon-add">
-                            </i>
-                              <asp:Label ID="Label2" runat="server" Text="Nuevo Rol"></asp:Label>
-                        </a> 
-                    </div>
-                   </div>--%>
                 </div>
             </div>
 
@@ -75,53 +71,6 @@
             </div>
         </div>
           </div>
-    
-    <!-- Agregar Modal de Rol de Trabajo-->
-    <%--<div class="modal fade" id="addRolTrabajo">
-         <div class="left">
-        <div class="modal-dialog">
-            <div class="modal-content">
-
-                  <div class="modal-header">
-                    <h3 class="table-title">REGISTRO DE ROL DE TRABAJO</h3>
-                </div>
-
-                <div class="modal-body">
-                    <div class="form-group">
-                        <div class="col-xs-7">
-                            Nombre
-                            <asp:TextBox runat="server" ID="txtRol" class="form-control" required="required" type="text"></asp:TextBox>
-                        </div>
-                    </div>
-                 <br /> <br />  
-                                    
-                 <div class="form-group">
-                    <div class="col-xs-7">
-                            Abreviatura
-                        <asp:TextBox runat="server" ID="txtAbreviatura" class="form-control" required="required" type="text" ></asp:TextBox>                        
-                    </div>
-                  </div>
-                    <br /> <br />  
-
-                 <div class="form-group">
-                    <div class="col-xs-7">
-                            Descripción
-                        <asp:TextBox runat="server" ID="txtDescripRol" class="form-control" required="required" type="text" ></asp:TextBox>                        
-                    </div>
-                  </div>
-                  <br /> <br /> 
-                     
-                 <div class="modal-footer">
-                    <div class="modalfooter">                             
-                            <asp:Button ID="Button1" runat="server" CssClass="btn btn-primary"  Text="Cancelar" data-dismiss="modal"  />
-                            <asp:Button ID="Button2" runat="server" class="btn btn-success"  Text="Aceptar" />
-                        </div>
-                    </div>
-                </div> 
-            </div>
-            </div>
-        </div>
-          </div>--%>
    
     <%-- Editar o eliminar Unidad de medida --%>
     <div class="panel panel-default">
@@ -133,16 +82,13 @@
         </div>
         <div id="collapse" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
             <div class="panel-body">
-                <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" Width="100%" AllowPaging="True" DataSourceID="SqlDataSource2" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px">
+                <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" Width="100%" AllowPaging="True" 
+                    DataSourceID="SqlDataSource2" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" DataKeyNames="idUnidadMedida">
                     <Columns>
-                        
-                        <asp:CommandField ButtonType="Image" 
-                        CancelImageUrl="~/images/Iconos/IconCancelar.png" 
-                        DeleteImageUrl="~/images/Iconos/IconEliminar.png" ShowDeleteButton="True"
-                        EditImageUrl="~/images/Iconos/IconEditar.png" ShowEditButton="True"
-                        UpdateImageUrl="~/images/Iconos/IconGuardar.png" />
-
-                        <asp:BoundField DataField="strNombre" HeaderText="NOMBRE" SortExpression="strNombre" />
+                        <asp:CommandField ShowDeleteButton="True" ShowEditButton="True" />
+                       
+                        <asp:BoundField DataField="idUnidadMedida" HeaderText="CODIGO" SortExpression="idUnidadMedida" InsertVisible="False" ReadOnly="True" />
+                        <asp:BoundField DataField="strNombre" HeaderText="UNIDAD DE MEDIDA" SortExpression="strNombre" />
                         <asp:BoundField DataField="strAbreviatura" HeaderText="ABREVIATURA" SortExpression="strAbreviatura" />
 
 
@@ -159,12 +105,16 @@
                 </asp:GridView>
 
                 <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:XIUGARConnectionString %>" 
-                    SelectCommand="SELECT strNombre, strAbreviatura FROM tblUnidadMedida WHERE (idActivo = 1)" 
-                    DeleteCommand="UPDATE tblUnidadMedida SET idActivo = 0" 
-                    UpdateCommand="UPDATE tblUnidadMedida SET strNombre = @strNombre, strAbreviatura = @strAbreviatura">
+                    SelectCommand="SELECT idUnidadMedida,strNombre, strAbreviatura FROM tblUnidadMedida WHERE (idActivo = 1)" 
+                    DeleteCommand="UPDATE tblUnidadMedida SET idActivo = 0 WHERE (idUnidadMedida= @idUnidadMedida)" 
+                    UpdateCommand="UPDATE tblUnidadMedida SET strNombre = @strNombre, strAbreviatura = @strAbreviatura WHERE (idUnidadMedida= @idUnidadMedida)">
+                    <DeleteParameters>
+                        <asp:Parameter Name="idUnidadMedida" />
+                    </DeleteParameters>
                     <UpdateParameters>
                         <asp:Parameter Name="strNombre" Type="String" />
                         <asp:Parameter Name="strAbreviatura" Type="String" />
+                        <asp:Parameter Name="idUnidadMedida" />
                     </UpdateParameters>
                 </asp:SqlDataSource>
 
@@ -172,45 +122,14 @@
         </div>
     </div>
 
-    <%-- Editar o eliminar Rol de trabajo --%>
-<%--    <div class="panel panel-default">
-        <div class="panel-heading" role="tab" id="headingRol">
-            <h4 class="panel-title">
-                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseRol" aria-expanded="false" aria-controls="collapse">Roles de trabajo
-                </a>
-            </h4>
-        </div>
-        <div id="collapseRol" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
-            <div class="panel-body">--%>
-                <%--<asp:GridView ID="GridView2" runat="server" AutoGenerateColumns="False" Width="100%" AllowPaging="True" DataSourceID="SqlDataSource1" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px">
-                    <Columns>
-                        
-                        <asp:BoundField DataField="strNombre" HeaderText="Materia" SortExpression="strNombre" />
-                        <asp:BoundField DataField="strDescripcion" HeaderText="Descripcion" SortExpression="strDescripcion" />
-                        <asp:BoundField DataField="strnombre1" HeaderText="Carrera" SortExpression="strnombre1" />
-                        <asp:BoundField DataField="strnombre2" HeaderText="Cuatrimestre" SortExpression="strnombre2" />
-
-                    </Columns>
-                     <FooterStyle BackColor="White" ForeColor="#000066" />
-                        <HeaderStyle BackColor="#006699" Font-Bold="True" ForeColor="White" HorizontalAlign="Center"/>
-                        <PagerStyle BackColor="White" ForeColor="#000066" HorizontalAlign="Center" />
-                        <RowStyle ForeColor="#000066" />
-                        <SelectedRowStyle BackColor="#669999" Font-Bold="True" ForeColor="White" />
-                        <SortedAscendingCellStyle BackColor="#F1F1F1" />
-                        <SortedAscendingHeaderStyle BackColor="#007DBB" />
-                        <SortedDescendingCellStyle BackColor="#CAC9C9" />
-                        <SortedDescendingHeaderStyle BackColor="#00547E" />
-                </asp:GridView>
-
-                <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:pase_listaConnectionString %>" SelectCommand="select m.strNombre, m.strDescripcion, c.strnombre,cu.strnombre 
-from TblMateria m
-inner join TblCarrera c 
-on m.idCarrera = c.id
-inner join TblCuatri cu
-on m.idCuatri = cu.id;"></asp:SqlDataSource>--%>
-
-           <%-- </div>
-        </div>
-    </div>--%>
-
+     <script type="text/javascript">
+        function exito() {
+            swal({
+                title: "EXITO",
+                text: "Se registro la nueva unidad de medida con exito.",
+                icon: "success",
+            });
+        }
+    
+    </script>
 </asp:Content>

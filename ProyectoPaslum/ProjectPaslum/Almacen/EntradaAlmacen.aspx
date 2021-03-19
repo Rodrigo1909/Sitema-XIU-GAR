@@ -6,6 +6,13 @@
     <link href="../css/modales.css" rel="stylesheet" />
     <link href="../Content/bootstrap.min.css" rel="stylesheet" />
     <link href="../Alumno/scss/PersoDatos.css" rel="stylesheet" />
+
+    <link href="../../Content/sweetalert/sweet-alert.css" rel="stylesheet" />
+    <script src="../../js/swalert.js"></script>
+    <script src="../../Scripts/jquery-1.10.2.min.js"></script>
+    <script src="../../Scripts/sweetalert.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
 <div class="container">
   <div style="text-align:center">
     <h2>Entrada al almacén</h2>
@@ -48,15 +55,22 @@
                             <div class="form-inline">
 
                                     <div class="form-group">
-                                        <label>Producto </label><asp:DropDownList ID="ddlProducto" runat="server" AppendDataBoundItems="True"  width="500px" ></asp:DropDownList>   
+                                        <label>Producto </label><asp:DropDownList ID="ddlProducto" runat="server" AppendDataBoundItems="True"  width="500px"  
+                                            OnSelectedIndexChanged="ddlProducto_SelectedIndexChanged" AutoPostBack="true"></asp:DropDownList>   
                                     </div>
                                     &nbsp &nbsp &nbsp &nbsp 
                                             
                                     <div class="form-group">
-                                         <label>Cantidad </label><asp:TextBox ID="txtCantidad" runat="server" width="500px" required="required" type="text" 
+                                         <label>Cantidad existente</label><asp:DropDownList ID="ddlStock" runat="server" AppendDataBoundItems="True"  width="500px"  
+                                            enabled="false"></asp:DropDownList>   
+                                    </div>
+                                <br /><br />
+                                    <div class="form-group">
+                                         <label>Cantidad a ingresar </label><asp:TextBox ID="txtCantidad" runat="server" width="500px" required="required" type="text" 
                                                 pattern="^[0-9]*" title="Ingrese solo numeros"></asp:TextBox>
                                     </div>
-                                     <br /><br />
+                                     &nbsp &nbsp &nbsp &nbsp 
+                                     
                                                          
                                     <div class="form-group">
                                           <label>Movimiento </label>
@@ -85,4 +99,25 @@
         </div>
 
 </div>
+
+     <script type="text/javascript">
+        function alerta() {
+            swal({
+                title: "ERROR",
+                text: "No se pudo realizar la entrada con exito, verifique los datos.",
+                icon: "error",
+            });
+        }
+
+            
+        function exito() {
+            swal({
+                title: "EXITO",
+                text: "Se registro la entrada de forma correcta.",
+                icon: "success",
+            });
+        }
+    
+    </script>
+
 </asp:Content>

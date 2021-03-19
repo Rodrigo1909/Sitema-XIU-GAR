@@ -6,6 +6,13 @@
     <link href="css/modales.css" rel="stylesheet" />
     <link href="../Content/bootstrap.min.css" rel="stylesheet" />
 
+    
+    <link href="../../Content/sweetalert/sweet-alert.css" rel="stylesheet" />
+    <script src="../../js/swalert.js"></script>
+    <script src="../../Scripts/jquery-1.10.2.min.js"></script>
+    <script src="../../Scripts/sweetalert.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
     <div class="content">
         <div class="table-title">
             <div class="row">
@@ -333,14 +340,14 @@
         </div>
         <div id="collapse" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
             <div class="panel-body">
-                <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" Width="100%" AllowPaging="True" DataSourceID="SqlDataSource2" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px">
+                <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" Width="100%" AllowPaging="True" DataSourceID="SqlDataSource2" 
+                    BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px">
                     <Columns>
                             
                         <asp:BoundField DataField="strEstablecimiento" HeaderText="ESTABLECIMIENTO" SortExpression="strEstablecimiento" />
                         <asp:BoundField DataField="strMetodoPago" HeaderText="METODO DE PAGO" SortExpression="strMetodoPago" />
                         <asp:BoundField DataField="strHorarioAtencion" HeaderText="HORARIO DE ATENCIÓN" SortExpression="strHorarioAtencion" />
-                        <asp:BoundField DataField="strNumeroBodega" HeaderText="NUMERO DE BODEGA" SortExpression="strNumeroBodega" />
-                        <asp:BoundField DataField="strMetodoPago1" HeaderText="METODO DE PAGO" SortExpression="strMetodoPago1" />
+                        <asp:BoundField DataField="strNumeroBodega" HeaderText="NUMERO DE BODEGA" SortExpression="strNumeroBodega" />                        
                         <asp:BoundField DataField="strCelular" HeaderText="CELULAR" SortExpression="strCelular" />
                         <asp:BoundField DataField="strTelCasa" HeaderText="TELEFONO" SortExpression="strTelCasa" />
 
@@ -358,7 +365,7 @@
 
                 <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:XIUGARConnectionString %>" 
                     SelectCommand="select c.strEstablecimiento, c.strMetodoPago, 
-                                    c.strHorarioAtencion, c.strNumeroBodega, c.strMetodoPago,
+                                    c.strHorarioAtencion, c.strNumeroBodega,
                                     t.strCelular, t.strTelCasa
                                     from tblCliente c
                                     inner join tblTelefono t
@@ -391,4 +398,24 @@
         </div>
     </div>
 </div>    
+
+         <script type="text/javascript">
+        function alerta() {
+            swal({
+                title: "ERROR",
+                text: "El correo ya esta registrado, favor de verificar la información.",
+                icon: "error",
+            });
+        }
+
+            
+        function exito() {
+            swal({
+                title: "EXITO",
+                text: "Se registro al cliente con exito.",
+                icon: "success",
+            });
+        }
+    
+    </script>
 </asp:Content>

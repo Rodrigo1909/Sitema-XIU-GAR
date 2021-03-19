@@ -3,6 +3,13 @@
     <link href="css/modales.css" rel="stylesheet" />
      <link href="../Content/bootstrap.min.css" rel="stylesheet" />
 
+        
+    <link href="../../Content/sweetalert/sweet-alert.css" rel="stylesheet" />
+    <script src="../../js/swalert.js"></script>
+    <script src="../../Scripts/jquery-1.10.2.min.js"></script>
+    <script src="../../Scripts/sweetalert.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
        <style>
     #mdialTamanio{
       width: 150% !important;
@@ -90,13 +97,18 @@
         </div>
         <div id="collapse" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
             <div class="panel-body">
-                <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" Width="100%" AllowPaging="True" DataSourceID="SqlDataSource2" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px">
+                <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" Width="100%" AllowPaging="True" DataSourceID="SqlDataSource2"
+                     BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" DataKeyNames="idAlmacen" >
                     <Columns>
                         
-                        <asp:BoundField DataField="strNombre" HeaderText="Nombre del Almacén" SortExpression="strNombre" />
-                        <asp:BoundField DataField="strDescripcion" HeaderText="Descripción" SortExpression="strDescripcion" />
-                        <asp:BoundField DataField="intCapacidad" HeaderText="Capacidad" SortExpression="intCapacidad" />
-                        <asp:BoundField DataField="nombre" HeaderText="Encargado" SortExpression="nombre" ReadOnly="True" />
+                        <asp:CommandField  ShowDeleteButton="True" ShowEditButton="True" />
+
+                        <asp:BoundField DataField="idAlmacen" HeaderText="ALMACÉN" SortExpression="idAlmacen" InsertVisible="False" ReadOnly="True" Visible="false"/>
+                        <asp:BoundField DataField="strNombre" HeaderText="NOMBRE" SortExpression="strNombre" />
+                        <asp:BoundField DataField="strDescripcion" HeaderText="DESCRIPCIÓN" SortExpression="strDescripcion" />
+                        <asp:BoundField DataField="intCapacidad" HeaderText="CAPACIDAD" SortExpression="intCapacidad" />
+
+                        <asp:BoundField DataField="nombre" HeaderText="nombre" ReadOnly="True" SortExpression="nombre" />
 
                     </Columns>
                      <FooterStyle BackColor="White" ForeColor="#000066" />
@@ -111,15 +123,38 @@
                 </asp:GridView>
 
                 <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:XIUGARConnectionString %>" 
-                    SelectCommand="select alm.strNombre, alm.strDescripcion, alm.intCapacidad, 
+                    SelectCommand="select alm.idAlmacen, alm.strNombre, alm.strDescripcion, alm.intCapacidad, 
                         (enc.strNombre + ' '+ enc.strApellidoP + ' ' + enc.strApellidoM) as nombre
                         from tblAlmacen alm
                         inner join tblEmpleado enc
-                        on alm.fkEncargado = enc.idEmpleado;
-                        "></asp:SqlDataSource>
+                        on alm.fkEncargado = enc.idEmpleado
+                        where alm.idActivo = '1';
+                        " DeleteCommand="UPDATE tblAlmacen SET idActivo= '0' WHERE (idAlmacen = @idAlmacen)" 
+                    UpdateCommand="UPDATE tblAlmacen SET strNombre =@strNombre, strDescripcion =@strDescripcion, intCapacidad = @intCapacidad where (idAlmacen = @idAlmacen)">
+                    <DeleteParameters>
+                        <asp:Parameter Name="idAlmacen" />
+                    </DeleteParameters>
+                    <UpdateParameters>
+                        <asp:Parameter Name="strNombre" />
+                        <asp:Parameter Name="strDescripcion" />
+                        <asp:Parameter Name="intCapacidad" />
+                        <asp:Parameter Name="idAlmacen" />
+                    </UpdateParameters>
+                </asp:SqlDataSource>
 
             </div>
         </div>
     </div>
+
+    <script type="text/javascript">
+        function exito() {
+            swal({
+                title: "EXITO",
+                text: "Se registro al almacén con exito.",
+                icon: "success",
+            });
+        }
+    
+    </script>
 
 </asp:Content>

@@ -18,8 +18,8 @@
                     BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="3px" AllowSorting="True">
 
                     <Columns>
-                        <asp:BoundField DataField="dblCantidad" HeaderText="CANTIDAD" SortExpression="dblCantidad" />
-                        <asp:BoundField DataField="strNombre" HeaderText="NOMBRE" SortExpression="strNombre" />
+                        <asp:BoundField DataField="dblCantidad" HeaderText="CANTIDAD EN EXISTENCIA" SortExpression="dblCantidad" />
+                        <asp:BoundField DataField="strNombre" HeaderText="PRODUCTO" SortExpression="strNombre" />
                         <asp:BoundField DataField="strDescripcion" HeaderText="DESCRIPCIÓN" SortExpression="strDescripcion" />                        
                         <asp:BoundField DataField="strNombre1" HeaderText="ALMACÉN" SortExpression="strNombre1" />
                     </Columns>
@@ -42,7 +42,7 @@
                                         on s.fkProducto = p.idProducto
                                         inner join tblAlmacen a
                                         on p.fkAlmacen = a.idAlmacen
-                                        where a. idActivo = 1"></asp:SqlDataSource>
+                                        where a.idActivo = 1 and p.idActivo = 1"></asp:SqlDataSource>
 
 
             </div>

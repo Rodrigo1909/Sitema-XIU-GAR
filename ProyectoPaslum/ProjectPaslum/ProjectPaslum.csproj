@@ -407,6 +407,10 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Site.Master" />
+    <Content Include="Venta\AlertaError.aspx" />
+    <Content Include="Venta\AlertaErrorAbono.aspx" />
+    <Content Include="Venta\AlertaExito.aspx" />
+    <Content Include="Venta\AlertaExito2.aspx" />
     <Content Include="Venta\CobrarCreditoVenta.aspx" />
     <Content Include="Venta\CobrarVenta.aspx" />
     <Content Include="Venta\CotizacionVenta.aspx" />
@@ -415,8 +419,10 @@
     <Content Include="Venta\css\font-awesome.css" />
     <Content Include="Venta\css\modales.css" />
     <Content Include="Venta\css\style.css" />
+    <Content Include="Venta\DesgloceHistorialAbono.aspx" />
     <Content Include="Venta\DetalleVenta.aspx" />
     <Content Include="Venta\estilos.css" />
+    <Content Include="Venta\HistorialAbono.aspx" />
     <Content Include="Venta\js\bootstrap.min.js" />
     <Content Include="Venta\js\jquery-1.10.2.min.js" />
     <Content Include="Venta\js\jquery.fn.gantt.js" />
@@ -429,6 +435,7 @@
     <Content Include="Venta\OrdenCompraVenta.aspx" />
     <Content Include="Venta\PerfilVenta.aspx" />
     <Content Include="Venta\PrincipalVendedor.aspx" />
+    <Content Include="Venta\PrintCotizacionVenta.aspx" />
     <Content Include="Venta\WebVenta.aspx" />
     <Content Include="ViewSwitcher.ascx" />
     <Content Include="Web.config" />
@@ -819,6 +826,34 @@
       <DependentUpon>Site.Mobile.Master</DependentUpon>
     </Compile>
     <Compile Include="Startup.cs" />
+    <Compile Include="Venta\AlertaError.aspx.cs">
+      <DependentUpon>AlertaError.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Venta\AlertaError.aspx.designer.cs">
+      <DependentUpon>AlertaError.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Venta\AlertaErrorAbono.aspx.cs">
+      <DependentUpon>AlertaErrorAbono.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Venta\AlertaErrorAbono.aspx.designer.cs">
+      <DependentUpon>AlertaErrorAbono.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Venta\AlertaExito.aspx.cs">
+      <DependentUpon>AlertaExito.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Venta\AlertaExito.aspx.designer.cs">
+      <DependentUpon>AlertaExito.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Venta\AlertaExito2.aspx.cs">
+      <DependentUpon>AlertaExito2.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Venta\AlertaExito2.aspx.designer.cs">
+      <DependentUpon>AlertaExito2.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Venta\CobrarCreditoVenta.aspx.cs">
       <DependentUpon>CobrarCreditoVenta.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -847,12 +882,26 @@
     <Compile Include="Venta\CreditoVenta.aspx.designer.cs">
       <DependentUpon>CreditoVenta.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Venta\DesgloceHistorialAbono.aspx.cs">
+      <DependentUpon>DesgloceHistorialAbono.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Venta\DesgloceHistorialAbono.aspx.designer.cs">
+      <DependentUpon>DesgloceHistorialAbono.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Venta\DetalleVenta.aspx.cs">
       <DependentUpon>DetalleVenta.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Venta\DetalleVenta.aspx.designer.cs">
       <DependentUpon>DetalleVenta.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Venta\HistorialAbono.aspx.cs">
+      <DependentUpon>HistorialAbono.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Venta\HistorialAbono.aspx.designer.cs">
+      <DependentUpon>HistorialAbono.aspx</DependentUpon>
     </Compile>
     <Compile Include="Venta\LineaVenta.aspx.cs">
       <DependentUpon>LineaVenta.aspx</DependentUpon>
@@ -888,6 +937,13 @@
     </Compile>
     <Compile Include="Venta\PrincipalVendedor.aspx.designer.cs">
       <DependentUpon>PrincipalVendedor.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Venta\PrintCotizacionVenta.aspx.cs">
+      <DependentUpon>PrintCotizacionVenta.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Venta\PrintCotizacionVenta.aspx.designer.cs">
+      <DependentUpon>PrintCotizacionVenta.aspx</DependentUpon>
     </Compile>
     <Compile Include="Venta\Venta.Master.cs">
       <DependentUpon>Venta.Master</DependentUpon>

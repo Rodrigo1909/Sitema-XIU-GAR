@@ -1,8 +1,7 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Venta/Venta.Master" AutoEventWireup="true" CodeBehind="AlertaExito.aspx.cs" Inherits="ProjectPaslum.Venta.AlertaExito" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Venta/Venta.Master" AutoEventWireup="true" CodeBehind="AlertaErrorAbono.aspx.cs" Inherits="ProjectPaslum.Venta.AlertaErrorAbono" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 
-    
-    <link href="../../Content/bootstrap.min.css" rel="stylesheet" />
+        <link href="../../Content/bootstrap.min.css" rel="stylesheet" />
    
     <link href="../../Content/sweetalert/sweet-alert.css" rel="stylesheet" />
     <script src="../../js/swalert.js"></script>
@@ -13,12 +12,11 @@
     <script type="text/javascript">
         function alerta() {
             swal({
-                title: "COMPRA EXITOSA",
-                text: "Se ha realizado con exito el proceso",
-                icon: "success",
+                title: "ERROR FATAL",
+                text: "La cantidad que ingresas es superior al total a pagar, verifica tus datos",
+                icon: "error",
             });
         }
     </script>
-
 
 </asp:Content>

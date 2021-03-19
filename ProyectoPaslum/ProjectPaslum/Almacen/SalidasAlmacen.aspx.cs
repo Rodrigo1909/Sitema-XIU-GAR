@@ -26,19 +26,19 @@ namespace ProjectPaslum.Almacen
                     this.LlenarAlmacen();
                 }
             }
-
-           
-            
-            //if (Page.IsPostBack)
-            //{
-
-            //        this.ClientScript.RegisterStartupScript(this.GetType(), "SweetAlert", "alerta()", true);
-            //}
-
-            
-
         }
 
+        private void LimpiarCampos()
+        {
+            txtCantidad.Text = "";
+            txtFactura.Text = "";
+            txtOrdenCompra.Text = "";
+            ddlAlmacen.Items.Clear();
+            ddlExistente.Items.Clear();
+            ddlProducto.Items.Clear();
+            ddlMovimiento.Items.Clear();          
+
+        }
 
         private void LlenarAlmacen()
         {
@@ -85,18 +85,16 @@ namespace ProjectPaslum.Almacen
                     ctrlAlm.InsertarMovimientoAlmacen(mov);
                     ord.dblCantidad = resta;
                     contexto.SubmitChanges();
-                    this.Response.Redirect("./AlertaExito.aspx", true);
+                    this.ClientScript.RegisterStartupScript(this.GetType(), "SweetAlert", "exito()", true);
+                    this.LimpiarCampos();
                 }
                 else
                 {
-                    this.Response.Redirect("./AlertaError.aspx", true);
+                    this.ClientScript.RegisterStartupScript(this.GetType(), "SweetAlert", "alerta()", true);
                 }
 
                     
             }
-
-
-            this.Response.Redirect("./SalidasAlmacen.aspx", true);
         
     }
 

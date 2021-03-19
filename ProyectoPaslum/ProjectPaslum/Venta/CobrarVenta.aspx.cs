@@ -10,6 +10,7 @@ using ProjectPaslum.Controllers;
 using iTextSharp.text;
 using iTextSharp.text.pdf;
 using System.IO;
+using System.Globalization;
 
 namespace ProjectPaslum.Venta
 {
@@ -40,8 +41,6 @@ namespace ProjectPaslum.Venta
             }
         }
 
-
-
         public void cargarcarrito()
         {
             GridView1.DataSource = Session["pedido"];
@@ -52,21 +51,36 @@ namespace ProjectPaslum.Venta
         protected void Button1_Click(object sender, EventArgs e)
         {
             int i;
-            double total = 0, prec, subtotal = 0, igv;
+            double total = 0, prec, subtotal = 0, subtotal2 = 0/* igv*/;
             string cod, desc;
             int cant;
+            double precio, total2 = 0;
+
 
             var items = (DataTable)Session["pedido"];
             //DataRow fila = items.NewRow();
             for (i = 0; i < GridView1.Rows.Count; i++)
             {
                 cod = (GridView1.Rows[i].Cells[1].Text);
+
+                var producto = (from p in contexto.tblProducto                                
+                                join unidad in contexto.tblUnidadMedida
+                                    on p.fkUnidadMedida equals unidad.idUnidadMedida
+                                where p.idProducto == int.Parse(cod)
+                                select new { uni = unidad.strNombre ,presentacion = p.intPresentacion }).FirstOrDefault();
+
                 desc = (GridView1.Rows[i].Cells[2].Text);
                 prec = System.Convert.ToDouble(GridView1.Rows[i].Cells[3].Text);
-                cant = System.Convert.ToInt16(((TextBox)this.GridView1.Rows[i].Cells[4].FindControl("TextBox1")).Text);
+                cant = System.Convert.ToInt16(((TextBox)this.GridView1.Rows[i].Cells[4].FindControl("TextBox1")).Text);                
                 double prec1 = System.Convert.ToDouble(prec);
                 subtotal = cant * prec1;
                 GridView1.Rows[i].Cells[5].Text = subtotal.ToString();
+                precio = System.Convert.ToDouble(((TextBox)this.GridView1.Rows[i].Cells[6].FindControl("TextBox2")).Text);
+                subtotal2 = cant * precio;
+                GridView1.Rows[i].Cells[7].Text = subtotal2.ToString();
+                GridView1.Rows[i].Cells[8].Text = producto.uni;
+                GridView1.Rows[i].Cells[9].Text = producto.presentacion.ToString();
+
                 foreach (DataRow dr in items.Rows)
                 {
                     if (dr["idProducto"].ToString() == cod.ToString())
@@ -76,14 +90,15 @@ namespace ProjectPaslum.Venta
                     }
                 }
 
+                total2 = total2 + subtotal2;
                 total = total + subtotal;
             }
 
-            igv = total * 0.18;
-            subtotal = total - igv;
+            //igv = total * 0.18;
+            //subtotal = total - igv;
 
-            lblIGV.Text = igv.ToString("0.00");
-            lblSubTotal.Text = subtotal.ToString("0.00");
+            //lblIGV.Text = igv.ToString("0.00");
+            lblTotal2.Text = total2.ToString("0.00");
             lblTotal.Text = total.ToString("0.00");
 
 
@@ -122,6 +137,7 @@ namespace ProjectPaslum.Venta
         protected void Button3_Click(object sender, EventArgs e)
         {
             var vacio = 0.0000;
+            CultureInfo culture = new CultureInfo("en-US");
 
             if (double.Parse(lblTotal.Text) == vacio)
             {
@@ -136,11 +152,13 @@ namespace ProjectPaslum.Venta
                 tblVenta ven = new tblVenta();
                 ven.Fecha = fechact;
                 ven.dblTotal = decimal.Parse(lblTotal.Text);
-                ven.dblSubTotal = decimal.Parse(lblSubTotal.Text);
-                ven.dblIGV = decimal.Parse(lblIGV.Text);
+                //ven.dblSubTotal = decimal.Parse(lblSubTotal.Text);
+                //ven.dblIGV = decimal.Parse(lblIGV.Text);
                 ven.strEstado = "FINALIZADO";
-                ven.dblAbono = null;
+                ven.dblAbono = decimal.Parse(txtDinero.Text, culture); ;
                 ven.dblInteres = null;
+                ven.strFechaEntega = fechaEntrega.Text;
+                ven.strHoraEntega = txtHora.Text;
 
                 if ((Session["cliente"].ToString() == "MOSTRADOR"))
                 {
@@ -204,8 +222,6 @@ namespace ProjectPaslum.Venta
 
         }
 
-
-
         protected void Button4_Click(object sender, EventArgs e)
         {
             DataTable dt = new DataTable();
@@ -220,6 +236,8 @@ namespace ProjectPaslum.Venta
                 document.Open();
 
                 var image = iTextSharp.text.Image.GetInstance(@"C:\Users\RodrigoM\Desktop\Sitema-XIU-GAR\ProyectoPaslum\ProjectPaslum\Alumno\images\XIUGAR.jpg");
+
+                
                 // iTextSharp.text.Image image1 = iTextSharp.text.Image.GetInstance("../images/avatar.png");
                 //image1.ScalePercent(50f);
                 image.ScaleAbsoluteWidth(270);
@@ -258,9 +276,40 @@ namespace ProjectPaslum.Venta
                 PdfPCell cell = new PdfPCell(new Phrase("columns"));
                 cell.Colspan = dt.Columns.Count;
 
+                table.AddCell("CODIGO");
+                table.AddCell("PRODUCTO");
+                table.AddCell("PRECIO");
+                table.AddCell("SUBTOTAL");
+                table.AddCell("CANTIDAD");
+
                 foreach (DataColumn c in dt.Columns)
                 {
-                    table.AddCell(new Phrase(c.ColumnName, font9));
+                    if (c.ColumnName == "idProducto")
+                    {
+
+                    }
+                    else if (c.ColumnName == "strNombre")
+                    {
+
+                    }
+                    else if (c.ColumnName == "dblPrecio")
+                    {
+
+                    }
+                    else if (c.ColumnName == "subtotal")
+                    {
+
+                    }
+                    else if (c.ColumnName == "canproducto")
+                    {
+
+                    }
+
+                    else
+                    {
+
+                        table.AddCell(new Phrase(c.ColumnName, font9));
+                    }
                 }
 
                 foreach (DataRow r in dt.Rows)

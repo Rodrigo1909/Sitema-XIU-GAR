@@ -3,6 +3,12 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <link href="css/modales.css" rel="stylesheet" />
      <link href="../Content/bootstrap.min.css" rel="stylesheet" />
+        
+    <link href="../../Content/sweetalert/sweet-alert.css" rel="stylesheet" />
+    <script src="../../js/swalert.js"></script>
+    <script src="../../Scripts/jquery-1.10.2.min.js"></script>
+    <script src="../../Scripts/sweetalert.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
        <style>
     #mdialTamanio{
@@ -72,15 +78,17 @@
                               pattern="^[0-9]*" title="Ingrese solo numeros"></asp:TextBox>
 
                     </div>
+                 <div class="form-group">
                    <div class="col-xs-5">
                     <!-- Seleccion de Presentación  -->
                             Unidad de medida
                         <asp:DropDownList ID="ddlUnidadMedida" runat="server" AppendDataBoundItems="True" CssClass=" form-control"></asp:DropDownList>      
-                   </div>                     
+                   </div>     
+                     </div>                     
 
                    </div>                    
 
-                        <br /> <br />
+                        <br /> <br />  <br /> <br />
                         <br /> <br />  <br /> <br />
                         <br /> <br />  <br /> <br />
                        <div class="modal-footer">
@@ -104,14 +112,20 @@
         </div>
         <div id="collapse" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
             <div class="panel-body">
-                <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" Width="100%" AllowPaging="True" DataSourceID="SqlDataSource1" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px">
+                <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" Width="100%" AllowPaging="True" 
+                    DataSourceID="SqlDataSource1" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" DataKeyNames="idProducto" AllowSorting="True">
                     <Columns>
                         
-                        <asp:BoundField DataField="strNombre" HeaderText="Producto" SortExpression="strNombre" />
-                        <asp:BoundField DataField="strDescripcion" HeaderText="Descripcion" SortExpression="strDescripcion" />
-                        <asp:BoundField DataField="intPresentacion" HeaderText="Presentacion" SortExpression="intPresentacion" />
-                        <asp:BoundField DataField="strNombre1" HeaderText="Unidad Medida" SortExpression="strNombre1" />
-                        <asp:BoundField DataField="strNombre2" HeaderText="Almacén" SortExpression="strNombre2" />
+                        <asp:CommandField ShowDeleteButton="True" ShowEditButton="True" />
+                        
+                        <asp:BoundField DataField="idProducto" HeaderText="CODIGO" SortExpression="idProducto" InsertVisible="False" ReadOnly="True" />
+                        <asp:BoundField DataField="strNombre" HeaderText="PRODUCTO" SortExpression="strNombre" />
+                        <asp:BoundField DataField="strDescripcion" HeaderText="DESCRIPCIÓN" SortExpression="strDescripcion" />
+                        <asp:BoundField DataField="intPresentacion" HeaderText="PRESENTACIÓN" SortExpression="intPresentacion" />
+                        <asp:BoundField DataField="strNombre1" HeaderText="MEDIDA" SortExpression="strNombre1" />
+                        <asp:BoundField DataField="strNombre2" HeaderText="ALMACÉN" SortExpression="strNombre2" />
+
+                        <asp:BoundField DataField="dblPrecio" HeaderText="PRECIO" SortExpression="dblPrecio" />
 
                     </Columns>
                      <FooterStyle BackColor="White" ForeColor="#000066" />
@@ -126,16 +140,38 @@
                 </asp:GridView>
 
                 <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:XIUGARConnectionString %>" 
-                    SelectCommand="select prod.strNombre, prod.strDescripcion, prod.intPresentacion,
-                                    uni.strNombre, alm.strNombre
+                    SelectCommand="select prod.idProducto, prod.strNombre, prod.strDescripcion, prod.intPresentacion,
+                                    uni.strNombre, alm.strNombre, prod.dblPrecio
                                     from tblProducto prod
                                     inner join tblUnidadMedida uni
                                     on prod.fkUnidadMedida = uni.idUnidadMedida
                                     inner join tblAlmacen alm
-                                    on prod.fkAlmacen = alm.idAlmacen"></asp:SqlDataSource>
+                                    on prod.fkAlmacen = alm.idAlmacen
+                                    where prod.idActivo = '1';
+" DeleteCommand="UPDATE tblProducto SET idActivo= '0' WHERE (idProducto = @idProducto)" UpdateCommand="UPDATE tblProducto SET strNombre =@strNombre, strDescripcion =@strDescripcion, intPresentacion =@intPresentacion,dblPrecio = @dblPrecio where (idProducto = @idProducto)">
+                    <DeleteParameters>
+                        <asp:Parameter Name="idProducto" />
+                    </DeleteParameters>
+                    <UpdateParameters>
+                        <asp:Parameter Name="strNombre" />
+                        <asp:Parameter Name="strDescripcion" />
+                        <asp:Parameter Name="intPresentacion" />
+                        <asp:Parameter Name="dblPrecio" />
+                        <asp:Parameter Name="idProducto" />
+                    </UpdateParameters>
+                </asp:SqlDataSource>
 
             </div>
         </div>
     </div>
-
+    <script type="text/javascript">
+        function exito() {
+            swal({
+                title: "EXITO",
+                text: "Se registro el producto con exito.",
+                icon: "success",
+            });
+        }
+    
+    </script>
 </asp:Content>

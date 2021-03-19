@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using Modelo;
 using ProjectPaslum.Controllers;
+using System.Globalization;
 
 namespace ProjectPaslum.Administrador
 {
@@ -47,6 +48,7 @@ namespace ProjectPaslum.Administrador
 
         protected void btnaceptar_Click(object sender, EventArgs e)
         {
+            CultureInfo culture = new CultureInfo("en-US");
             var almacen = ddlAlmacen.SelectedItem.Value;
             var unidad = ddlUnidadMedida.SelectedItem.Value;
 
@@ -54,13 +56,23 @@ namespace ProjectPaslum.Administrador
             prod.strNombre = txtNombre.Text.ToUpper();
             prod.strDescripcion = txtDescrip.Text.ToUpper();
             prod.intPresentacion = Int32.Parse(txtPresentacion.Text);
-            prod.dblPrecio = decimal.Parse(txtPrecio.Text);
+            prod.dblPrecio = decimal.Parse(txtPrecio.Text, culture);
             prod.fkAlmacen = Int32.Parse(almacen);
             prod.fkUnidadMedida = Int32.Parse(unidad);
             prod.idActivo = 1;       
             ControllerProducto ctrlProd = new ControllerProducto();
             ctrlProd.InsertarProducto(prod);
-            this.Response.Redirect("./CatProductoAdmin.aspx", true);
+            this.ClientScript.RegisterStartupScript(this.GetType(), "SweetAlert", "exito()", true);
+            this.LimpiarCampos();
         }
+
+        private void LimpiarCampos()
+        {
+            txtNombre.Text = "";
+            txtDescrip.Text = "";
+            txtPresentacion.Text = "";
+            txtPrecio.Text = "";
+        }
+
     }
 }

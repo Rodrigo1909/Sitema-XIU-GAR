@@ -92,7 +92,7 @@ namespace ProjectPaslum.Venta
         {
             Session["domicilio"] = ddlDomicilio.SelectedValue;
             Session["cliente"] = ddlCliente.SelectedValue;
-            Session["FechaCredito"] = calFin.SelectedDate;
+            Session["FechaCredito"] = calFin.Text;
             Response.Redirect("CobrarCreditoVenta.aspx", true);
         }
 

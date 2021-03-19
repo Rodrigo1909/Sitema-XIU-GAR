@@ -24,13 +24,10 @@
                         
                         <asp:BoundField DataField="strTipo" HeaderText="MOVIMIENTO" SortExpression="strTipo" />
                         <asp:BoundField DataField="fecha" HeaderText="FECHA" SortExpression="fecha" />
-                        <asp:BoundField DataField="strNombre" HeaderText="NOMBRE" SortExpression="strNombre" />
-                        <asp:BoundField DataField="strApellidoP" HeaderText="APELLIDO P." SortExpression="strApellidoP" />
+                        <asp:BoundField DataField="Column1" HeaderText="NOMBRE" SortExpression="Column1" ReadOnly="True" />
+                        <asp:BoundField DataField="strNombre" HeaderText="PRODUCTO" SortExpression="strNombre" />
 
-                        <asp:BoundField DataField="strApellidoM" HeaderText="APELLIDO M." SortExpression="strApellidoM" />
-                        <asp:BoundField DataField="strNombre1" HeaderText="PRODUCTO" SortExpression="strNombre1" />
-                        <asp:BoundField DataField="strNombre2" HeaderText="ALMACÉN" SortExpression="strNombre2" />
-
+                        <asp:BoundField DataField="strNombre1" HeaderText="ALMACÉN" SortExpression="strNombre1" />
                         <asp:BoundField DataField="dblValAnt" HeaderText="VALOR ANTERIOR" SortExpression="dblValAnt" />
                         <asp:BoundField DataField="dblValNvo" HeaderText="VALOR NUEVO" SortExpression="dblValNvo" />
 
@@ -47,20 +44,20 @@
                 </asp:GridView>
 
                 <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:XIUGARConnectionString %>" 
-                    SelectCommand="select m.strTipo, m.fecha,
-e.strNombre, e.strApellidoP, e.strApellidoM,
-p.strNombre, a.strNombre,m.dblValAnt, m.dblValNvo
-from tblStock s
-inner join tblProducto p
-on s.fkProducto = p.idProducto
-inner join tblMovimiento m
-on m.fkStock = s.idStock
-left join tblEmpleado e
-on m.fkEmpleado = e.idEmpleado
-inner join tblAlmacen a
-on a.idAlmacen = p.fkAlmacen
-ORDER BY m.fecha DESC;
-"></asp:SqlDataSource>
+                                   SelectCommand="select m.strTipo, m.fecha,
+                                    e.strNombre + ' ' +  e.strApellidoP + ' ' + e.strApellidoM,
+                                    p.strNombre, a.strNombre,m.dblValAnt, m.dblValNvo
+                                    from tblStock s
+                                    inner join tblProducto p
+                                    on s.fkProducto = p.idProducto
+                                    inner join tblMovimiento m
+                                    on m.fkStock = s.idStock
+                                    left join tblEmpleado e
+                                    on m.fkEmpleado = e.idEmpleado
+                                    inner join tblAlmacen a
+                                    on a.idAlmacen = p.fkAlmacen
+                                    ORDER BY m.fecha DESC;
+                                    "></asp:SqlDataSource>
 
             </div>
         </div>

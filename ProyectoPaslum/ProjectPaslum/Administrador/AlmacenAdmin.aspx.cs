@@ -53,7 +53,17 @@ namespace ProjectPaslum.Administrador
 
             ControllerAlmacen ctrlAlm = new ControllerAlmacen();
             ctrlAlm.InsertarAlmacen(alm);
-            this.Response.Redirect("./AlmacenAdmin.aspx", true);
+            this.ClientScript.RegisterStartupScript(this.GetType(), "SweetAlert", "exito()", true);
+            this.LimpiarCampos();
         }
+
+        private void LimpiarCampos()
+        {
+            txtNombre.Text = "";
+            txtDescrip.Text = "";
+            txtCapacidad.Text = "";
+
+        }
+
     }
 }

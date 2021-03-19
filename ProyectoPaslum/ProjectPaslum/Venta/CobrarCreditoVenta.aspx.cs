@@ -10,6 +10,7 @@ using ProjectPaslum.Controllers;
 using iTextSharp.text;
 using iTextSharp.text.pdf;
 using System.IO;
+using System.Globalization;
 
 namespace ProjectPaslum.Venta
 {
@@ -121,7 +122,7 @@ namespace ProjectPaslum.Venta
 
         protected void Button3_Click(object sender, EventArgs e)
         {
-
+            CultureInfo culture = new CultureInfo("en-US");
             var vacio = 0.0000;
 
             if (double.Parse(lblTotal.Text) == vacio)

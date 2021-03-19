@@ -22,8 +22,6 @@ namespace ProjectPaslum.Administrador
             }
         }
 
-
-
         private void LlenarEstado()
         {
             List<tblEstado> estado = CtrlProveedor.ConsultaEstado();
@@ -34,6 +32,28 @@ namespace ProjectPaslum.Administrador
             ddlEstado.DataBind();
 
         }
+
+        private void LimpiarCampos()
+        {
+            txtNombre.Text = "";
+            txtAMaterno.Text = "";
+            txtAPaterno.Text = "";
+            txtRazonSocial.Text = "";
+            txtCorreo.Text = "";
+            txtWeb.Text = "";
+            txtProdServ.Text = "";
+            txtCalle.Text = "";
+            txtColonia.Text = "";
+            txtNumExt.Text = "";
+            txtNumInt.Text = "";
+            txtCodPos.Text = "";
+            txtReferencia.Text = "";
+            txtTelEncargador.Text = "";
+            txtTelOtro.Text = "";
+            txtCelular.Text = "";
+
+        }
+
 
         protected void btnRegistrar_Click(object sender, EventArgs e)
         {
@@ -53,13 +73,15 @@ namespace ProjectPaslum.Administrador
                 provee.strCorreo = txtCorreo.Text;
                 provee.idActivo = 1;
                 CtrlProveedor.InsertarProveedor(GetDatosVista(provee));
+                this.ClientScript.RegisterStartupScript(this.GetType(), "SweetAlert", "exito()", true);
+                this.LimpiarCampos();
             }
             else
             {
-                //sweet poner que ya esta registrado el correo
+                this.ClientScript.RegisterStartupScript(this.GetType(), "SweetAlert", "alerta()", true);
             }
 
-            this.Response.Redirect("./ProveedorAdmin.aspx", true);
+            
         }
 
         protected tblProveedor GetDatosVista(tblProveedor provee)

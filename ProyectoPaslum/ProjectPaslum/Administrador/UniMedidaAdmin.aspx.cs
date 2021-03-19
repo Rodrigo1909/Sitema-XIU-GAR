@@ -17,6 +17,13 @@ namespace ProjectPaslum.Administrador
 
         }
 
+        private void LimpiarCampos()
+        {
+            txtNombre.Text = "";
+            txtPresentacion.Text = "";
+        }
+
+
         protected void btnaceptar_Click(object sender, EventArgs e)
         {
             tblUnidadMedida UniMed = new tblUnidadMedida();
@@ -26,7 +33,8 @@ namespace ProjectPaslum.Administrador
 
             ControllerUnidadMedida ctrlUniMed = new ControllerUnidadMedida();
             ctrlUniMed.InsertarUnidadMedida(UniMed);
-            this.Response.Redirect("./UniMedidaAdmin.aspx", true);
+            this.ClientScript.RegisterStartupScript(this.GetType(), "SweetAlert", "exito()", true);
+            this.LimpiarCampos();
         }
     }
 }

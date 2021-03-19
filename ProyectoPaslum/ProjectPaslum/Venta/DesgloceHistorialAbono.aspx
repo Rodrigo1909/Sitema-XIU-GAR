@@ -45,7 +45,7 @@
             
                              </div>
                             <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
-                                <asp:Button ID="Button1" runat="server"  Text="Abonar Efectivo" Width="150px" Font-Size="15px" CssClass="btn btn-block btn-sm btn-success"/>                                       
+                                <asp:Button ID="Button1" runat="server"  Text="Abonar Efectivo" Width="150px" Font-Size="15px" CssClass="btn btn-block btn-sm btn-success" OnClick="Button1_Click"/>                                       
                             </div>
 
                                 
@@ -56,18 +56,15 @@
                         </div>
                       </div>
                     </div>
-        
-
-          
+     
         <div class="panel panel-default">
             <div style="text-align:center">
                 <h2>Historial de credito</h2>
             </div>
             <div class="panel-body">
-                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">     
-                <asp:GridView ID="GridView2" runat="server"  AutoGenerateColumns="true" Width="100%"
+                        <asp:GridView ID="GridView2" runat="server"  AutoGenerateColumns="true" Width="1100px"
                             BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="3px" 
-                            AllowPaging="True" CssClass="table-responsive"  CellPadding="5">
+                            AllowPaging="True"   >
                     
                     
                             <FooterStyle BackColor="White" ForeColor="#000066" />
@@ -80,19 +77,16 @@
                                 <SortedDescendingCellStyle BackColor="#CAC9C9" />
                                 <SortedDescendingHeaderStyle BackColor="#00547E" />                    
                         </asp:GridView>
+                    </div>
                 </div>
-                </div>
-           </div>
-      
-        
-
+            
         <div class="panel panel-default">
             <div style="text-align:center">
             <h2>Desgloce de compra</h2>
             <div class="panel-body">
-                <asp:GridView ID="GridView1" runat="server"  AutoGenerateColumns="true" Width="100%"
+                <asp:GridView ID="GridView1" runat="server"  AutoGenerateColumns="true" Width="1100px"
                             BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="3px" 
-                            AllowPaging="True" CssClass="table-responsive">
+                            AllowPaging="True" >
                     
                     
                             <FooterStyle BackColor="White" ForeColor="#000066" />
@@ -109,6 +103,10 @@
         </div>
 
         
+            
     </div>
-     </div>
+
+       
+     
+    </div>
 </asp:Content>

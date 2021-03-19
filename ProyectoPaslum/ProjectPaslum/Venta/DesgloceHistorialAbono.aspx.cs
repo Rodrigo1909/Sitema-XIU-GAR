@@ -1,4 +1,5 @@
 ﻿using Modelo;
+using ProjectPaslum.Controllers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,7 +22,7 @@ namespace ProjectPaslum.Venta
 
             txtFecha.Text = ventas.fecha.ToString().Substring(0, 10);
             txtFechaFin.Text = ventas.fin.ToString().Substring(0, 10);
-            txtTotal.Text = (ventas.total).ToString();
+            txtTotal.Text = ventas.total.ToString();
 
             
         }
@@ -55,7 +56,7 @@ namespace ProjectPaslum.Venta
                                  {
                                      FECHA = abono.Fecha,
                                      CANTIDAD = abono.dblCantidad,
-                                     ANTERIOR = abono.dblCantidadAnterior
+                                     SALDO = abono.dblCantidadAnterior
                                  }).ToList();
 
                 GridView2.DataSource = TablaAbono;
@@ -68,6 +69,42 @@ namespace ProjectPaslum.Venta
 
                 throw;
             }
+        }
+
+        protected void Button1_Click(object sender, EventArgs e)
+        {
+            DateTime fechact = DateTime.Now;
+            ControllerCliente ctrlClie = new ControllerCliente();
+
+
+            var ultimoregistro = (from ha in contexto.tblHistorialAbono
+                                  where ha.fkVenta == int.Parse(Session["desgloce"].ToString())
+                                  orderby ha.idHistorialAbono descending
+                                  select ha).FirstOrDefault();
+
+            var ventas = (from venta in contexto.tblVenta
+                          where venta.idVenta == int.Parse(Session["desgloce"].ToString())
+                          select new { fecha = venta.Fecha, fin = venta.FechaCredito, total = venta.dblTotal }).FirstOrDefault();
+
+            var suma = ultimoregistro.dblCantidadAnterior + decimal.Parse(txtAbono.Text);
+
+            if (suma <= ventas.total)
+            {
+                tblHistorialAbono HisAbo = new tblHistorialAbono();
+                HisAbo.Fecha = fechact;
+                HisAbo.dblCantidad = decimal.Parse(txtAbono.Text);
+                HisAbo.dblCantidadAnterior = suma;
+                HisAbo.fkVenta = int.Parse(Session["desgloce"].ToString());
+
+                ctrlClie.InsertarHistorialAbono(HisAbo);
+                this.Response.Redirect("./AlertaExito.aspx", true);                
+            }
+            else
+            {
+                this.Response.Redirect("./AlertaErrorAbono.aspx", true);
+            }
+
+           
         }
     }
 }
