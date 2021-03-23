@@ -26,6 +26,8 @@ namespace ProjectPaslum.Venta
                 dtb.Columns.Add("dblPrecio", System.Type.GetType("System.Double"));
                 dtb.Columns.Add("subtotal", System.Type.GetType("System.Double"));
                 dtb.Columns.Add("canproducto", System.Type.GetType("System.Int32"));
+                dtb.Columns.Add("intPresentacion", System.Type.GetType("System.Int32"));
+                dtb.Columns.Add("strNombre1", System.Type.GetType("System.String"));
 
                 Session["pedido"] = dtb;
                 Session["prueba"] = dtb;
@@ -38,7 +40,7 @@ namespace ProjectPaslum.Venta
 
         }
 
-        public void AgregarItem(string cod, string des, double precio)
+        public void AgregarItem(string cod, string des, double precio, int pre, string uni)
         {
             double total;
             int cantidad = 1;
@@ -50,6 +52,9 @@ namespace ProjectPaslum.Venta
             fila[2] = precio;
             fila[3] = (int)cantidad;
             fila[4] = total;
+            fila[5] = (int)pre;
+            fila[6] = uni;
+
             carrito.Rows.Add(fila);
             Session["pedido"] = carrito;
         }
@@ -62,8 +67,7 @@ namespace ProjectPaslum.Venta
             {
                 if (Session["id"] != null)
                 {
-                    txtVendedor.Text = (Session["CompletoNombre"].ToString());
-                    //lbEmpleado.Text = (Session["id"].ToString());                    
+                    txtVendedor.Text = (Session["CompletoNombre"].ToString());                                   
                     this.LlenarCliente();
 
                     txtFecha.Text = DateTime.Now.ToString("dd/MM/yyyy");
@@ -76,7 +80,7 @@ namespace ProjectPaslum.Venta
             if (Page.IsPostBack == false)
             {
                 CargarDetalle();
-                lblAgregado.Text = "";
+                //lblAgregado.Text = "";
             }
         }
 
@@ -145,18 +149,23 @@ namespace ProjectPaslum.Venta
         protected void DataList1_ItemCommand(object source, DataListCommandEventArgs e)
         {
             string cod;
-            string des = null, nom = null;
+            string des = null, uni = null;
             double precio = 0;
+            int pres = 0;
             if (e.CommandName == "Seleccionar")
             {
                 DataList1.SelectedIndex = e.Item.ItemIndex;
 
                 cod = ((Label)this.DataList1.SelectedItem.FindControl("idProductoLabel")).Text;
-                des = ((Label)this.DataList1.SelectedItem.FindControl("strNombreLabel")).Text;
+                des = ((Label)this.DataList1.SelectedItem.FindControl("idNombreLabel")).Text;
                 precio = double.Parse(((Label)this.DataList1.SelectedItem.FindControl("dblPrecioLabel")).Text);
-                AgregarItem(cod, des, precio);
+                pres = int.Parse(((Label)this.DataList1.SelectedItem.FindControl("intPresentacionLabel")).Text);
+                uni = ((Label)this.DataList1.SelectedItem.FindControl("strNombre1Label")).Text;
+                AgregarItem(cod, des, precio, pres, uni);
 
-                lblAgregado.Text = "Producto Agregado: " + nom + " " + des;
+
+                this.ClientScript.RegisterStartupScript(this.GetType(), "SweetAlert", "exito()", true);
+                //lblAgregado.Text = "Producto Agregado: " + nom + " " + des;
                 //Session["prueba"] = "Sesión usuario prueba";
             }
         }

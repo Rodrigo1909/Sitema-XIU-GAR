@@ -6,6 +6,12 @@
     <link href="../Content/bootstrap.min.css" rel="stylesheet" />
     <link href="../Alumno/scss/PersoDatos.css" rel="stylesheet" />
     
+    <link href="../../Content/sweetalert/sweet-alert.css" rel="stylesheet" />
+    <script src="../../js/swalert.js"></script>
+    <script src="../../Scripts/jquery-1.10.2.min.js"></script>
+    <script src="../../Scripts/sweetalert.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
    <style>
     #mdialTamanio{
       width: 150% !important;
@@ -51,18 +57,18 @@
 
                                     <div class="form-group">
                                          <label>Efectivo </label>
-                                        <asp:TextBox ID="txtDinero" runat="server" width="500px" style="text-align:center" required="true" ></asp:TextBox>
+                                        <asp:TextBox ID="txtDinero" runat="server" width="500px" style="text-align:center"  ></asp:TextBox>
                                     </div>
                                 &nbsp &nbsp &nbsp &nbsp 
                                     <div class="form-group">
                                          <label>Asignar fecha de entrega</label>
-                                        <asp:TextBox id="fechaEntrega" runat="server" TextMode="Date" required="required" width="500px" 
+                                        <asp:TextBox id="fechaEntrega" runat="server" TextMode="Date" width="500px" 
                                             style="text-align:center" Height="40px"></asp:TextBox>
                                     </div>
 
                                     <div class="form-group">
                                          <label>Asignar hora de entrega </label>
-                                        <asp:TextBox ID="txtHora" runat="server" width="500px" style="text-align:center" required="true" ></asp:TextBox>
+                                        <asp:TextBox ID="txtHora" runat="server" width="500px" style="text-align:center" ></asp:TextBox>
                                     </div>
                                 
                                 </div>
@@ -89,18 +95,17 @@
                 <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" Width="100%"
                     BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="3px" 
                     AllowPaging="True" 
-                    OnRowCommand="GridView1_RowCommand" OnRowDeleting="GridView1_RowDeleting"
-                    OnRowDeleted="GridView1_RowDeleted" OnSelectedIndexChanged="GridView1_SelectedIndexChanged" >
+                    OnRowCommand="GridView1_RowCommand" OnRowDeleting="GridView1_RowDeleting">
                     <Columns>
                         <asp:CommandField ShowDeleteButton="True" HeaderText="BORRAR" />
                         <asp:BoundField DataField="idProducto" HeaderText="CODIGO" />
-                        <asp:BoundField DataField="strNombre" HeaderText="DESCRIPCIÓN" />
-                        <asp:BoundField DataField="dblPrecio" HeaderText="PRECIO SUGERIDO" />
+                        <asp:BoundField DataField="strNombre" HeaderText="PRODUCTO" />
+                        <asp:BoundField DataField="dblPrecio" HeaderText="PRECIO SUGERIDO" />                        
                         <asp:TemplateField HeaderText="CANTIDAD">
                             <ItemTemplate>
                                 <asp:TextBox ID="TextBox1" runat="server" Height="19px" Width="73px">1</asp:TextBox>
                             </ItemTemplate>
-                        </asp:TemplateField>    
+                        </asp:TemplateField>  
                         <asp:BoundField DataField="subtotal" HeaderText="TOTAL CON PRECIO SUGERIDO" />
                         <asp:TemplateField HeaderText="COSTO">
                             <ItemTemplate>
@@ -114,14 +119,17 @@
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="U. MEDIDA">
                             <ItemTemplate>
-                                <asp:TextBox ID="TextBox4" runat="server" Height="19px" Width="73px" Enabled="false" ></asp:TextBox>
+                                <asp:TextBox ID="TextBox4" runat="server" Height="19px" Width="73px" Enabled="false"></asp:TextBox>
                             </ItemTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="PRESENTACIÓN">
                             <ItemTemplate>
-                                <asp:TextBox ID="TextBox5" runat="server" Height="19px" Width="73px" Enabled="false" ></asp:TextBox>
+                                <asp:TextBox ID="TextBox5" runat="server" Height="19px" Width="73px" Enabled="false"></asp:TextBox>
                             </ItemTemplate>
                         </asp:TemplateField>
+                        
+                        
+                        
                     </Columns>
                     <FooterStyle BackColor="White" ForeColor="#000066" />
                         <HeaderStyle BackColor="#006699" Font-Bold="True" ForeColor="White" HorizontalAlign="Center"/>
@@ -179,12 +187,12 @@
             <td style="width: 77px">
                 &nbsp;</td>
             <td style="width: 397px">
-                <asp:Button ID="Button1" runat="server" Text="Calcular" OnClick="Button1_Click" CssClass="btn btn-primary" />
-                <asp:Button ID="Button2" runat="server" Text="Regresar" style="margin-left: 111px" Width="157px" OnClick="Button2_Click" CssClass="btn btn-primary" />
+                <asp:Button ID="Button2" runat="server" Text="Regresar"  OnClick="Button2_Click" CssClass="btn btn-primary" />
+                <asp:Button ID="Button1" runat="server" Text="Calcular" style="margin-left: 111px" Width="157px" OnClick="Button1_Click" CssClass="btn btn-primary" />
             </td>
             <td>
                 <asp:Button ID="Button3" runat="server" style="margin-left: 34px" Text="Cobrar" Width="120px"  OnClick="Button3_Click" CssClass="btn btn-primary" />
-                <asp:Button ID="Button4" runat="server" style="margin-left: 34px" Text="Visualizar PDF" Width="120px"  OnClick="Button4_Click" CssClass="btn btn-primary" />
+                <asp:Button ID="Button4" runat="server" style="margin-left: 34px" Text="Visualizar PDF" Width="150px"  OnClick="Button4_Click" CssClass="btn btn-primary" />
             </td>
         </tr>
                     </table>
@@ -192,5 +200,32 @@
             </div>
         </div>
     </div>
+
+    <script type="text/javascript">
+        function fallo() {
+            swal({
+                title: "Error",
+                text: "El efectivo para completar la compra no es el necesario.",
+                icon: "info",
+            });
+        }
+
+        function exito() {
+            swal({
+                title: "Correcto",
+                text: "Se realizo la compra con exito.",
+                icon: "success",
+            });
+        }
+
+        function vacio() {
+            swal({
+                title: "Incorrecto",
+                text: "Existen campos vacios que son necesarios.",
+                icon: "error",
+            });
+        }
+    
+    </script>
 </asp:Content>
 

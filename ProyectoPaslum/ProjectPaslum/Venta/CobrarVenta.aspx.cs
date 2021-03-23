@@ -50,58 +50,7 @@ namespace ProjectPaslum.Venta
 
         protected void Button1_Click(object sender, EventArgs e)
         {
-            int i;
-            double total = 0, prec, subtotal = 0, subtotal2 = 0/* igv*/;
-            string cod, desc;
-            int cant;
-            double precio, total2 = 0;
-
-
-            var items = (DataTable)Session["pedido"];
-            //DataRow fila = items.NewRow();
-            for (i = 0; i < GridView1.Rows.Count; i++)
-            {
-                cod = (GridView1.Rows[i].Cells[1].Text);
-
-                var producto = (from p in contexto.tblProducto                                
-                                join unidad in contexto.tblUnidadMedida
-                                    on p.fkUnidadMedida equals unidad.idUnidadMedida
-                                where p.idProducto == int.Parse(cod)
-                                select new { uni = unidad.strNombre ,presentacion = p.intPresentacion }).FirstOrDefault();
-
-                desc = (GridView1.Rows[i].Cells[2].Text);
-                prec = System.Convert.ToDouble(GridView1.Rows[i].Cells[3].Text);
-                cant = System.Convert.ToInt16(((TextBox)this.GridView1.Rows[i].Cells[4].FindControl("TextBox1")).Text);                
-                double prec1 = System.Convert.ToDouble(prec);
-                subtotal = cant * prec1;
-                GridView1.Rows[i].Cells[5].Text = subtotal.ToString();
-                precio = System.Convert.ToDouble(((TextBox)this.GridView1.Rows[i].Cells[6].FindControl("TextBox2")).Text);
-                subtotal2 = cant * precio;
-                GridView1.Rows[i].Cells[7].Text = subtotal2.ToString();
-                GridView1.Rows[i].Cells[8].Text = producto.uni;
-                GridView1.Rows[i].Cells[9].Text = producto.presentacion.ToString();
-
-                foreach (DataRow dr in items.Rows)
-                {
-                    if (dr["idProducto"].ToString() == cod.ToString())
-                    {
-                        dr["canproducto"] = cant;
-                        dr["subtotal"] = subtotal;
-                    }
-                }
-
-                total2 = total2 + subtotal2;
-                total = total + subtotal;
-            }
-
-            //igv = total * 0.18;
-            //subtotal = total - igv;
-
-            //lblIGV.Text = igv.ToString("0.00");
-            lblTotal2.Text = total2.ToString("0.00");
-            lblTotal.Text = total.ToString("0.00");
-
-
+            this.Calcular();            
         }
 
         public double TotalCarrito(DataTable dt)
@@ -138,11 +87,24 @@ namespace ProjectPaslum.Venta
         {
             var vacio = 0.0000;
             CultureInfo culture = new CultureInfo("en-US");
+            this.Calcular();
 
             if (double.Parse(lblTotal.Text) == vacio)
             {
-                this.Response.Redirect("./AlertaError.aspx", true);
+                this.ClientScript.RegisterStartupScript(this.GetType(), "SweetAlert", "fallo()", true);
             }
+
+            else if (string.IsNullOrWhiteSpace(txtDinero.Text) ||
+                     string.IsNullOrWhiteSpace(txtHora.Text) ||
+                     string.IsNullOrWhiteSpace(fechaEntrega.Text))
+            {
+                this.ClientScript.RegisterStartupScript(this.GetType(), "SweetAlert", "vacio()", true);
+            }
+
+            else if(double.Parse(lblTotal.Text) <= double.Parse(txtDinero.Text)){
+                this.ClientScript.RegisterStartupScript(this.GetType(), "SweetAlert", "fallo()", true);
+            }
+            
 
             else
             {
@@ -185,9 +147,9 @@ namespace ProjectPaslum.Venta
                     ctrlClie.InsertarDetalle(detalle);
 
                 }
-                Response.Redirect("AlertaExito.aspx");
+                this.ClientScript.RegisterStartupScript(this.GetType(), "SweetAlert", "exito()", true);
             }
-            Response.Redirect("MostradorVenta.aspx");
+            
 
         }
 
@@ -212,147 +174,210 @@ namespace ProjectPaslum.Venta
 
         }
 
-        protected void GridView1_RowDeleted(object sender, GridViewDeletedEventArgs e)
-        {
-
-        }
-
-        protected void GridView1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
         protected void Button4_Click(object sender, EventArgs e)
         {
-            DataTable dt = new DataTable();
-            Document document = new Document();
-            PdfWriter writer = PdfWriter.GetInstance(document, HttpContext.Current.Response.OutputStream);
-            DateTime fechact = DateTime.Now;
-
-            dt = (DataTable)Session["pedido"];
-            if (dt.Rows.Count > 0)
+            if (string.IsNullOrWhiteSpace(txtDinero.Text))
+            {
+                this.ClientScript.RegisterStartupScript(this.GetType(), "SweetAlert", "vacio()", true);
+            }
+            else
             {
 
-                document.Open();
+                DataTable dt = new DataTable();
+                Document document = new Document();
+                PdfWriter writer = PdfWriter.GetInstance(document, HttpContext.Current.Response.OutputStream);
+                DateTime fechact = DateTime.Now;
+                this.Calcular();
 
-                var image = iTextSharp.text.Image.GetInstance(@"C:\Users\RodrigoM\Desktop\Sitema-XIU-GAR\ProyectoPaslum\ProjectPaslum\Alumno\images\XIUGAR.jpg");
-
-                
-                // iTextSharp.text.Image image1 = iTextSharp.text.Image.GetInstance("../images/avatar.png");
-                //image1.ScalePercent(50f);
-                image.ScaleAbsoluteWidth(270);
-                image.ScaleAbsoluteHeight(110);
-                image.Alignment = Element.ALIGN_CENTER;
-                document.Add(image);
-
-
-                Font fontTitle = FontFactory.GetFont(FontFactory.COURIER_BOLD, 25);
-                Font font9 = FontFactory.GetFont(FontFactory.TIMES, 14);
-
-                PdfPTable table = new PdfPTable(dt.Columns.Count);
-
-                //Paragraph title = new Paragraph(string.Format("XIU-GAR"), new iTextSharp.text.Font(iTextSharp.text.Font.FontFamily.HELVETICA, 20, iTextSharp.text.Font.BOLD));
-                //title.Alignment = Element.ALIGN_CENTER;
-                //document.Add(title);
-
-                //document.Add(new Paragraph(20, "Ticket XIU-GAR", fontTitle));
-
-                document.Add(new Chunk("\n"));
-
-                document.Add(new Paragraph(16, "Vendedor: " + (Session["CompletoNombre"].ToString()), font9));
-                document.Add(new Paragraph(16, "Cliente: " + txtCliente.Text, font9));
-                document.Add(new Paragraph(16, "Domicilio: " + (Session["domicilio"].ToString()), font9));
-                document.Add(new Paragraph(16, "Fecha: " + DateTime.Now.Date.ToString().Substring(0, 10), font9));
-
-                document.Add(new Chunk("\n"));
-
-                float[] widths = new float[dt.Columns.Count];
-                for (int i = 0; i < dt.Columns.Count; i++)
-                    widths[i] = 4f;
-
-                table.SetWidths(widths);
-                table.WidthPercentage = 90;
-
-                PdfPCell cell = new PdfPCell(new Phrase("columns"));
-                cell.Colspan = dt.Columns.Count;
-
-                table.AddCell("CODIGO");
-                table.AddCell("PRODUCTO");
-                table.AddCell("PRECIO");
-                table.AddCell("SUBTOTAL");
-                table.AddCell("CANTIDAD");
-
-                foreach (DataColumn c in dt.Columns)
+                dt = (DataTable)Session["pedido"];
+                if (dt.Rows.Count > 0)
                 {
-                    if (c.ColumnName == "idProducto")
+
+                    document.Open();
+
+                    var image = iTextSharp.text.Image.GetInstance(@"C:\Users\RodrigoM\Desktop\Sitema-XIU-GAR\ProyectoPaslum\ProjectPaslum\Alumno\images\XIUGAR.jpg");
+
+                    // iTextSharp.text.Image image1 = iTextSharp.text.Image.GetInstance("../images/avatar.png");
+                    //image1.ScalePercent(50f);
+                    image.ScaleAbsoluteWidth(270);
+                    image.ScaleAbsoluteHeight(110);
+                    image.SetAbsolutePosition(300, 720);
+                    document.Add(image);
+
+
+                    Font fontTitle = FontFactory.GetFont(FontFactory.COURIER_BOLD, 25);
+                    Font font9 = FontFactory.GetFont(FontFactory.HELVETICA, 13);
+                    Font font7 = FontFactory.GetFont(FontFactory.TIMES, 13);
+                    Font font8 = FontFactory.GetFont(FontFactory.TIMES, 9);
+
+                    PdfPTable table = new PdfPTable(dt.Columns.Count);
+
+                    //Paragraph title = new Paragraph(string.Format("XIU-GAR"), new iTextSharp.text.Font(iTextSharp.text.Font.FontFamily.HELVETICA, 20, iTextSharp.text.Font.BOLD));
+                    //title.Alignment = Element.ALIGN_CENTER;
+                    //document.Add(title);
+
+                    //document.Add(new Paragraph(20, "Ticket XIU-GAR", fontTitle));
+
+                    document.Add(new Chunk("\n"));
+
+                    document.Add(new Paragraph(16, "Vendedor: " + (Session["CompletoNombre"].ToString()), font7));
+                    document.Add(new Paragraph(16, "Cliente: " + txtCliente.Text, font7));
+                    document.Add(new Paragraph(16, "Domicilio: " + (Session["domicilio"].ToString()), font7));
+                    document.Add(new Paragraph(16, "Fecha: " + DateTime.Now.Date.ToString().Substring(0, 10), font7));
+
+                    document.Add(new Chunk("\n"));
+
+                    float[] widths = new float[dt.Columns.Count];
+                    for (int i = 0; i < dt.Columns.Count; i++)
+                        widths[i] = 4f;
+
+                    table.SetWidths(widths);
+                    table.WidthPercentage = 90;
+
+                    PdfPCell cell = new PdfPCell(new Phrase("columns"));
+                    cell.Colspan = dt.Columns.Count;
+
+                    table.AddCell("CODIGO");
+                    table.AddCell("PRODUCTO");
+                    table.AddCell("PRECIO");
+                    table.AddCell("TOTAL");
+                    table.AddCell("CANTIDAD");
+                    table.AddCell("PRESENTACIÓN");
+                    table.AddCell("U.MEDIDA");
+
+                    foreach (DataColumn c in dt.Columns)
                     {
-
-                    }
-                    else if (c.ColumnName == "strNombre")
-                    {
-
-                    }
-                    else if (c.ColumnName == "dblPrecio")
-                    {
-
-                    }
-                    else if (c.ColumnName == "subtotal")
-                    {
-
-                    }
-                    else if (c.ColumnName == "canproducto")
-                    {
-
-                    }
-
-                    else
-                    {
-
-                        table.AddCell(new Phrase(c.ColumnName, font9));
-                    }
-                }
-
-                foreach (DataRow r in dt.Rows)
-                {
-                    if (dt.Rows.Count > 0)
-                    {
-                        for (int h = 0; h < dt.Columns.Count; h++)
+                        if (c.ColumnName == "idProducto")
                         {
-                            table.AddCell(new Phrase(r[h].ToString(), font9));
+
+                        }
+                        else if (c.ColumnName == "strNombre")
+                        {
+
+                        }
+                        else if (c.ColumnName == "dblPrecio")
+                        {
+
+                        }
+                        else if (c.ColumnName == "subtotal")
+                        {
+
+                        }
+                        else if (c.ColumnName == "canproducto")
+                        {
+
+                        }
+                        else if (c.ColumnName == "intPresentacion")
+                        {
+
+                        }
+                        else if (c.ColumnName == "strNombre1")
+                        {
+
+                        }
+
+                        else
+                        {
+
+                            table.AddCell(new Phrase(c.ColumnName, font8));
                         }
                     }
+
+                    foreach (DataRow r in dt.Rows)
+                    {
+                        if (dt.Rows.Count > 0)
+                        {
+                            for (int h = 0; h < dt.Columns.Count; h++)
+                            {
+                                table.AddCell(new Phrase(r[h].ToString(), font8));
+                            }
+                        }
+                    }
+                    document.Add(table);
+                    document.Add(new Chunk("\n"));
+
+                    Paragraph total = new Paragraph(16, "Total: $" + decimal.Parse(lblTotal2.Text), font9);
+                    Paragraph efectivo = new Paragraph(16, "Efectivo: $" + decimal.Parse(txtDinero.Text), font9);
+                    Paragraph cambio = new Paragraph(16, "Cambio: $" + (decimal.Parse(txtDinero.Text) - decimal.Parse(lblTotal2.Text)), font9);
+                    document.Add(new Chunk("\n"));
+                    Paragraph gracias = new Paragraph(18, "Gracias por su compra, vuelva pronto.", font9);
+
+
+                    total.Alignment = Element.ALIGN_RIGHT;
+                    efectivo.Alignment = Element.ALIGN_RIGHT;
+                    cambio.Alignment = Element.ALIGN_RIGHT;
+                    gracias.Alignment = Element.ALIGN_CENTER;
+
+                    document.Add(total);
+                    document.Add(efectivo);
+                    document.Add(cambio);
+                    document.Add(gracias);
+
+
                 }
-                document.Add(table);
-                document.Add(new Chunk("\n"));
 
-                Paragraph total = new Paragraph(16, "Total: $" + decimal.Parse(lblTotal.Text), font9);
-                Paragraph efectivo = new Paragraph(16, "Efectivo: $" + decimal.Parse(txtDinero.Text), font9);
-                Paragraph cambio = new Paragraph(16, "Cambio: $" + (decimal.Parse(txtDinero.Text) - decimal.Parse(lblTotal.Text)), font9);
-                document.Add(new Chunk("\n"));
-                Paragraph gracias = new Paragraph(18, "Gracias por su compra, vuelva pronto.", font9);
+                document.Close();
 
-
-                total.Alignment = Element.ALIGN_RIGHT;
-                efectivo.Alignment = Element.ALIGN_RIGHT;
-                cambio.Alignment = Element.ALIGN_RIGHT;
-                gracias.Alignment = Element.ALIGN_CENTER;
-
-                document.Add(total);
-                document.Add(efectivo);
-                document.Add(cambio);
-                document.Add(gracias);
-               
+                Response.ContentType = "application/pdf";
+                Response.AddHeader("content-disposition", "attachment;filename=Ticket" + fechact + ".pdf");
+                HttpContext.Current.Response.Write(document);
+                Response.Flush();
+                Response.End();
 
             }
+        }
+        private void Calcular()
+        {
+            int i;
+            double total = 0, prec, subtotal = 0, subtotal2 = 0/* igv*/;
+            string cod, desc;
+            int cant;
+            double precio, total2 = 0;
 
-            document.Close();
 
-            Response.ContentType = "application/pdf";
-            Response.AddHeader("content-disposition", "attachment;filename=Ticket"+ fechact + ".pdf");
-            HttpContext.Current.Response.Write(document);
-            Response.Flush();
-            Response.End();
-        
-    }
+            var items = (DataTable)Session["pedido"];
+            //DataRow fila = items.NewRow();
+            for (i = 0; i < GridView1.Rows.Count; i++)
+            {
+                cod = (GridView1.Rows[i].Cells[1].Text);
+
+                var producto = (from p in contexto.tblProducto
+                                join unidad in contexto.tblUnidadMedida
+                                    on p.fkUnidadMedida equals unidad.idUnidadMedida
+                                where p.idProducto == int.Parse(cod)
+                                select new { uni = unidad.strNombre, presentacion = p.intPresentacion }).FirstOrDefault();
+
+                desc = (GridView1.Rows[i].Cells[2].Text);
+                prec = System.Convert.ToDouble(GridView1.Rows[i].Cells[3].Text);
+                cant = System.Convert.ToInt16(((TextBox)this.GridView1.Rows[i].Cells[4].FindControl("TextBox1")).Text);
+                double prec1 = System.Convert.ToDouble(prec);
+                subtotal = cant * prec1;
+                GridView1.Rows[i].Cells[5].Text = subtotal.ToString();
+                precio = System.Convert.ToDouble(((TextBox)this.GridView1.Rows[i].Cells[6].FindControl("TextBox2")).Text);
+                subtotal2 = cant * precio;
+                GridView1.Rows[i].Cells[7].Text = subtotal2.ToString();
+                GridView1.Rows[i].Cells[8].Text = producto.uni;
+                GridView1.Rows[i].Cells[9].Text = producto.presentacion.ToString();
+
+                foreach (DataRow dr in items.Rows)
+                {
+                    if (dr["idProducto"].ToString() == cod.ToString())
+                    {
+                        dr["canproducto"] = cant;
+                        dr["subtotal"] = subtotal;
+                    }
+                }
+
+                total2 = total2 + subtotal2;
+                total = total + subtotal;
+            }
+
+            //igv = total * 0.18;
+            //subtotal = total - igv;
+
+            //lblIGV.Text = igv.ToString("0.00");
+            lblTotal2.Text = total2.ToString("0.00");
+            lblTotal.Text = total.ToString("0.00");
+        }
     }
 }

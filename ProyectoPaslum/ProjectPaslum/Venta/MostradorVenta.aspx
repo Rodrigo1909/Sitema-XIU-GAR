@@ -6,6 +6,12 @@
     <link href="../Content/bootstrap.min.css" rel="stylesheet" />
     <link href="../Alumno/scss/PersoDatos.css" rel="stylesheet" />
     <link href="estilos.css" rel="stylesheet" />
+            
+    <link href="../../Content/sweetalert/sweet-alert.css" rel="stylesheet" />
+    <script src="../../js/swalert.js"></script>
+    <script src="../../Scripts/jquery-1.10.2.min.js"></script>
+    <script src="../../Scripts/sweetalert.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
 <div class="container">
   <div style="text-align:center">
@@ -79,47 +85,54 @@
                         <div class="panel-body">
                             <div class="form-inline">
                                 <div class="jumbotron"  style="background-color:white">
-				<table class="table-responsive">
-				<tbody>     
-                    <tr>
+				
+				     
+                    <%--<tr>
                         <td>                                        
                             <asp:Label ID="lblAgregado" runat="server" Text="Label"></asp:Label>
                         </td>
-                    </tr>               
+                    </tr> --%>              
 						
 
-						    <asp:DataList ID="DataList1" runat="server" DataKeyField="idProducto" DataSourceID="SqlDataSource1" RepeatColumns="4" 
-                                OnItemCommand="DataList1_ItemCommand" CssClass="table table-responsive"  >
+						    <asp:DataList ID="DataList1" runat="server" DataKeyField="idProducto" DataSourceID="SqlDataSource2" RepeatColumns="4" 
+                                OnItemCommand="DataList1_ItemCommand"  >
                                 <ItemTemplate>
                                     
-                                    <br />
-                                    <asp:Label ID="codigo" runat="server" Text="CODIGO:" Font-Size="16px" Font-Italic="true"></asp:Label>                                    
+                                    <asp:Label ID="Label1" runat="server" Text="CODIGO:" Font-Size="16px" Font-Italic="true"></asp:Label>                                                                   
                                     <asp:Label ID="idProductoLabel" runat="server" Text='<%# Eval("idProducto") %>' ForeColor="#00cc00" Font-Size="15px"/>
+                                                                  
                                     <br />
-                                    <asp:Label ID="nombre" runat="server" Text="NOMBRE:" Font-Size="16px" Font-Italic="true"></asp:Label>                                 
-                                    <asp:Label ID="strNombreLabel" runat="server" Text='<%# Eval("strNombre") %>' ForeColor="#00cc00" Font-Size="15px"/>
-                                    <br />                                    
-                                    <asp:Label ID="descripcion" runat="server" Text="DESCRIPCIÓN:" Font-Size="16px" Font-Italic="true"></asp:Label>
-                                    <asp:Label ID="strDescripcionLabel" runat="server" Text='<%# Eval("strDescripcion") %>' ForeColor="#00cc00" Font-Size="15px"/>
+                                    <asp:Label ID="Label2" runat="server" Text="PRODUCTO:" Font-Size="16px" Font-Italic="true"></asp:Label>                                                                   
+                                    <asp:Label ID="idNombreLabel" runat="server" Text='<%# Eval("strNombre") %>' ForeColor="#00cc00" Font-Size="15px"/>
+                                                                  
                                     <br />
                                     <asp:Label ID="precio" runat="server" Text="PRECIO:" Font-Size="16px" Font-Italic="true"></asp:Label>
                                     <asp:Label ID="dblPrecioLabel" runat="server" Text='<%# Eval("dblPrecio") %>' ForeColor="#00cc00" Font-Size="15px"/>
                                     <br />
-                                    <asp:Button ID="Button1" runat="server" CommandName="Seleccionar" OnClick="Button1_Click" Text="Agregar" CssClass="btn btn-success" />
+                                    <asp:Label ID="presentacion" runat="server" Text="PRESENTACIÓN:" Font-Size="16px" Font-Italic="true"></asp:Label>
+                                    <asp:Label ID="intPresentacionLabel" runat="server" Text='<%# Eval("intPresentacion") %>' ForeColor="#00cc00" Font-Size="16px" ></asp:Label>                                 
+                                    <br />
+                                    <asp:Label ID="unidad" runat="server" Text="U. MEDIDA:" Font-Size="16px" Font-Italic="true"></asp:Label>
+                                    <asp:Label ID="strNombre1Label" runat="server" Text='<%# Eval("strNombre1") %>' ForeColor="#00cc00" Font-Size="15px"/>
+                                    <br />           
+                                    <asp:Button ID="Button1" runat="server" CommandName="Seleccionar" OnClick="Button1_Click" Text="Agregar" CssClass="btn btn-success" />                         
                                     <br />
                                 </ItemTemplate>
 
                             </asp:DataList>
 
 
-						    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:XIUGARConnectionString %>" 
-                                SelectCommand="SELECT [idProducto], [strNombre], [strDescripcion], [dblPrecio] FROM [tblProducto] where fkAlmacen = 2"></asp:SqlDataSource>
 
-						
+						    <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:XIUGARConnectionString %>" SelectCommand="SELECT p.idProducto, p.strNombre, 
+                                                p.dblPrecio , p.intPresentacion, u.strNombre
+                                                FROM tblProducto p
+                                                inner join tblUnidadMedida u
+                                                on p.fkUnidadMedida = u.idUnidadMedida
+                                                where fkAlmacen = 2"></asp:SqlDataSource>
+			
 
-					
-				</tbody>
-			</table>
+				
+			
 			</div>
 
 
@@ -137,5 +150,16 @@
            </div>
         </div>
 </div>
+
+    <script type="text/javascript">
+        function exito() {
+            swal({
+                title: "Correcto",
+                text: "Se agrego el producto con exito.",
+                icon: "success",
+            });
+        }
+    
+    </script>
 </asp:Content>
 
