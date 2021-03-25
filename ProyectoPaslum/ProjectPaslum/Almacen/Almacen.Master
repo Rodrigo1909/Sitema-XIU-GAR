@@ -67,6 +67,7 @@
                     <li><a href="EntradaAlmacen.aspx"><i class="icon-archive"></i>Entrada</a></li>
                     <li><a href="SalidasAlmacen.aspx"><i class="icon-paper-plane"></i>Salida</a></li>
                     <li><a href="MovimientoAlmacen.aspx"><i class="icon-assignment"></i>Movimientos</a></li>
+                    <li><a href="RequisicionAlmacen.aspx"><i class="icon-paperclip"></i>Requisiciones</a></li>
                     <li><a href="../IndexPaslum.aspx"><i class="icon-sign-out"></i><span>Cerrar Sesión</span></a></li>
                 </ul>
 
