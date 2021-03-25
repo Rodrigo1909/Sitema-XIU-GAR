@@ -84,5 +84,17 @@ namespace ProjectPaslum.Controllers
         {
             return contexto.tblProducto.ToList<tblProducto>();
         }
+
+        public void Editar(tblVenta ven)
+        {
+            tblVenta venBd = contexto.tblVenta
+                .Where(t => t.idVenta == ven.idVenta).FirstOrDefault();
+            if (venBd != null)
+            {
+                venBd.strEstado = "FINALIZADO";
+                contexto.SubmitChanges();
+            }
+            
+        }
     }
 }

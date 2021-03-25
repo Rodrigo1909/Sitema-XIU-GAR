@@ -112,22 +112,32 @@ namespace ProjectPaslum.Venta
                 ControllerCliente ctrlCli = new ControllerCliente();
 
                 tblVenta ven = new tblVenta();
-                ven.Fecha = fechact;
-                ven.dblTotal = decimal.Parse(lblTotal.Text);
-                //ven.dblSubTotal = decimal.Parse(lblSubTotal.Text);
-                //ven.dblIGV = decimal.Parse(lblIGV.Text);
-                ven.strEstado = "FINALIZADO";
-                ven.dblAbono = decimal.Parse(txtDinero.Text, culture); ;
-                ven.dblInteres = null;
-                ven.strFechaEntega = fechaEntrega.Text;
-                ven.strHoraEntega = txtHora.Text;
+
 
                 if ((Session["cliente"].ToString() == "MOSTRADOR"))
                 {
+                    ven.Fecha = fechact;
+                    ven.dblTotal = decimal.Parse(lblTotal.Text);
+                    //ven.dblSubTotal = decimal.Parse(lblSubTotal.Text);
+                    //ven.dblIGV = decimal.Parse(lblIGV.Text);
+                    ven.strEstado = "FINALIZADO";
+                    ven.dblAbono = decimal.Parse(txtDinero.Text, culture); ;
+                    ven.dblInteres = null;
+                    ven.strFechaEntega = fechaEntrega.Text;
+                    ven.strHoraEntega = txtHora.Text;
                     ven.fkCliente = null;
                 }
                 else
                 {
+                    ven.Fecha = fechact;
+                    ven.dblTotal = decimal.Parse(lblTotal.Text);
+                    //ven.dblSubTotal = decimal.Parse(lblSubTotal.Text);
+                    //ven.dblIGV = decimal.Parse(lblIGV.Text);
+                    ven.strEstado = "EN PROCESO";
+                    ven.dblAbono = decimal.Parse(txtDinero.Text, culture); ;
+                    ven.dblInteres = null;
+                    ven.strFechaEntega = fechaEntrega.Text;
+                    ven.strHoraEntega = txtHora.Text;
                     ven.fkCliente = int.Parse(Session["cliente"].ToString());
                 }
                 ctrlCli.InsertarVenta(ven);
@@ -289,7 +299,7 @@ namespace ProjectPaslum.Venta
                         {
                             for (int h = 0; h < dt.Columns.Count; h++)
                             {
-                                table.AddCell(new Phrase(r[h].ToString(), font8));
+                                table.AddCell(new Phrase(r[h].ToString(), font8));                                
                             }
                         }
                     }

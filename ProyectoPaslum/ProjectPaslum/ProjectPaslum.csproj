@@ -220,9 +220,11 @@
     <Content Include="Administrador\UniMedidaAdmin.aspx" />
     <Content Include="Almacen\AlertaError.aspx" />
     <Content Include="Almacen\AlertaExito.aspx" />
+    <Content Include="Almacen\DesgloceRequisicionAlmacen.aspx" />
     <Content Include="Almacen\EntradaAlmacen.aspx" />
     <Content Include="Almacen\MovimientoAlmacen.aspx" />
     <Content Include="Almacen\PrincipalAlmacen.aspx" />
+    <Content Include="Almacen\RequisicionAlmacen.aspx" />
     <Content Include="Almacen\SalidasAlmacen.aspx" />
     <Content Include="Alumno\DatosEscolares.aspx" />
     <Content Include="Alumno\DatosPersonales.aspx" />
@@ -606,6 +608,13 @@
     <Compile Include="Almacen\Almacen.Master.designer.cs">
       <DependentUpon>Almacen.Master</DependentUpon>
     </Compile>
+    <Compile Include="Almacen\DesgloceRequisicionAlmacen.aspx.cs">
+      <DependentUpon>DesgloceRequisicionAlmacen.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Almacen\DesgloceRequisicionAlmacen.aspx.designer.cs">
+      <DependentUpon>DesgloceRequisicionAlmacen.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Almacen\EntradaAlmacen.aspx.cs">
       <DependentUpon>EntradaAlmacen.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -626,6 +635,13 @@
     </Compile>
     <Compile Include="Almacen\PrincipalAlmacen.aspx.designer.cs">
       <DependentUpon>PrincipalAlmacen.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Almacen\RequisicionAlmacen.aspx.cs">
+      <DependentUpon>RequisicionAlmacen.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Almacen\RequisicionAlmacen.aspx.designer.cs">
+      <DependentUpon>RequisicionAlmacen.aspx</DependentUpon>
     </Compile>
     <Compile Include="Almacen\SalidasAlmacen.aspx.cs">
       <DependentUpon>SalidasAlmacen.aspx</DependentUpon>
