@@ -83,7 +83,7 @@
                     <li><a href="PerfilVenta.aspx"><i class="icon-person"></i>Perfil</a></li>
                     <li><a href="OrdenCompraVenta.aspx"><i class="fa icon-buysellads"></i>Orden de Compra</a></li>
                     <li><a href="CotizacionVenta.aspx"><i class="icon-bell"></i>Cotización</a></li>
-                    <li><a href="WebVenta.aspx"><i class="icon-web"></i>Venta Online</a></li>
+                    <li><a href="WebVenta.aspx"><i class="icon-web"></i>Requisición</a></li>
                     <li><a href="../IndexPaslum.aspx"><i class="icon-sign-out"></i><span>Cerrar Sesión</span></a></li>
                 </ul>
 

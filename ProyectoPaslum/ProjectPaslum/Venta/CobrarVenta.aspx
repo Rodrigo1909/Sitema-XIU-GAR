@@ -34,38 +34,44 @@
                             <div class="form-inline">
 
                                     <div class="form-group">
+                                        <label>N° Venta </label>
+                                        <asp:TextBox ID="txtNumVen" runat="server" width="500px" Enabled="false" style="text-align:center"></asp:TextBox>
+                                        
+                                    </div>
+                                  &nbsp &nbsp &nbsp &nbsp 
+                                    <div class="form-group">
                                         <label>Fecha </label>
                                         <asp:TextBox ID="txtFecha" runat="server" width="500px" Enabled="false" style="text-align:center"></asp:TextBox>
                                         
                                     </div>
-                                &nbsp &nbsp &nbsp &nbsp 
+                                
                                     <div class="form-group">
                                         <label>Vendedor </label>
                                         <asp:TextBox ID="txtVendedor" runat="server" width="500px" Enabled="false" style="text-align:center"></asp:TextBox>
                                     </div>
                                     
-                                            
+                                    &nbsp &nbsp &nbsp &nbsp 
                                     <div class="form-group">
                                          <label>Cliente </label>
                                         <asp:TextBox ID="txtCliente" runat="server" width="500px" Enabled="false" style="text-align:center" ></asp:TextBox>
                                     </div>
-                                &nbsp &nbsp &nbsp &nbsp 
+                                
                                      <div class="form-group">
                                          <label>Domicilio </label>
                                         <asp:TextBox ID="txtDomicilio" runat="server" width="500px" Enabled="false" style="text-align:center" ></asp:TextBox>
                                     </div>
-
+                                    &nbsp &nbsp &nbsp &nbsp 
                                     <div class="form-group">
                                          <label>Efectivo </label>
                                         <asp:TextBox ID="txtDinero" runat="server" width="500px" style="text-align:center"  ></asp:TextBox>
                                     </div>
-                                &nbsp &nbsp &nbsp &nbsp 
+                                
                                     <div class="form-group">
                                          <label>Asignar fecha de entrega</label>
                                         <asp:TextBox id="fechaEntrega" runat="server" TextMode="Date" width="500px" 
                                             style="text-align:center" Height="40px"></asp:TextBox>
                                     </div>
-
+                                    &nbsp &nbsp &nbsp &nbsp 
                                     <div class="form-group">
                                          <label>Asignar hora de entrega </label>
                                         <asp:TextBox ID="txtHora" runat="server" width="500px" style="text-align:center" ></asp:TextBox>

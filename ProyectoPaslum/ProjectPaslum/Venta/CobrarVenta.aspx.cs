@@ -25,6 +25,14 @@ namespace ProjectPaslum.Venta
                 txtVendedor.Text = (Session["CompletoNombre"].ToString());
                 txtDomicilio.Text = (Session["domicilio"].ToString());
                 txtFecha.Text = DateTime.Now.Date.ToString().Substring(0, 10);
+
+                var venta = (from ven in contexto.tblVenta                             
+                             orderby ven.idVenta descending
+                             select new { ultimo = ven.idVenta }).FirstOrDefault();
+
+                var nuevo = venta.ultimo + 1;
+
+                txtNumVen.Text = nuevo.ToString();
                 
                 if((Session["cliente"].ToString() == "MOSTRADOR"))
                 {
@@ -101,7 +109,7 @@ namespace ProjectPaslum.Venta
                 this.ClientScript.RegisterStartupScript(this.GetType(), "SweetAlert", "vacio()", true);
             }
 
-            else if(double.Parse(lblTotal.Text) <= double.Parse(txtDinero.Text)){
+            else if(double.Parse(lblTotal.Text) >= double.Parse(txtDinero.Text)){
                 this.ClientScript.RegisterStartupScript(this.GetType(), "SweetAlert", "fallo()", true);
             }
             
@@ -133,7 +141,7 @@ namespace ProjectPaslum.Venta
                     ven.dblTotal = decimal.Parse(lblTotal.Text);
                     //ven.dblSubTotal = decimal.Parse(lblSubTotal.Text);
                     //ven.dblIGV = decimal.Parse(lblIGV.Text);
-                    ven.strEstado = "EN PROCESO";
+                    ven.strEstado = "PENDIENTE";
                     ven.dblAbono = decimal.Parse(txtDinero.Text, culture); ;
                     ven.dblInteres = null;
                     ven.strFechaEntega = fechaEntrega.Text;
@@ -199,6 +207,13 @@ namespace ProjectPaslum.Venta
                 DateTime fechact = DateTime.Now;
                 this.Calcular();
 
+                var venta = (from ven in contexto.tblVenta
+                             orderby ven.idVenta descending
+                             select new { ultimo = ven.idVenta }).FirstOrDefault();
+
+                var nuevo = venta.ultimo + 1;
+                
+
                 dt = (DataTable)Session["pedido"];
                 if (dt.Rows.Count > 0)
                 {
@@ -230,6 +245,7 @@ namespace ProjectPaslum.Venta
 
                     document.Add(new Chunk("\n"));
 
+                    document.Add(new Paragraph(16, "N° Venta: " + nuevo.ToString(), font7));
                     document.Add(new Paragraph(16, "Vendedor: " + (Session["CompletoNombre"].ToString()), font7));
                     document.Add(new Paragraph(16, "Cliente: " + txtCliente.Text, font7));
                     document.Add(new Paragraph(16, "Domicilio: " + (Session["domicilio"].ToString()), font7));

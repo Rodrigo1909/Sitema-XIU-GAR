@@ -7,7 +7,7 @@
 
 
      <div style="text-align:center">
-        <h2>Compras en linea</h2>
+        <h2>REQUISICIONES</h2>
     </div>
 
         <%-- PENDIENTE: Orden de compra que no han sido aceptadas --%>
@@ -22,141 +22,51 @@
                     <div class="panel-body">
                         <section>
                          <div>
-             
-                    <asp:ListView ID="ListView1" runat="server" DataSourceID="SqlDataSource1" GroupItemCount="3" DataKeyNames="idVenta" >
+                            <asp:DataList ID="DataList1" runat="server" CellPadding="4" DataKeyField="idVenta" DataSourceID="SqlDataSource1" CssClass="table table-responsive"
+                                     RepeatColumns="3" ForeColor="#FB2D59" OnItemCommand="DataList1_ItemCommand"  AutoPostBack="true" >
+                                    
+                         
+                                    <AlternatingItemStyle BackColor="#FB5679" />
+                                    <FooterStyle BackColor="#FB2D59" Font-Bold="True" />
+                                    <HeaderStyle BackColor="#FB2D59" Font-Bold="True"  />
+                                    <ItemStyle BackColor="#FB2D59" />
+                                    
+                                    <ItemTemplate>
+                                        <asp:Label ID="lbNum" runat="server" Text="VENTA:" Font-Size="16px" Font-Italic="true" ForeColor="Black"></asp:Label>
+                                        <asp:Label ID="idVentaLabel" runat="server" Text='<%# Eval("idVenta") %>' ForeColor="Black" Font-Size="15px"></asp:Label>  
+                                        <br />
+                                        <asp:Label ID="Label1" runat="server" Text="CLIENTE:" Font-Size="16px" Font-Italic="true" ForeColor="Black"></asp:Label> 
+                                        <asp:Label ID="Column1Label" runat="server" Text='<%# Eval("Column1") %>' ForeColor="Black" Font-Size="15px"></asp:Label>                                        
+                                        <br />                                        
+                                        <asp:Label ID="Label2" runat="server" Text="ESTABLECIMIENTO:" Font-Size="16px" Font-Italic="true" ForeColor="Black"></asp:Label>
+                                        <asp:Label ID="strEstablecimientoLabel" runat="server" Text='<%# Eval("strEstablecimiento") %>' ForeColor="Black" Font-Size="15px"></asp:Label>                             
+                                        <br />
+                                        <asp:Label ID="Label3" runat="server" Text="TOTAL:" Font-Size="16px" Font-Italic="true" ForeColor="Black"></asp:Label>
+                                        <asp:Label ID="dblTotalLabel" runat="server" Text='<%# Eval("dblTotal") %>' ForeColor="Black" Font-Size="15px"/>
+                                        <br />
+                                         <asp:Label ID="Label4" runat="server" Text="FECHA:" Font-Size="16px" Font-Italic="true" ForeColor="Black"></asp:Label>
+                                        <asp:Label ID="Fecha_de_creaciónLabel" runat="server" Text='<%# Eval("[Fecha de creación]") %>' ForeColor="Black" Font-Size="15px"></asp:Label>  
+                                        <br />
+                                        <br />
+                                        <asp:Button ID="Button1" runat="server" CommandName="Seleccionar" Text="Detalle" CssClass="btn btn-primary" />
 
-                    <AlternatingItemTemplate>
-                        <td runat="server" style="background-color:#FB2D59;">Establecimiento:
-                            <asp:Label ID="strEstablecimientoLabel" runat="server" Text='<%# Eval("strEstablecimiento") %>' />
-                            <br />
-                            Num. Venta:
-                            <asp:Label ID="idVentaLabel" runat="server" Text='<%# Eval("idVenta") %>' />
-                            <br />
-                            Fecha:
-                            <asp:Label ID="FechaLabel" runat="server" Text='<%# Eval("Fecha") %>' />
-                            <br />
-                            Total:
-                            <asp:Label ID="dblTotalLabel" runat="server" Text='<%# Eval("dblTotal") %>' />
-                            <br />
-                            Estado:
-                            <asp:Label ID="strEstadoLabel" runat="server" Text='<%# Eval("strEstado") %>' />
-                            <br />
-                            <asp:Button ID="DeleteButton" runat="server" Text="En proceso" CommandName="Delete" CssClass="btn btn-success" AutoPostBack="true"/>
-                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Detalle</button>
-                            <br />                            
-                        </td>
-                        
-                    </AlternatingItemTemplate>
-                        
-                    <EmptyDataTemplate>
-                        <table runat="server" style="background-color: #FFFFFF;border-collapse: collapse;border-color: #999999;border-style:none;border-width:1px;">
-                            <tr>
-                                <td>No se han encontrado Ordenes de venta.</td>
-                            </tr>
-                        </table>
-                    </EmptyDataTemplate>
-                    <EmptyItemTemplate>
-                    <td runat="server" />
-                    </EmptyItemTemplate>
-                    <GroupTemplate>
-                        <tr id="itemPlaceholderContainer" runat="server">
-                            <td id="itemPlaceholder" runat="server"></td>
-                        </tr>
-                    </GroupTemplate> 
-                    <ItemTemplate>
-                        <td runat="server" style="background-color:#FB5679; color: #000000;">
-                            Establecimiento:
-                            <asp:Label ID="strEstablecimientoLabel" runat="server" Text='<%# Eval("strEstablecimiento") %>' />                            
-                            <br />
-                            Num. Venta:                            
-                            <asp:Label ID="idVentaLabel" runat="server" Text='<%# Eval("idVenta") %>' />
-                            <br />
-                            Fecha:
-                            <asp:Label ID="FechaLabel" runat="server" Text='<%# Eval("Fecha") %>' />
-                            <br />
-                            Total:
-                            <asp:Label ID="dblTotalLabel" runat="server" Text='<%# Eval("dblTotal") %>' />
-                            <br />
-                            Estado:
-                            <asp:Label ID="strEstadoLabel" runat="server" Text='<%# Eval("strEstado") %>' />
-                            <br />
-                            <asp:Button ID="DeleteButton" runat="server" Text="En proceso" CommandName="Delete" CssClass="btn btn-success" AutoPostBack="true" />
-                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Detalle</button>
-                            <br />                            
-                        </td>
-                        
-                    </ItemTemplate>
-                    <LayoutTemplate>
-                        <table runat="server">
-                            <tr runat="server">
-                                <td runat="server">
-                                    <table id="groupPlaceholderContainer" runat="server" border="1" style="background-color: #FFFFFF;border-collapse: collapse;border-color: #999999;border-style:none;border-width:1px;font-family: Verdana, Arial, Helvetica, sans-serif;">
-                                        <tr id="groupPlaceholder" runat="server">
-                                        </tr>
-                                    </table>
-                                </td>
-                            </tr>
-                            <tr runat="server">
-                                <td runat="server" style="text-align: center;background-color: #CCCCCC; font-family: Verdana, Arial, Helvetica, sans-serif;color: #000000;">
-                                <asp:DataPager ID="DataPager1" runat="server" PageSize="9">
-                                <Fields>
-                                    <asp:NextPreviousPagerField ButtonType="Button" ShowFirstPageButton="True" ShowLastPageButton="True" />
-                                </Fields>
-                            </asp:DataPager>
-                                </td>
-                            </tr>
-                            
-                        </table>
-                    </LayoutTemplate>
-                    <SelectedItemTemplate>
-                            <td runat="server" style="background-color:#FB5679;font-weight: bold;color: #FFFFFF;">Establecimiento:
-                                <asp:Label ID="strEstablecimientoLabel" runat="server" Text='<%# Eval("strEstablecimiento") %>' />
-                                <br />
-                                Num. Venta:
-                                <asp:Label ID="idVentaLabel" runat="server" Text='<%# Eval("idVenta") %>' />
-                                <br />
-                                Fecha:
-                                <asp:Label ID="FechaLabel" runat="server" Text='<%# Eval("Fecha") %>' />
-                                <br />
-                                Total:
-                                <asp:Label ID="dblTotalLabel" runat="server" Text='<%# Eval("dblTotal") %>' />
-                                <br />
-                                Estado:
-                                <asp:Label ID="strEstadoLabel" runat="server" Text='<%# Eval("strEstado") %>' />
-                                <br />
-                                <asp:Button ID="DeleteButton" runat="server" CommandName="Delete" Text="En proceso" CssClass="btn btn-success" AutoPostBack="true"/>
-                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Detalle</button>
-                                <br />                                
-                            </td>
-                        </SelectedItemTemplate>
-                    
-                    </asp:ListView>
-                      
-                             
-                    <asp:SqlDataSource ID="SqlDataSource4" runat="server" ConnectionString="<%$ ConnectionStrings:XIUGARConnectionString %>" 
-                                 SelectCommand="SELECT d.Fecha, d.intCantidad, d.dblPrecio, p.strNombre FROM tblDetalleVenta AS d INNER JOIN tblProducto 
-                                                AS p ON p.idProducto = d.fkProducto WHERE (d.fkVenta = @idVenta)">
-                                 <SelectParameters>
-                                     <asp:Parameter Name="idVenta" />
-                                 </SelectParameters>
-                             </asp:SqlDataSource>
-                      
-                    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:XIUGARConnectionString %>" 
-                                 SelectCommand="select c.strEstablecimiento, v.idVenta,v.Fecha, v.dblTotal, v.strEstado
-                                from tblVenta v
-                                inner join tblCliente c
-                                on v.fkCliente = c.idCliente
-                                where v.strEstado = 'PENDIENTE'
-                                ORDER BY v.Fecha DESC" DeleteCommand="UPDATE tblVenta SET strEstado = 'EN PROCESO' WHERE (idVenta = @idVenta)">
-                        <DeleteParameters>
-                            <asp:Parameter Name="idVenta" />
-                        </DeleteParameters>
-                             </asp:SqlDataSource>
+                                    </ItemTemplate>
+                                    <SelectedItemStyle BackColor="#FB2D59" Font-Bold="True" ForeColor="#FB5679" />
+                                </asp:DataList>
+                            <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:XIUGARConnectionString %>"
+                                 SelectCommand="select v.idVenta, c.strNombre + ' ' + c.strApellidoM + ' '+ c.strApellidoP, c.strEstablecimiento, v.dblTotal,
+                                                v.Fecha as 'Fecha de creación'
+                                                from tblVenta v
+                                                left join tblCliente c
+                                                on c.idCliente = v.fkCliente                                                
+                                                where v.strEstado = 'PENDIENTE'
+                                                order by v.Fecha asc;"></asp:SqlDataSource>
+
+                        </div>
+                    </section>
+                  </div>
+                </div>
         </div>
-    </section>
-    </div>
-</div>
-</div>
 
         <%-- EN PROCESO: Orden de compra en proceso de elaboración --%>
         <div class="panel panel-default">
@@ -168,111 +78,47 @@
                 </div>
                 <div id="collapseProceso" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingProceso">
                     <div class="panel-body">
-                        
-                        <asp:ListView ID="ListView2" runat="server" DataSourceID="SqlDataSource2" GroupItemCount="3" DataKeyNames="idVenta">
-                            <AlternatingItemTemplate>
-                                <td runat="server" style="background-color:#FAF327;">Establecimiento:
-                                    <asp:Label ID="strEstablecimientoLabel" runat="server" Text='<%# Eval("strEstablecimiento") %>' />
-                                    <br />Num. Venta:
-                                    <asp:Label ID="idVentaLabel" runat="server" Text='<%# Eval("idVenta") %>' />
-                                    <br />Fecha:
-                                    <asp:Label ID="FechaLabel" runat="server" Text='<%# Eval("Fecha") %>' />
-                                    <br />Total:
-                                    <asp:Label ID="dblTotalLabel" runat="server" Text='<%# Eval("dblTotal") %>' />
-                                    <br />Estado:
-                                    <asp:Label ID="strEstadoLabel" runat="server" Text='<%# Eval("strEstado") %>' />
-                                    <br />
-                                    <asp:Button ID="DeleteButton" runat="server" CommandName="Delete" Text="FINALIZADO" CssClass="btn btn-success"/>
-                                    <br />
-                                </td>
-                            </AlternatingItemTemplate>
-                            
-                            <EmptyDataTemplate>
-                                <table runat="server" style="background-color: #FFFFFF;border-collapse: collapse;border-color: #999999;border-style:none;border-width:1px;">
-                                    <tr>
-                                        <td>No se han encontrado ordenes de venta en proceso.</td>
-                                    </tr>
-                                </table>
-                            </EmptyDataTemplate>
-                            <EmptyItemTemplate>
-                                <td runat="server" />
-                            </EmptyItemTemplate>
-                            <GroupTemplate>
-                                <tr id="itemPlaceholderContainer" runat="server">
-                                    <td id="itemPlaceholder" runat="server"></td>
-                                </tr>
-                            </GroupTemplate>
-                            
+                        <section>
+                         <div>
+                       
+                        <asp:DataList ID="DataList2" runat="server" CellPadding="4" DataKeyField="idVenta" DataSourceID="SqlDataSource2" 
+                            CssClass="table table-responsive" RepeatColumns="3" ForeColor="#FAF327" AutoPostBack="true" OnItemCommand="DataList2_ItemCommand">
+                            <AlternatingItemStyle BackColor="#FAF327" />
+                            <FooterStyle BackColor="#FEF97C" Font-Bold="True"  />
+                            <HeaderStyle BackColor="#FEF97C" Font-Bold="True"  />
+                            <ItemStyle BackColor="#FEF97C" />
                             <ItemTemplate>
-                                <td runat="server" style="background-color:#FEF97C; color: #000000;">Establecimiento:
-                                    <asp:Label ID="strEstablecimientoLabel" runat="server" Text='<%# Eval("strEstablecimiento") %>' />
-                                    <br />Num. Venta:
-                                    <asp:Label ID="idVentaLabel" runat="server" Text='<%# Eval("idVenta") %>' />
-                                    <br />Fecha:
-                                    <asp:Label ID="FechaLabel" runat="server" Text='<%# Eval("Fecha") %>' />
-                                    <br />Total:
-                                    <asp:Label ID="dblTotalLabel" runat="server" Text='<%# Eval("dblTotal") %>' />
-                                    <br />Estado:
-                                    <asp:Label ID="strEstadoLabel" runat="server" Text='<%# Eval("strEstado") %>' />
-                                    <br />
-                                    <asp:Button ID="DeleteButton" runat="server" CommandName="Delete" Text="FINALIZADO" CssClass="btn btn-success"/>
-                                    <br />
-                                </td>
+                                <asp:Label ID="lbNum" runat="server" Text="VENTA:" Font-Size="16px" Font-Italic="true" ForeColor="Black"></asp:Label>  
+                                <asp:Label ID="idVentaLabel" runat="server" Text='<%# Eval("idVenta") %>' ForeColor="Black" Font-Size="15px"></asp:Label>  
+                                <br />
+                                <asp:Label ID="Label5" runat="server" Text="CLIENTE:" Font-Size="16px" Font-Italic="true" ForeColor="Black"></asp:Label>  
+                                <asp:Label ID="Column1Label" runat="server" Text='<%# Eval("Column1") %>' ForeColor="Black" Font-Size="15px"/>
+                                <br />
+                                <asp:Label ID="Label6" runat="server" Text="ESTABLECIMIENTO:" Font-Size="16px" Font-Italic="true" ForeColor="Black"></asp:Label>  
+                                <asp:Label ID="strEstablecimientoLabel" runat="server" Text='<%# Eval("strEstablecimiento") %>' ForeColor="Black" Font-Size="15px"></asp:Label>  
+                                <br />
+                                <asp:Label ID="Label7" runat="server" Text="TOTAL:" Font-Size="16px" Font-Italic="true" ForeColor="Black"></asp:Label>   
+                                <asp:Label ID="dblTotalLabel" runat="server" Text='<%# Eval("dblTotal") %>' ForeColor="Black" Font-Size="15px"/>
+                                <br />
+                                <asp:Label ID="Label8" runat="server" Text="FECHA:" Font-Size="16px" Font-Italic="true" ForeColor="Black"></asp:Label>  
+                                <asp:Label ID="Fecha_de_creaciónLabel" runat="server" Text='<%# Eval("[Fecha de creación]") %>' ForeColor="Black" Font-Size="15px"></asp:Label>  
+                                <br />
+                                <br />
+                                <asp:Button ID="Button1" runat="server" CommandName="Seleccionar" Text="Detalle" CssClass="btn btn-primary" />
                             </ItemTemplate>
-                            <LayoutTemplate>
-                                <table runat="server">
-                                    <tr runat="server">
-                                        <td runat="server">
-                                            <table id="groupPlaceholderContainer" runat="server" border="1" style="background-color: #FFFFFF;border-collapse: collapse;border-color: #999999;border-style:none;border-width:1px;font-family: Verdana, Arial, Helvetica, sans-serif;">
-                                                <tr id="groupPlaceholder" runat="server">
-                                                </tr>
-                                            </table>
-                                        </td>
-                                    </tr>
-                                    <tr runat="server">
-                                        <td runat="server" style="text-align: center;background-color: #CCCCCC; font-family: Verdana, Arial, Helvetica, sans-serif;color: #000000;">
-                                            <asp:DataPager ID="DataPager1" runat="server" PageSize="9">
-                                                <Fields>
-                                                    <asp:NextPreviousPagerField ButtonType="Button" ShowFirstPageButton="True" ShowLastPageButton="True" />
-                                                </Fields>
-                                            </asp:DataPager>
-                                        </td>
-                                    </tr>
-                                </table>
-                            </LayoutTemplate>
-                            
-                            <SelectedItemTemplate>
-                                <td runat="server" style="background-color:#FEF97C;font-weight: bold;color: #FFFFFF;">Establecimiento:
-                                    <asp:Label ID="strEstablecimientoLabel" runat="server" Text='<%# Eval("strEstablecimiento") %>' />
-                                    <br />
-                                    Num. Venta:
-                                    <asp:Label ID="idVentaLabel" runat="server" Text='<%# Eval("idVenta") %>' />
-                                    <br />
-                                    Fecha:
-                                    <asp:Label ID="FechaLabel" runat="server" Text='<%# Eval("Fecha") %>' />
-                                    <br />
-                                    Total:
-                                    <asp:Label ID="dblTotalLabel" runat="server" Text='<%# Eval("dblTotal") %>' />
-                                    <br />
-                                    Estado:
-                                    <asp:Label ID="strEstadoLabel" runat="server" Text='<%# Eval("strEstado") %>' />
-                                    <br />
-                                    <asp:Button ID="DeleteButton" runat="server" CommandName="Delete" Text="FINALIZADO" CssClass="btn btn-success"/>
-                                    <br />
-                                </td>
-                            </SelectedItemTemplate>
-                            
-                        </asp:ListView>
-                        <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:XIUGARConnectionString %>" SelectCommand="select c.strEstablecimiento,v.idVenta, v.Fecha, v.dblTotal, v.strEstado
-                            from tblVenta v
-                            inner join tblCliente c
-                            on v.fkCliente = c.idCliente
-                            where v.strEstado = 'EN PROCESO'" DeleteCommand="UPDATE tblVenta SET strEstado = 'FINALIZADO' WHERE (idVenta = @idVenta)">
-                            <DeleteParameters>
-                                <asp:Parameter Name="idVenta" />
-                            </DeleteParameters>
-                        </asp:SqlDataSource>
+                            <SelectedItemStyle BackColor="#FEF97C"  Font-Bold="True" ForeColor="#FEF97C" />
+                        </asp:DataList>
+                        <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:XIUGARConnectionString %>" 
+                            SelectCommand="select v.idVenta, c.strNombre + ' ' + c.strApellidoM + ' '+ c.strApellidoP, c.strEstablecimiento, v.dblTotal,
+                                                v.Fecha as 'Fecha de creación'
+                                                from tblVenta v
+                                                left join tblCliente c
+                                                on c.idCliente = v.fkCliente                                                
+                                                where v.strEstado = 'EN PROCESO'
+                                                order by v.Fecha asc;"></asp:SqlDataSource>
                         
+                        </div>
+                    </section>
                     </div>
                 </div>
             </div>
@@ -289,148 +135,47 @@
                 <div class="panel panel-default">
                     <div class="panel-body">
 
-                        <asp:ListView ID="ListView3" runat="server" DataSourceID="SqlDataSource3" GroupItemCount="3" DataKeyNames="idVenta">
-                            <AlternatingItemTemplate>
-                                <td runat="server" style="background-color:#9AFE7C;">Establecimiento:
-                                    <asp:Label ID="strEstablecimientoLabel" runat="server" Text='<%# Eval("strEstablecimiento") %>' />
-                                    <br />Num. Venta:
-                                    <asp:Label ID="idVentaLabel" runat="server" Text='<%# Eval("idVenta") %>' />
-                                    <br />Fecha:
-                                    <asp:Label ID="FechaLabel" runat="server" Text='<%# Eval("Fecha") %>' />
-                                    <br />Total:
-                                    <asp:Label ID="dblTotalLabel" runat="server" Text='<%# Eval("dblTotal") %>' />
-                                    <br />Estado:
-                                    <asp:Label ID="strEstadoLabel" runat="server" Text='<%# Eval("strEstado") %>' />
-                                    <br />
-                                    <br />¿Desea poner la Orden de venta en proceso?
-                                    <asp:Button ID="DeleteButton" runat="server" CommandName="Delete" Text="CONFIRMAR" CssClass="btn btn-warning" />
-                                    <br />
-                                </td>
-                            </AlternatingItemTemplate>
-                            <EmptyDataTemplate>
-                                <table runat="server" style="background-color: #FFFFFF;border-collapse: collapse;border-color: #999999;border-style:none;border-width:1px;">
-                                    <tr>
-                                        <td>No se han encontrado ordenes de venta en proceso</td>
-                                    </tr>
-                                </table>
-                            </EmptyDataTemplate>
-                            <EmptyItemTemplate>
-                                <td runat="server" />
-                            </EmptyItemTemplate>
-                            <GroupTemplate>
-                                <tr id="itemPlaceholderContainer" runat="server">
-                                    <td id="itemPlaceholder" runat="server"></td>
-                                </tr>
-                            </GroupTemplate>
-                            
+
+                        <asp:DataList ID="DataList3" runat="server" CellPadding="4" DataKeyField="idVenta" DataSourceID="SqlDataSource3" CssClass="table table-responsive"
+                                     RepeatColumns="3" ForeColor="#9AFE7C"  AutoPostBack="true" OnItemCommand="DataList3_ItemCommand">
+                            <AlternatingItemStyle BackColor="#4BE71C" />
+                            <FooterStyle BackColor="#9AFE7C" Font-Bold="True" />
+                            <HeaderStyle BackColor="#9AFE7C" Font-Bold="True" />
+                            <ItemStyle BackColor="#9AFE7C"  />
                             <ItemTemplate>
-                                <td runat="server" style="background-color:#4BE71C; color: #000000;">Establecimiento:
-                                    <asp:Label ID="strEstablecimientoLabel" runat="server" Text='<%# Eval("strEstablecimiento") %>' />
-                                    <br />Num. Venta:
-                                    <asp:Label ID="idVentaLabel" runat="server" Text='<%# Eval("idVenta") %>' />
-                                    <br />Fecha:
-                                    <asp:Label ID="FechaLabel" runat="server" Text='<%# Eval("Fecha") %>' />
-                                    <br />Total:
-                                    <asp:Label ID="dblTotalLabel" runat="server" Text='<%# Eval("dblTotal") %>' />
-                                    <br />Estado:
-                                    <asp:Label ID="strEstadoLabel" runat="server" Text='<%# Eval("strEstado") %>' />
-                                    <br />
-                                    <br />¿Desea poner la Orden de venta en proceso?
-                                    <asp:Button ID="DeleteButton" runat="server" CommandName="Delete" Text="CONFIRMAR" CssClass="btn btn-warning" />
-                                    <br />
-                                </td>
+                                <asp:Label ID="lbNum12" runat="server" Text="VENTA:" Font-Size="16px" Font-Italic="true" ForeColor="Black"></asp:Label>
+                                <asp:Label ID="idVentaLabel" runat="server" Text='<%# Eval("idVenta") %>' ForeColor="Black" Font-Size="15px" />
+                                <br />
+                                <asp:Label ID="Label9" runat="server" Text="CLIENTE:" Font-Size="16px" Font-Italic="true" ForeColor="Black"></asp:Label>
+                                <asp:Label ID="Column1Label" runat="server" Text='<%# Eval("Column1") %>' ForeColor="Black" Font-Size="15px"/>
+                                <br />
+                                <asp:Label ID="Label10" runat="server" Text="ESTABLECIMIENTO:" Font-Size="16px" Font-Italic="true" ForeColor="Black"></asp:Label>
+                                <asp:Label ID="strEstablecimientoLabel" runat="server" Text='<%# Eval("strEstablecimiento") %>' ForeColor="Black" Font-Size="15px"/>
+                                <br />
+                                <asp:Label ID="Label11" runat="server" Text="TOTAL:" Font-Size="16px" Font-Italic="true" ForeColor="Black"></asp:Label>
+                                <asp:Label ID="dblTotalLabel" runat="server" Text='<%# Eval("dblTotal") %>' ForeColor="Black" Font-Size="15px"/>
+                                <br />
+                                <asp:Label ID="Label12" runat="server" Text="FECHA:" Font-Size="16px" Font-Italic="true" ForeColor="Black"></asp:Label>
+                                <asp:Label ID="Fecha_de_creaciónLabel" runat="server" Text='<%# Eval("[Fecha de creación]") %>' ForeColor="Black" Font-Size="15px"/>
+                                <br />
+                                <br />
+                                <asp:Button ID="Button1" runat="server" CommandName="Seleccionar" Text="Detalle" CssClass="btn btn-primary" />
                             </ItemTemplate>
-                            <LayoutTemplate>
-                                <table runat="server">
-                                    <tr runat="server">
-                                        <td runat="server">
-                                            <table id="groupPlaceholderContainer" runat="server" border="1" style="background-color: #FFFFFF;border-collapse: collapse;border-color: #999999;border-style:none;border-width:1px;font-family: Verdana, Arial, Helvetica, sans-serif;">
-                                                <tr id="groupPlaceholder" runat="server">
-                                                </tr>
-                                            </table>
-                                        </td>
-                                    </tr>
-                                    <tr runat="server">
-                                        <td runat="server" style="text-align: center;background-color: #CCCCCC; font-family: Verdana, Arial, Helvetica, sans-serif;color: #000000;">
-                                            <asp:DataPager ID="DataPager1" runat="server" PageSize="12">
-                                                <Fields>
-                                                    <asp:NextPreviousPagerField ButtonType="Button" ShowFirstPageButton="True" ShowLastPageButton="True" />
-                                                </Fields>
-                                            </asp:DataPager>
-                                        </td>
-                                    </tr>
-                                </table>
-                            </LayoutTemplate>
-                            
-                            <SelectedItemTemplate>
-                                <td runat="server" style="background-color:#4BE71C; font-weight: bold;color: #FFFFFF;">Establecimiento:
-                                    <asp:Label ID="strEstablecimientoLabel" runat="server" Text='<%# Eval("strEstablecimiento") %>' />
-                                    <br />
-                                    Num. Venta:
-                                    <asp:Label ID="idVentaLabel" runat="server" Text='<%# Eval("idVenta") %>' />
-                                    <br />
-                                    Fecha:
-                                    <asp:Label ID="FechaLabel" runat="server" Text='<%# Eval("Fecha") %>' />
-                                    <br />
-                                    Total:
-                                    <asp:Label ID="dblTotalLabel" runat="server" Text='<%# Eval("dblTotal") %>' />
-                                    <br />
-                                    Estado:
-                                    <asp:Label ID="strEstadoLabel" runat="server" Text='<%# Eval("strEstado") %>' />
-                                    <br />
-                                    <br />¿Desea poner la Orden de venta en proceso?
-                                    <asp:Button ID="DeleteButton" runat="server" CommandName="Delete" Text="CONFIRMAR" CssClass="btn btn-warning" />
-                                    <br />
-                                </td>
-                            </SelectedItemTemplate>
-                            
-                        </asp:ListView>
-                        <asp:SqlDataSource ID="SqlDataSource3" runat="server" ConnectionString="<%$ ConnectionStrings:XIUGARConnectionString %>" SelectCommand="select c.strEstablecimiento,v.idVenta, v.Fecha, v.dblTotal, v.strEstado
-                            from tblVenta v
-                            inner join tblCliente c
-                            on v.fkCliente = c.idCliente
-                            where v.strEstado = 'FINALIZADO'" DeleteCommand="UPDATE tblVenta SET strEstado = 'EN PROCESO' WHERE (idVenta = @idVenta)">
-                            <DeleteParameters>
-                                <asp:Parameter Name="idVenta" />
-                            </DeleteParameters>
-                        </asp:SqlDataSource>
+                            <SelectedItemStyle BackColor="#9AFE7C" Font-Bold="True" ForeColor="#9AFE7C" />
+                        </asp:DataList>
+                        <asp:SqlDataSource ID="SqlDataSource3" runat="server" ConnectionString="<%$ ConnectionStrings:XIUGARConnectionString %>" SelectCommand="select v.idVenta, c.strNombre + ' ' + c.strApellidoM + ' '+ c.strApellidoP, c.strEstablecimiento, v.dblTotal,
+                                                v.Fecha as 'Fecha de creación'
+                                                from tblVenta v
+                                                left join tblCliente c
+                                                on c.idCliente = v.fkCliente                                                
+                                                where v.strEstado = 'FINALIZADO'
+                                                order by v.Fecha asc;"></asp:SqlDataSource>
+
 
                     </div>
                 </div>
             </div>  
         </div>    
 
-         
-
-
-<!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
- <div class="left">
-  <div class="modal-dialog modal-xl">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Detalle de la compra</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-          <asp:GridView ID="GridDetalle" runat="server"></asp:GridView>
-          <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource4">
-                                 <Columns>
-                                     <asp:BoundField DataField="Fecha" HeaderText="Fecha" SortExpression="Fecha" />
-                                     <asp:BoundField DataField="intCantidad" HeaderText="intCantidad" SortExpression="intCantidad" />
-                                     <asp:BoundField DataField="dblPrecio" HeaderText="dblPrecio" SortExpression="dblPrecio" />
-                                     <asp:BoundField DataField="strNombre" HeaderText="strNombre" SortExpression="strNombre" />
-                                 </Columns>
-                             </asp:GridView>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-      </div>
-    </div>
-  </div>
-        </div>
-</div>
-
+        
 </asp:Content>

@@ -85,7 +85,19 @@ namespace ProjectPaslum.Controllers
             return contexto.tblProducto.ToList<tblProducto>();
         }
 
-        public void Editar(tblVenta ven)
+        public void EditarProceso(tblVenta ven)
+        {
+            tblVenta venBd = contexto.tblVenta
+                .Where(t => t.idVenta == ven.idVenta).FirstOrDefault();
+            if (venBd != null)
+            {
+                venBd.strEstado = "EN PROCESO";
+                contexto.SubmitChanges();
+            }
+            
+        }
+
+        public void EditarFinalizado(tblVenta ven)
         {
             tblVenta venBd = contexto.tblVenta
                 .Where(t => t.idVenta == ven.idVenta).FirstOrDefault();
@@ -94,7 +106,19 @@ namespace ProjectPaslum.Controllers
                 venBd.strEstado = "FINALIZADO";
                 contexto.SubmitChanges();
             }
-            
+
+        }
+
+        public void EditarPendiente(tblVenta ven)
+        {
+            tblVenta venBd = contexto.tblVenta
+                .Where(t => t.idVenta == ven.idVenta).FirstOrDefault();
+            if (venBd != null)
+            {
+                venBd.strEstado = "PENDIENTE";
+                contexto.SubmitChanges();
+            }
+
         }
     }
 }

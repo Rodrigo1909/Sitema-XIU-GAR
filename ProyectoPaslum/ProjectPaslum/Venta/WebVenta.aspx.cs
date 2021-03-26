@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using Modelo;
 using System.Data;
+using ProjectPaslum.Controllers;
 
 namespace ProjectPaslum.Venta
 {
@@ -14,33 +15,49 @@ namespace ProjectPaslum.Venta
         PaslumBaseDatoDataContext contexto = new PaslumBaseDatoDataContext();
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!this.IsPostBack)
-            {
-                
-            }
 
         }
-
-        private void loadDrop(int idVenta)
+        
+        protected void DataList1_ItemCommand(object source, DataListCommandEventArgs e)
         {
-            try
+            string cod;
+            if (e.CommandName == "Seleccionar")
             {
-                GridDetalle.DataSource = contexto.tblDetalleVenta
-                    .Where(c => c.fkVenta == idVenta)
-                    .Select(n => new
-                    {
-                        Fecha = n.Fecha,
-                        Cantidad = n.intCantidad,
-                        Precio = n.dblPrecio
+                DataList1.SelectedIndex = e.Item.ItemIndex;
 
-                    })
-                    .ToList();
-                GridDetalle.DataBind();
+                cod = ((Label)this.DataList1.SelectedItem.FindControl("idVentaLabel")).Text;
+                Session["desgloce"] = cod;
+
+                Response.Redirect("/Venta/DesgloceRequisicionVenta.aspx");
             }
-            catch (Exception)
-            {
+            
+        }
 
-                throw;
+        protected void DataList2_ItemCommand(object source, DataListCommandEventArgs e)
+        {
+            string cod;
+            if (e.CommandName == "Seleccionar")
+            {
+                DataList2.SelectedIndex = e.Item.ItemIndex;
+
+                cod = ((Label)this.DataList2.SelectedItem.FindControl("idVentaLabel")).Text;
+                Session["desgloce"] = cod;
+
+                Response.Redirect("/Venta/DesgloceRequisicionVenta.aspx");
+            }
+        }
+
+        protected void DataList3_ItemCommand(object source, DataListCommandEventArgs e)
+        {
+            string cod;
+            if (e.CommandName == "Seleccionar")
+            {
+                DataList3.SelectedIndex = e.Item.ItemIndex;
+
+                cod = ((Label)this.DataList3.SelectedItem.FindControl("idVentaLabel")).Text;
+                Session["desgloce"] = cod;
+
+                Response.Redirect("/Venta/DesgloceRequisicionVenta.aspx");
             }
         }
     }
