@@ -97,7 +97,7 @@ namespace ProjectPaslum.Venta
             CultureInfo culture = new CultureInfo("en-US");
             this.Calcular();
 
-            if (double.Parse(lblTotal.Text) == vacio)
+            if (double.Parse(lblTotal2.Text) == vacio)
             {
                 this.ClientScript.RegisterStartupScript(this.GetType(), "SweetAlert", "fallo()", true);
             }
@@ -109,7 +109,8 @@ namespace ProjectPaslum.Venta
                 this.ClientScript.RegisterStartupScript(this.GetType(), "SweetAlert", "vacio()", true);
             }
 
-            else if(double.Parse(lblTotal.Text) >= double.Parse(txtDinero.Text)){
+            else if (double.Parse(txtDinero.Text, culture)  >= double.Parse(lblTotal2.Text, culture))
+            {
                 this.ClientScript.RegisterStartupScript(this.GetType(), "SweetAlert", "fallo()", true);
             }
             
@@ -158,7 +159,7 @@ namespace ProjectPaslum.Venta
                     tblDetalleVenta detalle = new tblDetalleVenta();
                     detalle.Fecha = fechact;
                     detalle.intCantidad = int.Parse(((TextBox)row.Cells[4].FindControl("TextBox1")).Text);
-                    detalle.dblPrecio = decimal.Parse(Convert.ToString(row.Cells[3].Text));
+                    detalle.dblPrecio = decimal.Parse(Convert.ToString(row.Cells[7].Text));
                     detalle.fkProducto = int.Parse(row.Cells[1].Text);
                     detalle.fkVenta = ven.idVenta;
                     detalle.fkEmpleado = int.Parse(Session["id"].ToString()); 
@@ -264,12 +265,13 @@ namespace ProjectPaslum.Venta
                     cell.Colspan = dt.Columns.Count;
 
                     table.AddCell("CODIGO");
-                    table.AddCell("PRODUCTO");
+                    table.AddCell("PROD.");
                     table.AddCell("PRECIO");
                     table.AddCell("TOTAL");
                     table.AddCell("CANTIDAD");
-                    table.AddCell("PRESENTACIÓN");
+                    table.AddCell("PRES.");
                     table.AddCell("U.MEDIDA");
+                    
 
                     foreach (DataColumn c in dt.Columns)
                     {
@@ -315,11 +317,19 @@ namespace ProjectPaslum.Venta
                         {
                             for (int h = 0; h < dt.Columns.Count; h++)
                             {
-                                table.AddCell(new Phrase(r[h].ToString(), font8));                                
+                                table.AddCell(new Phrase(r[h].ToString(), font8));                                                           
+                                //table.AddCell(new Phrase(r[4].ToString(), font8));
+                                //table.AddCell(new Phrase(r[1].ToString(), font8));
+                                //table.AddCell(new Phrase(r[2].ToString(), font8));
+                                //table.AddCell(new Phrase(r[6].ToString(), font8));
+                                
+
                             }
                         }
                     }
-                    document.Add(table);
+                    
+
+                    document.Add(table);                    
                     document.Add(new Chunk("\n"));
 
                     Paragraph total = new Paragraph(16, "Total: $" + decimal.Parse(lblTotal2.Text), font9);

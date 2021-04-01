@@ -13,10 +13,7 @@ namespace ProjectPaslum.Almacen
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (IsPostBack)
-            {
-                Response.Redirect("/Almacen/RequisicionAlmacen.aspx");
-            }
+            
         }
 
         protected void DataList1_ItemCommand(object source, DataListCommandEventArgs e)
@@ -56,12 +53,8 @@ namespace ProjectPaslum.Almacen
                     
                     this.Page.ClientScript.RegisterStartupScript(this.GetType(), "alert", "alert('Se cancelo la continuidad de la requisición')", true);
                 }
-
-                
-
-
             }
-
+            Response.Redirect("/Almacen/RequisicionAlmacen.aspx");
         }
 
         protected void DataList2_ItemCommand(object source, DataListCommandEventArgs e)
@@ -139,6 +132,8 @@ namespace ProjectPaslum.Almacen
 
             }
 
+            Response.Redirect("/Almacen/RequisicionAlmacen.aspx");
+
         }
 
         protected void DataList3_ItemCommand(object source, DataListCommandEventArgs e)
@@ -179,11 +174,9 @@ namespace ProjectPaslum.Almacen
 
                     this.Page.ClientScript.RegisterStartupScript(this.GetType(), "alert", "alert('Se cancelo la finalización de la requisición')", true);
                 }
-
-                
-
-
+               
             }
+            Response.Redirect("/Almacen/RequisicionAlmacen.aspx");
         }
     }
 }

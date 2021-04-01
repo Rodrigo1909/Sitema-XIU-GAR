@@ -10,7 +10,7 @@
   </style>
 
     <div style="text-align:center">
-        <h2>Movimientos de mercancia</h2>
+        <h2>Resumen de almacén</h2>
     </div>
  
        <%-- Consulta de movimientos --%>

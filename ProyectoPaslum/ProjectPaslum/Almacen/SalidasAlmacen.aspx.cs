@@ -65,8 +65,16 @@ namespace ProjectPaslum.Almacen
                                      where existe.fkProducto == Int32.Parse(producto)
                                      select existe);
 
+            var existente = (from existe in contexto.tblStock
+                            where existe.fkProducto == Int32.Parse(producto)
+                            select existe).FirstOrDefault();
 
-            
+
+            if (existente == null)
+            {
+                this.ClientScript.RegisterStartupScript(this.GetType(), "SweetAlert", "fallo()", true);
+            }
+            else { 
             foreach (tblStock ord in cantidadExistente)
             {
                 var resta = ord.dblCantidad - Int32.Parse(txtCantidad.Text);
@@ -95,8 +103,8 @@ namespace ProjectPaslum.Almacen
 
                     
             }
-        
-    }
+            }
+        }
 
         protected void ddlAlmacen_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -108,8 +116,12 @@ namespace ProjectPaslum.Almacen
                             on prod.fkAlmacen
                             equals alm.idAlmacen
 
-                            where prod.fkAlmacen == Convert.ToInt32(ddlAlmacen.SelectedValue)
-                            select new { nombre = prod.strNombre, id = prod.idProducto }).ToList();
+                            join uni in contexto.tblUnidadMedida
+                            on prod.fkUnidadMedida
+                            equals uni.idUnidadMedida
+
+                            where prod.fkAlmacen == Convert.ToInt32(ddlAlmacen.SelectedValue) 
+                            select new { nombre = prod.strNombre + ", " + prod.intPresentacion + " " + uni.strAbreviatura,  id = prod.idProducto }).ToList();
 
 
 

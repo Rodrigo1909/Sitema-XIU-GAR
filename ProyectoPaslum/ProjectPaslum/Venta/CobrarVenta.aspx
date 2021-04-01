@@ -112,13 +112,13 @@
                                 <asp:TextBox ID="TextBox1" runat="server" Height="19px" Width="73px">1</asp:TextBox>
                             </ItemTemplate>
                         </asp:TemplateField>  
-                        <asp:BoundField DataField="subtotal" HeaderText="TOTAL CON PRECIO SUGERIDO" />
+                        <asp:BoundField DataField="subtotal" HeaderText="IMPORTE TOTAL" />
                         <asp:TemplateField HeaderText="COSTO">
                             <ItemTemplate>
                                 <asp:TextBox ID="TextBox2" runat="server" Height="19px" Width="73px">0.0</asp:TextBox>
                             </ItemTemplate>
                         </asp:TemplateField>
-                        <asp:TemplateField HeaderText="PRECIO DE VENTA">
+                        <asp:TemplateField HeaderText="PRECIO U.">
                             <ItemTemplate>
                                 <asp:TextBox ID="TextBox3" runat="server" Height="19px" Width="73px" Enabled="false" ></asp:TextBox>
                             </ItemTemplate>

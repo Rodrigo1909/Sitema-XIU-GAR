@@ -117,8 +117,12 @@ namespace ProjectPaslum.Almacen
                              on prod.fkAlmacen
                              equals alm.idAlmacen
 
-                             where prod.fkAlmacen == Convert.ToInt32(ddlAlmacen.SelectedValue)                             
-                            select new { nombre = prod.strNombre, id = prod.idProducto }).ToList();
+                            join uni in contexto.tblUnidadMedida
+                            on prod.fkUnidadMedida
+                            equals uni.idUnidadMedida
+
+                            where prod.fkAlmacen == Convert.ToInt32(ddlAlmacen.SelectedValue)                             
+                            select new { nombre = prod.strNombre + ", " + prod.intPresentacion + " " + uni.strAbreviatura, id = prod.idProducto }).ToList();
 
 
 

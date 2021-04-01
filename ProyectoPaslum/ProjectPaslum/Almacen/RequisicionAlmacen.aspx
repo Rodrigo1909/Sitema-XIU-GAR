@@ -29,7 +29,7 @@
                         <section>
                          <div>
                            <asp:DataList ID="DataList1" runat="server" CellPadding="4" DataKeyField="idVenta" DataSourceID="SqlDataSource1" CssClass="table table-responsive"
-                                     RepeatColumns="3" ForeColor="#FB2D59" OnItemCommand="DataList1_ItemCommand"  AutoPostBack="true" >
+                                     RepeatColumns="3" ForeColor="#FB2D59" OnItemCommand="DataList1_ItemCommand" >
                                     
                          
                                     <AlternatingItemStyle BackColor="#FB5679" />
@@ -38,7 +38,7 @@
                                     <ItemStyle BackColor="#FB2D59" />
                                     
                                     <ItemTemplate>
-                                        <asp:Label ID="lbNum" runat="server" Text="VENTA:" Font-Size="16px" Font-Italic="true" ForeColor="#000000"></asp:Label>                                        
+                                        <asp:Label ID="lbNum" runat="server" Text="VENTA:" Font-Size="16px" Font-Italic="true" ForeColor="#000000" ></asp:Label>                                        
                                         <asp:Label ID="idVentaLabel" runat="server" Text='<%# Eval("idVenta") %>' ForeColor="#000000" Font-Size="15px"/>
                                         <br />
                                         <asp:Label ID="lbCliente" runat="server" Text="CLIENTE:" Font-Size="16px" Font-Italic="true" ForeColor="#000000"></asp:Label>   
@@ -52,7 +52,7 @@
                                         <br />
                                         <br />
                                         <asp:Button ID="Button1" runat="server" CommandName="Seleccionar" Text="Detalle" CssClass="btn btn-primary" />
-                                        <asp:Button ID="Button2" runat="server" CommandName="Finalizar" Text="Proceso" CssClass="btn btn-success" OnClientClick="Confirm()" />                                        
+                                        <asp:Button ID="Button2" runat="server" CommandName="Finalizar" Text="Proceso" CssClass="btn btn-success" OnClientClick="Confirm()"  />                                        
                                         <br />
 
                                     </ItemTemplate>
@@ -108,7 +108,7 @@
                                 <br />
                                 <asp:Button ID="Button1" runat="server" CommandName="Seleccionar" Text="Detalle" CssClass="btn btn-primary" />
                                 <asp:Button ID="Button2" runat="server" CommandName="Finalizar" Text="Finalizar" CssClass="btn btn-success" OnClientClick="Finish()" /> 
-                                <asp:Button ID="Button3" runat="server" CommandName="Pendiente" Text="Pendiente" CssClass="btn badge-secondary" OnClientClick="Return()" /> 
+                                <asp:Button ID="Button3" runat="server" CommandName="Pendiente" Text="Pendiente" CssClass="btn badge-secondary" OnClientClick="Return()"/> 
                             </ItemTemplate>
                             <SelectedItemStyle BackColor="#FEF97C"  Font-Bold="True" ForeColor="#FEF97C" />
                         </asp:DataList>
@@ -165,7 +165,8 @@
                             </ItemTemplate>
                             <SelectedItemStyle BackColor="#9AFE7C" Font-Bold="True" ForeColor="#9AFE7C" />
                         </asp:DataList>
-                        <asp:SqlDataSource ID="SqlDataSource3" runat="server" ConnectionString="<%$ ConnectionStrings:XIUGARConnectionString %>" SelectCommand="select v.idVenta, c.strNombre + ' ' + c.strApellidoM + ' '+ c.strApellidoP, c.strEstablecimiento, 
+                        <asp:SqlDataSource ID="SqlDataSource3" runat="server" ConnectionString="<%$ ConnectionStrings:XIUGARConnectionString %>" 
+                            SelectCommand="select v.idVenta, c.strNombre + ' ' + c.strApellidoM + ' '+ c.strApellidoP, c.strEstablecimiento, 
                                                 v.Fecha as 'Fecha de creación'
                                                 from tblVenta v
                                                 left join tblCliente c

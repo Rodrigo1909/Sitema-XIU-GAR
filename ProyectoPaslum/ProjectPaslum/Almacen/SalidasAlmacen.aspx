@@ -125,6 +125,14 @@
                 icon: "success",
             });
         }
+
+        function fallo() {
+            swal({
+                title: "ERROR",
+                text: "No existe cantidad disponible para dar salida",
+                icon: "error",
+            });
+        }
     
     </script>
 

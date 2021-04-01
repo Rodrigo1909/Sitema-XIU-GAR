@@ -38,8 +38,6 @@
                         </div>
                       </div>
                     </div>
-     
-        
             
         <div class="panel panel-default">
             <div style="text-align:center">
@@ -63,8 +61,15 @@
                 </div>
         </div>
 
-        
+        <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
             
+        </div>
+        <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                <asp:Button ID="btnRegresa" runat="server" Text="Regresar" Font-Size="16px" CssClass="btn btn-block btn-sm alert-danger" Width="150px" OnClick="btnRegresa_Click" />
+        </div>
+        <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                <asp:Button ID="btnReimprimir" runat="server" Text="Reimprimir Venta" Font-Size="16px" CssClass="btn btn-block btn-sm btn-success" Width="150px" OnClick="btnReimprimir_Click" />
+        </div>    
     </div>
 
        

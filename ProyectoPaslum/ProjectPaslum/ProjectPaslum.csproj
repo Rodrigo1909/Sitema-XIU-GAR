@@ -218,8 +218,6 @@
     <Content Include="Administrador\js\scripts.js" />
     <Content Include="Administrador\ProveedorAdmin.aspx" />
     <Content Include="Administrador\UniMedidaAdmin.aspx" />
-    <Content Include="Almacen\AlertaError.aspx" />
-    <Content Include="Almacen\AlertaExito.aspx" />
     <Content Include="Almacen\DesgloceRequisicionAlmacen.aspx" />
     <Content Include="Almacen\EntradaAlmacen.aspx" />
     <Content Include="Almacen\MovimientoAlmacen.aspx" />
@@ -422,6 +420,7 @@
     <Content Include="Venta\css\modales.css" />
     <Content Include="Venta\css\style.css" />
     <Content Include="Venta\DesgloceHistorialAbono.aspx" />
+    <Content Include="Venta\DesgloceRequisicionVenta.aspx" />
     <Content Include="Venta\DetalleVenta.aspx" />
     <Content Include="Venta\estilos.css" />
     <Content Include="Venta\HistorialAbono.aspx" />
@@ -586,20 +585,6 @@
     </Compile>
     <Compile Include="Administrador\UniMedidaAdmin.aspx.designer.cs">
       <DependentUpon>UniMedidaAdmin.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Almacen\AlertaError.aspx.cs">
-      <DependentUpon>AlertaError.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Almacen\AlertaError.aspx.designer.cs">
-      <DependentUpon>AlertaError.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Almacen\AlertaExito.aspx.cs">
-      <DependentUpon>AlertaExito.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Almacen\AlertaExito.aspx.designer.cs">
-      <DependentUpon>AlertaExito.aspx</DependentUpon>
     </Compile>
     <Compile Include="Almacen\Almacen.Master.cs">
       <DependentUpon>Almacen.Master</DependentUpon>
@@ -904,6 +889,13 @@
     </Compile>
     <Compile Include="Venta\DesgloceHistorialAbono.aspx.designer.cs">
       <DependentUpon>DesgloceHistorialAbono.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Venta\DesgloceRequisicionVenta.aspx.cs">
+      <DependentUpon>DesgloceRequisicionVenta.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Venta\DesgloceRequisicionVenta.aspx.designer.cs">
+      <DependentUpon>DesgloceRequisicionVenta.aspx</DependentUpon>
     </Compile>
     <Compile Include="Venta\DetalleVenta.aspx.cs">
       <DependentUpon>DetalleVenta.aspx</DependentUpon>
