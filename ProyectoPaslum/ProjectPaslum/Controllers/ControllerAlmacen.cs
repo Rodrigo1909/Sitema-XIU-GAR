@@ -77,7 +77,12 @@ namespace ProjectPaslum.Controllers
 
         public List<tblAlmacen> ConsultaAlmacen()
         {
-            return contexto.tblAlmacen.ToList<tblAlmacen>();
+            var activo = 1;
+
+            var almacen = (from alm in contexto.tblAlmacen
+                           where alm.idActivo == activo
+                           select alm).ToList();
+            return almacen;
         }
 
         public List<tblProducto> ConsultaProducto()

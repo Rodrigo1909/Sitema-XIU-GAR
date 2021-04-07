@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using Modelo;
 using ProjectPaslum.Controllers;
+using System.Globalization;
 
 namespace ProjectPaslum.Almacen
 {
@@ -32,8 +33,7 @@ namespace ProjectPaslum.Almacen
         {
             txtCantidad.Text = "";
             txtFactura.Text = "";
-            txtOrdenCompra.Text = "";
-            ddlAlmacen.Items.Clear();
+            txtOrdenCompra.Text = "";            
             ddlExistente.Items.Clear();
             ddlProducto.Items.Clear();
             ddlMovimiento.Items.Clear();          
@@ -59,7 +59,8 @@ namespace ProjectPaslum.Almacen
             var producto = ddlProducto.SelectedItem.Value;
             var movimiento = ddlMovimiento.SelectedItem.Value;
             DateTime fechact = DateTime.Now;
-            ControllerAlmacen ctrlAlm = new ControllerAlmacen();            
+            ControllerAlmacen ctrlAlm = new ControllerAlmacen();
+            CultureInfo culture = new CultureInfo("en-US");
 
             var cantidadExistente = (from existe in contexto.tblStock
                                      where existe.fkProducto == Int32.Parse(producto)
@@ -77,7 +78,7 @@ namespace ProjectPaslum.Almacen
             else { 
             foreach (tblStock ord in cantidadExistente)
             {
-                var resta = ord.dblCantidad - Int32.Parse(txtCantidad.Text);
+                var resta = ord.dblCantidad - decimal.Parse(txtCantidad.Text,culture);
 
                 if(resta >= 0)
                 {
@@ -89,6 +90,8 @@ namespace ProjectPaslum.Almacen
                     mov.dblValNvo = resta;
                     mov.fkStock = ord.idStock;
                     mov.fkEmpleado = Int32.Parse(lbEmpleado.Text);
+                    mov.strNumVen = txtOrdenCompra.Text;
+                    mov.strFactura = txtFactura.Text;
 
                     ctrlAlm.InsertarMovimientoAlmacen(mov);
                     ord.dblCantidad = resta;
@@ -109,7 +112,7 @@ namespace ProjectPaslum.Almacen
         protected void ddlAlmacen_SelectedIndexChanged(object sender, EventArgs e)
         {
             ddlProducto.Items.Clear();
-
+            var activo = 1;
             var producto = (from prod in contexto.tblProducto
 
                             join alm in contexto.tblAlmacen
@@ -120,7 +123,7 @@ namespace ProjectPaslum.Almacen
                             on prod.fkUnidadMedida
                             equals uni.idUnidadMedida
 
-                            where prod.fkAlmacen == Convert.ToInt32(ddlAlmacen.SelectedValue) 
+                            where prod.fkAlmacen == Convert.ToInt32(ddlAlmacen.SelectedValue) && prod.idActivo == activo
                             select new { nombre = prod.strNombre + ", " + prod.intPresentacion + " " + uni.strAbreviatura,  id = prod.idProducto }).ToList();
 
 
@@ -137,6 +140,7 @@ namespace ProjectPaslum.Almacen
         protected void ddlProducto_SelectedIndexChanged(object sender, EventArgs e)
         {
             ddlExistente.Items.Clear();
+            
             var exitente = (from exi in contexto.tblStock
 
                             join prod in contexto.tblProducto

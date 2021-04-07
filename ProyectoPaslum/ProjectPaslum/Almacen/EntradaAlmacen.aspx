@@ -66,8 +66,7 @@
                                     </div>
                                 <br /><br />
                                     <div class="form-group">
-                                         <label>Cantidad a ingresar </label><asp:TextBox ID="txtCantidad" runat="server" width="500px" required="required" type="text" 
-                                                pattern="^[0-9]*" title="Ingrese solo numeros"></asp:TextBox>
+                                         <label>Cantidad a ingresar </label><asp:TextBox ID="txtCantidad" runat="server" width="500px" required="required" ></asp:TextBox>
                                     </div>
                                      &nbsp &nbsp &nbsp &nbsp 
                                      
@@ -76,7 +75,7 @@
                                           <label>Movimiento </label>
                                         <asp:DropDownList ID="ddlMovimiento" runat="server" AppendDataBoundItems="True"  width="500" CssClass=" form-control">
                                                 <asp:ListItem Selected="True" Value="SELECCIONA"> Seleccionar </asp:ListItem>
-                                                <asp:ListItem Value="PRODUCCION"> Producción </asp:ListItem>
+                                                <asp:ListItem Value="PRODUCCIÓN"> Producción </asp:ListItem>
                                             <asp:ListItem Value="ENTRADA"> Entrada</asp:ListItem>
                                                 <asp:ListItem Value="ENTRADA POR PRODUCCIÓN"> Entrada por producción</asp:ListItem>
                                                 <asp:ListItem Value="ENTRADA POR DEVOLUCIÓN"> Entrada por devolución </asp:ListItem>

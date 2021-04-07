@@ -8,6 +8,7 @@ using Modelo;
 using ProjectPaslum.Controllers;
 using System.Data.SqlClient;
 using System.Data;
+using System.Globalization;
 
 namespace ProjectPaslum.Almacen
 {
@@ -22,7 +23,7 @@ namespace ProjectPaslum.Almacen
                 {
                     txtAlmacenista.Text = (Session["nombre"].ToString());
                     lbEmpleado.Text = (Session["id"].ToString());
-                    this.LlenarAlmacen();                    
+                    this.LlenarAlmacen();
                 }
             }
         }
@@ -42,10 +43,8 @@ namespace ProjectPaslum.Almacen
         private void LimpiarCampos()
         {
             txtCantidad.Text = "";
-            ddlProducto.Items.Clear();
-            ddlStock.Items.Clear();
-            ddlAlmacen.Items.Clear();
-            ddlMovimiento.Items.Clear();
+            ddlStock.Items.Clear();            
+            
 
         }
 
@@ -56,7 +55,7 @@ namespace ProjectPaslum.Almacen
             var movimiento = ddlMovimiento.SelectedItem.Value;
             DateTime fechact = DateTime.Now;
             ControllerAlmacen ctrlAlm = new ControllerAlmacen();
-               
+            CultureInfo culture = new CultureInfo("en-US");
 
             var cantidadExistente = (from existe in contexto.tblStock
                                      where existe.fkProducto == Int32.Parse(producto)
@@ -66,7 +65,7 @@ namespace ProjectPaslum.Almacen
                 foreach (tblStock ord in cantidadExistente)
                 {
                     actualizar += 1;
-                    var suma = Int32.Parse(txtCantidad.Text) + ord.dblCantidad;      
+                    var suma = decimal.Parse(txtCantidad.Text,culture) + ord.dblCantidad;      
 
                     tblMovimiento mov = new tblMovimiento();
                     mov.strTipo = movimiento;
@@ -86,7 +85,7 @@ namespace ProjectPaslum.Almacen
                 if(actualizar == 1)
                 {
                     tblStock stock = new tblStock();
-                    stock.dblCantidad = Int32.Parse(txtCantidad.Text);
+                    stock.dblCantidad = decimal.Parse(txtCantidad.Text, culture);
                     stock.fkProducto = Int32.Parse(producto);
                     ctrlAlm.InsertarEntradaAlmacen(stock);
 
@@ -110,18 +109,19 @@ namespace ProjectPaslum.Almacen
         {
 
             ddlProducto.Items.Clear();
+            ddlStock.Items.Clear();
+            var activo = 1;
+
 
             var producto = (from prod in contexto.tblProducto
 
                              join alm in contexto.tblAlmacen
-                             on prod.fkAlmacen
-                             equals alm.idAlmacen
+                             on prod.fkAlmacen equals alm.idAlmacen
 
                             join uni in contexto.tblUnidadMedida
-                            on prod.fkUnidadMedida
-                            equals uni.idUnidadMedida
+                            on prod.fkUnidadMedida equals uni.idUnidadMedida
 
-                            where prod.fkAlmacen == Convert.ToInt32(ddlAlmacen.SelectedValue)                             
+                            where prod.fkAlmacen == Convert.ToInt32(ddlAlmacen.SelectedValue) && prod.idActivo == activo
                             select new { nombre = prod.strNombre + ", " + prod.intPresentacion + " " + uni.strAbreviatura, id = prod.idProducto }).ToList();
 
 
@@ -138,21 +138,28 @@ namespace ProjectPaslum.Almacen
         protected void ddlProducto_SelectedIndexChanged(object sender, EventArgs e)
         {
             ddlStock.Items.Clear();
-            try
-            {
+
                 var producto = ddlProducto.SelectedItem.Value;
                 var cantidadExistente = (from existe in contexto.tblStock
                                          where existe.fkProducto == Int32.Parse(producto)
-                                         select existe.dblCantidad);
+                                         select existe.dblCantidad).FirstOrDefault();
 
+                var cantidadExistente2 = (from existe in contexto.tblStock
+                                     where existe.fkProducto == Int32.Parse(producto)
+                                     select existe.dblCantidad).ToList();
+
+            if (cantidadExistente == null)
+                {
+                    ddlStock.Items.Add("0");
+                }
+                else
+                {
+                    
+                    ddlStock.DataSource = cantidadExistente2;
+                    ddlStock.DataBind();
+               
+                }             
         
-                ddlStock.DataSource = cantidadExistente;
-                ddlStock.DataBind();
-            }
-            catch
-            {
-                ddlStock.Text = "0";
-            }
         }
     }
 }

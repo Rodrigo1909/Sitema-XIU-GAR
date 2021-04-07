@@ -66,8 +66,7 @@
                                     </div>
                                         
                                     <div class="form-group">
-                                         <label>Cantidad </label><asp:TextBox ID="txtCantidad" runat="server" width="500px" required="required" type="text" 
-                                                pattern="^[0-9]*" title="Ingrese solo numeros"></asp:TextBox>
+                                         <label>Cantidad </label><asp:TextBox ID="txtCantidad" runat="server" width="500px" required="required"  ></asp:TextBox>
                                     </div>
                                      &nbsp &nbsp &nbsp &nbsp 
                                                          
