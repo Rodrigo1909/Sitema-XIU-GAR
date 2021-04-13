@@ -31,6 +31,12 @@
                                         <asp:TextBox ID="txtFechaFin" runat="server" width="500px" Enabled="false" style="text-align:center"></asp:TextBox>
                                         
                                     </div>
+
+                                    <div class="form-group">
+                                        <label>Hora de entrega </label>
+                                        <asp:TextBox ID="txtHoraEntrega" runat="server" width="500px" Enabled="false" style="text-align:center"></asp:TextBox>
+                                        
+                                    </div>
                                </div>
                             </div> 
                             </div>

@@ -2,8 +2,10 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <link href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
-    <link href="../Content/bootstrap.min.css" rel="stylesheet" />
-    <link href="../Venta/css/modales.css" rel="stylesheet" />
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
      <link href="../../Content/sweetalert/sweet-alert.css" rel="stylesheet" />
     <script src="../../js/swalert.js"></script>
@@ -14,6 +16,64 @@
     
        <div style="text-align:center">
             <h2>Requerimiento de producto</h2>
+           <asp:Label ID="lbEmpleado" runat="server" Text="Label" Visible="false"></asp:Label>
+        </div>
+
+       <%-- ONLINE: Orden de compra que se pidieron de forma web --%>
+        <div class="panel panel-default">
+                <div class="panel-heading" role="tab" id="headingOnline">
+                    <h4 class="panel-title">
+                        <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOnline" aria-expanded="true" aria-controls="collapseOnline">REQUISICIONES EN LINEA
+                        </a>
+                    </h4>
+                </div>
+                <div id="collapseOnline" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOnline">
+                    <div class="panel-body">
+                        <section>
+                         <div>
+                           <asp:DataList ID="DataList4" runat="server" CellPadding="4" DataKeyField="idVenta" DataSourceID="SqlDataSource4" CssClass="table table-responsive"
+                                     RepeatColumns="3" ForeColor="#FB2D59" OnItemCommand="DataList4_ItemCommand" >
+                                    
+                         
+                                    <AlternatingItemStyle BackColor="#FB5679" />
+                                    <FooterStyle BackColor="#FB2D59" Font-Bold="True" />
+                                    <HeaderStyle BackColor="#FB2D59" Font-Bold="True" />
+                                    <ItemStyle BackColor="#FB2D59" />
+                                    
+                                     <ItemTemplate>
+                                        <asp:Label ID="lbNum" runat="server" Text="VENTA:" Font-Size="16px" Font-Italic="true" ForeColor="#000000" ></asp:Label>                                        
+                                        <asp:Label ID="idVentaLabel" runat="server" Text='<%# Eval("idVenta") %>' ForeColor="#000000" Font-Size="15px"/>
+                                        <br />
+                                        <asp:Label ID="lbCliente" runat="server" Text="CLIENTE:" Font-Size="16px" Font-Italic="true" ForeColor="#000000"></asp:Label>   
+                                        <asp:Label ID="Column1Label" runat="server" Text='<%# Eval("Column1") %>' ForeColor="#000000" Font-Size="15px"/>
+                                        <br />
+                                        <asp:Label ID="lbEstablecimiento" runat="server" Text="ESTABLECIMIENTO:" Font-Size="16px" Font-Italic="true" ForeColor="#000000"></asp:Label>                                        
+                                        <asp:Label ID="strEstablecimientoLabel" runat="server" Text='<%# Eval("strEstablecimiento") %>' ForeColor="#000000" Font-Size="15px"/>
+                                        <br />
+                                        <asp:Label ID="lbFecha" runat="server" Text="FECHA:" Font-Size="16px" Font-Italic="true" ForeColor="#000000"></asp:Label> 
+                                        <asp:Label ID="Fecha_de_creaciónLabel" runat="server" Text='<%# Eval("[Fecha de creación]") %>' ForeColor="#000000" Font-Size="15px"/>
+                                        <br />
+                                        <br />
+                                        <asp:Button ID="Button1" runat="server" CommandName="Seleccionar" Text="Detalle" CssClass="btn btn-primary" />
+                                        <asp:Button ID="Button2" runat="server" CommandName="Finalizar" Text="Proceso" CssClass="btn btn-success" OnClientClick="Confirm()"  />                                        
+                                        <br />
+
+                                    </ItemTemplate>
+                                    <SelectedItemStyle BackColor="#FB2D59" Font-Bold="True" ForeColor="#FB5679" />
+                                </asp:DataList>
+                    <asp:SqlDataSource ID="SqlDataSource4" runat="server" ConnectionString="<%$ ConnectionStrings:XIUGARConnectionString %>"
+                                 SelectCommand="select v.idVenta, c.strNombre + ' ' + c.strApellidoM + ' '+ c.strApellidoP, c.strEstablecimiento,
+                                                v.Fecha as 'Fecha de creación'
+                                                from tblVenta v
+                                                left join tblCliente c
+                                                on c.idCliente = v.fkCliente                                                
+                                                where v.strEstado = 'PENDIENTE ONLINE'
+                                                order by v.Fecha asc;"></asp:SqlDataSource>
+
+                        </div>
+                    </section>
+                  </div>
+                </div>
         </div>
 
         <%-- PENDIENTE: Orden de compra que no han sido aceptadas --%>
@@ -161,7 +221,7 @@
                                 <br />
                                 <br />
                                 <asp:Button ID="Button1" runat="server" CommandName="Seleccionar" Text="Detalle" CssClass="btn btn-primary" />
-                                <asp:Button ID="Button2" runat="server" CommandName="Finalizar" Text="Proceso" CssClass="btn btn-success" OnClientClick="Confirm()" /> 
+                                <%--<asp:Button ID="Button2" runat="server" CommandName="Finalizar" Text="Proceso" CssClass="btn btn-success" OnClientClick="Confirm()" /> --%>
                             </ItemTemplate>
                             <SelectedItemStyle BackColor="#9AFE7C" Font-Bold="True" ForeColor="#9AFE7C" />
                         </asp:DataList>
@@ -198,21 +258,21 @@
             document.forms[0].appendChild(confirm_value);
         }
 
-        function Return() {
-            var confirm_value = document.createElement("INPUT");
+        //function Return() {
+        //    var confirm_value = document.createElement("INPUT");
 
-            confirm_value.type = "hidden";
-            confirm_value.name = "confirm_value";
+        //    confirm_value.type = "hidden";
+        //    confirm_value.name = "confirm_value";
 
-            if (confirm("¿Desea regresar a estado pendiente la requisición?")) {
-                confirm_value.value = "Si";
-            }
-            else {
-                confirm_value.value = "No";
-            }
+        //    if (confirm("¿Desea regresar a estado pendiente la requisición?")) {
+        //        confirm_value.value = "Si";
+        //    }
+        //    else {
+        //        confirm_value.value = "No";
+        //    }
 
-            document.forms[0].appendChild(confirm_value);
-        }
+        //    document.forms[0].appendChild(confirm_value);
+        //}
 
         function Finish() {
             var confirm_value = document.createElement("INPUT");
@@ -220,7 +280,8 @@
             confirm_value.type = "hidden";
             confirm_value.name = "confirm_value";
 
-            if (confirm("¿Desea finalizar la requisición?")) {
+            if (confirm("¿Desea finalizar la requisición? Una vez que se finaliza no se podra regresar al estado PENDIENTE")) {
+
                 confirm_value.value = "Si";
             }
             else {
@@ -229,6 +290,9 @@
 
             document.forms[0].appendChild(confirm_value);
         }
+
+
+
     </script>
 
 

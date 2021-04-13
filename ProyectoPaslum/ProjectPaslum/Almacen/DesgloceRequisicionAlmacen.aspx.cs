@@ -18,10 +18,11 @@ namespace ProjectPaslum.Almacen
 
             var ventas = (from venta in contexto.tblVenta
                           where venta.idVenta == int.Parse(Session["desgloce"].ToString())
-                          select new { fecha = venta.Fecha, total = venta.dblTotal, fin = venta.strFechaEntega }).FirstOrDefault();
+                          select new { fecha = venta.Fecha,  fin = venta.strFechaEntega, hora = venta.strHoraEntega }).FirstOrDefault();
 
             txtFecha.Text = ventas.fecha.ToString().Substring(0, 10);
             txtFechaFin.Text = ventas.fin.ToString();
+            txtHoraEntrega.Text = ventas.hora.ToString();
 
         }
 
@@ -55,6 +56,11 @@ namespace ProjectPaslum.Almacen
 
                 throw;
             }
+        }
+
+        protected void btnRegresar_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("../Almacen/RequisicionAlmacen.aspx");
         }
     }
 }

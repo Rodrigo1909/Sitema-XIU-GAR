@@ -15,7 +15,9 @@
         <h2>Resumen de almacén</h2>
     </div>
  
-       <%-- Consulta de movimientos --%>
+       <%-- filtro para movimientos --%>
+
+
 
         <%--ENTRADAS --%>
         <div class="panel panel-default">
@@ -97,7 +99,7 @@
                     <asp:GridView ID="GridView2" runat="server" AutoGenerateColumns="False" Width="100%" 
                     AllowPaging="True" DataSourceID="SqlDataSource1" BackColor="White" BorderColor="#CCCCCC" 
                     BorderStyle="None" BorderWidth="3px" AllowSorting="True">
-                    <Columns>
+                   <Columns>
                         
                         <asp:BoundField DataField="strTipo" HeaderText="MOVIMIENTO" SortExpression="strTipo" />
                         <asp:BoundField DataField="fecha" HeaderText="FECHA" SortExpression="fecha" />
@@ -128,23 +130,28 @@
 
                 <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:XIUGARConnectionString %>" 
                                    SelectCommand="select m.strTipo, m.fecha,
-                                                e.strNombre + ' ' +  e.strApellidoP + ' ' + e.strApellidoM,
-                                                p.strNombre, a.strNombre,m.dblValAnt, m.dblValNvo, m.strNumVen, m.strFactura
-                                                from tblStock s
-                                                inner join tblProducto p
-                                                on s.fkProducto = p.idProducto
-                                                inner join tblMovimiento m
-                                                on m.fkStock = s.idStock
-                                                left join tblEmpleado e
-                                                on m.fkEmpleado = e.idEmpleado
-                                                inner join tblAlmacen a
-                                                on a.idAlmacen = p.fkAlmacen
-                                                where strTipo = 'SALIDA POR PRODUCCIÓN' or strTipo = 'SALIDA POR DEVOLUCIÓN'
-                                                ORDER BY m.fecha DESC;
+                                                    e.strNombre + ' ' +  e.strApellidoP + ' ' + e.strApellidoM,
+                                                    p.strNombre, a.strNombre,m.dblValAnt, m.dblValNvo, m.strNumVen, m.strFactura
+                                                    from tblStock s
+                                                    inner join tblProducto p
+                                                    on s.fkProducto = p.idProducto
+                                                    inner join tblMovimiento m
+                                                    on m.fkStock = s.idStock
+                                                    left join tblEmpleado e
+                                                    on m.fkEmpleado = e.idEmpleado
+                                                    inner join tblAlmacen a
+                                                    on a.idAlmacen = p.fkAlmacen
+                                                    where strTipo = 'SALIDA POR PRODUCCIÓN' or strTipo = 'SALIDA POR DEVOLUCIÓN'
+                                                    or strTipo LIKE 'VENTA NUMERO%'  
+                                                    ORDER BY m.fecha DESC;
+
                                                 "></asp:SqlDataSource>
                 </div>
             </div>
         </div>
+
+
+
 
     
 

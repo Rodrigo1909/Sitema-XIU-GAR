@@ -2,9 +2,10 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <link href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
-    <%--<link href="../css/modales.css" rel="stylesheet" />    --%>
-    <link href="css/bootstrap.min.css" rel="stylesheet" />
-    <link href="../Alumno/scss/PersoDatos.css" rel="stylesheet" />
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     
     <div class="container">
        <div style="text-align:center">
@@ -22,15 +23,26 @@
 
                                     <div class="form-group">
                                         <label>Fecha de la venta</label>
-                                        <asp:TextBox ID="txtFecha" runat="server" width="500px" Enabled="false" style="text-align:center"></asp:TextBox>
+                                        <asp:TextBox ID="txtFecha" runat="server" width="500px" Enabled="false" style="text-align:center" CssClass="form-control"></asp:TextBox>
                                         
                                     </div>
                                 &nbsp &nbsp &nbsp &nbsp
                                     <div class="form-group">
                                         <label>Fecha de entrega </label>
-                                        <asp:TextBox ID="txtFechaFin" runat="server" width="500px" Enabled="false" style="text-align:center"></asp:TextBox>
+                                        <asp:TextBox ID="txtFechaFin" runat="server" width="500px" Enabled="false" style="text-align:center" CssClass="form-control"></asp:TextBox>
                                         
                                     </div>
+                                <br /> <br /> <br /> <br />
+                                      <div class="form-group">
+                                        <label>Hora de entrega </label>
+                                        <asp:TextBox ID="txtHoraEntrega" runat="server" width="500px" Enabled="false" style="text-align:center" CssClass="form-control"></asp:TextBox>
+                                 &nbsp &nbsp &nbsp &nbsp
+                                      </div>
+                                <div class="form-group">
+                                        <asp:Button ID="btnRegresar" runat="server" Text="Regresar"  OnClick="btnRegresar_Click" CssClass="btn btn-success" Width="150px" Height="50px"/>
+                                        
+                                      </div>
+                                
                                </div>
                             </div> 
                             </div>
