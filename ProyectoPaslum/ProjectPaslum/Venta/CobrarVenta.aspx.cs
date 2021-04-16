@@ -201,8 +201,9 @@ namespace ProjectPaslum.Venta
             }
             else
             {
-
+                
                 DataTable dt = new DataTable();
+                DataTable dt1 = new DataTable();
                 Document document = new Document();
                 PdfWriter writer = PdfWriter.GetInstance(document, HttpContext.Current.Response.OutputStream);
                 DateTime fechact = DateTime.Now;
@@ -213,8 +214,8 @@ namespace ProjectPaslum.Venta
                              select new { ultimo = ven.idVenta }).FirstOrDefault();
 
                 var nuevo = venta.ultimo + 1;
-                
 
+                
                 dt = (DataTable)Session["pedido"];
                 if (dt.Rows.Count > 0)
                 {
@@ -317,7 +318,8 @@ namespace ProjectPaslum.Venta
                         {
                             for (int h = 0; h < dt.Columns.Count; h++)
                             {
-                                table.AddCell(new Phrase(r[h].ToString(), font8));                                                           
+                                table.AddCell(new Phrase(r[h].ToString(), font8));
+                                                                                       
                                 //table.AddCell(new Phrase(r[4].ToString(), font8));
                                 //table.AddCell(new Phrase(r[1].ToString(), font8));
                                 //table.AddCell(new Phrase(r[2].ToString(), font8));

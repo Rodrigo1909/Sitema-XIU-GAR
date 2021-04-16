@@ -136,40 +136,88 @@
                     <div class="panel-body">
 
 
-                        <asp:DataList ID="DataList3" runat="server" CellPadding="4" DataKeyField="idVenta" DataSourceID="SqlDataSource3" CssClass="table table-responsive"
-                                     RepeatColumns="3" ForeColor="#9AFE7C"  AutoPostBack="true" OnItemCommand="DataList3_ItemCommand">
-                            <AlternatingItemStyle BackColor="#4BE71C" />
-                            <FooterStyle BackColor="#9AFE7C" Font-Bold="True" />
-                            <HeaderStyle BackColor="#9AFE7C" Font-Bold="True" />
-                            <ItemStyle BackColor="#9AFE7C"  />
+                        <asp:ListView ID="ListView1" runat="server" DataKeyNames="idVenta" DataSourceID="SqlDataSource3" GroupItemCount="3" OnItemCommand="ListView1_ItemCommand">
+                            <AlternatingItemTemplate>
+                                <td runat="server" style="background-color:#9AFE7C;">
+                                    <asp:Label ID="lbNum12" runat="server" Text="VENTA:" Font-Size="16px" Font-Italic="true" ForeColor="#000000"></asp:Label>
+                                    <asp:Label ID="idVentaLabel" runat="server" Text='<%# Eval("idVenta") %>' ForeColor="#000000" Font-Size="15px"/>
+                                    <br />
+                                    <asp:Label ID="Label9" runat="server" Text="CLIENTE:" Font-Size="16px" Font-Italic="true" ForeColor="#000000"></asp:Label>
+                                    <asp:Label ID="Column1Label" runat="server" Text='<%# Eval("Column1") %>' ForeColor="#000000" Font-Size="15px"/>
+                                    <br />
+                                    <asp:Label ID="Label10" runat="server" Text="ESTABLECIMIENTO:" Font-Size="16px" Font-Italic="true" ForeColor="#000000"></asp:Label>
+                                    <asp:Label ID="strEstablecimientoLabel" runat="server" Text='<%# Eval("strEstablecimiento") %>' ForeColor="#000000" Font-Size="15px"/>
+                                    <br />
+                                    <asp:Label ID="Label12" runat="server" Text="FECHA:" Font-Size="16px" Font-Italic="true" ForeColor="#000000"></asp:Label>
+                                    <asp:Label ID="Fecha_de_creaciónLabel" runat="server" Text='<%# Eval("[Fecha de creación]") %>' ForeColor="#000000" Font-Size="15px"/>
+                                    <br />
+                                    <asp:Button ID="Button1" runat="server" CommandName="Seleccionar" Text="Detalle" CssClass="btn btn-primary" CommandArgument='<%# Eval("idVenta") %>' />
+                                </td>
+                            </AlternatingItemTemplate>
+                            <EmptyDataTemplate>
+                                <table runat="server" style="background-color: #FFFFFF;border-collapse: collapse;border-color: #999999;border-style:none;border-width:1px;">
+                                    <tr>
+                                        <td>No se han devuelto datos.</td>
+                                    </tr>
+                                </table>
+                            </EmptyDataTemplate>
+                            <EmptyItemTemplate>
+                                <td runat="server" />
+                            </EmptyItemTemplate>
+                            <GroupTemplate>
+                                <tr id="itemPlaceholderContainer" runat="server">
+                                    <td id="itemPlaceholder" runat="server"></td>
+                                </tr>
+                            </GroupTemplate>                            
                             <ItemTemplate>
-                                <asp:Label ID="lbNum12" runat="server" Text="VENTA:" Font-Size="16px" Font-Italic="true" ForeColor="Black"></asp:Label>
-                                <asp:Label ID="idVentaLabel" runat="server" Text='<%# Eval("idVenta") %>' ForeColor="Black" Font-Size="15px" />
-                                <br />
-                                <asp:Label ID="Label9" runat="server" Text="CLIENTE:" Font-Size="16px" Font-Italic="true" ForeColor="Black"></asp:Label>
-                                <asp:Label ID="Column1Label" runat="server" Text='<%# Eval("Column1") %>' ForeColor="Black" Font-Size="15px"/>
-                                <br />
-                                <asp:Label ID="Label10" runat="server" Text="ESTABLECIMIENTO:" Font-Size="16px" Font-Italic="true" ForeColor="Black"></asp:Label>
-                                <asp:Label ID="strEstablecimientoLabel" runat="server" Text='<%# Eval("strEstablecimiento") %>' ForeColor="Black" Font-Size="15px"/>
-                                <br />
-                                <asp:Label ID="Label11" runat="server" Text="TOTAL:" Font-Size="16px" Font-Italic="true" ForeColor="Black"></asp:Label>
-                                <asp:Label ID="dblTotalLabel" runat="server" Text='<%# Eval("dblTotal") %>' ForeColor="Black" Font-Size="15px"/>
-                                <br />
-                                <asp:Label ID="Label12" runat="server" Text="FECHA:" Font-Size="16px" Font-Italic="true" ForeColor="Black"></asp:Label>
-                                <asp:Label ID="Fecha_de_creaciónLabel" runat="server" Text='<%# Eval("[Fecha de creación]") %>' ForeColor="Black" Font-Size="15px"/>
-                                <br />
-                                <br />
-                                <asp:Button ID="Button1" runat="server" CommandName="Seleccionar" Text="Detalle" CssClass="btn btn-primary" />
+                                <td runat="server" style="background-color:#4BE71C;color: #4BE71C;">
+                                    <asp:Label ID="lbNum12" runat="server" Text="VENTA:" Font-Size="16px" Font-Italic="true" ForeColor="#000000"></asp:Label>
+                                    <asp:Label ID="idVentaLabel" runat="server" Text='<%# Eval("idVenta") %>' ForeColor="#000000" Font-Size="15px" />
+                                    <br />
+                                    <asp:Label ID="Label9" runat="server" Text="CLIENTE:" Font-Size="16px" Font-Italic="true" ForeColor="#000000"></asp:Label>
+                                    <asp:Label ID="Column1Label" runat="server" Text='<%# Eval("Column1") %>' ForeColor="#000000" Font-Size="15px"/>
+                                    <br />
+                                    <asp:Label ID="Label10" runat="server" Text="ESTABLECIMIENTO:" Font-Size="16px" Font-Italic="true" ForeColor="#000000"></asp:Label>
+                                    <asp:Label ID="strEstablecimientoLabel" runat="server" Text='<%# Eval("strEstablecimiento") %>' ForeColor="#000000" Font-Size="15px"/>
+                                    <br />
+                                    <asp:Label ID="Label12" runat="server" Text="FECHA:" Font-Size="16px" Font-Italic="true" ForeColor="#000000"></asp:Label>
+                                    <asp:Label ID="Fecha_de_creaciónLabel" runat="server" Text='<%# Eval("[Fecha de creación]") %>'  ForeColor="#000000" Font-Size="15px"/>
+                                    <br />
+                                    <asp:Button ID="Button1" runat="server" CommandName="Seleccionar" Text="Detalle" CssClass="btn btn-primary" CommandArgument='<%# Eval("idVenta") %>' />
+                                </td>
                             </ItemTemplate>
-                            <SelectedItemStyle BackColor="#9AFE7C" Font-Bold="True" ForeColor="#9AFE7C" />
-                        </asp:DataList>
-                        <asp:SqlDataSource ID="SqlDataSource3" runat="server" ConnectionString="<%$ ConnectionStrings:XIUGARConnectionString %>" SelectCommand="select v.idVenta, c.strNombre + ' ' + c.strApellidoM + ' '+ c.strApellidoP, c.strEstablecimiento, v.dblTotal,
+                            <LayoutTemplate>
+                                <table runat="server">
+                                    <tr runat="server">
+                                        <td runat="server">
+                                            <table id="groupPlaceholderContainer" runat="server" border="1" style="background-color: #FFFFFF;border-collapse: collapse;border-color: #999999;border-style:none;border-width:1px;font-family: Verdana, Arial, Helvetica, sans-serif;">
+                                                <tr id="groupPlaceholder" runat="server">
+                                                </tr>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                    <tr runat="server">
+                                        <td runat="server" style="text-align: center;background-color: #CCCCCC;font-family: Verdana, Arial, Helvetica, sans-serif;color: #000000;">
+                                            <asp:DataPager ID="DataPager1" runat="server" PageSize="12">
+                                                <Fields>
+                                                    <asp:NextPreviousPagerField ButtonType="Button" ShowFirstPageButton="True" ShowLastPageButton="True" />
+                                                </Fields>
+                                            </asp:DataPager>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </LayoutTemplate>
+                            
+                        </asp:ListView>
+                        <asp:SqlDataSource ID="SqlDataSource3" runat="server" ConnectionString="<%$ ConnectionStrings:XIUGARConnectionString %>" SelectCommand="select v.idVenta, c.strNombre + ' ' + c.strApellidoM + ' '+ c.strApellidoP, c.strEstablecimiento, 
                                                 v.Fecha as 'Fecha de creación'
                                                 from tblVenta v
                                                 left join tblCliente c
                                                 on c.idCliente = v.fkCliente                                                
                                                 where v.strEstado = 'FINALIZADO'
                                                 order by v.Fecha asc;"></asp:SqlDataSource>
+
+
 
 
                     </div>

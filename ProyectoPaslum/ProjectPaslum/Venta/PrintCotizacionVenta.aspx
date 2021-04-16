@@ -80,8 +80,7 @@
                 <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" Width="100%"
                     BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="3px" 
                     AllowPaging="True" 
-                    OnRowCommand="GridView1_RowCommand" OnRowDeleting="GridView1_RowDeleting"
-                    OnRowDeleted="GridView1_RowDeleted" OnSelectedIndexChanged="GridView1_SelectedIndexChanged" CssClass="table-responsive">
+                    OnRowCommand="GridView1_RowCommand" OnRowDeleting="GridView1_RowDeleting">
                     <Columns>
                         <asp:CommandField ShowDeleteButton="True" HeaderText="Editar" />
                         <asp:BoundField DataField="idProducto" HeaderText="Codigo" />
@@ -150,7 +149,7 @@
             <td style="width: 77px">
                 &nbsp;</td>
             <td style="width: 397px">
-                <asp:Button ID="Button1" runat="server" Text="Actualizar" OnClick="Button1_Click" CssClass="btn btn-primary" />
+                <asp:Button ID="Button1" runat="server" Text="Calcular" OnClick="Button1_Click" CssClass="btn btn-primary" />
                 <asp:Button ID="Button2" runat="server" Text="Regresar" style="margin-left: 111px" Width="157px" OnClick="Button2_Click" CssClass="btn btn-primary" />
             </td>
             <td>

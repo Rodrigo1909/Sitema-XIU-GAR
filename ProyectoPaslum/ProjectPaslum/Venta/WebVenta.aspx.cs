@@ -47,15 +47,18 @@ namespace ProjectPaslum.Venta
             }
         }
 
-        protected void DataList3_ItemCommand(object source, DataListCommandEventArgs e)
+
+
+        protected void ListView1_ItemCommand(object sender, ListViewCommandEventArgs e)
         {
-            string cod;
             if (e.CommandName == "Seleccionar")
             {
-                DataList3.SelectedIndex = e.Item.ItemIndex;
 
-                cod = ((Label)this.DataList3.SelectedItem.FindControl("idVentaLabel")).Text;
-                Session["desgloce"] = cod;
+                Label cod = (Label)e.Item.FindControl("idVentaLabel");
+
+                string var = Convert.ToString(cod.Text);
+
+                Session["desgloce"] = var;
 
                 Response.Redirect("/Venta/DesgloceRequisicionVenta.aspx");
             }

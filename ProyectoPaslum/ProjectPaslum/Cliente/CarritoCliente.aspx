@@ -43,6 +43,17 @@
                                          <label>Cliente </label>
                                         <asp:TextBox ID="txtCliente" runat="server" width="500px" Enabled="false" style="text-align:center" ></asp:TextBox>
                                     </div>
+                                &nbsp &nbsp &nbsp &nbsp 
+                                   <div class="form-group">
+                                         <label>Asignar fecha de entrega</label>
+                                        <asp:TextBox id="fechaEntrega" runat="server" TextMode="Date" width="500px" 
+                                            style="text-align:center" Height="40px" required="required"></asp:TextBox>
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                         <label>Asignar hora de entrega </label>
+                                        <asp:TextBox ID="txtHora" runat="server" width="500px" style="text-align:center" required="required"></asp:TextBox>
+                                    </div>
                                 </div>
                                </div>
                              </div>
@@ -68,7 +79,7 @@
                     BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="3px" 
                     AllowPaging="True" 
                     OnRowCommand="GridView1_RowCommand" OnRowDeleting="GridView1_RowDeleting"
-                    OnRowDeleted="GridView1_RowDeleted" OnSelectedIndexChanged="GridView1_SelectedIndexChanged" CssClass="table-responsive">
+                      CssClass="table-responsive">
                     <Columns>
                         <asp:CommandField ShowDeleteButton="True" HeaderText="Editar" />
                         <asp:BoundField DataField="idProducto" HeaderText="Codigo" />

@@ -176,14 +176,12 @@ h1{
                   
                      <div class="modal-body">
                         <div class="form-group">
-                            <asp:Label ID="lblUsuario" runat="server" Text="Usuario:"></asp:Label>
-                            <asp:TextBox ID="txtUsuario" runat="server" CssClass="transpatxt"
-                                placeholder="Ingresa tu usuario"></asp:TextBox>
+                            <asp:Label ID="lblUsuario" runat="server" Text="Usuario:" align= "center"></asp:Label>
+                            <asp:TextBox ID="txtUsuario" runat="server" CssClass="transpatxt" placeholder="Ingresa tu usuario" BorderColor="Black"></asp:TextBox>
                         </div>
                         <div class="form-group ">
                             <asp:Label ID="lblPass" runat="server" Text="Contraseña:"></asp:Label>
-                            <asp:TextBox ID="txtPass" runat="server" CssClass="transpatxt"
-                                placeholder="Ingresa tu contraseña " TextMode="Password"></asp:TextBox>
+                            <asp:TextBox ID="txtPass" runat="server" CssClass="transpatxt" placeholder="Ingresa tu contraseña " TextMode="Password" BorderColor="Black"></asp:TextBox>
                         </div>
                       <div class="form-group ">
                         <asp:Button ID="btnLogin" runat="server" href="PrincipalAdmon.aspx" OnClick="btnLogin_Click" Text="Ingresar" class="btn btn-primary" type="submit" />
@@ -245,7 +243,7 @@ h1{
             </div>
             <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
                 <div class="card">
-	                <div class="frente"><asp:Image ID="imagenEstandar" runat="server" ImageUrl="images/azucar-estandar2.jpg" CssClass="img-responsive img-rounded" /></div>
+	                <div class="frente"><asp:Image ID="imagenEstandar" runat="server" ImageUrl="images/azucar-estandar.jpg" CssClass="img-responsive img-rounded" /></div>
 	                <div class="atras">
 		                <div class="informacion">
 			                <h2>Estándar<br><span>De todos los tiempos</span></h2>
@@ -286,7 +284,7 @@ h1{
                         
             <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
                     <div class="card">
-	                    <div class="frente"><asp:Image ID="image2" runat="server" ImageUrl="images/azucar-refinada2.jpg" CssClass="img-responsive img-rounded" /></div>
+	                    <div class="frente"><asp:Image ID="image2" runat="server" ImageUrl="images/azucar-refinada.jpg" CssClass="img-responsive img-rounded" /></div>
 	                    <div class="atras">
 		                    <div class="informacion">
 			                    <h2>Refinada<br><span>Cristalería fina</span></h2>

@@ -188,48 +188,48 @@ namespace ProjectPaslum.Almacen
 
         }
 
-        protected void DataList3_ItemCommand(object source, DataListCommandEventArgs e)
-        {
-            string cod;
-            if (e.CommandName == "Seleccionar")
-            {
-                DataList3.SelectedIndex = e.Item.ItemIndex;
+        //protected void DataList3_ItemCommand(object source, DataListCommandEventArgs e)
+        //{
+        //    string cod;
+        //    if (e.CommandName == "Seleccionar")
+        //    {
+        //        DataList3.SelectedIndex = e.Item.ItemIndex;
 
-                cod = ((Label)this.DataList3.SelectedItem.FindControl("idVentaLabel")).Text;
-                Session["desgloce"] = cod;
+        //        cod = ((Label)this.DataList3.SelectedItem.FindControl("idVentaLabel")).Text;
+        //        Session["desgloce"] = cod;
 
-                Response.Redirect("/Almacen/DesgloceRequisicionAlmacen.aspx");
-            }
+        //        Response.Redirect("/Almacen/DesgloceRequisicionAlmacen.aspx");
+        //    }
 
-            else if (e.CommandName == "Finalizar")
-            {
+        //    else if (e.CommandName == "Finalizar")
+        //    {
 
-                string confirmValue = Request.Form["confirm_value"];
+        //        string confirmValue = Request.Form["confirm_value"];
 
-                if (confirmValue == "Si")
-                {
-                    ControllerAlmacen ctrlAlm = new ControllerAlmacen();
-                    tblVenta ven = new tblVenta();
+        //        if (confirmValue == "Si")
+        //        {
+        //            ControllerAlmacen ctrlAlm = new ControllerAlmacen();
+        //            tblVenta ven = new tblVenta();
 
-                    DataList3.SelectedIndex = e.Item.ItemIndex;
+        //            DataList3.SelectedIndex = e.Item.ItemIndex;
 
-                    cod = ((Label)this.DataList3.SelectedItem.FindControl("idVentaLabel")).Text;
-                    ven.idVenta = Convert.ToInt32(cod);
-                    ven.strEstado = "EN PROCESO";
+        //            cod = ((Label)this.DataList3.SelectedItem.FindControl("idVentaLabel")).Text;
+        //            ven.idVenta = Convert.ToInt32(cod);
+        //            ven.strEstado = "EN PROCESO";
 
-                    ctrlAlm.EditarProceso(ven);
-                    this.Page.ClientScript.RegisterStartupScript(this.GetType(), "alert", "alert('Se regreso la requisición al estado en proceso')", true);
+        //            ctrlAlm.EditarProceso(ven);
+        //            this.Page.ClientScript.RegisterStartupScript(this.GetType(), "alert", "alert('Se regreso la requisición al estado en proceso')", true);
 
-                }
-                else
-                {
+        //        }
+        //        else
+        //        {
 
-                    this.Page.ClientScript.RegisterStartupScript(this.GetType(), "alert", "alert('Se cancelo la finalización de la requisición')", true);
-                }
+        //            this.Page.ClientScript.RegisterStartupScript(this.GetType(), "alert", "alert('Se cancelo la finalización de la requisición')", true);
+        //        }
                
-            }
-            Response.Redirect("/Almacen/RequisicionAlmacen.aspx");
-        }
+        //    }
+        //    Response.Redirect("/Almacen/RequisicionAlmacen.aspx");
+        //}
 
         protected void DataList4_ItemCommand(object source, DataListCommandEventArgs e)
         {
@@ -270,6 +270,24 @@ namespace ProjectPaslum.Almacen
                 }
             }
             Response.Redirect("/Almacen/RequisicionAlmacen.aspx");
+        }
+
+        protected void ListView1_ItemCommand(object sender, ListViewCommandEventArgs e)
+        {
+            
+            if (e.CommandName == "Seleccionar")
+            {
+                
+                Label cod = (Label)e.Item.FindControl("idVentaLabel");
+
+                string var = Convert.ToString(cod.Text);
+
+                Session["desgloce"] = var;
+
+                Response.Redirect("/Almacen/DesgloceRequisicionAlmacen.aspx");
+            }
+
+            
         }
     }
 }

@@ -71,7 +71,7 @@ namespace ProjectPaslum.Venta
             if (Page.IsPostBack == false)
             {
                 CargarDetalle();
-                lblAgregado.Text = "";
+                
             }
         }
         private void LlenarCliente()
@@ -132,8 +132,7 @@ namespace ProjectPaslum.Venta
                 precio = double.Parse(((Label)this.DataList1.SelectedItem.FindControl("dblPrecioLabel")).Text);
                 AgregarItem(cod, des, precio);
 
-                lblAgregado.Text = "Producto Agregado: " + nom + " " + des;
-                //Session["prueba"] = "Sesión usuario prueba";
+                this.ClientScript.RegisterStartupScript(this.GetType(), "SweetAlert", "exito()", true);
             }
         }
 

@@ -59,7 +59,15 @@ namespace ProjectPaslum.Administrador
             prod.dblPrecio = decimal.Parse(txtPrecio.Text, culture);
             prod.fkAlmacen = Int32.Parse(almacen);
             prod.fkUnidadMedida = Int32.Parse(unidad);
-            prod.idActivo = 1;       
+            prod.strCatalogo = cmbClasificacion.SelectedItem.Value;
+            prod.idActivo = 1;
+
+            if (!string.IsNullOrEmpty(FileUpload1.FileName))
+            {
+                FileUpload1.SaveAs(Server.MapPath("/ImagenesProductos/") + FileUpload1.FileName);
+
+            }
+            prod.strImagen = FileUpload1.FileName;
             ControllerProducto ctrlProd = new ControllerProducto();
             ctrlProd.InsertarProducto(prod);
             this.ClientScript.RegisterStartupScript(this.GetType(), "SweetAlert", "exito()", true);

@@ -5,7 +5,7 @@
     <!-- start content -->
     <div class="grids">
         <div class="progressbar-heading grids-heading">
-            <h2>XIU-GAR Ventas de día</h2>
+            <h2>XIU-GAR Ventas del día</h2>
                                
         </div>
         <div class="panel panel-widget forms-panel">

@@ -5,6 +5,13 @@
     <link href="../css/modales.css" rel="stylesheet" />
     <link href="../Content/bootstrap.min.css" rel="stylesheet" />
     <link href="../Alumno/scss/PersoDatos.css" rel="stylesheet" />
+
+    <link href="../../Content/sweetalert/sweet-alert.css" rel="stylesheet" />
+    <script src="../../js/swalert.js"></script>
+    <script src="../../Scripts/jquery-1.10.2.min.js"></script>
+    <script src="../../Scripts/sweetalert.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
 <div class="container">
   <div style="text-align:center">
     <h2>Cotización</h2>
@@ -80,12 +87,6 @@
                                 <div class="jumbotron"  style="background-color:white">
 				<table class="table-responsive">
 				<tbody>     
-                    <tr>
-                        <td>                                        
-                            <asp:Label ID="lblAgregado" runat="server" Text="Label"></asp:Label>
-                        </td>
-                    </tr>               
-						
 
 						    <asp:DataList ID="DataList1" runat="server" DataKeyField="idProducto" DataSourceID="SqlDataSource1" RepeatColumns="4" 
                                 OnItemCommand="DataList1_ItemCommand" CssClass="table table-responsive"  >
@@ -139,4 +140,15 @@
 
                      
 </div>
+
+    <script type="text/javascript">
+        function exito() {
+            swal({
+                title: "Correcto",
+                text: "Se agrego el producto con exito.",
+                icon: "success",
+            });
+        }
+    
+    </script>
 </asp:Content>

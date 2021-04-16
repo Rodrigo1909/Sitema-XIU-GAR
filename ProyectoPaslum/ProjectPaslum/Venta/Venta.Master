@@ -74,7 +74,7 @@
                     <li class="drop-down"><a href="#"><i class="icon-money"></i>Venta</a>
                         <!--Drop Down-->
                         <ul class="drop-down-ul animated fadeIn">
-                            <li><a href="MostradorVenta.aspx" class="icon-add_location"> Mostrador</a></li>
+                            <li><a href="MostradorVenta.aspx" class="icon-add_location"> Contado</a></li>
                             <li><a href="CreditoVenta.aspx" class="icon-archive"> Credito</a></li>
                             <li><a href="HistorialAbono.aspx" class="icon-calendar">&nbsp;Abono de credito</a></li>
                         </ul>

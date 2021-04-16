@@ -218,6 +218,9 @@
     <Content Include="Administrador\js\scripts.js" />
     <Content Include="Administrador\ProveedorAdmin.aspx" />
     <Content Include="Administrador\UniMedidaAdmin.aspx" />
+    <Content Include="Almacen\AlertaAlerta.aspx" />
+    <Content Include="Almacen\AlertaExito.aspx" />
+    <Content Include="Almacen\AlertaFallo.aspx" />
     <Content Include="Almacen\DesgloceRequisicionAlmacen.aspx" />
     <Content Include="Almacen\EntradaAlmacen.aspx" />
     <Content Include="Almacen\MovimientoAlmacen.aspx" />
@@ -585,6 +588,27 @@
     </Compile>
     <Compile Include="Administrador\UniMedidaAdmin.aspx.designer.cs">
       <DependentUpon>UniMedidaAdmin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Almacen\AlertaAlerta.aspx.cs">
+      <DependentUpon>AlertaAlerta.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Almacen\AlertaAlerta.aspx.designer.cs">
+      <DependentUpon>AlertaAlerta.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Almacen\AlertaExito.aspx.cs">
+      <DependentUpon>AlertaExito.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Almacen\AlertaExito.aspx.designer.cs">
+      <DependentUpon>AlertaExito.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Almacen\AlertaFallo.aspx.cs">
+      <DependentUpon>AlertaFallo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Almacen\AlertaFallo.aspx.designer.cs">
+      <DependentUpon>AlertaFallo.aspx</DependentUpon>
     </Compile>
     <Compile Include="Almacen\Almacen.Master.cs">
       <DependentUpon>Almacen.Master</DependentUpon>
@@ -977,6 +1001,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="ImagenesProductos\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Controller\Controller.csproj">

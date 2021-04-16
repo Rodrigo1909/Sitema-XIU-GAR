@@ -34,7 +34,7 @@
 						    <asp:DataList ID="DataList1" runat="server" DataKeyField="idProducto" DataSourceID="SqlDataSource1" RepeatColumns="4" 
                                 OnItemCommand="DataList1_ItemCommand" CssClass="table table-responsive"  >
                                 <ItemTemplate>
-                                    <asp:Image ID="Image1" width="140" height="170" runat="server" ImageUrl='<%# "~/images/"+Eval("strNombre")+".jpg" %>' CssClass="img-fluid" />
+                                    <asp:Image ID="Image1" width="140" height="170" runat="server" ImageUrl='<%# "~/ImagenesProductos/"+Eval("strImagen") %>' CssClass="img-fluid" />
                                     <br />
                                     <asp:Label ID="codigo" runat="server" Text="CODIGO:" Font-Size="16px" Font-Italic="true"></asp:Label>                                    
                                     <asp:Label ID="idProductoLabel" runat="server" Text='<%# Eval("idProducto") %>' ForeColor="#00cc00" Font-Size="15px"/>
@@ -53,7 +53,7 @@
                                 </ItemTemplate>
                             </asp:DataList>
 
-						    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:XIUGARConnectionString %>" SelectCommand="SELECT [idProducto], [strNombre], [strDescripcion], [dblPrecio] FROM [tblProducto] where fkAlmacen = '1'"></asp:SqlDataSource>
+						    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:XIUGARConnectionString %>" SelectCommand="SELECT [idProducto], [strNombre], [strDescripcion], [dblPrecio], [strImagen] FROM [tblProducto] where fkAlmacen = '1'"></asp:SqlDataSource>
 
 						
 

@@ -40,6 +40,24 @@ namespace ProjectPaslum.Cliente {
         protected global::System.Web.UI.WebControls.TextBox txtCliente;
         
         /// <summary>
+        /// Control fechaEntrega.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox fechaEntrega;
+        
+        /// <summary>
+        /// Control txtHora.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtHora;
+        
+        /// <summary>
         /// Control GridView1.
         /// </summary>
         /// <remarks>

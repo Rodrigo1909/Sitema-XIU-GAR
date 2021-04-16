@@ -72,6 +72,21 @@
                     </div>
                       
                     <div class="form-group">
+                         <div class="col-xs-10">
+                            Clasificación
+                            <asp:DropDownList ID="cmbClasificacion" runat="server" AppendDataBoundItems="True" CssClass=" form-control" >                                
+                                <asp:ListItem Value="MASCABADO"> Azúcar Mascabado </asp:ListItem>
+                                <asp:ListItem Value="GLAS"> Azúcar Glas </asp:ListItem>
+                                <asp:ListItem Value="REFINADA"> Azúcar Refinada </asp:ListItem>
+                                <asp:ListItem Value="SOBRES"> Sobres de azúcar </asp:ListItem>
+                                <asp:ListItem Value="SUSTITUTO"> Sustituto de azúcar </asp:ListItem>
+                                <asp:ListItem Value="ESTANDAR"> Azúcar Estandar </asp:ListItem>
+                        </asp:DropDownList>   
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
                     <div class="col-xs-5">
                         Presentación
                         <asp:TextBox runat="server" ID="txtPresentacion" class="form-control" required="required" type="text" 
@@ -86,8 +101,14 @@
                    </div>     
                      </div>                     
 
-                   </div>                    
-
+                   </div>    
+                     <div class="form-group">
+                        <div class="col-xs-10">
+                            <label for="nombre">Imagen</label>
+                            <asp:FileUpload ID="FileUpload1" runat="server" CssClass="form-control" />
+                        </div>                
+                    </div>
+                        <br /> <br />  <br /> <br />  
                         <br /> <br />  <br /> <br />
                         <br /> <br />  <br /> <br />
                         <br /> <br />  <br /> <br />
@@ -112,18 +133,18 @@
         </div>
         <div id="collapse" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
             <div class="panel-body">
-                <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" Width="100%" AllowPaging="True" 
-                    DataSourceID="SqlDataSource1" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" DataKeyNames="idProducto" AllowSorting="True">
+                <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" Width="100%" AllowPaging="True" DataSourceID="SqlDataSource2"
+                     BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" DataKeyNames="idProducto" >
                     <Columns>
                         
                         <asp:CommandField ShowDeleteButton="True" ShowEditButton="True" />
-                        
-                        <asp:BoundField DataField="idProducto" HeaderText="CODIGO" SortExpression="idProducto" InsertVisible="False" ReadOnly="True" />
+
+                        <asp:BoundField DataField="idProducto" HeaderText="CODIGO" SortExpression="idProducto" InsertVisible="False" ReadOnly="True" Visible="false"/>
                         <asp:BoundField DataField="strNombre" HeaderText="PRODUCTO" SortExpression="strNombre" />
                         <asp:BoundField DataField="strDescripcion" HeaderText="DESCRIPCIÓN" SortExpression="strDescripcion" />
                         <asp:BoundField DataField="intPresentacion" HeaderText="PRESENTACIÓN" SortExpression="intPresentacion" />
-                        <asp:BoundField DataField="strNombre1" HeaderText="MEDIDA" SortExpression="strNombre1" />
-                        <asp:BoundField DataField="strNombre2" HeaderText="ALMACÉN" SortExpression="strNombre2" />
+                        <asp:BoundField DataField="strNombre1" HeaderText="MEDIDA" SortExpression="strNombre1" InsertVisible="False" ReadOnly="True"/>
+                        <asp:BoundField DataField="strNombre2" HeaderText="ALMACÉN" SortExpression="strNombre2" InsertVisible="False" ReadOnly="True"/>
 
                         <asp:BoundField DataField="dblPrecio" HeaderText="PRECIO" SortExpression="dblPrecio" />
 
@@ -139,7 +160,7 @@
                         <SortedDescendingHeaderStyle BackColor="#00547E" />
                 </asp:GridView>
 
-                <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:XIUGARConnectionString %>" 
+                <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:XIUGARConnectionString %>" 
                     SelectCommand="select prod.idProducto, prod.strNombre, prod.strDescripcion, prod.intPresentacion,
                                     uni.strNombre, alm.strNombre, prod.dblPrecio
                                     from tblProducto prod
@@ -148,7 +169,8 @@
                                     inner join tblAlmacen alm
                                     on prod.fkAlmacen = alm.idAlmacen
                                     where prod.idActivo = '1';
-" DeleteCommand="UPDATE tblProducto SET idActivo= '0' WHERE (idProducto = @idProducto)" UpdateCommand="UPDATE tblProducto SET strNombre =@strNombre, strDescripcion =@strDescripcion, intPresentacion =@intPresentacion,dblPrecio = @dblPrecio where (idProducto = @idProducto)">
+                        " DeleteCommand="UPDATE tblProducto SET idActivo= '0' WHERE (idProducto = @idProducto)" 
+                    UpdateCommand="UPDATE tblProducto SET strNombre =@strNombre, strDescripcion =@strDescripcion, intPresentacion =@intPresentacion,dblPrecio = @dblPrecio where (idProducto = @idProducto)">
                     <DeleteParameters>
                         <asp:Parameter Name="idProducto" />
                     </DeleteParameters>

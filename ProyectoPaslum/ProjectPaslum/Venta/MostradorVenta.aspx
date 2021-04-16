@@ -85,14 +85,6 @@
                         <div class="panel-body">
                             <div class="form-inline">
                                 <div class="jumbotron"  style="background-color:white">
-				
-				     
-                    <%--<tr>
-                        <td>                                        
-                            <asp:Label ID="lblAgregado" runat="server" Text="Label"></asp:Label>
-                        </td>
-                    </tr> --%>              
-						
 
 						    <asp:DataList ID="DataList1" runat="server" DataKeyField="idProducto" DataSourceID="SqlDataSource2" RepeatColumns="4" 
                                 OnItemCommand="DataList1_ItemCommand"  >
