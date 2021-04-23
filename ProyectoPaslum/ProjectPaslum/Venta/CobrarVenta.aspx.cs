@@ -51,7 +51,7 @@ namespace ProjectPaslum.Venta
 
         public void cargarcarrito()
         {
-            GridView1.DataSource = Session["pedido"];
+            GridView1.DataSource = Session["contado"];
             GridView1.DataBind();
             Button1_Click(Button1, null);
         }
@@ -76,7 +76,7 @@ namespace ProjectPaslum.Venta
             {
                 int index = Convert.ToInt32(e.CommandArgument);
                 DataTable ocar = new DataTable();
-                ocar = (DataTable)Session["pedido"];
+                ocar = (DataTable)Session["contado"];
                 ocar.Rows[index].Delete();
                 lblTotal.Text = TotalCarrito(ocar).ToString();
                 GridView1.DataSource = ocar;
@@ -158,14 +158,15 @@ namespace ProjectPaslum.Venta
                     ControllerCliente ctrlClie = new ControllerCliente();
                     tblDetalleVenta detalle = new tblDetalleVenta();
                     detalle.Fecha = fechact;
-                    detalle.intCantidad = int.Parse(((TextBox)row.Cells[4].FindControl("TextBox1")).Text);
-                    detalle.dblPrecio = decimal.Parse(Convert.ToString(row.Cells[7].Text));
+                    detalle.intCantidad = int.Parse(((TextBox)row.Cells[4].FindControl("TextBox1")).Text);                    
                     detalle.fkProducto = int.Parse(row.Cells[1].Text);
+                    detalle.dblPrecio = decimal.Parse(((TextBox)row.Cells[6].FindControl("TextBox2")).Text);
                     detalle.fkVenta = ven.idVenta;
                     detalle.fkEmpleado = int.Parse(Session["id"].ToString()); 
                     ctrlClie.InsertarDetalle(detalle);
 
                 }
+                Session["contado"] = null;
                 this.ClientScript.RegisterStartupScript(this.GetType(), "SweetAlert", "exito()", true);
             }
             
@@ -176,13 +177,13 @@ namespace ProjectPaslum.Venta
         {
             int index = e.RowIndex;
             DataTable dt1 = new DataTable();
-            dt1 = (DataTable)Session["pedido"];
+            dt1 = (DataTable)Session["contado"];
             dt1.Rows[index].Delete();
 
             lblTotal.Text = TotalCarrito(dt1).ToString();
             GridView1.DataSource = dt1;
             GridView1.DataBind();
-            Session["pedido"] = dt1;
+            Session["contado"] = dt1;
             Button1_Click(Button1, null);
         }
 
@@ -198,12 +199,12 @@ namespace ProjectPaslum.Venta
             if (string.IsNullOrWhiteSpace(txtDinero.Text))
             {
                 this.ClientScript.RegisterStartupScript(this.GetType(), "SweetAlert", "vacio()", true);
+                this.Calcular();
             }
             else
             {
                 
-                DataTable dt = new DataTable();
-                DataTable dt1 = new DataTable();
+                DataTable dt = new DataTable();                
                 Document document = new Document();
                 PdfWriter writer = PdfWriter.GetInstance(document, HttpContext.Current.Response.OutputStream);
                 DateTime fechact = DateTime.Now;
@@ -216,19 +217,23 @@ namespace ProjectPaslum.Venta
                 var nuevo = venta.ultimo + 1;
 
                 
-                dt = (DataTable)Session["pedido"];
+                dt = (DataTable)Session["contado"];
+                
                 if (dt.Rows.Count > 0)
                 {
 
                     document.Open();
 
-                    var image = iTextSharp.text.Image.GetInstance(@"C:\Users\RodrigoM\Desktop\Sitema-XIU-GAR\ProyectoPaslum\ProjectPaslum\Alumno\images\XIUGAR.jpg");
+                    String rutaLogo = Server.MapPath("../Alumno/images/XIUGAR.jpg");    
 
-                    // iTextSharp.text.Image image1 = iTextSharp.text.Image.GetInstance("../images/avatar.png");
+                    var image = iTextSharp.text.Image.GetInstance(rutaLogo);
+                    //var image = iTextSharp.text.Image.GetInstance(@"C:\Users\RodrigoM\Desktop\Sitema-XIU-GAR\ProyectoPaslum\ProjectPaslum\Alumno\images\XIUGAR.jpg");
+
+                    // iTextSharp.text.Image image1 = iTextSharp.text.Image.GetInstance("../../images/avatar.png");
                     //image1.ScalePercent(50f);
-                    image.ScaleAbsoluteWidth(270);
+                    image.ScaleAbsoluteWidth(240);
                     image.ScaleAbsoluteHeight(110);
-                    image.SetAbsolutePosition(300, 720);
+                    image.SetAbsolutePosition(350, 720);
                     document.Add(image);
 
 
@@ -266,12 +271,10 @@ namespace ProjectPaslum.Venta
                     cell.Colspan = dt.Columns.Count;
 
                     table.AddCell("CODIGO");
-                    table.AddCell("PROD.");
+                    table.AddCell("DESCRIPCIÓN");
+                    table.AddCell("CANTIDAD");
                     table.AddCell("PRECIO");
                     table.AddCell("TOTAL");
-                    table.AddCell("CANTIDAD");
-                    table.AddCell("PRES.");
-                    table.AddCell("U.MEDIDA");
                     
 
                     foreach (DataColumn c in dt.Columns)
@@ -296,11 +299,11 @@ namespace ProjectPaslum.Venta
                         {
 
                         }
-                        else if (c.ColumnName == "intPresentacion")
+                        else if (c.ColumnName == "preVenta")
                         {
 
                         }
-                        else if (c.ColumnName == "strNombre1")
+                        else if (c.ColumnName == "dblCosto")
                         {
 
                         }
@@ -311,7 +314,7 @@ namespace ProjectPaslum.Venta
                             table.AddCell(new Phrase(c.ColumnName, font8));
                         }
                     }
-
+                    
                     foreach (DataRow r in dt.Rows)
                     {
                         if (dt.Rows.Count > 0)
@@ -319,17 +322,10 @@ namespace ProjectPaslum.Venta
                             for (int h = 0; h < dt.Columns.Count; h++)
                             {
                                 table.AddCell(new Phrase(r[h].ToString(), font8));
-                                                                                       
-                                //table.AddCell(new Phrase(r[4].ToString(), font8));
-                                //table.AddCell(new Phrase(r[1].ToString(), font8));
-                                //table.AddCell(new Phrase(r[2].ToString(), font8));
-                                //table.AddCell(new Phrase(r[6].ToString(), font8));
-                                
 
                             }
                         }
                     }
-                    
 
                     document.Add(table);                    
                     document.Add(new Chunk("\n"));
@@ -371,9 +367,10 @@ namespace ProjectPaslum.Venta
             string cod, desc;
             int cant;
             double precio, total2 = 0;
+            double precio2;
 
 
-            var items = (DataTable)Session["pedido"];
+            var items = (DataTable)Session["contado"];
             //DataRow fila = items.NewRow();
             for (i = 0; i < GridView1.Rows.Count; i++)
             {
@@ -383,26 +380,38 @@ namespace ProjectPaslum.Venta
                                 join unidad in contexto.tblUnidadMedida
                                     on p.fkUnidadMedida equals unidad.idUnidadMedida
                                 where p.idProducto == int.Parse(cod)
-                                select new { uni = unidad.strNombre, presentacion = p.intPresentacion }).FirstOrDefault();
+                                select new { uni = unidad.strNombre, presentacion = p.intPresentacion, aprox = p.dblPrecio }).FirstOrDefault();
+
+                //desc = (GridView1.Rows[i].Cells[2].Text);
+                //prec = System.Convert.ToDouble(GridView1.Rows[i].Cells[3].Text);
+                //cant = System.Convert.ToInt16(((TextBox)this.GridView1.Rows[i].Cells[4].FindControl("TextBox1")).Text);
+                //double prec1 = System.Convert.ToDouble(prec);
+                //subtotal = cant * prec1;
+                ////GridView1.Rows[i].Cells[5].Text = subtotal.ToString();
+                //precio = System.Convert.ToDouble(((TextBox)this.GridView1.Rows[i].Cells[5].FindControl("TextBox2")).Text);
+                //subtotal2 = cant * precio;
+                //GridView1.Rows[i].Cells[6].Text = subtotal2.ToString();
 
                 desc = (GridView1.Rows[i].Cells[2].Text);
-                prec = System.Convert.ToDouble(GridView1.Rows[i].Cells[3].Text);
-                cant = System.Convert.ToInt16(((TextBox)this.GridView1.Rows[i].Cells[4].FindControl("TextBox1")).Text);
-                double prec1 = System.Convert.ToDouble(prec);
-                subtotal = cant * prec1;
-                GridView1.Rows[i].Cells[5].Text = subtotal.ToString();
-                precio = System.Convert.ToDouble(((TextBox)this.GridView1.Rows[i].Cells[6].FindControl("TextBox2")).Text);
+                cant = System.Convert.ToInt16(((TextBox)this.GridView1.Rows[i].Cells[3].FindControl("TextBox1")).Text);
+                precio = System.Convert.ToDouble(((TextBox)this.GridView1.Rows[i].Cells[4].FindControl("TextBox2")).Text);
                 subtotal2 = cant * precio;
-                GridView1.Rows[i].Cells[7].Text = subtotal2.ToString();
-                GridView1.Rows[i].Cells[8].Text = producto.uni;
-                GridView1.Rows[i].Cells[9].Text = producto.presentacion.ToString();
+                GridView1.Rows[i].Cells[5].Text = subtotal2.ToString();
+                GridView1.Rows[i].Cells[6].Text = producto.aprox.ToString();
+
+                double prec1 = System.Convert.ToDouble(producto.aprox.ToString());
+                subtotal = cant * prec1;
+
+                //GridView1.Rows[i].Cells[7].Text = subtotal.ToString();
+
 
                 foreach (DataRow dr in items.Rows)
                 {
                     if (dr["idProducto"].ToString() == cod.ToString())
                     {
                         dr["canproducto"] = cant;
-                        dr["subtotal"] = subtotal;
+                        dr["preVenta"] = precio;
+                        dr["dblCosto"] = subtotal2;
                     }
                 }
 

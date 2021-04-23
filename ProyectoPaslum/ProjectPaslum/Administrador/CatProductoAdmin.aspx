@@ -79,7 +79,7 @@
                                 <asp:ListItem Value="GLAS"> Azúcar Glas </asp:ListItem>
                                 <asp:ListItem Value="REFINADA"> Azúcar Refinada </asp:ListItem>
                                 <asp:ListItem Value="SOBRES"> Sobres de azúcar </asp:ListItem>
-                                <asp:ListItem Value="SUSTITUTO"> Sustituto de azúcar </asp:ListItem>
+                                <asp:ListItem Value="SUSTITUTO"> Edulcorantes </asp:ListItem>
                                 <asp:ListItem Value="ESTANDAR"> Azúcar Estandar </asp:ListItem>
                         </asp:DropDownList>   
                         </div>

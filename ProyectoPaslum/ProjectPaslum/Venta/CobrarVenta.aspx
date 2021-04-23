@@ -105,34 +105,28 @@
                     <Columns>
                         <asp:CommandField ShowDeleteButton="True" HeaderText="BORRAR" />
                         <asp:BoundField DataField="idProducto" HeaderText="CODIGO" />
-                        <asp:BoundField DataField="strNombre" HeaderText="PRODUCTO" />
-                        <asp:BoundField DataField="dblPrecio" HeaderText="PRECIO SUGERIDO" />                        
+                        <asp:BoundField DataField="strNombre" HeaderText="DESCRIPCIÓN" />                        
                         <asp:TemplateField HeaderText="CANTIDAD">
                             <ItemTemplate>
                                 <asp:TextBox ID="TextBox1" runat="server" Height="19px" Width="73px">1</asp:TextBox>
                             </ItemTemplate>
                         </asp:TemplateField>  
-                        <asp:BoundField DataField="subtotal" HeaderText="IMPORTE TOTAL" />
-                        <asp:TemplateField HeaderText="COSTO">
+                        <%--<asp:BoundField DataField="subtotal" HeaderText="IMPORTE TOTAL" />--%>
+                        <asp:TemplateField HeaderText="PRECIO VENTA">
                             <ItemTemplate>
                                 <asp:TextBox ID="TextBox2" runat="server" Height="19px" Width="73px">0.0</asp:TextBox>
                             </ItemTemplate>
                         </asp:TemplateField>
-                        <asp:TemplateField HeaderText="PRECIO U.">
+                        <asp:TemplateField HeaderText="COSTO">
                             <ItemTemplate>
-                                <asp:TextBox ID="TextBox3" runat="server" Height="19px" Width="73px" Enabled="false" ></asp:TextBox>
+                                <asp:TextBox ID="TextBox3" runat="server" Height="19px" Width="73px" Enabled="false" >0</asp:TextBox>
                             </ItemTemplate>
                         </asp:TemplateField>
-                        <asp:TemplateField HeaderText="U. MEDIDA">
+                        <asp:TemplateField HeaderText="PRECIO SUGERIDO">
                             <ItemTemplate>
-                                <asp:TextBox ID="TextBox4" runat="server" Height="19px" Width="73px" Enabled="false"></asp:TextBox>
+                                <asp:TextBox ID="TextBox4" runat="server" Height="19px" Width="73px" Enabled="false" ></asp:TextBox>
                             </ItemTemplate>
-                        </asp:TemplateField>
-                        <asp:TemplateField HeaderText="PRESENTACIÓN">
-                            <ItemTemplate>
-                                <asp:TextBox ID="TextBox5" runat="server" Height="19px" Width="73px" Enabled="false"></asp:TextBox>
-                            </ItemTemplate>
-                        </asp:TemplateField>
+                        </asp:TemplateField>                       
                         
                         
                         
