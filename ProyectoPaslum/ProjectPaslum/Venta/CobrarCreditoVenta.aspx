@@ -15,7 +15,7 @@
 
     <div class="container">
        <div style="text-align:center">
-            <h2>Productos seleccionados para comprar</h2>
+            <h2>Productos seleccionados para comprar a credito</h2>
         </div>
 
         <div class="panel panel-default">
@@ -89,19 +89,31 @@
                 <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" Width="100%"
                     BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="3px" 
                     AllowPaging="True" 
-                    OnRowCommand="GridView1_RowCommand" OnRowDeleting="GridView1_RowDeleting"
-                    OnRowDeleted="GridView1_RowDeleted" OnSelectedIndexChanged="GridView1_SelectedIndexChanged" CssClass="table-responsive">
+                    OnRowCommand="GridView1_RowCommand" OnRowDeleting="GridView1_RowDeleting">
                     <Columns>
-                        <asp:CommandField ShowDeleteButton="True" HeaderText="Editar" />
-                        <asp:BoundField DataField="idProducto" HeaderText="Codigo" />
-                        <asp:BoundField DataField="strNombre" HeaderText="Descripcion" />
-                        <asp:BoundField DataField="dblPrecio" HeaderText="Precio" />
-                        <asp:TemplateField HeaderText="Cantidad">
+                        <asp:CommandField ShowDeleteButton="True" HeaderText="BORRAR" />
+                        <asp:BoundField DataField="idProducto" HeaderText="CODIGO" />
+                        <asp:BoundField DataField="strNombre" HeaderText="DESCRIPCIÓN" />
+                        <asp:TemplateField HeaderText="CANTIDAD">
                             <ItemTemplate>
                                 <asp:TextBox ID="TextBox1" runat="server" Height="19px" Width="73px">1</asp:TextBox>
                             </ItemTemplate>
                         </asp:TemplateField>
-                        <asp:BoundField DataField="subtotal" HeaderText="Sub Total" />
+                        <asp:TemplateField HeaderText="PRECIO VENTA">
+                            <ItemTemplate>
+                                <asp:TextBox ID="TextBox2" runat="server" Height="19px" Width="73px">0.0</asp:TextBox>
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                        <asp:TemplateField HeaderText="COSTO">
+                            <ItemTemplate>
+                                <asp:TextBox ID="TextBox3" runat="server" Height="19px" Width="73px" Enabled="false" >0</asp:TextBox>
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                        <asp:TemplateField HeaderText="PRECIO SUGERIDO">
+                            <ItemTemplate>
+                                <asp:TextBox ID="TextBox4" runat="server" Height="19px" Width="73px" Enabled="false" ></asp:TextBox>
+                            </ItemTemplate>
+                        </asp:TemplateField>
                     </Columns>
                     <FooterStyle BackColor="White" ForeColor="#000066" />
                         <HeaderStyle BackColor="#006699" Font-Bold="True" ForeColor="White" HorizontalAlign="Center"/>
@@ -125,7 +137,7 @@
             <td>
                 &nbsp;</td>
         </tr>
-        <tr>
+        <%--<tr>
             <td style="width: 77px">
                 &nbsp;</td>
             <td style="width: 397px; text-align: right">
@@ -134,13 +146,13 @@
             </td>
             <td>
                 &nbsp;</td>
-        </tr>
+        </tr>--%>
         <tr>
             <td style="width: 77px">
                 &nbsp;</td>
             <td style="width: 397px; text-align: right">
-                IGV S/ :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <asp:Label ID="lblIGV" runat="server" Text="Label"></asp:Label>
+                Total final:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <asp:Label ID="lblTotal2" runat="server" Text="Label"></asp:Label>
             </td>
             <td>
                 &nbsp;</td>
@@ -149,7 +161,7 @@
             <td style="width: 77px">
                 &nbsp;</td>
             <td style="width: 397px; text-align: right">
-                Total S/ :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                Total con el precio sugerido:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <asp:Label ID="lblTotal" runat="server" Text="Label"></asp:Label>
             </td>
             <td>
@@ -159,12 +171,12 @@
             <td style="width: 77px">
                 &nbsp;</td>
             <td style="width: 397px">
-                <asp:Button ID="Button1" runat="server" Text="Actualizar" OnClick="Button1_Click" CssClass="btn btn-primary" />
-                <asp:Button ID="Button2" runat="server" Text="Regresar" style="margin-left: 111px" Width="157px" OnClick="Button2_Click" CssClass="btn btn-primary" />
-            </td>
+                <asp:Button ID="Button2" runat="server" Text="Regresar" OnClick="Button2_Click" CssClass="btn btn-primary" />
+                <asp:Button ID="Button1" runat="server" Text="Calcular" style="margin-left: 111px" Width="157px" OnClick="Button1_Click" CssClass="btn btn-primary" />
+                 </td>
             <td>
                 <asp:Button ID="Button3" runat="server" style="margin-left: 34px" Text="Cobrar" Width="120px"  OnClick="Button3_Click" CssClass="btn btn-primary" />
-                <asp:Button ID="Button4" runat="server" style="margin-left: 34px" Text="PDF" Width="120px"  OnClick="Button4_Click" CssClass="btn btn-primary" />
+                <asp:Button ID="Button4" runat="server" style="margin-left: 34px" Text="Visualizar PDF" Width="150px"  OnClick="Button4_Click" CssClass="btn btn-primary" />
             </td>
         </tr>
                     </table>

@@ -15,7 +15,7 @@
 
 <div class="container">
   <div style="text-align:center">
-    <h2>Venta de Mostrador</h2>
+    <h2>Venta de Contado</h2>
   </div>
  
     <div class="panel panel-default">

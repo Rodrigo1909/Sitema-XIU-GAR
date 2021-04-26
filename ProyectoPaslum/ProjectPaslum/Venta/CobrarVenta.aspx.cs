@@ -100,6 +100,7 @@ namespace ProjectPaslum.Venta
             if (double.Parse(lblTotal2.Text) == vacio)
             {
                 this.ClientScript.RegisterStartupScript(this.GetType(), "SweetAlert", "fallo()", true);
+                this.Calcular();
             }
 
             else if (string.IsNullOrWhiteSpace(txtDinero.Text) ||
@@ -107,11 +108,13 @@ namespace ProjectPaslum.Venta
                      string.IsNullOrWhiteSpace(fechaEntrega.Text))
             {
                 this.ClientScript.RegisterStartupScript(this.GetType(), "SweetAlert", "vacio()", true);
+                this.Calcular();
             }
 
             else if (double.Parse(txtDinero.Text, culture)  >= double.Parse(lblTotal2.Text, culture))
             {
                 this.ClientScript.RegisterStartupScript(this.GetType(), "SweetAlert", "fallo()", true);
+                this.Calcular();
             }
             
 
@@ -126,7 +129,7 @@ namespace ProjectPaslum.Venta
                 if ((Session["cliente"].ToString() == "MOSTRADOR"))
                 {
                     ven.Fecha = fechact;
-                    ven.dblTotal = decimal.Parse(lblTotal.Text);
+                    ven.dblTotal = decimal.Parse(lblTotal2.Text);
                     //ven.dblSubTotal = decimal.Parse(lblSubTotal.Text);
                     //ven.dblIGV = decimal.Parse(lblIGV.Text);
                     ven.strEstado = "FINALIZADO";
@@ -139,7 +142,7 @@ namespace ProjectPaslum.Venta
                 else
                 {
                     ven.Fecha = fechact;
-                    ven.dblTotal = decimal.Parse(lblTotal.Text);
+                    ven.dblTotal = decimal.Parse(lblTotal2.Text);
                     //ven.dblSubTotal = decimal.Parse(lblSubTotal.Text);
                     //ven.dblIGV = decimal.Parse(lblIGV.Text);
                     ven.strEstado = "PENDIENTE";
@@ -158,9 +161,9 @@ namespace ProjectPaslum.Venta
                     ControllerCliente ctrlClie = new ControllerCliente();
                     tblDetalleVenta detalle = new tblDetalleVenta();
                     detalle.Fecha = fechact;
-                    detalle.intCantidad = int.Parse(((TextBox)row.Cells[4].FindControl("TextBox1")).Text);                    
+                    detalle.intCantidad = int.Parse(((TextBox)row.Cells[3].FindControl("TextBox1")).Text);                    
                     detalle.fkProducto = int.Parse(row.Cells[1].Text);
-                    detalle.dblPrecio = decimal.Parse(((TextBox)row.Cells[6].FindControl("TextBox2")).Text);
+                    detalle.dblPrecio = decimal.Parse(((TextBox)row.Cells[4].FindControl("TextBox2")).Text);
                     detalle.fkVenta = ven.idVenta;
                     detalle.fkEmpleado = int.Parse(Session["id"].ToString()); 
                     ctrlClie.InsertarDetalle(detalle);
@@ -367,7 +370,6 @@ namespace ProjectPaslum.Venta
             string cod, desc;
             int cant;
             double precio, total2 = 0;
-            double precio2;
 
 
             var items = (DataTable)Session["contado"];

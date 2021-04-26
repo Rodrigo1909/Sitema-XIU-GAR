@@ -18,40 +18,46 @@ namespace ProjectPaslum.Venta
 
         public void CargarDetalle()
         {
-            if (Session["pedido"] == null)
+            if (Session["credito"] == null)
             {
                 dtb = new DataTable("Carrito");
                 dtb.Columns.Add("idProducto", System.Type.GetType("System.Int32"));
                 dtb.Columns.Add("strNombre", System.Type.GetType("System.String"));
-                dtb.Columns.Add("dblPrecio", System.Type.GetType("System.Double"));
-                dtb.Columns.Add("subtotal", System.Type.GetType("System.Double"));
+                //dtb.Columns.Add("dblPrecio", System.Type.GetType("System.Double"));
+                //dtb.Columns.Add("subtotal", System.Type.GetType("System.Double"));
                 dtb.Columns.Add("canproducto", System.Type.GetType("System.Int32"));
+                dtb.Columns.Add("preVenta", System.Type.GetType("System.Double"));
+                dtb.Columns.Add("dblCosto", System.Type.GetType("System.Double"));
+                //dtb.Columns.Add("intPresentacion", System.Type.GetType("System.Int32"));
+                //dtb.Columns.Add("strNombre1", System.Type.GetType("System.String"));
 
-                Session["pedido"] = dtb;
+                Session["credito"] = dtb;
                 Session["prueba"] = dtb;
             }
             else
             {
-                Session["pedido"] = Session["prueba"];
+                Session["credito"] = Session["prueba"];
             }
 
 
         }
 
-        public void AgregarItem(string cod, string des, double precio)
+        public void AgregarItem(string cod, string des)
         {
-            double total;
             int cantidad = 1;
-            total = precio * cantidad;
-            carrito = (DataTable)Session["pedido"];
+            decimal precio2 = 0;
+            decimal costo = 0;
+
+            carrito = (DataTable)Session["credito"];
             DataRow fila = carrito.NewRow();
             fila[0] = cod;
             fila[1] = des;
-            fila[2] = precio;
-            fila[3] = (int)cantidad;
-            fila[4] = total;
+            fila[2] = (int)cantidad;
+            fila[3] = (double)precio2;
+            fila[4] = (double)costo;
+
             carrito.Rows.Add(fila);
-            Session["pedido"] = carrito;
+            Session["credito"] = carrito;
         }
 
         protected void Page_Load(object sender, EventArgs e)
@@ -69,15 +75,12 @@ namespace ProjectPaslum.Venta
             }
             if (Page.IsPostBack == false)
             {
-                CargarDetalle();
-                lblAgregado.Text = "";
+                CargarDetalle();                
             }
         }
 
         private void LlenarCliente()
         {
-
-
             var clie = (from cli in contexto.tblCliente
                         select new { nombre = cli.strNombre + " " + cli.strApellidoP + " " + cli.strApellidoM, id = cli.idCliente }).ToList();
 
@@ -121,28 +124,104 @@ namespace ProjectPaslum.Venta
                 ddlLugar.DataBind();
             }
 
-        protected void DataList1_ItemCommand(object source, DataListCommandEventArgs e)
-        {
-            string cod;
-            string des = null, nom = null;
-            double precio = 0;
-            if (e.CommandName == "Seleccionar")
-            {
-                DataList1.SelectedIndex = e.Item.ItemIndex;
-
-                cod = ((Label)this.DataList1.SelectedItem.FindControl("idProductoLabel")).Text;
-                des = ((Label)this.DataList1.SelectedItem.FindControl("strNombreLabel")).Text;
-                precio = double.Parse(((Label)this.DataList1.SelectedItem.FindControl("dblPrecioLabel")).Text);
-                AgregarItem(cod, des, precio);
-
-                lblAgregado.Text = "Producto Agregado: " + nom + " " + des;
-                //Session["prueba"] = "Sesión usuario prueba";
-            }
-        }
 
         protected void Button1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        protected void DataList2_ItemCommand(object source, DataListCommandEventArgs e)
+        {
+            string cod;
+            string des = null;
+            
+            if (e.CommandName == "Seleccionar")
+            {
+                DataList2.SelectedIndex = e.Item.ItemIndex;
+
+                cod = ((Label)this.DataList2.SelectedItem.FindControl("idProductoLabel")).Text;
+                des = ((Label)this.DataList2.SelectedItem.FindControl("strNombreLabel")).Text + " " +
+                    int.Parse(((Label)this.DataList2.SelectedItem.FindControl("intPresentacionLabel")).Text) + " " +
+                    ((Label)this.DataList2.SelectedItem.FindControl("strNombre1Label")).Text;
+                
+                AgregarItem(cod, des);
+
+                
+                //Session["prueba"] = "Sesión usuario prueba";
+            }
+
+        }
+
+        protected void DataList3_ItemCommand(object source, DataListCommandEventArgs e)
+        {
+            string cod;
+            string des = null;
+
+            if (e.CommandName == "Seleccionar")
+            {
+                DataList3.SelectedIndex = e.Item.ItemIndex;
+
+                cod = ((Label)this.DataList3.SelectedItem.FindControl("idProductoLabel")).Text;
+                des = ((Label)this.DataList3.SelectedItem.FindControl("strNombreLabel")).Text + " " +
+                    int.Parse(((Label)this.DataList3.SelectedItem.FindControl("intPresentacionLabel")).Text) + " " +
+                    ((Label)this.DataList3.SelectedItem.FindControl("strNombre1Label")).Text;
+                
+                AgregarItem(cod, des);               
+               
+            }
+        }
+
+        protected void DataList4_ItemCommand(object source, DataListCommandEventArgs e)
+        {
+            string cod;
+            string des = null;
+            if (e.CommandName == "Seleccionar")
+            {
+                DataList4.SelectedIndex = e.Item.ItemIndex;
+
+                cod = ((Label)this.DataList4.SelectedItem.FindControl("idProductoLabel")).Text;
+                des = ((Label)this.DataList4.SelectedItem.FindControl("strNombreLabel")).Text + " " +
+                    int.Parse(((Label)this.DataList4.SelectedItem.FindControl("intPresentacionLabel")).Text) + " " +
+                    ((Label)this.DataList4.SelectedItem.FindControl("strNombre1Label")).Text;
+                
+                AgregarItem(cod, des);
+            }
+        }
+
+        protected void DataList5_ItemCommand(object source, DataListCommandEventArgs e)
+        {
+            string cod;
+            string des = null;
+
+            if (e.CommandName == "Seleccionar")
+            {
+                DataList5.SelectedIndex = e.Item.ItemIndex;
+
+                cod = ((Label)this.DataList5.SelectedItem.FindControl("idProductoLabel")).Text;
+                des = ((Label)this.DataList5.SelectedItem.FindControl("strNombreLabel")).Text + " " +
+                    int.Parse(((Label)this.DataList5.SelectedItem.FindControl("intPresentacionLabel")).Text) + " " +
+                    ((Label)this.DataList5.SelectedItem.FindControl("strNombre1Label")).Text;
+                
+                AgregarItem(cod, des);
+            }
+        }
+
+        protected void DataList6_ItemCommand(object source, DataListCommandEventArgs e)
+        {
+            string cod;
+            string des = null;
+
+            if (e.CommandName == "Seleccionar")
+            {
+                DataList6.SelectedIndex = e.Item.ItemIndex;
+
+                cod = ((Label)this.DataList6.SelectedItem.FindControl("idProductoLabel")).Text;
+                des = ((Label)this.DataList6.SelectedItem.FindControl("strNombreLabel")).Text + " " +
+                    int.Parse(((Label)this.DataList6.SelectedItem.FindControl("intPresentacionLabel")).Text) + " " +
+                    ((Label)this.DataList6.SelectedItem.FindControl("strNombre1Label")).Text;
+                
+                AgregarItem(cod, des);            
+            }
         }
     }
 }

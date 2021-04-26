@@ -44,7 +44,7 @@
 
                                     <div class="form-group">
                                         <label>Nombre del cliente </label><asp:DropDownList ID="ddlCliente" runat="server" AppendDataBoundItems="True"  width="500px"
-                                            OnSelectedIndexChanged="ddlCliente_SelectedIndexChanged" AutoPostBack="true" ></asp:DropDownList>   
+                                            OnSelectedIndexChanged="ddlCliente_SelectedIndexChanged" AutoPostBack="true" required="required"></asp:DropDownList>   
                                     </div>
                                     &nbsp &nbsp &nbsp &nbsp 
                                             
@@ -54,7 +54,7 @@
                                      <br /><br />
                                                          
                                     <div class="form-group">
-                                          <label>Lugar </label><asp:DropDownList ID="ddlLugar" runat="server" AppendDataBoundItems="True"  width="500px" Enabled="false"></asp:DropDownList> 
+                                          <label>Establecimiento </label><asp:DropDownList ID="ddlLugar" runat="server" AppendDataBoundItems="True"  width="500px" Enabled="false"></asp:DropDownList> 
                                     </div>
                                     &nbsp &nbsp &nbsp &nbsp
 
@@ -82,36 +82,87 @@
             <div class="row">
 
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                    <br />
                     <div class="panel panel-default">
                         <div class="panel-body">
-                            <div class="form-inline">
-                                <div class="jumbotron"  style="background-color:white">
-				<table class="table-responsive">
-				<tbody>     
-                    <tr>
-                        <td>                                        
-                            <asp:Label ID="lblAgregado" runat="server" Text="Label"></asp:Label>
-                        </td>
-                    </tr>               
-						
+                            
+                            <div class="container">
+ 
+                           <div class="panel-group" id="accordion">
+                               <%-- ESTANDAR --%>
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                    <h4 class="panel-title">
+                                        <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">AZÚCAR ESTANDAR</a>
+                                    </h4>
+                                    </div>
+                                    <div id="collapse1" class="panel-collapse collapse in">
+                                    <div class="panel-body">
+                                        <asp:DataList ID="DataList2" runat="server" DataKeyField="idProducto" DataSourceID="SqlDataSource1" CssClass="table table-responsive"
+                                            RepeatColumns="4" OnItemCommand="DataList2_ItemCommand"   >
+                                        <ItemTemplate>
+                                            Codigo:
+                                            <asp:Label ID="idProductoLabel" runat="server" Text='<%# Eval("idProducto") %>'></asp:Label>
+                                            <br />
+                                            Producto:
+                                            <asp:Label ID="strNombreLabel" runat="server" Text='<%# Eval("strNombre") %>'></asp:Label>  
+                                            <br />
+                                            Precio:
+                                            <asp:Label ID="dblPrecioLabel" runat="server" Text='<%# Eval("dblPrecio") %>'></asp:Label> 
+                                            <br />
+                                            Presentación: 
+                                            <asp:Label ID="intPresentacionLabel" runat="server" Text='<%# Eval("intPresentacion") %>'></asp:Label>                                        
+                                            <br />                                        
+                                            U. Medida:                                        
+                                            <asp:Label ID="strNombre1Label" runat="server" Text='<%# Eval("strNombre1") %>'></asp:Label>
+                                            <br />
+                                            <asp:Button ID="Button1" runat="server" CommandName="Seleccionar" OnClick="Button1_Click" Text="Agregar" CssClass="btn btn-success" />
+                                            <br />
 
-						    <asp:DataList ID="DataList1" runat="server" DataKeyField="idProducto" DataSourceID="SqlDataSource1" RepeatColumns="4" 
-                                OnItemCommand="DataList1_ItemCommand" CssClass="table table-responsive"  >
+                                        </ItemTemplate>
+                                    
+                                    </asp:DataList>
+                                <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:XIUGARConnectionString %>"
+                                        SelectCommand="SELECT p.idProducto, p.strNombre, 
+                                                        p.dblPrecio , p.intPresentacion, u.strNombre
+                                                        FROM tblProducto p
+                                                        inner join tblUnidadMedida u
+                                                        on p.fkUnidadMedida = u.idUnidadMedida
+                                                        where fkAlmacen = 2 and strCatalogo = 'ESTANDAR';"></asp:SqlDataSource>
+                                    </div>
+                                    </div>
+                                </div>
+
+                               <%-- REFINADA --%>
+                               <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                    <h4 class="panel-title">
+                                        <a data-toggle="collapse" data-parent="#accordion" href="#collapse2">AZÚCAR REFINADA</a>
+                                    </h4>
+                                    </div>
+                                    <div id="collapse2" class="panel-collapse collapse">
+                                    <div class="panel-body">
+                                        
+						    <asp:DataList ID="DataList3" runat="server" DataKeyField="idProducto" DataSourceID="SqlDataSource2" RepeatColumns="4" 
+                                OnItemCommand="DataList3_ItemCommand"  CssClass="table table-responsive" >
                                 <ItemTemplate>
                                     
+                                    Codigo:
+                                    
+                                    <asp:Label ID="idProductoLabel" runat="server" Text='<%# Eval("idProducto") %>'></asp:Label>                                                                   
+                                    <br />           
+                                    Producto:                                                                   
+                                    <asp:Label ID="strNombreLabel" runat="server" Text='<%# Eval("strNombre") %>'/>
+                                                                  
                                     <br />
-                                    <asp:Label ID="codigo" runat="server" Text="CODIGO:" Font-Size="16px" Font-Italic="true"></asp:Label>                                    
-                                    <asp:Label ID="idProductoLabel" runat="server" Text='<%# Eval("idProducto") %>' ForeColor="#00cc00" Font-Size="15px"/>
+                                    Precio:
+                                    <asp:Label ID="dblPrecioLabel" runat="server" Text='<%# Eval("dblPrecio") %>'></asp:Label>                                                                   
                                     <br />
-                                    <asp:Label ID="nombre" runat="server" Text="NOMBRE:" Font-Size="16px" Font-Italic="true"></asp:Label>                                 
-                                    <asp:Label ID="strNombreLabel" runat="server" Text='<%# Eval("strNombre") %>' ForeColor="#00cc00" Font-Size="15px"/>
-                                    <br />                                    
-                                    <asp:Label ID="descripcion" runat="server" Text="DESCRIPCIÓN:" Font-Size="16px" Font-Italic="true"></asp:Label>
-                                    <asp:Label ID="strDescripcionLabel" runat="server" Text='<%# Eval("strDescripcion") %>' ForeColor="#00cc00" Font-Size="15px"/>
+                                    Presentación:                                                                   
+                                    <asp:Label ID="intPresentacionLabel" runat="server" Text='<%# Eval("intPresentacion") %>'/>
+                                                                  
                                     <br />
-                                    <asp:Label ID="precio" runat="server" Text="PRECIO:" Font-Size="16px" Font-Italic="true"></asp:Label>
-                                    <asp:Label ID="dblPrecioLabel" runat="server" Text='<%# Eval("dblPrecio") %>' ForeColor="#00cc00" Font-Size="15px"/>
+                                    U. Medida:
+                                    <asp:Label ID="strNombre1Label" runat="server" Text='<%# Eval("strNombre1") %>'></asp:Label>
                                     <br />
                                     <asp:Button ID="Button1" runat="server" CommandName="Seleccionar" OnClick="Button1_Click" Text="Agregar" CssClass="btn btn-success" />
                                     <br />
@@ -119,31 +170,185 @@
 
                             </asp:DataList>
 
+                                <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:XIUGARConnectionString %>"
+                                 SelectCommand="SELECT p.idProducto, p.strNombre, 
+                                                p.dblPrecio , p.intPresentacion, u.strNombre
+                                                FROM tblProducto p
+                                                inner join tblUnidadMedida u
+                                                on p.fkUnidadMedida = u.idUnidadMedida
+                                                where fkAlmacen = 2 and strCatalogo = 'REFINADA';
+                                                "></asp:SqlDataSource>
 
-						    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:XIUGARConnectionString %>" 
-                                SelectCommand="SELECT [idProducto], [strNombre], [strDescripcion], [dblPrecio] FROM [tblProducto] where fkAlmacen = 2"></asp:SqlDataSource>
+                                    </div>
+                                    </div>
+                                </div>
 
-						
+                               <%-- MASCABADO --%> 
+                               <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                    <h4 class="panel-title">
+                                        <a data-toggle="collapse" data-parent="#accordion" href="#collapse3">AZÚCAR MASCABADO</a>
+                                    </h4>
+                                    </div>
+                                    <div id="collapse3" class="panel-collapse collapse">
+                                    <div class="panel-body">
+                                                 <asp:DataList ID="DataList4" runat="server" DataKeyField="idProducto" DataSourceID="SqlDataSource5" RepeatColumns="4" 
+                                OnItemCommand="DataList4_ItemCommand"  CssClass="table table-responsive" >
+                                <ItemTemplate>
+                                    
+                                    Codigo:
+                                    
+                                    <asp:Label ID="idProductoLabel" runat="server" Text='<%# Eval("idProducto") %>'></asp:Label>                                                                   
+                                    <br />           
+                                    Producto:                                                                   
+                                    <asp:Label ID="strNombreLabel" runat="server" Text='<%# Eval("strNombre") %>'/>
+                                                                  
+                                    <br />
+                                    Precio:
+                                    <asp:Label ID="dblPrecioLabel" runat="server" Text='<%# Eval("dblPrecio") %>'></asp:Label>                                                                   
+                                    <br />
+                                    Presentación:                                                                   
+                                    <asp:Label ID="intPresentacionLabel" runat="server" Text='<%# Eval("intPresentacion") %>'/>
+                                                                  
+                                    <br />
+                                    U. Medida:
+                                    <asp:Label ID="strNombre1Label" runat="server" Text='<%# Eval("strNombre1") %>'></asp:Label>
+                                    <br />
+                                    <asp:Button ID="Button1" runat="server" CommandName="Seleccionar" OnClick="Button1_Click" Text="Agregar" CssClass="btn btn-success" />
+                                    <br />
+                                </ItemTemplate>
 
-					
-				</tbody>
-			</table>
-			</div>
+                            </asp:DataList>
+
+                         <asp:SqlDataSource ID="SqlDataSource5" runat="server" ConnectionString="<%$ ConnectionStrings:XIUGARConnectionString %>" 
+                             SelectCommand="SELECT p.idProducto, p.strNombre, 
+                                        p.dblPrecio , p.intPresentacion, u.strNombre
+                                        FROM tblProducto p
+                                        inner join tblUnidadMedida u
+                                        on p.fkUnidadMedida = u.idUnidadMedida
+                                        where fkAlmacen = 2 and strCatalogo = 'MASCABADO';
+                                        "></asp:SqlDataSource>
+                                        </div>
+                                    </div>
+                                </div>
+
+                               <%-- GLAS --%>  
+                               <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                    <h4 class="panel-title">
+                                        <a data-toggle="collapse" data-parent="#accordion" href="#collapse4">AZÚCAR GLAS</a>
+                                    </h4>
+                                    </div>
+                                    <div id="collapse4" class="panel-collapse collapse">
+                                    <div class="panel-body">
+                                                <asp:DataList ID="DataList5" runat="server" DataKeyField="idProducto" DataSourceID="SqlDataSource6" RepeatColumns="4" 
+                                OnItemCommand="DataList5_ItemCommand"  CssClass="table table-responsive" >
+                                <ItemTemplate>
+                                    
+                                    Codigo:
+                                    
+                                    <asp:Label ID="idProductoLabel" runat="server" Text='<%# Eval("idProducto") %>'></asp:Label>                                                                   
+                                    <br />           
+                                    Producto:                                                                   
+                                    <asp:Label ID="strNombreLabel" runat="server" Text='<%# Eval("strNombre") %>'/>
+                                                                  
+                                    <br />
+                                    Precio:
+                                    <asp:Label ID="dblPrecioLabel" runat="server" Text='<%# Eval("dblPrecio") %>'></asp:Label>                                                                   
+                                    <br />
+                                    Presentación:                                                                   
+                                    <asp:Label ID="intPresentacionLabel" runat="server" Text='<%# Eval("intPresentacion") %>'/>
+                                                                  
+                                    <br />
+                                    U.Medida:
+                                    <asp:Label ID="strNombre1Label" runat="server" Text='<%# Eval("strNombre1") %>'></asp:Label>
+                                    <br />
+                                    <asp:Button ID="Button1" runat="server" CommandName="Seleccionar" OnClick="Button1_Click" Text="Agregar" CssClass="btn btn-success" />
+                                    <br />
+                                </ItemTemplate>
+
+                            </asp:DataList>
+
+                             <asp:SqlDataSource ID="SqlDataSource6" runat="server" ConnectionString="<%$ ConnectionStrings:XIUGARConnectionString %>" 
+                                 SelectCommand="SELECT p.idProducto, p.strNombre, 
+                                    p.dblPrecio , p.intPresentacion, u.strNombre
+                                    FROM tblProducto p
+                                    inner join tblUnidadMedida u
+                                    on p.fkUnidadMedida = u.idUnidadMedida
+                                    where fkAlmacen = 2 and strCatalogo = 'GLAS';
+                                    "></asp:SqlDataSource>
+                                        </div>
+                                    </div>
+                                </div>
+
+                               <%-- EDULCORANTES --%> 
+                               <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                    <h4 class="panel-title">
+                                        <a data-toggle="collapse" data-parent="#accordion" href="#collapse5">EDULCORANTES</a>
+                                    </h4>
+                                    </div>
+                                    <div id="collapse5" class="panel-collapse collapse">
+                                    <div class="panel-body">
+                                              <asp:DataList ID="DataList6" runat="server" DataKeyField="idProducto" DataSourceID="SqlDataSource7" RepeatColumns="4" 
+                                OnItemCommand="DataList6_ItemCommand"  CssClass="table table-responsive" >
+                                <ItemTemplate>
+                                    
+                                    Codigo:
+                                    
+                                    <asp:Label ID="idProductoLabel" runat="server" Text='<%# Eval("idProducto") %>'></asp:Label>                                                                   
+                                    <br />           
+                                    Producto:                                                                   
+                                    <asp:Label ID="strNombreLabel" runat="server" Text='<%# Eval("strNombre") %>'/>
+                                                                  
+                                    <br />
+                                    Precio:
+                                    <asp:Label ID="dblPrecioLabel" runat="server" Text='<%# Eval("dblPrecio") %>'></asp:Label>                                                                   
+                                    <br />
+                                    Presentación:                                                                   
+                                    <asp:Label ID="intPresentacionLabel" runat="server" Text='<%# Eval("intPresentacion") %>'/>
+                                                                  
+                                    <br />
+                                    U. Medida:
+                                    <asp:Label ID="strNombre1Label" runat="server" Text='<%# Eval("strNombre1") %>'></asp:Label>
+                                    <br />
+                                    <asp:Button ID="Button1" runat="server" CommandName="Seleccionar" OnClick="Button1_Click" Text="Agregar" CssClass="btn btn-success" />
+                                    <br />
+                                </ItemTemplate>
+
+                            </asp:DataList>
+
+                           <asp:SqlDataSource ID="SqlDataSource7" runat="server" ConnectionString="<%$ ConnectionStrings:XIUGARConnectionString %>" 
+                               SelectCommand="SELECT p.idProducto, p.strNombre, 
+                                        p.dblPrecio , p.intPresentacion, u.strNombre
+                                        FROM tblProducto p
+                                        inner join tblUnidadMedida u
+                                        on p.fkUnidadMedida = u.idUnidadMedida
+                                        where fkAlmacen = 2 and strCatalogo = 'SUSTITUTO';
+                                        "></asp:SqlDataSource>
+                                        </div>
+                                    </div>
+                                </div>
+
+                               <br /><br />
+
+                                <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
+            
+                                </div>
+                                <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                                            <asp:Button ID="btnRegistrar" runat="server" Text="Finalizar venta" Font-Size="16px" CssClass="btn btn-block btn-sm btn-success" Width="150px" OnClick="btnRegistrar_Click" />
+                                </div>
 
 
+                                </div> 
                             </div>
+
                          </div>
                        </div>
                     </div>
-                <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
-            
-                 </div>
-                <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
-                           <asp:Button ID="btnRegistrar" runat="server" Text="Finalizar venta" Font-Size="16px" CssClass="btn btn-block btn-sm btn-success" Width="150px" OnClick="btnRegistrar_Click" />
                 </div>
+               </div>
             </div>
-           </div>
-        </div>
                      
 </div>
 </asp:Content>
