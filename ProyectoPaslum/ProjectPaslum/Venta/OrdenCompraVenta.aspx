@@ -197,10 +197,10 @@
                         <div class="panel-body">
                             <div class="form-inline">
 
-                                    <div class="form-group">
-                                          <label>Fecha de Entrega</label>
-                                         <asp:Calendar ID="calEntrega" runat="server" width="500px" required="required"></asp:Calendar>         
-                                    </div>
+                                   <div class="form-group">
+                                         <label>Fecha de entrega</label>
+                                        <asp:TextBox id="calEntregas" runat="server" TextMode="Date" required="required" width="500px" style="text-align:center" Height="40px"></asp:TextBox>
+                                  </div>
                                      &nbsp &nbsp &nbsp &nbsp                                      
                                                          
                                     <div class="form-group">
@@ -209,16 +209,21 @@
                                     </div>
                                     
                                 <br /><br />
-
-                                   
+                                                
                                 </div>
                                </div>
                              </div>
                            </div>
                 
-                <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10" >
-                           <asp:Button ID="Button1" runat="server" Text="Visualizar" Font-Size="16px" CssClass="btn btn-block btn-sm btn-info" Width="150px" OnClick="Button1_Click"/>
-                           <asp:Button ID="Button2" runat="server" Text="Guardar O.C." Font-Size="16px" CssClass="btn btn-block btn-sm btn-success" Width="150px" OnClick="Button2_Click"/>
+
+                <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8" >
+                          
+                </div> 
+                <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" >
+                      <asp:Button ID="Button1" runat="server" Text="Visualizar PDF" Font-Size="16px" CssClass="btn btn-block btn-sm btn-info" Width="150px" OnClick="Button1_Click" />
+                </div> 
+                <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" >                         
+                      <asp:Button ID="Button2" runat="server" Text="Guardar O.C." Font-Size="16px" CssClass="btn btn-block btn-sm btn-success" Width="150px" OnClick="Button2_Click"/>
                 </div>                
                         </div>
                       </div>

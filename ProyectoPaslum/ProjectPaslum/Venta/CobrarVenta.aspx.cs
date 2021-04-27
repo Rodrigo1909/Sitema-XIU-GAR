@@ -97,12 +97,14 @@ namespace ProjectPaslum.Venta
             CultureInfo culture = new CultureInfo("en-US");
             this.Calcular();
 
+            //Advertencia si el campo no se a calculado correctamente
             if (double.Parse(lblTotal2.Text) == vacio)
             {
                 this.ClientScript.RegisterStartupScript(this.GetType(), "SweetAlert", "fallo()", true);
                 this.Calcular();
             }
-
+            
+            //Advertencia si hay campos vacios de dinero, hora y fecha.
             else if (string.IsNullOrWhiteSpace(txtDinero.Text) ||
                      string.IsNullOrWhiteSpace(txtHora.Text) ||
                      string.IsNullOrWhiteSpace(fechaEntrega.Text))
@@ -111,6 +113,7 @@ namespace ProjectPaslum.Venta
                 this.Calcular();
             }
 
+            //Advertencia si el dinero no es el suficiente para liquidar la cuenta
             else if (double.Parse(txtDinero.Text, culture)  >= double.Parse(lblTotal2.Text, culture))
             {
                 this.ClientScript.RegisterStartupScript(this.GetType(), "SweetAlert", "fallo()", true);
@@ -122,22 +125,119 @@ namespace ProjectPaslum.Venta
             {
                 DateTime fechact = DateTime.Now;
                 ControllerCliente ctrlCli = new ControllerCliente();
-
+                var CanStock = 0;
                 tblVenta ven = new tblVenta();
+                var ExStock = 0;
 
-
+                //Si cae en que el cliente es mostrador significa que la venta
+                //se esta realizando al momento y eso va a afectar en el descuento del inventario
                 if ((Session["cliente"].ToString() == "MOSTRADOR"))
                 {
-                    ven.Fecha = fechact;
-                    ven.dblTotal = decimal.Parse(lblTotal2.Text);
-                    //ven.dblSubTotal = decimal.Parse(lblSubTotal.Text);
-                    //ven.dblIGV = decimal.Parse(lblIGV.Text);
-                    ven.strEstado = "FINALIZADO";
-                    ven.dblAbono = decimal.Parse(txtDinero.Text, culture); ;
-                    ven.dblInteres = null;
-                    ven.strFechaEntega = fechaEntrega.Text;
-                    ven.strHoraEntega = txtHora.Text;
-                    ven.fkCliente = null;
+                    foreach (GridViewRow row in GridView1.Rows)
+                    {
+                        var existente = (from existe in contexto.tblStock
+                                         where existe.fkProducto == int.Parse(row.Cells[1].Text)
+                                         select existe).FirstOrDefault();
+
+                        var cantidadExistente = (from existe in contexto.tblStock
+                                                 where existe.fkProducto == int.Parse(row.Cells[1].Text)
+                                                 select existe);
+
+                        //Si cae aqui significa que no hay un historial en stock
+                        if (existente == null)
+                        {
+                            CanStock++;                            
+                        }
+                        else { 
+                        foreach (tblStock ord in cantidadExistente)
+                        {
+                           //Aqui se hace la resta de la catidad solicitada menos lo que esxita en stock
+                            var resta = ord.dblCantidad - int.Parse(((TextBox)row.Cells[3].FindControl("TextBox1")).Text);
+
+                            if (resta >= 0)
+                            {
+
+
+                            }
+                            else
+                            {
+                                ExStock++;
+                            }
+
+
+                        }
+                        }
+
+                    }
+                    //Alertas en caso de que haya caido en las validaciones anteriores
+                    if (CanStock>0)
+                    {
+                        this.ClientScript.RegisterStartupScript(this.GetType(), "SweetAlert", "fallo()", true);
+                    }
+                    //Alertas en caso de que haya caido en las validaciones anteriores
+                    else if (ExStock > 0)
+                    {
+                        this.ClientScript.RegisterStartupScript(this.GetType(), "SweetAlert", "alerta()", true);
+                    }
+
+                    else
+                    {
+                        ven.Fecha = fechact;
+                        ven.dblTotal = decimal.Parse(lblTotal2.Text);
+                        //ven.dblSubTotal = decimal.Parse(lblSubTotal.Text);
+                        //ven.dblIGV = decimal.Parse(lblIGV.Text);
+                        ven.strEstado = "FINALIZADO";
+                        ven.dblAbono = decimal.Parse(txtDinero.Text, culture); ;
+                        ven.dblInteres = null;
+                        ven.strFechaEntega = fechaEntrega.Text;
+                        ven.strHoraEntega = txtHora.Text;
+                        ven.fkCliente = null;
+                        ctrlCli.InsertarVenta(ven);
+
+                        foreach (GridViewRow row in GridView1.Rows)
+                        {
+                            var cantidadExistente = (from existe in contexto.tblStock
+                                                     where existe.fkProducto == int.Parse(row.Cells[1].Text)
+                                                     select existe);
+
+                            foreach (tblStock ord in cantidadExistente)
+                            {
+                                var resta = ord.dblCantidad - int.Parse(((TextBox)row.Cells[3].FindControl("TextBox1")).Text);
+                                
+                                    ControllerAlmacen ctrlAlm = new ControllerAlmacen();
+                                    tblMovimiento mov = new tblMovimiento();
+                                    mov.strTipo = "VENTA NUMERO " + ven.idVenta;
+                                    mov.fecha = fechact;
+                                    mov.dblValAnt = ord.dblCantidad;
+                                    mov.dblValNvo = resta;
+                                    mov.fkStock = ord.idStock;
+                                    mov.fkEmpleado = Int32.Parse(Session["id"].ToString());
+                                    mov.strNumVen = ven.idVenta.ToString();
+                                    mov.strFactura = "";
+
+                                    ctrlAlm.InsertarMovimientoAlmacen(mov);
+                                    ord.dblCantidad = resta;
+                                    contexto.SubmitChanges();
+
+                            }
+
+
+                            ControllerCliente ctrlClie = new ControllerCliente();
+                            tblDetalleVenta detalle = new tblDetalleVenta();
+                            detalle.Fecha = fechact;
+                            detalle.intCantidad = int.Parse(((TextBox)row.Cells[3].FindControl("TextBox1")).Text);
+                            detalle.fkProducto = int.Parse(row.Cells[1].Text);
+                            detalle.dblPrecio = decimal.Parse(((TextBox)row.Cells[4].FindControl("TextBox2")).Text);
+                            detalle.fkVenta = ven.idVenta;
+                            detalle.fkEmpleado = int.Parse(Session["id"].ToString());
+                            ctrlClie.InsertarDetalle(detalle);
+
+                        }
+                        Session["contado"] = null;
+                        this.ClientScript.RegisterStartupScript(this.GetType(), "SweetAlert", "exito()", true);
+
+                    }
+
                 }
                 else
                 {
@@ -151,26 +251,27 @@ namespace ProjectPaslum.Venta
                     ven.strFechaEntega = fechaEntrega.Text;
                     ven.strHoraEntega = txtHora.Text;
                     ven.fkCliente = int.Parse(Session["cliente"].ToString());
+                    ctrlCli.InsertarVenta(ven);
+
+                    foreach (GridViewRow row in GridView1.Rows)
+                    {
+                        ControllerCliente ctrlClie = new ControllerCliente();
+                        tblDetalleVenta detalle = new tblDetalleVenta();
+                        detalle.Fecha = fechact;
+                        detalle.intCantidad = int.Parse(((TextBox)row.Cells[3].FindControl("TextBox1")).Text);
+                        detalle.fkProducto = int.Parse(row.Cells[1].Text);
+                        detalle.dblPrecio = decimal.Parse(((TextBox)row.Cells[4].FindControl("TextBox2")).Text);
+                        detalle.fkVenta = ven.idVenta;
+                        detalle.fkEmpleado = int.Parse(Session["id"].ToString());
+                        ctrlClie.InsertarDetalle(detalle);
+
+                    }
+                    Session["contado"] = null;
+                    this.ClientScript.RegisterStartupScript(this.GetType(), "SweetAlert", "exito()", true);
                 }
-                ctrlCli.InsertarVenta(ven);
+                
+                
 
-
-
-                foreach (GridViewRow row in GridView1.Rows)
-                {
-                    ControllerCliente ctrlClie = new ControllerCliente();
-                    tblDetalleVenta detalle = new tblDetalleVenta();
-                    detalle.Fecha = fechact;
-                    detalle.intCantidad = int.Parse(((TextBox)row.Cells[3].FindControl("TextBox1")).Text);                    
-                    detalle.fkProducto = int.Parse(row.Cells[1].Text);
-                    detalle.dblPrecio = decimal.Parse(((TextBox)row.Cells[4].FindControl("TextBox2")).Text);
-                    detalle.fkVenta = ven.idVenta;
-                    detalle.fkEmpleado = int.Parse(Session["id"].ToString()); 
-                    ctrlClie.InsertarDetalle(detalle);
-
-                }
-                Session["contado"] = null;
-                this.ClientScript.RegisterStartupScript(this.GetType(), "SweetAlert", "exito()", true);
             }
             
 
@@ -356,7 +457,7 @@ namespace ProjectPaslum.Venta
                 document.Close();
 
                 Response.ContentType = "application/pdf";
-                Response.AddHeader("content-disposition", "attachment;filename=Ticket" + fechact + ".pdf");
+                Response.AddHeader("content-disposition", "attachment;filename=Num. Venta: " + nuevo + "_" + fechact + ".pdf");
                 HttpContext.Current.Response.Write(document);
                 Response.Flush();
                 Response.End();

@@ -106,9 +106,9 @@ namespace ProjectPaslum.Venta
             {
                 document.Open();
 
-                var image = iTextSharp.text.Image.GetInstance(@"C:\Users\RodrigoM\Desktop\Sitema-XIU-GAR\ProyectoPaslum\ProjectPaslum\Alumno\images\XIUGAR.jpg");
-                // iTextSharp.text.Image image1 = iTextSharp.text.Image.GetInstance("../images/avatar.png");
-                //image1.ScalePercent(50f);
+                String rutaLogo = Server.MapPath("../Alumno/images/XIUGAR.jpg");
+
+                var image = iTextSharp.text.Image.GetInstance(rutaLogo);
                 image.ScaleAbsoluteWidth(270);
                 image.ScaleAbsoluteHeight(160);
                 image.SetAbsolutePosition(300, 650);
@@ -117,7 +117,6 @@ namespace ProjectPaslum.Venta
 
                 Font fontTitle = FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 25);
                 Font font9 = FontFactory.GetFont(FontFactory.HELVETICA, 10);
-
 
 
                 Paragraph title = new Paragraph(string.Format("ORDEN DE COMPRA\nXiugar S. de R.L d C.V."), new iTextSharp.text.Font(iTextSharp.text.Font.FontFamily.HELVETICA, 20, iTextSharp.text.Font.BOLD));
@@ -137,6 +136,7 @@ namespace ProjectPaslum.Venta
                 document.Add(new Chunk("\n"));
 
                 PdfPTable table = new PdfPTable(5);
+                table.WidthPercentage = 100;
                 // Esta es la primera fila
                 table.AddCell("Cantidad");
                 table.AddCell("Producto");
@@ -155,7 +155,7 @@ namespace ProjectPaslum.Venta
 
                 //Paragraph FechaEntrega = new Paragraph(16, "Fecha de entrega: $" + (calEntrega.ToString().Substring(0, 2)) + " de " + (calEntrega.ToString().Substring(3, 2)) + " del " + (
                 //        calEntrega.ToString().Substring(6, 4)) , font9);
-                Paragraph FechaEntrega = new Paragraph(16, "Fecha de entrega: " + calEntrega.SelectedDate, font9);
+                Paragraph FechaEntrega = new Paragraph(16, "Fecha de entrega: " + calEntregas.Text, font9);
                 Paragraph Confirmo = new Paragraph(16, "Confirmo: " + txtConfirmo.Text, font9);
 
                 document.Add(new Chunk("\n"));
@@ -214,8 +214,9 @@ namespace ProjectPaslum.Venta
 
                 document.Open();
 
-                var image = iTextSharp.text.Image.GetInstance(@"C:\Users\RodrigoM\Desktop\Sitema-XIU-GAR\ProyectoPaslum\ProjectPaslum\Alumno\images\XIUGAR.jpg");
-                // iTextSharp.text.Image image1 = iTextSharp.text.Image.GetInstance("../images/avatar.png");
+                String rutaLogo = Server.MapPath("../Alumno/images/XIUGAR.jpg");
+
+                var image = iTextSharp.text.Image.GetInstance(rutaLogo);
                 //image1.ScalePercent(50f);
                 image.ScaleAbsoluteWidth(270);
                 image.ScaleAbsoluteHeight(160);
@@ -245,6 +246,7 @@ namespace ProjectPaslum.Venta
                 document.Add(new Chunk("\n"));
 
                 PdfPTable table = new PdfPTable(5);
+                table.WidthPercentage = 100;
                 // Esta es la primera fila
                 table.AddCell("Cantidad");
                 table.AddCell("Producto");
@@ -263,7 +265,7 @@ namespace ProjectPaslum.Venta
 
                 //Paragraph FechaEntrega = new Paragraph(16, "Fecha de entrega: $" + (calEntrega.ToString().Substring(0, 2)) + " de " + (calEntrega.ToString().Substring(3, 2)) + " del " + (
                 //        calEntrega.ToString().Substring(6, 4)) , font9);
-                Paragraph FechaEntrega = new Paragraph(16, "Fecha de entrega: " + calEntrega.SelectedDate, font9);
+                Paragraph FechaEntrega = new Paragraph(16, "Fecha de entrega: " + calEntregas.Text, font9);
                 Paragraph Confirmo = new Paragraph(16, "Confirmo: " + txtConfirmo.Text, font9);
 
                 document.Add(new Chunk("\n"));
@@ -331,9 +333,9 @@ namespace ProjectPaslum.Venta
 
                     document.Open();
 
-                    var image = iTextSharp.text.Image.GetInstance(@"C:\Users\RodrigoM\Desktop\Sitema-XIU-GAR\ProyectoPaslum\ProjectPaslum\Alumno\images\XIUGAR.jpg");
-                    // iTextSharp.text.Image image1 = iTextSharp.text.Image.GetInstance("../images/avatar.png");
-                    //image1.ScalePercent(50f);
+                    String rutaLogo = Server.MapPath("../Alumno/images/XIUGAR.jpg");
+
+                    var image = iTextSharp.text.Image.GetInstance(rutaLogo);
                     image.ScaleAbsoluteWidth(270);
                     image.ScaleAbsoluteHeight(160);
                     image.SetAbsolutePosition(300, 650);
@@ -362,6 +364,7 @@ namespace ProjectPaslum.Venta
                     document.Add(new Chunk("\n"));
 
                     PdfPTable table = new PdfPTable(5);
+                    table.WidthPercentage = 100;
                     // Esta es la primera fila
                     table.AddCell("Cantidad");
                     table.AddCell("Producto");
@@ -380,7 +383,7 @@ namespace ProjectPaslum.Venta
 
                     //Paragraph FechaEntrega = new Paragraph(16, "Fecha de entrega: $" + (calEntrega.ToString().Substring(0, 2)) + " de " + (calEntrega.ToString().Substring(3, 2)) + " del " + (
                     //        calEntrega.ToString().Substring(6, 4)) , font9);
-                    Paragraph FechaEntrega = new Paragraph(16, "Fecha de entrega: " + calEntrega.SelectedDate, font9);
+                    Paragraph FechaEntrega = new Paragraph(16, "Fecha de entrega: " + calEntregas.Text, font9);
                     Paragraph Confirmo = new Paragraph(16, "Confirmo: " + txtConfirmo.Text, font9);
 
                     document.Add(new Chunk("\n"));
@@ -445,26 +448,12 @@ namespace ProjectPaslum.Venta
                     //Aqui cae si no se se tiene descuento pero si Iva
                     var iva = ((decimal.Parse(txtImporte.Text, culture) * int.Parse(txtIVA.Text)) / 100);
                     var TotalInicio = (decimal.Parse(txtImporte.Text, culture) + iva);
-                    //var Descuen = (decimal.Parse(txtImporte.Text, culture) - decimal.Parse(txtDescuento.Text, culture));
-
-
-                    //var iva = ((decimal.Parse(txtImporte.Text) * int.Parse(txtIVA.Text)) / 100);
-                    //var IVAPunto = iva.ToString().Substring(iva.ToString().Length - 2);
-                    //var fin = iva.ToString().Substring(0, iva.ToString().IndexOf(IVAPunto));
-
-                    //var TotalInicio = (decimal.Parse(txtImporte.Text) + iva);
-                    //var TotalFin = TotalInicio.ToString().Substring(TotalInicio.ToString().Length - 2);
-                    //var Resultado = TotalInicio.ToString().Substring(0, TotalInicio.ToString().IndexOf(TotalFin));
-
-                    //var Descuen = (decimal.Parse(txtImporte.Text) - decimal.Parse(txtDescuento.Text));
-                    //var DescPunto = Descuen.ToString().Substring(Descuen.ToString().Length - 2);
-                    //var Descfin = Descuen.ToString().Substring(0, Descuen.ToString().IndexOf(DescPunto));
 
 
                     document.Open();
+                    String rutaLogo = Server.MapPath("../Alumno/images/XIUGAR.jpg");
 
-                    var image = iTextSharp.text.Image.GetInstance(@"C:\Users\RodrigoM\Desktop\Sitema-XIU-GAR\ProyectoPaslum\ProjectPaslum\Alumno\images\XIUGAR.jpg");
-                    // iTextSharp.text.Image image1 = iTextSharp.text.Image.GetInstance("../images/avatar.png");
+                    var image = iTextSharp.text.Image.GetInstance(rutaLogo);
                     //image1.ScalePercent(50f);
                     image.ScaleAbsoluteWidth(270);
                     image.ScaleAbsoluteHeight(160);
@@ -492,8 +481,9 @@ namespace ProjectPaslum.Venta
                     document.Add(new Paragraph(16, "Correo: " + ddlCorreo.Text, font9));
                     document.Add(new Paragraph(16, "Entregar a: " + txtEntregar.Text, font9));
                     document.Add(new Chunk("\n"));
-
+                    
                     PdfPTable table = new PdfPTable(5);
+                    table.WidthPercentage = 100;
                     // Esta es la primera fila
                     table.AddCell("Cantidad");
                     table.AddCell("Producto");
@@ -512,7 +502,7 @@ namespace ProjectPaslum.Venta
 
                     //Paragraph FechaEntrega = new Paragraph(16, "Fecha de entrega: $" + (calEntrega.ToString().Substring(0, 2)) + " de " + (calEntrega.ToString().Substring(3, 2)) + " del " + (
                     //        calEntrega.ToString().Substring(6, 4)) , font9);
-                    Paragraph FechaEntrega = new Paragraph(16, "Fecha de entrega: " + calEntrega.SelectedDate, font9);
+                    Paragraph FechaEntrega = new Paragraph(16, "Fecha de entrega: " + calEntregas.Text, font9);
                     Paragraph Confirmo = new Paragraph(16, "Confirmo: " + txtConfirmo.Text, font9);
 
                     document.Add(new Chunk("\n"));
@@ -603,7 +593,7 @@ namespace ProjectPaslum.Venta
             ord.strProducto = txtProducto.Text;
             ord.strDescripcion = txtDescripcion.Text;
             ord.strConfirmo = txtConfirmo.Text;
-            ord.fechaEntrega = calEntrega.SelectedDate;            
+            ord.fechaEntrega = Convert.ToDateTime(calEntregas.Text); ;            
             ord.fkEmpleado = int.Parse(Session["id"].ToString());
             ord.fkProveedor = Convert.ToInt32(ddlProveedor.SelectedValue);
 

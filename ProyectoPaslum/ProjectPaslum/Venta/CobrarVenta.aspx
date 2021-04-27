@@ -213,7 +213,7 @@
         function exito() {
             swal({
                 title: "Correcto",
-                text: "Se realizo la compra con exito.",
+                text: "Se realizo la venta con exito.",
                 icon: "success",
             });
         }
@@ -221,7 +221,21 @@
         function vacio() {
             swal({
                 title: "Incorrecto",
-                text: "Existen campos vacios que son necesarios.",
+                text: "Existen campos vacios que son necesarios para continuar.",
+                icon: "error",
+            });
+        }
+        function fallo() {
+            swal({
+                title: "ERROR",
+                text: "No existe cantidad disponible para dar continuidad a la venta",
+                icon: "error",
+            });
+        }
+        function alerta() {
+            swal({
+                title: "ERROR",
+                text: "La cantidad de salida excede la cantidad en stock",
                 icon: "error",
             });
         }
