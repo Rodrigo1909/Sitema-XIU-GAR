@@ -5105,6 +5105,8 @@ CREATE TABLE tblVenta (
   strDescripcion varchar(250),
   intImporte int,
   strMetodoPago varchar(150),
+  strHoraEntega varchar(400),
+  strFechaEntega varchar(400),
   strlapso varchar(150),
   fkEmpleado int,
   primary key (idVenta),
@@ -5143,6 +5145,7 @@ CREATE TABLE tblProducto (
   strNombre varchar(250),
   strDescripcion varchar(250),
   intPresentacion int,
+  strCatalogo varchar(250);
   fkUnidadMedida int,
   fkAlmacen int,
   idActivo int
@@ -5153,7 +5156,7 @@ CREATE TABLE tblProducto (
 
 CREATE TABLE tblStock (
   idStock int NOT NULL identity(1,1),
-  dblCantidad decimal (19,4) NOT NULL,
+  dblCantidad decimal (20,2) NOT NULL,
   fkProducto int,
   constraint pk_Stock primary key (idStock),
   CONSTRAINT FK_StockProducto FOREIGN KEY(fkProducto) REFERENCES tblProducto(idProducto)
@@ -5182,10 +5185,83 @@ inner join tblTelefono t
 on t.idTelefono = c.fkTelefono
 where c.idActivo = 1
 
+
+SELECT p.idProducto, p.strNombre, 
+p.dblPrecio , p.intPresentacion, u.strNombre
+FROM tblProducto p
+inner join tblUnidadMedida u
+on p.fkUnidadMedida = u.idUnidadMedida
+where fkAlmacen = 2 and strCatalogo = 'REFINADA';
+
 select * from tblEmpleado
 select * from tblUsuario
 select * from tblTelefono
 select * from tblUnidadMedida
+select * from tblProducto
+select * from tblCliente
+select * from tblStock
+select * from tblMovimiento
+select * from tblCliente
+select * from tblVenta
+select * from tblDetalleVenta
+select * from tblMovimiento
+
+ALTER TABLE tblMovimiento ALTER COLUMN dblValAnt decimal(20,2);
+ALTER TABLE tblMovimiento ALTER COLUMN dblValNvo decimal(20,2);
+
+ALTER TABLE tblMovimiento add strNumVen varchar(250);
+ALTER TABLE tblMovimiento add strFactura varchar(250);
+
+
+
+select * from tblStock
+select * from 
+tblProducto p
+inner join tblAlmacen a
+on p.fkAlmacen = a.idAlmacen
+
+inner join tblUnidadMedida uni
+on p.fkUnidadMedida = uni.idUnidadMedida
+
+where p.fkAlmacen = '2' and p.idActivo = '1'   
+
+select * from tblProducto where fkAlmacen = '3'
+
+select m.strTipo, m.fecha,
+e.strNombre + ' ' +  e.strApellidoP + ' ' + e.strApellidoM,
+p.strNombre, a.strNombre,m.dblValAnt, m.dblValNvo, m.strNumVen, m.strFactura
+from tblStock s
+inner join tblProducto p
+on s.fkProducto = p.idProducto
+inner join tblMovimiento m
+on m.fkStock = s.idStock
+left join tblEmpleado e
+on m.fkEmpleado = e.idEmpleado
+inner join tblAlmacen a
+on a.idAlmacen = p.fkAlmacen
+where strTipo = 'SALIDA POR PRODUCCIÓN' or strTipo = 'SALIDA POR DEVOLUCIÓN'
+or strTipo LIKE 'VENTA NUMERO%'  
+ORDER BY m.fecha DESC;
+
+
+
+
+select m.strTipo, m.fecha,
+e.strNombre + ' ' +  e.strApellidoP + ' ' + e.strApellidoM,
+p.strNombre, a.strNombre,m.dblValAnt, m.dblValNvo, m.strNumVen, m.strFactura
+from tblStock s
+inner join tblProducto p
+on s.fkProducto = p.idProducto
+inner join tblMovimiento m
+on m.fkStock = s.idStock
+left join tblEmpleado e
+on m.fkEmpleado = e.idEmpleado
+inner join tblAlmacen a
+on a.idAlmacen = p.fkAlmacen
+where strTipo = 'ENTRADA' or strTipo = 'PRODUCCIÓN'
+or strTipo = 'ENTRADA POR PRODUCCIÓN' or strTipo = 'ENTRADA POR DEVOLUCIÓN'
+ORDER BY m.fecha DESC;                       
+
 
 select p.intPresentacion, p.strNombre, p.strDescripcion, s.dblCantidad
 from tblStock s
