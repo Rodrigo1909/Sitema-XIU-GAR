@@ -215,7 +215,7 @@
                                                 left join tblCliente c
                                                 on c.idCliente = v.fkCliente                                                
                                                 where v.strEstado = 'FINALIZADO'
-                                                order by v.Fecha asc;"></asp:SqlDataSource>
+                                                order by v.Fecha desc;"></asp:SqlDataSource>
 
 
 

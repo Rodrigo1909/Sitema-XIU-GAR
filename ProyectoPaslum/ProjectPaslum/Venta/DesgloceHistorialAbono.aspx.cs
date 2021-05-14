@@ -75,7 +75,8 @@ namespace ProjectPaslum.Venta
         {
             DateTime fechact = DateTime.Now;
             ControllerCliente ctrlClie = new ControllerCliente();
-
+            tblVenta ven = new tblVenta();
+            ControllerAlmacen ctrlAlm = new ControllerAlmacen();
 
             var ultimoregistro = (from ha in contexto.tblHistorialAbono
                                   where ha.fkVenta == int.Parse(Session["desgloce"].ToString())
@@ -88,7 +89,7 @@ namespace ProjectPaslum.Venta
 
             var suma = ultimoregistro.dblCantidadAnterior + decimal.Parse(txtAbono.Text);
 
-            if (suma <= ventas.total)
+            if (suma < ventas.total)
             {
                 tblHistorialAbono HisAbo = new tblHistorialAbono();
                 HisAbo.Fecha = fechact;
@@ -98,6 +99,21 @@ namespace ProjectPaslum.Venta
 
                 ctrlClie.InsertarHistorialAbono(HisAbo);
                 this.Response.Redirect("./AlertaExito.aspx", true);                
+            }
+            else if (suma == ventas.total){
+                tblHistorialAbono HisAbo = new tblHistorialAbono();
+                HisAbo.Fecha = fechact;
+                HisAbo.dblCantidad = decimal.Parse(txtAbono.Text);
+                HisAbo.dblCantidadAnterior = suma;
+                HisAbo.fkVenta = int.Parse(Session["desgloce"].ToString());
+
+                ctrlClie.InsertarHistorialAbono(HisAbo);
+                ven.idVenta = int.Parse(Session["desgloce"].ToString());
+                ven.strEstado = "VENTA A CREDITO FINALIZADA";
+
+                ctrlAlm.EditarFinalizado(ven);
+
+                this.Response.Redirect("./AlertaExito.aspx", true);
             }
             else
             {

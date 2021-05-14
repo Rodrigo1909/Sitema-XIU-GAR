@@ -127,6 +127,11 @@
                                 <asp:TextBox ID="TextBox4" runat="server" Height="19px" Width="73px" Enabled="false" ></asp:TextBox>
                             </ItemTemplate>
                         </asp:TemplateField>                       
+                        <asp:TemplateField HeaderText="MARCA">
+                            <ItemTemplate>
+                                <asp:TextBox ID="TextBox5" runat="server" Height="19px" Width="73px" Enabled="false" ></asp:TextBox>
+                            </ItemTemplate>
+                        </asp:TemplateField>                       
                         
                         
                         

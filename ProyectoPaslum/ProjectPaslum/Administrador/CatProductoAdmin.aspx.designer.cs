@@ -58,15 +58,6 @@ namespace ProjectPaslum.Administrador {
         protected global::System.Web.UI.WebControls.TextBox txtPrecio;
         
         /// <summary>
-        /// Control cmbClasificacion.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList cmbClasificacion;
-        
-        /// <summary>
         /// Control txtPresentacion.
         /// </summary>
         /// <remarks>
@@ -85,13 +76,22 @@ namespace ProjectPaslum.Administrador {
         protected global::System.Web.UI.WebControls.DropDownList ddlUnidadMedida;
         
         /// <summary>
-        /// Control FileUpload1.
+        /// Control cmbClasificacion.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.FileUpload FileUpload1;
+        protected global::System.Web.UI.WebControls.DropDownList cmbClasificacion;
+        
+        /// <summary>
+        /// Control ddlMarca.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlMarca;
         
         /// <summary>
         /// Control btncancel.

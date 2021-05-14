@@ -21,11 +21,18 @@ namespace ProjectPaslum.Administrador
         {
             txtNombre.Text = "";
             txtPresentacion.Text = "";
+            txtNombreMarca.Text = "";
         }
 
 
         protected void btnaceptar_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrWhiteSpace(txtNombre.Text) || string.IsNullOrWhiteSpace(txtPresentacion.Text))
+            {
+                this.ClientScript.RegisterStartupScript(this.GetType(), "SweetAlert", "alerta()", true);
+            }
+            else
+            { 
             tblUnidadMedida UniMed = new tblUnidadMedida();
             UniMed.strNombre = txtNombre.Text.ToUpper();
             UniMed.strAbreviatura = txtPresentacion.Text.ToUpper();
@@ -35,6 +42,32 @@ namespace ProjectPaslum.Administrador
             ctrlUniMed.InsertarUnidadMedida(UniMed);
             this.ClientScript.RegisterStartupScript(this.GetType(), "SweetAlert", "exito()", true);
             this.LimpiarCampos();
+            }
+        }
+
+        protected void Button2_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txtNombreMarca.Text) || string.IsNullOrWhiteSpace(FileUpload.FileName))
+            {
+                this.ClientScript.RegisterStartupScript(this.GetType(), "SweetAlert", "alerta()", true);
+            }
+            else
+            {
+                tblMarca marc = new tblMarca();
+                marc.strNombre = txtNombreMarca.Text.ToUpper();
+
+                if (!string.IsNullOrEmpty(FileUpload.FileName))
+                {
+                    FileUpload.SaveAs(Server.MapPath("/ImagenesProductos/") + FileUpload.FileName);
+
+                }
+                marc.imagen = FileUpload.FileName;
+
+                ControllerProducto ctrlProd = new ControllerProducto();
+                ctrlProd.InsertarMarca(marc);
+                this.ClientScript.RegisterStartupScript(this.GetType(), "SweetAlert", "exito()", true);
+                this.LimpiarCampos();
+            }
         }
     }
 }

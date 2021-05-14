@@ -31,13 +31,14 @@
                       </div>
                     </div>
 
+     <div style="text-align:center">
+        <h2>Datos del proveedor</h2>
+    </div>
     <div class="panel panel-default">
         <div class="panel-body">
-            <div class="form-inline">
-              <div style="text-align:center">
-                 <h2>Datos del proveedor</h2>
-               </div>
-                </div>
+            
+
+                
             <div class="row">
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                     <div class="panel panel-default">
@@ -129,7 +130,7 @@
                                 <div class="form-group">
                                     
                                       <div style="text-align:center">
-                                          &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
+                                          &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp 
                                         <label>Seleccione los campos a utilizar</label> 
                                       
 

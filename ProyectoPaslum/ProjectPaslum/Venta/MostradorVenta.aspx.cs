@@ -171,31 +171,6 @@ namespace ProjectPaslum.Venta
             
         }
 
-        protected void DataList2_ItemCommand(object source, DataListCommandEventArgs e)
-        {
-            string cod;
-            string des = null;//, uni = null;
-            //double precio = 0;
-            //int pres = 0;
-            if (e.CommandName == "Seleccionar")
-            {
-                DataList2.SelectedIndex = e.Item.ItemIndex;
-
-                cod = ((Label)this.DataList2.SelectedItem.FindControl("idProductoLabel")).Text;
-                des = ((Label)this.DataList2.SelectedItem.FindControl("strNombreLabel")).Text + " " +
-                    int.Parse(((Label)this.DataList2.SelectedItem.FindControl("intPresentacionLabel")).Text) + " " +
-                    ((Label)this.DataList2.SelectedItem.FindControl("strNombre1Label")).Text ;
-                //precio = double.Parse(((Label)this.DataList2.SelectedItem.FindControl("dblPrecioLabel")).Text);
-                //pres = int.Parse(((Label)this.DataList2.SelectedItem.FindControl("intPresentacionLabel")).Text);
-                //uni = ((Label)this.DataList2.SelectedItem.FindControl("strNombre1Label")).Text;
-                AgregarItem(cod, des/*, precio, pres, uni*/);
-
-
-                this.ClientScript.RegisterStartupScript(this.GetType(), "SweetAlert", "exito()", true);
-                //lblAgregado.Text = "Producto Agregado: " + nom + " " + des;
-                //Session["prueba"] = "Sesión usuario prueba";
-            }
-        }
 
         protected void DataList3_ItemCommand(object source, DataListCommandEventArgs e)
         {
@@ -298,6 +273,203 @@ namespace ProjectPaslum.Venta
                 this.ClientScript.RegisterStartupScript(this.GetType(), "SweetAlert", "exito()", true);
                 //lblAgregado.Text = "Producto Agregado: " + nom + " " + des;
                 //Session["prueba"] = "Sesión usuario prueba";
+            }
+        }
+
+        protected void DataList9_ItemCommand(object source, DataListCommandEventArgs e)
+        {
+
+        }
+
+        protected void DataListXiugar_ItemCommand(object source, DataListCommandEventArgs e)
+        {
+            string cod;
+            string des = null;//, uni = null;
+            //double precio = 0;
+            //int pres = 0;
+            if (e.CommandName == "Seleccionar")
+            {
+                DataListXiugar.SelectedIndex = e.Item.ItemIndex;
+
+                cod = ((Label)this.DataListXiugar.SelectedItem.FindControl("idProductoLabel")).Text;
+                des = ((Label)this.DataListXiugar.SelectedItem.FindControl("strNombreLabel")).Text + " " +
+                    int.Parse(((Label)this.DataListXiugar.SelectedItem.FindControl("intPresentacionLabel")).Text) + " " +
+                    ((Label)this.DataListXiugar.SelectedItem.FindControl("strNombre1Label")).Text;
+                //precio = double.Parse(((Label)this.DataList5.SelectedItem.FindControl("dblPrecioLabel")).Text);
+                //pres = int.Parse(((Label)this.DataList5.SelectedItem.FindControl("intPresentacionLabel")).Text);
+                //uni = ((Label)this.DataList5.SelectedItem.FindControl("strNombre1Label")).Text;
+                AgregarItem(cod, des/*, precio, pres, uni*/);
+
+
+                this.ClientScript.RegisterStartupScript(this.GetType(), "SweetAlert", "exito()", true);
+            }
+        }
+
+        protected void DataListZulka_ItemCommand(object source, DataListCommandEventArgs e)
+        {
+            string cod;
+            string des = null;//, uni = null;
+            //double precio = 0;
+            //int pres = 0;
+            if (e.CommandName == "Seleccionar")
+            {
+                DataListZulka.SelectedIndex = e.Item.ItemIndex;
+
+                cod = ((Label)this.DataListZulka.SelectedItem.FindControl("idProductoLabel")).Text;
+                des = ((Label)this.DataListZulka.SelectedItem.FindControl("strNombreLabel")).Text + " " +
+                    int.Parse(((Label)this.DataListZulka.SelectedItem.FindControl("intPresentacionLabel")).Text) + " " +
+                    ((Label)this.DataListZulka.SelectedItem.FindControl("strNombre1Label")).Text;
+                //precio = double.Parse(((Label)this.DataList2.SelectedItem.FindControl("dblPrecioLabel")).Text);
+                //pres = int.Parse(((Label)this.DataList2.SelectedItem.FindControl("intPresentacionLabel")).Text);
+                //uni = ((Label)this.DataList2.SelectedItem.FindControl("strNombre1Label")).Text;
+                AgregarItem(cod, des/*, precio, pres, uni*/);
+
+
+                this.ClientScript.RegisterStartupScript(this.GetType(), "SweetAlert", "exito()", true);
+            }
+        }
+
+        protected void DataListDomino_ItemCommand(object source, DataListCommandEventArgs e)
+        {
+            string cod;
+            string des = null;//, uni = null;
+            //double precio = 0;
+            //int pres = 0;
+            if (e.CommandName == "Seleccionar")
+            {
+                DataListDomino.SelectedIndex = e.Item.ItemIndex;
+
+                cod = ((Label)this.DataListDomino.SelectedItem.FindControl("idProductoLabel")).Text;
+                des = ((Label)this.DataListDomino.SelectedItem.FindControl("strNombreLabel")).Text + " " +
+                    int.Parse(((Label)this.DataListDomino.SelectedItem.FindControl("intPresentacionLabel")).Text) + " " +
+                    ((Label)this.DataListDomino.SelectedItem.FindControl("strNombre1Label")).Text;
+                //precio = double.Parse(((Label)this.DataList5.SelectedItem.FindControl("dblPrecioLabel")).Text);
+                //pres = int.Parse(((Label)this.DataList5.SelectedItem.FindControl("intPresentacionLabel")).Text);
+                //uni = ((Label)this.DataList5.SelectedItem.FindControl("strNombre1Label")).Text;
+                AgregarItem(cod, des/*, precio, pres, uni*/);
+
+
+                this.ClientScript.RegisterStartupScript(this.GetType(), "SweetAlert", "exito()", true);
+            }
+        }
+
+        protected void DataListPuga_ItemCommand(object source, DataListCommandEventArgs e)
+        {
+            string cod;
+            string des = null;//, uni = null;
+            //double precio = 0;
+            //int pres = 0;
+            if (e.CommandName == "Seleccionar")
+            {
+                DataListPuga.SelectedIndex = e.Item.ItemIndex;
+
+                cod = ((Label)this.DataListPuga.SelectedItem.FindControl("idProductoLabel")).Text;
+                des = ((Label)this.DataListPuga.SelectedItem.FindControl("strNombreLabel")).Text + " " +
+                    int.Parse(((Label)this.DataListPuga.SelectedItem.FindControl("intPresentacionLabel")).Text) + " " +
+                    ((Label)this.DataListPuga.SelectedItem.FindControl("strNombre1Label")).Text;
+                //precio = double.Parse(((Label)this.DataList5.SelectedItem.FindControl("dblPrecioLabel")).Text);
+                //pres = int.Parse(((Label)this.DataList5.SelectedItem.FindControl("intPresentacionLabel")).Text);
+                //uni = ((Label)this.DataList5.SelectedItem.FindControl("strNombre1Label")).Text;
+                AgregarItem(cod, des/*, precio, pres, uni*/);
+
+
+                this.ClientScript.RegisterStartupScript(this.GetType(), "SweetAlert", "exito()", true);
+            }
+        }
+
+        protected void DataListSantos_ItemCommand(object source, DataListCommandEventArgs e)
+        {
+            string cod;
+            string des = null;//, uni = null;
+            //double precio = 0;
+            //int pres = 0;
+            if (e.CommandName == "Seleccionar")
+            {
+                DataListSantos.SelectedIndex = e.Item.ItemIndex;
+
+                cod = ((Label)this.DataListSantos.SelectedItem.FindControl("idProductoLabel")).Text;
+                des = ((Label)this.DataListSantos.SelectedItem.FindControl("strNombreLabel")).Text + " " +
+                    int.Parse(((Label)this.DataListSantos.SelectedItem.FindControl("intPresentacionLabel")).Text) + " " +
+                    ((Label)this.DataListSantos.SelectedItem.FindControl("strNombre1Label")).Text;
+                //precio = double.Parse(((Label)this.DataList5.SelectedItem.FindControl("dblPrecioLabel")).Text);
+                //pres = int.Parse(((Label)this.DataList5.SelectedItem.FindControl("intPresentacionLabel")).Text);
+                //uni = ((Label)this.DataList5.SelectedItem.FindControl("strNombre1Label")).Text;
+                AgregarItem(cod, des/*, precio, pres, uni*/);
+
+
+                this.ClientScript.RegisterStartupScript(this.GetType(), "SweetAlert", "exito()", true);
+            }
+        }
+
+        protected void DataListBJuarez_ItemCommand(object source, DataListCommandEventArgs e)
+        {
+            string cod;
+            string des = null;//, uni = null;
+            //double precio = 0;
+            //int pres = 0;
+            if (e.CommandName == "Seleccionar")
+            {
+                DataListBJuarez.SelectedIndex = e.Item.ItemIndex;
+
+                cod = ((Label)this.DataListBJuarez.SelectedItem.FindControl("idProductoLabel")).Text;
+                des = ((Label)this.DataListBJuarez.SelectedItem.FindControl("strNombreLabel")).Text + " " +
+                    int.Parse(((Label)this.DataListBJuarez.SelectedItem.FindControl("intPresentacionLabel")).Text) + " " +
+                    ((Label)this.DataListBJuarez.SelectedItem.FindControl("strNombre1Label")).Text;
+                //precio = double.Parse(((Label)this.DataList5.SelectedItem.FindControl("dblPrecioLabel")).Text);
+                //pres = int.Parse(((Label)this.DataList5.SelectedItem.FindControl("intPresentacionLabel")).Text);
+                //uni = ((Label)this.DataList5.SelectedItem.FindControl("strNombre1Label")).Text;
+                AgregarItem(cod, des/*, precio, pres, uni*/);
+
+
+                this.ClientScript.RegisterStartupScript(this.GetType(), "SweetAlert", "exito()", true);
+            }
+        }
+
+        protected void DataListAtencingo_ItemCommand(object source, DataListCommandEventArgs e)
+        {
+            string cod;
+            string des = null;//, uni = null;
+            //double precio = 0;
+            //int pres = 0;
+            if (e.CommandName == "Seleccionar")
+            {
+                DataListAtencingo.SelectedIndex = e.Item.ItemIndex;
+
+                cod = ((Label)this.DataListAtencingo.SelectedItem.FindControl("idProductoLabel")).Text;
+                des = ((Label)this.DataListAtencingo.SelectedItem.FindControl("strNombreLabel")).Text + " " +
+                    int.Parse(((Label)this.DataListAtencingo.SelectedItem.FindControl("intPresentacionLabel")).Text) + " " +
+                    ((Label)this.DataListAtencingo.SelectedItem.FindControl("strNombre1Label")).Text;
+                //precio = double.Parse(((Label)this.DataList5.SelectedItem.FindControl("dblPrecioLabel")).Text);
+                //pres = int.Parse(((Label)this.DataList5.SelectedItem.FindControl("intPresentacionLabel")).Text);
+                //uni = ((Label)this.DataList5.SelectedItem.FindControl("strNombre1Label")).Text;
+                AgregarItem(cod, des/*, precio, pres, uni*/);
+
+
+                this.ClientScript.RegisterStartupScript(this.GetType(), "SweetAlert", "exito()", true);
+            }
+        }
+
+        protected void DataListPotrero_ItemCommand(object source, DataListCommandEventArgs e)
+        {
+            string cod;
+            string des = null;//, uni = null;
+            //double precio = 0;
+            //int pres = 0;
+            if (e.CommandName == "Seleccionar")
+            {
+                DataListPotrero.SelectedIndex = e.Item.ItemIndex;
+
+                cod = ((Label)this.DataListPotrero.SelectedItem.FindControl("idProductoLabel")).Text;
+                des = ((Label)this.DataListPotrero.SelectedItem.FindControl("strNombreLabel")).Text + " " +
+                    int.Parse(((Label)this.DataListPotrero.SelectedItem.FindControl("intPresentacionLabel")).Text) + " " +
+                    ((Label)this.DataListPotrero.SelectedItem.FindControl("strNombre1Label")).Text;
+                //precio = double.Parse(((Label)this.DataList5.SelectedItem.FindControl("dblPrecioLabel")).Text);
+                //pres = int.Parse(((Label)this.DataList5.SelectedItem.FindControl("intPresentacionLabel")).Text);
+                //uni = ((Label)this.DataList5.SelectedItem.FindControl("strNombre1Label")).Text;
+                AgregarItem(cod, des/*, precio, pres, uni*/);
+
+
+                this.ClientScript.RegisterStartupScript(this.GetType(), "SweetAlert", "exito()", true);
             }
         }
     }

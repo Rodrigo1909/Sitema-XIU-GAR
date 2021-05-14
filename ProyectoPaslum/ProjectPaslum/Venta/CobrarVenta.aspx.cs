@@ -482,8 +482,10 @@ namespace ProjectPaslum.Venta
                 var producto = (from p in contexto.tblProducto
                                 join unidad in contexto.tblUnidadMedida
                                     on p.fkUnidadMedida equals unidad.idUnidadMedida
+                                join m in contexto.tblMarca
+                                    on p.fkMarca equals m.idMarca
                                 where p.idProducto == int.Parse(cod)
-                                select new { uni = unidad.strNombre, presentacion = p.intPresentacion, aprox = p.dblPrecio }).FirstOrDefault();
+                                select new { uni = unidad.strNombre, presentacion = p.intPresentacion, aprox = p.dblPrecio, marca= m.strNombre }).FirstOrDefault();
 
                 //desc = (GridView1.Rows[i].Cells[2].Text);
                 //prec = System.Convert.ToDouble(GridView1.Rows[i].Cells[3].Text);
@@ -501,6 +503,8 @@ namespace ProjectPaslum.Venta
                 subtotal2 = cant * precio;
                 GridView1.Rows[i].Cells[5].Text = subtotal2.ToString();
                 GridView1.Rows[i].Cells[6].Text = producto.aprox.ToString();
+                GridView1.Rows[i].Cells[7].Text = producto.marca.ToString();
+
 
                 double prec1 = System.Convert.ToDouble(producto.aprox.ToString());
                 subtotal = cant * prec1;

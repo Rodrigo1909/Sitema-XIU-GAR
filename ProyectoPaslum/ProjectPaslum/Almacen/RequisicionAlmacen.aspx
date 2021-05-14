@@ -246,6 +246,7 @@
                                     <br />
                                     <asp:Label ID="Label12" runat="server" Text="FECHA:" Font-Size="16px" Font-Italic="true" ForeColor="#000000"></asp:Label>
                                     <asp:Label ID="Fecha_de_creaciónLabel" runat="server" Text='<%# Eval("[Fecha de creación]") %>' ForeColor="#000000" Font-Size="15px"/>
+                                    <br />
                                     <asp:Button ID="Button1" runat="server" CommandName="Seleccionar" Text="Detalle" CssClass="btn btn-primary" CommandArgument='<%# Eval("idVenta") %>' />
                                 </td>
                             </ItemTemplate>
@@ -279,7 +280,7 @@
                                                 left join tblCliente c
                                                 on c.idCliente = v.fkCliente                                                
                                                 where v.strEstado = 'FINALIZADO'
-                                                order by v.Fecha asc;"></asp:SqlDataSource>
+                                                order by v.Fecha desc;"></asp:SqlDataSource>
                     </div>
                 </div>
             </div>  

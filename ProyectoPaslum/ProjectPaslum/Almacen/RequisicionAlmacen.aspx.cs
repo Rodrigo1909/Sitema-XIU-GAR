@@ -128,7 +128,12 @@ namespace ProjectPaslum.Almacen
                                     ctrlAlm.InsertarMovimientoAlmacen(mov);
                                     ord.dblCantidad = resta;
                                     contexto.SubmitChanges();
+                                    ven.idVenta = Convert.ToInt32(cod);
+                                    ven.strEstado = "FINALIZADO";
+
+                                    ctrlAlm.EditarFinalizado(ven);
                                     Response.Redirect("/Almacen/AlertaExito.aspx");
+
                                 }
                                 else
                                 {
@@ -141,10 +146,7 @@ namespace ProjectPaslum.Almacen
                     }
 
 
-                    ven.idVenta = Convert.ToInt32(cod);
-                    ven.strEstado = "FINALIZAR";
 
-                    ctrlAlm.EditarFinalizado(ven);
 
 
                 }

@@ -46,72 +46,91 @@
                 </div>
 
                 <div class="modal-body">
+
                     <div class="form-group">
-                        <div class="col-xs-10">
-                            Nombre
-                            <asp:TextBox runat="server" ID="txtNombre" class="form-control" required="" type="text"></asp:TextBox>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="col-xs-10">
-                            Descripción
-                            <asp:TextBox runat="server" ID="txtDescrip" class="form-control" type="text"></asp:TextBox>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="col-xs-10">
-                            Almacén
-                            <asp:DropDownList ID="ddlAlmacen" runat="server" AppendDataBoundItems="True"  CssClass=" form-control"></asp:DropDownList>      
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="col-xs-10">
-                            Precio
-                            <asp:TextBox runat="server" ID="txtPrecio" class="form-control" type="text"></asp:TextBox>
-                        </div>
-                    </div>
-                      
-                    <div class="form-group">
-                         <div class="col-xs-10">
-                            Clasificación
-                            <asp:DropDownList ID="cmbClasificacion" runat="server" AppendDataBoundItems="True" CssClass=" form-control" >                                
-                                <asp:ListItem Value="MASCABADO"> Azúcar Mascabado </asp:ListItem>
-                                <asp:ListItem Value="GLAS"> Azúcar Glas </asp:ListItem>
-                                <asp:ListItem Value="REFINADA"> Azúcar Refinada </asp:ListItem>
-                                <asp:ListItem Value="SOBRES"> Sobres de azúcar </asp:ListItem>
-                                <asp:ListItem Value="SUSTITUTO"> Edulcorantes </asp:ListItem>
-                                <asp:ListItem Value="ESTANDAR"> Azúcar Estandar </asp:ListItem>
-                        </asp:DropDownList>   
+                        <div class="col-xs-12">
+                            <div class="form-group">
+                                 <div class="col-xs-6">
+                                      Nombre
+                                     <asp:TextBox runat="server" ID="txtNombre" class="form-control" required="" type="text"></asp:TextBox>
+                                </div>
+                             </div>
+                            <div class="form-group">
+                                <div class="col-xs-6">
+                                    Descripción
+                                    <asp:TextBox runat="server" ID="txtDescrip" class="form-control" type="text"></asp:TextBox>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
+                    <div class="form-group">
+                         <div class="col-xs-12">
+                            <div class="form-group">
+                                 <div class="col-xs-6">
+                                     Almacén
+                                     <asp:DropDownList ID="ddlAlmacen" runat="server" AppendDataBoundItems="True"  CssClass=" form-control"></asp:DropDownList>      
+                                 </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-xs-6">
+                                    Precio
+                                    <asp:TextBox runat="server" ID="txtPrecio" class="form-control" type="text"></asp:TextBox>
+                                </div>
+                            </div>
+                         </div>
+                    </div>
+                    
+                    <div class="form-group">
+                       <div class="col-xs-12">
+                            <div class="form-group">
+                               <div class="col-xs-6">
+                                    Presentación
+                                    <asp:TextBox runat="server" ID="txtPresentacion" class="form-control" required="required" type="text" 
+                                     pattern="^[0-9]*" title="Ingrese solo numeros"></asp:TextBox>
+
+                                </div>
+                            
+                             <div class="form-group">
+                                <div class="col-xs-6">
+                                       Unidad de medida
+                                      <asp:DropDownList ID="ddlUnidadMedida" runat="server" AppendDataBoundItems="True" CssClass=" form-control"></asp:DropDownList>      
+                                </div>     
+                              </div>
+                           </div>  
+                       </div>
+                    </div>
 
                     <div class="form-group">
-                    <div class="col-xs-5">
-                        Presentación
-                        <asp:TextBox runat="server" ID="txtPresentacion" class="form-control" required="required" type="text" 
-                              pattern="^[0-9]*" title="Ingrese solo numeros"></asp:TextBox>
+                       <div class="col-xs-12">
+                           <div class="form-group">
+                             <div class="col-xs-6">
+                                Clasificación
+                                <asp:DropDownList ID="cmbClasificacion" runat="server" AppendDataBoundItems="True" CssClass=" form-control" >                                
+                                    <asp:ListItem Value="MASCABADO"> Azúcar Mascabado </asp:ListItem>
+                                    <asp:ListItem Value="GLAS"> Azúcar Glas </asp:ListItem>
+                                    <asp:ListItem Value="REFINADA"> Azúcar Refinada </asp:ListItem>
+                                    <asp:ListItem Value="SOBRES"> Sobres de azúcar </asp:ListItem>
+                                    <asp:ListItem Value="SUSTITUTO"> Edulcorantes </asp:ListItem>
+                                    <asp:ListItem Value="ESTANDAR"> Azúcar Estandar </asp:ListItem>
+                                 </asp:DropDownList>   
+                            </div>
+                          </div>
+  
+                             <div class="form-group">
+                                <div class="col-xs-6">
+                                    Marca
+                                    <asp:DropDownList ID="ddlMarca" runat="server" AppendDataBoundItems="True"  CssClass=" form-control"></asp:DropDownList>      
+                                </div>
+                            </div>
+                        </div>
+                     </div>
 
-                    </div>
-                 <div class="form-group">
-                   <div class="col-xs-5">
-                    <!-- Seleccion de Presentación  -->
-                            Unidad de medida
-                        <asp:DropDownList ID="ddlUnidadMedida" runat="server" AppendDataBoundItems="True" CssClass=" form-control"></asp:DropDownList>      
-                   </div>     
-                     </div>                     
 
-                   </div>    
-                     <div class="form-group">
-                        <div class="col-xs-10">
-                            <label for="nombre">Imagen</label>
-                            <asp:FileUpload ID="FileUpload1" runat="server" CssClass="form-control" />
-                        </div>                
-                    </div>
                         <br /> <br />  <br /> <br />  
                         <br /> <br />  <br /> <br />
                         <br /> <br />  <br /> <br />
-                        <br /> <br />  <br /> <br />
+                        <br /> <br />
                        <div class="modal-footer">
                             <div class="modalfooter">
                              

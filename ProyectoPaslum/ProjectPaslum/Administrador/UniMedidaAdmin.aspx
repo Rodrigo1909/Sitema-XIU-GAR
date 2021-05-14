@@ -29,6 +29,18 @@
                               <asp:Label ID="Label1" runat="server" Text="Nueva Unidad"></asp:Label>
                         </a> 
                     </div>
+                     
+                    <div class="col-sm-2">
+                        
+                    </div>
+                           
+                     <div class="col-sm-6">
+                        <a class="btn btn-success" data-toggle="modal" href="#addMarca">
+                            <i class="icon-add">
+                            </i>
+                              <asp:Label ID="Label2" runat="server" Text="Marca"></asp:Label>
+                        </a> 
+                    </div>
                    </div>
                 </div>
             </div>
@@ -48,7 +60,7 @@
                     <div class="form-group">
                         <div class="col-xs-7">
                             Nombre
-                            <asp:TextBox runat="server" ID="txtNombre" class="form-control" required="" type="text"></asp:TextBox>
+                            <asp:TextBox runat="server" ID="txtNombre" class="form-control"  type="text"></asp:TextBox>
                         </div>
                     </div>
                     <br /> <br /> 
@@ -56,7 +68,7 @@
                     <div class="form-group">
                         <div class="col-xs-7">
                                 Abreviatura
-                            <asp:TextBox runat="server" ID="txtPresentacion" class="form-control" required="required" type="text" ></asp:TextBox>                        
+                            <asp:TextBox runat="server" ID="txtPresentacion" class="form-control"  type="text" ></asp:TextBox>                        
                         </div>
                     </div>    
                     <br /> <br />  
@@ -65,6 +77,48 @@
                         <div class="modalfooter">                             
                             <asp:Button ID="btncancel" runat="server" CssClass="btn btn-primary"  Text="Cancelar" data-dismiss="modal"  />
                             <asp:Button ID="btnaceptar" runat="server" class="btn btn-success"  Text="Aceptar" OnClick="btnaceptar_Click" />
+                         </div>
+                        </div>
+                </div> </div>
+            </div>
+        </div>
+          </div>
+
+        <!-- Agregar Modal de Unidad de Medida-->
+    <div class="modal fade" id="addMarca">
+         <div class="left">
+            <div class="modal-dialog">
+                <div class="modal-content">
+
+                  <div class="modal-header">
+                    <h3 class="table-title">REGISTRO DE MARCA</h3>
+                  </div>
+
+                  <div class="modal-body">
+                    <div class="form-group">
+                        <div class="col-xs-9">
+                            Nombre
+                            <asp:TextBox runat="server" ID="txtNombreMarca" class="form-control" required="" type="text"></asp:TextBox>
+                        </div>
+                    </div>
+                    <br /> <br /> <br /> <br />
+                                       
+                    <div class="form-group">
+                        <div class="col-xs-9">
+                            Imagen (solo se aceptan imagenes JPG)
+                            <asp:FileUpload ID="FileUpload" runat="server" CssClass="form-control" accept=".jpg" />
+                            <asp:RegularExpressionValidator ID="RegExValFileUploadFileType" runat="server" 
+                                                            ControlToValidate="FileUpload" 
+                                                            ErrorMessage="No es el formato requerido" Font-Bold="True" ForeColor="Red"
+                                                            ValidationExpression="(.*?)\.(jpg)$"></asp:RegularExpressionValidator> 
+                        </div>   
+                    </div>  
+                    <br /> <br />  <br /> <br />
+
+                    <div class="modal-footer">
+                        <div class="modalfooter">                             
+                            <asp:Button ID="Button1" runat="server" CssClass="btn btn-primary"  Text="Cancelar" data-dismiss="modal"  />
+                            <asp:Button ID="Button2" runat="server" class="btn btn-success"  Text="Aceptar" OnClick="Button2_Click" />
                          </div>
                         </div>
                 </div> </div>
@@ -123,12 +177,19 @@
     </div>
 
      <script type="text/javascript">
-        function exito() {
-            swal({
-                title: "EXITO",
-                text: "Se registro la nueva unidad de medida con exito.",
-                icon: "success",
-            });
+         function exito() {
+             swal({
+                 title: "EXITO",
+                 text: "Se registro la nueva unidad de medida con exito.",
+                 icon: "success",
+             });
+         }
+            function alerta() {
+                swal({
+                    title: "FALLO",
+                    text: "Existen campos que no han sido completados",
+                    icon: "error",
+                });
         }
     
     </script>

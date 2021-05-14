@@ -29,9 +29,34 @@ namespace ProjectPaslum.Controllers
 
         }
 
+        public bool InsertarMarca(tblMarca _TBL_Marc)
+        {
+            bool respuesta = false;
+            try
+            {
+                contexto.tblMarca.InsertOnSubmit(_TBL_Marc);
+                contexto.SubmitChanges();
+                respuesta = true;
+
+            }
+            catch (Exception ex)
+            {
+                System.Console.WriteLine(ex.ToString());
+                respuesta = false;
+
+            }
+            return respuesta;
+
+        }
+
         public List<tblAlmacen> ConsultaAlmacen()
         {
             return contexto.tblAlmacen.ToList<tblAlmacen>();
+        }
+
+        public List<tblMarca> ConsultaMarca()
+        {
+            return contexto.tblMarca.ToList<tblMarca>();
         }
 
         public List<tblUnidadMedida> ConsultaUnidadMedida()

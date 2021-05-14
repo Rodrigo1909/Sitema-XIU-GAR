@@ -110,8 +110,8 @@ namespace ProjectPaslum.Administrador
                 cli.idActivo = 1;
                 ControllerCliente ctrlCli = new ControllerCliente();
                 ctrlCli.InsertarCliente(GetDatosVista(cli));
-                this.ClientScript.RegisterStartupScript(this.GetType(), "SweetAlert", "exito()", true);
                 this.LimpiarCampos();
+                this.ClientScript.RegisterStartupScript(this.GetType(), "SweetAlert", "exito()", true);                
 
             }
             else

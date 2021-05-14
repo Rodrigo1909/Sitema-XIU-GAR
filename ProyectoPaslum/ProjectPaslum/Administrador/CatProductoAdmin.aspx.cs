@@ -19,6 +19,7 @@ namespace ProjectPaslum.Administrador
             {
                 this.LlenarAlmacen();
                 this.LlenarUnidadMedida();
+                this.LlenarMarca();
             }
         }
 
@@ -46,11 +47,24 @@ namespace ProjectPaslum.Administrador
 
         }
 
+        private void LlenarMarca()
+        {
+            ControllerProducto CtrlMarca = new ControllerProducto();
+            List<tblMarca> marca = CtrlMarca.ConsultaMarca();
+            ddlMarca.Items.Add("Seleccionar");
+            ddlMarca.DataSource = marca;
+            ddlMarca.DataValueField = "idMarca";
+            ddlMarca.DataTextField = "strNombre";
+            ddlMarca.DataBind();
+
+        }
+
         protected void btnaceptar_Click(object sender, EventArgs e)
         {
             CultureInfo culture = new CultureInfo("en-US");
             var almacen = ddlAlmacen.SelectedItem.Value;
             var unidad = ddlUnidadMedida.SelectedItem.Value;
+            var marca = ddlMarca.SelectedItem.Value;
 
             tblProducto prod = new tblProducto();
             prod.strNombre = txtNombre.Text.ToUpper();
@@ -60,14 +74,15 @@ namespace ProjectPaslum.Administrador
             prod.fkAlmacen = Int32.Parse(almacen);
             prod.fkUnidadMedida = Int32.Parse(unidad);
             prod.strCatalogo = cmbClasificacion.SelectedItem.Value;
+            prod.fkMarca = Int32.Parse(marca);
             prod.idActivo = 1;
 
-            if (!string.IsNullOrEmpty(FileUpload1.FileName))
-            {
-                FileUpload1.SaveAs(Server.MapPath("/ImagenesProductos/") + FileUpload1.FileName);
+            //if (!string.IsNullOrEmpty(FileUpload1.FileName))
+            //{
+            //    FileUpload1.SaveAs(Server.MapPath("/ImagenesProductos/") + FileUpload1.FileName);
 
-            }
-            prod.strImagen = FileUpload1.FileName;
+            //}
+            //prod.strImagen = FileUpload1.FileName;
             ControllerProducto ctrlProd = new ControllerProducto();
             ctrlProd.InsertarProducto(prod);
             this.ClientScript.RegisterStartupScript(this.GetType(), "SweetAlert", "exito()", true);
