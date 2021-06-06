@@ -5145,11 +5145,13 @@ CREATE TABLE tblProducto (
   strNombre varchar(250),
   strDescripcion varchar(250),
   intPresentacion int,
-  strCatalogo varchar(250);
+  strCatalogo varchar(250),
   fkUnidadMedida int,
   fkAlmacen int,
-  idActivo int
+  idActivo int,
+  fkMarca int,  
   constraint pk_Producto primary key (idProducto),
+  CONSTRAINT FK_ProductoMarca FOREIGN KEY (fkMarca) REFERENCES tblMarca(idMarca),
   CONSTRAINT FK_UnidadMedida FOREIGN KEY(fkUnidadMedida) REFERENCES tblUnidadMedida(idUnidadMedida),  
   CONSTRAINT FK_Almacen FOREIGN KEY(fkAlmacen) REFERENCES tblAlmacen(idAlmacen)  
 );
@@ -5157,12 +5159,27 @@ CREATE TABLE tblProducto (
 CREATE TABLE tblStock (
   idStock int NOT NULL identity(1,1),
   dblCantidad decimal (20,2) NOT NULL,
-  fkProducto int,
+  fkProducto int
   constraint pk_Stock primary key (idStock),
   CONSTRAINT FK_StockProducto FOREIGN KEY(fkProducto) REFERENCES tblProducto(idProducto)
 );
 
-/*Crear tabla de proveedores*/
+CREATE TABLE tblMarca (
+  idMarca int NOT NULL identity(1,1),
+  strNombre varchar(500),
+  imagen varchar(500),
+  constraint pk_Marca primary key (idMarca)
+);
+
+CREATE TABLE tblSubMarca (
+  idSubMarca int NOT NULL identity(1,1),
+  strNombre varchar(500),
+  imagen varchar(500),
+  fkMarca int
+  constraint pk_SubMarca primary key (idSubMarca),
+  CONSTRAINT FK_Marca FOREIGN KEY(fkMarca) REFERENCES tblMarca(idMarca)
+);
+
 CREATE TABLE tblMovimiento (
   idMovimiento int NOT NULL identity(1,1),
   strTipo varchar(250),
@@ -5176,6 +5193,39 @@ CREATE TABLE tblMovimiento (
   CONSTRAINT FK_MovimientoProveedor FOREIGN KEY(fkProveedor) REFERENCES tblProveedor(idProveedor)
 );
 
+select * from tblEmpleado
+select * from tblUsuario 
+select * from tblTelefono
+select * from tblUnidadMedida
+select * from tblCliente
+select * from tblStock
+select * from tblMovimiento
+select * from tblCliente
+select * from tblVenta
+select * from tblDetalleVenta
+select * from tblMovimiento
+select * from tblMarca
+select * from tblSubMarca 
+select * from tblProducto
+
+
+select s.dblCantidad, p.strNombre, 
+p.strDescripcion, a.strNombre, m.strNombre, sub.strNombre
+from tblStock s
+	
+	inner join tblProducto p
+	on s.fkProducto = p.idProducto
+	
+	inner join tblAlmacen a	
+	on p.fkAlmacen = a.idAlmacen
+
+	left join tblMarca m
+	on p.fkMarca = m.idMarca
+
+	left join tblSubMarca sub
+	on p.fkSubMarca = sub.idSubMarca
+
+where a.idActivo = 1 and p.idActivo = 1;
 
 select c.strEstablecimiento, c.strMetodoPago, 
 c.strHorarioAtencion, c.strNumeroBodega, c.strMetodoPago,
@@ -5193,25 +5243,53 @@ inner join tblUnidadMedida u
 on p.fkUnidadMedida = u.idUnidadMedida
 where fkAlmacen = 2 and strCatalogo = 'REFINADA';
 
-select * from tblEmpleado
-select * from tblUsuario
-select * from tblTelefono
-select * from tblUnidadMedida
-select * from tblProducto
-select * from tblCliente
-select * from tblStock
-select * from tblMovimiento
-select * from tblCliente
-select * from tblVenta
-select * from tblDetalleVenta
-select * from tblMovimiento
+
+SELECT p.idProducto, p.strNombre, sub.imagen,
+p.dblPrecio , p.intPresentacion, u.strNombre
+FROM tblProducto p
+	inner join tblUnidadMedida u
+	on p.fkUnidadMedida = u.idUnidadMedida
+
+	inner join tblSubMarca sub
+	on sub.idSubMarca = p.fkSubMarca
+where fkAlmacen = 2 and strCatalogo = 'REFINADA' and sub.strNombre = 'EL MANTE' and p.idActivo = '1';
+
+SELECT p.idProducto, p.strNombre, m.imagen,
+p.dblPrecio , p.intPresentacion, u.strNombre
+FROM tblProducto p
+	inner join tblUnidadMedida u
+	on p.fkUnidadMedida = u.idUnidadMedida
+
+	inner join tblMarca m
+	on p.fkMarca = m.idMarca
+
+where fkAlmacen = 2 and strCatalogo = 'REFINADA' and m.strNombre = 'EL CARMEN' and p.idActivo = '1';
+
+
+
+select * from tblProducto p
+inner join tblMarca m 
+on m.idMarca = p.fkMarca
+
+SELECT p.idProducto, p.strNombre, 
+p.dblPrecio , p.intPresentacion, u.strNombre
+FROM tblProducto p
+inner join tblUnidadMedida u
+on p.fkUnidadMedida = u.idUnidadMedida
+inner join tblMarca m
+on p.fkMarca = m.idMarca
+where m.strNombre = 'ZULKA'
+
 
 ALTER TABLE tblMovimiento ALTER COLUMN dblValAnt decimal(20,2);
 ALTER TABLE tblMovimiento ALTER COLUMN dblValNvo decimal(20,2);
 
 ALTER TABLE tblMovimiento add strNumVen varchar(250);
-ALTER TABLE tblMovimiento add strFactura varchar(250);
+ALTER TABLE tblProducto add fkSubMarca int;
 
+ALTER TABLE tblProducto
+   ADD CONSTRAINT FK_ProductoSubMarca FOREIGN KEY (fkSubMarca)
+      REFERENCES tblSubMarca(idSubMarca);
 
 
 select * from tblStock

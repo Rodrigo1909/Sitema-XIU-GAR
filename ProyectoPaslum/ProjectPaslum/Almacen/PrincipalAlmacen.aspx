@@ -15,13 +15,16 @@
     <div class="panel panel-default">
             <div class="panel-body">
                 <asp:GridView ID="GridView2" runat="server" AutoGenerateColumns="False" Width="100%" AllowPaging="True" DataSourceID="SqlDataSource1" 
-                    BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="3px" AllowSorting="True">
+                    BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="3px" AllowSorting="True" >
 
                     <Columns>
                         <asp:BoundField DataField="dblCantidad" HeaderText="CANTIDAD EN EXISTENCIA" SortExpression="dblCantidad" />
                         <asp:BoundField DataField="strNombre" HeaderText="PRODUCTO" SortExpression="strNombre" />
                         <asp:BoundField DataField="strDescripcion" HeaderText="DESCRIPCIÓN" SortExpression="strDescripcion" />                        
                         <asp:BoundField DataField="strNombre1" HeaderText="ALMACÉN" SortExpression="strNombre1" />
+
+                        <asp:BoundField DataField="strNombre2" HeaderText="MARCA" SortExpression="strNombre2" />
+                        <asp:BoundField DataField="strNombre3" HeaderText="INGENIO" SortExpression="strNombre3" />
                     </Columns>
                     
                      <FooterStyle BackColor="White" ForeColor="#000066" />
@@ -36,13 +39,23 @@
                 </asp:GridView>
 
                     <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:XIUGARConnectionString %>" 
-                        SelectCommand="select s.dblCantidad, p.strNombre, p.strDescripcion, a.strNombre
-                                        from tblStock s
-                                        inner join tblProducto p
-                                        on s.fkProducto = p.idProducto
-                                        inner join tblAlmacen a
-                                        on p.fkAlmacen = a.idAlmacen
-                                        where a.idActivo = 1 and p.idActivo = 1"></asp:SqlDataSource>
+                        SelectCommand="select s.dblCantidad, p.strNombre, 
+p.strDescripcion, a.strNombre, m.strNombre, sub.strNombre
+from tblStock s
+	
+	inner join tblProducto p
+	on s.fkProducto = p.idProducto
+	
+	inner join tblAlmacen a	
+	on p.fkAlmacen = a.idAlmacen
+
+	left join tblMarca m
+	on p.fkMarca = m.idMarca
+
+	left join tblSubMarca sub
+	on p.fkSubMarca = sub.idSubMarca
+
+where a.idActivo = 1 and p.idActivo = 1;"></asp:SqlDataSource>
 
 
             </div>

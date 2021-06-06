@@ -21,27 +21,38 @@
                     <div class="col-sm-6">
                         <h2>Otros</h2>
                     </div>
-                    <div class="button">
-                    <div class="col-sm-6">
-                        <a class="btn btn-success" data-toggle="modal" href="#addUnidadMedida">
-                            <i class="icon-add">
-                            </i>
-                              <asp:Label ID="Label1" runat="server" Text="Nueva Unidad"></asp:Label>
-                        </a> 
-                    </div>
-                     
-                    <div class="col-sm-2">
-                        
-                    </div>
-                           
-                     <div class="col-sm-6">
-                        <a class="btn btn-success" data-toggle="modal" href="#addMarca">
-                            <i class="icon-add">
-                            </i>
-                              <asp:Label ID="Label2" runat="server" Text="Marca"></asp:Label>
-                        </a> 
-                    </div>
-                   </div>
+                    
+                        <div class="col-sm-6">
+                            <div class="button">
+                                <div class="col-sm-3">
+                                    <a class="btn btn-success" data-toggle="modal" href="#addUnidadMedida">
+                                        <i class="icon-add">
+                                        </i>
+                                          <asp:Label ID="Label1" runat="server" Text="Nueva Unidad"></asp:Label>
+                                    </a> 
+                                </div>                    
+                                <div class="col-sm-1">
+
+                                </div>
+                                <div class="col-sm-3">
+                                    <a class="btn btn-success" data-toggle="modal" href="#addMarca">
+                                        <i class="icon-add">
+                                        </i>
+                                          <asp:Label ID="Label2" runat="server" Text="Marca"></asp:Label>
+                                    </a> 
+                                </div>
+                                
+                                <div class="col-sm-3">
+                                    <a class="btn btn-success" data-toggle="modal" href="#addSubMarca">
+                                        <i class="icon-add">
+                                        </i>
+                                          <asp:Label ID="Label3" runat="server" Text="Ingenio"></asp:Label>
+                                    </a> 
+                                </div>
+                                
+                            </div>
+                         </div>
+                    
                 </div>
             </div>
 
@@ -84,7 +95,7 @@
         </div>
           </div>
 
-        <!-- Agregar Modal de Unidad de Medida-->
+    <!-- Agregar Modal de Unidad de Medida-->
     <div class="modal fade" id="addMarca">
          <div class="left">
             <div class="modal-dialog">
@@ -98,7 +109,7 @@
                     <div class="form-group">
                         <div class="col-xs-9">
                             Nombre
-                            <asp:TextBox runat="server" ID="txtNombreMarca" class="form-control" required="" type="text"></asp:TextBox>
+                            <asp:TextBox runat="server" ID="txtNombreMarca" class="form-control" type="text"></asp:TextBox>
                         </div>
                     </div>
                     <br /> <br /> <br /> <br />
@@ -119,6 +130,56 @@
                         <div class="modalfooter">                             
                             <asp:Button ID="Button1" runat="server" CssClass="btn btn-primary"  Text="Cancelar" data-dismiss="modal"  />
                             <asp:Button ID="Button2" runat="server" class="btn btn-success"  Text="Aceptar" OnClick="Button2_Click" />
+                         </div>
+                        </div>
+                </div> </div>
+            </div>
+        </div>
+          </div>
+
+    <!-- Agregar Modal de Unidad de Medida-->
+    <div class="modal fade" id="addSubMarca">
+         <div class="left">
+            <div class="modal-dialog">
+                <div class="modal-content">
+
+                  <div class="modal-header">
+                    <h3 class="table-title">REGISTRO DE INGENIO</h3>
+                  </div>
+
+                  <div class="modal-body">
+                    <div class="form-group">
+                        <div class="col-xs-9">
+                            Nombre
+                            <asp:TextBox runat="server" ID="txtNombreIngenio" class="form-control" type="text"></asp:TextBox>
+                        </div>
+                    </div>
+                    <br /> <br /> <br /> 
+                                       
+                    <div class="form-group">
+                        <div class="col-xs-9">
+                            Imagen (solo se aceptan imagenes JPG)
+                            <asp:FileUpload ID="imagenIngenio" runat="server" CssClass="form-control" accept=".jpg" />
+                            <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" 
+                                                            ControlToValidate="imagenIngenio" 
+                                                            ErrorMessage="No es el formato requerido" Font-Bold="True" ForeColor="Red"
+                                                            ValidationExpression="(.*?)\.(jpg)$"></asp:RegularExpressionValidator> 
+                        </div>   
+                    </div>  
+                    <br /> <br />  
+                    <div class="form-group">
+                        <div class="col-xs-9">
+                            Marca
+                            <asp:DropDownList ID="ddlMarca" runat="server" AppendDataBoundItems="True"  CssClass=" form-control"></asp:DropDownList>     
+                        </div>
+                    </div>
+
+                      <br /> <br /> <br /> <br /> 
+
+                    <div class="modal-footer">
+                        <div class="modalfooter">                             
+                            <asp:Button ID="Button3" runat="server" CssClass="btn btn-primary"  Text="Cancelar" data-dismiss="modal"  />
+                            <asp:Button ID="BtnIngenio" runat="server" class="btn btn-success"  Text="Aceptar" OnClick="BtnIngenio_Click" />
                          </div>
                         </div>
                 </div> </div>
@@ -175,6 +236,51 @@
             </div>
         </div>
     </div>
+
+    <%-- Editar o eliminar Unidad de medida --%>
+    <div class="panel panel-default">
+        <div class="panel-heading" >
+            <h4 class="panel-title">
+                <a data-toggle="collapse" data-parent="#accordion" href="#collapse2">Marcas
+                </a>
+            </h4>
+        </div>
+        <div id="collapse2" class="panel-collapse collapse" >
+            <div class="panel-body">
+              <asp:GridView ID="GridView2" runat="server"  AutoGenerateColumns="False" Width="100%" AllowPaging="True" 
+                    DataKeyNames="idMarca"  BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" DataSourceID="SqlDataSource1">
+                    <Columns>
+                        <asp:CommandField ShowDeleteButton="True" ShowEditButton="True" />
+                        <asp:BoundField DataField="idMarca" HeaderText="CODIGO" InsertVisible="False" ReadOnly="True" SortExpression="idMarca" />
+                        <asp:BoundField DataField="strNombre" HeaderText="NOMBRE" SortExpression="strNombre" />
+                    </Columns>
+                        <FooterStyle BackColor="White" ForeColor="#000066" />
+                        <HeaderStyle BackColor="#006699" Font-Bold="True" ForeColor="White" HorizontalAlign="Center"/>
+                        <PagerStyle BackColor="White" ForeColor="#000066" HorizontalAlign="Center" />
+                        <RowStyle ForeColor="#000066" />
+                        <SelectedRowStyle BackColor="#669999" Font-Bold="True" ForeColor="White" />
+                        <SortedAscendingCellStyle BackColor="#F1F1F1" />
+                        <SortedAscendingHeaderStyle BackColor="#007DBB" />
+                        <SortedDescendingCellStyle BackColor="#CAC9C9" />
+                        <SortedDescendingHeaderStyle BackColor="#00547E" />
+                </asp:GridView>
+                <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:XIUGARConnectionString %>" 
+                    DeleteCommand="UPDATE tblMarca SET idActivo = 0 WHERE (idMarca= @idMarca)" 
+                    SelectCommand="select idMarca,strNombre from tblMarca where (idActivo = 1)" 
+                    UpdateCommand=" update tblMarca set strnombre= @strNombre where (idMarca = @idMarca);">
+                    <DeleteParameters>
+                        <asp:Parameter Name="idMarca" />
+                    </DeleteParameters>
+                    <UpdateParameters>
+                        <asp:Parameter Name="strNombre" />
+                        <asp:Parameter Name="idMarca" />
+                    </UpdateParameters>
+                </asp:SqlDataSource>
+            </div>
+        </div>
+    </div>
+
+
 
      <script type="text/javascript">
          function exito() {

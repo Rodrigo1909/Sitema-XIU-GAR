@@ -16,10 +16,6 @@ namespace ProjectPaslum.Almacen
         {
             
         }
-
-
-
-
-
+        
     }
 }

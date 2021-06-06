@@ -49,6 +49,26 @@ namespace ProjectPaslum.Controllers
 
         }
 
+        public bool InsertarSubMarca(tblSubMarca _TBL_SubMarc)
+        {
+            bool respuesta = false;
+            try
+            {
+                contexto.tblSubMarca.InsertOnSubmit(_TBL_SubMarc);
+                contexto.SubmitChanges();
+                respuesta = true;
+
+            }
+            catch (Exception ex)
+            {
+                System.Console.WriteLine(ex.ToString());
+                respuesta = false;
+
+            }
+            return respuesta;
+
+        }
+
         public List<tblAlmacen> ConsultaAlmacen()
         {
             return contexto.tblAlmacen.ToList<tblAlmacen>();
@@ -56,7 +76,18 @@ namespace ProjectPaslum.Controllers
 
         public List<tblMarca> ConsultaMarca()
         {
-            return contexto.tblMarca.ToList<tblMarca>();
+            //return contexto.tblMarca.ToList<tblMarca>();
+            var activo = 1;
+
+            var marca = (from mar in contexto.tblMarca
+                           where mar.idActivo == activo
+                           select mar).ToList();
+            return marca;
+        }
+
+        public List<tblSubMarca> ConsultaSubMarca()
+        {
+            return contexto.tblSubMarca.ToList<tblSubMarca>();
         }
 
         public List<tblUnidadMedida> ConsultaUnidadMedida()

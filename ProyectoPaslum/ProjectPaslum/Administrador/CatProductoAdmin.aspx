@@ -113,6 +113,7 @@
                                     <asp:ListItem Value="SOBRES"> Sobres de azúcar </asp:ListItem>
                                     <asp:ListItem Value="SUSTITUTO"> Edulcorantes </asp:ListItem>
                                     <asp:ListItem Value="ESTANDAR"> Azúcar Estandar </asp:ListItem>
+                                    <asp:ListItem Value="BLANCO ESPECIAL"> Blanco Especial </asp:ListItem>
                                  </asp:DropDownList>   
                             </div>
                           </div>
@@ -120,9 +121,16 @@
                              <div class="form-group">
                                 <div class="col-xs-6">
                                     Marca
-                                    <asp:DropDownList ID="ddlMarca" runat="server" AppendDataBoundItems="True"  CssClass=" form-control"></asp:DropDownList>      
+                                    <asp:DropDownList ID="ddlMarca" runat="server" AppendDataBoundItems="True"  CssClass=" form-control" AutoPostBack="true" OnSelectedIndexChanged="ddlMarca_SelectedIndexChanged"></asp:DropDownList>      
                                 </div>
                             </div>
+                           <div class="form-group">
+                                <div class="col-xs-6">
+                                    Ingenio
+                                    <asp:DropDownList ID="ddlIngenio" runat="server" AppendDataBoundItems="True"  CssClass=" form-control" ></asp:DropDownList>      
+                                </div>
+                            </div>
+
                         </div>
                      </div>
 

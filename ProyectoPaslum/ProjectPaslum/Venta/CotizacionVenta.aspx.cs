@@ -121,7 +121,7 @@ namespace ProjectPaslum.Venta
         protected void DataList1_ItemCommand(object source, DataListCommandEventArgs e)
         {
             string cod;
-            string des = null, nom = null;
+            string des = null;
             double precio = 0;
             if (e.CommandName == "Seleccionar")
             {

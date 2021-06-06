@@ -32,20 +32,20 @@
                                     <ItemStyle BackColor="#FB2D59" />
                                     
                                     <ItemTemplate>
-                                        <asp:Label ID="lbNum" runat="server" Text="VENTA:" Font-Size="16px" Font-Italic="true" ForeColor="Black"></asp:Label>
-                                        <asp:Label ID="idVentaLabel" runat="server" Text='<%# Eval("idVenta") %>' ForeColor="Black" Font-Size="15px"></asp:Label>  
+                                        <asp:Label ID="lbNum" runat="server" Text="VENTA:" ForeColor="Black"></asp:Label>
+                                        <asp:Label ID="idVentaLabel" runat="server" Text='<%# Eval("idVenta") %>' ForeColor="Black"></asp:Label>  
                                         <br />
-                                        <asp:Label ID="Label1" runat="server" Text="CLIENTE:" Font-Size="16px" Font-Italic="true" ForeColor="Black"></asp:Label> 
-                                        <asp:Label ID="Column1Label" runat="server" Text='<%# Eval("Column1") %>' ForeColor="Black" Font-Size="15px"></asp:Label>                                        
+                                        <asp:Label ID="Label1" runat="server" Text="CLIENTE:" ForeColor="Black"></asp:Label> 
+                                        <asp:Label ID="Column1Label" runat="server" Text='<%# Eval("Column1") %>' ForeColor="Black" ></asp:Label>                                        
                                         <br />                                        
-                                        <asp:Label ID="Label2" runat="server" Text="ESTABLECIMIENTO:" Font-Size="16px" Font-Italic="true" ForeColor="Black"></asp:Label>
-                                        <asp:Label ID="strEstablecimientoLabel" runat="server" Text='<%# Eval("strEstablecimiento") %>' ForeColor="Black" Font-Size="15px"></asp:Label>                             
+                                        <asp:Label ID="Label2" runat="server" Text="ESTABLECIMIENTO:" ForeColor="Black"></asp:Label>
+                                        <asp:Label ID="strEstablecimientoLabel" runat="server" Text='<%# Eval("strEstablecimiento") %>' ForeColor="Black" ></asp:Label>                             
                                         <br />
-                                        <asp:Label ID="Label3" runat="server" Text="TOTAL:" Font-Size="16px" Font-Italic="true" ForeColor="Black"></asp:Label>
-                                        <asp:Label ID="dblTotalLabel" runat="server" Text='<%# Eval("dblTotal") %>' ForeColor="Black" Font-Size="15px"/>
+                                        <asp:Label ID="Label3" runat="server" Text="TOTAL:"  ForeColor="Black"></asp:Label>
+                                        <asp:Label ID="dblTotalLabel" runat="server" Text='<%# Eval("dblTotal") %>' ForeColor="Black" />
                                         <br />
-                                         <asp:Label ID="Label4" runat="server" Text="FECHA:" Font-Size="16px" Font-Italic="true" ForeColor="Black"></asp:Label>
-                                        <asp:Label ID="Fecha_de_creaciónLabel" runat="server" Text='<%# Eval("[Fecha de creación]") %>' ForeColor="Black" Font-Size="15px"></asp:Label>  
+                                         <asp:Label ID="Label4" runat="server" Text="FECHA:" ForeColor="Black"></asp:Label>
+                                        <asp:Label ID="Fecha_de_creaciónLabel" runat="server" Text='<%# Eval("[Fecha de creación]") %>' ForeColor="Black" ></asp:Label>  
                                         <br />
                                         <br />
                                         <asp:Button ID="Button1" runat="server" CommandName="Seleccionar" Text="Detalle" CssClass="btn btn-primary" />
@@ -88,20 +88,20 @@
                             <HeaderStyle BackColor="#FEF97C" Font-Bold="True"  />
                             <ItemStyle BackColor="#FEF97C" />
                             <ItemTemplate>
-                                <asp:Label ID="lbNum" runat="server" Text="VENTA:" Font-Size="16px" Font-Italic="true" ForeColor="Black"></asp:Label>  
-                                <asp:Label ID="idVentaLabel" runat="server" Text='<%# Eval("idVenta") %>' ForeColor="Black" Font-Size="15px"></asp:Label>  
+                                <asp:Label ID="lbNum" runat="server" Text="VENTA:" ForeColor="Black"></asp:Label>  
+                                <asp:Label ID="idVentaLabel" runat="server" Text='<%# Eval("idVenta") %>' ForeColor="Black" ></asp:Label>  
                                 <br />
-                                <asp:Label ID="Label5" runat="server" Text="CLIENTE:" Font-Size="16px" Font-Italic="true" ForeColor="Black"></asp:Label>  
-                                <asp:Label ID="Column1Label" runat="server" Text='<%# Eval("Column1") %>' ForeColor="Black" Font-Size="15px"/>
+                                <asp:Label ID="Label5" runat="server" Text="CLIENTE:" ForeColor="Black"></asp:Label>  
+                                <asp:Label ID="Column1Label" runat="server" Text='<%# Eval("Column1") %>' ForeColor="Black" />
                                 <br />
-                                <asp:Label ID="Label6" runat="server" Text="ESTABLECIMIENTO:" Font-Size="16px" Font-Italic="true" ForeColor="Black"></asp:Label>  
-                                <asp:Label ID="strEstablecimientoLabel" runat="server" Text='<%# Eval("strEstablecimiento") %>' ForeColor="Black" Font-Size="15px"></asp:Label>  
+                                <asp:Label ID="Label6" runat="server" Text="ESTABLECIMIENTO:" ForeColor="Black"></asp:Label>  
+                                <asp:Label ID="strEstablecimientoLabel" runat="server" Text='<%# Eval("strEstablecimiento") %>' ForeColor="Black" ></asp:Label>  
                                 <br />
-                                <asp:Label ID="Label7" runat="server" Text="TOTAL:" Font-Size="16px" Font-Italic="true" ForeColor="Black"></asp:Label>   
-                                <asp:Label ID="dblTotalLabel" runat="server" Text='<%# Eval("dblTotal") %>' ForeColor="Black" Font-Size="15px"/>
+                                <asp:Label ID="Label7" runat="server" Text="TOTAL:" ForeColor="Black"></asp:Label>   
+                                <asp:Label ID="dblTotalLabel" runat="server" Text='<%# Eval("dblTotal") %>' ForeColor="Black" />
                                 <br />
-                                <asp:Label ID="Label8" runat="server" Text="FECHA:" Font-Size="16px" Font-Italic="true" ForeColor="Black"></asp:Label>  
-                                <asp:Label ID="Fecha_de_creaciónLabel" runat="server" Text='<%# Eval("[Fecha de creación]") %>' ForeColor="Black" Font-Size="15px"></asp:Label>  
+                                <asp:Label ID="Label8" runat="server" Text="FECHA:" ForeColor="Black"></asp:Label>  
+                                <asp:Label ID="Fecha_de_creaciónLabel" runat="server" Text='<%# Eval("[Fecha de creación]") %>' ForeColor="Black"></asp:Label>  
                                 <br />
                                 <br />
                                 <asp:Button ID="Button1" runat="server" CommandName="Seleccionar" Text="Detalle" CssClass="btn btn-primary" />
@@ -139,17 +139,17 @@
                         <asp:ListView ID="ListView1" runat="server" DataKeyNames="idVenta" DataSourceID="SqlDataSource3" GroupItemCount="3" OnItemCommand="ListView1_ItemCommand">
                             <AlternatingItemTemplate>
                                 <td runat="server" style="background-color:#9AFE7C;">
-                                    <asp:Label ID="lbNum12" runat="server" Text="VENTA:" Font-Size="16px" Font-Italic="true" ForeColor="#000000"></asp:Label>
-                                    <asp:Label ID="idVentaLabel" runat="server" Text='<%# Eval("idVenta") %>' ForeColor="#000000" Font-Size="15px"/>
+                                    <asp:Label ID="lbNum12" runat="server" Text="VENTA:" ForeColor="#000000"></asp:Label>
+                                    <asp:Label ID="idVentaLabel" runat="server" Text='<%# Eval("idVenta") %>' ForeColor="#000000" />
                                     <br />
-                                    <asp:Label ID="Label9" runat="server" Text="CLIENTE:" Font-Size="16px" Font-Italic="true" ForeColor="#000000"></asp:Label>
-                                    <asp:Label ID="Column1Label" runat="server" Text='<%# Eval("Column1") %>' ForeColor="#000000" Font-Size="15px"/>
+                                    <asp:Label ID="Label9" runat="server" Text="CLIENTE:" ForeColor="#000000"></asp:Label>
+                                    <asp:Label ID="Column1Label" runat="server" Text='<%# Eval("Column1") %>' ForeColor="#000000" />
                                     <br />
-                                    <asp:Label ID="Label10" runat="server" Text="ESTABLECIMIENTO:" Font-Size="16px" Font-Italic="true" ForeColor="#000000"></asp:Label>
-                                    <asp:Label ID="strEstablecimientoLabel" runat="server" Text='<%# Eval("strEstablecimiento") %>' ForeColor="#000000" Font-Size="15px"/>
+                                    <asp:Label ID="Label10" runat="server" Text="ESTABLECIMIENTO:" ForeColor="#000000"></asp:Label>
+                                    <asp:Label ID="strEstablecimientoLabel" runat="server" Text='<%# Eval("strEstablecimiento") %>' ForeColor="#000000" />
                                     <br />
-                                    <asp:Label ID="Label12" runat="server" Text="FECHA:" Font-Size="16px" Font-Italic="true" ForeColor="#000000"></asp:Label>
-                                    <asp:Label ID="Fecha_de_creaciónLabel" runat="server" Text='<%# Eval("[Fecha de creación]") %>' ForeColor="#000000" Font-Size="15px"/>
+                                    <asp:Label ID="Label12" runat="server" Text="FECHA:" ForeColor="#000000"></asp:Label>
+                                    <asp:Label ID="Fecha_de_creaciónLabel" runat="server" Text='<%# Eval("[Fecha de creación]") %>' ForeColor="#000000" />
                                     <br />
                                     <asp:Button ID="Button1" runat="server" CommandName="Seleccionar" Text="Detalle" CssClass="btn btn-primary" CommandArgument='<%# Eval("idVenta") %>' />
                                 </td>
@@ -171,17 +171,17 @@
                             </GroupTemplate>                            
                             <ItemTemplate>
                                 <td runat="server" style="background-color:#4BE71C;color: #4BE71C;">
-                                    <asp:Label ID="lbNum12" runat="server" Text="VENTA:" Font-Size="16px" Font-Italic="true" ForeColor="#000000"></asp:Label>
-                                    <asp:Label ID="idVentaLabel" runat="server" Text='<%# Eval("idVenta") %>' ForeColor="#000000" Font-Size="15px" />
+                                    <asp:Label ID="lbNum12" runat="server" Text="VENTA:" ForeColor="#000000"></asp:Label>
+                                    <asp:Label ID="idVentaLabel" runat="server" Text='<%# Eval("idVenta") %>' ForeColor="#000000" />
                                     <br />
-                                    <asp:Label ID="Label9" runat="server" Text="CLIENTE:" Font-Size="16px" Font-Italic="true" ForeColor="#000000"></asp:Label>
-                                    <asp:Label ID="Column1Label" runat="server" Text='<%# Eval("Column1") %>' ForeColor="#000000" Font-Size="15px"/>
+                                    <asp:Label ID="Label9" runat="server" Text="CLIENTE:" ForeColor="#000000"></asp:Label>
+                                    <asp:Label ID="Column1Label" runat="server" Text='<%# Eval("Column1") %>' ForeColor="#000000"/>
                                     <br />
-                                    <asp:Label ID="Label10" runat="server" Text="ESTABLECIMIENTO:" Font-Size="16px" Font-Italic="true" ForeColor="#000000"></asp:Label>
-                                    <asp:Label ID="strEstablecimientoLabel" runat="server" Text='<%# Eval("strEstablecimiento") %>' ForeColor="#000000" Font-Size="15px"/>
+                                    <asp:Label ID="Label10" runat="server" Text="ESTABLECIMIENTO:" ForeColor="#000000"></asp:Label>
+                                    <asp:Label ID="strEstablecimientoLabel" runat="server" Text='<%# Eval("strEstablecimiento") %>' ForeColor="#000000"/>
                                     <br />
-                                    <asp:Label ID="Label12" runat="server" Text="FECHA:" Font-Size="16px" Font-Italic="true" ForeColor="#000000"></asp:Label>
-                                    <asp:Label ID="Fecha_de_creaciónLabel" runat="server" Text='<%# Eval("[Fecha de creación]") %>'  ForeColor="#000000" Font-Size="15px"/>
+                                    <asp:Label ID="Label12" runat="server" Text="FECHA:" ForeColor="#000000"></asp:Label>
+                                    <asp:Label ID="Fecha_de_creaciónLabel" runat="server" Text='<%# Eval("[Fecha de creación]") %>'  ForeColor="#000000" />
                                     <br />
                                     <asp:Button ID="Button1" runat="server" CommandName="Seleccionar" Text="Detalle" CssClass="btn btn-primary" CommandArgument='<%# Eval("idVenta") %>' />
                                 </td>

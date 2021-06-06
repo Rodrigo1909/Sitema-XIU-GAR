@@ -5,7 +5,6 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using Modelo;
 using System.Data;
 using ProjectPaslum.Controllers;
 using iTextSharp.text;

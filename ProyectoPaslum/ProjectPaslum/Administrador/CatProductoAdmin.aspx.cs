@@ -65,6 +65,7 @@ namespace ProjectPaslum.Administrador
             var almacen = ddlAlmacen.SelectedItem.Value;
             var unidad = ddlUnidadMedida.SelectedItem.Value;
             var marca = ddlMarca.SelectedItem.Value;
+            var subMarca = ddlIngenio.SelectedItem.Value;
 
             tblProducto prod = new tblProducto();
             prod.strNombre = txtNombre.Text.ToUpper();
@@ -75,6 +76,14 @@ namespace ProjectPaslum.Administrador
             prod.fkUnidadMedida = Int32.Parse(unidad);
             prod.strCatalogo = cmbClasificacion.SelectedItem.Value;
             prod.fkMarca = Int32.Parse(marca);
+            try
+            {
+                prod.fkSubMarca = Int32.Parse(subMarca);
+            }
+            catch
+            {
+                prod.fkSubMarca = null;
+            }
             prod.idActivo = 1;
 
             //if (!string.IsNullOrEmpty(FileUpload1.FileName))
@@ -97,5 +106,25 @@ namespace ProjectPaslum.Administrador
             txtPrecio.Text = "";
         }
 
+        protected void ddlMarca_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ddlIngenio.Items.Clear();
+            var Ingenio = (from sub in contexto.tblSubMarca
+
+                             join marca in contexto.tblMarca
+                             on sub.fkMarca
+                             equals marca.idMarca
+
+                             where sub.fkMarca == Convert.ToInt32(ddlMarca.SelectedValue)
+                             select new { nombre = sub.strNombre, id = sub.idSubMarca }).ToList();
+
+
+
+            ddlIngenio.Items.Add("No aplica");
+            ddlIngenio.DataValueField = "id";
+            ddlIngenio.DataTextField = "nombre";
+            ddlIngenio.DataSource = Ingenio;
+            ddlIngenio.DataBind();
+        }
     }
 }

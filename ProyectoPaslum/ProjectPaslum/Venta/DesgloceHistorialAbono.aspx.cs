@@ -33,16 +33,17 @@ namespace ProjectPaslum.Venta
            try
             {
                 var desglozar = (from detalle in contexto.tblDetalleVenta
-                                 join producto in contexto.tblProducto 
-                                    on detalle.fkProducto equals producto.idProducto                                 
-                                 where detalle.fkVenta == idDetalleVenta
+                                    join producto in contexto.tblProducto 
+                                    on detalle.fkProducto equals producto.idProducto
+                                 where detalle.fkVenta == idDetalleVenta 
                                  select new
                                  {
                                      PRODUCTO = producto.strNombre,
                                      DESCRIPCIÓN = producto.strDescripcion,
                                      PRESENTACIÓN = producto.intPresentacion,
                                      PRECIO = detalle.dblPrecio,
-                                     CANTIDAD = detalle.intCantidad
+                                     CANTIDAD = detalle.intCantidad                                    
+
                                  }).ToList();
 
                 GridView1.DataSource = desglozar;

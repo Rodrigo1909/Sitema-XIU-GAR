@@ -21,13 +21,13 @@
 
         <%--ENTRADAS --%>
         <div class="panel panel-default">
-        <div class="panel-heading" role="tab" id="headingOne">
+        <div class="panel-heading">
             <h4 class="panel-title">
-                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">ENTRADAS
+                <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" >ENTRADAS
                 </a>
             </h4>
         </div>
-        <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+        <div id="collapseOne" class="panel-collapse collapse" >
             <div class="panel-body">
                 <div class="row">
                                         
@@ -88,13 +88,13 @@
 
         <%--SALIDAS --%>
         <div class="panel panel-default">
-        <div class="panel-heading" role="tab" id="heading">
+        <div class="panel-heading" >
             <h4 class="panel-title">
-                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse" aria-expanded="false" aria-controls="collapse">SALIDAS
+                <a data-toggle="collapse" data-parent="#accordion" href="#collapse">SALIDAS
                 </a>
             </h4>
         </div>
-        <div id="collapse" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+        <div id="collapse" class="panel-collapse collapse" >
             <div class="panel-body">
                     <asp:GridView ID="GridView2" runat="server" AutoGenerateColumns="False" Width="100%" 
                     AllowPaging="True" DataSourceID="SqlDataSource1" BackColor="White" BorderColor="#CCCCCC" 

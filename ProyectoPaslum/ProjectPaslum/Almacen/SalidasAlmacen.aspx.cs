@@ -52,6 +52,17 @@ namespace ProjectPaslum.Almacen
 
         }
 
+        private void LlenarMarca()
+        {
+            ControllerProducto CtrlProducto = new ControllerProducto();
+            List<tblMarca> marca = CtrlProducto.ConsultaMarca();
+            ddlMarca.Items.Add("Seleccionar");
+            ddlMarca.DataSource = marca;
+            ddlMarca.DataValueField = "idMarca";
+            ddlMarca.DataTextField = "strNombre";
+            ddlMarca.DataBind();
+
+        }
 
         protected void btnRegistrar_Click(object sender, EventArgs e)
         {
@@ -111,30 +122,7 @@ namespace ProjectPaslum.Almacen
 
         protected void ddlAlmacen_SelectedIndexChanged(object sender, EventArgs e)
         {
-            ddlProducto.Items.Clear();
-            var activo = 1;
-            var producto = (from prod in contexto.tblProducto
-
-                            join alm in contexto.tblAlmacen
-                            on prod.fkAlmacen
-                            equals alm.idAlmacen
-
-                            join uni in contexto.tblUnidadMedida
-                            on prod.fkUnidadMedida
-                            equals uni.idUnidadMedida
-
-                            where prod.fkAlmacen == Convert.ToInt32(ddlAlmacen.SelectedValue) && prod.idActivo == activo
-                            select new { nombre = prod.strNombre + ", " + prod.intPresentacion + " " + uni.strAbreviatura,  id = prod.idProducto }).ToList();
-
-
-
-            ddlProducto.Items.Add("Seleccionar");
-            ddlProducto.DataValueField = "id";
-            ddlProducto.DataTextField = "nombre";
-            ddlProducto.DataSource = producto;
-            ddlProducto.DataBind();
-           
-
+            this.LlenarMarca();
         }
 
         protected void ddlProducto_SelectedIndexChanged(object sender, EventArgs e)
@@ -154,6 +142,83 @@ namespace ProjectPaslum.Almacen
             ddlExistente.DataTextField = "cantidad";
             ddlExistente.DataSource = exitente;
             ddlExistente.DataBind();
+        }
+
+        protected void ddlMarca_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ddlProducto.Items.Clear();            
+            ddlIngenio.Items.Clear();
+
+            var activo = 1;
+
+            var productoSuBMarca = (from sub in contexto.tblSubMarca
+
+                                    join marc in contexto.tblMarca
+                                    on sub.fkMarca equals marc.idMarca
+
+                                    where sub.fkMarca == Convert.ToInt32(ddlMarca.SelectedValue)
+                                    select new { subM = sub.strNombre, id = sub.idSubMarca }).ToList();
+
+            ddlIngenio.Items.Add("No aplica");
+            ddlIngenio.DataValueField = "id";
+            ddlIngenio.DataTextField = "subM";
+            ddlIngenio.DataSource = productoSuBMarca;
+            ddlIngenio.DataBind();
+
+
+            if (ddlIngenio.Items.Count == 1)
+            {
+                var producto = (from prod in contexto.tblProducto
+
+                                join alm in contexto.tblAlmacen
+                                on prod.fkAlmacen equals alm.idAlmacen
+
+                                join uni in contexto.tblUnidadMedida
+                                on prod.fkUnidadMedida equals uni.idUnidadMedida
+
+                                join mar in contexto.tblMarca
+                                on prod.fkMarca equals mar.idMarca
+
+                                where prod.fkAlmacen == Convert.ToInt32(ddlAlmacen.SelectedValue) && prod.idActivo == activo && prod.fkMarca == Convert.ToInt32(ddlMarca.SelectedValue)
+                                select new { nombre = "(" + prod.idProducto + ") " + prod.strNombre + ", " + prod.intPresentacion + " " + uni.strAbreviatura, id = prod.idProducto }).ToList();
+
+
+
+                ddlProducto.Items.Add("Seleccionar");
+                ddlProducto.DataValueField = "id";
+                ddlProducto.DataTextField = "nombre";
+                ddlProducto.DataSource = producto;
+                ddlProducto.DataBind();
+            }
+
+        }
+
+        protected void ddlIngenio_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var activo = 1;
+            ddlProducto.Items.Clear();           
+
+            var producto = (from prod in contexto.tblProducto
+
+                            join alm in contexto.tblAlmacen
+                            on prod.fkAlmacen equals alm.idAlmacen
+
+                            join uni in contexto.tblUnidadMedida
+                            on prod.fkUnidadMedida equals uni.idUnidadMedida
+
+                            join mar in contexto.tblSubMarca
+                            on prod.fkSubMarca equals mar.idSubMarca
+
+                            where prod.fkAlmacen == Convert.ToInt32(ddlAlmacen.SelectedValue) && prod.idActivo == activo && prod.fkSubMarca == Convert.ToInt32(ddlIngenio.SelectedValue)
+                            select new { nombre = "(" + prod.idProducto + ") " + prod.strNombre + ", " + prod.intPresentacion + " " + uni.strAbreviatura, id = prod.idProducto }).ToList();
+
+
+
+            ddlProducto.Items.Add("Seleccionar");
+            ddlProducto.DataValueField = "id";
+            ddlProducto.DataTextField = "nombre";
+            ddlProducto.DataSource = producto;
+            ddlProducto.DataBind();
         }
     }
 }
