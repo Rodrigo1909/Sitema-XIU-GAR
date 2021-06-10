@@ -104,7 +104,7 @@ namespace ProjectPaslum.Venta
                             DESCRIPCIÓN = producto.strDescripcion,
                             PRESENTACIÓN = producto.intPresentacion,
                             UNIDAD = unidad.strNombre
-                        }).FirstOrDefault();
+                        }).ToList();
 
 
 
@@ -119,9 +119,10 @@ namespace ProjectPaslum.Venta
 
                 // iTextSharp.text.Image image1 = iTextSharp.text.Image.GetInstance("../images/avatar.png");
                 //image1.ScalePercent(50f);
-                image.ScaleAbsoluteWidth(270);
+
+                image.ScaleAbsoluteWidth(240);
                 image.ScaleAbsoluteHeight(110);
-                image.SetAbsolutePosition(300, 720);
+                image.SetAbsolutePosition(350, 720);
                 document.Add(image);
 
 
@@ -142,21 +143,29 @@ namespace ProjectPaslum.Venta
                 document.Add(new Chunk("\n"));
                 
 
-                PdfPTable table = new PdfPTable(6);
-                
-                table.AddCell("PROD.");
+                PdfPTable table = new PdfPTable(5);
+                PdfPTable table2 = new PdfPTable(5);
+
+                table.AddCell("CODIGO");
+                table.AddCell("DESCRIPCIÓN");
+                table.AddCell("CANTIDAD");
                 table.AddCell("PRECIO");
                 table.AddCell("TOTAL");
-                table.AddCell("CANTIDAD");
-                table.AddCell("PRES.");
-                table.AddCell("U.MEDIDA");
 
+                List<tblDetalleVenta> detalle = contexto.tblDetalleVenta.Where(fin => fin.fkVenta == int.Parse(Session["desgloce"].ToString())).ToList();                
 
-                
+                foreach (var item in detalle)
+                {
+                    var tot = item.intCantidad * item.dblPrecio;
 
+                    table2.AddCell(new Paragraph(item.fkProducto.ToString(), font8));
+                    table2.AddCell(new Paragraph(item.tblProducto.strNombre, font8));
+                    table2.AddCell(new Paragraph(item.intCantidad.ToString(), font8));
+                    table2.AddCell(new Paragraph(item.dblPrecio.ToString(), font8));
+                    table2.AddCell(new Paragraph(tot.ToString(), font8));
 
-                table.AddCell(new PdfPCell(new Phrase(deta.PRODUCTO)));
-                table.AddCell(new PdfPCell(new Phrase(deta.DESCRIPCIÓN)));
+                }
+
 
 
                 Paragraph total = new Paragraph(16, "Total: $" + ventas.total, font9);
@@ -169,6 +178,7 @@ namespace ProjectPaslum.Venta
                 //cambio.Alignment = Element.ALIGN_RIGHT;
                 gracias.Alignment = Element.ALIGN_CENTER;
                 document.Add(table);
+                document.Add(table2);
                 document.Add(total);
                 //document.Add(efectivo);
                 //document.Add(cambio);
@@ -180,7 +190,7 @@ namespace ProjectPaslum.Venta
                 document.Close();
 
                 Response.ContentType = "application/pdf";
-                Response.AddHeader("content-disposition", "attachment;filename=Ticket" + ventas.fecha + ".pdf");
+                Response.AddHeader("content-disposition", "attachment;filename=Num. Venta: " + int.Parse(Session["desgloce"].ToString()) + "_" + ventas.fecha + ".pdf");
                 HttpContext.Current.Response.Write(document);
                 Response.Flush();
                 Response.End();
@@ -196,11 +206,11 @@ namespace ProjectPaslum.Venta
                                    join domicilio in contexto.tblDireccion
                                          on cliente.fkDireccion equals domicilio.idDireccion
 
-                               join detalle in contexto.tblDetalleVenta
-                                     on venta.idVenta equals detalle.fkVenta
+                               join detalle2 in contexto.tblDetalleVenta
+                                     on venta.idVenta equals detalle2.fkVenta
 
                                join empleado in contexto.tblEmpleado
-                                     on detalle.fkEmpleado equals empleado.idEmpleado
+                                     on detalle2.fkEmpleado equals empleado.idEmpleado
 
                                where venta.idVenta == int.Parse(Session["desgloce"].ToString())
 
@@ -220,9 +230,10 @@ namespace ProjectPaslum.Venta
 
                 // iTextSharp.text.Image image1 = iTextSharp.text.Image.GetInstance("../images/avatar.png");
                 //image1.ScalePercent(50f);
-                image.ScaleAbsoluteWidth(270);
+
+                image.ScaleAbsoluteWidth(240);
                 image.ScaleAbsoluteHeight(110);
-                image.SetAbsolutePosition(300, 720);
+                image.SetAbsolutePosition(350, 720);
                 document.Add(image);
 
 
@@ -241,14 +252,27 @@ namespace ProjectPaslum.Venta
 
                 document.Add(new Chunk("\n"));
 
-                PdfPTable table = new PdfPTable(7);
+                PdfPTable table = new PdfPTable(5);
+                PdfPTable table2 = new PdfPTable(5);
+
                 table.AddCell("CODIGO");
-                table.AddCell("PROD.");
+                table.AddCell("DESCRIPCIÓN");
+                table.AddCell("CANTIDAD");
                 table.AddCell("PRECIO");
                 table.AddCell("TOTAL");
-                table.AddCell("CANTIDAD");
-                table.AddCell("PRES.");
-                table.AddCell("U.MEDIDA");
+
+                List<tblDetalleVenta> detalle = contexto.tblDetalleVenta.Where(fin => fin.fkVenta == int.Parse(Session["desgloce"].ToString())).ToList();               
+
+                foreach (var item in detalle)
+                {
+                    var tot = item.intCantidad * item.dblPrecio;
+
+                    table2.AddCell(new Paragraph(item.fkProducto.ToString(), font8));
+                    table2.AddCell(new Paragraph(item.tblProducto.strNombre, font8));
+                    table2.AddCell(new Paragraph(item.intCantidad.ToString(), font8));
+                    table2.AddCell(new Paragraph(item.dblPrecio.ToString(), font8));
+                    table2.AddCell(new Paragraph(tot.ToString(), font8));
+                }
 
                 Paragraph total = new Paragraph(16, "Total: $" + ventas.total, font9);
                 //Paragraph efectivo = new Paragraph(16, "Efectivo: $" + decimal.Parse(txtDinero.Text), font9);
@@ -262,6 +286,7 @@ namespace ProjectPaslum.Venta
                 //cambio.Alignment = Element.ALIGN_RIGHT;
                 gracias.Alignment = Element.ALIGN_CENTER;
                 document.Add(table);
+                document.Add(table2);
                 document.Add(total);
                 //document.Add(efectivo);
                 //document.Add(cambio);
@@ -273,7 +298,7 @@ namespace ProjectPaslum.Venta
                 document.Close();
 
                 Response.ContentType = "application/pdf";
-                Response.AddHeader("content-disposition", "attachment;filename=Ticket" + ventas.fecha + ".pdf");
+                Response.AddHeader("content-disposition", "attachment;filename==Num. Venta: " + int.Parse(Session["desgloce"].ToString()) + "_" + ventas.fecha + ".pdf");
                 HttpContext.Current.Response.Write(document);
                 Response.Flush();
                 Response.End();

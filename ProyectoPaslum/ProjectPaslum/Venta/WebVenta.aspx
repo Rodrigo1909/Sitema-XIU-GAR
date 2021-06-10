@@ -12,13 +12,13 @@
 
         <%-- PENDIENTE: Orden de compra que no han sido aceptadas --%>
         <div class="panel panel-default">
-                <div class="panel-heading" role="tab" id="headingPendiente">
+                <div class="panel-heading">
                     <h4 class="panel-title">
-                        <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapsePendiente" aria-expanded="true" aria-controls="collapsePendiente">PENDIENTES
+                        <a data-toggle="collapse" data-parent="#accordion" href="#collapsePendiente" >PENDIENTES
                         </a>
                     </h4>
                 </div>
-                <div id="collapsePendiente" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingPendiente">
+                <div id="collapsePendiente" class="panel-collapse collapse">
                     <div class="panel-body">
                         <section>
                          <div>
@@ -70,13 +70,13 @@
 
         <%-- EN PROCESO: Orden de compra en proceso de elaboración --%>
         <div class="panel panel-default">
-                <div class="panel-heading" role="tab" id="headingProceso">
+                <div class="panel-heading">
                     <h4 class="panel-title">
-                        <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseProceso" aria-expanded="true" aria-controls="collapseProceso">EN PROCESO
+                        <a data-toggle="collapse" data-parent="#accordion" href="#collapseProceso" >EN PROCESO
                         </a>
                     </h4>
                 </div>
-                <div id="collapseProceso" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingProceso">
+                <div id="collapseProceso" class="panel-collapse collapse">
                     <div class="panel-body">
                         <section>
                          <div>
@@ -125,13 +125,13 @@
 
         <%-- FINALIZADO: Ordendes de compra terminado --%>  
         <div class="panel panel-default">
-                <div class="panel-heading" role="tab" id="headingFinalizado">
+                <div class="panel-heading">
                     <h4 class="panel-title">
-                        <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFinalizado" aria-expanded="true" aria-controls="collapseFinalizado">FINALIZADO
+                        <a data-toggle="collapse" data-parent="#accordion" href="#collapseFinalizado" >FINALIZADO
                         </a>
                     </h4>
                 </div>
-                    <div id="collapseFinalizado" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingFinalizado">
+                    <div id="collapseFinalizado" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFinalizado">
                 <div class="panel panel-default">
                     <div class="panel-body">
 

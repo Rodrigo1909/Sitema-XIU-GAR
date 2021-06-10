@@ -230,7 +230,7 @@
                 icon: "error",
             });
         }
-        function fallo() {
+        function falloCantidad() {
             swal({
                 title: "ERROR",
                 text: "No existe cantidad disponible para dar continuidad a la venta",

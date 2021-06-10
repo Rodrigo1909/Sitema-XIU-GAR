@@ -91,6 +91,20 @@ namespace ProjectPaslum.Venta
             Response.Redirect("MostradorVenta.aspx");
         }
 
+        private void Limpiar()
+        {
+            Session["contado"] = null;
+            txtNumVen.Text = "";
+            txtFecha.Text = "";
+            txtVendedor.Text = "";
+            txtCliente.Text = "";
+            txtDomicilio.Text = "";
+            txtDinero.Text = "";
+            fechaEntrega.Text = "";
+            txtHora.Text = "";
+
+        }
+
         protected void Button3_Click(object sender, EventArgs e)
         {
             var vacio = 0.0000;
@@ -172,7 +186,7 @@ namespace ProjectPaslum.Venta
                     //Alertas en caso de que haya caido en las validaciones anteriores
                     if (CanStock>0)
                     {
-                        this.ClientScript.RegisterStartupScript(this.GetType(), "SweetAlert", "fallo()", true);
+                        this.ClientScript.RegisterStartupScript(this.GetType(), "SweetAlert", "falloCantidad()", true);
                     }
                     //Alertas en caso de que haya caido en las validaciones anteriores
                     else if (ExStock > 0)
@@ -269,8 +283,8 @@ namespace ProjectPaslum.Venta
                     Session["contado"] = null;
                     this.ClientScript.RegisterStartupScript(this.GetType(), "SweetAlert", "exito()", true);
                 }
-                
-                
+
+                this.Limpiar();
 
             }
             
