@@ -71,7 +71,6 @@ namespace ProjectPaslum.Venta
 
         protected void btnReimprimir_Click(object sender, EventArgs e)
         {
-            DataTable dt = new DataTable();
             Document document = new Document();
             PdfWriter writer = PdfWriter.GetInstance(document, HttpContext.Current.Response.OutputStream);          
 
@@ -86,25 +85,26 @@ namespace ProjectPaslum.Venta
                           where venta.idVenta == int.Parse(Session["desgloce"].ToString())
                                 
                           select new { fecha = venta.Fecha,       
-                                       total = venta.dblTotal,                                
+                                       total = venta.dblTotal,      
+                                       efe = venta.dblAbono,                                                                 
                                        empl = empleado.strNombre + " " + empleado.strApellidoP + " " + empleado.strApellidoM,
                                        clie = venta.fkCliente}).FirstOrDefault();
 
-            var deta = (from detalle in contexto.tblDetalleVenta
-                        join producto in contexto.tblProducto
-                           on detalle.fkProducto equals producto.idProducto
-                        join unidad in contexto.tblUnidadMedida
-                           on producto.fkUnidadMedida equals unidad.idUnidadMedida
-                        where detalle.fkVenta == int.Parse(Session["desgloce"].ToString())
-                        select new
-                        {
-                            PRODUCTO = producto.strNombre,
-                            PRECIO = detalle.dblPrecio,
-                            CANTIDAD = detalle.intCantidad,
-                            DESCRIPCIÓN = producto.strDescripcion,
-                            PRESENTACIÓN = producto.intPresentacion,
-                            UNIDAD = unidad.strNombre
-                        }).ToList();
+                var deta = (from detalle in contexto.tblDetalleVenta
+                            join producto in contexto.tblProducto
+                               on detalle.fkProducto equals producto.idProducto
+                            join unidad in contexto.tblUnidadMedida
+                               on producto.fkUnidadMedida equals unidad.idUnidadMedida
+                            where detalle.fkVenta == int.Parse(Session["desgloce"].ToString())
+                            select new
+                            {
+                                PRODUCTO = producto.strNombre,
+                                PRECIO = detalle.dblPrecio,
+                                CANTIDAD = detalle.intCantidad,
+                                DESCRIPCIÓN = producto.strDescripcion,
+                                PRESENTACIÓN = producto.intPresentacion,
+                                UNIDAD = unidad.strNombre
+                            }).ToList();
 
 
 
@@ -159,29 +159,33 @@ namespace ProjectPaslum.Venta
                     var tot = item.intCantidad * item.dblPrecio;
 
                     table2.AddCell(new Paragraph(item.fkProducto.ToString(), font8));
-                    table2.AddCell(new Paragraph(item.tblProducto.strNombre, font8));
+                    table2.AddCell(new Paragraph(item.tblProducto.strNombre + " " + item.tblProducto.intPresentacion + " " + item.tblProducto.tblUnidadMedida.strNombre, font8));
                     table2.AddCell(new Paragraph(item.intCantidad.ToString(), font8));
                     table2.AddCell(new Paragraph(item.dblPrecio.ToString(), font8));
                     table2.AddCell(new Paragraph(tot.ToString(), font8));
 
                 }
 
-
+                table.WidthPercentage = 90;
+                table2.WidthPercentage = 90;
 
                 Paragraph total = new Paragraph(16, "Total: $" + ventas.total, font9);
+                Paragraph efectivo = new Paragraph(16, "Efectivo: $" + ventas.efe, font9);
+                Paragraph cambio = new Paragraph(16, "Cambio: $" + (ventas.efe - ventas.total), font9);
                 document.Add(new Chunk("\n"));
                 Paragraph gracias = new Paragraph(18, "Gracias por su compra, vuelva pronto.", font9);
 
 
                 total.Alignment = Element.ALIGN_RIGHT;
-                //efectivo.Alignment = Element.ALIGN_RIGHT;
-                //cambio.Alignment = Element.ALIGN_RIGHT;
+                efectivo.Alignment = Element.ALIGN_RIGHT;
+                cambio.Alignment = Element.ALIGN_RIGHT;
                 gracias.Alignment = Element.ALIGN_CENTER;
+
                 document.Add(table);
                 document.Add(table2);
                 document.Add(total);
-                //document.Add(efectivo);
-                //document.Add(cambio);
+                document.Add(efectivo);
+                document.Add(cambio);
                 document.Add(gracias);
                 
 
@@ -252,6 +256,7 @@ namespace ProjectPaslum.Venta
 
                 document.Add(new Chunk("\n"));
 
+
                 PdfPTable table = new PdfPTable(5);
                 PdfPTable table2 = new PdfPTable(5);
 
@@ -268,28 +273,32 @@ namespace ProjectPaslum.Venta
                     var tot = item.intCantidad * item.dblPrecio;
 
                     table2.AddCell(new Paragraph(item.fkProducto.ToString(), font8));
-                    table2.AddCell(new Paragraph(item.tblProducto.strNombre, font8));
+                    table2.AddCell(new Paragraph(item.tblProducto.strNombre + " " + item.tblProducto.intPresentacion + " " + item.tblProducto.tblUnidadMedida.strNombre, font8));
                     table2.AddCell(new Paragraph(item.intCantidad.ToString(), font8));
                     table2.AddCell(new Paragraph(item.dblPrecio.ToString(), font8));
                     table2.AddCell(new Paragraph(tot.ToString(), font8));
                 }
+                                
+                table.WidthPercentage = 90;
+                table2.WidthPercentage = 90;
 
                 Paragraph total = new Paragraph(16, "Total: $" + ventas.total, font9);
-                //Paragraph efectivo = new Paragraph(16, "Efectivo: $" + decimal.Parse(txtDinero.Text), font9);
-                //Paragraph cambio = new Paragraph(16, "Cambio: $" + (decimal.Parse(txtDinero.Text) - decimal.Parse(lblTotal2.Text)), font9);
+                Paragraph efectivo = new Paragraph(16, "Efectivo: $" + ventas.efe, font9);
+                Paragraph cambio = new Paragraph(16, "Cambio: $" + (ventas.efe - ventas.total), font9);
                 document.Add(new Chunk("\n"));
                 Paragraph gracias = new Paragraph(18, "Gracias por su compra, vuelva pronto.", font9);
 
 
                 total.Alignment = Element.ALIGN_RIGHT;
-                //efectivo.Alignment = Element.ALIGN_RIGHT;
-                //cambio.Alignment = Element.ALIGN_RIGHT;
+                efectivo.Alignment = Element.ALIGN_RIGHT;
+                cambio.Alignment = Element.ALIGN_RIGHT;
                 gracias.Alignment = Element.ALIGN_CENTER;
+
                 document.Add(table);
                 document.Add(table2);
                 document.Add(total);
-                //document.Add(efectivo);
-                //document.Add(cambio);
+                document.Add(efectivo);
+                document.Add(cambio);
                 document.Add(gracias);
                 
 
@@ -298,7 +307,7 @@ namespace ProjectPaslum.Venta
                 document.Close();
 
                 Response.ContentType = "application/pdf";
-                Response.AddHeader("content-disposition", "attachment;filename==Num. Venta: " + int.Parse(Session["desgloce"].ToString()) + "_" + ventas.fecha + ".pdf");
+                Response.AddHeader("content-disposition", "attachment;filename=Num. Venta: " + int.Parse(Session["desgloce"].ToString()) + "_" + ventas.fecha + ".pdf");
                 HttpContext.Current.Response.Write(document);
                 Response.Flush();
                 Response.End();
