@@ -27,8 +27,8 @@
                                     
                          
                                     <AlternatingItemStyle BackColor="#FB5679" />
-                                    <FooterStyle BackColor="#FB2D59" Font-Bold="True" />
-                                    <HeaderStyle BackColor="#FB2D59" Font-Bold="True"  />
+                                    <FooterStyle BackColor="#FB2D59" Font-Bold="True" ForeColor="White"/>
+                                    <HeaderStyle BackColor="#FB2D59" Font-Bold="True" ForeColor="White"/>
                                     <ItemStyle BackColor="#FB2D59" />
                                     
                                     <ItemTemplate>

@@ -31,5 +31,18 @@ namespace ProjectPaslum.Venta
             }
             Response.Redirect("/Venta/DesgloceHistorialAbono.aspx");
         }
+
+        protected void DataList2_ItemCommand(object source, DataListCommandEventArgs e)
+        {
+            string cod;
+            if (e.CommandName == "Seleccionar")
+            {
+                DataList2.SelectedIndex = e.Item.ItemIndex;
+
+                cod = ((Label)this.DataList2.SelectedItem.FindControl("idVentaLabel")).Text;
+                Session["desgloce"] = cod;
+            }
+            Response.Redirect("/Venta/DesgloceHistorialAbono.aspx");
+        }
     }
 }

@@ -21,22 +21,34 @@
                             <div class="form-inline">
 
                                     <div class="form-group">
+                                        <label>N° Venta </label>
+                                        <asp:TextBox ID="txtNumVen" runat="server" width="500px" Enabled="false" style="text-align:center"></asp:TextBox>
+                                        
+                                    </div>
+                                  &nbsp &nbsp &nbsp &nbsp 
+
+                                    <div class="form-group">
                                         <label>Fecha de la venta</label>
                                         <asp:TextBox ID="txtFecha" runat="server" width="500px" Enabled="false" style="text-align:center"></asp:TextBox>
                                         
                                     </div>
-                                &nbsp &nbsp &nbsp &nbsp
+                                
                                     <div class="form-group">
                                         <label>Fecha fin del credito </label>
                                         <asp:TextBox ID="txtFechaFin" runat="server" width="500px" Enabled="false" style="text-align:center"></asp:TextBox>
                                         
                                     </div>
-
+                                &nbsp &nbsp &nbsp &nbsp
                                     <div class="form-group">
                                         <label>Total a pagar </label>
                                         <asp:TextBox ID="txtTotal" runat="server" width="500px" Enabled="false" style="text-align:center"></asp:TextBox>
                                     </div>
-                                &nbsp &nbsp &nbsp &nbsp 
+
+                                    <div class="form-group">
+                                        <label>Saldo restante </label>
+                                        <asp:TextBox ID="txtRestante" runat="server" width="500px" Enabled="false" style="text-align:center"></asp:TextBox>
+                                    </div>
+                                &nbsp &nbsp &nbsp &nbsp
                                     <div class="form-group">
                                          <label>Abono </label>
                                         <asp:TextBox ID="txtAbono" runat="server" width="500px" style="text-align:center" required="true" ></asp:TextBox>

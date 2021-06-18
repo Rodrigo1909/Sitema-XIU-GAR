@@ -114,6 +114,18 @@ namespace ProjectPaslum.Controllers
 
         }
 
+        public void EditarFinalizadoCredito(tblVenta ven)
+        {
+            tblVenta venBd = contexto.tblVenta
+                .Where(t => t.idVenta == ven.idVenta).FirstOrDefault();
+            if (venBd != null)
+            {
+                venBd.strEstado = "VENTA A CREDITO FINALIZADA";
+                contexto.SubmitChanges();
+            }
+
+        }
+
         public void EditarPendiente(tblVenta ven)
         {
             tblVenta venBd = contexto.tblVenta

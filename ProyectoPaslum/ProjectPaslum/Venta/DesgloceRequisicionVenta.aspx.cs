@@ -120,8 +120,8 @@ namespace ProjectPaslum.Venta
                 // iTextSharp.text.Image image1 = iTextSharp.text.Image.GetInstance("../images/avatar.png");
                 //image1.ScalePercent(50f);
 
-                image.ScaleAbsoluteWidth(240);
-                image.ScaleAbsoluteHeight(110);
+                image.ScaleAbsoluteWidth(220);
+                image.ScaleAbsoluteHeight(90);
                 image.SetAbsolutePosition(350, 720);
                 document.Add(image);
 

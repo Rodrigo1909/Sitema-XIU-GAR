@@ -16,6 +16,7 @@ namespace ProjectPaslum.Venta
 {
     public partial class CobrarVenta : System.Web.UI.Page
     {
+        CultureInfo culture = new CultureInfo("en-US");
         PaslumBaseDatoDataContext contexto = new PaslumBaseDatoDataContext();
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -197,7 +198,7 @@ namespace ProjectPaslum.Venta
                     else
                     {
                         ven.Fecha = fechact;
-                        ven.dblTotal = decimal.Parse(lblTotal2.Text);
+                        ven.dblTotal = decimal.Parse(lblTotal2.Text, culture);
                         //ven.dblSubTotal = decimal.Parse(lblSubTotal.Text);
                         //ven.dblIGV = decimal.Parse(lblIGV.Text);
                         ven.strEstado = "FINALIZADO";
@@ -241,7 +242,7 @@ namespace ProjectPaslum.Venta
                             detalle.Fecha = fechact;
                             detalle.intCantidad = int.Parse(((TextBox)row.Cells[3].FindControl("TextBox1")).Text);
                             detalle.fkProducto = int.Parse(row.Cells[1].Text);
-                            detalle.dblPrecio = decimal.Parse(((TextBox)row.Cells[4].FindControl("TextBox2")).Text);
+                            detalle.dblPrecio = decimal.Parse(((TextBox)row.Cells[4].FindControl("TextBox2")).Text, culture);
                             detalle.fkVenta = ven.idVenta;
                             detalle.fkEmpleado = int.Parse(Session["id"].ToString());
                             ctrlClie.InsertarDetalle(detalle);
@@ -274,7 +275,7 @@ namespace ProjectPaslum.Venta
                         detalle.Fecha = fechact;
                         detalle.intCantidad = int.Parse(((TextBox)row.Cells[3].FindControl("TextBox1")).Text);
                         detalle.fkProducto = int.Parse(row.Cells[1].Text);
-                        detalle.dblPrecio = decimal.Parse(((TextBox)row.Cells[4].FindControl("TextBox2")).Text);
+                        detalle.dblPrecio = decimal.Parse(((TextBox)row.Cells[4].FindControl("TextBox2")).Text, culture);
                         detalle.fkVenta = ven.idVenta;
                         detalle.fkEmpleado = int.Parse(Session["id"].ToString());
                         ctrlClie.InsertarDetalle(detalle);
@@ -349,8 +350,8 @@ namespace ProjectPaslum.Venta
 
                     // iTextSharp.text.Image image1 = iTextSharp.text.Image.GetInstance("../../images/avatar.png");
                     //image1.ScalePercent(50f);
-                    image.ScaleAbsoluteWidth(240);
-                    image.ScaleAbsoluteHeight(110);
+                    image.ScaleAbsoluteWidth(220);
+                    image.ScaleAbsoluteHeight(90);
                     image.SetAbsolutePosition(350, 720);
                     document.Add(image);
 
@@ -504,20 +505,11 @@ namespace ProjectPaslum.Venta
                                     on p.fkSubMarca equals sub.idSubMarca
                                 where p.idProducto == int.Parse(cod)
                                 select new { subM = sub.strNombre }).FirstOrDefault();
-
-                //desc = (GridView1.Rows[i].Cells[2].Text);
-                //prec = System.Convert.ToDouble(GridView1.Rows[i].Cells[3].Text);
-                //cant = System.Convert.ToInt16(((TextBox)this.GridView1.Rows[i].Cells[4].FindControl("TextBox1")).Text);
-                //double prec1 = System.Convert.ToDouble(prec);
-                //subtotal = cant * prec1;
-                ////GridView1.Rows[i].Cells[5].Text = subtotal.ToString();
-                //precio = System.Convert.ToDouble(((TextBox)this.GridView1.Rows[i].Cells[5].FindControl("TextBox2")).Text);
-                //subtotal2 = cant * precio;
-                //GridView1.Rows[i].Cells[6].Text = subtotal2.ToString();
+                
 
                 desc = (GridView1.Rows[i].Cells[2].Text);
                 cant = System.Convert.ToInt16(((TextBox)this.GridView1.Rows[i].Cells[3].FindControl("TextBox1")).Text);
-                precio = System.Convert.ToDouble(((TextBox)this.GridView1.Rows[i].Cells[4].FindControl("TextBox2")).Text);
+                precio = System.Convert.ToDouble(((TextBox)this.GridView1.Rows[i].Cells[4].FindControl("TextBox2")).Text, culture);
                 subtotal2 = cant * precio;
                 GridView1.Rows[i].Cells[5].Text = subtotal2.ToString();
                 GridView1.Rows[i].Cells[6].Text = producto.aprox.ToString();

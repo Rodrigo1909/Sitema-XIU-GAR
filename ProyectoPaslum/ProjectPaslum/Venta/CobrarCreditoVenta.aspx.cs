@@ -26,7 +26,16 @@ namespace ProjectPaslum.Venta
                 txtDomicilio.Text = (Session["domicilio"].ToString());
 
                 txtFechaFin.Text = (Session["FechaCredito"].ToString().Substring(0, 10));
-                txtFecha.Text = DateTime.Now.Date.ToString().Substring(0, 10);
+                txtFecha.Text = DateTime.Now.Date.ToString().Substring(0, 10);                
+
+                var venta = (from ven in contexto.tblVenta
+                             orderby ven.idVenta descending
+                             select new { ultimo = ven.idVenta }).FirstOrDefault();
+
+                var nuevo = venta.ultimo + 1;
+
+                txtNumVen.Text = nuevo.ToString();
+
 
                 if ((Session["cliente"].ToString() == "MOSTRADOR"))
                 {
@@ -94,7 +103,7 @@ namespace ProjectPaslum.Venta
             var vacio = 0.0000;
             this.Calcular();
 
-            if (double.Parse(lblTotal.Text) == vacio)
+            if (double.Parse(lblTotal2.Text) == vacio)
             {
                 this.Response.Redirect("./AlertaError.aspx", true);
             }
@@ -106,8 +115,8 @@ namespace ProjectPaslum.Venta
 
                 tblHistorialAbono HisAbo = new tblHistorialAbono();
                 HisAbo.Fecha = fechact;
-                HisAbo.dblCantidad = decimal.Parse(txtDinero.Text);
-                HisAbo.dblCantidadAnterior = decimal.Parse(txtDinero.Text);                
+                HisAbo.dblCantidad = decimal.Parse(txtDinero.Text, culture);
+                HisAbo.dblCantidadAnterior = decimal.Parse(txtDinero.Text, culture);                
                 ctrlCli.InsertarHistorialAbono(GetVenta(HisAbo));
 
                 foreach (GridViewRow row in GridView1.Rows)
@@ -115,8 +124,8 @@ namespace ProjectPaslum.Venta
 
                     tblDetalleVenta detalle = new tblDetalleVenta();
                     detalle.Fecha = fechact;
-                    detalle.intCantidad = int.Parse(((TextBox)row.Cells[3].FindControl("TextBox1")).Text);
-                    detalle.dblPrecio = decimal.Parse(Convert.ToString(row.Cells[4].Text));
+                    detalle.intCantidad = int.Parse(((TextBox)row.Cells[3].FindControl("TextBox1")).Text, culture);
+                    detalle.dblPrecio = decimal.Parse(((TextBox)row.Cells[4].FindControl("TextBox2")).Text, culture);
                     detalle.fkProducto = int.Parse(row.Cells[1].Text);                    
                     detalle.fkEmpleado = int.Parse(Session["id"].ToString());
                     detalle.fkVenta = HisAbo.fkVenta;
@@ -133,17 +142,18 @@ namespace ProjectPaslum.Venta
 
         protected tblHistorialAbono GetVenta(tblHistorialAbono HisVen)
         {
+            CultureInfo culture = new CultureInfo("en-US");
             DateTime fechact = DateTime.Now;
             ControllerCliente ctrlClie = new ControllerCliente();
 
             tblVenta ven = new tblVenta();
             ven.Fecha = fechact;
             ven.FechaCredito = Convert.ToDateTime(txtFechaFin.Text);
-            ven.dblTotal = decimal.Parse(lblTotal.Text);
+            ven.dblTotal = decimal.Parse(lblTotal2.Text);
             ven.strEstado = "CREDITO";
             ven.fkCliente = int.Parse(Session["cliente"].ToString());
             ven.dblInteres = decimal.Parse(txtInteres.Text);
-            ven.dblAbono = decimal.Parse(txtDinero.Text);
+            ven.dblAbono = decimal.Parse(txtDinero.Text, culture);
 
             HisVen.tblVenta = ven;
 
@@ -157,13 +167,13 @@ namespace ProjectPaslum.Venta
         {
             int index = e.RowIndex;
             DataTable dt1 = new DataTable();
-            dt1 = (DataTable)Session["pedido"];
+            dt1 = (DataTable)Session["credito"];
             dt1.Rows[index].Delete();
 
             lblTotal.Text = TotalCarrito(dt1).ToString();
             GridView1.DataSource = dt1;
             GridView1.DataBind();
-            Session["pedido"] = dt1;
+            Session["credito"] = dt1;
             Button1_Click(Button1, null);
         }
 
@@ -174,6 +184,11 @@ namespace ProjectPaslum.Venta
             PdfWriter writer = PdfWriter.GetInstance(document, HttpContext.Current.Response.OutputStream);
             DateTime fechact = DateTime.Now;
             this.Calcular();
+            var venta = (from ven in contexto.tblVenta
+                         orderby ven.idVenta descending
+                         select new { ultimo = ven.idVenta }).FirstOrDefault();
+
+            var nuevo = venta.ultimo + 1;
 
             dt = (DataTable)Session["credito"];
             if (dt.Rows.Count > 0)
@@ -183,9 +198,9 @@ namespace ProjectPaslum.Venta
                 String rutaLogo = Server.MapPath("../Alumno/images/XIUGAR.jpg");
 
                 var image = iTextSharp.text.Image.GetInstance(rutaLogo);
-                image.ScaleAbsoluteWidth(240);
-                image.ScaleAbsoluteHeight(110);
-                image.Alignment = Element.ALIGN_CENTER;
+                image.ScaleAbsoluteWidth(220);
+                image.ScaleAbsoluteHeight(90);
+                image.SetAbsolutePosition(350, 720);
                 document.Add(image);
 
 
@@ -203,6 +218,7 @@ namespace ProjectPaslum.Venta
 
                 document.Add(new Chunk("\n"));
 
+                document.Add(new Paragraph(16, "N° Venta: " + nuevo.ToString(), font9));
                 document.Add(new Paragraph(16, "Vendedor: " + (Session["CompletoNombre"].ToString()), font9));
                 document.Add(new Paragraph(16, "Cliente: " + txtCliente.Text, font9));
                 document.Add(new Paragraph(16, "Domicilio: " + (Session["domicilio"].ToString()), font9));
@@ -328,10 +344,11 @@ namespace ProjectPaslum.Venta
         private void Calcular()
         {
             int i;
-            double total = 0, subtotal = 0, subtotal2 = 0;
+            double total = 0, subtotal = 0, subtotal2 = 0, monto = 0, intereses = 0;
             string cod, desc;
             int cant;
-            double precio, total2 = 0;            
+            double precio, total2 = 0;
+            CultureInfo culture = new CultureInfo("en-US");
 
             var items = (DataTable)Session["credito"];
 
@@ -340,17 +357,33 @@ namespace ProjectPaslum.Venta
                 cod = (GridView1.Rows[i].Cells[1].Text);
 
                 var producto = (from p in contexto.tblProducto
-                                join unidad in contexto.tblUnidadMedida
-                                    on p.fkUnidadMedida equals unidad.idUnidadMedida
+                                join m in contexto.tblMarca
+                                    on p.fkMarca equals m.idMarca
                                 where p.idProducto == int.Parse(cod)
-                                select new { uni = unidad.strNombre, presentacion = p.intPresentacion, aprox = p.dblPrecio }).FirstOrDefault();
-                
+                                select new { aprox = p.dblPrecio, marca = m.strNombre }).FirstOrDefault();
+
+                var subMarca = (from p in contexto.tblProducto
+                                join sub in contexto.tblSubMarca
+                                    on p.fkSubMarca equals sub.idSubMarca
+                                where p.idProducto == int.Parse(cod)
+                                select new { subM = sub.strNombre }).FirstOrDefault();
+
+
                 desc = (GridView1.Rows[i].Cells[2].Text);
-                cant = System.Convert.ToInt16(((TextBox)this.GridView1.Rows[i].Cells[3].FindControl("TextBox1")).Text);
-                precio = System.Convert.ToDouble(((TextBox)this.GridView1.Rows[i].Cells[4].FindControl("TextBox2")).Text);
+                cant = System.Convert.ToInt16(((TextBox)this.GridView1.Rows[i].Cells[3].FindControl("TextBox1")).Text, culture);
+                precio = System.Convert.ToDouble(((TextBox)this.GridView1.Rows[i].Cells[4].FindControl("TextBox2")).Text, culture);
                 subtotal2 = cant * precio;
                 GridView1.Rows[i].Cells[5].Text = subtotal2.ToString();
                 GridView1.Rows[i].Cells[6].Text = producto.aprox.ToString();
+
+                if (subMarca == null)
+                {
+                    GridView1.Rows[i].Cells[7].Text = producto.marca.ToString() + "(No aplica)";
+                }
+                else
+                {
+                    GridView1.Rows[i].Cells[7].Text = producto.marca.ToString() + "(" + subMarca.subM.ToString() + ")";
+                }
 
                 double prec1 = System.Convert.ToDouble(producto.aprox.ToString());
                 subtotal = cant * prec1;              
@@ -368,6 +401,23 @@ namespace ProjectPaslum.Venta
 
                 total2 = total2 + subtotal2;
                 total = total + subtotal;
+
+                //try
+                //{
+                //     monto = 1 + double.Parse(txtInteres.Text, culture);
+                //    monto*= total2;
+                //    intereses = monto - double.Parse(txtDinero.Text); 
+                //}
+                //catch
+                //{
+                //    var interes = 0;
+                //    monto = total2 * (1 + interes);
+                //}
+
+
+                
+                //total2 = monto;
+
             }
 
             lblTotal2.Text = total2.ToString("0.00");

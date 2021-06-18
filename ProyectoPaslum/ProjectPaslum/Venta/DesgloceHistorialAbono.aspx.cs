@@ -18,13 +18,22 @@ namespace ProjectPaslum.Venta
 
             var ventas = (from venta in contexto.tblVenta
                            where venta.idVenta ==  int.Parse(Session["desgloce"].ToString())
-                           select new { fecha = venta.Fecha, fin = venta.FechaCredito, total = venta.dblTotal }).FirstOrDefault();
+                           select new { id = venta.idVenta,fecha = venta.Fecha, fin = venta.FechaCredito, total = venta.dblTotal }).FirstOrDefault();
+
+            var resta = (from detalle in contexto.tblHistorialAbono
+                         where detalle.fkVenta == int.Parse(Session["desgloce"].ToString())
+                         orderby detalle.idHistorialAbono descending
+                         select new {res = detalle.dblCantidadAnterior }).FirstOrDefault();
 
             txtFecha.Text = ventas.fecha.ToString().Substring(0, 10);
             txtFechaFin.Text = ventas.fin.ToString().Substring(0, 10);
-            txtTotal.Text = ventas.total.ToString();
 
-            
+            txtTotal.Text = "$" + Convert.ToDecimal(ventas.total).ToString("#,###.00");
+            txtNumVen.Text = ventas.id.ToString();
+
+            var faltante = ventas.total - resta.res ;
+
+            txtRestante.Text = "$" + Convert.ToDecimal(faltante).ToString("#,###.00");
         }
 
 
@@ -35,7 +44,7 @@ namespace ProjectPaslum.Venta
                 var desglozar = (from detalle in contexto.tblDetalleVenta
                                     join producto in contexto.tblProducto 
                                     on detalle.fkProducto equals producto.idProducto
-                                 where detalle.fkVenta == idDetalleVenta 
+                                 where detalle.fkVenta == idDetalleVenta                                 
                                  select new
                                  {
                                      PRODUCTO = producto.strNombre,
@@ -52,12 +61,13 @@ namespace ProjectPaslum.Venta
                 var TablaAbono = (from abono in contexto.tblHistorialAbono
                                  join venta in contexto.tblVenta
                                     on abono.fkVenta equals venta.idVenta
-                                 where abono.fkVenta == idDetalleVenta
-                                 select new
+                                  orderby abono.idHistorialAbono descending 
+                               where abono.fkVenta == idDetalleVenta
+                                  select new
                                  {
                                      FECHA = abono.Fecha,
-                                     CANTIDAD = abono.dblCantidad,
-                                     SALDO = abono.dblCantidadAnterior
+                                     ABONO = abono.dblCantidad,
+                                     TOTAL_DE_ABONO = abono.dblCantidadAnterior
                                  }).ToList();
 
                 GridView2.DataSource = TablaAbono;
@@ -97,6 +107,7 @@ namespace ProjectPaslum.Venta
                 HisAbo.dblCantidad = decimal.Parse(txtAbono.Text);
                 HisAbo.dblCantidadAnterior = suma;
                 HisAbo.fkVenta = int.Parse(Session["desgloce"].ToString());
+                HisAbo.fkValidacionUsuario = int.Parse(Session["idUsuario"].ToString());
 
                 ctrlClie.InsertarHistorialAbono(HisAbo);
                 this.Response.Redirect("./AlertaExito.aspx", true);                
@@ -107,12 +118,13 @@ namespace ProjectPaslum.Venta
                 HisAbo.dblCantidad = decimal.Parse(txtAbono.Text);
                 HisAbo.dblCantidadAnterior = suma;
                 HisAbo.fkVenta = int.Parse(Session["desgloce"].ToString());
+                HisAbo.fkValidacionUsuario = int.Parse(Session["idUsuario"].ToString());
 
                 ctrlClie.InsertarHistorialAbono(HisAbo);
                 ven.idVenta = int.Parse(Session["desgloce"].ToString());
                 ven.strEstado = "VENTA A CREDITO FINALIZADA";
 
-                ctrlAlm.EditarFinalizado(ven);
+                ctrlAlm.EditarFinalizadoCredito(ven);
 
                 this.Response.Redirect("./AlertaExito.aspx", true);
             }

@@ -123,6 +123,7 @@ namespace ProjectPaslum
                                        select new { celular = tel.strCelular, casa = tel.strTelCasa}).FirstOrDefault();
                    
                     Session["id"] = vendedor.idEmpleado;
+                    Session["idUsuario"] = UsuarioLoggeado.idUsuario;
                     Session["CompletoNombre"] = vendedor.strNombre + " " + vendedor.strApellidoP + " " + vendedor.strApellidoM;
                     Session["nombre"] = vendedor.strNombre;
                     Session["apellido1"] = vendedor.strApellidoP;

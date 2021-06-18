@@ -5100,17 +5100,18 @@ CREATE TABLE tblCliente(
 CREATE TABLE tblVenta (
   idVenta int NOT NULL identity(1,1),
   Fecha date,
-  intBulto int,
-  intKilos int,
-  strDescripcion varchar(250),
-  intImporte int,
-  strMetodoPago varchar(150),
-  strHoraEntega varchar(400),
-  strFechaEntega varchar(400),
-  strlapso varchar(150),
-  fkEmpleado int,
+  dblTotal decimal(20, 2) NULL,
+  dblSubTotal decimal(19, 2) NULL,
+  dblIGV decimal(19, 2) NULL,
+  strEstado varchar(150) NULL,
+  fkCliente int NULL,
+  FechaCredito date NULL,
+  dblInteres decimal(19, 2) NULL,
+  dblAbono decimal(19, 2) NULL,
+  strHoraEntega varchar(400) NULL,
+  strFechaEntega varchar(400) NULL,
   primary key (idVenta),
-  constraint FK_Empleado_Venta foreign key(fkEmpleado) references tblEmpleado(idEmpleado)    
+  constraint FK_Cliente_Venta foreign key(fkCliente) references tblCliente(idCliente)    
 );
 
 CREATE TABLE tblTotalVenta (
@@ -5145,15 +5146,19 @@ CREATE TABLE tblProducto (
   strNombre varchar(250),
   strDescripcion varchar(250),
   intPresentacion int,
+  dblPrecio decimal(19, 2) NULL,
+  strImagen varchar(250) NULL,
   strCatalogo varchar(250),
   fkUnidadMedida int,
   fkAlmacen int,
   idActivo int,
-  fkMarca int,  
+  fkMarca int, 
+  fkSubMarca int, 
   constraint pk_Producto primary key (idProducto),
   CONSTRAINT FK_ProductoMarca FOREIGN KEY (fkMarca) REFERENCES tblMarca(idMarca),
   CONSTRAINT FK_UnidadMedida FOREIGN KEY(fkUnidadMedida) REFERENCES tblUnidadMedida(idUnidadMedida),  
-  CONSTRAINT FK_Almacen FOREIGN KEY(fkAlmacen) REFERENCES tblAlmacen(idAlmacen)  
+  CONSTRAINT FK_Almacen FOREIGN KEY(fkAlmacen) REFERENCES tblAlmacen(idAlmacen),
+  CONSTRAINT FK_SubMarca FOREIGN KEY(fkSubMarca) REFERENCES tblSubMarca(idSubMarca)    
 );
 
 CREATE TABLE tblStock (
@@ -5187,10 +5192,63 @@ CREATE TABLE tblMovimiento (
   fkStock int,
   fkEmpleado int,
   fkProveedor int,
+  dblValAnt decimal(20, 2) NULL,
+  dblValNvo decimal(20, 2) NULL,
+  strNumVen varchar(250) NULL,
+  strFactura varchar(250) NULL
   constraint pk_Movimiento primary key (idMovimiento),
   CONSTRAINT FK_MovimientoStock FOREIGN KEY(fkStock) REFERENCES tblStock(idStock),
   CONSTRAINT FK_MovimientoEmpleado FOREIGN KEY(fkEmpleado) REFERENCES tblEmpleado(idEmpleado),
   CONSTRAINT FK_MovimientoProveedor FOREIGN KEY(fkProveedor) REFERENCES tblProveedor(idProveedor)
+);
+
+CREATE TABLE tblDetalleVenta(
+	idDetalleVenta int NOT NULL identity(1,1),
+	Fecha date NULL,
+	intCantidad int NULL,
+	dblPrecio decimal(19, 2) NULL,
+	fkEmpleado int NULL,
+	fkVenta int NULL,
+	fkProducto int NULL
+	constraint pk_DetalleVenta primary key (idDetalleVenta),
+	CONSTRAINT FK_Empleado_DetalleVenta FOREIGN KEY(fkVenta) REFERENCES tblEmpleado(idEmpleado),
+	CONSTRAINT FK_Producto_DetalleVenta FOREIGN KEY(fkProducto) REFERENCES tblProducto(idProducto),
+	CONSTRAINT FK_Venta_DetalleVenta FOREIGN KEY(FK_Venta) REFERENCES tblVenta(idVenta)
+);
+
+CREATE TABLE tblOrdenCompra(
+	idOrdenCompra int IDENTITY(1,1) NOT NULL,
+	strNumOrden varchar(250) NULL,
+	Fecha date NULL,
+	strLugar varchar(500) NULL,
+	strCantidad varchar(250) NULL,
+	strProducto varchar(500) NULL,
+	strDescripcion varchar(500) NULL,
+	dblCostoUnitario decimal(20, 2) NULL,
+	dblImporte decimal(20, 2) NULL,
+	dblDescuento decimal(20, 2) NULL,
+	strConfirmo varchar(250) NULL,
+	fechaEntrega date NULL,
+	dblTotal decimal(20, 2) NULL,
+	intIva int NULL,
+	fkEmpleado int NULL,
+	fkProveedor int NULL,
+	dblDescuentoFin decimal(20, 2) NULL,
+	constraint pk_OrdenCompra primary key (idOrdenCompra),
+	CONSTRAINT FK_Empleado_OrdenCompra FOREIGN KEY(fkEmpleado) REFERENCES tblEmpleado(idEmpleado),
+	CONSTRAINT FK_Proveedor_OrdenCompra FOREIGN KEY(fkProveedor) REFERENCES tblProveedor(idProveedor),
+);
+
+CREATE TABLE tblHistorialAbono(
+	idHistorialAbono int IDENTITY(1,1) NOT NULL,
+	Fecha date NULL,
+	dblCantidad decimal(19, 2) NULL,
+	dblCantidadAnterior decimal(19, 2) NULL,
+	fkVenta int NULL,
+	fkValidacionUsuario int NULL
+	constraint pk_HistorialAbono primary key (idHistorialAbono),
+	CONSTRAINT FK_Venta_HistorialAbono FOREIGN KEY(fkVenta) REFERENCES tblVenta(idVenta),
+	CONSTRAINT FK_Usuario_HistorialAbono FOREIGN KEY(fkValidacionUsuario) REFERENCES tblUsuario(idUsuario),
 );
 
 select * from tblEmpleado
@@ -5207,6 +5265,12 @@ select * from tblMovimiento
 select * from tblMarca
 select * from tblSubMarca 
 select * from tblProducto
+select * from tblHistorialAbono
+select * from tblOrdenCompra
+
+SELECT * 
+FROM tblHistorialAbono
+ORDER BY idHistorialAbono DESC
 
 
 select s.dblCantidad, p.strNombre, 
@@ -5235,14 +5299,12 @@ inner join tblTelefono t
 on t.idTelefono = c.fkTelefono
 where c.idActivo = 1
 
-
 SELECT p.idProducto, p.strNombre, 
 p.dblPrecio , p.intPresentacion, u.strNombre
 FROM tblProducto p
 inner join tblUnidadMedida u
 on p.fkUnidadMedida = u.idUnidadMedida
 where fkAlmacen = 2 and strCatalogo = 'REFINADA';
-
 
 SELECT p.idProducto, p.strNombre, sub.imagen,
 p.dblPrecio , p.intPresentacion, u.strNombre
@@ -5285,11 +5347,11 @@ ALTER TABLE tblMovimiento ALTER COLUMN dblValAnt decimal(20,2);
 ALTER TABLE tblMovimiento ALTER COLUMN dblValNvo decimal(20,2);
 
 ALTER TABLE tblMovimiento add strNumVen varchar(250);
-ALTER TABLE tblProducto add fkSubMarca int;
+ALTER TABLE tblHistorialAbono add fkValidacionUsuario int;
 
-ALTER TABLE tblProducto
-   ADD CONSTRAINT FK_ProductoSubMarca FOREIGN KEY (fkSubMarca)
-      REFERENCES tblSubMarca(idSubMarca);
+ALTER TABLE tblHistorialAbono
+   ADD CONSTRAINT FK_HistorialUsuario FOREIGN KEY (fkValidacionUsuario)
+      REFERENCES tblUsuario(idUsuario);
 
 
 select * from tblStock
