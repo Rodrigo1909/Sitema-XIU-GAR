@@ -841,6 +841,24 @@ namespace ProjectPaslum.Venta {
         protected global::System.Web.UI.WebControls.SqlDataSource SqlEndulcorantesXiugar;
         
         /// <summary>
+        /// Control ListOtroXiugar.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DataList ListOtroXiugar;
+        
+        /// <summary>
+        /// Control SqlOtroXiugar.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource SqlOtroXiugar;
+        
+        /// <summary>
         /// Control btnRegistrar.
         /// </summary>
         /// <remarks>

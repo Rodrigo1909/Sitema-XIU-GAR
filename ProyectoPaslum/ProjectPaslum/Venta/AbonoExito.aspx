@@ -1,0 +1,22 @@
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Venta/Venta.Master" AutoEventWireup="true" CodeBehind="AbonoExito.aspx.cs" Inherits="ProjectPaslum.Venta.AbonoExito" %>
+<asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
+        
+    <link href="../../Content/bootstrap.min.css" rel="stylesheet" />
+   
+    <link href="../../Content/sweetalert/sweet-alert.css" rel="stylesheet" />
+    <script src="../../js/swalert.js"></script>
+    <script src="../../Scripts/jquery-1.10.2.min.js"></script>
+    <script src="../../Scripts/sweetalert.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+    <script type="text/javascript">
+        function alerta() {
+            swal({
+                title: "ABONO DE EFECTIVO CORRECTO",
+                text: "Se ha realizado con exito el proceso",
+                icon: "success",
+            });
+        }
+    </script>
+
+</asp:Content>

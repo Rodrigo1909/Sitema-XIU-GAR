@@ -292,7 +292,6 @@
                                                                                             <asp:Image ID="Image1" width="140" height="120" runat="server" ImageUrl='<%# "~/ImagenesProductos/"+Eval("imagen") %>' CssClass="img-fluid" />
                                                                                             <br />  
                                                                                             Codigo:
-                                    
                                                                                             <asp:Label ID="idProductoLabel" runat="server" Text='<%# Eval("idProducto") %>'></asp:Label>                                                                   
                                                                                             <br />           
                                                                                             Producto:                                                                   
@@ -2411,7 +2410,7 @@
                                <div class="panel panel-default">
                                     <div class="panel-heading">
                                     <h4 class="panel-title">
-                                        <a data-toggle="collapse" data-parent="#accordion" href="#collapseXiugar">XIU-GAR</a>                                       
+                                        <a data-toggle="collapse" data-parent="#accordion" href="#collapseXiugar">XIU-GAR</a>                                        
                                     </h4>
                                     </div>
 
@@ -2535,7 +2534,7 @@
                                                   </div>
                                                   <div style="height: 0px;" aria-expanded="false" id="collapseXiugarMascabado" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingXiugarMascabado">
                                                       <div>
-                                                         <asp:DataList ID="ListMascabadoXiugar" runat="server" DataKeyField="idProducto" DataSourceID="SqlMascabadoXiugar"
+                                                         <asp:DataList ID="ListMascabadoXiugar" runat="server" CellPadding="4" DataKeyField="idProducto" DataSourceID="SqlMascabadoXiugar"
                                                              CssClass="table table-responsive" RepeatColumns="4" OnItemCommand="ListMascabadoXiugar_ItemCommand">
                                                                 <ItemTemplate>
                                                                     <asp:Image ID="Image1" width="140" height="120" runat="server" ImageUrl='<%# "~/ImagenesProductos/"+Eval("imagen") %>' CssClass="img-fluid" />
@@ -2666,7 +2665,8 @@
                                                                     <br />
                                                                 </ItemTemplate>
                                                         </asp:DataList>
-                                        <asp:SqlDataSource ID="SqlEndulcorantesXiugar" runat="server" ConnectionString="<%$ ConnectionStrings:XIUGARConnectionString %>" SelectCommand="SELECT p.idProducto, p.strNombre, m.imagen,
+                                        <asp:SqlDataSource ID="SqlEndulcorantesXiugar" runat="server" ConnectionString="<%$ ConnectionStrings:XIUGARConnectionString %>" 
+                                            SelectCommand="SELECT p.idProducto, p.strNombre, m.imagen,
                                                                             p.dblPrecio , p.intPresentacion, u.strNombre
                                                                             FROM tblProducto p
 	                                                                            inner join tblUnidadMedida u
@@ -2676,6 +2676,58 @@
 	                                                                            on p.fkMarca = m.idMarca
 
                                                                             where fkAlmacen = 2 and strCatalogo = 'SUSTITUTO' and m.strNombre = 'XIU-GAR' and p.idActivo = '1';"></asp:SqlDataSource>
+                                                      </div>
+                                                  </div>
+                                              </div>
+
+                                              <%-- Otros --%>
+                                              <div class="panel panel-default">
+                                                  <div class="panel-heading" role="tab" id="headingXiugarOtros">
+                                                      <h4 class="panel-title">
+                                                          <a class="collapsed" data-toggle="collapse" data-parent="#accordionMarcaXiugar" href="#collapseXiugarOtros" aria-expanded="false" aria-controls="collapseXiugarOtros">Otros
+                                                          </a>
+                                                      </h4>
+                                                  </div>
+                                                  <div style="height: 0px;" aria-expanded="false" id="collapseXiugarOtros" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingXiugarOtros">
+                                                      <div>
+                                                          <asp:DataList ID="ListOtroXiugar" runat="server" DataKeyField="idProducto" DataSourceID="SqlOtroXiugar"
+                                                                CssClass="table table-responsive" RepeatColumns="4" OnItemCommand="ListOtroXiugar_ItemCommand">
+                                                                                    <ItemTemplate>
+                                                                                        <asp:Image ID="Image1" width="140" height="120" runat="server" ImageUrl='<%# "~/ImagenesProductos/"+Eval("imagen") %>' CssClass="img-fluid" />
+                                                                                        <br /> 
+                                                                                        Codigo:
+                                    
+                                                                                        <asp:Label ID="idProductoLabel" runat="server" Text='<%# Eval("idProducto") %>'></asp:Label>                                                                   
+                                                                                        <br />           
+                                                                                        Producto:                                                                   
+                                                                                        <asp:Label ID="strNombreLabel" runat="server" Text='<%# Eval("strNombre") %>'/>
+                                                                  
+                                                                                        <br />
+                                                                                        Precio:
+                                                                                        <asp:Label ID="dblPrecioLabel" runat="server" Text='<%# Eval("dblPrecio") %>'></asp:Label>                                                                   
+                                                                                        <br />
+                                                                                        Presentación:                                                                   
+                                                                                        <asp:Label ID="intPresentacionLabel" runat="server" Text='<%# Eval("intPresentacion") %>'/>
+                                                                  
+                                                                                        <br />
+                                                                                        U. Medida:
+                                                                                        <asp:Label ID="strNombre1Label" runat="server" Text='<%# Eval("strNombre1") %>'></asp:Label>
+                                                                                        <br />
+                                                                                        <asp:Button ID="btnOtroXiugar" runat="server" CommandName="Seleccionar" Text="Agregar" CssClass="btn btn-success" />
+                                                                                        <br />
+                                                                                    </ItemTemplate>
+                                                            </asp:DataList>
+                                                         <asp:SqlDataSource ID="SqlOtroXiugar" runat="server" ConnectionString="<%$ ConnectionStrings:XIUGARConnectionString %>" 
+                                                             SelectCommand="SELECT p.idProducto, p.strNombre, m.imagen,
+                                                                            p.dblPrecio , p.intPresentacion, u.strNombre
+                                                                            FROM tblProducto p
+	                                                                            inner join tblUnidadMedida u
+	                                                                            on p.fkUnidadMedida = u.idUnidadMedida
+
+	                                                                            inner join tblMarca m
+	                                                                            on p.fkMarca = m.idMarca
+
+                                                                            where fkAlmacen = 2 and strCatalogo = 'OTRO' and m.strNombre = 'XIU-GAR' and p.idActivo = '1';"></asp:SqlDataSource>
                                                       </div>
                                                   </div>
                                               </div>

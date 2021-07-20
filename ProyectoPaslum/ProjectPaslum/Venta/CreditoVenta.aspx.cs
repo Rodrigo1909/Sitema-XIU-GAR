@@ -81,7 +81,12 @@ namespace ProjectPaslum.Venta
         private void LlenarCliente()
         {
             var clie = (from cli in contexto.tblCliente
-                        select new { nombre = cli.strNombre + " " + cli.strApellidoP + " " + cli.strApellidoM, id = cli.idCliente }).ToList();
+                        select new
+                        {
+                            nombre = cli.strNombre + " " + cli.strApellidoP +
+                        " " + cli.strApellidoM + " (" + cli.strEstablecimiento + ")",
+                            id = cli.idCliente
+                        }).ToList();
 
             ddlCliente.Items.Add("SELECCIONAR");
             ddlCliente.DataValueField = "id";

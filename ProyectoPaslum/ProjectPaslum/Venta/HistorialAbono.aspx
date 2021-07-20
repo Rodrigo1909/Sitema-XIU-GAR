@@ -10,7 +10,7 @@
        <div style="text-align:center">
             <h2>Historial de Abono</h2>
         </div>
-
+      
         <%-- PENDIENTE: Orden de compra que no han sido aceptadas --%>
         <div class="panel panel-default">
                 <div class="panel-heading">
@@ -23,7 +23,7 @@
                     <div class="panel-body">
                         <section>
                          <div>
-                           					<asp:DataList ID="DataList1" runat="server" CellPadding="4" DataKeyField="idVenta" DataSourceID="SqlDataSource1" CssClass="table table-responsive"
+                             <asp:DataList ID="DataList1" runat="server" CellPadding="4" DataKeyField="idVenta" DataSourceID="SqlDataSource1" CssClass="table table-responsive"
                                      RepeatColumns="4" ForeColor="#333333" OnItemCommand="DataList1_ItemCommand" >
                                     
                                     <AlternatingItemStyle BackColor="White" />
@@ -41,7 +41,7 @@
                                         <asp:Label ID="lbEstablecimiento" runat="server" Text="ESTABLECIMIENTO:" ForeColor="Black" Font-Size="12px"/>                                        
                                         <asp:Label ID="strEstablecimientoLabel" runat="server" Text='<%# Eval("strEstablecimiento") %>' ForeColor="Black" Font-Size="12px"/>
                                         <br />
-                                        <asp:Label ID="lbTotal" runat="server" Text="TOTAL DE VENTA:" ForeColor="Black" Font-Size="12px"></asp:Label>    
+                                        <asp:Label ID="lbTotal" runat="server" Text="TOTAL DE VENTA: $" ForeColor="Black" Font-Size="12px"></asp:Label>    
                                         <asp:Label ID="Total_VentaLabel" runat="server" Text='<%# Eval("[Total Venta]") %>' ForeColor="Black" Font-Size="12px"/>
                                         <br />
                                         <asp:Label ID="lbFecha" runat="server" Text="FECHA:" ForeColor="Black" Font-Size="12px"></asp:Label> 
@@ -56,14 +56,16 @@
                                     </ItemTemplate>
                                     <SelectedItemStyle BackColor="#C5BBAF" Font-Bold="True" ForeColor="#333333" />
                                 </asp:DataList>
-                    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:XIUGARConnectionString %>"
+        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:XIUGARConnectionString %>"
                                  SelectCommand="select v.idVenta, c.strNombre + ' ' + c.strApellidoM + ' '+ c.strApellidoP, c.strEstablecimiento,
-                                                v.dblTotal as 'Total Venta', v.Fecha as 'Fecha de creación',v.FechaCredito as 'Fin del Credito' 
-                                                from tblVenta v
-                                                inner join tblCliente c
-                                                on c.idCliente = v.fkCliente                                                
-                                                where v.strEstado = 'CREDITO'
-                                                order by v.Fecha asc;"></asp:SqlDataSource>
+                                        v.dblTotal as 'Total Venta', v.Fecha as 'Fecha de creación',v.FechaCredito as 'Fin del Credito' 
+	                                        from tblVenta v
+		                                        inner join tblCliente c
+	                                        on c.idCliente = v.fkCliente                                                
+		                                        where v.strEstado LIKE 'CREDITO' or  v.strEstado LIKE 'CREDITO (EN PROCESO)' or v.strEstado LIKE 'CREDITO (ENTREGADO)' OR
+		                                        v.strEstado LIKE 'VENTA A CREDITO FINALIZADO'
+		                                        order by v.Fecha asc;"></asp:SqlDataSource>
+
 
                         </div>
                     </section>

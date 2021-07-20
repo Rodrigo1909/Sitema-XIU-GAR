@@ -67,6 +67,16 @@
                                         <asp:TextBox ID="txtDomicilio" runat="server" width="500px" Enabled="false" style="text-align:center" ></asp:TextBox>
                                     </div>
 
+                                 <div class="form-group">
+                                         <label>Asignar fecha de entrega</label>
+                                        <asp:TextBox id="fechaEntrega" runat="server" TextMode="Date" width="500px" 
+                                            style="text-align:center" Height="40px"></asp:TextBox>
+                                    </div>
+                                    &nbsp &nbsp &nbsp &nbsp 
+                                    <div class="form-group">
+                                         <label>Asignar hora de entrega </label>
+                                        <asp:TextBox ID="txtHora" runat="server" width="500px" style="text-align:center" ></asp:TextBox>
+                                    </div>
                                 
                                     <div class="form-group">
                                          <label>Abono </label>
@@ -168,7 +178,7 @@
             <td style="width: 77px">
                 &nbsp;</td>
             <td style="width: 397px; text-align: right">
-                Total final:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                Total final:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$
                 <asp:Label ID="lblTotal2" runat="server" Text="Label"></asp:Label>
             </td>
             <td>
@@ -178,7 +188,7 @@
             <td style="width: 77px">
                 &nbsp;</td>
             <td style="width: 397px; text-align: right">
-                Total con el precio sugerido:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                Total con el precio sugerido: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$
                 <asp:Label ID="lblTotal" runat="server" Text="Label"></asp:Label>
             </td>
             <td>

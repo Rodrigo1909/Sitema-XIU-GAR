@@ -38,28 +38,26 @@
                         <SortedDescendingHeaderStyle BackColor="#00547E" />                    
                 </asp:GridView>
 
-                    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:XIUGARConnectionString %>" 
+                <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:XIUGARConnectionString %>" 
                         SelectCommand="select s.dblCantidad, p.strNombre, 
-p.strDescripcion, a.strNombre, m.strNombre, sub.strNombre
-from tblStock s
+                                        p.strDescripcion, a.strNombre, m.strNombre, sub.strNombre
+                                        from tblStock s
 	
-	inner join tblProducto p
-	on s.fkProducto = p.idProducto
+	                                        inner join tblProducto p
+	                                        on s.fkProducto = p.idProducto
 	
-	inner join tblAlmacen a	
-	on p.fkAlmacen = a.idAlmacen
+	                                        inner join tblAlmacen a	
+	                                        on p.fkAlmacen = a.idAlmacen
 
-	left join tblMarca m
-	on p.fkMarca = m.idMarca
+	                                        left join tblMarca m
+	                                        on p.fkMarca = m.idMarca
 
-	left join tblSubMarca sub
-	on p.fkSubMarca = sub.idSubMarca
+	                                        left join tblSubMarca sub
+	                                        on p.fkSubMarca = sub.idSubMarca
 
-where a.idActivo = 1 and p.idActivo = 1;"></asp:SqlDataSource>
-
-
+                                        where a.idActivo = 1 and p.idActivo = 1;"></asp:SqlDataSource>
             </div>
-        </div>
+        </div>       
     
     </div>
 </asp:Content>

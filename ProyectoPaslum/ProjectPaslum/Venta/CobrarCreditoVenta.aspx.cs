@@ -116,7 +116,7 @@ namespace ProjectPaslum.Venta
                 tblHistorialAbono HisAbo = new tblHistorialAbono();
                 HisAbo.Fecha = fechact;
                 HisAbo.dblCantidad = decimal.Parse(txtDinero.Text, culture);
-                HisAbo.dblCantidadAnterior = decimal.Parse(txtDinero.Text, culture);                
+                HisAbo.dblCantidadAnterior = decimal.Parse(txtDinero.Text, culture);   
                 ctrlCli.InsertarHistorialAbono(GetVenta(HisAbo));
 
                 foreach (GridViewRow row in GridView1.Rows)
@@ -154,6 +154,8 @@ namespace ProjectPaslum.Venta
             ven.fkCliente = int.Parse(Session["cliente"].ToString());
             ven.dblInteres = decimal.Parse(txtInteres.Text);
             ven.dblAbono = decimal.Parse(txtDinero.Text, culture);
+            ven.strFechaEntega = fechaEntrega.Text;
+            ven.strHoraEntega = txtHora.Text;
 
             HisVen.tblVenta = ven;
 
@@ -314,7 +316,7 @@ namespace ProjectPaslum.Venta
                     "Pachuca de Soto Hgo., o en cualquier otro lugar donde se me requiera el pago el dia " + 
                     (Session["FechaCredito"].ToString().Substring(8, 2)) + " de " + (Session["FechaCredito"].ToString().Substring(5, 2)) + " del " + (
                     Session["FechaCredito"].ToString().Substring(0, 4)) +
-                    " la cantidad de $"+ decimal.Parse(lblTotal2.Text) + " MXN, importe de mercancía recibida" + "de conformidad por conducto de " + txtCliente.Text +
+                    " la cantidad de $"+ decimal.Parse(lblTotal2.Text) + " MXN, importe de mercancía recibida de conformidad por conducto de " + txtCliente.Text +
                     " reconociendo de deudor de forma solidaria haber recibido dicho importe y haber facultado a la persona que recibe, para que en su nombre se obligue " +
                     "respecto de la cantidad referida, firmando este a su ruego. Si no se cubre su vencimiento la suma anterior causará " +
                     "ínteres monetarios a la razón del "+ txtInteres.Text +"% mensual a partir de la fecha de su vencimiento durante todo el tiempo qué " +

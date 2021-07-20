@@ -172,7 +172,7 @@
             <td style="width: 77px">
                 &nbsp;</td>
             <td style="width: 397px; text-align: right">
-                Total final:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                Total final: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$
                 <asp:Label ID="lblTotal2" runat="server" Text="Label"></asp:Label>
             </td>
             <td>
@@ -182,7 +182,7 @@
             <td style="width: 77px">
                 &nbsp;</td>
             <td style="width: 397px; text-align: right">
-                Total con el precio sugerido:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                Total con el precio sugerido: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$
                 <asp:Label ID="lblTotal" runat="server" Text="Label"></asp:Label>
             </td>
             <td>

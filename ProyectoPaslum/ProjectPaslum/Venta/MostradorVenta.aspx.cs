@@ -89,7 +89,9 @@ namespace ProjectPaslum.Venta
 
 
             var clie = (from cli in contexto.tblCliente
-                           select new { nombre = cli.strNombre + " " + cli.strApellidoP + " " + cli.strApellidoM, id = cli.idCliente }).ToList();
+                           select new { nombre = cli.strNombre + " " + cli.strApellidoP + 
+                           " " + cli.strApellidoM + " (" + cli.strEstablecimiento + ")",
+                               id = cli.idCliente }).ToList();
 
             ddlCliente.Items.Add("MOSTRADOR");            
             ddlCliente.DataValueField = "id";
@@ -1008,6 +1010,26 @@ namespace ProjectPaslum.Venta
                 des = ((Label)this.ListEndulcoranteXiugar.SelectedItem.FindControl("strNombreLabel")).Text + " " +
                     int.Parse(((Label)this.ListEndulcoranteXiugar.SelectedItem.FindControl("intPresentacionLabel")).Text) + " " +
                     ((Label)this.ListEndulcoranteXiugar.SelectedItem.FindControl("strNombre1Label")).Text;
+
+                AgregarItem(cod, des);
+
+
+                this.ClientScript.RegisterStartupScript(this.GetType(), "SweetAlert", "exito()", true);
+            }
+        }
+
+        protected void ListOtroXiugar_ItemCommand(object source, DataListCommandEventArgs e)
+        {
+            string cod;
+            string des = null;
+            if (e.CommandName == "Seleccionar")
+            {
+                ListOtroXiugar.SelectedIndex = e.Item.ItemIndex;
+
+                cod = ((Label)this.ListOtroXiugar.SelectedItem.FindControl("idProductoLabel")).Text;
+                des = ((Label)this.ListOtroXiugar.SelectedItem.FindControl("strNombreLabel")).Text + " " +
+                    int.Parse(((Label)this.ListOtroXiugar.SelectedItem.FindControl("intPresentacionLabel")).Text) + " " +
+                    ((Label)this.ListOtroXiugar.SelectedItem.FindControl("strNombre1Label")).Text;
 
                 AgregarItem(cod, des);
 

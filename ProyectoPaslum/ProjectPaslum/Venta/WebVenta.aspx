@@ -41,7 +41,7 @@
                                         <asp:Label ID="Label2" runat="server" Text="ESTABLECIMIENTO:" ForeColor="Black"></asp:Label>
                                         <asp:Label ID="strEstablecimientoLabel" runat="server" Text='<%# Eval("strEstablecimiento") %>' ForeColor="Black" ></asp:Label>                             
                                         <br />
-                                        <asp:Label ID="Label3" runat="server" Text="TOTAL:"  ForeColor="Black"></asp:Label>
+                                        <asp:Label ID="Label3" runat="server" Text="TOTAL: $"  ForeColor="Black"></asp:Label>
                                         <asp:Label ID="dblTotalLabel" runat="server" Text='<%# Eval("dblTotal") %>' ForeColor="Black" />
                                         <br />
                                          <asp:Label ID="Label4" runat="server" Text="FECHA:" ForeColor="Black"></asp:Label>
@@ -97,7 +97,7 @@
                                 <asp:Label ID="Label6" runat="server" Text="ESTABLECIMIENTO:" ForeColor="Black"></asp:Label>  
                                 <asp:Label ID="strEstablecimientoLabel" runat="server" Text='<%# Eval("strEstablecimiento") %>' ForeColor="Black" ></asp:Label>  
                                 <br />
-                                <asp:Label ID="Label7" runat="server" Text="TOTAL:" ForeColor="Black"></asp:Label>   
+                                <asp:Label ID="Label7" runat="server" Text="TOTAL: $" ForeColor="Black"></asp:Label>   
                                 <asp:Label ID="dblTotalLabel" runat="server" Text='<%# Eval("dblTotal") %>' ForeColor="Black" />
                                 <br />
                                 <asp:Label ID="Label8" runat="server" Text="FECHA:" ForeColor="Black"></asp:Label>  

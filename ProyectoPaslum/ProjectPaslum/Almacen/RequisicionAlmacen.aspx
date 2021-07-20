@@ -20,21 +20,33 @@
         </div>
 
        <div class="panel-group" id="accordion">
-  
-
-       <%-- ONLINE: Orden de compra que se pidieron de forma web --%>
+          
+       <%-- Requisiciones Pendientes --%>
         <div class="panel panel-default">
-                <div class="panel-heading">
-                    <h4 class="panel-title">
-                        <a data-toggle="collapse" data-parent="#accordion" href="#collapseOnline" >REQUISICIONES EN LINEA
-                        </a>
-                    </h4>
-                </div>
-                <div id="collapseOnline" class="panel-collapse collapse in" >
-                    <div class="panel-body">
-                        <section>
-                         <div>
-                           <asp:DataList ID="DataList4" runat="server" DataKeyField="idVenta" DataSourceID="SqlDataSource4" CssClass="table table-responsive"
+            <div class="panel-heading">
+            <h4 class="panel-title">
+                <a data-toggle="collapse" data-parent="#accordion" href="#collapseXiugar">PENDIENTES</a>                                        
+            </h4>
+            </div>
+
+            <div id="collapseXiugar" class="panel-collapse collapse">
+
+                <div class="panel-body">
+
+                    <div class="panel-group" id="accordionMarcaXiugar" role="tablist" aria-multiselectable="true">
+                                              
+                        <%-- Online --%>
+                        <%-- ONLINE: Orden de compra que se pidieron de forma web --%>
+                        <div class="panel panel-default">
+                            <div class="panel-heading" role="tab" id="headingXiugarEstandar">
+                                <h4 class="panel-title">
+                                    <a class="collapsed" data-toggle="collapse" data-parent="#accordionMarcaXiugar" href="#collapseXiugarEstandar" aria-expanded="false" aria-controls="collapseXiugarEstandar">ONLINE
+                                    </a>
+                                </h4>
+                            </div>
+                            <div style="height: 0px;" aria-expanded="false" id="collapseXiugarEstandar" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingXiugarEstandar">
+                                <div>
+                                                               <asp:DataList ID="DataList4" runat="server" DataKeyField="idVenta" DataSourceID="SqlDataSource4" CssClass="table table-responsive"
                                      RepeatColumns="4" ForeColor="#FB2D59" OnItemCommand="DataList4_ItemCommand" >
                                     
                          
@@ -64,7 +76,7 @@
                                     </ItemTemplate>
                                     <SelectedItemStyle BackColor="#FB2D59" Font-Bold="True" ForeColor="#FB5679" />
                                 </asp:DataList>
-                    <asp:SqlDataSource ID="SqlDataSource4" runat="server" ConnectionString="<%$ ConnectionStrings:XIUGARConnectionString %>"
+                                <asp:SqlDataSource ID="SqlDataSource4" runat="server" ConnectionString="<%$ ConnectionStrings:XIUGARConnectionString %>"
                                  SelectCommand="select v.idVenta, c.strNombre + ' ' + c.strApellidoM + ' '+ c.strApellidoP, c.strEstablecimiento,
                                                 v.Fecha as 'Fecha de creación'
                                                 from tblVenta v
@@ -72,26 +84,22 @@
                                                 on c.idCliente = v.fkCliente                                                
                                                 where v.strEstado = 'PENDIENTE ONLINE'
                                                 order by v.Fecha asc;"></asp:SqlDataSource>
-
+                                </div>
+                            </div>
                         </div>
-                    </section>
-                  </div>
-                </div>
-        </div>
-
-        <%-- PENDIENTE: Orden de compra que no han sido aceptadas --%>
-        <div class="panel panel-default">
-                <div class="panel-heading" >
-                    <h4 class="panel-title">
-                        <a data-toggle="collapse" data-parent="#accordion" href="#collapsePendiente">PENDIENTES
-                        </a>
-                    </h4>
-                </div>
-                <div id="collapsePendiente" class="panel-collapse collapse" >
-                    <div class="panel-body">
-                        <section>
-                         <div>
-                           <asp:DataList ID="DataList1" runat="server" DataKeyField="idVenta" DataSourceID="SqlDataSource1" CssClass="table table-responsive"
+                                            
+                        <%-- Contado --%>
+                        <%-- PENDIENTE: Orden de compra que no han sido aceptadas --%>
+                        <div class="panel panel-default">
+                            <div class="panel-heading" role="tab" id="headingXiugarRefinada">
+                                <h4 class="panel-title">
+                                    <a class="collapsed" data-toggle="collapse" data-parent="#accordionMarcaXiugar" href="#collapseXiugarRefinada" aria-expanded="false" aria-controls="collapseXiugarRefinada">CONTADO
+                                    </a>
+                                </h4>
+                            </div>
+                            <div style="height: 0px;" aria-expanded="false" id="collapseXiugarRefinada" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingXiugarRefinada">
+                                <div>
+                                                               <asp:DataList ID="DataList1" runat="server" DataKeyField="idVenta" DataSourceID="SqlDataSource1" CssClass="table table-responsive"
                                      RepeatColumns="4" ForeColor="#FB2D59" OnItemCommand="DataList1_ItemCommand" >
                                     
                          
@@ -121,7 +129,7 @@
                                     </ItemTemplate>
                                     <SelectedItemStyle BackColor="#FB2D59" Font-Bold="True" ForeColor="#FB5679" />
                                 </asp:DataList>
-                    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:XIUGARConnectionString %>"
+                                 <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:XIUGARConnectionString %>"
                                  SelectCommand="select v.idVenta, c.strNombre + ' ' + c.strApellidoM + ' '+ c.strApellidoP, c.strEstablecimiento,
                                                 v.Fecha as 'Fecha de creación'
                                                 from tblVenta v
@@ -129,27 +137,92 @@
                                                 on c.idCliente = v.fkCliente                                                
                                                 where v.strEstado = 'PENDIENTE'
                                                 order by v.Fecha asc;"></asp:SqlDataSource>
-
+                                </div>
+                            </div>
                         </div>
-                    </section>
-                  </div>
-                </div>
-        </div>
 
-        <%-- EN PROCESO: Orden de compra en proceso de elaboración --%>
+                        <%-- Credito --%>
+                        <%-- PENDIENTE CREDITO: Orden de compra que no han sido aceptadas --%>
+                        <div class="panel panel-default">
+                            <div class="panel-heading" role="tab" id="headingXiugarMascabado">
+                                <h4 class="panel-title">
+                                    <a class="collapsed" data-toggle="collapse" data-parent="#accordionMarcaXiugar" href="#collapseXiugarMascabado" aria-expanded="false" aria-controls="collapseXiugarMascabado">CREDITO
+                                    </a>
+                                </h4>
+                            </div>
+                            <div style="height: 0px;" aria-expanded="false" id="collapseXiugarMascabado" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingXiugarMascabado">
+                                <div>
+                                                                <asp:DataList ID="ListCreditoPendiente" runat="server" DataKeyField="idVenta" DataSourceID="SqlCreditoPendiente" CssClass="table table-responsive"
+                                         RepeatColumns="4" ForeColor="#FB2D59" OnItemCommand="ListCreditoPendiente_ItemCommand" >
+                                    
+                         
+                                    <AlternatingItemStyle BackColor="#FB5679" />
+                                    <FooterStyle BackColor="#FB2D59" Font-Bold="True" />
+                                    <HeaderStyle BackColor="#FB2D59" Font-Bold="True" />
+                                    <ItemStyle BackColor="#FB2D59" />
+                                    
+                                    <ItemTemplate>
+                                        <asp:Label ID="lbNum" runat="server" Text="VENTA:" ForeColor="#000000" ></asp:Label>                                        
+                                        <asp:Label ID="idVentaLabel" runat="server" Text='<%# Eval("idVenta") %>' ForeColor="#000000"/>
+                                        <br />
+                                        <asp:Label ID="lbCliente" runat="server" Text="CLIENTE:" ForeColor="#000000"></asp:Label>   
+                                        <asp:Label ID="Column1Label" runat="server" Text='<%# Eval("Column1") %>' ForeColor="#000000" />
+                                        <br />
+                                        <asp:Label ID="lbEstablecimiento" runat="server" Text="ESTABLECIMIENTO:" ForeColor="#000000"></asp:Label>                                        
+                                        <asp:Label ID="strEstablecimientoLabel" runat="server" Text='<%# Eval("strEstablecimiento") %>' ForeColor="#000000" />
+                                        <br />
+                                        <asp:Label ID="lbFecha" runat="server" Text="FECHA:" ForeColor="#000000"></asp:Label> 
+                                        <asp:Label ID="Fecha_de_creaciónLabel" runat="server" Text='<%# Eval("[Fecha de creación]") %>' ForeColor="#000000" />
+                                        <br />
+                                        <br />
+                                        <asp:Button ID="Button1" runat="server" CommandName="Seleccionar" Text="Detalle" CssClass="btn btn-primary" />
+                                        <asp:Button ID="Button2" runat="server" CommandName="Finalizar" Text="Proceso" CssClass="btn btn-success" OnClientClick="Confirm()"  />                                        
+                                        <br />
+
+                                    </ItemTemplate>
+                            </asp:DataList>
+                            <asp:SqlDataSource ID="SqlCreditoPendiente" runat="server" ConnectionString="<%$ ConnectionStrings:XIUGARConnectionString %>" 
+                                SelectCommand="select v.idVenta, c.strNombre + ' ' + c.strApellidoM + ' '+ c.strApellidoP, c.strEstablecimiento,
+                                                                v.Fecha as 'Fecha de creación'
+                                                                from tblVenta v
+                                                                left join tblCliente c
+                                                                on c.idCliente = v.fkCliente                                                
+                                                                where v.strEstado = 'CREDITO'
+                                                                order by v.Fecha asc;"></asp:SqlDataSource>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+            </div>
+        </div>
+        </div> 
+
+        <%-- Requisicion en proceso --%>
         <div class="panel panel-default">
-                <div class="panel-heading">
-                    <h4 class="panel-title">
-                        <a data-toggle="collapse" data-parent="#accordion" href="#collapseProceso">EN PROCESO
-                        </a>
-                    </h4>
-                </div>
-                <div id="collapseProceso" class="panel-collapse collapse">
-                    <div class="panel-body">
-                        <section>
-                         <div>
-                       
-                        <asp:DataList ID="DataList2" runat="server" DataKeyField="idVenta" DataSourceID="SqlDataSource2" CssClass="table table-responsive" 
+            <div class="panel-heading">
+            <h4 class="panel-title">
+                <a data-toggle="collapse" data-parent="#accordion" href="#collapse2">EN PROCESO</a>
+            </h4>
+            </div>
+            <div id="collapse2" class="panel-collapse collapse">
+            <div class="panel-body">
+
+                    <div class="panel-group" id="accordionMarcaRefinada" role="tablist" aria-multiselectable="true">
+                                              
+                        <%-- CONTADO --%>
+                        <%-- EN PROCESO: Orden de compra en proceso de elaboración --%>
+                        <div class="panel panel-default">
+                            <div class="panel-heading" role="tab" id="headingBSMRefinada">
+                                <h4 class="panel-title">
+                                    <a class="collapsed" data-toggle="collapse" data-parent="#accordionMarcaRefinada" href="#collapseBSMRefinada" aria-expanded="false" aria-controls="collapseBSMRefinada">CONTADO
+                                    </a>
+                                </h4>
+                            </div>
+                            <div style="height: 0px;" aria-expanded="false" id="collapseBSMRefinada" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingBSMRefinada">
+                                <div>
+                           <asp:DataList ID="DataList2" runat="server" DataKeyField="idVenta" DataSourceID="SqlDataSource2" CssClass="table table-responsive" 
                             RepeatColumns="4" ForeColor="#FAF327" AutoPostBack="true" OnItemCommand="DataList2_ItemCommand">
                             <AlternatingItemStyle BackColor="#FAF327" />
                             <FooterStyle BackColor="#FEF97C" Font-Bold="True"  />
@@ -183,12 +256,63 @@
                                                 on c.idCliente = v.fkCliente                                                
                                                 where v.strEstado = 'EN PROCESO'
                                                 order by v.Fecha asc;"></asp:SqlDataSource>
-                        
+                                </div>
+                            </div>
                         </div>
-                    </section>
+
+                        <%-- CREDITO --%>
+                        <%-- EN PROCESO CREDITO: Orden de compra en proceso de elaboración --%>
+                        <div class="panel panel-default">
+                            <div class="panel-heading" role="tab" id="headingSantosRefinada">
+                                <h4 class="panel-title">
+                                    <a class="collapsed" data-toggle="collapse" data-parent="#accordionMarcaRefinada" href="#collapseSantosRefinada" aria-expanded="false" aria-controls="collapseSantosRefinada">CREDITO
+                                    </a>
+                                </h4>
+                            </div>
+                            <div style="height: 0px;" aria-expanded="false" id="collapseSantosRefinada" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingSantosRefinada">
+                                <div>
+                                    <asp:DataList ID="ListCreditoProceso" runat="server" DataKeyField="idVenta" DataSourceID="SqlCreditoProceso" CssClass="table table-responsive" 
+                            RepeatColumns="4" ForeColor="#FAF327" AutoPostBack="true" OnItemCommand="ListCreditoProceso_ItemCommand">
+                            <AlternatingItemStyle BackColor="#FAF327" />
+                            <FooterStyle BackColor="#FEF97C" Font-Bold="True"  />
+                            <HeaderStyle BackColor="#FEF97C" Font-Bold="True"  />
+                            <ItemStyle BackColor="#FEF97C" />
+                            <ItemTemplate>
+                                <asp:Label ID="lbNum" runat="server" Text="VENTA:" ForeColor="#000000"></asp:Label>  
+                                <asp:Label ID="idVentaLabel" runat="server" Text='<%# Eval("idVenta") %>' ForeColor="#000000" ></asp:Label>  
+                                <br />
+                                <asp:Label ID="Label5" runat="server" Text="CLIENTE:" ForeColor="#000000"></asp:Label> 
+                                <asp:Label ID="Column1Label" runat="server" Text='<%# Eval("Column1") %>' ForeColor="#000000" ></asp:Label>  
+                                <br />
+                                <asp:Label ID="Label6" runat="server" Text="ESTABLECIMIENTO:" ForeColor="#000000"></asp:Label>  
+                                <asp:Label ID="strEstablecimientoLabel" runat="server" Text='<%# Eval("strEstablecimiento") %>' ForeColor="#000000" ></asp:Label>  
+                                <br />
+                                <asp:Label ID="Label8" runat="server" Text="FECHA:" ForeColor="#000000"></asp:Label>  
+                                <asp:Label ID="Fecha_de_creaciónLabel" runat="server" Text='<%# Eval("[Fecha de creación]") %>' ForeColor="#000000" />
+                                <br />
+                                <br />
+                                <asp:Button ID="Button1" runat="server" CommandName="Seleccionar" Text="Detalle" CssClass="btn btn-primary" />
+                                <asp:Button ID="Button2" runat="server" CommandName="Finalizar" Text="Finalizar" CssClass="btn btn-success" OnClientClick="Finish()" /> 
+                                <asp:Button ID="Button3" runat="server" CommandName="Pendiente" Text="Pendiente" CssClass="btn badge-secondary" OnClientClick="Return()"/> 
+                            </ItemTemplate>
+                            <SelectedItemStyle BackColor="#FEF97C"  Font-Bold="True" ForeColor="#FEF97C" />
+                            </asp:DataList>
+                            <asp:SqlDataSource ID="SqlCreditoProceso" runat="server" ConnectionString="<%$ ConnectionStrings:XIUGARConnectionString %>" 
+                                SelectCommand="select v.idVenta, c.strNombre + ' ' + c.strApellidoM + ' '+ c.strApellidoP, c.strEstablecimiento, 
+                                                            v.Fecha as 'Fecha de creación'
+                                                            from tblVenta v
+                                                            left join tblCliente c
+                                                            on c.idCliente = v.fkCliente                                                
+                                                            where v.strEstado = 'CREDITO (EN PROCESO)'
+                                                            order by v.Fecha asc;"></asp:SqlDataSource>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                </div>
+
             </div>
+            </div>                                    
+        </div>
 
         <%-- FINALIZADO: Ordendes de compra terminado --%>  
         <div class="panel panel-default">
@@ -287,8 +411,8 @@
                     </div>
                 </div>
             </div>  
-        </div>    
- 
+        </div>  
+
         </div>
 
     <script type = "text/javascript">
@@ -308,21 +432,21 @@
             document.forms[0].appendChild(confirm_value);
         }
 
-        //function Return() {
-        //    var confirm_value = document.createElement("INPUT");
+        function Return() {
+            var confirm_value = document.createElement("INPUT");
 
-        //    confirm_value.type = "hidden";
-        //    confirm_value.name = "confirm_value";
+            confirm_value.type = "hidden";
+            confirm_value.name = "confirm_value";
 
-        //    if (confirm("¿Desea regresar a estado pendiente la requisición?")) {
-        //        confirm_value.value = "Si";
-        //    }
-        //    else {
-        //        confirm_value.value = "No";
-        //    }
+            if (confirm("¿Desea regresar a estado pendiente la requisición?")) {
+                confirm_value.value = "Si";
+            }
+            else {
+                confirm_value.value = "No";
+            }
 
-        //    document.forms[0].appendChild(confirm_value);
-        //}
+            document.forms[0].appendChild(confirm_value);
+        }
 
         function Finish() {
             var confirm_value = document.createElement("INPUT");

@@ -101,6 +101,17 @@ namespace ProjectPaslum.Controllers
             }
             
         }
+        public void EditarProcesoCredito(tblVenta ven)
+        {
+            tblVenta venBd = contexto.tblVenta
+                .Where(t => t.idVenta == ven.idVenta).FirstOrDefault();
+            if (venBd != null)
+            {
+                venBd.strEstado = "CREDITO (EN PROCESO)";
+                contexto.SubmitChanges();
+            }
+
+        }
 
         public void EditarFinalizado(tblVenta ven)
         {
@@ -109,6 +120,18 @@ namespace ProjectPaslum.Controllers
             if (venBd != null)
             {
                 venBd.strEstado = "FINALIZADO";
+                contexto.SubmitChanges();
+            }
+
+        }
+
+        public void EditarEntregadoCredito(tblVenta ven)
+        {
+            tblVenta venBd = contexto.tblVenta
+                .Where(t => t.idVenta == ven.idVenta).FirstOrDefault();
+            if (venBd != null)
+            {
+                venBd.strEstado = "CREDITO (ENTREGADO)";
                 contexto.SubmitChanges();
             }
 
@@ -133,6 +156,18 @@ namespace ProjectPaslum.Controllers
             if (venBd != null)
             {
                 venBd.strEstado = "PENDIENTE";
+                contexto.SubmitChanges();
+            }
+
+        }
+
+        public void EditarPendienteCredito(tblVenta ven)
+        {
+            tblVenta venBd = contexto.tblVenta
+                .Where(t => t.idVenta == ven.idVenta).FirstOrDefault();
+            if (venBd != null)
+            {
+                venBd.strEstado = "CREDITO";
                 contexto.SubmitChanges();
             }
 

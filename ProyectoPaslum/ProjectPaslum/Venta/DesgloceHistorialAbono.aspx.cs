@@ -6,6 +6,8 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using iTextSharp.text;
+using iTextSharp.text.pdf;
 
 namespace ProjectPaslum.Venta
 {
@@ -84,56 +86,224 @@ namespace ProjectPaslum.Venta
 
         protected void Button1_Click(object sender, EventArgs e)
         {
-            DateTime fechact = DateTime.Now;
-            ControllerCliente ctrlClie = new ControllerCliente();
-            tblVenta ven = new tblVenta();
-            ControllerAlmacen ctrlAlm = new ControllerAlmacen();
-
-            var ultimoregistro = (from ha in contexto.tblHistorialAbono
-                                  where ha.fkVenta == int.Parse(Session["desgloce"].ToString())
-                                  orderby ha.idHistorialAbono descending
-                                  select ha).FirstOrDefault();
-
-            var ventas = (from venta in contexto.tblVenta
-                          where venta.idVenta == int.Parse(Session["desgloce"].ToString())
-                          select new { fecha = venta.Fecha, fin = venta.FechaCredito, total = venta.dblTotal }).FirstOrDefault();
-
-            var suma = ultimoregistro.dblCantidadAnterior + decimal.Parse(txtAbono.Text);
-
-            if (suma < ventas.total)
+            if (string.IsNullOrWhiteSpace(txtAbono.Text))
             {
-                tblHistorialAbono HisAbo = new tblHistorialAbono();
-                HisAbo.Fecha = fechact;
-                HisAbo.dblCantidad = decimal.Parse(txtAbono.Text);
-                HisAbo.dblCantidadAnterior = suma;
-                HisAbo.fkVenta = int.Parse(Session["desgloce"].ToString());
-                HisAbo.fkValidacionUsuario = int.Parse(Session["idUsuario"].ToString());
-
-                ctrlClie.InsertarHistorialAbono(HisAbo);
-                this.Response.Redirect("./AlertaExito.aspx", true);                
+                this.ClientScript.RegisterStartupScript(this.GetType(), "SweetAlert", "vacio()", true);               
             }
-            else if (suma == ventas.total){
-                tblHistorialAbono HisAbo = new tblHistorialAbono();
-                HisAbo.Fecha = fechact;
-                HisAbo.dblCantidad = decimal.Parse(txtAbono.Text);
-                HisAbo.dblCantidadAnterior = suma;
-                HisAbo.fkVenta = int.Parse(Session["desgloce"].ToString());
-                HisAbo.fkValidacionUsuario = int.Parse(Session["idUsuario"].ToString());
+            else { 
 
-                ctrlClie.InsertarHistorialAbono(HisAbo);
-                ven.idVenta = int.Parse(Session["desgloce"].ToString());
-                ven.strEstado = "VENTA A CREDITO FINALIZADA";
+                    DateTime fechact = DateTime.Now;
+                    ControllerCliente ctrlClie = new ControllerCliente();
+                    tblVenta ven = new tblVenta();
+                    ControllerAlmacen ctrlAlm = new ControllerAlmacen();
 
-                ctrlAlm.EditarFinalizadoCredito(ven);
+                    var ultimoregistro = (from ha in contexto.tblHistorialAbono
+                                          where ha.fkVenta == int.Parse(Session["desgloce"].ToString())
+                                          orderby ha.idHistorialAbono descending
+                                          select ha).FirstOrDefault();
 
-                this.Response.Redirect("./AlertaExito.aspx", true);
+                    var ventas = (from venta in contexto.tblVenta
+                                  where venta.idVenta == int.Parse(Session["desgloce"].ToString())
+                                  select new { fecha = venta.Fecha, fin = venta.FechaCredito, total = venta.dblTotal }).FirstOrDefault();
+
+                    var suma = ultimoregistro.dblCantidadAnterior + decimal.Parse(txtAbono.Text);
+
+                    if (suma < ventas.total)
+                    {
+                        tblHistorialAbono HisAbo = new tblHistorialAbono();
+                        HisAbo.Fecha = fechact;
+                        HisAbo.dblCantidad = decimal.Parse(txtAbono.Text);
+                        HisAbo.dblCantidadAnterior = suma;
+                        HisAbo.fkVenta = int.Parse(Session["desgloce"].ToString());
+                        HisAbo.fkValidacionUsuario = int.Parse(Session["idUsuario"].ToString());
+
+                        ctrlClie.InsertarHistorialAbono(HisAbo);
+                        this.Response.Redirect("./AbonoExito.aspx", true);                
+                    }
+                    else if (suma == ventas.total){
+                        tblHistorialAbono HisAbo = new tblHistorialAbono();
+                        HisAbo.Fecha = fechact;
+                        HisAbo.dblCantidad = decimal.Parse(txtAbono.Text);
+                        HisAbo.dblCantidadAnterior = suma;
+                        HisAbo.fkVenta = int.Parse(Session["desgloce"].ToString());
+                        HisAbo.fkValidacionUsuario = int.Parse(Session["idUsuario"].ToString());
+
+                        ctrlClie.InsertarHistorialAbono(HisAbo);
+                        ven.idVenta = int.Parse(Session["desgloce"].ToString());
+                        ven.strEstado = "VENTA A CREDITO FINALIZADA";
+
+                        ctrlAlm.EditarFinalizadoCredito(ven);
+
+                        this.Response.Redirect("./AlertaExito.aspx", true);
+                    }
+                    else
+                    {
+                        this.Response.Redirect("./AlertaErrorAbono.aspx", true);
+                    }
             }
-            else
-            {
-                this.Response.Redirect("./AlertaErrorAbono.aspx", true);
-            }
+
+        }
+
+        protected void btnRegresa_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("HistorialAbono.aspx");
+        }
+
+        protected void btnReimprimir_Click(object sender, EventArgs e)
+        {
+            Document document = new Document();
+            PdfWriter writer = PdfWriter.GetInstance(document, HttpContext.Current.Response.OutputStream);
+
+
+
+            var deta = (from detalle2 in contexto.tblDetalleVenta
+                        join producto in contexto.tblProducto
+                           on detalle2.fkProducto equals producto.idProducto
+                        join unidad in contexto.tblUnidadMedida
+                           on producto.fkUnidadMedida equals unidad.idUnidadMedida
+                        where detalle2.fkVenta == int.Parse(Session["desgloce"].ToString())
+                        select new
+                        {
+                            PRODUCTO = producto.strNombre,
+                            PRECIO = detalle2.dblPrecio,
+                            CANTIDAD = detalle2.intCantidad,
+                            DESCRIPCIÓN = producto.strDescripcion,
+                            PRESENTACIÓN = producto.intPresentacion,
+                            UNIDAD = unidad.strNombre
+                        }).ToList();
+
+
+
+
 
            
+                var clien = (from venta in contexto.tblVenta
+
+                             join cliente in contexto.tblCliente
+                                  on venta.fkCliente equals cliente.idCliente
+
+                             join domicilio in contexto.tblDireccion
+                                   on cliente.fkDireccion equals domicilio.idDireccion
+
+                             join detalle2 in contexto.tblDetalleVenta
+                                   on venta.idVenta equals detalle2.fkVenta
+
+                             join empleado in contexto.tblEmpleado
+                                   on detalle2.fkEmpleado equals empleado.idEmpleado
+
+                             where venta.idVenta == int.Parse(Session["desgloce"].ToString())
+
+                             select new
+                             {
+                                 fecha = venta.Fecha,
+                                 total = venta.dblTotal,
+                                 cli = cliente.strNombre + " " + cliente.strApellidoP + " " + cliente.strApellidoM ?? String.Empty,
+                                 dire = domicilio.strColonia + ", " + domicilio.strCalle + ", " + domicilio.intCodpost,
+                                 empl = empleado.strNombre + " " + empleado.strApellidoP + " " + empleado.strApellidoM,
+                                 clie = venta.fkCliente,
+                                 interes = venta.dblInteres,
+                                 fin = venta.FechaCredito
+                             }).FirstOrDefault();
+
+                document.Open();
+
+                var image = iTextSharp.text.Image.GetInstance(@"C:\Users\RodrigoM\Desktop\Sitema-XIU-GAR\ProyectoPaslum\ProjectPaslum\Alumno\images\XIUGAR.jpg");
+
+                // iTextSharp.text.Image image1 = iTextSharp.text.Image.GetInstance("../images/avatar.png");
+                //image1.ScalePercent(50f);
+
+                image.ScaleAbsoluteWidth(240);
+                image.ScaleAbsoluteHeight(110);
+                image.SetAbsolutePosition(350, 720);
+                document.Add(image);
+
+
+                Font fontTitle = FontFactory.GetFont(FontFactory.COURIER_BOLD, 25);
+                Font font9 = FontFactory.GetFont(FontFactory.HELVETICA, 13);
+                Font font7 = FontFactory.GetFont(FontFactory.TIMES, 12);
+                Font font8 = FontFactory.GetFont(FontFactory.TIMES, 9);
+
+                document.Add(new Chunk("\n"));
+
+                document.Add(new Paragraph(16, "N° Venta: " + int.Parse(Session["desgloce"].ToString()), font7));
+                document.Add(new Paragraph(16, "Vendedor: " + clien.empl, font7));
+                document.Add(new Paragraph(16, "Cliente: " + clien.cli, font7));
+                document.Add(new Paragraph(16, "Domicilio: " + clien.dire, font7));
+                document.Add(new Paragraph(16, "Fecha: " + clien.fecha.ToString().Substring(0, 10), font7));
+
+                document.Add(new Chunk("\n"));
+
+
+                PdfPTable table = new PdfPTable(5);
+                PdfPTable table2 = new PdfPTable(5);
+
+                table.AddCell("CODIGO");
+                table.AddCell("DESCRIPCIÓN");
+                table.AddCell("CANTIDAD");
+                table.AddCell("PRECIO");
+                table.AddCell("TOTAL");
+
+                List<tblDetalleVenta> detalle = contexto.tblDetalleVenta.Where(fin => fin.fkVenta == int.Parse(Session["desgloce"].ToString())).ToList();
+
+                foreach (var item in detalle)
+                {
+                    var tot = item.intCantidad * item.dblPrecio;
+
+                    table2.AddCell(new Paragraph(item.fkProducto.ToString(), font8));
+                    table2.AddCell(new Paragraph(item.tblProducto.strNombre + " " + item.tblProducto.intPresentacion + " " + item.tblProducto.tblUnidadMedida.strNombre, font8));
+                    table2.AddCell(new Paragraph(item.intCantidad.ToString(), font8));
+                    table2.AddCell(new Paragraph(item.dblPrecio.ToString(), font8));
+                    table2.AddCell(new Paragraph(tot.ToString(), font8));
+                }
+
+                table.WidthPercentage = 90;
+                table2.WidthPercentage = 90;
+
+                Paragraph total = new Paragraph(16, "Total: $" + clien.total, font9);
+                document.Add(new Chunk("\n"));
+                Paragraph gracias = new Paragraph(18, "Gracias por su compra, vuelva pronto.", font9);
+
+
+                total.Alignment = Element.ALIGN_RIGHT;
+                gracias.Alignment = Element.ALIGN_CENTER;
+
+                document.Add(table);
+                document.Add(table2);
+                document.Add(total);
+                document.Add(gracias);
+
+                document.Add(new Chunk("\n"));
+
+                document.Add(new Paragraph(16, "Debo(emos) y pagaré(mos) incondicionalmente por este PAGARE a la orden de FELIPA TORRES HERNÁNDEZ," +
+                " precisamente en su domicilio ubicado en Carrretera Pachuca Cd. Sahagún km. 55 S/N Col. Industrial La Paz C.P. 42092 " +
+                "Pachuca de Soto Hgo., o en cualquier otro lugar donde se me requiera el pago el dia " +
+                (clien.fin.ToString().Substring(0, 2)) + " de " + (clien.fin.ToString().Substring(3, 2)) + " del " + 
+                (clien.fin.ToString().Substring(6, 4)) +
+                " la cantidad de $" + clien.total + " MXN, importe de mercancía recibida de conformidad por conducto de " + clien.cli +
+                " reconociendo de deudor de forma solidaria haber recibido dicho importe y haber facultado a la persona que recibe, para que en su nombre se obligue " +
+                "respecto de la cantidad referida, firmando este a su ruego. Si no se cubre su vencimiento la suma anterior causará " +
+                "ínteres monetarios a la razón del " + clien.interes + "% mensual a partir de la fecha de su vencimiento durante todo el tiempo qué " +
+                "estuviese insoluto sin que este considere prorroga el plazo para el cumplimiento de esta obligación, más los costos " +
+                "y gastos que se generan en cobranza de este documento.", font7));
+
+                document.Add(new Chunk("\n"));
+
+                Paragraph linea = new Paragraph(string.Format("_________________________________"), new iTextSharp.text.Font(iTextSharp.text.Font.FontFamily.HELVETICA, 20));
+                Paragraph firma = new Paragraph(string.Format("Nombre y Firma"), new iTextSharp.text.Font(iTextSharp.text.Font.FontFamily.HELVETICA, 15));
+
+                linea.Alignment = Element.ALIGN_CENTER;
+                document.Add(linea);
+                firma.Alignment = Element.ALIGN_CENTER;
+                document.Add(firma);
+
+                document.Close();
+
+                Response.ContentType = "application/pdf";
+                Response.AddHeader("content-disposition", "attachment;filename=Num. Venta: " + int.Parse(Session["desgloce"].ToString()) + "_" + clien.fecha + ".pdf");
+                HttpContext.Current.Response.Write(document);
+                Response.Flush();
+                Response.End();
+            
         }
     }
 }
