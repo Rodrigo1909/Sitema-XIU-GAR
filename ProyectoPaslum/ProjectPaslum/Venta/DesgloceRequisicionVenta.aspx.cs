@@ -115,7 +115,9 @@ namespace ProjectPaslum.Venta
 
                 document.Open();
 
-                var image = iTextSharp.text.Image.GetInstance(@"C:\Users\RodrigoM\Desktop\Sitema-XIU-GAR\ProyectoPaslum\ProjectPaslum\Alumno\images\XIUGAR.jpg");
+                String rutaLogo = Server.MapPath("../Alumno/images/XIUGAR.jpg");
+
+                var image = iTextSharp.text.Image.GetInstance(rutaLogo);
 
                 // iTextSharp.text.Image image1 = iTextSharp.text.Image.GetInstance("../images/avatar.png");
                 //image1.ScalePercent(50f);

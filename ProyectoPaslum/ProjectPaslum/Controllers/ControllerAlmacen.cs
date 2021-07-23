@@ -172,5 +172,17 @@ namespace ProjectPaslum.Controllers
             }
 
         }
+
+        public void InsertarArchivoFactura(tblVenta ven)
+        {
+            tblVenta venBd = contexto.tblVenta
+                .Where(t => t.idVenta == ven.idVenta).FirstOrDefault();
+            if (venBd != null)
+            {
+                venBd.archFactura = ven.archFactura;
+                contexto.SubmitChanges();
+            }
+
+        }
     }
 }

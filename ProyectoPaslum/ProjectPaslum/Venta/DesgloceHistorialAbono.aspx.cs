@@ -68,8 +68,8 @@ namespace ProjectPaslum.Venta
                                   select new
                                  {
                                      FECHA = abono.Fecha,
-                                     ABONO = abono.dblCantidad,
-                                     TOTAL_DE_ABONO = abono.dblCantidadAnterior
+                                     ABONO = "$" + abono.dblCantidad,
+                                     TOTAL_DE_ABONO = "$" + abono.dblCantidadAnterior
                                  }).ToList();
 
                 GridView2.DataSource = TablaAbono;
@@ -207,7 +207,9 @@ namespace ProjectPaslum.Venta
 
                 document.Open();
 
-                var image = iTextSharp.text.Image.GetInstance(@"C:\Users\RodrigoM\Desktop\Sitema-XIU-GAR\ProyectoPaslum\ProjectPaslum\Alumno\images\XIUGAR.jpg");
+               String rutaLogo = Server.MapPath("../Alumno/images/XIUGAR.jpg");
+
+               var image = iTextSharp.text.Image.GetInstance(rutaLogo);
 
                 // iTextSharp.text.Image image1 = iTextSharp.text.Image.GetInstance("../images/avatar.png");
                 //image1.ScalePercent(50f);
@@ -304,6 +306,56 @@ namespace ProjectPaslum.Venta
                 Response.Flush();
                 Response.End();
             
+        }
+
+        protected void btnDescargarFactura_Click(object sender, EventArgs e)
+        {
+            var ArchivoFactura = (from ve in contexto.tblVenta
+                                  where ve.idVenta == int.Parse(Session["desgloce"].ToString())
+                                  select new { factura = ve.archFactura }).FirstOrDefault();
+
+            string NombreFactura = ArchivoFactura.factura;
+
+
+            Response.ClearContent();
+            Response.ClearHeaders();
+            Response.ContentType = "application/pdf";
+            Response.AddHeader("content-disposition", "attachment; filename=" + NombreFactura );
+
+            String ruta = Server.MapPath("../Venta/Archivos/" + NombreFactura);            
+
+            HttpContext.Current.Response.BinaryWrite(System.IO.File.ReadAllBytes(ruta));
+            Response.Flush();
+            Response.End();
+        }
+
+        protected void btnSubirNota_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void btnSubirFactura_Click(object sender, EventArgs e)
+        {
+            tblVenta ven = new tblVenta();
+            ControllerAlmacen ctrlAlm = new ControllerAlmacen();
+
+            if (archivoFactura.HasFile)
+            {
+                string path = Server.MapPath("~/Venta/Archivos/" + archivoFactura.FileName);
+                archivoFactura.SaveAs(path);
+
+                
+                ven.idVenta = int.Parse(Session["desgloce"].ToString());                
+                ven.archFactura = archivoFactura.FileName;
+
+                ctrlAlm.InsertarArchivoFactura(ven);
+
+            }
+        }
+
+        protected void btnDescargarFirma_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
