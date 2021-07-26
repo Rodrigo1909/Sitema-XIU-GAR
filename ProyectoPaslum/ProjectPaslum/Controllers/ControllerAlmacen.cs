@@ -184,5 +184,16 @@ namespace ProjectPaslum.Controllers
             }
 
         }
+        public void InsertarArchivoNota(tblVenta ven)
+        {
+            tblVenta venBd = contexto.tblVenta
+                .Where(t => t.idVenta == ven.idVenta).FirstOrDefault();
+            if (venBd != null)
+            {
+                venBd.archNota = ven.archNota;
+                contexto.SubmitChanges();
+            }
+
+        }
     }
 }

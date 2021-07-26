@@ -156,6 +156,8 @@ namespace ProjectPaslum.Venta
             ven.dblAbono = decimal.Parse(txtDinero.Text, culture);
             ven.strFechaEntega = fechaEntrega.Text;
             ven.strHoraEntega = txtHora.Text;
+            ven.archNota = "NO EXISTE";
+            ven.archFactura = "NO EXISTE";
 
             HisVen.tblVenta = ven;
 

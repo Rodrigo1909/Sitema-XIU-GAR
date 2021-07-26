@@ -76,6 +76,19 @@ namespace ProjectPaslum.Venta
                 GridView2.DataBind();
 
 
+                var TablaArchivo = (from arch in contexto.tblVenta
+                                  orderby arch.idVenta descending
+                                  where arch.idVenta == idDetalleVenta
+                                  select new
+                                  {
+                                      NOMBRE_DE_LA_NOTA = arch.archNota,
+                                      NOMBRE_DE_LA_FACTURA = arch.archFactura
+                                  }).ToList();
+
+                GridView3.DataSource = TablaArchivo;
+                GridView3.DataBind();
+
+
             }
             catch (Exception)
             {
@@ -316,22 +329,48 @@ namespace ProjectPaslum.Venta
 
             string NombreFactura = ArchivoFactura.factura;
 
+            if (NombreFactura == "NO EXISTE")
+            {
+                this.ClientScript.RegisterStartupScript(this.GetType(), "SweetAlert", "bajar()", true);
+            }
+            else
+            {
 
-            Response.ClearContent();
-            Response.ClearHeaders();
-            Response.ContentType = "application/pdf";
-            Response.AddHeader("content-disposition", "attachment; filename=" + NombreFactura );
+                Response.ClearContent();
+                Response.ClearHeaders();
+                Response.ContentType = "application/pdf";
+                Response.AddHeader("content-disposition", "attachment; filename=" + NombreFactura);
 
-            String ruta = Server.MapPath("../Venta/Archivos/" + NombreFactura);            
+                String ruta = Server.MapPath("../Venta/Archivos/" + NombreFactura);
 
-            HttpContext.Current.Response.BinaryWrite(System.IO.File.ReadAllBytes(ruta));
-            Response.Flush();
-            Response.End();
+                HttpContext.Current.Response.BinaryWrite(System.IO.File.ReadAllBytes(ruta));
+                Response.Flush();
+                Response.End();
+            }
         }
 
         protected void btnSubirNota_Click(object sender, EventArgs e)
         {
+            tblVenta ven = new tblVenta();
+            ControllerAlmacen ctrlAlm = new ControllerAlmacen();
 
+            if (archivoNota.HasFile)
+            {
+                string path = Server.MapPath("~/Venta/Archivos/" + archivoNota.FileName);
+                archivoNota.SaveAs(path);
+
+
+                ven.idVenta = int.Parse(Session["desgloce"].ToString());
+                ven.archNota = archivoNota.FileName;
+
+                ctrlAlm.InsertarArchivoNota(ven);
+
+                this.ClientScript.RegisterStartupScript(this.GetType(), "SweetAlert", "subir()", true);
+            }
+            else
+            {
+                this.ClientScript.RegisterStartupScript(this.GetType(), "SweetAlert", "bajar()", true);
+            }
         }
 
         protected void btnSubirFactura_Click(object sender, EventArgs e)
@@ -349,13 +388,39 @@ namespace ProjectPaslum.Venta
                 ven.archFactura = archivoFactura.FileName;
 
                 ctrlAlm.InsertarArchivoFactura(ven);
-
+                this.ClientScript.RegisterStartupScript(this.GetType(), "SweetAlert", "subir()", true);
+            }
+            else
+            {
+                this.ClientScript.RegisterStartupScript(this.GetType(), "SweetAlert", "bajar()", true);
             }
         }
 
         protected void btnDescargarFirma_Click(object sender, EventArgs e)
         {
+            var ArchivoNota = (from ve in contexto.tblVenta
+                                  where ve.idVenta == int.Parse(Session["desgloce"].ToString())
+                                  select new { Nota = ve.archNota }).FirstOrDefault();
 
+            string NombreNota = ArchivoNota.Nota;
+
+            if (NombreNota == "NO EXISTE")
+            {
+                this.ClientScript.RegisterStartupScript(this.GetType(), "SweetAlert", "bajar()", true);
+            }
+            else
+            {
+                Response.ClearContent();
+                Response.ClearHeaders();
+                Response.ContentType = "application/pdf";
+                Response.AddHeader("content-disposition", "attachment; filename=" + NombreNota);
+
+                String ruta = Server.MapPath("../Venta/Archivos/" + NombreNota);
+
+                HttpContext.Current.Response.BinaryWrite(System.IO.File.ReadAllBytes(ruta));
+                Response.Flush();
+                Response.End();
+            }
         }
     }
 }

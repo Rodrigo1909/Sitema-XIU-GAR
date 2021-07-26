@@ -129,7 +129,7 @@
             
     </div>
 
-        <div class="panel panel-default">
+       <div class="panel panel-default">
             <div style="text-align:center">
             <h2>Archivos</h2>
 
@@ -139,6 +139,24 @@
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                     <div class="panel panel-default">
                         <div class="panel-body">
+
+                            <asp:GridView ID="GridView3" runat="server"  AutoGenerateColumns="true" Width="1050px"
+                            BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="3px" 
+                            AllowPaging="True" >
+                    
+                    
+                            <FooterStyle BackColor="White" ForeColor="#E2C337" />
+                                <HeaderStyle BackColor="#E2C337" Font-Bold="True" ForeColor="White" HorizontalAlign="Center"/>
+                                <PagerStyle BackColor="White" ForeColor="#000066" HorizontalAlign="Center" Font-Size="Medium" />
+                                <RowStyle ForeColor="#000066" />
+                                <SelectedRowStyle BackColor="#669999" Font-Bold="True" ForeColor="White" />
+                                <SortedAscendingCellStyle BackColor="#F1F1F1" />
+                                <SortedAscendingHeaderStyle BackColor="#007DBB" />
+                                <SortedDescendingCellStyle BackColor="#CAC9C9" />
+                                <SortedDescendingHeaderStyle BackColor="#00547E" />                    
+                        </asp:GridView>
+
+
                             <div class="form-inline">
 
                                <div class="form-group">  
@@ -150,7 +168,7 @@
 
                                 <div class="form-group">                                                                    
                                     <label>Seleccionar Nota Firmada: </label>                                    
-                                    <asp:FileUpload ID="archvioNota" runat="server"  width="500px" style="text-align:center"/>  
+                                    <asp:FileUpload ID="archivoNota" runat="server"  width="500px" style="text-align:center"/>  
                                 </div>
                              
                             <br /> 
@@ -169,7 +187,7 @@
 
                         </div>                        
                         <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
-                             <asp:Button ID="btnReimprimir" runat="server" Text="Reimprimir Venta" Font-Size="16px" CssClass="btn btn-block btn-sm btn-info" Width="150px" OnClick="btnReimprimir_Click" />
+                             <asp:Button ID="btnReimprimir" runat="server" Text="Reimprimir Venta" Font-Size="16px" CssClass="btn btn-block btn-sm btn-secondary" Width="150px" OnClick="btnReimprimir_Click" />
                         </div>  
                         <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
                             <asp:Button ID="btnDescargarFirma" runat="server" Text="Descargar Nota Firmada" Font-Size="16px" CssClass="btn btn-block btn-sm btn-success" Width="230px" OnClick="btnDescargarFirma_Click" />
@@ -188,15 +206,9 @@
                       </div>
                     </div>
 
-
-
-       
-            
     </div>
 
-       
-     
-    </div>
+
 
         
        <script type="text/javascript">
@@ -205,6 +217,22 @@
             swal({
                 title: "Incorrecto",
                 text: "Existen campos vacios que son necesarios para continuar.",
+                icon: "error",
+            });
+        }
+
+        function subir() {
+            swal({
+                title: "Correcto",
+                text: "Se subio el archivo con exito.",
+                icon: "success",
+            });
+        }
+
+        function bajar() {
+            swal({
+                title: "Incorrecto",
+                text: "No se encuentra ningun archivo disponible.",
                 icon: "error",
             });
         }

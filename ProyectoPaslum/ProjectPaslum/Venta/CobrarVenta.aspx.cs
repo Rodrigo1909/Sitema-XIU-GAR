@@ -207,6 +207,8 @@ namespace ProjectPaslum.Venta
                         ven.strFechaEntega = fechaEntrega.Text;
                         ven.strHoraEntega = txtHora.Text;
                         ven.fkCliente = null;
+                        ven.archNota = "NO EXISTE";
+                        ven.archFactura = "NO EXISTE";
                         ctrlCli.InsertarVenta(ven);
 
                         foreach (GridViewRow row in GridView1.Rows)
@@ -266,6 +268,8 @@ namespace ProjectPaslum.Venta
                     ven.strFechaEntega = fechaEntrega.Text;
                     ven.strHoraEntega = txtHora.Text;
                     ven.fkCliente = int.Parse(Session["cliente"].ToString());
+                    ven.archNota = "NO EXISTE";
+                    ven.archFactura = "NO EXISTE";
                     ctrlCli.InsertarVenta(ven);
 
                     foreach (GridViewRow row in GridView1.Rows)

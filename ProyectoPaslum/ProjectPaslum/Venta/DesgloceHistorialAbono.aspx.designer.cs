@@ -103,6 +103,15 @@ namespace ProjectPaslum.Venta {
         protected global::System.Web.UI.WebControls.GridView GridView1;
         
         /// <summary>
+        /// Control GridView3.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView GridView3;
+        
+        /// <summary>
         /// Control archivoFactura.
         /// </summary>
         /// <remarks>
@@ -112,13 +121,13 @@ namespace ProjectPaslum.Venta {
         protected global::System.Web.UI.WebControls.FileUpload archivoFactura;
         
         /// <summary>
-        /// Control archvioNota.
+        /// Control archivoNota.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.FileUpload archvioNota;
+        protected global::System.Web.UI.WebControls.FileUpload archivoNota;
         
         /// <summary>
         /// Control btnSubirNota.
