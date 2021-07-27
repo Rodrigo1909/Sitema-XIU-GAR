@@ -338,9 +338,9 @@ namespace ProjectPaslum.Almacen
             string cod;
             if (e.CommandName == "Seleccionar")
             {
-                ListCreditoPendiente.SelectedIndex = e.Item.ItemIndex;
+                ListCreditoProceso.SelectedIndex = e.Item.ItemIndex;
 
-                cod = ((Label)this.ListCreditoPendiente.SelectedItem.FindControl("idVentaLabel")).Text;
+                cod = ((Label)this.ListCreditoProceso.SelectedItem.FindControl("idVentaLabel")).Text;
                 Session["desgloce_req_alm"] = cod;
 
                 Response.Redirect("/Almacen/DesgloceRequisicionAlmacen.aspx");
@@ -357,9 +357,9 @@ namespace ProjectPaslum.Almacen
                     tblVenta ven = new tblVenta();
                     DateTime fechact = DateTime.Now;
 
-                    ListCreditoPendiente.SelectedIndex = e.Item.ItemIndex;
+                    ListCreditoProceso.SelectedIndex = e.Item.ItemIndex;
 
-                    cod = ((Label)this.ListCreditoPendiente.SelectedItem.FindControl("idVentaLabel")).Text;
+                    cod = ((Label)this.ListCreditoProceso.SelectedItem.FindControl("idVentaLabel")).Text;
 
                     var Productos = (from prod in contexto.tblDetalleVenta
                                      where prod.fkVenta == Int32.Parse(cod)

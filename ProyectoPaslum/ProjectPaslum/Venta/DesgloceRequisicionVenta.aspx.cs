@@ -24,11 +24,12 @@ namespace ProjectPaslum.Venta
 
             var ventas = (from venta in contexto.tblVenta
                           where venta.idVenta == int.Parse(Session["desgloce"].ToString())
-                          select new { fecha = venta.Fecha, hora = venta.strHoraEntega, fin = venta.strFechaEntega }).FirstOrDefault();
+                          select new { id = venta.idVenta, fecha = venta.Fecha, hora = venta.strHoraEntega, fin = venta.strFechaEntega }).FirstOrDefault();
 
             txtFecha.Text = ventas.fecha.ToString().Substring(0, 10);
             txtFechaFin.Text = ventas.fin.ToString();
             txtHoraEntrega.Text = ventas.hora.ToString();
+            txtNumVen.Text = ventas.id.ToString();
 
         }
 

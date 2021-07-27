@@ -21,27 +21,42 @@
                         <div class="panel-body">
                             <div class="form-inline">
 
+                                <div class="form-group">
+                                        <label>N° Venta </label>
+                                        <asp:TextBox ID="txtNumVen" runat="server" width="500px" Enabled="false" style="text-align:center" CssClass="form-control"></asp:TextBox>
+                                        
+                                    </div>
+                                &nbsp &nbsp &nbsp &nbsp
+
                                     <div class="form-group">
                                         <label>Fecha de la venta</label>
                                         <asp:TextBox ID="txtFecha" runat="server" width="500px" Enabled="false" style="text-align:center" CssClass="form-control"></asp:TextBox>
                                         
                                     </div>
-                                &nbsp &nbsp &nbsp &nbsp
+                                <br><br>
                                     <div class="form-group">
                                         <label>Fecha de entrega </label>
                                         <asp:TextBox ID="txtFechaFin" runat="server" width="500px" Enabled="false" style="text-align:center" CssClass="form-control"></asp:TextBox>
                                         
                                     </div>
-                                <br /> <br /> <br /> <br />
+                                &nbsp &nbsp &nbsp &nbsp                                
                                       <div class="form-group">
                                         <label>Hora de entrega </label>
                                         <asp:TextBox ID="txtHoraEntrega" runat="server" width="500px" Enabled="false" style="text-align:center" CssClass="form-control"></asp:TextBox>
-                                 &nbsp &nbsp &nbsp &nbsp
+                                 
                                       </div>
-                                <div class="form-group">
-                                        <asp:Button ID="btnRegresar" runat="server" Text="Regresar"  OnClick="btnRegresar_Click" CssClass="btn btn-success" Width="150px" Height="50px"/>
+                                 <br /> <br /> <br />
+                                        <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
+            
+                                        </div>
+                                        <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                                            <div class="form-group">
+                                            <asp:Button ID="btnRegresar" runat="server" Text="Regresar" OnClick="btnRegresar_Click" CssClass="btn btn-success" Width="150px" Height="50px"/>
                                         
-                                      </div>
+                                            </div>
+                                        </div>
+
+                                
                                 
                                </div>
                             </div> 

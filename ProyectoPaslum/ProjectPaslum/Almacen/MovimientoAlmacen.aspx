@@ -17,8 +17,6 @@
  
        <%-- filtro para movimientos --%>
 
-
-
         <%--ENTRADAS --%>
         <div class="panel panel-default">
         <div class="panel-heading">
@@ -33,19 +31,20 @@
                                         
            <div class="panel panel-default">
             <div class="panel-body">
-                <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" Width="100%" 
+                                   <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" Width="100%" 
                     AllowPaging="True" DataSourceID="SqlDataSource2" BackColor="White" BorderColor="#CCCCCC" 
-                    BorderStyle="None" BorderWidth="3px" AllowSorting="True">
+                    BorderStyle="None" BorderWidth="3px" AllowSorting="True" >
                     <Columns>
                         
                         <asp:BoundField DataField="strTipo" HeaderText="MOVIMIENTO" SortExpression="strTipo" />
                         <asp:BoundField DataField="fecha" HeaderText="FECHA" SortExpression="fecha" />
-                        <asp:BoundField DataField="Column1" HeaderText="NOMBRE" SortExpression="Column1" ReadOnly="True" />
-                        <asp:BoundField DataField="strNombre" HeaderText="PRODUCTO" SortExpression="strNombre" />
+                        <asp:BoundField DataField="Column1" HeaderText="EMPLEADO" SortExpression="Column1" ReadOnly="True" />
+                        <asp:BoundField DataField="Column2" HeaderText="PRODUCTO" SortExpression="Column2" ReadOnly="True" />
 
-                        <asp:BoundField DataField="strNombre1" HeaderText="ALMACÉN" SortExpression="strNombre1" />
+                        <asp:BoundField DataField="strNombre" HeaderText="ALMACÉN" SortExpression="strNombre" />
                         <asp:BoundField DataField="dblValAnt" HeaderText="VALOR ANTERIOR" SortExpression="dblValAnt" />
                         <asp:BoundField DataField="dblValNvo" HeaderText="VALOR NUEVO" SortExpression="dblValNvo" />
+
 
 
                     </Columns>
@@ -62,21 +61,23 @@
 
                 <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:XIUGARConnectionString %>" 
                                    SelectCommand="select m.strTipo, m.fecha,
-                                                    e.strNombre + ' ' +  e.strApellidoP + ' ' + e.strApellidoM,
-                                                    p.strNombre, a.strNombre,m.dblValAnt, m.dblValNvo
-                                                    from tblStock s
-                                                    inner join tblProducto p
-                                                    on s.fkProducto = p.idProducto
-                                                    inner join tblMovimiento m
-                                                    on m.fkStock = s.idStock
-                                                    left join tblEmpleado e
-                                                    on m.fkEmpleado = e.idEmpleado
-                                                    inner join tblAlmacen a
-                                                    on a.idAlmacen = p.fkAlmacen
-                                                    where strTipo = 'ENTRADA' or strTipo = 'PRODUCCIÓN'
-                                                    or strTipo = 'ENTRADA POR PRODUCCIÓN' or strTipo = 'ENTRADA POR DEVOLUCIÓN'
-                                                    ORDER BY m.fecha DESC;
-                                    "></asp:SqlDataSource>
+                                                e.strNombre + ' ' +  e.strApellidoP + ' ' + e.strApellidoM,
+                                                concat('(',p.idProducto, ') ' ,' ', p.strNombre,', ', p.intPresentacion , ' ' ,uni.strNombre),
+                                                a.strNombre,m.dblValAnt, m.dblValNvo
+	                                                from tblStock s
+		                                                inner join tblProducto p
+			                                                on s.fkProducto = p.idProducto
+		                                                inner join tblUnidadMedida uni
+			                                                on p.fkUnidadMedida = uni.idUnidadMedida
+		                                                inner join tblMovimiento m
+			                                                on m.fkStock = s.idStock
+		                                                left join tblEmpleado e
+			                                                on m.fkEmpleado = e.idEmpleado
+		                                                inner join tblAlmacen a
+			                                                on a.idAlmacen = p.fkAlmacen
+		                                                where strTipo = 'ENTRADA' or strTipo = 'PRODUCCIÓN'
+			                                                or strTipo = 'ENTRADA POR PRODUCCIÓN' or strTipo = 'ENTRADA POR DEVOLUCIÓN'
+		                                                ORDER BY m.fecha DESC;"></asp:SqlDataSource>
 
             </div>
         </div>
@@ -96,20 +97,20 @@
         </div>
         <div id="collapse" class="panel-collapse collapse" >
             <div class="panel-body">
-                    <asp:GridView ID="GridView2" runat="server" AutoGenerateColumns="False" Width="100%" 
+                                   <asp:GridView ID="GridView2" runat="server" AutoGenerateColumns="False" Width="100%" 
                     AllowPaging="True" DataSourceID="SqlDataSource1" BackColor="White" BorderColor="#CCCCCC" 
                     BorderStyle="None" BorderWidth="3px" AllowSorting="True">
                    <Columns>
                         
                         <asp:BoundField DataField="strTipo" HeaderText="MOVIMIENTO" SortExpression="strTipo" />
                         <asp:BoundField DataField="fecha" HeaderText="FECHA" SortExpression="fecha" />
-                        <asp:BoundField DataField="Column1" HeaderText="NOMBRE" SortExpression="Column1" ReadOnly="True" />
-                        <asp:BoundField DataField="strNombre" HeaderText="PRODUCTO" SortExpression="strNombre" />
+                        <asp:BoundField DataField="Column1" HeaderText="EMPLEADO" SortExpression="Column1" ReadOnly="True" />
 
-                        <asp:BoundField DataField="strNombre1" HeaderText="ALMACÉN" SortExpression="strNombre1" />
+                        <asp:BoundField DataField="Column2" HeaderText="PRODUCTO" SortExpression="Column2" ReadOnly="True" />
+                        <asp:BoundField DataField="strNombre" HeaderText="strNombre" SortExpression="strNombre" />
+
                         <asp:BoundField DataField="dblValAnt" HeaderText="VALOR ANTERIOR" SortExpression="dblValAnt" />
                         <asp:BoundField DataField="dblValNvo" HeaderText="VALOR NUEVO" SortExpression="dblValNvo" />
-
 
 
                         <asp:BoundField DataField="strNumVen" HeaderText="N. VENTA" SortExpression="strNumVen" />
@@ -130,22 +131,23 @@
 
                 <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:XIUGARConnectionString %>" 
                                    SelectCommand="select m.strTipo, m.fecha,
-                                                    e.strNombre + ' ' +  e.strApellidoP + ' ' + e.strApellidoM,
-                                                    p.strNombre, a.strNombre,m.dblValAnt, m.dblValNvo, m.strNumVen, m.strFactura
-                                                    from tblStock s
-                                                    inner join tblProducto p
-                                                    on s.fkProducto = p.idProducto
-                                                    inner join tblMovimiento m
-                                                    on m.fkStock = s.idStock
-                                                    left join tblEmpleado e
-                                                    on m.fkEmpleado = e.idEmpleado
-                                                    inner join tblAlmacen a
-                                                    on a.idAlmacen = p.fkAlmacen
-                                                    where strTipo = 'SALIDA POR PRODUCCIÓN' or strTipo = 'SALIDA POR DEVOLUCIÓN'
-                                                    or strTipo LIKE 'VENTA NUMERO%'  
-                                                    ORDER BY m.fecha DESC;
-
-                                                "></asp:SqlDataSource>
+                                                e.strNombre + ' ' +  e.strApellidoP + ' ' + e.strApellidoM,
+                                                concat('(',p.idProducto, ') ' ,' ', p.strNombre,' ', p.intPresentacion , ' ' ,uni.strNombre),
+                                                a.strNombre,m.dblValAnt, m.dblValNvo, m.strNumVen, m.strFactura
+	                                                from tblStock s
+		                                                inner join tblProducto p
+			                                                on s.fkProducto = p.idProducto
+		                                                inner join tblUnidadMedida uni
+			                                                on p.fkUnidadMedida = uni.idUnidadMedida
+		                                                inner join tblMovimiento m
+			                                                on m.fkStock = s.idStock
+		                                                left join tblEmpleado e
+			                                                on m.fkEmpleado = e.idEmpleado
+		                                                inner join tblAlmacen a
+			                                                on a.idAlmacen = p.fkAlmacen
+		                                                where strTipo = 'SALIDA POR PRODUCCIÓN' or strTipo = 'SALIDA POR DEVOLUCIÓN'
+                                                                or strTipo LIKE 'VENTA NUMERO%'
+		                                                ORDER BY m.fecha DESC;"></asp:SqlDataSource>
                 </div>
             </div>
         </div>

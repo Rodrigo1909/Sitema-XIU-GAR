@@ -147,7 +147,7 @@ namespace ProjectPaslum.Venta
 
                         ctrlAlm.EditarFinalizadoCredito(ven);
 
-                        this.Response.Redirect("./AlertaExito.aspx", true);
+                        this.Response.Redirect("./AbonoExito.aspx", true);    
                     }
                     else
                     {

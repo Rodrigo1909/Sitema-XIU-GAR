@@ -18,12 +18,12 @@ namespace ProjectPaslum.Almacen
 
             var ventas = (from venta in contexto.tblVenta
                           where venta.idVenta == int.Parse(Session["desgloce_req_alm"].ToString())
-                          select new { fecha = venta.Fecha,  fin = venta.strFechaEntega, hora = venta.strHoraEntega }).FirstOrDefault();
+                          select new { id = venta.idVenta, fecha = venta.Fecha,  fin = venta.strFechaEntega, hora = venta.strHoraEntega }).FirstOrDefault();
 
             txtFecha.Text = ventas.fecha.ToString().Substring(0, 10);
             txtFechaFin.Text = ventas.fin.ToString();
             txtHoraEntrega.Text = ventas.hora.ToString();
-
+            txtNumVen.Text = ventas.id.ToString();
         }
 
         private void loadGridItems(int idDetalleVenta)

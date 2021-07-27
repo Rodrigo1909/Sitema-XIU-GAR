@@ -12,50 +12,61 @@
   </div>
 
        <%-- Consulta de movimientos --%>
+    
     <div class="panel panel-default">
             <div class="panel-body">
-                <asp:GridView ID="GridView2" runat="server" AutoGenerateColumns="False" Width="100%" AllowPaging="True" DataSourceID="SqlDataSource1" 
-                    BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="3px" AllowSorting="True" >
+                <div class="row">
 
-                    <Columns>
-                        <asp:BoundField DataField="dblCantidad" HeaderText="CANTIDAD EN EXISTENCIA" SortExpression="dblCantidad" />
-                        <asp:BoundField DataField="strNombre" HeaderText="PRODUCTO" SortExpression="strNombre" />
-                        <asp:BoundField DataField="strDescripcion" HeaderText="DESCRIPCIÓN" SortExpression="strDescripcion" />                        
-                        <asp:BoundField DataField="strNombre1" HeaderText="ALMACÉN" SortExpression="strNombre1" />
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            <div class="form-inline">
 
-                        <asp:BoundField DataField="strNombre2" HeaderText="MARCA" SortExpression="strNombre2" />
-                        <asp:BoundField DataField="strNombre3" HeaderText="INGENIO" SortExpression="strNombre3" />
-                    </Columns>
+                                            
+                                   <div class="form-group">
+                                         <label>Almacén </label><asp:DropDownList ID="ddlAlmacen" runat="server" AppendDataBoundItems="True"  
+                                             width="500px" OnSelectedIndexChanged="ddlAlmacen_SelectedIndexChanged" AutoPostBack="true"></asp:DropDownList> 
+                                    </div>   
+                                &nbsp &nbsp &nbsp &nbsp                                  
+                                
+                                   <div class="form-group">
+                                         <label>Marca </label><asp:DropDownList ID="ddlMarca" runat="server" AppendDataBoundItems="True"  
+                                             width="500px" AutoPostBack="true" OnSelectedIndexChanged="ddlMarca_SelectedIndexChanged"></asp:DropDownList> 
+                                    </div>
+                                <br /><br />
+                                <div class="form-group">
+                                         <label>Ingenio </label><asp:DropDownList ID="ddlIngenio" runat="server" AppendDataBoundItems="True"  
+                                             width="500px" AutoPostBack="true" OnSelectedIndexChanged="ddlIngenio_SelectedIndexChanged"></asp:DropDownList> 
+                                    </div>
+                                
+                                  
+                                </div>
+                               </div>
+                             </div>
+                    <div class="panel panel-default">
+                        <div style="text-align:center">
+                        
+                        <div class="panel-body">
+                            <asp:GridView ID="GridView1" runat="server"  AutoGenerateColumns="true" Width="1100px"
+                                        BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="3px" 
+                                        AllowPaging="True" >
                     
-                     <FooterStyle BackColor="White" ForeColor="#000066" />
-                        <HeaderStyle BackColor="#006699" Font-Bold="True" ForeColor="White" HorizontalAlign="Center"/>
-                        <PagerStyle BackColor="White" ForeColor="#000066" HorizontalAlign="Center" Font-Size="Medium" />
-                        <RowStyle ForeColor="#000066" />
-                        <SelectedRowStyle BackColor="#669999" Font-Bold="True" ForeColor="White" />
-                        <SortedAscendingCellStyle BackColor="#F1F1F1" />
-                        <SortedAscendingHeaderStyle BackColor="#007DBB" />
-                        <SortedDescendingCellStyle BackColor="#CAC9C9" />
-                        <SortedDescendingHeaderStyle BackColor="#00547E" />                    
-                </asp:GridView>
-
-                <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:XIUGARConnectionString %>" 
-                        SelectCommand="select s.dblCantidad, p.strNombre, 
-                                        p.strDescripcion, a.strNombre, m.strNombre, sub.strNombre
-                                        from tblStock s
-	
-	                                        inner join tblProducto p
-	                                        on s.fkProducto = p.idProducto
-	
-	                                        inner join tblAlmacen a	
-	                                        on p.fkAlmacen = a.idAlmacen
-
-	                                        left join tblMarca m
-	                                        on p.fkMarca = m.idMarca
-
-	                                        left join tblSubMarca sub
-	                                        on p.fkSubMarca = sub.idSubMarca
-
-                                        where a.idActivo = 1 and p.idActivo = 1;"></asp:SqlDataSource>
+                    
+                                        <FooterStyle BackColor="White" ForeColor="#000066" />
+                                            <HeaderStyle BackColor="#006699" Font-Bold="True" ForeColor="White" HorizontalAlign="Center"/>
+                                            <PagerStyle BackColor="White" ForeColor="#000066" HorizontalAlign="Center" Font-Size="Medium" />
+                                            <RowStyle ForeColor="#000066" />
+                                            <SelectedRowStyle BackColor="#669999" Font-Bold="True" ForeColor="White" />
+                                            <SortedAscendingCellStyle BackColor="#F1F1F1" />
+                                            <SortedAscendingHeaderStyle BackColor="#007DBB" />
+                                            <SortedDescendingCellStyle BackColor="#CAC9C9" />
+                                            <SortedDescendingHeaderStyle BackColor="#00547E" />                    
+                                    </asp:GridView>
+                            </div>
+                    </div>   
+    </div>
+                           </div>
+                        </div>
             </div>
         </div>       
     
