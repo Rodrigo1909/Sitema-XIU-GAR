@@ -198,11 +198,11 @@ namespace ProjectPaslum.Venta
                     else
                     {
                         ven.Fecha = fechact;
-                        ven.dblTotal = decimal.Parse(lblTotal2.Text, culture);
+                        ven.dblTotal = decimal.Parse(lblTotal2.Text);
                         //ven.dblSubTotal = decimal.Parse(lblSubTotal.Text);
                         //ven.dblIGV = decimal.Parse(lblIGV.Text);
                         ven.strEstado = "FINALIZADO";
-                        ven.dblAbono = decimal.Parse(txtDinero.Text, culture); ;
+                        ven.dblAbono = decimal.Parse(txtDinero.Text, culture); 
                         ven.dblInteres = null;
                         ven.strFechaEntega = fechaEntrega.Text;
                         ven.strHoraEntega = txtHora.Text;
@@ -241,6 +241,8 @@ namespace ProjectPaslum.Venta
 
                             ControllerCliente ctrlClie = new ControllerCliente();
                             tblDetalleVenta detalle = new tblDetalleVenta();
+                            ControllerAlmacen ctrlAlmPrecio = new ControllerAlmacen();
+                            tblProducto PrePro = new tblProducto();
                             detalle.Fecha = fechact;
                             detalle.intCantidad = int.Parse(((TextBox)row.Cells[3].FindControl("TextBox1")).Text);
                             detalle.fkProducto = int.Parse(row.Cells[1].Text);
@@ -248,6 +250,10 @@ namespace ProjectPaslum.Venta
                             detalle.fkVenta = ven.idVenta;
                             detalle.fkEmpleado = int.Parse(Session["id"].ToString());
                             ctrlClie.InsertarDetalle(detalle);
+
+                            PrePro.idProducto = int.Parse(row.Cells[1].Text);
+                            PrePro.dblPrecio = decimal.Parse(((TextBox)row.Cells[4].FindControl("TextBox2")).Text, culture);
+                            ctrlAlmPrecio.EditarPrecioProducto(PrePro);
 
                         }
                         Session["contado"] = null;
@@ -263,7 +269,7 @@ namespace ProjectPaslum.Venta
                     //ven.dblSubTotal = decimal.Parse(lblSubTotal.Text);
                     //ven.dblIGV = decimal.Parse(lblIGV.Text);
                     ven.strEstado = "PENDIENTE";
-                    ven.dblAbono = decimal.Parse(txtDinero.Text, culture); ;
+                    ven.dblAbono = decimal.Parse(txtDinero.Text, culture); 
                     ven.dblInteres = null;
                     ven.strFechaEntega = fechaEntrega.Text;
                     ven.strHoraEntega = txtHora.Text;
@@ -283,6 +289,13 @@ namespace ProjectPaslum.Venta
                         detalle.fkVenta = ven.idVenta;
                         detalle.fkEmpleado = int.Parse(Session["id"].ToString());
                         ctrlClie.InsertarDetalle(detalle);
+
+                        ControllerAlmacen ctrlAlmPrecio = new ControllerAlmacen();
+                        tblProducto PrePro = new tblProducto();
+
+                        PrePro.idProducto = int.Parse(row.Cells[1].Text);
+                        PrePro.dblPrecio = decimal.Parse(((TextBox)row.Cells[4].FindControl("TextBox2")).Text, culture);
+                        ctrlAlmPrecio.EditarPrecioProducto(PrePro);
 
                     }
                     Session["contado"] = null;

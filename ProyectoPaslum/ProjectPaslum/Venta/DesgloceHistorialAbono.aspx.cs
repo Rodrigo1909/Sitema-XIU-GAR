@@ -46,12 +46,14 @@ namespace ProjectPaslum.Venta
                 var desglozar = (from detalle in contexto.tblDetalleVenta
                                     join producto in contexto.tblProducto 
                                     on detalle.fkProducto equals producto.idProducto
+                                    join unidad in contexto.tblUnidadMedida
+                                    on producto.fkUnidadMedida equals unidad.idUnidadMedida
                                  where detalle.fkVenta == idDetalleVenta                                 
                                  select new
                                  {
                                      PRODUCTO = producto.strNombre,
                                      DESCRIPCIÓN = producto.strDescripcion,
-                                     PRESENTACIÓN = producto.intPresentacion,
+                                     PRESENTACIÓN = producto.intPresentacion + " " + unidad.strAbreviatura,
                                      PRECIO = detalle.dblPrecio,
                                      CANTIDAD = detalle.intCantidad                                    
 

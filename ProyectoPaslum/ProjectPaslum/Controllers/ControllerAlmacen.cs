@@ -161,6 +161,18 @@ namespace ProjectPaslum.Controllers
 
         }
 
+        public void EditarPrecioProducto(tblProducto pro)
+        {
+            tblProducto proBd = contexto.tblProducto
+                .Where(t => t.idProducto == pro.idProducto).FirstOrDefault();
+            if (proBd != null)
+            {
+                proBd.dblPrecio = pro.dblPrecio;
+                contexto.SubmitChanges();
+            }
+
+        }
+
         public void EditarPendienteCredito(tblVenta ven)
         {
             tblVenta venBd = contexto.tblVenta

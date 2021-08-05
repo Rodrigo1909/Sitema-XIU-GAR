@@ -131,6 +131,13 @@ namespace ProjectPaslum.Venta
                     detalle.fkVenta = HisAbo.fkVenta;
                     ctrlCli.InsertarDetalle(detalle);
 
+                    ControllerAlmacen ctrlAlmPrecio = new ControllerAlmacen();
+                    tblProducto PrePro = new tblProducto();
+
+                    PrePro.idProducto = int.Parse(row.Cells[1].Text);
+                    PrePro.dblPrecio = decimal.Parse(((TextBox)row.Cells[4].FindControl("TextBox2")).Text, culture);
+                    ctrlAlmPrecio.EditarPrecioProducto(PrePro);
+
                 }
 
                 this.Response.Redirect("./AlertaExito.aspx", true);
@@ -314,7 +321,7 @@ namespace ProjectPaslum.Venta
                 document.Add(new Chunk("\n"));
 
                 document.Add(new Paragraph(16, "Debo(emos) y pagaré(mos) incondicionalmente por este PAGARE a la orden de FELIPA TORRES HERNÁNDEZ," + 
-                    " precisamente en su domicilio ubicado en Carrretera Pachuca Cd. Sahagún km. 55 S/N Col. Industrial La Paz C.P. 42092 " +
+                    " precisamente en su domicilio ubicado en Carretera Pachuca Cd. Sahagún km. 55 S/N Col. Industrial La Paz C.P. 42092 " +
                     "Pachuca de Soto Hgo., o en cualquier otro lugar donde se me requiera el pago el dia " + 
                     (Session["FechaCredito"].ToString().Substring(8, 2)) + " de " + (Session["FechaCredito"].ToString().Substring(5, 2)) + " del " + (
                     Session["FechaCredito"].ToString().Substring(0, 4)) +

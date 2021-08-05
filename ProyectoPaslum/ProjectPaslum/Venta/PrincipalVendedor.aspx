@@ -1,72 +1,84 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Venta/Venta.Master" AutoEventWireup="true" CodeBehind="PrincipalVendedor.aspx.cs" Inherits="ProjectPaslum.Venta.PrincipalVendedor" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
+     <link href="css/modales.css" rel="stylesheet" />
+     <link href="../Content/bootstrap.min.css" rel="stylesheet" />
+
     <div class="content">
-<div class="women_main">
-    <!-- start content -->
-    <div class="grids">
-        <div class="progressbar-heading grids-heading">
-            <h2>XIU-GAR Ventas del día</h2>
-                               
-        </div>
-        <div class="panel panel-widget forms-panel">
-            <div class="forms">
-                <div class="form-grids widget-shadow" data-example-id="basic-forms">
+        <div class="women_main">
+            <!-- start content -->
+            <div class="grids">
+                <div class="panel panel-widget forms-panel">
+                    <div class="forms">
+                        <div class="form-grids widget-shadow" data-example-id="basic-forms">
                                        
-                    <div class="form-body">
-                        <div class="panel panel-default">
-        
-                            <div class="panel-body">
-<%--                                <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" Width="100%" AllowPaging="True" DataSourceID="SqlDataSource1" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px">
-                                    <Columns>
-                        
-                                        <asp:BoundField DataField="strNombre" HeaderText="Materia" SortExpression="strNombre" />
-                                        <asp:BoundField DataField="strDescripcion" HeaderText="Descripcion" SortExpression="strDescripcion" />
-                                        <asp:BoundField DataField="strnombre1" HeaderText="Carrera" SortExpression="strnombre1" />
-                                        <asp:BoundField DataField="strnombre2" HeaderText="Cuatrimestre" SortExpression="strnombre2" />
-
-                                    </Columns>
-                                        <FooterStyle BackColor="White" ForeColor="#000066" />
-                                        <HeaderStyle BackColor="#006699" Font-Bold="True" ForeColor="White" HorizontalAlign="Center"/>
-                                        <PagerStyle BackColor="White" ForeColor="#000066" HorizontalAlign="Center" />
-                                        <RowStyle ForeColor="#000066" />
-                                        <SelectedRowStyle BackColor="#669999" Font-Bold="True" ForeColor="White" />
-                                        <SortedAscendingCellStyle BackColor="#F1F1F1" />
-                                        <SortedAscendingHeaderStyle BackColor="#007DBB" />
-                                        <SortedDescendingCellStyle BackColor="#CAC9C9" />
-                                        <SortedDescendingHeaderStyle BackColor="#00547E" />
-                                </asp:GridView>
-
-                                <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:pase_listaConnectionString %>" SelectCommand="select m.strNombre, m.strDescripcion, c.strnombre,cu.strnombre 
-                                        from TblMateria m
-                                        inner join TblCarrera c 
-                                        on m.idCarrera = c.id
-                                        inner join TblCuatri cu
-                                        on m.idCuatri = cu.id;"></asp:SqlDataSource>--%>
+                            <div class="form-body">
+                                <div class="panel panel-default">
+                                    <div class="panel-heading" role="tab" id="heading">
+                                        <h4 class="panel-title">
+                                            <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse" aria-expanded="false" aria-controls="collapse">Ventas de la semana
+                                            </a>
+                                        </h4>
                                     </div>
+                                    <div id="collapse" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+                                        <div class="panel-body">
+                                            
+                                            <asp:Label ID="lbLunes" runat="server" width="500px" visible="false"></asp:Label>
+                                            <asp:Label ID="lbDomingo" runat="server" width="500px" visible="false"></asp:Label>
+
+                                                <asp:DataList ID="ListVentaHoy" runat="server" DataKeyField="idVenta" DataSourceID="SqlVentaHoy"
+                                                    CssClass="table table-responsive" RepeatColumns="3" ForeColor="#333333" >
+                                                                <AlternatingItemStyle BackColor="White" />
+                                                                <FooterStyle BackColor="#1C5E55" Font-Bold="True"  />
+                                                                <HeaderStyle BackColor="#1C5E55" Font-Bold="True" />
+                                                                <ItemStyle BackColor="#E3EAEB" />
+                                                            <ItemTemplate>
+                                                                    <asp:Label ID="lbNum" runat="server" Text="VENTA:" ForeColor="Black"></asp:Label>
+                                                                    <asp:Label ID="idVentaLabel" runat="server" Text='<%# Eval("idVenta") %>'></asp:Label>
+                                                                    <br />
+                                                                    <asp:Label ID="Label1" runat="server" Text="ESTADO:" ForeColor="Black"></asp:Label>
+                                                                    <asp:Label ID="strEstadoLabel" runat="server" Text='<%# Eval("strEstado") %>'></asp:Label>  
+                                                                    <br />
+                                                                    <asp:Label ID="Label2" runat="server" Text="CLIENTE:" ForeColor="Black"></asp:Label> 
+                                                                    <asp:Label ID="Column1Label" runat="server" Text='<%# Eval("Column1") %>'></asp:Label> 
+                                                                    <br />
+                                                                    <asp:Label ID="Label4" runat="server" Text="ESTABLECIMIENTO:" ForeColor="Black"></asp:Label>
+                                                                    <asp:Label ID="strEstablecimientoLabel" runat="server" Text='<%# Eval("strEstablecimiento") %>' ></asp:Label>                                        
+                                                                    <br />                                        
+                                                                    <asp:Label ID="Label6" runat="server" Text="TOTAL: $"  ForeColor="Black"></asp:Label>                          
+                                                                    <asp:Label ID="dblTotalLabel" runat="server" Text='<%# Eval("dblTotal") %>'></asp:Label>
+                                                                    <br />
+                                                                    <asp:Label ID="Label8" runat="server" Text="FECHA:" ForeColor="Black"></asp:Label>
+                                                                    <asp:Label ID="Fecha_de_creaciónLabel" runat="server" Text='<%# Eval("[Fecha de creación]") %>' ></asp:Label>                             
+                                                                    <br />
+
+                                                                </ItemTemplate>
+                                                    <SelectedItemStyle BackColor="#C5BBAF" Font-Bold="True" ForeColor="#333333" />
+                                                </asp:DataList>
+
+                                                <asp:SqlDataSource ID="SqlVentaHoy" runat="server" ConnectionString="<%$ ConnectionStrings:XIUGARConnectionString %>" 
+                                                    SelectCommand="select v.idVenta,v.strEstado, c.strNombre + ' ' + c.strApellidoM + ' '+ c.strApellidoP, 
+                                                                    c.strEstablecimiento, v.dblTotal, 
+                                                                    v.Fecha as 'Fecha de creación'
+	                                                                    from tblVenta v
+		                                                                    left join tblCliente c
+			                                                                    on c.idCliente = v.fkCliente                                                
+	                                                                    where v.fecha BETWEEN @FechaInicio and @FechaFin
+	                                                                    order by v.Fecha asc;">
+                                                    <SelectParameters>
+                                                        <asp:ControlParameter ControlID="lbLunes" Name="FechaInicio" PropertyName="Text" />
+                                                        <asp:ControlParameter ControlID="lbDomingo" Name="FechaFin" PropertyName="Text" />
+                                                    </SelectParameters>
+                                                </asp:SqlDataSource>
+
+
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>                  
-</div>
-
-          <!-- loader -->
-  <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
-    <script src="../js/jquery.min.js"></script>
-    <script src="../js/jquery-migrate-3.0.1.min.js"></script>
-    <script src="../js/popper.min.js"></script>
-    <script src="../js/bootstrap.min.js"></script>
-    <script src="../js/jquery.easing.1.3.js"></script>
-    <script src="../js/jquery.waypoints.min.js"></script>
-    <script src="../js/jquery.stellar.min.js"></script>
-    <script src="../js/owl.carousel.min.js"></script>
-    <script src="../js/jquery.magnific-popup.min.js"></script>
-    <script src="../js/aos.js"></script>
-    <script src="../js/jquery.animateNumber.min.js"></script>
-    <script src="../js/scrollax.min.js"></script>
-    <script src="../js/google-map.js"></script>
-    <script src="../js/main.js"></script>
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
-</asp:Content>
+     </div>
+    </asp:Content>
