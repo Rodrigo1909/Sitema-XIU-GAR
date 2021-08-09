@@ -269,7 +269,7 @@ h1{
                 </div>
                 <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
                 <div class="card">
-	                <div class="frente"><asp:Image ID="image4" runat="server" ImageUrl="images/azucar-glass.jpg" CssClass="img-responsive img-rounded" /></div>
+	                <div class="frente"><asp:Image ID="image4" runat="server" ImageUrl="images/RenderCostalGlas.png" CssClass="img-responsive img-rounded" /></div>
 	                <div class="atras">
 		                <div class="informacion">
 			                <h2>Glas<br><span>Polvo gentil</span></h2>

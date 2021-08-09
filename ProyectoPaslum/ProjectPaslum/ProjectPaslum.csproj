@@ -203,6 +203,7 @@
     <Content Include="Administrador\css\font-awesome.css" />
     <Content Include="Administrador\css\modales.css" />
     <Content Include="Administrador\css\style.css" />
+    <Content Include="Administrador\DesgloceAdmin.aspx" />
     <Content Include="Administrador\EmpleadoAdmin.aspx" />
     <Content Include="Administrador\Imagenes\asistencia_aula.jpg" />
     <Content Include="Administrador\Imagenes\borrar.png" />
@@ -312,6 +313,7 @@
     <Content Include="images\maquila.jpg" />
     <Content Include="images\piloncillo.jpg" />
     <Content Include="images\produccion.jpg" />
+    <Content Include="images\RenderCostalGlas.png" />
     <Content Include="IndexPaslum.aspx" />
     <Content Include="images\.DS_Store" />
     <Content Include="fonts\flaticon\.DS_Store" />
@@ -410,6 +412,7 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Site.Master" />
+    <Content Include="Venta\AbonoExito.aspx" />
     <Content Include="Venta\AlertaError.aspx" />
     <Content Include="Venta\AlertaErrorAbono.aspx" />
     <Content Include="Venta\AlertaExito.aspx" />
@@ -567,6 +570,13 @@
     </Compile>
     <Compile Include="Administrador\ClienteAdmin.aspx.designer.cs">
       <DependentUpon>ClienteAdmin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Administrador\DesgloceAdmin.aspx.cs">
+      <DependentUpon>DesgloceAdmin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Administrador\DesgloceAdmin.aspx.designer.cs">
+      <DependentUpon>DesgloceAdmin.aspx</DependentUpon>
     </Compile>
     <Compile Include="Administrador\EmpleadoAdmin.aspx.cs">
       <DependentUpon>EmpleadoAdmin.aspx</DependentUpon>
@@ -851,6 +861,13 @@
       <DependentUpon>Site.Mobile.Master</DependentUpon>
     </Compile>
     <Compile Include="Startup.cs" />
+    <Compile Include="Venta\AbonoExito.aspx.cs">
+      <DependentUpon>AbonoExito.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Venta\AbonoExito.aspx.designer.cs">
+      <DependentUpon>AbonoExito.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Venta\AlertaError.aspx.cs">
       <DependentUpon>AlertaError.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1001,7 +1018,9 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="css\Controllers\" />
     <Folder Include="ImagenesProductos\" />
+    <Folder Include="Venta\Archivos\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Controller\Controller.csproj">
