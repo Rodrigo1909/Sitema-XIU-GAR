@@ -15,7 +15,14 @@ namespace ProjectPaslum.Venta
         PaslumBaseDatoDataContext contexto = new PaslumBaseDatoDataContext();
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session["id"] != null)
+            {
 
+            }
+            else
+            {
+                Response.Redirect("../IndexPaslum.aspx", true);
+            }
         }
         
         protected void DataList1_ItemCommand(object source, DataListCommandEventArgs e)

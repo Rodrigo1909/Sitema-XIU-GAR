@@ -62,8 +62,8 @@
 	                                        from tblVenta v
 		                                        inner join tblCliente c
 	                                        on c.idCliente = v.fkCliente                                                
-		                                        where v.strEstado LIKE 'CREDITO' or  v.strEstado LIKE 'CREDITO (EN PROCESO)' or v.strEstado LIKE 'CREDITO (ENTREGADO)' OR
-		                                        v.strEstado LIKE 'VENTA A CREDITO FINALIZADO'
+		                                        where v.idActivo = '1' and (v.strEstado LIKE 'CREDITO' or  v.strEstado LIKE 'CREDITO (EN PROCESO)' or v.strEstado LIKE 'CREDITO (ENTREGADO)' OR
+		                                        v.strEstado LIKE 'VENTA A CREDITO FINALIZADO')
 		                                        order by v.Fecha asc;"></asp:SqlDataSource>
 
 
@@ -123,8 +123,8 @@
                                                 v.dblTotal as 'Total Venta', v.Fecha as 'Fecha de creación',v.FechaCredito as 'Fin del Credito' 
                                                 from tblVenta v
                                                 inner join tblCliente c
-                                                on c.idCliente = v.fkCliente                                                
-                                                where v.strEstado = 'VENTA A CREDITO FINALIZADA'
+                                                on c.idCliente = v.fkCliente                                                 
+                                                where v.strEstado = 'VENTA A CREDITO FINALIZADA' AND v.idActivo = '1'
                                                 order by v.Fecha asc;"></asp:SqlDataSource>
                         
                         </div>

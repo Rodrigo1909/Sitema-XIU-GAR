@@ -11,7 +11,14 @@ namespace ProjectPaslum.Venta
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (Session["id"] != null)
+            {
+                
+            }
+            else
+            {
+                Response.Redirect("../IndexPaslum.aspx", true);
+            }
         }
     }
 }

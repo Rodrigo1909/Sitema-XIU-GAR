@@ -18,21 +18,28 @@ namespace ProjectPaslum.Venta
         PaslumBaseDatoDataContext contexto = new PaslumBaseDatoDataContext();
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack)
+            if (Session["id"] != null)
             {
-                if (Session["id"] != null)
+                if (!IsPostBack)
                 {
-                    txtComprador.Text = (Session["CompletoNombre"].ToString());
-                    //lbEmpleado.Text = (Session["id"].ToString());                    
-                    this.LlenarProveedor();
+                    if (Session["id"] != null)
+                    {
+                        txtComprador.Text = (Session["CompletoNombre"].ToString());
+                        //lbEmpleado.Text = (Session["id"].ToString());                    
+                        this.LlenarProveedor();
 
-                    txtFecha.Text = DateTime.Now.ToString("dd/MM/yyyy");
+                        txtFecha.Text = DateTime.Now.ToString("dd/MM/yyyy");
+                    }
+                    else
+                    {
+                        Response.Redirect("../IndexPaslum.aspx", true);
+                    }
                 }
-                else
-                {
-                    Response.Redirect("../IndexPaslum.aspx", true);
-                }                
             }
+            else
+            {
+                Response.Redirect("../IndexPaslum.aspx", true);
+            }         
         }
 
         private void LlenarProveedor()

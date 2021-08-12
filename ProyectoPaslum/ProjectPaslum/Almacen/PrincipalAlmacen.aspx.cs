@@ -23,6 +23,10 @@ namespace ProjectPaslum.Almacen
                 {
                     this.LlenarAlmacen();
                 }
+                else
+                {
+                    Response.Redirect("../IndexPaslum.aspx", true);
+                }
             }
         }
 

@@ -20,22 +20,22 @@ namespace ProjectPaslum.Venta
         PaslumBaseDatoDataContext contexto = new PaslumBaseDatoDataContext();
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Page.IsPostBack == false)
+            if (Session["id"] != null)
             {
                 cargarcarrito();
                 txtVendedor.Text = (Session["CompletoNombre"].ToString());
                 txtDomicilio.Text = (Session["domicilio"].ToString());
                 txtFecha.Text = DateTime.Now.Date.ToString().Substring(0, 10);
 
-                var venta = (from ven in contexto.tblVenta                             
+                var venta = (from ven in contexto.tblVenta
                              orderby ven.idVenta descending
                              select new { ultimo = ven.idVenta }).FirstOrDefault();
 
                 var nuevo = venta.ultimo + 1;
 
                 txtNumVen.Text = nuevo.ToString();
-                
-                if((Session["cliente"].ToString() == "MOSTRADOR"))
+
+                if ((Session["cliente"].ToString() == "MOSTRADOR"))
                 {
                     txtCliente.Text = (Session["cliente"].ToString());
                 }
@@ -47,6 +47,10 @@ namespace ProjectPaslum.Venta
 
                     txtCliente.Text = cliente.nombre;
                 }
+            }
+            else
+            {
+                Response.Redirect("../IndexPaslum.aspx", true);
             }
         }
 
@@ -209,6 +213,7 @@ namespace ProjectPaslum.Venta
                         ven.fkCliente = null;
                         ven.archNota = "NO EXISTE";
                         ven.archFactura = "NO EXISTE";
+                        ven.idActivo = 1;
                         ctrlCli.InsertarVenta(ven);
 
                         foreach (GridViewRow row in GridView1.Rows)
@@ -276,6 +281,7 @@ namespace ProjectPaslum.Venta
                     ven.fkCliente = int.Parse(Session["cliente"].ToString());
                     ven.archNota = "NO EXISTE";
                     ven.archFactura = "NO EXISTE";
+                    ven.idActivo = 1;
                     ctrlCli.InsertarVenta(ven);
 
                     foreach (GridViewRow row in GridView1.Rows)

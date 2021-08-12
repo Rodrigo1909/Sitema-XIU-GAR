@@ -59,7 +59,7 @@
                                                 from tblVenta v
                                                 left join tblCliente c
                                                 on c.idCliente = v.fkCliente                                                
-                                                where v.strEstado = 'PENDIENTE'
+                                                where v.strEstado = 'PENDIENTE' AND v.idActivo = '1'
                                                 order by v.Fecha asc;"></asp:SqlDataSource>
 
                         </div>
@@ -114,7 +114,7 @@
                                                 from tblVenta v
                                                 left join tblCliente c
                                                 on c.idCliente = v.fkCliente                                                
-                                                where v.strEstado = 'EN PROCESO'
+                                                where v.strEstado = 'EN PROCESO' AND v.idActivo = '1'
                                                 order by v.Fecha asc;"></asp:SqlDataSource>
                         
                         </div>
@@ -214,7 +214,7 @@
                                                 from tblVenta v
                                                 left join tblCliente c
                                                 on c.idCliente = v.fkCliente                                                
-                                                where v.strEstado = 'FINALIZADO'
+                                                where v.strEstado = 'FINALIZADO' AND v.idActivo = '1'
                                                 order by v.Fecha desc;"></asp:SqlDataSource>
 
 

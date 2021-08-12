@@ -11,7 +11,14 @@ namespace ProjectPaslum.Almacen
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            this.ClientScript.RegisterStartupScript(this.GetType(), "SweetAlert", "fallo()", true);
+            if (Session["id"] != null)
+            {
+                this.ClientScript.RegisterStartupScript(this.GetType(), "SweetAlert", "fallo()", true);
+            }
+            else
+            {
+                Response.Redirect("../IndexPaslum.aspx", true);
+            }
         }
     }
 }

@@ -25,6 +25,11 @@ namespace ProjectPaslum.Almacen
                     lbEmpleado.Text = (Session["id"].ToString());
                     this.LlenarAlmacen();
                 }
+                else
+                {
+                    Response.Redirect("../IndexPaslum.aspx", true);
+                }
+
             }
         }
 

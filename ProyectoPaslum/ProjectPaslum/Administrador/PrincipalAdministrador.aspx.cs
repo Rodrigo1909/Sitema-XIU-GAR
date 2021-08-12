@@ -13,7 +13,14 @@ namespace ProjectPaslum
         PaslumBaseDatoDataContext contexto = new PaslumBaseDatoDataContext();
         protected void Page_Load(object sender, EventArgs e)
         {
-            lbFecha.Text = DateTime.Now.ToString("yyyy-MM-dd");
+            if (Session["id"] != null)
+            {
+                lbFecha.Text = DateTime.Now.ToString("yyyy-MM-dd");
+            }
+            else
+            {
+                Response.Redirect("../IndexPaslum.aspx", true);
+            }            
         }
 
         protected void ListVentaHoy_ItemCommand(object source, DataListCommandEventArgs e)

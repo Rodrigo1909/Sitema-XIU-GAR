@@ -65,7 +65,13 @@ namespace ProjectPaslum.Venta
                     this.LlenarCliente();
 
                     txtFecha.Text = DateTime.Now.ToString("dd/MM/yyyy");
+                    this.ClientScript.RegisterStartupScript(this.GetType(), "SweetAlert", "alerta()", true);
                 }
+                else
+                {
+                    Response.Redirect("../IndexPaslum.aspx", true);
+                }
+
             }
 
             if (Page.IsPostBack == false)

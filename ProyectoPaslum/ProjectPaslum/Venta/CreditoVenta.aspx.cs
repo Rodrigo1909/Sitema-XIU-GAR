@@ -62,19 +62,27 @@ namespace ProjectPaslum.Venta
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack)
-            {
-                if (Session["id"] != null)
-                {
-                    txtVendedor.Text = (Session["CompletoNombre"].ToString());                                   
-                    this.LlenarCliente();
 
-                    txtFecha.Text = DateTime.Now.ToString("dd/MM/yyyy");
+            if (Session["id"] != null)
+            {
+                if (!IsPostBack)
+                {
+                    if (Session["id"] != null)
+                    {
+                        txtVendedor.Text = (Session["CompletoNombre"].ToString());
+                        this.LlenarCliente();
+
+                        txtFecha.Text = DateTime.Now.ToString("dd/MM/yyyy");
+                    }
+                }
+                if (Page.IsPostBack == false)
+                {
+                    CargarDetalle();
                 }
             }
-            if (Page.IsPostBack == false)
+            else
             {
-                CargarDetalle();                
+                Response.Redirect("../IndexPaslum.aspx", true);
             }
         }
 

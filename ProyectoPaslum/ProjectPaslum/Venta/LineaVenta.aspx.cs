@@ -15,32 +15,39 @@ namespace ProjectPaslum.Venta
         PaslumBaseDatoDataContext contexto = new PaslumBaseDatoDataContext();
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!this.IsPostBack)
+            if (Session["id"] != null)
             {
-                try
+                if (!this.IsPostBack)
                 {
-                    GridView1.DataSource = (from ven in contexto.tblVenta
-                                            join cli in contexto.tblCliente
-                                            on ven.fkCliente equals cli.idCliente
-                                            where ven.strEstado == "PENDIENTE"
-                                            select new
-                                            {
-                                                Identificador = ven.idVenta,
-                                                Establecimiento = cli.strEstablecimiento,
-                                                Total = ven.dblTotal,
-                                                Fecha = ven.Fecha,
-                                                Estado = ven.strEstado.ToUpper(),
-                                            }).ToList();
+                    try
+                    {
+                        GridView1.DataSource = (from ven in contexto.tblVenta
+                                                join cli in contexto.tblCliente
+                                                on ven.fkCliente equals cli.idCliente
+                                                where ven.strEstado == "PENDIENTE"
+                                                select new
+                                                {
+                                                    Identificador = ven.idVenta,
+                                                    Establecimiento = cli.strEstablecimiento,
+                                                    Total = ven.dblTotal,
+                                                    Fecha = ven.Fecha,
+                                                    Estado = ven.strEstado.ToUpper(),
+                                                }).ToList();
 
 
-                    GridView1.DataBind();
+                        GridView1.DataBind();
+                    }
+                    catch (Exception)
+                    {
+
+                        throw;
+                    }
+
                 }
-                catch (Exception)
-                {
-
-                    throw;
-                }
-
+            }
+            else
+            {
+                Response.Redirect("../IndexPaslum.aspx", true);
             }
         }
 

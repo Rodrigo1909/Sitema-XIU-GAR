@@ -19,26 +19,33 @@ namespace ProjectPaslum.Venta
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Page.IsPostBack == false)
+            if (Session["id"] != null)
             {
-                cargarcarrito();
-                txtVendedor.Text = (Session["CompletoNombre"].ToString());
-                txtDomicilio.Text = (Session["domicilio"].ToString());
-                txtFecha.Text = DateTime.Now.Date.ToString().Substring(0, 10);
-
-                if ((Session["cliente"].ToString() == "MOSTRADOR"))
+                if (Page.IsPostBack == false)
                 {
-                    txtCliente.Text = (Session["cliente"].ToString());
-                }
-                else
-                {
-                    var cliente = (from cli in contexto.tblCliente
-                                   where cli.idCliente == int.Parse(Session["cliente"].ToString())
-                                   select new { nombre = cli.strNombre + " " + cli.strApellidoP + " " + cli.strApellidoM }).FirstOrDefault();
+                    cargarcarrito();
+                    txtVendedor.Text = (Session["CompletoNombre"].ToString());
+                    txtDomicilio.Text = (Session["domicilio"].ToString());
+                    txtFecha.Text = DateTime.Now.Date.ToString().Substring(0, 10);
 
-                    txtCliente.Text = cliente.nombre;
+                    if ((Session["cliente"].ToString() == "MOSTRADOR"))
+                    {
+                        txtCliente.Text = (Session["cliente"].ToString());
+                    }
+                    else
+                    {
+                        var cliente = (from cli in contexto.tblCliente
+                                       where cli.idCliente == int.Parse(Session["cliente"].ToString())
+                                       select new { nombre = cli.strNombre + " " + cli.strApellidoP + " " + cli.strApellidoM }).FirstOrDefault();
+
+                        txtCliente.Text = cliente.nombre;
+                    }
                 }
             }
+            else
+            {
+                Response.Redirect("../IndexPaslum.aspx", true);
+            }           
         }
 
         public void cargarcarrito()

@@ -16,26 +16,33 @@ namespace ProjectPaslum.Venta
         PaslumBaseDatoDataContext contexto = new PaslumBaseDatoDataContext();
         protected void Page_Load(object sender, EventArgs e)
         {
-            loadGridItems(Convert.ToInt32(Session["desgloce"].ToString()));
+            if (Session["id"] != null)
+            {
+                loadGridItems(Convert.ToInt32(Session["desgloce"].ToString()));
 
-            var ventas = (from venta in contexto.tblVenta
-                           where venta.idVenta ==  int.Parse(Session["desgloce"].ToString())
-                           select new { id = venta.idVenta,fecha = venta.Fecha, fin = venta.FechaCredito, total = venta.dblTotal }).FirstOrDefault();
+                var ventas = (from venta in contexto.tblVenta
+                              where venta.idVenta == int.Parse(Session["desgloce"].ToString())
+                              select new { id = venta.idVenta, fecha = venta.Fecha, fin = venta.FechaCredito, total = venta.dblTotal }).FirstOrDefault();
 
-            var resta = (from detalle in contexto.tblHistorialAbono
-                         where detalle.fkVenta == int.Parse(Session["desgloce"].ToString())
-                         orderby detalle.idHistorialAbono descending
-                         select new {res = detalle.dblCantidadAnterior }).FirstOrDefault();
+                var resta = (from detalle in contexto.tblHistorialAbono
+                             where detalle.fkVenta == int.Parse(Session["desgloce"].ToString())
+                             orderby detalle.idHistorialAbono descending
+                             select new { res = detalle.dblCantidadAnterior }).FirstOrDefault();
 
-            txtFecha.Text = ventas.fecha.ToString().Substring(0, 10);
-            txtFechaFin.Text = ventas.fin.ToString().Substring(0, 10);
+                txtFecha.Text = ventas.fecha.ToString().Substring(0, 10);
+                txtFechaFin.Text = ventas.fin.ToString().Substring(0, 10);
 
-            txtTotal.Text = "$" + Convert.ToDecimal(ventas.total).ToString("#,###.00");
-            txtNumVen.Text = ventas.id.ToString();
+                txtTotal.Text = "$" + Convert.ToDecimal(ventas.total).ToString("#,###.00");
+                txtNumVen.Text = ventas.id.ToString();
 
-            var faltante = ventas.total - resta.res ;
+                var faltante = ventas.total - resta.res;
 
-            txtRestante.Text = "$" + Convert.ToDecimal(faltante).ToString("#,###.00");
+                txtRestante.Text = "$" + Convert.ToDecimal(faltante).ToString("#,###.00");
+            }
+            else
+            {
+                Response.Redirect("../IndexPaslum.aspx", true);
+            }
         }
 
 

@@ -14,7 +14,14 @@ namespace ProjectPaslum.Almacen
         PaslumBaseDatoDataContext contexto = new PaslumBaseDatoDataContext();
         protected void Page_Load(object sender, EventArgs e)
         {
-            lbEmpleado.Text = (Session["id"].ToString());
+            if (Session["id"] != null)
+            {
+                lbEmpleado.Text = (Session["id"].ToString());
+            }
+            else
+            {
+                Response.Redirect("../IndexPaslum.aspx", true);
+            }            
         }
 
         protected void DataList1_ItemCommand(object source, DataListCommandEventArgs e)

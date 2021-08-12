@@ -17,15 +17,15 @@ namespace ProjectPaslum.Almacen
         protected void Page_Load(object sender, EventArgs e)
         {
 
-            if (!IsPostBack)
+            if (Session["id"] != null)
             {
-
-                if (Session["id"] != null)
-                {
-                    txtAlmacenista.Text = (Session["nombre"].ToString());
-                    lbEmpleado.Text = (Session["id"].ToString());
-                    this.LlenarAlmacen();
-                }
+                txtAlmacenista.Text = (Session["nombre"].ToString());
+                lbEmpleado.Text = (Session["id"].ToString());
+                this.LlenarAlmacen();
+            }
+            else
+            {
+                Response.Redirect("../IndexPaslum.aspx", true);
             }
         }
 

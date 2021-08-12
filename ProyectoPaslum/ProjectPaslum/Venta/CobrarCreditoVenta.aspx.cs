@@ -19,14 +19,14 @@ namespace ProjectPaslum.Venta
         PaslumBaseDatoDataContext contexto = new PaslumBaseDatoDataContext();
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Page.IsPostBack == false)
+            if (Session["id"] != null)
             {
                 cargarcarrito();
                 txtVendedor.Text = (Session["CompletoNombre"].ToString());
                 txtDomicilio.Text = (Session["domicilio"].ToString());
 
                 txtFechaFin.Text = (Session["FechaCredito"].ToString().Substring(0, 10));
-                txtFecha.Text = DateTime.Now.Date.ToString().Substring(0, 10);                
+                txtFecha.Text = DateTime.Now.Date.ToString().Substring(0, 10);
 
                 var venta = (from ven in contexto.tblVenta
                              orderby ven.idVenta descending
@@ -50,6 +50,11 @@ namespace ProjectPaslum.Venta
                     txtCliente.Text = cliente.nombre;
                 }
             }
+            else
+            {
+                Response.Redirect("../IndexPaslum.aspx", true);
+            }
+
         }
 
         public void cargarcarrito()
@@ -165,6 +170,7 @@ namespace ProjectPaslum.Venta
             ven.strHoraEntega = txtHora.Text;
             ven.archNota = "NO EXISTE";
             ven.archFactura = "NO EXISTE";
+            ven.idActivo = 1;
 
             HisVen.tblVenta = ven;
 

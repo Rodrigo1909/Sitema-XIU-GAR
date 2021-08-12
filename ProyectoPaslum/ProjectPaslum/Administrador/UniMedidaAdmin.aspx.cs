@@ -14,10 +14,13 @@ namespace ProjectPaslum.Administrador
         PaslumBaseDatoDataContext contexto = new PaslumBaseDatoDataContext();
         protected void Page_Load(object sender, EventArgs e)
         {
-
-            if (!IsPostBack)
+            if (Session["id"] != null)
             {
                 this.LlenarMarca();
+            }
+            else
+            {
+                Response.Redirect("../IndexPaslum.aspx", true);
             }
         }
 

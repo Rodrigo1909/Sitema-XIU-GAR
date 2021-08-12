@@ -18,6 +18,10 @@ namespace ProjectPaslum.Administrador
             {
                 this.LlenarEncargado();
             }
+            else
+            {
+                Response.Redirect("../IndexPaslum.aspx", true);
+            }
         }
 
         private void LlenarEncargado()

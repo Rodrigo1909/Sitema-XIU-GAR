@@ -32,9 +32,17 @@ namespace ProjectPaslum.Venta
         protected void Page_Load(object sender, EventArgs e)
         {
             this.ClientScript.RegisterStartupScript(this.GetType(), "SweetAlert", "alerta()", true);
-            if (Page.IsPostBack == false)
+
+            if (Session["id"] != null)
             {
-                CargarDetalle();
+                if (Page.IsPostBack == false)
+                {
+                    CargarDetalle();
+                }
+            }
+            else
+            {
+                Response.Redirect("../IndexPaslum.aspx", true);
             }
         }
     }

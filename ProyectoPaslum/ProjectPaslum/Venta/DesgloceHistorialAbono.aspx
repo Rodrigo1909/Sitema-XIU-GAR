@@ -158,19 +158,16 @@
 
 
                             <div class="form-inline">
-
-                               <div class="form-group">  
-                                    <label>Seleccionar Factura: </label>
-                                    <asp:FileUpload ID="archivoFactura" runat="server"  width="500px" style="text-align:center"/>  
-                               </div>
-
-                                    &nbsp &nbsp &nbsp &nbsp 
-
                                 <div class="form-group">                                                                    
                                     <label>Seleccionar Nota Firmada: </label>                                    
                                     <asp:FileUpload ID="archivoNota" runat="server"  width="500px" style="text-align:center"/>  
                                 </div>
-                             
+                                &nbsp &nbsp &nbsp &nbsp 
+                               <div class="form-group">  
+                                    <label>Seleccionar Factura: </label>
+                                    <asp:FileUpload ID="archivoFactura" runat="server"  width="500px" style="text-align:center"/>  
+                               </div>                                
+
                             <br /> 
                             <br />
                             <br /> 

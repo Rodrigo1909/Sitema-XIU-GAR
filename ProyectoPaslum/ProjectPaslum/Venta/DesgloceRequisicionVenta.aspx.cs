@@ -20,17 +20,23 @@ namespace ProjectPaslum.Venta
         PaslumBaseDatoDataContext contexto = new PaslumBaseDatoDataContext();
         protected void Page_Load(object sender, EventArgs e)
         {
-            loadGridItems(Convert.ToInt32(Session["desgloce"].ToString()));
+            if (Session["id"] != null)
+            {
+                loadGridItems(Convert.ToInt32(Session["desgloce"].ToString()));
 
-            var ventas = (from venta in contexto.tblVenta
-                          where venta.idVenta == int.Parse(Session["desgloce"].ToString())
-                          select new { id = venta.idVenta, fecha = venta.Fecha, hora = venta.strHoraEntega, fin = venta.strFechaEntega }).FirstOrDefault();
+                var ventas = (from venta in contexto.tblVenta
+                              where venta.idVenta == int.Parse(Session["desgloce"].ToString())
+                              select new { id = venta.idVenta, fecha = venta.Fecha, hora = venta.strHoraEntega, fin = venta.strFechaEntega }).FirstOrDefault();
 
-            txtFecha.Text = ventas.fecha.ToString().Substring(0, 10);
-            txtFechaFin.Text = ventas.fin.ToString();
-            txtHoraEntrega.Text = ventas.hora.ToString();
-            txtNumVen.Text = ventas.id.ToString();
-
+                txtFecha.Text = ventas.fecha.ToString().Substring(0, 10);
+                txtFechaFin.Text = ventas.fin.ToString();
+                txtHoraEntrega.Text = ventas.hora.ToString();
+                txtNumVen.Text = ventas.id.ToString();
+            }
+            else
+            {
+                Response.Redirect("../IndexPaslum.aspx", true);
+            }
         }
 
         private void loadGridItems(int idDetalleVenta)

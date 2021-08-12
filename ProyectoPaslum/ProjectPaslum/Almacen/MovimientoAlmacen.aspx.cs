@@ -14,7 +14,14 @@ namespace ProjectPaslum.Almacen
         
         protected void Page_Load(object sender, EventArgs e)
         {
-          
+            if (Session["id"] != null)
+            {
+                
+            }
+            else
+            {
+                Response.Redirect("../IndexPaslum.aspx", true);
+            }
         }
 
 
