@@ -20,7 +20,6 @@
              </div> 
         </div>          
     </div>
-       
 <p>
   <a class="btn btn-primary" data-toggle="collapse" href="#multiCollapseExample1" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">Nuevo proveedor</a>
   <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#multiCollapseExample2" aria-expanded="false" aria-controls="multiCollapseExample2">Proveedores activos</button>
@@ -146,7 +145,7 @@
                                                        
                                                          <div class="form-group">
                                                             <label>Colonia: </label>
-                                                            <asp:TextBox ID="txtColonia" runat="server" CssClass="form-control" width="330px" required="required">
+                                                            <asp:TextBox ID="txtColonia" runat="server" CssClass="form-control" width="330px" >
                                                             </asp:TextBox>
                                                          </div>
                                                         <br /> <br />
@@ -185,7 +184,7 @@
 
                                                         <div class="form-group">
                                                             <label>Calle: </label>
-                                                            <asp:TextBox ID="txtCalle" runat="server" CssClass="form-control" width="345px" required="required">
+                                                            <asp:TextBox ID="txtCalle" runat="server" CssClass="form-control" width="345px" >
                                                             </asp:TextBox>
                                                          </div>
                                                         <br /> <br />
@@ -310,15 +309,14 @@
         </div>
         <div id="collapse" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
             <div class="panel-body">
-                      <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource1" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px">
+                      <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource1" 
+                          BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" AllowPaging="True" AllowSorting="True">
                         <Columns>
-                            <asp:BoundField DataField="strNombre" HeaderText="strNombre" SortExpression="strNombre" />
-                            <asp:BoundField DataField="strApellidoP" HeaderText="strApellidoP" SortExpression="strApellidoP" />
-                            <asp:BoundField DataField="strApellidoM" HeaderText="strApellidoM" SortExpression="strApellidoM" />
-                            <asp:BoundField DataField="strCorreo" HeaderText="strCorreo" SortExpression="strCorreo" />
-                            <asp:BoundField DataField="strCelular" HeaderText="strCelular" SortExpression="strCelular" />
-                            <asp:BoundField DataField="strUsuario" HeaderText="strUsuario" SortExpression="strUsuario" />
-                            <asp:BoundField DataField="strPassword" HeaderText="strPassword" SortExpression="strPassword" />
+                            <asp:BoundField DataField="strRazonSocial" HeaderText="RAZÓN SOCIAL" SortExpression="strRazonSocial" />
+                            <asp:BoundField DataField="strCorreo" HeaderText="CORREO" SortExpression="strCorreo" />
+                            <asp:BoundField DataField="strProducto" HeaderText="PRODUCTO O SERVICIO" SortExpression="strProducto" />
+                            <asp:BoundField DataField="Column1" HeaderText="DIRECCIÓN" SortExpression="Column1" ReadOnly="True" />
+                            <asp:BoundField DataField="Column2" HeaderText="TELÉFONO" SortExpression="Column2" ReadOnly="True" />
                         </Columns>
                          
                          <FooterStyle BackColor="White" ForeColor="#000066" />
@@ -332,15 +330,16 @@
                         <SortedDescendingHeaderStyle BackColor="#00547E" />
                     </asp:GridView>
 
-                    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:XIUGARConnectionString %>" SelectCommand="select e.strNombre, e.strApellidoP, e.strApellidoM, e.strCorreo,
-                                                t.strCelular, u.strUsuario, u.strPassword
-                                                from tblProveedor e
-                                                inner join tblDireccion d
-                                                on e.fkDireccion = d.idDireccion
-                                                inner join tblTelefono t
-                                                on e.fkTelefono = t.idTelefono
-                                                inner join tblUsuario u
-                                                on e.fkLogin = u.idUsuario"></asp:SqlDataSource>
+                    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:XIUGARConnectionString %>" 
+                        SelectCommand="select e.strRazonSocial, e.strCorreo, e.strProducto,
+		                                d.strCalle + ', ' + d.strColonia + ', ' + d.intCodpost,
+                                        t.strCelular + ', ' + t.strTelCasa
+                                        from tblProveedor e
+                                        inner join tblDireccion d
+                                        on e.fkDireccion = d.idDireccion
+                                        inner join tblTelefono t
+                                        on e.fkTelefono = t.idTelefono
+		                                where e.idActivo = 1"></asp:SqlDataSource>
 
 
 
@@ -356,12 +355,12 @@
         <div class="collapse multi-collapse" id="multiCollapseExample3">
               <div class="form-inline">
                 <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5">
-                    <label class="text-muted">Búsqueda de empleado: </label>
+                    <label class="text-muted">Búsqueda de proveedor: </label>
                     <asp:TextBox ID="txtBusqueda" runat="server" CssClass="form-control" Width="270px"></asp:TextBox>  
                </div>      
                           
                 <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
-                    <asp:Button ID="btnBuscar" runat="server" Text="Buscar" Font-Size="14px" CssClass="btn btn-block btn-sm btn-success" Width="170px" OnClick="btnBuscar_Click"/>
+                    <asp:Button ID="btnBuscarProveedor" runat="server" Text="Buscar" Font-Size="14px" CssClass="btn btn-block btn-sm btn-success" Width="170px" OnClick="btnBuscarProveedor_Click"/>
                 </div>
 
                 <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5">
@@ -374,21 +373,13 @@
                     BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" AllowPaging="True" AutoGenerateColumns="false">
                     
                     <Columns>
-                        <asp:BoundField DataField="strNombre" HeaderText="NOMBRE" />
-                        <asp:BoundField DataField="strApellidoP" HeaderText="APELLLIDO P." />
-                        <asp:BoundField DataField="strApellidoM" HeaderText="APELLLIDO M." />                        
+                        <asp:BoundField DataField="strRazonSocial" HeaderText="RAZÓN SOCIAL" />                       
                         <asp:BoundField DataField="strCorreo" HeaderText="CORREO" />
+                        <asp:BoundField DataField="strProducto" HeaderText="SERVICIO" />                        
                         
-                        
-                        
-                        <asp:TemplateField HeaderText="EDITAR">
-                            <ItemTemplate>
-                                <asp:ImageButton ID="btnEditar" runat="server" ImageUrl="~/Administrador/Imagenes/editar.png" />
-                            </ItemTemplate>
-                        </asp:TemplateField>
                         <asp:TemplateField HeaderText="BORRAR">
                             <ItemTemplate>
-                                <asp:ImageButton ID="btnBorrar" runat="server" ImageUrl="~/Administrador/Imagenes/borrar.png" />
+                                <asp:ImageButton ID="btnBorrar" runat="server" ImageUrl="~/Administrador/Imagenes/borrar.png" OnClick="btnBorrar_Click"/>
                             </ItemTemplate>
                         </asp:TemplateField>
                     </Columns>

@@ -15,23 +15,29 @@ namespace ProjectPaslum.Cliente
 
         public void CargarDetalle()
         {
-            if (Session["pedido"] == null)
+            if (Session["id"] != null)
             {
-                dtb = new DataTable("Carrito");
-                dtb.Columns.Add("idProducto", System.Type.GetType("System.Int32"));
-                dtb.Columns.Add("strNombre", System.Type.GetType("System.String"));
-                dtb.Columns.Add("dblPrecio", System.Type.GetType("System.Double"));
-                dtb.Columns.Add("subtotal", System.Type.GetType("System.Double"));
-                dtb.Columns.Add("canproducto", System.Type.GetType("System.Int32"));
+                if (Session["pedido"] == null)
+                {
+                    dtb = new DataTable("Carrito");
+                    dtb.Columns.Add("idProducto", System.Type.GetType("System.Int32"));
+                    dtb.Columns.Add("strNombre", System.Type.GetType("System.String"));
+                    dtb.Columns.Add("dblPrecio", System.Type.GetType("System.Double"));
+                    dtb.Columns.Add("subtotal", System.Type.GetType("System.Double"));
+                    dtb.Columns.Add("canproducto", System.Type.GetType("System.Int32"));
 
-                Session["pedido"] = dtb;
-                Session["prueba"] = dtb;
+                    Session["pedido"] = dtb;
+                    Session["prueba"] = dtb;
+                }
+                else
+                {
+                    Session["pedido"] = Session["prueba"];
+                }
             }
             else
             {
-                Session["pedido"] = Session["prueba"];
+                Response.Redirect("../IndexPaslum.aspx", true);
             }
-
 
         }
 

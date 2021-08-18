@@ -22,7 +22,6 @@
              </div> 
         </div>          
     </div>
-       
 <p>
   <a class="btn btn-primary" data-toggle="collapse" href="#multiCollapseExample1" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">Nuevo empleado</a>
   <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#multiCollapseExample2" aria-expanded="false" aria-controls="multiCollapseExample2">Empleados activos</button>
@@ -325,16 +324,16 @@
         </div>
         <div id="collapse" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
             <div class="panel-body">
-                <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" Width="100%" AllowPaging="True" DataSourceID="SqlDataSource1" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px">
+               <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" Width="100%" AllowPaging="True" 
+                   DataSourceID="SqlDataSource1" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" AllowSorting="True">
                     <Columns>
 
-                        <asp:BoundField DataField="strNombre" HeaderText="Nombre" SortExpression="strNombre" />
-                        <asp:BoundField DataField="strApellidoP" HeaderText="ApellidoP" SortExpression="strApellidoP" />
-                        <asp:BoundField DataField="strApellidoM" HeaderText="ApellidoM" SortExpression="strApellidoM" />
-                        <asp:BoundField DataField="strCorreo" HeaderText="Correo" SortExpression="strCorreo" />
-                        <asp:BoundField DataField="strCelular" HeaderText="Celular" SortExpression="strCelular" />
-                        <asp:BoundField DataField="strUsuario" HeaderText="Usuario" SortExpression="strUsuario" />
-                        <asp:BoundField DataField="strTipousuario" HeaderText="Rol" SortExpression="strTipousuario" />
+                        <asp:BoundField DataField="Column1" HeaderText="NOMBRE" SortExpression="Column1" ReadOnly="True" />
+                        <asp:BoundField DataField="strCorreo" HeaderText="CORREO" SortExpression="strCorreo" />
+                        <asp:BoundField DataField="strCelular" HeaderText="TELÉFONO" SortExpression="strCelular" />
+                        <asp:BoundField DataField="strUsuario" HeaderText="USUARIO" SortExpression="strUsuario" />
+                        <asp:BoundField DataField="strPassword" HeaderText="CONTRASEÑA" SortExpression="strPassword" />
+                        <asp:BoundField DataField="strTipousuario" HeaderText="ROL" SortExpression="strTipousuario" />
 
                     </Columns>
                      <FooterStyle BackColor="White" ForeColor="#000066" />
@@ -349,8 +348,8 @@
                 </asp:GridView>
 
                 <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:XIUGARConnectionString %>" 
-                    SelectCommand="select e.strNombre, e.strApellidoP, e.strApellidoM, e.strCorreo,
-                                    t.strCelular, u.strUsuario, u.strTipousuario from tblEmpleado e
+                    SelectCommand="select e.strNombre + ' '+ e.strApellidoP + ' '+ e.strApellidoM, e.strCorreo,
+                                    t.strCelular, u.strUsuario, u.strPassword, u.strTipousuario from tblEmpleado e
                                     inner join tblDireccion d
                                     on e.fkDireccion = d.idDireccion
                                     inner join tblTelefono t
@@ -392,16 +391,9 @@
                         <asp:BoundField DataField="strApellidoM" HeaderText="APELLLIDO M." />                        
                         <asp:BoundField DataField="strCorreo" HeaderText="CORREO" />
                         
-                        
-                        
-                        <asp:TemplateField HeaderText="EDITAR">
-                            <ItemTemplate>
-                                <asp:ImageButton ID="btnEditar" runat="server" ImageUrl="~/Administrador/Imagenes/editar.png" />
-                            </ItemTemplate>
-                        </asp:TemplateField>
                         <asp:TemplateField HeaderText="BORRAR">
                             <ItemTemplate>
-                                <asp:ImageButton ID="btnBorrar" runat="server" ImageUrl="~/Administrador/Imagenes/borrar.png" />
+                                <asp:ImageButton ID="btnBorrar" runat="server" ImageUrl="~/Administrador/Imagenes/borrar.png" OnClick="btnBorrar_Click"/>
                             </ItemTemplate>
                         </asp:TemplateField>
                     </Columns>

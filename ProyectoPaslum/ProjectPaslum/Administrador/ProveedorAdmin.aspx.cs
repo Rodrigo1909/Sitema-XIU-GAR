@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using Modelo;
 using ProjectPaslum.Controllers;
+using Controller;
 
 namespace ProjectPaslum.Administrador
 {
@@ -122,6 +123,7 @@ namespace ProjectPaslum.Administrador
 
         protected void ddlEstado_SelectedIndexChanged(object sender, EventArgs e)
         {
+            ddlMunicipio.Items.Clear();
             var municipio = (from munesta in contexto.tblEstado_Municipio
 
                              join mun in contexto.TblMunicipio
@@ -144,25 +146,52 @@ namespace ProjectPaslum.Administrador
             ddlMunicipio.DataBind();
         }
 
-        protected void btnBuscar_Click(object sender, EventArgs e)
+        protected void btnBuscarProveedor_Click(object sender, EventArgs e)
         {
             string identificador = txtBusqueda.Text.ToUpper();
             tblProveedor proveedor = this.GetProveedor(identificador);
             this.ConfigurarGrid(proveedor);
-
         }
 
         public tblProveedor GetProveedor(string nombre)
         {
+            ControllerEmpleado CtrlProveedor = new ControllerEmpleado();
             return CtrlProveedor.ConsultarProveedor(nombre);
         }
 
         public void ConfigurarGrid(tblProveedor provee)
         {
             List<tblProveedor> proveedores = new List<tblProveedor>();
-            proveedores.Add(provee);
-            this.GridProveedor.DataSource = proveedores;
-            this.GridProveedor.DataBind();
+            if (provee == null)
+            {
+                Response.Redirect("./ProveedorAdmin.aspx", true);
+            }
+            else if(provee.idActivo == 1)
+            {
+                proveedores.Add(provee);
+                this.GridProveedor.DataSource = proveedores;
+                this.GridProveedor.DataBind();
+            }
+            else
+            {
+                Response.Redirect("./ProveedorAdmin.aspx", true);
+            }
+        }
+
+        protected void btnBorrar_Click(object sender, ImageClickEventArgs e)
+        {
+            var idProveedor = (from prove in contexto.tblProveedor
+                                where prove.strNombre == txtBusqueda.Text.ToUpper()
+                                    select new { id = prove.idProveedor }).FirstOrDefault();
+
+            tblProveedor pro = new tblProveedor();
+            ControllerEmpleado ctrlEmp = new ControllerEmpleado();
+
+            pro.idProveedor = idProveedor.id;
+            pro.idActivo = 0;
+
+            ctrlEmp.BorradoLogico(pro);
+            Response.Redirect("./ProveedorAdmin.aspx", true);
         }
     }
 }

@@ -71,6 +71,11 @@ namespace Controller
 
         }
 
+        public tblProveedor ConsultarProveedor(string strNombre)
+        {
+            return contexto.tblProveedor.Where(e => e.strNombre == strNombre).FirstOrDefault<tblProveedor>();
+        }
+
         MailMessage m = new MailMessage();
         SmtpClient smtp = new SmtpClient();
 
@@ -108,6 +113,30 @@ namespace Controller
                 Console.WriteLine(e.StackTrace);
                 return false;
             }
+        }
+
+        public void BorradoLogico(tblProveedor prov)
+        {
+            tblProveedor emplBd = contexto.tblProveedor
+                .Where(t => t.idProveedor == prov.idProveedor).FirstOrDefault();
+            if (emplBd != null)
+            {
+                emplBd.idActivo = 0;
+                contexto.SubmitChanges();
+            }
+
+        }
+
+        public void BorradoLogicoEmpleado(tblEmpleado empl)
+        {
+            tblEmpleado emplBd = contexto.tblEmpleado
+                .Where(t => t.idEmpleado == empl.idEmpleado).FirstOrDefault();
+            if (emplBd != null)
+            {
+                emplBd.idActivo = 0;
+                contexto.SubmitChanges();
+            }
+
         }
     }
 }

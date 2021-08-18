@@ -19,8 +19,11 @@ namespace ProjectPaslum.Cliente
             if (Session["id"] != null)
             {
                 lbCliente.Text = (Session["id"].ToString());
-                
             }
+            else
+            {
+                Response.Redirect("../IndexPaslum.aspx", true);
+            }           
         }
     }
 }

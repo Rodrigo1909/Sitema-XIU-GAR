@@ -15,12 +15,16 @@ namespace ProjectPaslum.Cliente
         PaslumBaseDatoDataContext contexto = new PaslumBaseDatoDataContext();
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Page.IsPostBack == false)
+            if (Session["id"] != null)
             {
                 cargarcarrito();
                 txtCorreo.Text = (Session["correo"].ToString());
                 txtCliente.Text = (Session["nombre"].ToString());
                 txtFecha.Text = DateTime.Now.Date.ToString().Substring(0, 10);
+            }
+            else
+            {
+                Response.Redirect("../IndexPaslum.aspx", true);
             }
         }
 

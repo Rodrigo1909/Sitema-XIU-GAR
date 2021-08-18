@@ -238,13 +238,13 @@ namespace ProjectPaslum.Administrador {
         protected global::System.Web.UI.WebControls.TextBox txtBusqueda;
         
         /// <summary>
-        /// Control btnBuscar.
+        /// Control btnBuscarProveedor.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnBuscar;
+        protected global::System.Web.UI.WebControls.Button btnBuscarProveedor;
         
         /// <summary>
         /// Control GridProveedor.

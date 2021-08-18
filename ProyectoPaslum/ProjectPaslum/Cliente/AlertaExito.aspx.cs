@@ -35,6 +35,10 @@ namespace ProjectPaslum.Cliente
             {
                 CargarDetalle();
             }
+            else
+            {
+                Response.Redirect("../IndexPaslum.aspx", true);
+            }
         }
     }
 }

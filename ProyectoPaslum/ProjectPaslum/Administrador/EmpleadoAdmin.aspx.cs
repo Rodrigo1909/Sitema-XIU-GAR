@@ -175,10 +175,37 @@ namespace ProjectPaslum.Administrador
         public void ConfigurarGrid(tblEmpleado emplea)
         {
             List<tblEmpleado> empleados = new List<tblEmpleado>();
-            empleados.Add(emplea);
-            this.GridEmpleado.DataSource = empleados;
-            this.GridEmpleado.DataBind();
+
+            if(emplea == null)
+            {
+                Response.Redirect("./EmpleadoAdmin.aspx", true);
+            }
+            else if (emplea.idActivo == 1)            
+            { 
+                empleados.Add(emplea);
+                this.GridEmpleado.DataSource = empleados;
+                this.GridEmpleado.DataBind();
+            }
+            else
+            {
+                Response.Redirect("./EmpleadoAdmin.aspx", true);
+            }
         }
 
+        protected void btnBorrar_Click(object sender, ImageClickEventArgs e)
+        {
+            var idEmpleado = (from empl in contexto.tblEmpleado
+                               where empl.strNombre == txtBusqueda.Text.ToUpper()
+                               select new { id = empl.idEmpleado }).FirstOrDefault();
+
+            tblEmpleado emp = new tblEmpleado();
+            ControllerEmpleado ctrlEmp = new ControllerEmpleado();
+
+            emp.idEmpleado = idEmpleado.id;
+            emp.idActivo = 0;
+
+            ctrlEmp.BorradoLogicoEmpleado(emp);
+            Response.Redirect("./EmpleadoAdmin.aspx", true);
+        }
     }
 }

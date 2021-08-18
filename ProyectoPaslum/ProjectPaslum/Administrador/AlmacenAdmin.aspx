@@ -99,16 +99,16 @@
             <div class="panel-body">
                 <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" Width="100%" AllowPaging="True" DataSourceID="SqlDataSource2"
                      BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" DataKeyNames="idAlmacen" >
-                    <Columns>
-                        
-                        <asp:CommandField  ShowDeleteButton="True" ShowEditButton="True" />
+                    <Columns>                       
 
-                        <asp:BoundField DataField="idAlmacen" HeaderText="ALMACÉN" SortExpression="idAlmacen" InsertVisible="False" ReadOnly="True" Visible="false"/>
-                        <asp:BoundField DataField="strNombre" HeaderText="NOMBRE" SortExpression="strNombre" />
+                        <asp:CommandField ShowDeleteButton="True" ShowEditButton="True" />
+
+                        <asp:BoundField DataField="idAlmacen" HeaderText="idAlmacen" SortExpression="idAlmacen" InsertVisible="False" ReadOnly="True" Visible="false"/>
+                        <asp:BoundField DataField="strNombre" HeaderText="ALMACÉN" SortExpression="strNombre" />
                         <asp:BoundField DataField="strDescripcion" HeaderText="DESCRIPCIÓN" SortExpression="strDescripcion" />
                         <asp:BoundField DataField="intCapacidad" HeaderText="CAPACIDAD" SortExpression="intCapacidad" />
 
-                        <asp:BoundField DataField="nombre" HeaderText="nombre" ReadOnly="True" SortExpression="nombre" />
+                        <asp:BoundField DataField="nombre" HeaderText="ENCARGADO" ReadOnly="True" SortExpression="nombre" />
 
                     </Columns>
                      <FooterStyle BackColor="White" ForeColor="#000066" />
@@ -129,15 +129,16 @@
                         inner join tblEmpleado enc
                         on alm.fkEncargado = enc.idEmpleado
                         where alm.idActivo = '1';
-                        " DeleteCommand="UPDATE tblAlmacen SET idActivo= '0' WHERE (idAlmacen = @idAlmacen)" 
-                    UpdateCommand="UPDATE tblAlmacen SET strNombre =@strNombre, strDescripcion =@strDescripcion, intCapacidad = @intCapacidad where (idAlmacen = @idAlmacen)">
+                        " 
+                    DeleteCommand="UPDATE tblAlmacen SET idActivo= '0' WHERE (idAlmacen = @idAlmacen)" 
+                    UpdateCommand="UPDATE tblAlmacen SET strNombre = @strNombre, strDescripcion = @strDescripcion, intCapacidad = @intCapacidad WHERE (idAlmacen = @idAlmacen)">
                     <DeleteParameters>
                         <asp:Parameter Name="idAlmacen" />
                     </DeleteParameters>
                     <UpdateParameters>
                         <asp:Parameter Name="strNombre" />
-                        <asp:Parameter Name="strDescripcion" />
-                        <asp:Parameter Name="intCapacidad" />
+                        <asp:Parameter Name="strDescripcion"/>
+                        <asp:Parameter Name="intCapacidad"/>
                         <asp:Parameter Name="idAlmacen" />
                     </UpdateParameters>
                 </asp:SqlDataSource>
