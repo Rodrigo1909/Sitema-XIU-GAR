@@ -142,14 +142,14 @@
 
                                                          <div class="form-group">
                                                             <label>Estado: </label>
-                                                            <asp:DropDownList ID="ddlEstado" runat="server" AppendDataBoundItems="True"  width="330px" CssClass=" form-control" AutoPostBack="true" OnSelectedIndexChanged="ddlEstado_SelectedIndexChanged"></asp:DropDownList>   
+                                                            <asp:DropDownList ID="ddlEstado" runat="server" AppendDataBoundItems="True"  width="330px"
+                                                                 CssClass=" form-control" AutoPostBack="true" OnSelectedIndexChanged="ddlEstado_SelectedIndexChanged"></asp:DropDownList>   
                                                          </div>
                                                         <br /> <br /> 
                                                        
                                                          <div class="form-group">
                                                             <label>Colonia: </label>
-                                                            <asp:TextBox ID="txtColonia" runat="server" CssClass="form-control" width="330px" >
-                                                            </asp:TextBox>
+                                                            <asp:TextBox ID="txtColonia" runat="server" CssClass="form-control" width="330px"  > </asp:TextBox>
                                                          </div>
                                                         <br /> <br />
                                             
@@ -382,32 +382,27 @@
                  <br /> <br />
                   <br /> <br />
                  <div class="panel panel-success">
-                        <asp:GridView ID="GridEmpleado" runat="server"  Width="100%" BackColor="White" 
-                    BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" AllowPaging="True" AutoGenerateColumns="false">
+                        <asp:GridView ID="GridEmpleado" runat="server" AutoGenerateColumns="true" Width="100%" BackColor="White" 
+                            BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" AllowPaging="True" >
                     
-                    <Columns>
-                        <asp:BoundField DataField="strNombre" HeaderText="NOMBRE" />
-                        <asp:BoundField DataField="strApellidoP" HeaderText="APELLLIDO P." />
-                        <asp:BoundField DataField="strApellidoM" HeaderText="APELLLIDO M." />                        
-                        <asp:BoundField DataField="strCorreo" HeaderText="CORREO" />
-                        
-                        <asp:TemplateField HeaderText="BORRAR">
-                            <ItemTemplate>
-                                <asp:ImageButton ID="btnBorrar" runat="server" ImageUrl="~/Administrador/Imagenes/borrar.png" OnClick="btnBorrar_Click"/>
-                            </ItemTemplate>
-                        </asp:TemplateField>
-                    </Columns>
+                            <Columns>                                               
+                                <asp:TemplateField HeaderText="ELIMINAR">
+                                    <ItemTemplate>
+                                        <asp:ImageButton ID="btnBorrar" runat="server" ImageUrl="~/Administrador/Imagenes/borrar.png" OnClick="btnBorrar_Click"/>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                            </Columns>
 
-                     <FooterStyle BackColor="White" ForeColor="#000066" />
-                        <HeaderStyle BackColor="#006699" Font-Bold="True" ForeColor="White" HorizontalAlign="Center" Font-Size="16px"/>
-                        <PagerStyle BackColor="White" ForeColor="#000066" HorizontalAlign="Center" />
-                        <RowStyle ForeColor="#000066" />
-                        <SelectedRowStyle BackColor="#669999" Font-Bold="True" ForeColor="White" />
-                        <SortedAscendingCellStyle BackColor="#F1F1F1" />
-                        <SortedAscendingHeaderStyle BackColor="#007DBB" />
-                        <SortedDescendingCellStyle BackColor="#CAC9C9" />
-                        <SortedDescendingHeaderStyle BackColor="#00547E" />
-                </asp:GridView>
+                             <FooterStyle BackColor="White" ForeColor="#000066" />
+                                <HeaderStyle BackColor="#006699" Font-Bold="True" ForeColor="White" HorizontalAlign="Center" Font-Size="16px"/>
+                                <PagerStyle BackColor="White" ForeColor="#000066" HorizontalAlign="Center" />
+                                <RowStyle ForeColor="#000066" />
+                                <SelectedRowStyle BackColor="#669999" Font-Bold="True" ForeColor="White" />
+                                <SortedAscendingCellStyle BackColor="#F1F1F1" />
+                                <SortedAscendingHeaderStyle BackColor="#007DBB" />
+                                <SortedDescendingCellStyle BackColor="#CAC9C9" />
+                                <SortedDescendingHeaderStyle BackColor="#00547E" />
+                        </asp:GridView>
                      </div>  
                 </div>
         </div>

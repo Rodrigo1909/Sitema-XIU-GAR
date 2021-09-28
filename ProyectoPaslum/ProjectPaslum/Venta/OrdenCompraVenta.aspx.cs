@@ -44,17 +44,16 @@ namespace ProjectPaslum.Venta
 
         private void LlenarProveedor()
         {
-
-
             var provee = (from pro in contexto.tblProveedor
-                        select new { nombre = pro.strNombre + " " + pro.strApellidoP + " " + pro.strApellidoM, id = pro.idProveedor }).ToList();
+                          orderby pro.strNombre ascending
+                        select new { nombre = pro.strNombre + " " + pro.strApellidoP + " " + 
+                        pro.strApellidoM + " (" + pro.strProducto + ")", id = pro.idProveedor }).ToList();
 
             ddlProveedor.Items.Add("SELECCIONAR");
             ddlProveedor.DataValueField = "id";
             ddlProveedor.DataTextField = "nombre";
             ddlProveedor.DataSource = provee;
             ddlProveedor.DataBind();
-
 
         }
 
@@ -99,15 +98,11 @@ namespace ProjectPaslum.Venta
 
         protected void Button1_Click(object sender, EventArgs e)
         {
-            
             Document document = new Document();
             PdfWriter writer = PdfWriter.GetInstance(document, HttpContext.Current.Response.OutputStream);
             DateTime fechact = DateTime.Now;
             CultureInfo culture = new CultureInfo("en-US");
-
-
-
-
+            
             //Si no tiene iva ni descuento entra aqui
             if (string.IsNullOrWhiteSpace(txtIVA.Text) == true && (string.IsNullOrWhiteSpace(txtDescuento.Text)) == true)
             {
@@ -116,9 +111,9 @@ namespace ProjectPaslum.Venta
                 String rutaLogo = Server.MapPath("../Alumno/images/XIUGAR.jpg");
 
                 var image = iTextSharp.text.Image.GetInstance(rutaLogo);
-                image.ScaleAbsoluteWidth(270);
-                image.ScaleAbsoluteHeight(160);
-                image.SetAbsolutePosition(300, 650);
+                image.ScaleAbsoluteWidth(190);
+                image.ScaleAbsoluteHeight(90);
+                image.SetAbsolutePosition(350, 720);
                 document.Add(image);
 
 
@@ -137,7 +132,7 @@ namespace ProjectPaslum.Venta
                 document.Add(new Paragraph(16, "Proveedor: " + txtComprador.Text, font9));
                 document.Add(new Paragraph(16, "Dirección: " + ddlDomicilio.Text, font9));
                 document.Add(new Paragraph(16, "Teléfono: " + ddlTelefono.Text, font9));
-                document.Add(new Paragraph(16, "Fecha: " + DateTime.Now.Date.ToString().Substring(0, 10), font9));
+                document.Add(new Paragraph(16, "Fecha: " + DateTime.Now.Date.ToString().Substring(0, 9), font9));
                 document.Add(new Paragraph(16, "Correo: " + ddlCorreo.Text, font9));
                 document.Add(new Paragraph(16, "Entregar a: " + txtEntregar.Text, font9));
                 document.Add(new Chunk("\n"));
@@ -225,9 +220,9 @@ namespace ProjectPaslum.Venta
 
                 var image = iTextSharp.text.Image.GetInstance(rutaLogo);
                 //image1.ScalePercent(50f);
-                image.ScaleAbsoluteWidth(270);
-                image.ScaleAbsoluteHeight(160);
-                image.SetAbsolutePosition(300, 650);
+                image.ScaleAbsoluteWidth(190);
+                image.ScaleAbsoluteHeight(90);
+                image.SetAbsolutePosition(350, 720);
                 document.Add(image);
 
 
@@ -343,9 +338,9 @@ namespace ProjectPaslum.Venta
                     String rutaLogo = Server.MapPath("../Alumno/images/XIUGAR.jpg");
 
                     var image = iTextSharp.text.Image.GetInstance(rutaLogo);
-                    image.ScaleAbsoluteWidth(270);
-                    image.ScaleAbsoluteHeight(160);
-                    image.SetAbsolutePosition(300, 650);
+                    image.ScaleAbsoluteWidth(190);
+                    image.ScaleAbsoluteHeight(90);
+                    image.SetAbsolutePosition(350, 720);
                     document.Add(image);
 
 
@@ -462,9 +457,9 @@ namespace ProjectPaslum.Venta
 
                     var image = iTextSharp.text.Image.GetInstance(rutaLogo);
                     //image1.ScalePercent(50f);
-                    image.ScaleAbsoluteWidth(270);
-                    image.ScaleAbsoluteHeight(160);
-                    image.SetAbsolutePosition(300, 650);
+                    image.ScaleAbsoluteWidth(190);
+                    image.ScaleAbsoluteHeight(90);
+                    image.SetAbsolutePosition(350, 720);
                     document.Add(image);
 
 

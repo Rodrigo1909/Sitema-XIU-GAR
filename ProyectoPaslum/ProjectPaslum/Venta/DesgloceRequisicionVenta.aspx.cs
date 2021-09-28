@@ -28,7 +28,7 @@ namespace ProjectPaslum.Venta
                               where venta.idVenta == int.Parse(Session["desgloce"].ToString())
                               select new { id = venta.idVenta, fecha = venta.Fecha, hora = venta.strHoraEntega, fin = venta.strFechaEntega }).FirstOrDefault();
 
-                txtFecha.Text = ventas.fecha.ToString().Substring(0, 10);
+                txtFecha.Text = ventas.fecha.ToString().Substring(0, 9);
                 txtFechaFin.Text = ventas.fin.ToString();
                 txtHoraEntrega.Text = ventas.hora.ToString();
                 txtNumVen.Text = ventas.id.ToString();
@@ -141,8 +141,8 @@ namespace ProjectPaslum.Venta
                 // iTextSharp.text.Image image1 = iTextSharp.text.Image.GetInstance("../images/avatar.png");
                 //image1.ScalePercent(50f);
 
-                image.ScaleAbsoluteWidth(220);
-                image.ScaleAbsoluteHeight(90);
+                image.ScaleAbsoluteWidth(240);
+                image.ScaleAbsoluteHeight(110);
                 image.SetAbsolutePosition(350, 720);
                 document.Add(image);
 
@@ -159,7 +159,7 @@ namespace ProjectPaslum.Venta
                 document.Add(new Paragraph(16, "Vendedor: " + ventas.empl, font7));
                 document.Add(new Paragraph(16, "Cliente: MOSTRADOR", font7));
                 document.Add(new Paragraph(16, "Domicilio: Oficina XIU-GAR", font7));
-                document.Add(new Paragraph(16, "Fecha: " + ventas.fecha.ToString().Substring(0,10), font7));
+                document.Add(new Paragraph(16, "Fecha: " + ventas.fecha.ToString().Substring(0,9), font7));
 
                 document.Add(new Chunk("\n"));
                 
@@ -251,7 +251,9 @@ namespace ProjectPaslum.Venta
 
                 document.Open();
 
-                var image = iTextSharp.text.Image.GetInstance(@"C:\Users\RodrigoM\Desktop\Sitema-XIU-GAR\ProyectoPaslum\ProjectPaslum\Alumno\images\XIUGAR.jpg");
+                String rutaLogo = Server.MapPath("../Alumno/images/XIUGAR.jpg");
+
+                var image = iTextSharp.text.Image.GetInstance(rutaLogo);
 
                 // iTextSharp.text.Image image1 = iTextSharp.text.Image.GetInstance("../images/avatar.png");
                 //image1.ScalePercent(50f);
@@ -260,6 +262,7 @@ namespace ProjectPaslum.Venta
                 image.ScaleAbsoluteHeight(110);
                 image.SetAbsolutePosition(350, 720);
                 document.Add(image);
+
 
 
                 Font fontTitle = FontFactory.GetFont(FontFactory.COURIER_BOLD, 25);
@@ -273,7 +276,7 @@ namespace ProjectPaslum.Venta
                 document.Add(new Paragraph(16, "Vendedor: " + clien.empl, font7));
                 document.Add(new Paragraph(16, "Cliente: " + clien.cli, font7));
                 document.Add(new Paragraph(16, "Domicilio: " + clien.dire, font7));
-                document.Add(new Paragraph(16, "Fecha: " + clien.fecha.ToString().Substring(0, 10), font7));
+                document.Add(new Paragraph(16, "Fecha: " + clien.fecha.ToString().Substring(0, 9), font7));
 
                 document.Add(new Chunk("\n"));
 

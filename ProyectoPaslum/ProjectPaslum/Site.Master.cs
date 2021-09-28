@@ -74,7 +74,18 @@ namespace ProjectPaslum
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!Page.IsPostBack)
+            {
 
+                if (Request.Cookies["id"] != null)
+                {
+                    HttpCookie myCookie = new HttpCookie("id");
+                    myCookie.Expires = DateTime.Now.AddDays(-1d);
+                    Response.Cookies.Add(myCookie);
+                }
+                if (Session["id"] != null)
+                    Session.Remove("id");
+            }
         }
 
         protected void Unnamed_LoggingOut(object sender, LoginCancelEventArgs e)
@@ -109,6 +120,11 @@ namespace ProjectPaslum
             {
                 if (UsuarioLoggeado.strTipousuario == "ADMINISTRADOR")
                 {
+                    var administrador = (from empl in contexto.tblEmpleado
+                                    where empl.fkLogin == UsuarioLoggeado.idUsuario
+                                    select empl).FirstOrDefault();
+
+                    Session["id"] = administrador.idEmpleado;
                     Response.Redirect("./Administrador/PrincipalAdministrador.aspx", true);
                 }
                 if (UsuarioLoggeado.strTipousuario == "VENDEDOR")

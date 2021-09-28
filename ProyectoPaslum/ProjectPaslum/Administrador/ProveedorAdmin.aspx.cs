@@ -133,7 +133,7 @@ namespace ProjectPaslum.Administrador
                              join est in contexto.tblEstado
                              on munesta.fkEstado
                              equals est.idEstado
-
+                             orderby mun.strMunicipio ascending
                              where munesta.fkEstado == Convert.ToInt32(ddlEstado.SelectedValue)
                              select new { nombre = mun.strMunicipio, id = munesta.idEstado_Municipio }).ToList();
 
@@ -168,9 +168,38 @@ namespace ProjectPaslum.Administrador
             }
             else if(provee.idActivo == 1)
             {
-                proveedores.Add(provee);
-                this.GridProveedor.DataSource = proveedores;
-                this.GridProveedor.DataBind();
+                try
+                {
+                    var informacion = (from pro in contexto.tblProveedor
+                                       join tel in contexto.tblTelefono
+                                           on pro.fkTelefono equals tel.idTelefono
+                                       join dir in contexto.tblDireccion
+                                           on pro.fkDireccion equals dir.idDireccion
+                                       join pri in contexto.tblEstado_Municipio
+                                           on dir.fkEstadoMunicipio equals pri.idEstado_Municipio
+                                       join e in contexto.tblEstado
+                                           on pri.fkEstado equals e.idEstado
+                                       join m in contexto.TblMunicipio
+                                           on pri.fkMunicipio equals m.idMunicipio
+                                       where pro.idProveedor == provee.idProveedor
+                                       select new
+                                       {
+                                           NOMBRE = pro.strNombre + " " + pro.strApellidoP + " " + pro.strApellidoM,
+                                           DIRECCIÓN = dir.strCalle + ", " + dir.strColonia + ", " + e.strEstado + ", " + m.strMunicipio + ", " + dir.intCodpost,
+                                           TELÉFONO = "(" + tel.strCelular + "),(" + tel.strTelCasa + ")",
+                                           CORREO = pro.strCorreo,
+                                           SERVICIO = pro.strProducto
+                                       }).ToList();
+
+                    GridProveedor.DataSource = informacion;
+                    GridProveedor.DataBind();
+
+                }
+                catch (Exception)
+                {
+
+                    throw;
+                }
             }
             else
             {

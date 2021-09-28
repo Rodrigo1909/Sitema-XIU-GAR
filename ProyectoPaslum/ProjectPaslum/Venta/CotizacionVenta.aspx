@@ -82,30 +82,29 @@
                     <br />
                     <div class="panel panel-default">
                         <div class="panel-body">
-                            <div class="form-inline">
 
-                                <div class="jumbotron"  style="background-color:white">
-				<table class="table-responsive">
-				<tbody>     
 
-						    <asp:DataList ID="DataList1" runat="server" DataKeyField="idProducto" DataSourceID="SqlDataSource1" RepeatColumns="4" 
-                                OnItemCommand="DataList1_ItemCommand" CssClass="table table-responsive"  >
+						    <asp:DataList ID="DataList1" runat="server" DataKeyField="idProducto" DataSourceID="SqlDataSource1" 
+                                OnItemCommand="DataList1_ItemCommand" RepeatColumns="4" CssClass="table table-responsive"  >
                                 <ItemTemplate>
                                     
+                                    Codigo:                                    
+                                    <asp:Label ID="idProductoLabel" runat="server" Text='<%# Eval("idProducto") %>'/>
+                                    
                                     <br />
-                                    <asp:Label ID="codigo" runat="server" Text="CODIGO:" Font-Size="16px" Font-Italic="true"></asp:Label>                                    
-                                    <asp:Label ID="idProductoLabel" runat="server" Text='<%# Eval("idProducto") %>' ForeColor="#00cc00" Font-Size="15px"/>
+                                    Producto:
+                                    <asp:Label ID="strNombreLabel" runat="server" Text='<%# Eval("strNombre") %>'></asp:Label>                                    
                                     <br />
-                                    <asp:Label ID="nombre" runat="server" Text="NOMBRE:" Font-Size="16px" Font-Italic="true"></asp:Label>                                 
-                                    <asp:Label ID="strNombreLabel" runat="server" Text='<%# Eval("strNombre") %>' ForeColor="#00cc00" Font-Size="15px"/>
-                                    <br />                                    
-                                    <asp:Label ID="descripcion" runat="server" Text="DESCRIPCIÓN:" Font-Size="16px" Font-Italic="true"></asp:Label>
-                                    <asp:Label ID="strDescripcionLabel" runat="server" Text='<%# Eval("strDescripcion") %>' ForeColor="#00cc00" Font-Size="15px"/>
+                                    Precio:                                    
+                                    <asp:Label ID="dblPrecioLabel" runat="server" Text='<%# Eval("dblPrecio") %>'></asp:Label>
                                     <br />
-                                    <asp:Label ID="precio" runat="server" Text="PRECIO:" Font-Size="16px" Font-Italic="true"></asp:Label>
-                                    <asp:Label ID="dblPrecioLabel" runat="server" Text='<%# Eval("dblPrecio") %>' ForeColor="#00cc00" Font-Size="15px"/>
+                                    Presentación:
+                                    <asp:Label ID="intPresentacionLabel" runat="server" Text='<%# Eval("intPresentacion") %>'></asp:Label>                                 
                                     <br />
-                                    <asp:Button ID="Button1" runat="server" CommandName="Seleccionar" OnClick="Button1_Click" Text="Agregar" CssClass="btn btn-success" />
+                                    U. Medida:                                 
+                                    <asp:Label ID="strNombre1Label" runat="server" Text='<%# Eval("strNombre1") %>'/>
+                                    <br />       
+                                    <asp:Button ID="btnCotizacion" runat="server" CommandName="Seleccionar" Text="Agregar" CssClass="btn btn-success" />                             
                                     <br />
                                 </ItemTemplate>
 
@@ -113,19 +112,16 @@
 
 
 						    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:XIUGARConnectionString %>" 
-                                SelectCommand="SELECT [idProducto], [strNombre], [strDescripcion], [dblPrecio] FROM [tblProducto] where fkAlmacen = 3"></asp:SqlDataSource>
+                                SelectCommand="SELECT p.idProducto, p.strNombre, 
+                                                p.dblPrecio , p.intPresentacion, u.strNombre
+                                                FROM tblProducto p
+                                                inner join tblUnidadMedida u
+                                                on p.fkUnidadMedida = u.idUnidadMedida
+                                                where fkAlmacen = 3 and p.idActivo = 1;"></asp:SqlDataSource>
 
 						
 
 					
-				</tbody>
-			</table>
-			</div>
-
-
-                                    
-                                </div>
-                               </div>
                              </div>
                            </div>
                 <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
@@ -151,4 +147,5 @@
         }
     
     </script>
+    </div>
 </asp:Content>

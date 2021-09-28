@@ -10,11 +10,13 @@ using iTextSharp.text;
 using iTextSharp.text.pdf;
 using System.IO;
 using ProjectPaslum.Controllers;
+using System.Globalization;
 
 namespace ProjectPaslum.Venta
 {
     public partial class PrintCotizacionVenta : System.Web.UI.Page
     {
+        CultureInfo culture = new CultureInfo("en-US");
         PaslumBaseDatoDataContext contexto = new PaslumBaseDatoDataContext();
 
         protected void Page_Load(object sender, EventArgs e)
@@ -50,7 +52,7 @@ namespace ProjectPaslum.Venta
 
         public void cargarcarrito()
         {
-            GridView1.DataSource = Session["pedido"];
+            GridView1.DataSource = Session["cotizacion"];
             GridView1.DataBind();
             Button1_Click(Button1, null);
         }
@@ -77,9 +79,9 @@ namespace ProjectPaslum.Venta
             {
                 int index = Convert.ToInt32(e.CommandArgument);
                 DataTable ocar = new DataTable();
-                ocar = (DataTable)Session["pedido"];
+                ocar = (DataTable)Session["cotizacion"];
                 ocar.Rows[index].Delete();
-                //lblTotal.Text = TotalCarrito(ocar).ToString();
+                lblTotal.Text = TotalCarrito(ocar).ToString();
                 GridView1.DataSource = ocar;
                 GridView1.DataBind();
                 cargarcarrito();
@@ -90,13 +92,13 @@ namespace ProjectPaslum.Venta
         {
             int index = e.RowIndex;
             DataTable dt1 = new DataTable();
-            dt1 = (DataTable)Session["pedido"];
+            dt1 = (DataTable)Session["cotizacion"];
             dt1.Rows[index].Delete();
 
-            
+            lblTotal.Text = TotalCarrito(dt1).ToString();
             GridView1.DataSource = dt1;
             GridView1.DataBind();
-            Session["pedido"] = dt1;
+            Session["cotizacion"] = dt1;
             Button1_Click(Button1, null);
         }
 
@@ -160,23 +162,29 @@ namespace ProjectPaslum.Venta
             PdfWriter writer = PdfWriter.GetInstance(document, HttpContext.Current.Response.OutputStream);
 
 
-            dt = (DataTable)Session["pedido"];
+            dt = (DataTable)Session["cotizacion"];
             if (dt.Rows.Count > 0)
             {
 
                 document.Open();
 
-                var image = iTextSharp.text.Image.GetInstance(@"C:\Users\RodrigoM\Desktop\Sitema-XIU-GAR\ProyectoPaslum\ProjectPaslum\Alumno\images\XIUGAR.jpg");
-                // iTextSharp.text.Image image1 = iTextSharp.text.Image.GetInstance("../images/avatar.png");
+                String rutaLogo = Server.MapPath("../Alumno/images/XIUGAR.jpg");
+
+                var image = iTextSharp.text.Image.GetInstance(rutaLogo);
+                //var image = iTextSharp.text.Image.GetInstance(@"C:\Users\RodrigoM\Desktop\Sitema-XIU-GAR\ProyectoPaslum\ProjectPaslum\Alumno\images\XIUGAR.jpg");
+
+                // iTextSharp.text.Image image1 = iTextSharp.text.Image.GetInstance("../../images/avatar.png");
                 //image1.ScalePercent(50f);
-                image.ScaleAbsoluteWidth(270);
-                image.ScaleAbsoluteHeight(110);
-                image.Alignment = Element.ALIGN_CENTER;
+                image.ScaleAbsoluteWidth(220);
+                image.ScaleAbsoluteHeight(90);
+                image.SetAbsolutePosition(350, 720);
                 document.Add(image);
+
 
 
                 Font fontTitle = FontFactory.GetFont(FontFactory.COURIER_BOLD, 25);
                 Font font9 = FontFactory.GetFont(FontFactory.TIMES, 14);
+                Font font8 = FontFactory.GetFont(FontFactory.TIMES, 9);
 
                 PdfPTable table = new PdfPTable(dt.Columns.Count);
 
@@ -204,20 +212,20 @@ namespace ProjectPaslum.Venta
 
                 PdfPCell cell = new PdfPCell(new Phrase("columns"));
                 cell.Colspan = dt.Columns.Count;
-
                 table.AddCell("CODIGO");
-                table.AddCell("PRODUCTO");
-                table.AddCell("PRECIO");
-                table.AddCell("SUBTOTAL");
+                table.AddCell("DESCRIPCIÓN");
                 table.AddCell("CANTIDAD");
+                table.AddCell("PRECIO");
+                table.AddCell("TOTAL");
+
 
                 foreach (DataColumn c in dt.Columns)
                 {
                     if (c.ColumnName == "idProducto")
                     {
-                        
+
                     }
-                    else if(c.ColumnName == "strNombre")
+                    else if (c.ColumnName == "strNombre")
                     {
 
                     }
@@ -233,10 +241,19 @@ namespace ProjectPaslum.Venta
                     {
 
                     }
+                    else if (c.ColumnName == "preVenta")
+                    {
 
-                    else {
-                        
-                        table.AddCell(new Phrase(c.ColumnName, font9));
+                    }
+                    else if (c.ColumnName == "dblCosto")
+                    {
+
+                    }
+
+                    else
+                    {
+
+                        table.AddCell(new Phrase(c.ColumnName, font8));
                     }
                 }
 
@@ -246,10 +263,12 @@ namespace ProjectPaslum.Venta
                     {
                         for (int h = 0; h < dt.Columns.Count; h++)
                         {
-                            table.AddCell(new Phrase(r[h].ToString(), font9));
+                            table.AddCell(new Phrase(r[h].ToString(), font8));
+
                         }
                     }
                 }
+
                 document.Add(table);
                 document.Add(new Chunk("\n"));
 
@@ -285,35 +304,47 @@ namespace ProjectPaslum.Venta
         private void Calcular()
         {
             int i;
-            double total = 0, prec, subtotal = 0, igv;
+            double total = 0, subtotal = 0, subtotal2 = 0;
             string cod, desc;
             int cant;
+            double precio, total2 = 0;
 
-            var items = (DataTable)Session["pedido"];
+            var items = (DataTable)Session["cotizacion"];
             //DataRow fila = items.NewRow();
             for (i = 0; i < GridView1.Rows.Count; i++)
             {
                 cod = (GridView1.Rows[i].Cells[1].Text);
+                var producto = (from p in contexto.tblProducto
+                                where p.idProducto == int.Parse(cod)
+                                select new { aprox = p.dblPrecio }).FirstOrDefault();
+
+                
                 desc = (GridView1.Rows[i].Cells[2].Text);
-                prec = System.Convert.ToDouble(GridView1.Rows[i].Cells[3].Text);
-                cant = System.Convert.ToInt16(((TextBox)this.GridView1.Rows[i].Cells[4].FindControl("TextBox1")).Text);
-                double prec1 = System.Convert.ToDouble(prec);
+                cant = System.Convert.ToInt16(((TextBox)this.GridView1.Rows[i].Cells[3].FindControl("TextBox1")).Text);
+                precio = System.Convert.ToDouble(((TextBox)this.GridView1.Rows[i].Cells[4].FindControl("TextBox2")).Text, culture);
+                subtotal2 = cant * precio;
+                GridView1.Rows[i].Cells[5].Text = subtotal2.ToString();
+                GridView1.Rows[i].Cells[6].Text = producto.aprox.ToString();
+
+                double prec1 = System.Convert.ToDouble(producto.aprox.ToString());
                 subtotal = cant * prec1;
-                GridView1.Rows[i].Cells[5].Text = subtotal.ToString();
+
                 foreach (DataRow dr in items.Rows)
                 {
                     if (dr["idProducto"].ToString() == cod.ToString())
                     {
                         dr["canproducto"] = cant;
-                        dr["subtotal"] = subtotal;
+                        dr["preVenta"] = precio;
+                        dr["dblCosto"] = subtotal2;
                     }
                 }
 
+                total2 = total2 + subtotal2;
                 total = total + subtotal;
             }
 
-            igv = total * 0.18;
-            subtotal = total - igv;
+            lblTotal2.Text = total2.ToString("0.00");
+            lblTotal.Text = total.ToString("0.00");
         }
     }
 }

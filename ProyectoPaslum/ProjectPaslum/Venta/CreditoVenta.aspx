@@ -49,7 +49,7 @@
 
                                     <div class="form-group">
                                         <label>Nombre del cliente </label><asp:DropDownList ID="ddlCliente" runat="server" AppendDataBoundItems="True"  width="500px"
-                                            OnSelectedIndexChanged="ddlCliente_SelectedIndexChanged" AutoPostBack="true" required="required"></asp:DropDownList>   
+                                            OnSelectedIndexChanged="ddlCliente_SelectedIndexChanged" AutoPostBack="true" required="required" onmouseover="this.size=5;" onmouseout="this.size=1;"  style="max-height:100px; overflow:auto;"></asp:DropDownList>   
                                     </div>
                                     &nbsp &nbsp &nbsp &nbsp 
                                             

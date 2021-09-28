@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
   <Import Project="..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props" Condition="Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" />
@@ -228,8 +228,6 @@
     <Content Include="Almacen\PrincipalAlmacen.aspx" />
     <Content Include="Almacen\RequisicionAlmacen.aspx" />
     <Content Include="Almacen\SalidasAlmacen.aspx" />
-    <Content Include="Alumno\DatosEscolares.aspx" />
-    <Content Include="Alumno\DatosPersonales.aspx" />
     <Content Include="Alumno\images\FELTOR.jpg" />
     <Content Include="Alumno\images\Im1.jpg" />
     <Content Include="Alumno\images\loc.png" />
@@ -241,8 +239,6 @@
     <Content Include="Alumno\images\ut5.jpg" />
     <Content Include="Alumno\images\ut6.jpg" />
     <Content Include="Alumno\images\XIUGAR.jpg" />
-    <Content Include="Alumno\ListaAsistencia.aspx" />
-    <Content Include="Alumno\PrincipalAlumno.aspx" />
     <Content Include="Alumno\scss\Menu.css" />
     <Content Include="Alumno\scss\PersoDatos.css" />
     <Content Include="Cliente\AlertaError.aspx" />
@@ -290,6 +286,41 @@
     <Content Include="fonts\ionicons\css\ionicons.min.css" />
     <Content Include="fonts\ionicons\fonts\ionicons.svg" />
     <Content Include="fonts\open-iconic\open-iconic.svg" />
+    <Content Include="ImagenesProductos\Atencingo.jpg" />
+    <Content Include="ImagenesProductos\azucar-baja-en-calorias.jpg" />
+    <Content Include="ImagenesProductos\azucar-estandar.jpg" />
+    <Content Include="ImagenesProductos\Benito.jpg" />
+    <Content Include="ImagenesProductos\BSM.jpg" />
+    <Content Include="ImagenesProductos\BSM_C.jpg" />
+    <Content Include="ImagenesProductos\BSM_EZ.jpg" />
+    <Content Include="ImagenesProductos\BSM_LP.jpg" />
+    <Content Include="ImagenesProductos\BSM_SM.jpg" />
+    <Content Include="ImagenesProductos\BSM_SMN.jpg" />
+    <Content Include="ImagenesProductos\calipam.jpg" />
+    <Content Include="ImagenesProductos\Carmen.jpg" />
+    <Content Include="ImagenesProductos\Central.jpg" />
+    <Content Include="ImagenesProductos\Domino.jpg" />
+    <Content Include="ImagenesProductos\GAM.jpg" />
+    <Content Include="ImagenesProductos\GAT.jpg" />
+    <Content Include="ImagenesProductos\GAT_LG.jpg" />
+    <Content Include="ImagenesProductos\GrupoSantos.jpg" />
+    <Content Include="ImagenesProductos\GrupoSantos_IPA.jpg" />
+    <Content Include="ImagenesProductos\higo.jpg" />
+    <Content Include="ImagenesProductos\Margarita.jpg" />
+    <Content Include="ImagenesProductos\Motzorongo.jpg" />
+    <Content Include="ImagenesProductos\Piasa.jpg" />
+    <Content Include="ImagenesProductos\piloncillo.jpg" />
+    <Content Include="ImagenesProductos\Porres.jpg" />
+    <Content Include="ImagenesProductos\Porres_Huixtla.jpg" />
+    <Content Include="ImagenesProductos\Portada 5.jpg" />
+    <Content Include="ImagenesProductos\Potrero.jpg" />
+    <Content Include="ImagenesProductos\Puga.jpg" />
+    <Content Include="ImagenesProductos\Saenz.jpg" />
+    <Content Include="ImagenesProductos\Saenz_Tamazula.jpg" />
+    <Content Include="ImagenesProductos\Santos.jpg" />
+    <Content Include="ImagenesProductos\XIUGAR.jpg" />
+    <Content Include="ImagenesProductos\zucarmex.jpg" />
+    <Content Include="ImagenesProductos\zulka.jpg" />
     <Content Include="images\avatar.png" />
     <Content Include="images\azucar-baja-en-calorias.jpg" />
     <Content Include="images\azucar-estandar.jpg" />
@@ -306,7 +337,9 @@
     <Content Include="images\Iconos\IconEdecanes.png" />
     <Content Include="images\Iconos\IconEditar.png" />
     <Content Include="images\Iconos\IconEliminar.png" />
+    <Content Include="images\Iconos\IconEmpleado.png" />
     <Content Include="images\Iconos\IconGuardar.png" />
+    <Content Include="images\Iconos\IconProveedor.png" />
     <Content Include="images\Iconos\IconTelefono.png" />
     <Content Include="images\Iconos\icon_logo.png" />
     <Content Include="images\Iconos\icon_pas.png" />
@@ -340,18 +373,8 @@
     <Content Include="fonts\ionicons\fonts\ionicons.woff" />
     <Content Include="fonts\ionicons\fonts\ionicons.woff2" />
     <Content Include="Administrador\IndexAdministrador.master" />
-    <Content Include="Alumno\Alumno.Master" />
     <Content Include="Alumno\scss\style.scss" />
     <Content Include="js\swalert.js" />
-    <Content Include="Profesor\Calificaciones.aspx" />
-    <Content Include="Profesor\DatosPersonales.aspx" />
-    <Content Include="Profesor\estilos.css" />
-    <Content Include="Profesor\Evaluaciones.aspx" />
-    <Content Include="Profesor\Justificantes.aspx" />
-    <Content Include="Profesor\NotaInfo.aspx" />
-    <Content Include="Profesor\PaseLista.aspx" />
-    <Content Include="Profesor\PrincipalProfesor.aspx" />
-    <Content Include="Profesor\Profesor.Master" />
     <Content Include="Almacen\Almacen.Master" />
     <Content Include="Content\sweetalert\sweet-alert.less" />
     <Content Include="Content\sweetalert\sweet-alert-combine.less" />
@@ -359,6 +382,8 @@
     <Content Include="Content\bootstrap\variables.less" />
     <Content Include="Content\bootstrap\mixins.less" />
     <Content Include="Cliente\Cliente.Master" />
+    <Content Include="ImagenesProductos\Thumbs.db" />
+    <None Include="Properties\PublishProfiles\Prueba.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="images\loc.png" />
     <Content Include="js\aos.js" />
@@ -542,6 +567,7 @@
     <Content Include="scss\style.scss" />
     <Content Include="Venta\Venta.Master" />
     <Content Include="Views\Sweet\Alert.cshtml" />
+    <Content Include="Venta\Archivos\Carta de recomendacion.pdf" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

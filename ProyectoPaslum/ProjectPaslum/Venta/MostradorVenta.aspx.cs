@@ -89,7 +89,8 @@ namespace ProjectPaslum.Venta
 
 
             var clie = (from cli in contexto.tblCliente
-                           select new { nombre = cli.strNombre + " " + cli.strApellidoP + 
+                        orderby cli.strNombre ascending
+                        select new { nombre = cli.strNombre + " " + cli.strApellidoP + 
                            " " + cli.strApellidoM + " (" + cli.strEstablecimiento + ")",
                                id = cli.idCliente }).ToList();
 

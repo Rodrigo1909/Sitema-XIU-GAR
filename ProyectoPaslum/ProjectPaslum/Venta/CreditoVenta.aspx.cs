@@ -89,6 +89,7 @@ namespace ProjectPaslum.Venta
         private void LlenarCliente()
         {
             var clie = (from cli in contexto.tblCliente
+                        orderby cli.strNombre ascending
                         select new
                         {
                             nombre = cli.strNombre + " " + cli.strApellidoP +

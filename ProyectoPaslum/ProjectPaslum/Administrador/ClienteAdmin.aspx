@@ -69,8 +69,7 @@
                                                         &nbsp &nbsp &nbsp &nbsp 
                                                         <div class="form-group">
                                                             <label>Establecimiento: </label>
-                                                            <asp:TextBox ID="txtEstablecimiento" runat="server" width="255px" CssClass="form-control" 
-                                                                type="Text" pattern="^[a-zA-ZñÑáéíóúÁÉÍÓÚ\s]+$" title="Ingrese solo letras" ></asp:TextBox>                                                            
+                                                            <asp:TextBox ID="txtEstablecimiento" runat="server" width="255px" CssClass="form-control"> </asp:TextBox>                                                            
                                                         </div>
                                                         <br /> <br />
                                                         
@@ -156,14 +155,14 @@
 
                                                         <div class="form-group">
                                                             <label>Calle: </label>
-                                                            <asp:TextBox ID="txtCalle" runat="server" CssClass="form-control" width="345px" required="required">
+                                                            <asp:TextBox ID="txtCalle" runat="server" CssClass="form-control" width="345px" >
                                                             </asp:TextBox>
                                                          </div>
                                                         <br /> <br />
 
                                                          <div class="form-group">
                                                             <label>Colonia: </label>
-                                                            <asp:TextBox ID="txtColonia" runat="server" CssClass="form-control" width="330px" required="required">
+                                                            <asp:TextBox ID="txtColonia" runat="server" CssClass="form-control" width="330px" >
                                                             </asp:TextBox>
                                                          </div>
                                                         <br /> <br />
@@ -371,6 +370,8 @@
                                     inner join tblTelefono t
                                     on t.idTelefono = c.fkTelefono
                                     where c.idActivo = 1"></asp:SqlDataSource>
+
+                    <%--  <asp:Button ID="btnExportarExcel" runat="server" Text="Exportar a EXCEL" OnClick="btnExportarExcel_Click" />--%>
             </div>
         </div>
     </div>
@@ -384,22 +385,48 @@
               <div class="form-inline">
                 <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5">
                     <label>Búsqueda de cliente: </label>
-                    <asp:TextBox ID="txtBusqueda" runat="server" CssClass="form-control" Width="270px"></asp:TextBox>  
+                    <asp:TextBox ID="txtBusqueda" runat="server" CssClass="form-control" Width="270px" placeholder="Ingresa el establecimiento" ></asp:TextBox>  
                </div>      
                           
                 <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
-                    <asp:Button ID="btnBuscar" runat="server" Text="Buscar" Font-Size="14px" CssClass="btn btn-block btn-sm btn-success" Width="170px" />
+                    <asp:Button ID="btnBuscar" runat="server" Text="Buscar" Font-Size="14px" CssClass="btn btn-block btn-sm btn-success" Width="170px" OnClick="btnBuscar_Click"/>
                 </div>
 
                 <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5">
                     
                 </div>
+                  <br /> <br />
+                  <br /> <br />
+                 <div class="panel panel-success">
+                        <asp:GridView ID="GridCliente" runat="server" AutoGenerateColumns="true" Width="100%" BackColor="White" 
+                            BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" AllowPaging="True" >
+                    
+                            <Columns>                                               
+                                <asp:TemplateField HeaderText="ELIMINAR">
+                                    <ItemTemplate>
+                                        <asp:ImageButton ID="btnBorrar" runat="server" ImageUrl="~/Administrador/Imagenes/borrar.png" OnClick="btnBorrar_Click"/>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                            </Columns>
+
+                             <FooterStyle BackColor="White" ForeColor="#000066" />
+                                <HeaderStyle BackColor="#006699" Font-Bold="True" ForeColor="White" HorizontalAlign="Center" Font-Size="16px"/>
+                                <PagerStyle BackColor="White" ForeColor="#000066" HorizontalAlign="Center" />
+                                <RowStyle ForeColor="#000066" />
+                                <SelectedRowStyle BackColor="#669999" Font-Bold="True" ForeColor="White" />
+                                <SortedAscendingCellStyle BackColor="#F1F1F1" />
+                                <SortedAscendingHeaderStyle BackColor="#007DBB" />
+                                <SortedDescendingCellStyle BackColor="#CAC9C9" />
+                                <SortedDescendingHeaderStyle BackColor="#00547E" />
+                        </asp:GridView>
+                     </div>  
+
             </div>
         </div>
     </div>
 </div>    
 
-         <script type="text/javascript">
+<script type="text/javascript">
         function alerta() {
             swal({
                 title: "ERROR",
@@ -407,7 +434,15 @@
                 icon: "error",
             });
         }
+        
+        function entonces() {
+            swal({
+                title: "FIN",
+                text: "El nombre ya ha sido registrado",
+                icon: "entonces cuando un"
 
+            });
+        }
             
         function exito() {
             swal({
@@ -417,5 +452,5 @@
             });
         }
     
-    </script>
+</script>
 </asp:Content>

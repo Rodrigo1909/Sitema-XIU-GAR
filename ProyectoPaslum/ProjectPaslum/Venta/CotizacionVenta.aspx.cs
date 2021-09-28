@@ -18,16 +18,17 @@ namespace ProjectPaslum.Venta
 
         public void CargarDetalle()
         {
-            if (Session["pedido"] == null)
+            if (Session["cotizacion"] == null)
             {
                 dtb = new DataTable("Carrito");
                 dtb.Columns.Add("idProducto", System.Type.GetType("System.Int32"));
-                dtb.Columns.Add("strNombre", System.Type.GetType("System.String"));
-                dtb.Columns.Add("dblPrecio", System.Type.GetType("System.Double"));
-                dtb.Columns.Add("subtotal", System.Type.GetType("System.Double"));
+                dtb.Columns.Add("strNombre", System.Type.GetType("System.String"));             
                 dtb.Columns.Add("canproducto", System.Type.GetType("System.Int32"));
+                dtb.Columns.Add("preVenta", System.Type.GetType("System.Double"));
+                dtb.Columns.Add("dblCosto", System.Type.GetType("System.Double"));
+                
 
-                Session["pedido"] = dtb;
+                Session["cotizacion"] = dtb;
                 Session["prueba"] = dtb;
             }
             else
@@ -38,20 +39,22 @@ namespace ProjectPaslum.Venta
 
         }
 
-        public void AgregarItem(string cod, string des, double precio)
+        public void AgregarItem(string cod, string des)
         {
-            double total;
             int cantidad = 1;
-            total = precio * cantidad;
-            carrito = (DataTable)Session["pedido"];
+            decimal precio2 = 0;
+            decimal costo = 0;
+
+            carrito = (DataTable)Session["cotizacion"];
             DataRow fila = carrito.NewRow();
             fila[0] = cod;
             fila[1] = des;
-            fila[2] = precio;
-            fila[3] = (int)cantidad;
-            fila[4] = total;
+            fila[2] = (int)cantidad;
+            fila[3] = (double)precio2;
+            fila[4] = (double)costo;
+
             carrito.Rows.Add(fila);
-            Session["pedido"] = carrito;
+            Session["cotizacion"] = carrito;
         }
 
 
@@ -83,6 +86,7 @@ namespace ProjectPaslum.Venta
         private void LlenarCliente()
         {
             var clie = (from cli in contexto.tblCliente
+                        orderby cli.strNombre ascending
                         select new { nombre = cli.strNombre + " " + cli.strApellidoP + " " + cli.strApellidoM, id = cli.idCliente }).ToList();
 
             ddlCliente.Items.Add("SELECCIONAR");
@@ -128,15 +132,16 @@ namespace ProjectPaslum.Venta
         {
             string cod;
             string des = null;
-            double precio = 0;
             if (e.CommandName == "Seleccionar")
             {
                 DataList1.SelectedIndex = e.Item.ItemIndex;
 
                 cod = ((Label)this.DataList1.SelectedItem.FindControl("idProductoLabel")).Text;
-                des = ((Label)this.DataList1.SelectedItem.FindControl("strNombreLabel")).Text;
-                precio = double.Parse(((Label)this.DataList1.SelectedItem.FindControl("dblPrecioLabel")).Text);
-                AgregarItem(cod, des, precio);
+                des = ((Label)this.DataList1.SelectedItem.FindControl("strNombreLabel")).Text + " " +
+                    int.Parse(((Label)this.DataList1.SelectedItem.FindControl("intPresentacionLabel")).Text) + " " +
+                    ((Label)this.DataList1.SelectedItem.FindControl("strNombre1Label")).Text;
+
+                AgregarItem(cod, des);
 
                 this.ClientScript.RegisterStartupScript(this.GetType(), "SweetAlert", "exito()", true);
             }

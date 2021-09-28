@@ -85,6 +85,13 @@ namespace ProjectPaslum.Controllers
             return contexto.tblCliente.ToList<tblCliente>();
         }
 
+        public tblCliente ConsultarCliente(string strEstablecimiento)
+        {
+            return contexto.tblCliente. Where(e => e.strEstablecimiento == strEstablecimiento).FirstOrDefault<tblCliente>();
+
+            //SELECT* FROM tblCLiente WHERE strEstablecimiento LIKE '%semilla%'
+        }
+
         public bool InsertarVenta(tblVenta _TBL_Venta)
         {
             bool respuesta = false;
@@ -161,6 +168,18 @@ namespace ProjectPaslum.Controllers
 
             }
             return respuesta;
+
+        }
+
+        public void BorradoLogicoCliente(tblCliente clie)
+        {
+            tblCliente emplBd = contexto.tblCliente
+                .Where(t => t.idCliente == clie.idCliente).FirstOrDefault();
+            if (emplBd != null)
+            {
+                emplBd.idActivo = 0;
+                contexto.SubmitChanges();
+            }
 
         }
     }

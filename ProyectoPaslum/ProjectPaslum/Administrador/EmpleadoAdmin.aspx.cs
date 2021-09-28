@@ -145,7 +145,7 @@ namespace ProjectPaslum.Administrador
                              join est in contexto.tblEstado
                              on munesta.fkEstado
                              equals est.idEstado
-
+                             orderby mun.strMunicipio ascending
                              where munesta.fkEstado == Convert.ToInt32(ddlEstado.SelectedValue)
                              select new { nombre = mun.strMunicipio, id = munesta.idEstado_Municipio }).ToList();
 
@@ -173,18 +173,48 @@ namespace ProjectPaslum.Administrador
         }
 
         public void ConfigurarGrid(tblEmpleado emplea)
-        {
-            List<tblEmpleado> empleados = new List<tblEmpleado>();
+        {          
 
             if(emplea == null)
             {
                 Response.Redirect("./EmpleadoAdmin.aspx", true);
             }
             else if (emplea.idActivo == 1)            
-            { 
-                empleados.Add(emplea);
-                this.GridEmpleado.DataSource = empleados;
-                this.GridEmpleado.DataBind();
+            {
+                try
+                {
+                    var informacion = (from empl in contexto.tblEmpleado
+                                        join tel in contexto.tblTelefono
+                                            on empl.fkTelefono equals tel.idTelefono
+                                        join log in contexto.tblUsuario
+                                            on empl.fkLogin equals log.idUsuario
+                                        join dir in contexto.tblDireccion
+                                            on empl.fkDireccion equals dir.idDireccion
+                                        join pri in contexto.tblEstado_Municipio 
+                                            on dir.fkEstadoMunicipio equals pri.idEstado_Municipio
+                                        join e in contexto.tblEstado 
+                                            on pri.fkEstado equals e.idEstado
+                                        join m in contexto.TblMunicipio 
+                                            on pri.fkMunicipio equals m.idMunicipio
+                                        where empl.idEmpleado == emplea.idEmpleado
+                                        select new
+                                        {
+                                            NOMBRE = empl.strNombre + " " + empl.strApellidoP + " " + empl.strApellidoM,
+                                            DIRECCIÓN = dir.strCalle + ", " + dir.strColonia  + ", " + e.strEstado + ", " + m.strMunicipio + ", " + dir.intCodpost,
+                                            TELÉFONO = "(" + tel.strCelular + "),(" + tel.strTelCasa + ")",
+                                            CORREO = empl.strCorreo,
+                                            PASSWORD = log.strPassword
+                                        }).ToList();
+
+                    GridEmpleado.DataSource = informacion;
+                    GridEmpleado.DataBind();               
+
+                }
+                catch (Exception)
+                {
+
+                    throw;
+                }
             }
             else
             {
