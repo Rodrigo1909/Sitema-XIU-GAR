@@ -12,7 +12,7 @@
      <link href="css/styleProducto.css" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
-    <link href="Empleado/css/modales.css" rel="stylesheet" />
+    
     <%--<link href="Content/bootstrap.min.css" rel="stylesheet" />--%>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" >
 
@@ -40,8 +40,7 @@
   <style>
       body{
     margin: 0;
-    padding: 0;
-    background: url(image.jpg);
+    padding: 0;    
     background-size: cover;
     background-position: center;
     font-family: sans-serif;
@@ -118,7 +117,6 @@ h1{
 {
     color: #39dc79;
 }
-
 
   </style>
 
