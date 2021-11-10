@@ -58,6 +58,51 @@ namespace ProjectPaslum.Venta {
         protected global::System.Web.UI.WebControls.TextBox txtCondiciones;
         
         /// <summary>
+        /// Control txtCondicion2.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtCondicion2;
+        
+        /// <summary>
+        /// Control txtCondicion3.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtCondicion3;
+        
+        /// <summary>
+        /// Control txtCondicion4.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtCondicion4;
+        
+        /// <summary>
+        /// Control txtCondicion5.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtCondicion5;
+        
+        /// <summary>
+        /// Control txtCondicion6.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtCondicion6;
+        
+        /// <summary>
         /// Control GridView1.
         /// </summary>
         /// <remarks>

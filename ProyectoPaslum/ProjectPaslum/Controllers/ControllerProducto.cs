@@ -80,7 +80,8 @@ namespace ProjectPaslum.Controllers
             var activo = 1;
 
             var marca = (from mar in contexto.tblMarca
-                           where mar.idActivo == activo
+                         orderby mar.strNombre ascending
+                         where mar.idActivo == activo
                            select mar).ToList();
             return marca;
         }

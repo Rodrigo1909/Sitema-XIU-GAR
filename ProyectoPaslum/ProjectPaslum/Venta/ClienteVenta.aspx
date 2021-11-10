@@ -1,36 +1,24 @@
-﻿<%@ Page Language="C#" MasterPageFile="~/Administrador/IndexAdministrador.master" AutoEventWireup="true" CodeBehind="ClienteAdmin.aspx.cs" Inherits="ProjectPaslum.Administrador.ClienteAdmin" %>
-
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Venta/Venta.Master" AutoEventWireup="true" CodeBehind="ClienteVenta.aspx.cs" Inherits="ProjectPaslum.Venta.ClienteVenta" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-    <link href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round" rel="stylesheet" />
+   <link href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
-    <link href="css/modales.css" rel="stylesheet" />
+    <link href="css/modales.css" rel="stylesheet" />    
     <link href="../Content/bootstrap.min.css" rel="stylesheet" />
-
-    
+    <link href="../Alumno/scss/PersoDatos.css" rel="stylesheet" />
+    <link href="estilos.css" rel="stylesheet" />
     <link href="../../Content/sweetalert/sweet-alert.css" rel="stylesheet" />
     <script src="../../js/swalert.js"></script>
-    <script src="../../Scripts/jquery-1.10.2.min.js"></script>
-    <script src="../../Scripts/sweetalert.js"></script>
-    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="../../Scripts/jquery-1.10.2.min.js">
+    </script><script src="../../Scripts/sweetalert.js">
+    </script><script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
-    <div class="content">
-        <div class="table-title">
-            <div class="row">
-                <div class="col-sm-6">
-                    <h2>CLIENTES</h2>
-                </div>                
-             </div> 
-        </div>          
-    </div>
 <p>
   <a class="btn btn-primary" data-toggle="collapse" href="#multiCollapseExample1" role="button" aria-expanded="true" aria-controls="multiCollapseExample1">Nuevo Cliente Central</a>
   <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#multiCollapseExample4" aria-expanded="false" aria-controls="multiCollapseExample4">Nuevo Cliente Empresarial</button>
-  <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#multiCollapseExample2" aria-expanded="true" aria-controls="multiCollapseExample2">Clientes activos</button>
-  <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#multiCollapseExample3" aria-expanded="true" aria-controls="multiCollapseExample3">Buscar</button>
 </p>
-<div class="row">
+
     <%--Boton para expandir la información para registrar un nuevo cliente--%>
-    <div class="col">
+    
     <div class="collapse multi-collapse" id="multiCollapseExample1">
       <div class="card card-body">
               <%-- Registro de nuevo empleado --%>   
@@ -62,27 +50,27 @@
                                                     <div class="form-inline">                                                        
                                                         <div class="form-group">
                                                             <label>Nombre: </label>
-                                                            <asp:TextBox ID="txtNombre" runat="server" width="368px" CssClass="form-control" 
+                                                            <asp:TextBox ID="txtNombre" runat="server" width="400px" CssClass="form-control" 
                                                                 type="Text" pattern="^[a-zA-ZñÑáéíóúÁÉÍÓÚ\s]+$" title="Ingrese solo letras">
                                                             </asp:TextBox>   
                                                          </div>    
                                                         &nbsp &nbsp &nbsp &nbsp 
                                                         <div class="form-group">
                                                             <label>Establecimiento: </label>
-                                                            <asp:TextBox ID="txtEstablecimiento" runat="server" width="255px" CssClass="form-control"> </asp:TextBox>                                                            
+                                                            <asp:TextBox ID="txtEstablecimiento" runat="server" width="400px" CssClass="form-control"> </asp:TextBox>                                                            
                                                         </div>
                                                         <br /> <br />
                                                         
                                                         <div class="form-group">
                                                             <label>Apellido Paterno: </label>
-                                                            <asp:TextBox ID="txtAPaterno" runat="server" width="310px" CssClass="form-control" 
+                                                            <asp:TextBox ID="txtAPaterno" runat="server" width="400px" CssClass="form-control" 
                                                                 type="Text" pattern="^[a-zA-ZñÑáéíóúÁÉÍÓÚ\s]+$" title="Ingrese solo letras">
                                                             </asp:TextBox>
                                                         </div>
                                                         &nbsp &nbsp &nbsp &nbsp
                                                         <div class="form-group">
                                                             <label>Correo: </label>
-                                                            <asp:TextBox ID="txtCorreo" runat="server" width="316px" placeholder="Ejemplo@ejemplo.com"
+                                                            <asp:TextBox ID="txtCorreo" runat="server" width="400px" placeholder="Ejemplo@ejemplo.com"
                                                                  CssClass="form-control" TextMode="Email" title="Ingrese el formato de correo electronico">
                                                             </asp:TextBox>
                                                         </div>  
@@ -91,7 +79,7 @@
 
                                                         <div class="form-group">
                                                             <label>Apellido Materno: </label>
-                                                            <asp:TextBox ID="txtAMaterno" runat="server" width="307px" CssClass="form-control" 
+                                                            <asp:TextBox ID="txtAMaterno" runat="server" width="400px" CssClass="form-control" 
                                                                 type="Text" pattern="^[a-zA-ZñÑáéíóúÁÉÍÓÚ\s]+$" title="Ingrese solo letras">
                                                             </asp:TextBox>
                                                         </div>  
@@ -99,14 +87,14 @@
                                                         &nbsp &nbsp &nbsp &nbsp
                                                         <div class="form-group">
                                                             <label>Situacion Fiscal: </label>
-                                                            <asp:TextBox ID="txtSituacion" runat="server" width="255px" CssClass="form-control" >
+                                                            <asp:TextBox ID="txtSituacion" runat="server" width="400px" CssClass="form-control" >
                                                             </asp:TextBox>
                                                         </div>                                                
                                                        <br /> <br />
 
                                                         <div class="form-group">
                                                             <label>Metodo de Pago: </label>
-                                                            <asp:TextBox ID="txtMetodoPago" runat="server" width="313px" CssClass="form-control" 
+                                                            <asp:TextBox ID="txtMetodoPago" runat="server" width="400px" CssClass="form-control" 
                                                                 type="Text" pattern="^[a-zA-ZñÑáéíóúÁÉÍÓÚ\s]+$" title="Ingrese solo letras">
                                                             </asp:TextBox>
                                                         </div>  
@@ -142,56 +130,55 @@
 
                                                          <div class="form-group">
                                                             <label>Estado: </label>
-                                                            <asp:DropDownList ID="ddlEstado" runat="server" AppendDataBoundItems="True"  width="330px" CssClass=" form-control"
+                                                            <asp:DropDownList ID="ddlEstado" runat="server" AppendDataBoundItems="True"  width="390px" CssClass=" form-control"
                                                                              AutoPostBack="true" OnSelectedIndexChanged="ddlEstado_SelectedIndexChanged"></asp:DropDownList>   
                                                          </div>
-                                                        <br /> <br />
+                                                        
 
                                                         <div class="form-group">
                                                             <label>Municipio: </label>
-                                                            <asp:DropDownList ID="ddlMunicipio" runat="server" AppendDataBoundItems="True"  width="315px" CssClass=" form-control"></asp:DropDownList>
+                                                            <asp:DropDownList ID="ddlMunicipio" runat="server" AppendDataBoundItems="True"  width="390px" CssClass=" form-control"></asp:DropDownList>
                                                         </div>
-                                                        <br /> <br />
+                                                        
 
                                                         <div class="form-group">
                                                             <label>Calle: </label>
-                                                            <asp:TextBox ID="txtCalle" runat="server" CssClass="form-control" width="345px" >
+                                                            <asp:TextBox ID="txtCalle" runat="server" CssClass="form-control" width="390px" >
                                                             </asp:TextBox>
                                                          </div>
-                                                        <br /> <br />
+                                                        
 
                                                          <div class="form-group">
                                                             <label>Colonia: </label>
-                                                            <asp:TextBox ID="txtColonia" runat="server" CssClass="form-control" width="330px" >
+                                                            <asp:TextBox ID="txtColonia" runat="server" CssClass="form-control" width="390px" >
                                                             </asp:TextBox>
                                                          </div>
-                                                        <br /> <br />
+                                                        
                                             
                                                         <div class="form-group">
                                                             <label>Numero Interior: </label>
-                                                            <asp:TextBox ID="txtNumInt" runat="server" CssClass="form-control" width="275px" >
+                                                            <asp:TextBox ID="txtNumInt" runat="server" CssClass="form-control" width="180px" >
                                                             </asp:TextBox>
-                                                         </div>
-                                                        <br /> <br />
-
+                                                            </div>
+                                                        &nbsp &nbsp &nbsp
                                                         <div class="form-group">
                                                             <label>Numero Exterior: </label>
-                                                            <asp:TextBox ID="txtNumExt" runat="server" CssClass="form-control" width="270px"> 
+                                                            <asp:TextBox ID="txtNumExt" runat="server" CssClass="form-control" width="180px"> 
                                                             </asp:TextBox>
                                                         </div>   
-                                                        <br /> <br />
+                                                        
 
                                                         <div class="form-group">
                                                             <label>Codigo Postal: </label>
-                                                            <asp:TextBox ID="txtCodPos" runat="server" CssClass="form-control" type="number" width="285px"
+                                                            <asp:TextBox ID="txtCodPos" runat="server" CssClass="form-control" type="number" width="390px"
                                                                 pattern="^[0-9]*" title="Ingrese solo numeros"> 
                                                             </asp:TextBox>
                                                        </div>   
-                                                        <br /> <br />
+                                                        
 
                                                         <div class="form-group">
                                                             <label>Referencias: </label>
-                                                            <asp:TextBox ID="txtReferencia" runat="server" CssClass="form-control"  width="300px">
+                                                            <asp:TextBox ID="txtReferencia" runat="server" CssClass="form-control"  width="390px">
                                                             </asp:TextBox>
                                                          </div>                                
                                                         </div>
@@ -213,23 +200,23 @@
 
                                                             <div class="form-group">
                                                                 <label>Numero: </label>
-                                                                <asp:TextBox ID="txtNumeroBodega" runat="server" CssClass="form-control" Width="293px" 
+                                                                <asp:TextBox ID="txtNumeroBodega" runat="server" CssClass="form-control" Width="350px" 
                                                                     pattern="^[0-9]*" title="Ingrese solo numeros" type="number"></asp:TextBox>
                                                             </div>
                                                             <br /> <br />
                                                             <div class="form-group">
                                                                 <label>Horario de atención: </label>
-                                                                <asp:TextBox ID="txtHorario" runat="server" CssClass="form-control" Width="213px" ></asp:TextBox>
+                                                                <asp:TextBox ID="txtHorario" runat="server" CssClass="form-control" Width="350px" ></asp:TextBox>
                                                             </div>
                                                             <br /> <br />
                                                             <div class="form-group">
                                                                 <label>Encargado: </label>
-                                                                <asp:TextBox ID="txtEncargador" runat="server" CssClass="form-control" Width="273px" ></asp:TextBox>
+                                                                <asp:TextBox ID="txtEncargador" runat="server" CssClass="form-control" Width="350px" ></asp:TextBox>
                                                             </div>
                                                             <br /> <br />
                                                             <div class="form-group">
                                                                 <label>Encargado de pagos: </label>
-                                                                <asp:TextBox ID="txtPagos" runat="server" CssClass="form-control" Width="210px"></asp:TextBox>
+                                                                <asp:TextBox ID="txtPagos" runat="server" CssClass="form-control" Width="350px"></asp:TextBox>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -267,21 +254,21 @@
 
                                                          <div class="form-group">
                                                             <label>Celular: </label>
-                                                            <asp:TextBox ID="txtCelular" runat="server" CssClass="form-control"  width="332px">
+                                                            <asp:TextBox ID="txtCelular" runat="server" CssClass="form-control"  width="390px">
                                                             </asp:TextBox>
                                                          </div>                                                       
-                                                         <br /><br />
+                                                         
 
                                                          <div class="form-group">
                                                             <label>Tel. Encargado: </label>
-                                                            <asp:TextBox ID="txtTelEncargador" runat="server" CssClass="form-control"  width="280px" >
+                                                            <asp:TextBox ID="txtTelEncargador" runat="server" CssClass="form-control"  width="390px" >
                                                             </asp:TextBox>                                           
                                                          </div>
-                                                        <br /><br />
+                                                        
                                                          
                                                          <div class="form-group">
                                                             <label>Otro: </label>
-                                                            <asp:TextBox ID="txtTelOtro" runat="server" CssClass="form-control" width="349px" >
+                                                            <asp:TextBox ID="txtTelOtro" runat="server" CssClass="form-control" width="390px" >
                                                             </asp:TextBox>                                           
                                                          </div>
                                                        </div>
@@ -302,7 +289,7 @@
                                                         <div class="form-inline">
                                                                                                 
                                                         <a  href="/InicioAdmin.aspx" class="nav-link" >
-                                                            <asp:Button ID="btnRegistrar" runat="server" Text="Registrar" CssClass="btn btn-block btn-sm btn-success" OnClick="btnRegistrar_Click" />
+                                                            <asp:Button ID="btnRegistrar" runat="server" Text="Registrar" CssClass="btn btn-block btn-sm btn-success"  width="340px" OnClick="btnRegistrar_Click" />
                                                         </a>
                                                         </div>
                                                     </div>
@@ -320,10 +307,10 @@
                                 </div>
                               </div>  
                             </div>
-                          </div>
+                          
 
     <%--Boton para expandir la información para registrar un nuevo cliente empresarial--%>
-    <div class="col">
+    
     <div class="collapse multi-collapse" id="multiCollapseExample4">
       <div class="card card-body">
               <%-- Registro de nuevo empleado --%>   
@@ -355,54 +342,52 @@
                                                     <div class="form-inline">                                                        
                                                         <div class="form-group">
                                                             <label>Nombre: </label>
-                                                            <asp:TextBox ID="txtNombreEmpresarial" runat="server" width="368px" CssClass="form-control" >
+                                                            <asp:TextBox ID="txtNombreEmpresarial" runat="server" width="400px" CssClass="form-control" >
                                                             </asp:TextBox>   
                                                          </div>    
                                                         &nbsp &nbsp &nbsp &nbsp 
                                                         <div class="form-group">
                                                             <label>RFC: </label>
-                                                            <asp:TextBox ID="txtRFEmpresarial" runat="server" width="332px" CssClass="form-control"> </asp:TextBox>                                                            
+                                                            <asp:TextBox ID="txtRFEmpresarial" runat="server" width="400px" CssClass="form-control"> </asp:TextBox>                                                            
                                                         </div>
-                                                        <br /> <br />
+                                                        
                                                         
                                                         <div class="form-group">
                                                             <label>Apellido Paterno: </label>
-                                                            <asp:TextBox ID="txtPaternoEmpresarial" runat="server" width="310px" CssClass="form-control" >
+                                                            <asp:TextBox ID="txtPaternoEmpresarial" runat="server" width="400px" CssClass="form-control" >
                                                             </asp:TextBox>
                                                         </div>
-                                                        &nbsp &nbsp &nbsp &nbsp
+                                                        &nbsp &nbsp &nbsp &nbsp 
                                                         <div class="form-group">
                                                             <label>Correo: </label>
-                                                            <asp:TextBox ID="txtCorreoEmpresarial" runat="server" width="315px" placeholder="Ejemplo@ejemplo.com"
+                                                            <asp:TextBox ID="txtCorreoEmpresarial" runat="server" width="400px" placeholder="Ejemplo@ejemplo.com"
                                                                  CssClass="form-control" TextMode="Email" title="Ingrese el formato de correo electronico">
                                                             </asp:TextBox>
                                                         </div>  
-                                                        <br /> <br />
 
 
                                                         <div class="form-group">
                                                             <label>Apellido Materno: </label>
-                                                            <asp:TextBox ID="txtMaternoEmpresarial" runat="server" width="307px" CssClass="form-control" >
+                                                            <asp:TextBox ID="txtMaternoEmpresarial" runat="server" width="400px" CssClass="form-control" >
                                                             </asp:TextBox>
                                                         </div>  
+                                                        &nbsp &nbsp &nbsp &nbsp 
                                                         
-                                                        &nbsp &nbsp &nbsp &nbsp
                                                         <div class="form-group">
                                                             <label>N.I.F: </label>
-                                                            <asp:TextBox ID="txtNIFEmpresarial" runat="server" width="326px" CssClass="form-control" >
+                                                            <asp:TextBox ID="txtNIFEmpresarial" runat="server" width="400px" CssClass="form-control" >
                                                             </asp:TextBox>
-                                                        </div>                                                
-                                                       <br /> <br />
+                                                        </div>                
 
                                                         <div class="form-group">
                                                             <label>Metodo de Pago: </label>
-                                                            <asp:TextBox ID="txtPagoEmpresarial" runat="server" width="313px" CssClass="form-control">
+                                                            <asp:TextBox ID="txtPagoEmpresarial" runat="server" width="400px" CssClass="form-control">
                                                             </asp:TextBox>
                                                         </div>  
-                                                        &nbsp &nbsp &nbsp &nbsp
+                                                        &nbsp &nbsp &nbsp &nbsp 
                                                         <div class="form-group">
                                                             <label>Establecimiento: </label>
-                                                            <asp:TextBox ID="txtEstablecimientoEmpresarial" runat="server" width="255px" CssClass="form-control"> </asp:TextBox>                                                            
+                                                            <asp:TextBox ID="txtEstablecimientoEmpresarial" runat="server" width="400px" CssClass="form-control"> </asp:TextBox>                                                            
                                                         </div>
                                                     </div>
                                                 </div>
@@ -436,59 +421,56 @@
 
                                                          <div class="form-group">
                                                             <label>Estado: </label>
-                                                            <asp:DropDownList ID="ddlEstadoEmpresarial" runat="server" AppendDataBoundItems="True"  width="330px" CssClass=" form-control"
+                                                            <asp:DropDownList ID="ddlEstadoEmpresarial" runat="server" AppendDataBoundItems="True"  width="260px" CssClass=" form-control"
                                                                              AutoPostBack="true" OnSelectedIndexChanged="ddlEstadoEmpresarial_SelectedIndexChanged"></asp:DropDownList>   
                                                          </div>
-                                                        &nbsp &nbsp &nbsp &nbsp 
+                                                        &nbsp &nbsp &nbsp
 
                                                         <div class="form-group">
                                                             <label>Municipio: </label>
-                                                            <asp:DropDownList ID="ddlMunicipioEmpresarial" runat="server" AppendDataBoundItems="True"  width="315px" CssClass=" form-control"></asp:DropDownList>
+                                                            <asp:DropDownList ID="ddlMunicipioEmpresarial" runat="server" AppendDataBoundItems="True"  width="260px" CssClass=" form-control"></asp:DropDownList>
                                                         </div>
-                                                        &nbsp &nbsp &nbsp &nbsp 
-                                                        <br /> <br />
+                                                        &nbsp &nbsp &nbsp 
 
                                                         <div class="form-group">
                                                             <label>Calle: </label>
-                                                            <asp:TextBox ID="txtCalleEmpresarial" runat="server" CssClass="form-control" width="345px" >
+                                                            <asp:TextBox ID="txtCalleEmpresarial" runat="server" CssClass="form-control" width="260px" >
                                                             </asp:TextBox>
                                                          </div>
-                                                        &nbsp &nbsp &nbsp &nbsp 
+                                                        <br />  
 
                                                          <div class="form-group">
                                                             <label>Colonia: </label>
-                                                            <asp:TextBox ID="txtColoniaEmpresarial" runat="server" CssClass="form-control" width="330px" >
+                                                            <asp:TextBox ID="txtColoniaEmpresarial" runat="server" CssClass="form-control" width="260px" >
                                                             </asp:TextBox>
                                                          </div>
-                                                        &nbsp &nbsp &nbsp &nbsp 
-                                                        <br /> 
+                                                        &nbsp &nbsp &nbsp 
                                             
                                                         <div class="form-group">
                                                             <label>Numero Interior: </label>
-                                                            <asp:TextBox ID="txtInteriorEmpresarial" runat="server" CssClass="form-control" width="275px" >
+                                                            <asp:TextBox ID="txtInteriorEmpresarial" runat="server" CssClass="form-control" width="260px" >
                                                             </asp:TextBox>
                                                          </div>
-                                                        &nbsp &nbsp &nbsp &nbsp 
+                                                        &nbsp &nbsp &nbsp
 
                                                         <div class="form-group">
                                                             <label>Numero Exterior: </label>
-                                                            <asp:TextBox ID="txtExteriorEmpresarial" runat="server" CssClass="form-control" width="270px"> 
+                                                            <asp:TextBox ID="txtExteriorEmpresarial" runat="server" CssClass="form-control" width="260px"> 
                                                             </asp:TextBox>
                                                         </div>   
-                                                        &nbsp &nbsp &nbsp &nbsp 
-                                                        <br /> <br />
+                                                        <br /> 
 
                                                         <div class="form-group">
                                                             <label>Codigo Postal: </label>
-                                                            <asp:TextBox ID="txtCPEmpresarial" runat="server" CssClass="form-control" type="number" width="285px"
+                                                            <asp:TextBox ID="txtCPEmpresarial" runat="server" CssClass="form-control" type="number" width="260px"
                                                                 pattern="^[0-9]*" title="Ingrese solo numeros"> 
                                                             </asp:TextBox>
                                                        </div>   
-                                                        &nbsp &nbsp &nbsp &nbsp 
+                                                        &nbsp &nbsp &nbsp
 
                                                         <div class="form-group">
                                                             <label>Referencias: </label>
-                                                            <asp:TextBox ID="txtReferenciaEmpresarial" runat="server" CssClass="form-control"  width="300px">
+                                                            <asp:TextBox ID="txtReferenciaEmpresarial" runat="server" CssClass="form-control"  width="260px">
                                                             </asp:TextBox>
                                                          </div>                                
                                                         </div>
@@ -528,21 +510,19 @@
 
                                                          <div class="form-group">
                                                             <label>Celular: </label>
-                                                            <asp:TextBox ID="txtCelularEmpresarial" runat="server" CssClass="form-control" width="332px">
+                                                            <asp:TextBox ID="txtCelularEmpresarial" runat="server" CssClass="form-control" width="390px">
                                                             </asp:TextBox>
-                                                         </div>                                                       
-                                                         <br /><br />
+                                                         </div>         
 
                                                          <div class="form-group">
                                                             <label>Tel. Oficina: </label>
-                                                            <asp:TextBox ID="txtOficinaEmpresarial" runat="server" CssClass="form-control" width="300px" >
+                                                            <asp:TextBox ID="txtOficinaEmpresarial" runat="server" CssClass="form-control" width="390px" >
                                                             </asp:TextBox>                                           
                                                          </div>
-                                                        <br /><br />
                                                          
                                                          <div class="form-group">
                                                             <label>Otro: </label>
-                                                            <asp:TextBox ID="txtOtroEmpresarial" runat="server" CssClass="form-control"  width="349px" >
+                                                            <asp:TextBox ID="txtOtroEmpresarial" runat="server" CssClass="form-control"  width="390px" >
                                                             </asp:TextBox>                                           
                                                          </div>
                                                        </div>
@@ -563,7 +543,7 @@
                                                         <div class="form-inline">
                                                                                                 
                                                         <a  href="/InicioAdmin.aspx" class="nav-link" >
-                                                            <asp:Button ID="btnRegistarEmpresarial" runat="server" Text="Registrar" CssClass="btn btn-block btn-sm btn-success" OnClick="btnRegistarEmpresarial_Click" />
+                                                            <asp:Button ID="btnRegistarEmpresarial" runat="server" Text="Registrar" CssClass="btn btn-block btn-sm btn-success" width="340px" OnClick="btnRegistarEmpresarial_Click" />
                                                         </a>
                                                         </div>
                                                     </div>
@@ -581,121 +561,8 @@
                                 </div>
                               </div>  
                             </div>
-                          </div>
-
-    <%--Boton para expandir la información de la tabla --%>
-    <div class="col">
-    <div class="collapse multi-collapse" id="multiCollapseExample2" >
-      <div class="card card-body">
-            <%-- Tabla de consulta de trabajadores --%>
-    <div class="panel panel-default">
-        <div class="panel-heading" role="tab" id="heading">
-            <h4 class="panel-title">
-                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse" aria-expanded="false" aria-controls="collapse">CLIENTES ACTIVOS
-                </a>
-            </h4>
-        </div>
-        <div id="collapse" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
-            <div class="panel-body">
-
-                  <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" Width="100%" AllowPaging="True" DataSourceID="SqlDataSource2" 
-                    BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" DataKeyNames="idCliente">
-                    <Columns>
-                        <asp:CommandField ShowEditButton="True" />
-                        <asp:BoundField DataField="idCliente" HeaderText="idCliente" InsertVisible="False" ReadOnly="True" SortExpression="idCliente" Visible="false"/>    
-                        <asp:BoundField DataField="Column1" HeaderText="NOMBRE" SortExpression="Column1" ReadOnly="True" />
-                        <asp:BoundField DataField="strCorreo" HeaderText="CORREO" SortExpression="strCorreo" />
-                        <asp:BoundField DataField="strEstablecimiento" HeaderText="ESTABLECIMIENTO" SortExpression="strEstablecimiento" />
-                        <asp:BoundField DataField="strMetodoPago" HeaderText="PAGOS" SortExpression="strMetodoPago" />                        
-                        <asp:BoundField DataField="strHorarioAtencion" HeaderText="HRAS. ATENCIÓN" SortExpression="strHorarioAtencion" />
-                        <asp:BoundField DataField="strNumeroBodega" HeaderText="NUM. BODEGA" SortExpression="strNumeroBodega" />
-
-                        <asp:BoundField DataField="Column2" HeaderText="TELÉFONO" ReadOnly="True" SortExpression="Column2" />
-
-                    </Columns>
-                     <FooterStyle BackColor="White" ForeColor="#000066" />
-                        <HeaderStyle BackColor="#006699" Font-Bold="True" ForeColor="White" HorizontalAlign="Center"/>
-                        <PagerStyle BackColor="White" ForeColor="#000066" HorizontalAlign="Center" />
-                        <RowStyle ForeColor="#000066" />
-                        <SelectedRowStyle BackColor="#669999" Font-Bold="True" ForeColor="White" />
-                        <SortedAscendingCellStyle BackColor="#F1F1F1" />
-                        <SortedAscendingHeaderStyle BackColor="#007DBB" />
-                        <SortedDescendingCellStyle BackColor="#CAC9C9" />
-                        <SortedDescendingHeaderStyle BackColor="#00547E" />
-                </asp:GridView>
-
-                <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:db_a7a655_rodrigom1909ConnectionString %>" 
-                    SelectCommand="select c.idCliente,c.strNombre + ' ' + c.strApellidoP + ' ' + c.strApellidoM,
-                                    c.strCorreo,
-                                    c.strEstablecimiento, c.strMetodoPago, 
-                                    c.strHorarioAtencion, c.strNumeroBodega,
-                                    '(' + t.strCelular + '),(' + t.strTelCasa + ')'
-                                    from tblCliente c
-                                    inner join tblTelefono t
-                                    on t.idTelefono = c.fkTelefono
-                                    where c.idActivo = 1" UpdateCommand="UPDATE tblCliente SET strEstablecimiento =@strEstablecimiento, strCorreo =@strCorreo, strHorarioAtencion=@strHorarioAtencion where (idCliente = @idCliente)">
-                    <UpdateParameters>
-                        <asp:Parameter Name="strEstablecimiento" />
-                        <asp:Parameter Name="strCorreo" />
-                        <asp:Parameter Name="strHorarioAtencion" />
-                        <asp:Parameter Name="idCliente" />
-                    </UpdateParameters>
-    </asp:SqlDataSource>
-
-                    <%--  <asp:Button ID="btnExportarExcel" runat="server" Text="Exportar a EXCEL" OnClick="btnExportarExcel_Click" />--%>
-            </div>
-        </div>
-    </div>
-      </div>
-    </div>
-  </div>
-
-    <%-- Tabla de consulta de trabajadores --%>
-    <div class="col">
-        <div class="collapse multi-collapse" id="multiCollapseExample3">
-              <div class="form-inline">
-                <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5">
-                    <label>Búsqueda de cliente: </label>
-                    <asp:TextBox ID="txtBusqueda" runat="server" CssClass="form-control" Width="270px" placeholder="Ingresa el establecimiento" ></asp:TextBox>  
-               </div>      
                           
-                <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
-                    <asp:Button ID="btnBuscar" runat="server" Text="Buscar" Font-Size="14px" CssClass="btn btn-block btn-sm btn-success" Width="170px" OnClick="btnBuscar_Click"/>
-                </div>
-
-                <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5">
-                    
-                </div>
-                  <br /> <br />
-                  <br /> <br />
-                 <div class="panel panel-success">
-                        <asp:GridView ID="GridCliente" runat="server" AutoGenerateColumns="true" Width="100%" BackColor="White" 
-                            BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" AllowPaging="True" >
-
-                            <Columns>                                                                     
-                                <asp:TemplateField HeaderText="ELIMINAR">
-                                    <ItemTemplate>
-                                        <asp:ImageButton ID="btnBorrar" runat="server" ImageUrl="~/Administrador/Imagenes/borrar.png" OnClick="btnBorrar_Click"/>
-                                    </ItemTemplate>
-                                </asp:TemplateField>
-                            </Columns>
-
-                             <FooterStyle BackColor="White" ForeColor="#000066" />
-                                <HeaderStyle BackColor="#006699" Font-Bold="True" ForeColor="White" HorizontalAlign="Center" Font-Size="16px"/>
-                                <PagerStyle BackColor="White" ForeColor="#000066" HorizontalAlign="Center" />
-                                <RowStyle ForeColor="#000066" />
-                                <SelectedRowStyle BackColor="#669999" Font-Bold="True" ForeColor="White" />
-                                <SortedAscendingCellStyle BackColor="#F1F1F1" />
-                                <SortedAscendingHeaderStyle BackColor="#007DBB" />
-                                <SortedDescendingCellStyle BackColor="#CAC9C9" />
-                                <SortedDescendingHeaderStyle BackColor="#00547E" />
-                        </asp:GridView>
-                     </div>  
-
-            </div>
-        </div>
-    </div>
-</div>    
+ 
 
 <script type="text/javascript">
         function alerta() {

@@ -86,8 +86,9 @@ namespace ProjectPaslum.Controllers
         }
 
         public tblCliente ConsultarCliente(string strEstablecimiento)
-        {
-            return contexto.tblCliente. Where(e => e.strEstablecimiento == strEstablecimiento).FirstOrDefault<tblCliente>();
+        { 
+            return contexto.tblCliente.Where(s => s.strEstablecimiento.Contains(strEstablecimiento) || s.strNombre.Contains(strEstablecimiento)
+                || s.strApellidoM.Contains(strEstablecimiento) || s.strApellidoP.Contains(strEstablecimiento)).FirstOrDefault();
 
             //SELECT* FROM tblCLiente WHERE strEstablecimiento LIKE '%semilla%'
         }

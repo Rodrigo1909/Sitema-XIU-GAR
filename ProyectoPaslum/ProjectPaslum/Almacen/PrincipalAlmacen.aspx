@@ -22,18 +22,18 @@
                         <div class="panel-body">
                             <div class="form-inline">
 
-                                            
+                                     <%--        
                                    <div class="form-group">
                                          <label>Almacén </label><asp:DropDownList ID="ddlAlmacen" runat="server" AppendDataBoundItems="True"  
                                              width="500px" OnSelectedIndexChanged="ddlAlmacen_SelectedIndexChanged" AutoPostBack="true"></asp:DropDownList> 
                                     </div>   
-                                &nbsp &nbsp &nbsp &nbsp                                  
+                                      --%>                      
                                 
                                    <div class="form-group">
                                          <label>Marca </label><asp:DropDownList ID="ddlMarca" runat="server" AppendDataBoundItems="True"  
                                              width="500px" AutoPostBack="true" OnSelectedIndexChanged="ddlMarca_SelectedIndexChanged"></asp:DropDownList> 
                                     </div>
-                                <br /><br />
+                                &nbsp &nbsp &nbsp &nbsp      
                                 <div class="form-group">
                                          <label>Ingenio </label><asp:DropDownList ID="ddlIngenio" runat="server" AppendDataBoundItems="True"  
                                              width="500px" AutoPostBack="true" OnSelectedIndexChanged="ddlIngenio_SelectedIndexChanged"></asp:DropDownList> 

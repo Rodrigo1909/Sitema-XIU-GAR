@@ -23,7 +23,7 @@
                         <section>
                          <div>
                             <asp:DataList ID="DataList1" runat="server" CellPadding="4" DataKeyField="idVenta" DataSourceID="SqlDataSource1" CssClass="table table-responsive"
-                                     RepeatColumns="3" ForeColor="#FB2D59" OnItemCommand="DataList1_ItemCommand"  AutoPostBack="true" >
+                                     RepeatColumns="4" ForeColor="#FB2D59" OnItemCommand="DataList1_ItemCommand" >
                                     
                          
                                     <AlternatingItemStyle BackColor="#FB5679" />
@@ -82,7 +82,7 @@
                          <div>
                        
                         <asp:DataList ID="DataList2" runat="server" CellPadding="4" DataKeyField="idVenta" DataSourceID="SqlDataSource2" 
-                            CssClass="table table-responsive" RepeatColumns="3" ForeColor="#FAF327" AutoPostBack="true" OnItemCommand="DataList2_ItemCommand">
+                            CssClass="table table-responsive" RepeatColumns="4" ForeColor="#FAF327" AutoPostBack="true" OnItemCommand="DataList2_ItemCommand">
                             <AlternatingItemStyle BackColor="#FAF327" />
                             <FooterStyle BackColor="#FEF97C" Font-Bold="True"  />
                             <HeaderStyle BackColor="#FEF97C" Font-Bold="True"  />
@@ -136,7 +136,7 @@
                     <div class="panel-body">
 
 
-                        <asp:ListView ID="ListView1" runat="server" DataKeyNames="idVenta" DataSourceID="SqlDataSource3" GroupItemCount="3" OnItemCommand="ListView1_ItemCommand">
+                        <asp:ListView ID="ListView1" runat="server" DataKeyNames="idVenta" DataSourceID="SqlDataSource3" GroupItemCount="4" OnItemCommand="ListView1_ItemCommand">
                             <AlternatingItemTemplate>
                                 <td runat="server" style="background-color:#9AFE7C;">
                                     <asp:Label ID="lbNum12" runat="server" Text="VENTA:" ForeColor="#000000"></asp:Label>

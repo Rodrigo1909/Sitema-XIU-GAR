@@ -51,7 +51,7 @@ namespace ProjectPaslum.Venta
                                  where detalle.fkVenta == idDetalleVenta
                                  select new
                                  {
-                                     PRODUCTO = producto.strNombre,
+                                     PRODUCTO = "(" + producto.idProducto + ") " + producto.strNombre + " " + producto.intPresentacion + " " + unidad.strAbreviatura,
                                      DESCRIPCIÓN = producto.strDescripcion,
                                      PRESENTACIÓN = producto.intPresentacion,
                                      CANTIDAD = detalle.intCantidad,
@@ -125,41 +125,85 @@ namespace ProjectPaslum.Venta
                                 UNIDAD = unidad.strNombre
                             }).ToList();
 
+            //Esta funcion solo funciona para web, de alguna forma no obtiene los valores
+            //necesarios, y cambia la fecha en web.
 
+            string ExtraccionDia = ventas.fecha.ToString();
+            var terminoDia = ExtraccionDia.Substring(0, ExtraccionDia.IndexOf("/"));
 
+            const string ExtraccionMes = "/";
+            var principioMes = ventas.fecha.ToString().Substring(ventas.fecha.ToString().IndexOf(ExtraccionMes) + ExtraccionMes.Length);
+            var terminoMes = principioMes.Substring(0, principioMes.IndexOf("/"));
 
+            string ExtraccionYear = terminoMes + "/";
+            var principioYear = ventas.fecha.ToString().Substring(ventas.fecha.ToString().IndexOf(ExtraccionYear) + ExtraccionYear.Length);
+            var terminoYear = principioYear.Substring(0, principioYear.IndexOf(" "));
 
             if (ventas.clie == null)
                 {
 
                 document.Open();
 
-                String rutaLogo = Server.MapPath("../Alumno/images/XIUGAR.jpg");
 
-                var image = iTextSharp.text.Image.GetInstance(rutaLogo);
+                String ruta = Server.MapPath("../ImagenesProductos/FondoNota.jpg");
 
-                // iTextSharp.text.Image image1 = iTextSharp.text.Image.GetInstance("../images/avatar.png");
-                //image1.ScalePercent(50f);
+                var fondo = iTextSharp.text.Image.GetInstance(ruta);
+                fondo.ScaleAbsoluteWidth(570);
+                fondo.ScaleAbsoluteHeight(800);
+                fondo.SetAbsolutePosition(0, 50);
+                fondo.Alignment = iTextSharp.text.Image.UNDERLYING;
 
-                image.ScaleAbsoluteWidth(240);
-                image.ScaleAbsoluteHeight(110);
-                image.SetAbsolutePosition(350, 720);
-                document.Add(image);
-
+                document.Add(fondo);
 
                 Font fontTitle = FontFactory.GetFont(FontFactory.COURIER_BOLD, 25);
                 Font font9 = FontFactory.GetFont(FontFactory.HELVETICA, 13);
                 Font font7 = FontFactory.GetFont(FontFactory.TIMES, 13);
                 Font font8 = FontFactory.GetFont(FontFactory.TIMES, 9);
-                
 
+                document.Add(new Paragraph(16, " ", font7));
+                document.Add(new Chunk("\n"));
+                document.Add(new Chunk("\n"));
+                document.Add(new Chunk("\n"));
+                document.Add(new Chunk("\n"));
+                document.Add(new Chunk("\n"));
                 document.Add(new Chunk("\n"));
 
-                document.Add(new Paragraph(16, "N° Venta: " + int.Parse(Session["desgloce"].ToString()), font7));
-                document.Add(new Paragraph(16, "Vendedor: " + ventas.empl, font7));
-                document.Add(new Paragraph(16, "Cliente: MOSTRADOR", font7));
-                document.Add(new Paragraph(16, "Domicilio: Oficina XIU-GAR", font7));
-                document.Add(new Paragraph(16, "Fecha: " + ventas.fecha.ToString().Substring(0,9), font7));
+                PdfContentByte dia = writer.DirectContent;
+                dia.BeginText();
+                BaseFont f_cn = BaseFont.CreateFont("c:\\windows\\fonts\\calibri.ttf", BaseFont.CP1252, BaseFont.NOT_EMBEDDED);
+                dia.SetFontAndSize(f_cn, 16);
+                dia.SetTextMatrix(410, 655);  //(xPos, yPos)
+                dia.ShowText(terminoMes);
+                dia.EndText();
+
+                PdfContentByte mes = writer.DirectContent;
+                mes.BeginText();
+                mes.SetFontAndSize(f_cn, 16);
+                mes.SetTextMatrix(450, 655);  //(xPos, yPos)
+                mes.ShowText(terminoDia);
+                mes.EndText();
+
+                PdfContentByte year = writer.DirectContent;
+                year.BeginText();
+                year.SetFontAndSize(f_cn, 16);
+                year.SetTextMatrix(490, 655);  //(xPos, yPos)
+                year.ShowText(terminoYear);
+                year.EndText();
+
+                PdfContentByte folio = writer.DirectContent;
+                folio.BeginText();
+                folio.SetFontAndSize(f_cn, 16);
+                folio.SetTextMatrix(450, 615);  //(xPos, yPos)
+                folio.ShowText(Session["desgloce"].ToString());
+                folio.EndText();                
+
+                //document.Add(new Paragraph(16, "N° Venta: " + int.Parse(Session["desgloce"].ToString()), font7));
+                document.Add(new Paragraph(16, "  Vendedor: " + ventas.empl, font7));
+                document.Add(new Chunk("\n"));
+                document.Add(new Paragraph(16, "  Cliente: MOSTRADOR", font7));
+                document.Add(new Chunk("\n"));
+                document.Add(new Paragraph(16, "  Domicilio: Oficina XIU-GAR", font7));
+                //document.Add(new Paragraph(16, "Fecha: " + ventas.fecha.ToString().Substring(0,9), font7));
 
                 document.Add(new Chunk("\n"));
                 
@@ -168,7 +212,7 @@ namespace ProjectPaslum.Venta
                 PdfPTable table2 = new PdfPTable(5);
 
                 table.AddCell("CODIGO");
-                table.AddCell("DESCRIPCIÓN");
+                table.AddCell("PRODUCTO");
                 table.AddCell("CANTIDAD");
                 table.AddCell("PRECIO");
                 table.AddCell("TOTAL");
@@ -190,9 +234,9 @@ namespace ProjectPaslum.Venta
                 table.WidthPercentage = 90;
                 table2.WidthPercentage = 90;
 
-                Paragraph total = new Paragraph(16, "Total: $" + ventas.total, font9);
-                Paragraph efectivo = new Paragraph(16, "Efectivo: $" + ventas.efe, font9);
-                Paragraph cambio = new Paragraph(16, "Cambio: $" + (ventas.efe - ventas.total), font9);
+                Paragraph total = new Paragraph(16, "Total: $" + ventas.total + "        ", font9);
+                Paragraph efectivo = new Paragraph(16, "Efectivo: $" + ventas.efe + "        ", font9);
+                Paragraph cambio = new Paragraph(16, "Cambio: $" + (ventas.efe - ventas.total) + "        ", font9);
                 document.Add(new Chunk("\n"));
                 Paragraph gracias = new Paragraph(18, "Gracias por su compra, vuelva pronto.", font9);
 
@@ -251,32 +295,68 @@ namespace ProjectPaslum.Venta
 
                 document.Open();
 
-                String rutaLogo = Server.MapPath("../Alumno/images/XIUGAR.jpg");
+                String ruta = Server.MapPath("../ImagenesProductos/FondoNota.jpg");
 
-                var image = iTextSharp.text.Image.GetInstance(rutaLogo);
+                var fondo = iTextSharp.text.Image.GetInstance(ruta);
+                fondo.ScaleAbsoluteWidth(570);
+                fondo.ScaleAbsoluteHeight(800);
+                fondo.SetAbsolutePosition(0, 50);
+                fondo.Alignment = iTextSharp.text.Image.UNDERLYING;
 
-                // iTextSharp.text.Image image1 = iTextSharp.text.Image.GetInstance("../images/avatar.png");
-                //image1.ScalePercent(50f);
-
-                image.ScaleAbsoluteWidth(240);
-                image.ScaleAbsoluteHeight(110);
-                image.SetAbsolutePosition(350, 720);
-                document.Add(image);
-
-
+                document.Add(fondo);
 
                 Font fontTitle = FontFactory.GetFont(FontFactory.COURIER_BOLD, 25);
                 Font font9 = FontFactory.GetFont(FontFactory.HELVETICA, 13);
                 Font font7 = FontFactory.GetFont(FontFactory.TIMES, 13);
                 Font font8 = FontFactory.GetFont(FontFactory.TIMES, 9);
 
+                document.Add(new Paragraph(16, " ", font7));
+                document.Add(new Chunk("\n"));
+                document.Add(new Chunk("\n"));
+                document.Add(new Chunk("\n"));
+                document.Add(new Chunk("\n"));
+                document.Add(new Chunk("\n"));
                 document.Add(new Chunk("\n"));
 
-                document.Add(new Paragraph(16, "N° Venta: " + int.Parse(Session["desgloce"].ToString()), font7));
-                document.Add(new Paragraph(16, "Vendedor: " + clien.empl, font7));
-                document.Add(new Paragraph(16, "Cliente: " + clien.cli, font7));
-                document.Add(new Paragraph(16, "Domicilio: " + clien.dire, font7));
-                document.Add(new Paragraph(16, "Fecha: " + clien.fecha.ToString().Substring(0, 9), font7));
+                PdfContentByte dia = writer.DirectContent;
+                dia.BeginText();
+                BaseFont f_cn = BaseFont.CreateFont("c:\\windows\\fonts\\calibri.ttf", BaseFont.CP1252, BaseFont.NOT_EMBEDDED);
+                dia.SetFontAndSize(f_cn, 16);
+                dia.SetTextMatrix(410, 655);  //(xPos, yPos)
+                dia.ShowText(terminoMes);
+                dia.EndText();
+
+                PdfContentByte mes = writer.DirectContent;
+                mes.BeginText();
+                mes.SetFontAndSize(f_cn, 16);
+                mes.SetTextMatrix(450, 655);  //(xPos, yPos)
+                mes.ShowText(terminoDia);
+                mes.EndText();
+
+                PdfContentByte year = writer.DirectContent;
+                year.BeginText();
+                year.SetFontAndSize(f_cn, 16);
+                year.SetTextMatrix(490, 655);  //(xPos, yPos)
+                year.ShowText(terminoYear);
+                year.EndText();
+
+                PdfContentByte folio = writer.DirectContent;
+                folio.BeginText();
+                folio.SetFontAndSize(f_cn, 16);
+                folio.SetTextMatrix(450, 615);  //(xPos, yPos)
+                folio.ShowText(Session["desgloce"].ToString());
+                folio.EndText();
+
+
+
+
+                //document.Add(new Paragraph(16, "N° Venta: " + int.Parse(Session["desgloce"].ToString()), font7));
+                document.Add(new Paragraph(16, "  Vendedor: " + clien.empl, font7));
+                document.Add(new Chunk("\n"));
+                document.Add(new Paragraph(16, "  Cliente: " + clien.cli, font7));
+                document.Add(new Chunk("\n"));
+                document.Add(new Paragraph(16, " Domicilio: " + clien.dire, font8));
+                //document.Add(new Paragraph(16, "Fecha: " + clien.fecha.ToString().Substring(0, 9), font7));
 
                 document.Add(new Chunk("\n"));
 
@@ -285,7 +365,7 @@ namespace ProjectPaslum.Venta
                 PdfPTable table2 = new PdfPTable(5);
 
                 table.AddCell("CODIGO");
-                table.AddCell("DESCRIPCIÓN");
+                table.AddCell("PRODUCTO");
                 table.AddCell("CANTIDAD");
                 table.AddCell("PRECIO");
                 table.AddCell("TOTAL");
@@ -306,9 +386,9 @@ namespace ProjectPaslum.Venta
                 table.WidthPercentage = 90;
                 table2.WidthPercentage = 90;
 
-                Paragraph total = new Paragraph(16, "Total: $" + ventas.total, font9);
-                Paragraph efectivo = new Paragraph(16, "Efectivo: $" + ventas.efe, font9);
-                Paragraph cambio = new Paragraph(16, "Cambio: $" + (ventas.efe - ventas.total), font9);
+                Paragraph total = new Paragraph(16, "Total: $" + ventas.total + "        ", font9);
+                Paragraph efectivo = new Paragraph(16, "Efectivo: $" + ventas.efe + "        ", font9);
+                Paragraph cambio = new Paragraph(16, "Cambio: $" + (ventas.efe - ventas.total) + "        ", font9);
                 document.Add(new Chunk("\n"));
                 Paragraph gracias = new Paragraph(18, "Gracias por su compra, vuelva pronto.", font9);
 

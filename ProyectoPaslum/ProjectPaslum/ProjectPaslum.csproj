@@ -290,6 +290,7 @@
     <Content Include="ImagenesProductos\azucar-baja-en-calorias.jpg" />
     <Content Include="ImagenesProductos\azucar-estandar.jpg" />
     <Content Include="ImagenesProductos\Benito.jpg" />
+    <Content Include="ImagenesProductos\Bolsas.jpeg" />
     <Content Include="ImagenesProductos\BSM.jpg" />
     <Content Include="ImagenesProductos\BSM_C.jpg" />
     <Content Include="ImagenesProductos\BSM_EZ.jpg" />
@@ -299,15 +300,22 @@
     <Content Include="ImagenesProductos\calipam.jpg" />
     <Content Include="ImagenesProductos\Carmen.jpg" />
     <Content Include="ImagenesProductos\Central.jpg" />
+    <Content Include="ImagenesProductos\Cotizacion.jpeg" />
     <Content Include="ImagenesProductos\Domino.jpg" />
+    <Content Include="ImagenesProductos\FondoCredito.jpg" />
+    <Content Include="ImagenesProductos\FondoNota.jpg" />
     <Content Include="ImagenesProductos\GAM.jpg" />
     <Content Include="ImagenesProductos\GAT.jpg" />
     <Content Include="ImagenesProductos\GAT_LG.jpg" />
     <Content Include="ImagenesProductos\GrupoSantos.jpg" />
     <Content Include="ImagenesProductos\GrupoSantos_IPA.jpg" />
     <Content Include="ImagenesProductos\higo.jpg" />
+    <Content Include="ImagenesProductos\logo_Feltor.png" />
     <Content Include="ImagenesProductos\Margarita.jpg" />
     <Content Include="ImagenesProductos\Motzorongo.jpg" />
+    <Content Include="ImagenesProductos\OC.jpeg" />
+    <Content Include="ImagenesProductos\OCSuperior.jpg" />
+    <Content Include="ImagenesProductos\OCTabla.jpg" />
     <Content Include="ImagenesProductos\Piasa.jpg" />
     <Content Include="ImagenesProductos\piloncillo.jpg" />
     <Content Include="ImagenesProductos\Porres.jpg" />
@@ -318,6 +326,8 @@
     <Content Include="ImagenesProductos\Saenz.jpg" />
     <Content Include="ImagenesProductos\Saenz_Tamazula.jpg" />
     <Content Include="ImagenesProductos\Santos.jpg" />
+    <Content Include="ImagenesProductos\Sello.jpeg" />
+    <Content Include="ImagenesProductos\SuperiorCotizacion.jpg" />
     <Content Include="ImagenesProductos\XIUGAR.jpg" />
     <Content Include="ImagenesProductos\zucarmex.jpg" />
     <Content Include="ImagenesProductos\zulka.jpg" />
@@ -442,6 +452,7 @@
     <Content Include="Venta\AlertaErrorAbono.aspx" />
     <Content Include="Venta\AlertaExito.aspx" />
     <Content Include="Venta\AlertaExito2.aspx" />
+    <Content Include="Venta\ClienteVenta.aspx" />
     <Content Include="Venta\CobrarCreditoVenta.aspx" />
     <Content Include="Venta\CobrarVenta.aspx" />
     <Content Include="Venta\CotizacionVenta.aspx" />
@@ -830,6 +841,13 @@
     </Compile>
     <Compile Include="Venta\AlertaExito2.aspx.designer.cs">
       <DependentUpon>AlertaExito2.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Venta\ClienteVenta.aspx.cs">
+      <DependentUpon>ClienteVenta.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Venta\ClienteVenta.aspx.designer.cs">
+      <DependentUpon>ClienteVenta.aspx</DependentUpon>
     </Compile>
     <Compile Include="Venta\CobrarCreditoVenta.aspx.cs">
       <DependentUpon>CobrarCreditoVenta.aspx</DependentUpon>

@@ -52,8 +52,22 @@
                                     
                                     <div class="form-group">
                                          <label>Condiciones comerciales </label>
-                                        
-                                        <asp:TextBox ID="txtCondiciones" runat="server" width="1000px" Height="250px" style="text-align:left" ></asp:TextBox>
+                                         <asp:TextBox ID="txtCondiciones" runat="server" width="1025px"  style="text-align:left" placeholder="Ingrese la condición 1" ></asp:TextBox>                                        
+                                    </div>
+                                        <div class="form-group">
+                                        <asp:TextBox ID="txtCondicion2" runat="server" width="1025px"  style="text-align:left" placeholder="Ingrese la condición 2"></asp:TextBox>
+                                    </div>
+                                        <div class="form-group">
+                                        <asp:TextBox ID="txtCondicion3" runat="server" width="1025px"  style="text-align:left" placeholder="Ingrese la condición 3"></asp:TextBox>
+                                    </div>
+                                        <div class="form-group">
+                                        <asp:TextBox ID="txtCondicion4" runat="server" width="1025px"  style="text-align:left" placeholder="Ingrese la condición 4"></asp:TextBox>
+                                    </div>
+                                        <div class="form-group">
+                                        <asp:TextBox ID="txtCondicion5" runat="server" width="1025px"  style="text-align:left" placeholder="Ingrese la condición 5"></asp:TextBox>
+                                    </div>
+                                        <div class="form-group">
+                                        <asp:TextBox ID="txtCondicion6" runat="server" width="1025px"  style="text-align:left" placeholder="Ingrese la condición 6"></asp:TextBox>
                                     </div>
 
                                 </div>

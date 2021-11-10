@@ -102,93 +102,113 @@ namespace ProjectPaslum.Venta
             PdfWriter writer = PdfWriter.GetInstance(document, HttpContext.Current.Response.OutputStream);
             DateTime fechact = DateTime.Now;
             CultureInfo culture = new CultureInfo("en-US");
-            
+
+            var provee = (from pro in contexto.tblProveedor    
+                          where pro.idProveedor == Convert.ToInt32(ddlProveedor.SelectedValue)
+                          select new
+                          {
+                              nombre = pro.strNombre + " " + pro.strApellidoP + " " +
+                          pro.strApellidoM + " (" + pro.strProducto + ")",
+                              id = pro.idProveedor
+                          }).FirstOrDefault();
+
             //Si no tiene iva ni descuento entra aqui
             if (string.IsNullOrWhiteSpace(txtIVA.Text) == true && (string.IsNullOrWhiteSpace(txtDescuento.Text)) == true)
             {
                 document.Open();
 
-                String rutaLogo = Server.MapPath("../Alumno/images/XIUGAR.jpg");
+                String ruta = Server.MapPath("../ImagenesProductos/OC.jpeg");
 
-                var image = iTextSharp.text.Image.GetInstance(rutaLogo);
-                image.ScaleAbsoluteWidth(190);
-                image.ScaleAbsoluteHeight(90);
-                image.SetAbsolutePosition(350, 720);
-                document.Add(image);
+                var fondo = iTextSharp.text.Image.GetInstance(ruta);
+                fondo.ScaleAbsoluteWidth(600);
+                fondo.ScaleAbsoluteHeight(850);
+                fondo.SetAbsolutePosition(0, 0);
+                fondo.Alignment = iTextSharp.text.Image.UNDERLYING;
+
+                document.Add(fondo);
 
 
                 Font fontTitle = FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 25);
-                Font font9 = FontFactory.GetFont(FontFactory.HELVETICA, 10);
+                Font font9 = FontFactory.GetFont(FontFactory.HELVETICA, 11);
 
-
-                Paragraph title = new Paragraph(string.Format("ORDEN DE COMPRA\nXiugar S. de R.L d C.V."), new iTextSharp.text.Font(iTextSharp.text.Font.FontFamily.HELVETICA, 20, iTextSharp.text.Font.BOLD));
-                title.Alignment = Element.ALIGN_LEFT;
-                document.Add(title);
-
-                //document.Add(new Paragraph(20, "Ticket XIU-GAR", fontTitle));
-
+                document.Add(new Paragraph(16, " ", font9));
+                document.Add(new Chunk("\n"));
+                document.Add(new Chunk("\n"));
+                document.Add(new Chunk("\n"));
+                document.Add(new Chunk("\n"));
+                document.Add(new Chunk("\n"));
+                document.Add(new Chunk("\n"));
+                document.Add(new Chunk("\n"));
+                document.Add(new Chunk("\n"));
+                document.Add(new Chunk("\n"));
+                document.Add(new Chunk("\n"));
+                document.Add(new Chunk("\n"));
+                document.Add(new Chunk("\n"));
                 document.Add(new Chunk("\n"));
 
-                document.Add(new Paragraph(16, "Proveedor: " + txtComprador.Text, font9));
+                document.Add(new Paragraph(16, "Proveedor: " + provee.nombre, font9));
                 document.Add(new Paragraph(16, "Dirección: " + ddlDomicilio.Text, font9));
-                document.Add(new Paragraph(16, "Teléfono: " + ddlTelefono.Text, font9));
-                document.Add(new Paragraph(16, "Fecha: " + DateTime.Now.Date.ToString().Substring(0, 9), font9));
-                document.Add(new Paragraph(16, "Correo: " + ddlCorreo.Text, font9));
-                document.Add(new Paragraph(16, "Entregar a: " + txtEntregar.Text, font9));
+                document.Add(new Paragraph(16, "Teléfono: " + ddlTelefono.Text + "       Fecha: " + DateTime.Now.Date.ToString().Substring(0, 9) + "      Correo: " + ddlCorreo.Text, font9));
+                document.Add(new Paragraph(16, "Entregar a: " + txtEntregar.Text , font9));
+                
+
+                Paragraph cantidad = new Paragraph(16, txtCantidad.Text, font9);
+                Paragraph producto = new Paragraph(18, txtProducto.Text, font9);                
+                Paragraph descrip = new Paragraph(16, txtDescripcion.Text, font9);
+                Paragraph interes = new Paragraph(16, "---", font9);
+                Paragraph costo = new Paragraph(18, "$ "+txtCostoUni.Text, font9);                
+                Paragraph import = new Paragraph(18, "$ "+txtImporte.Text, font9);
+
+                cantidad.Alignment = Element.ALIGN_CENTER;
+                producto.Alignment = Element.ALIGN_CENTER;
+                descrip.Alignment = Element.ALIGN_CENTER;
+                costo.Alignment = Element.ALIGN_CENTER;
+                import.Alignment = Element.ALIGN_CENTER;
+                interes.Alignment = Element.ALIGN_CENTER;
+
                 document.Add(new Chunk("\n"));
+                document.Add(new Chunk("\n"));
+                document.Add(cantidad);                
+                document.Add(new Chunk("\n"));
+                document.Add(new Chunk("\n"));
+                document.Add(producto);
+                document.Add(new Chunk("\n"));
+                document.Add(new Chunk("\n"));
+                document.Add(descrip);
+                document.Add(new Chunk("\n"));
+                document.Add(new Chunk("\n"));
+                document.Add(interes);
+                document.Add(new Chunk("\n"));
+                document.Add(new Chunk("\n"));
+                document.Add(costo);
+                document.Add(new Chunk("\n"));
+                document.Add(import);
 
-                PdfPTable table = new PdfPTable(5);
-                table.WidthPercentage = 100;
-                // Esta es la primera fila
-                table.AddCell("Cantidad");
-                table.AddCell("Producto");
-                table.AddCell("Descripción");
-                table.AddCell("Costo Unitario");
-                table.AddCell("Importe");
-                // Segunda fila
-                table.AddCell(txtCantidad.Text);
-                table.AddCell(txtProducto.Text);
-                table.AddCell(txtDescripcion.Text);
-                table.AddCell(txtCostoUni.Text);
-                table.AddCell(txtImporte.Text);
 
-
-                document.Add(table);
-
-                //Paragraph FechaEntrega = new Paragraph(16, "Fecha de entrega: $" + (calEntrega.ToString().Substring(0, 2)) + " de " + (calEntrega.ToString().Substring(3, 2)) + " del " + (
-                //        calEntrega.ToString().Substring(6, 4)) , font9);
                 Paragraph FechaEntrega = new Paragraph(16, "Fecha de entrega: " + calEntregas.Text, font9);
                 Paragraph Confirmo = new Paragraph(16, "Confirmo: " + txtConfirmo.Text, font9);
-
-                document.Add(new Chunk("\n"));
-
                 Paragraph Sub = new Paragraph(16, "Subtotal: $" + txtImporte.Text, font9);
                 Paragraph Desc = new Paragraph(16, "Descuento: $0", font9);
                 Paragraph IEPS = new Paragraph(16, "ISR: -", font9);
                 Paragraph ISR = new Paragraph(16, "IVA: 0%    $0", font9);
                 Paragraph IVA = new Paragraph(16, "I.V.A: -", font9);
-
-                document.Add(new Chunk("\n"));
-
                 Paragraph Total = new Paragraph(16, "Total: $" + txtImporte.Text, font9);
-                //Paragraph gracias = new Paragraph(18, "Gracias por su compra, vuelva pronto.", font9);
 
 
                 FechaEntrega.Alignment = Element.ALIGN_LEFT;
                 Confirmo.Alignment = Element.ALIGN_LEFT;
-
-
                 Sub.Alignment = Element.ALIGN_RIGHT;
                 Desc.Alignment = Element.ALIGN_RIGHT;
                 IEPS.Alignment = Element.ALIGN_RIGHT;
                 ISR.Alignment = Element.ALIGN_RIGHT;
                 IVA.Alignment = Element.ALIGN_RIGHT;
-                document.Add(new Chunk("\n"));
                 Total.Alignment = Element.ALIGN_RIGHT;
+
+                document.Add(new Paragraph(16, " ", font9));
+                document.Add(new Chunk("\n"));
 
                 document.Add(FechaEntrega);
                 document.Add(Confirmo);
-
                 document.Add(Sub);
                 document.Add(Desc);
                 document.Add(IEPS);
@@ -216,91 +236,100 @@ namespace ProjectPaslum.Venta
 
                 document.Open();
 
-                String rutaLogo = Server.MapPath("../Alumno/images/XIUGAR.jpg");
+                String ruta = Server.MapPath("../ImagenesProductos/OC.jpeg");
 
-                var image = iTextSharp.text.Image.GetInstance(rutaLogo);
-                //image1.ScalePercent(50f);
-                image.ScaleAbsoluteWidth(190);
-                image.ScaleAbsoluteHeight(90);
-                image.SetAbsolutePosition(350, 720);
-                document.Add(image);
+                var fondo = iTextSharp.text.Image.GetInstance(ruta);
+                fondo.ScaleAbsoluteWidth(600);
+                fondo.ScaleAbsoluteHeight(850);
+                fondo.SetAbsolutePosition(0, 0);
+                fondo.Alignment = iTextSharp.text.Image.UNDERLYING;
+
+                document.Add(fondo);
 
 
                 Font fontTitle = FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 25);
                 Font font9 = FontFactory.GetFont(FontFactory.HELVETICA, 10);
 
-
-
-                Paragraph title = new Paragraph(string.Format("ORDEN DE COMPRA\nXiugar S. de R.L d C.V."), new iTextSharp.text.Font(iTextSharp.text.Font.FontFamily.HELVETICA, 20, iTextSharp.text.Font.BOLD));
-                title.Alignment = Element.ALIGN_LEFT;
-                document.Add(title);
-
-                //document.Add(new Paragraph(20, "Ticket XIU-GAR", fontTitle));
-
+                document.Add(new Paragraph(16, " ", font9));
                 document.Add(new Chunk("\n"));
+                document.Add(new Chunk("\n"));
+                document.Add(new Chunk("\n"));
+                document.Add(new Chunk("\n"));
+                document.Add(new Chunk("\n"));
+                document.Add(new Chunk("\n"));
+                document.Add(new Chunk("\n"));
+                document.Add(new Chunk("\n"));
+                document.Add(new Chunk("\n"));
+                document.Add(new Chunk("\n"));
+                document.Add(new Chunk("\n"));
+                document.Add(new Chunk("\n"));
+                document.Add(new Chunk("\n"));                
 
-                document.Add(new Paragraph(16, "Proveedor: " + txtComprador.Text, font9));
+                document.Add(new Paragraph(16, "Proveedor: " + provee.nombre, font9));
                 document.Add(new Paragraph(16, "Dirección: " + ddlDomicilio.Text, font9));
-                document.Add(new Paragraph(16, "Teléfono: " + ddlTelefono.Text, font9));
-                document.Add(new Paragraph(16, "Fecha: " + DateTime.Now.Date.ToString().Substring(0, 10), font9));
-                document.Add(new Paragraph(16, "Correo: " + ddlCorreo.Text, font9));
+                document.Add(new Paragraph(16, "Teléfono: " + ddlTelefono.Text + "       Fecha: " + DateTime.Now.Date.ToString().Substring(0, 9) + "      Correo: " + ddlCorreo.Text, font9));
                 document.Add(new Paragraph(16, "Entregar a: " + txtEntregar.Text, font9));
+
+                Paragraph cantidad = new Paragraph(16, txtCantidad.Text, font9);
+                Paragraph producto = new Paragraph(18, txtProducto.Text, font9);
+                Paragraph descrip = new Paragraph(16, txtDescripcion.Text, font9);
+                Paragraph interes = new Paragraph(16, "---", font9);
+                Paragraph costo = new Paragraph(18, "$ " + txtCostoUni.Text, font9);
+                Paragraph import = new Paragraph(18, "$ " + txtImporte.Text, font9);
+
+                cantidad.Alignment = Element.ALIGN_CENTER;
+                producto.Alignment = Element.ALIGN_CENTER;
+                descrip.Alignment = Element.ALIGN_CENTER;
+                costo.Alignment = Element.ALIGN_CENTER;
+                import.Alignment = Element.ALIGN_CENTER;
+                interes.Alignment = Element.ALIGN_CENTER;                
+
                 document.Add(new Chunk("\n"));
+                document.Add(new Chunk("\n"));
+                document.Add(cantidad);
+                document.Add(new Chunk("\n"));
+                document.Add(new Chunk("\n"));
+                document.Add(producto);
+                document.Add(new Chunk("\n"));
+                document.Add(new Chunk("\n"));
+                document.Add(descrip);
+                document.Add(new Chunk("\n"));
+                document.Add(new Chunk("\n"));
+                document.Add(interes);
+                document.Add(new Chunk("\n"));
+                document.Add(new Chunk("\n"));
+                document.Add(costo);
+                document.Add(new Chunk("\n"));                
+                document.Add(import);
 
-                PdfPTable table = new PdfPTable(5);
-                table.WidthPercentage = 100;
-                // Esta es la primera fila
-                table.AddCell("Cantidad");
-                table.AddCell("Producto");
-                table.AddCell("Descripción");
-                table.AddCell("Costo Unitario");
-                table.AddCell("Importe");
-                // Segunda fila
-                table.AddCell(txtCantidad.Text);
-                table.AddCell(txtProducto.Text);
-                table.AddCell(txtDescripcion.Text);
-                table.AddCell(txtCostoUni.Text);
-                table.AddCell(txtImporte.Text);
 
 
-                document.Add(table);
-
-                //Paragraph FechaEntrega = new Paragraph(16, "Fecha de entrega: $" + (calEntrega.ToString().Substring(0, 2)) + " de " + (calEntrega.ToString().Substring(3, 2)) + " del " + (
-                //        calEntrega.ToString().Substring(6, 4)) , font9);
                 Paragraph FechaEntrega = new Paragraph(16, "Fecha de entrega: " + calEntregas.Text, font9);
                 Paragraph Confirmo = new Paragraph(16, "Confirmo: " + txtConfirmo.Text, font9);
-
-                document.Add(new Chunk("\n"));
-
                 Paragraph Sub = new Paragraph(16, "Subtotal: $" + txtImporte.Text, font9);
                 Paragraph Desc = new Paragraph(16, "Descuento: $" + txtDescuento.Text, font9);
                 Paragraph DescFin = new Paragraph(16, "Desc. Fin: $" + Descuen, font9);
                 Paragraph IEPS = new Paragraph(16, "ISR: -", font9);
                 Paragraph ISR = new Paragraph(16, "IVA: " + txtIVA.Text + "%    $" + iva, font9);
                 Paragraph IVA = new Paragraph(16, "I.V.A: -", font9);
-
-                document.Add(new Chunk("\n"));
-
                 Paragraph Total = new Paragraph(16, "Total: $" + TotalF, font9);
                 //Paragraph gracias = new Paragraph(18, "Gracias por su compra, vuelva pronto.", font9);
 
 
                 FechaEntrega.Alignment = Element.ALIGN_LEFT;
                 Confirmo.Alignment = Element.ALIGN_LEFT;
-
-
                 Sub.Alignment = Element.ALIGN_RIGHT;
                 Desc.Alignment = Element.ALIGN_RIGHT;
                 DescFin.Alignment = Element.ALIGN_RIGHT;
                 IEPS.Alignment = Element.ALIGN_RIGHT;
                 ISR.Alignment = Element.ALIGN_RIGHT;
                 IVA.Alignment = Element.ALIGN_RIGHT;
-                document.Add(new Chunk("\n"));
                 Total.Alignment = Element.ALIGN_RIGHT;
 
+                document.Add(new Paragraph(16, " ", font9));
+                document.Add(new Chunk("\n"));
                 document.Add(FechaEntrega);
                 document.Add(Confirmo);
-
                 document.Add(Sub);
                 document.Add(Desc);
                 document.Add(DescFin);
@@ -335,61 +364,74 @@ namespace ProjectPaslum.Venta
 
                     document.Open();
 
-                    String rutaLogo = Server.MapPath("../Alumno/images/XIUGAR.jpg");
+                    String ruta = Server.MapPath("../ImagenesProductos/OC.jpeg");
 
-                    var image = iTextSharp.text.Image.GetInstance(rutaLogo);
-                    image.ScaleAbsoluteWidth(190);
-                    image.ScaleAbsoluteHeight(90);
-                    image.SetAbsolutePosition(350, 720);
-                    document.Add(image);
+                    var fondo = iTextSharp.text.Image.GetInstance(ruta);
+                    fondo.ScaleAbsoluteWidth(600);
+                    fondo.ScaleAbsoluteHeight(850);
+                    fondo.SetAbsolutePosition(0, 0);
+                    fondo.Alignment = iTextSharp.text.Image.UNDERLYING;
 
+                    document.Add(fondo);
 
                     Font fontTitle = FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 25);
                     Font font9 = FontFactory.GetFont(FontFactory.HELVETICA, 10);
 
-
-
-                    Paragraph title = new Paragraph(string.Format("ORDEN DE COMPRA\nXiugar S. de R.L d C.V."), new iTextSharp.text.Font(iTextSharp.text.Font.FontFamily.HELVETICA, 20, iTextSharp.text.Font.BOLD));
-                    title.Alignment = Element.ALIGN_LEFT;
-                    document.Add(title);
-
-                    //document.Add(new Paragraph(20, "Ticket XIU-GAR", fontTitle));
-
+                    document.Add(new Paragraph(16, " ", font9));
+                    document.Add(new Chunk("\n"));
+                    document.Add(new Chunk("\n"));
+                    document.Add(new Chunk("\n"));
+                    document.Add(new Chunk("\n"));
+                    document.Add(new Chunk("\n"));
+                    document.Add(new Chunk("\n"));
+                    document.Add(new Chunk("\n"));
+                    document.Add(new Chunk("\n"));
+                    document.Add(new Chunk("\n"));
+                    document.Add(new Chunk("\n"));
+                    document.Add(new Chunk("\n"));
+                    document.Add(new Chunk("\n"));
                     document.Add(new Chunk("\n"));
 
-                    document.Add(new Paragraph(16, "Proveedor: " + txtComprador.Text, font9));
+                    document.Add(new Paragraph(16, "Proveedor: " + provee.nombre, font9));
                     document.Add(new Paragraph(16, "Dirección: " + ddlDomicilio.Text, font9));
-                    document.Add(new Paragraph(16, "Teléfono: " + ddlTelefono.Text, font9));
-                    document.Add(new Paragraph(16, "Fecha: " + DateTime.Now.Date.ToString().Substring(0, 10), font9));
-                    document.Add(new Paragraph(16, "Correo: " + ddlCorreo.Text, font9));
+                    document.Add(new Paragraph(16, "Teléfono: " + ddlTelefono.Text + "       Fecha: " + DateTime.Now.Date.ToString().Substring(0, 9) + "      Correo: " + ddlCorreo.Text, font9));
                     document.Add(new Paragraph(16, "Entregar a: " + txtEntregar.Text, font9));
+
+                    Paragraph cantidad = new Paragraph(16, txtCantidad.Text, font9);
+                    Paragraph producto = new Paragraph(18, txtProducto.Text, font9);
+                    Paragraph descrip = new Paragraph(16, txtDescripcion.Text, font9);
+                    Paragraph interes = new Paragraph(16, "---", font9);
+                    Paragraph costo = new Paragraph(18, "$ " + txtCostoUni.Text, font9);
+                    Paragraph import = new Paragraph(18, "$ " + txtImporte.Text, font9);
+
+                    cantidad.Alignment = Element.ALIGN_CENTER;
+                    producto.Alignment = Element.ALIGN_CENTER;
+                    descrip.Alignment = Element.ALIGN_CENTER;
+                    costo.Alignment = Element.ALIGN_CENTER;
+                    import.Alignment = Element.ALIGN_CENTER;
+                    interes.Alignment = Element.ALIGN_CENTER;
+
                     document.Add(new Chunk("\n"));
+                    document.Add(new Chunk("\n"));
+                    document.Add(cantidad);
+                    document.Add(new Chunk("\n"));
+                    document.Add(new Chunk("\n"));
+                    document.Add(producto);
+                    document.Add(new Chunk("\n"));
+                    document.Add(new Chunk("\n"));
+                    document.Add(descrip);
+                    document.Add(new Chunk("\n"));
+                    document.Add(new Chunk("\n"));
+                    document.Add(interes);
+                    document.Add(new Chunk("\n"));
+                    document.Add(new Chunk("\n"));
+                    document.Add(costo);
+                    document.Add(new Chunk("\n"));                
+                    document.Add(import);
 
-                    PdfPTable table = new PdfPTable(5);
-                    table.WidthPercentage = 100;
-                    // Esta es la primera fila
-                    table.AddCell("Cantidad");
-                    table.AddCell("Producto");
-                    table.AddCell("Descripción");
-                    table.AddCell("Costo Unitario");
-                    table.AddCell("Importe");
-                    // Segunda fila
-                    table.AddCell(txtCantidad.Text);
-                    table.AddCell(txtProducto.Text);
-                    table.AddCell(txtDescripcion.Text);
-                    table.AddCell(txtCostoUni.Text);
-                    table.AddCell(txtImporte.Text);
 
-
-                    document.Add(table);
-
-                    //Paragraph FechaEntrega = new Paragraph(16, "Fecha de entrega: $" + (calEntrega.ToString().Substring(0, 2)) + " de " + (calEntrega.ToString().Substring(3, 2)) + " del " + (
-                    //        calEntrega.ToString().Substring(6, 4)) , font9);
                     Paragraph FechaEntrega = new Paragraph(16, "Fecha de entrega: " + calEntregas.Text, font9);
                     Paragraph Confirmo = new Paragraph(16, "Confirmo: " + txtConfirmo.Text, font9);
-
-                    document.Add(new Chunk("\n"));
-
                     Paragraph Sub = new Paragraph(16, "Subtotal: $" + txtImporte.Text, font9);
                     Paragraph Desc = new Paragraph(16, "Descuento: $" + txtDescuento.Text, font9);
                     Paragraph DescFin = new Paragraph(16, "Desc. Fin: $" + Descuen, font9);
@@ -400,13 +442,9 @@ namespace ProjectPaslum.Venta
                     document.Add(new Chunk("\n"));
 
                     Paragraph Total = new Paragraph(16, "Total: $" + Descuen, font9);
-                    //Paragraph gracias = new Paragraph(18, "Gracias por su compra, vuelva pronto.", font9);
-
 
                     FechaEntrega.Alignment = Element.ALIGN_LEFT;
                     Confirmo.Alignment = Element.ALIGN_LEFT;
-
-
                     Sub.Alignment = Element.ALIGN_RIGHT;
                     Desc.Alignment = Element.ALIGN_RIGHT;
                     DescFin.Alignment = Element.ALIGN_RIGHT;
@@ -418,7 +456,6 @@ namespace ProjectPaslum.Venta
 
                     document.Add(FechaEntrega);
                     document.Add(Confirmo);
-
                     document.Add(Sub);
                     document.Add(Desc);
                     document.Add(DescFin);
@@ -453,79 +490,85 @@ namespace ProjectPaslum.Venta
 
 
                     document.Open();
-                    String rutaLogo = Server.MapPath("../Alumno/images/XIUGAR.jpg");
 
-                    var image = iTextSharp.text.Image.GetInstance(rutaLogo);
-                    //image1.ScalePercent(50f);
-                    image.ScaleAbsoluteWidth(190);
-                    image.ScaleAbsoluteHeight(90);
-                    image.SetAbsolutePosition(350, 720);
-                    document.Add(image);
+                    String ruta = Server.MapPath("../ImagenesProductos/OC.jpeg");
 
+                    var fondo = iTextSharp.text.Image.GetInstance(ruta);
+                    fondo.ScaleAbsoluteWidth(600);
+                    fondo.ScaleAbsoluteHeight(850);
+                    fondo.SetAbsolutePosition(0, 0);
+                    fondo.Alignment = iTextSharp.text.Image.UNDERLYING;
+
+                    document.Add(fondo);
 
                     Font fontTitle = FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 25);
                     Font font9 = FontFactory.GetFont(FontFactory.HELVETICA, 10);
 
-
-
-                    Paragraph title = new Paragraph(string.Format("ORDEN DE COMPRA\nXiugar S. de R.L d C.V."), new iTextSharp.text.Font(iTextSharp.text.Font.FontFamily.HELVETICA, 20, iTextSharp.text.Font.BOLD));
-                    title.Alignment = Element.ALIGN_LEFT;
-                    document.Add(title);
-
-                    //document.Add(new Paragraph(20, "Ticket XIU-GAR", fontTitle));
-
+                    document.Add(new Paragraph(16, " ", font9));
+                    document.Add(new Chunk("\n"));
+                    document.Add(new Chunk("\n"));
+                    document.Add(new Chunk("\n"));
+                    document.Add(new Chunk("\n"));
+                    document.Add(new Chunk("\n"));
+                    document.Add(new Chunk("\n"));
+                    document.Add(new Chunk("\n"));
+                    document.Add(new Chunk("\n"));
+                    document.Add(new Chunk("\n"));
+                    document.Add(new Chunk("\n"));
+                    document.Add(new Chunk("\n"));
+                    document.Add(new Chunk("\n"));
                     document.Add(new Chunk("\n"));
 
-                    document.Add(new Paragraph(16, "Proveedor: " + txtComprador.Text, font9));
+                    document.Add(new Paragraph(16, "Proveedor: " + provee.nombre, font9));
                     document.Add(new Paragraph(16, "Dirección: " + ddlDomicilio.Text, font9));
-                    document.Add(new Paragraph(16, "Teléfono: " + ddlTelefono.Text, font9));
-                    document.Add(new Paragraph(16, "Fecha: " + DateTime.Now.Date.ToString().Substring(0, 10), font9));
-                    document.Add(new Paragraph(16, "Correo: " + ddlCorreo.Text, font9));
+                    document.Add(new Paragraph(16, "Teléfono: " + ddlTelefono.Text + "       Fecha: " + DateTime.Now.Date.ToString().Substring(0, 9) + "      Correo: " + ddlCorreo.Text, font9));
                     document.Add(new Paragraph(16, "Entregar a: " + txtEntregar.Text, font9));
+
+                    Paragraph cantidad = new Paragraph(16, txtCantidad.Text, font9);
+                    Paragraph producto = new Paragraph(18, txtProducto.Text, font9);
+                    Paragraph descrip = new Paragraph(16, txtDescripcion.Text, font9);
+                    Paragraph interes = new Paragraph(16, "---", font9);
+                    Paragraph costo = new Paragraph(18, "$ " + txtCostoUni.Text, font9);
+                    Paragraph import = new Paragraph(18, "$ " + txtImporte.Text, font9);
+
+                    cantidad.Alignment = Element.ALIGN_CENTER;
+                    producto.Alignment = Element.ALIGN_CENTER;
+                    descrip.Alignment = Element.ALIGN_CENTER;
+                    costo.Alignment = Element.ALIGN_CENTER;
+                    import.Alignment = Element.ALIGN_CENTER;
+                    interes.Alignment = Element.ALIGN_CENTER;
+
                     document.Add(new Chunk("\n"));
-                    
-                    PdfPTable table = new PdfPTable(5);
-                    table.WidthPercentage = 100;
-                    // Esta es la primera fila
-                    table.AddCell("Cantidad");
-                    table.AddCell("Producto");
-                    table.AddCell("Descripción");
-                    table.AddCell("Costo Unitario");
-                    table.AddCell("Importe");
-                    // Segunda fila
-                    table.AddCell(txtCantidad.Text);
-                    table.AddCell(txtProducto.Text);
-                    table.AddCell(txtDescripcion.Text);
-                    table.AddCell(txtCostoUni.Text);
-                    table.AddCell(txtImporte.Text);
+                    document.Add(new Chunk("\n"));
+                    document.Add(cantidad);
+                    document.Add(new Chunk("\n"));
+                    document.Add(new Chunk("\n"));
+                    document.Add(producto);
+                    document.Add(new Chunk("\n"));
+                    document.Add(new Chunk("\n"));
+                    document.Add(descrip);
+                    document.Add(new Chunk("\n"));
+                    document.Add(new Chunk("\n"));
+                    document.Add(interes);
+                    document.Add(new Chunk("\n"));
+                    document.Add(new Chunk("\n"));
+                    document.Add(costo);
+                    document.Add(new Chunk("\n"));
+                    document.Add(import);
 
-
-                    document.Add(table);
-
-                    //Paragraph FechaEntrega = new Paragraph(16, "Fecha de entrega: $" + (calEntrega.ToString().Substring(0, 2)) + " de " + (calEntrega.ToString().Substring(3, 2)) + " del " + (
-                    //        calEntrega.ToString().Substring(6, 4)) , font9);
                     Paragraph FechaEntrega = new Paragraph(16, "Fecha de entrega: " + calEntregas.Text, font9);
                     Paragraph Confirmo = new Paragraph(16, "Confirmo: " + txtConfirmo.Text, font9);
-
-                    document.Add(new Chunk("\n"));
-
                     Paragraph Sub = new Paragraph(16, "Subtotal: $" + txtImporte.Text, font9);
                     Paragraph Desc = new Paragraph(16, "Descuento: $" + txtDescuento.Text, font9);
                     Paragraph DescFin = new Paragraph(16, "Desc. Fin: $0.00", font9);
                     Paragraph IEPS = new Paragraph(16, "ISR: -", font9);
                     Paragraph ISR = new Paragraph(16, "IVA: " + txtIVA.Text + "%    $" + iva, font9);
                     Paragraph IVA = new Paragraph(16, "I.V.A: -", font9);
-
                     document.Add(new Chunk("\n"));
-
                     Paragraph Total = new Paragraph(16, "Total: $" + TotalInicio, font9);
-                    //Paragraph gracias = new Paragraph(18, "Gracias por su compra, vuelva pronto.", font9);
-
 
                     FechaEntrega.Alignment = Element.ALIGN_LEFT;
                     Confirmo.Alignment = Element.ALIGN_LEFT;
-
-
                     Sub.Alignment = Element.ALIGN_RIGHT;
                     Desc.Alignment = Element.ALIGN_RIGHT;
                     DescFin.Alignment = Element.ALIGN_RIGHT;
@@ -537,7 +580,6 @@ namespace ProjectPaslum.Venta
 
                     document.Add(FechaEntrega);
                     document.Add(Confirmo);
-
                     document.Add(Sub);
                     document.Add(Desc);
                     document.Add(DescFin);

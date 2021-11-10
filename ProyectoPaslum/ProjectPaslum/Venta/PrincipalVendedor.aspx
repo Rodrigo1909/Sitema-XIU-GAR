@@ -26,7 +26,7 @@
                                             <asp:Label ID="lbDomingo" runat="server" width="500px" visible="false"></asp:Label>
 
                                                 <asp:DataList ID="ListVentaHoy" runat="server" DataKeyField="idVenta" DataSourceID="SqlVentaHoy"
-                                                    CssClass="table table-responsive" RepeatColumns="3" ForeColor="#333333" >
+                                                    CssClass="table table-responsive" RepeatColumns="3" ForeColor="#333333" OnItemCommand="ListVentaHoy_ItemCommand">
                                                                 <AlternatingItemStyle BackColor="White" />
                                                                 <FooterStyle BackColor="#1C5E55" Font-Bold="True"  />
                                                                 <HeaderStyle BackColor="#1C5E55" Font-Bold="True" />
@@ -50,6 +50,8 @@
                                                                     <asp:Label ID="Label8" runat="server" Text="FECHA:" ForeColor="Black"></asp:Label>
                                                                     <asp:Label ID="Fecha_de_creaciónLabel" runat="server" Text='<%# Eval("[Fecha de creación]") %>' ></asp:Label>                             
                                                                     <br />
+                                                                    <asp:Button ID="btnDesgloce" runat="server" CommandName="Seleccionar" Text="Desgloce" CssClass="btn btn-success" />
+                                                                    <br />
 
                                                                 </ItemTemplate>
                                                     <SelectedItemStyle BackColor="#C5BBAF" Font-Bold="True" ForeColor="#333333" />
@@ -62,7 +64,7 @@
 	                                                                    from tblVenta v
 		                                                                    left join tblCliente c
 			                                                                    on c.idCliente = v.fkCliente                                                
-	                                                                    where v.fecha BETWEEN @FechaInicio and @FechaFin
+	                                                                    where v.fecha BETWEEN @FechaInicio and @FechaFin and v.idActivo = 1
 	                                                                    order by v.Fecha asc;">
                                                     <SelectParameters>
                                                         <asp:ControlParameter ControlID="lbLunes" Name="FechaInicio" PropertyName="Text" />

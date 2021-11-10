@@ -33,5 +33,36 @@ namespace ProjectPaslum.Venta
             }
 
         }
+
+        protected void ListVentaHoy_ItemCommand(object source, DataListCommandEventArgs e)
+        {
+            ListVentaHoy.SelectedIndex = e.Item.ItemIndex;            
+
+            string cod;
+            string estado = ((Label)this.ListVentaHoy.SelectedItem.FindControl("strEstadoLabel")).Text;
+
+
+            if (e.CommandName == "Seleccionar")
+            {
+                if (estado == "CREDITO")
+                {
+
+                    cod = ((Label)this.ListVentaHoy.SelectedItem.FindControl("idVentaLabel")).Text;
+                    Session["desgloce"] = cod;
+
+                    Response.Redirect("/Venta/DesgloceHistorialAbono.aspx");
+                }
+                else
+                {                   
+       
+                    cod = ((Label)this.ListVentaHoy.SelectedItem.FindControl("idVentaLabel")).Text;
+                    Session["desgloce"] = cod;
+
+                    Response.Redirect("/Venta/DesgloceRequisicionVenta.aspx");
+                }
+                
+            }
+            
+        }
     }
 }

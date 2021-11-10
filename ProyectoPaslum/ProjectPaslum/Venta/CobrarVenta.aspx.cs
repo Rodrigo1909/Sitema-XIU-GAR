@@ -22,30 +22,33 @@ namespace ProjectPaslum.Venta
         {
             if (Session["id"] != null)
             {
-                cargarcarrito();
-                txtVendedor.Text = (Session["CompletoNombre"].ToString());
-                txtDomicilio.Text = (Session["domicilio"].ToString());
-                txtFecha.Text = DateTime.Now.Date.ToString().Substring(0, 10);
-
-                var venta = (from ven in contexto.tblVenta
-                             orderby ven.idVenta descending
-                             select new { ultimo = ven.idVenta }).FirstOrDefault();
-
-                var nuevo = venta.ultimo + 1;
-
-                txtNumVen.Text = nuevo.ToString();
-
-                if ((Session["cliente"].ToString() == "MOSTRADOR"))
+                if (Page.IsPostBack == false)
                 {
-                    txtCliente.Text = (Session["cliente"].ToString());
-                }
-                else
-                {
-                    var cliente = (from cli in contexto.tblCliente
-                                   where cli.idCliente == int.Parse(Session["cliente"].ToString())
-                                   select new { nombre = cli.strNombre + " " + cli.strApellidoP + " " + cli.strApellidoM }).FirstOrDefault();
+                    cargarcarrito();
+                    txtVendedor.Text = (Session["CompletoNombre"].ToString());
+                    txtDomicilio.Text = (Session["domicilio"].ToString());
+                    txtFecha.Text = DateTime.Now.Date.ToString().Substring(0, 10);
 
-                    txtCliente.Text = cliente.nombre;
+                    var venta = (from ven in contexto.tblVenta
+                                 orderby ven.idVenta descending
+                                 select new { ultimo = ven.idVenta }).FirstOrDefault();
+
+                    var nuevo = venta.ultimo + 1;
+
+                    txtNumVen.Text = nuevo.ToString();
+
+                    if ((Session["cliente"].ToString() == "MOSTRADOR"))
+                    {
+                        txtCliente.Text = (Session["cliente"].ToString());
+                    }
+                    else
+                    {
+                        var cliente = (from cli in contexto.tblCliente
+                                       where cli.idCliente == int.Parse(Session["cliente"].ToString())
+                                       select new { nombre = cli.strNombre + " " + cli.strApellidoP + " " + cli.strApellidoM }).FirstOrDefault();
+
+                        txtCliente.Text = cliente.nombre;
+                    }
                 }
             }
             else
@@ -124,16 +127,14 @@ namespace ProjectPaslum.Venta
             }
             
             //Advertencia si hay campos vacios de dinero, hora y fecha.
-            else if (string.IsNullOrWhiteSpace(txtDinero.Text) ||
-                     string.IsNullOrWhiteSpace(txtHora.Text) ||
-                     string.IsNullOrWhiteSpace(fechaEntrega.Text))
+            else if (string.IsNullOrWhiteSpace(txtDinero.Text))
             {
                 this.ClientScript.RegisterStartupScript(this.GetType(), "SweetAlert", "vacio()", true);
                 this.Calcular();
             }
 
             //Advertencia si el dinero no es el suficiente para liquidar la cuenta
-            else if (double.Parse(txtDinero.Text, culture)  >= double.Parse(lblTotal2.Text, culture))
+            else if (double.Parse(txtDinero.Text, culture)  > double.Parse(lblTotal2.Text, culture))
             {
                 this.ClientScript.RegisterStartupScript(this.GetType(), "SweetAlert", "fallo()", true);
                 this.Calcular();
@@ -165,7 +166,8 @@ namespace ProjectPaslum.Venta
                         //Si cae aqui significa que no hay un historial en stock
                         if (existente == null)
                         {
-                            CanStock++;                            
+                            CanStock++;
+                            this.Calcular();                       
                         }
                         else { 
                         foreach (tblStock ord in cantidadExistente)
@@ -192,11 +194,13 @@ namespace ProjectPaslum.Venta
                     if (CanStock>0)
                     {
                         this.ClientScript.RegisterStartupScript(this.GetType(), "SweetAlert", "falloCantidad()", true);
+                        this.Calcular();
                     }
                     //Alertas en caso de que haya caido en las validaciones anteriores
                     else if (ExStock > 0)
                     {
                         this.ClientScript.RegisterStartupScript(this.GetType(), "SweetAlert", "alerta()", true);
+                        this.Calcular();
                     }
 
                     else
@@ -262,6 +266,7 @@ namespace ProjectPaslum.Venta
 
                         }
                         Session["contado"] = null;
+                        this.Limpiar();
                         this.ClientScript.RegisterStartupScript(this.GetType(), "SweetAlert", "exito()", true);
 
                     }
@@ -305,10 +310,11 @@ namespace ProjectPaslum.Venta
 
                     }
                     Session["contado"] = null;
+                    this.Limpiar();
                     this.ClientScript.RegisterStartupScript(this.GetType(), "SweetAlert", "exito()", true);
                 }
 
-                this.Limpiar();
+                
 
             }
             
@@ -358,7 +364,19 @@ namespace ProjectPaslum.Venta
 
                 var nuevo = venta.ultimo + 1;
 
+                //string ExtraccionFecha = DateTime.Now.ToShortDateString();
+
+                string ExtraccionDia = DateTime.Now.ToShortDateString();
+                var terminoDia = ExtraccionDia.Substring(0, ExtraccionDia.IndexOf("/"));
+
+                const string ExtraccionMes = "/";
+                var principioMes = DateTime.Now.ToShortDateString().Substring(DateTime.Now.ToShortDateString().IndexOf(ExtraccionMes) + ExtraccionMes.Length);
+                var terminoMes = principioMes.Substring(0, principioMes.IndexOf("/"));
+
+                string ExtraccionYear = terminoMes + "/";
+                var principioYear = DateTime.Now.ToShortDateString().Substring(DateTime.Now.ToShortDateString().IndexOf(ExtraccionYear) + ExtraccionYear.Length);
                 
+
                 dt = (DataTable)Session["contado"];
                 
                 if (dt.Rows.Count > 0)
@@ -366,18 +384,16 @@ namespace ProjectPaslum.Venta
 
                     document.Open();
 
-                    String rutaLogo = Server.MapPath("../Alumno/images/XIUGAR.jpg");    
 
-                    var image = iTextSharp.text.Image.GetInstance(rutaLogo);
-                    //var image = iTextSharp.text.Image.GetInstance(@"C:\Users\RodrigoM\Desktop\Sitema-XIU-GAR\ProyectoPaslum\ProjectPaslum\Alumno\images\XIUGAR.jpg");
+                    String ruta = Server.MapPath("../ImagenesProductos/FondoNota.jpg");
 
-                    // iTextSharp.text.Image image1 = iTextSharp.text.Image.GetInstance("../../images/avatar.png");
-                    //image1.ScalePercent(50f);
-                    image.ScaleAbsoluteWidth(220);
-                    image.ScaleAbsoluteHeight(90);
-                    image.SetAbsolutePosition(350, 720);
-                    document.Add(image);
+                    var fondo = iTextSharp.text.Image.GetInstance(ruta);
+                    fondo.ScaleAbsoluteWidth(570);
+                    fondo.ScaleAbsoluteHeight(800);
+                    fondo.SetAbsolutePosition(0, 50);
+                    fondo.Alignment = iTextSharp.text.Image.UNDERLYING;
 
+                    document.Add(fondo);
 
                     Font fontTitle = FontFactory.GetFont(FontFactory.COURIER_BOLD, 25);
                     Font font9 = FontFactory.GetFont(FontFactory.HELVETICA, 13);
@@ -392,14 +408,62 @@ namespace ProjectPaslum.Venta
 
                     //document.Add(new Paragraph(20, "Ticket XIU-GAR", fontTitle));
 
+
+                    document.Add(new Paragraph(16, " " , font7));
+                    document.Add(new Chunk("\n"));
+                    document.Add(new Chunk("\n"));
+                    document.Add(new Chunk("\n"));
+                    document.Add(new Chunk("\n"));
+                    document.Add(new Chunk("\n"));
                     document.Add(new Chunk("\n"));
 
-                    document.Add(new Paragraph(16, "N° Venta: " + nuevo.ToString(), font7));
-                    document.Add(new Paragraph(16, "Vendedor: " + (Session["CompletoNombre"].ToString()), font7));
-                    document.Add(new Paragraph(16, "Cliente: " + txtCliente.Text, font7));
-                    document.Add(new Paragraph(16, "Domicilio: " + (Session["domicilio"].ToString()), font7));
-                    document.Add(new Paragraph(16, "Fecha: " + DateTime.Now.Date.ToString().Substring(0, 10), font7));
+                    PdfContentByte dia = writer.DirectContent;
+                    dia.BeginText();
+                    BaseFont f_cn = BaseFont.CreateFont("c:\\windows\\fonts\\calibri.ttf", BaseFont.CP1252, BaseFont.NOT_EMBEDDED);
+                    dia.SetFontAndSize(f_cn, 16);
+                    dia.SetTextMatrix(410, 655);  //(xPos, yPos)
+                    dia.ShowText(terminoMes);
+                    dia.EndText();
 
+                    PdfContentByte mes = writer.DirectContent;
+                    mes.BeginText();
+                    mes.SetFontAndSize(f_cn, 16);
+                    mes.SetTextMatrix(450, 655);  //(xPos, yPos)
+                    mes.ShowText(terminoDia);
+                    mes.EndText();
+
+                    PdfContentByte year = writer.DirectContent;
+                    year.BeginText();
+                    year.SetFontAndSize(f_cn, 16);
+                    year.SetTextMatrix(490, 655);  //(xPos, yPos)
+                    year.ShowText(principioYear);
+                    year.EndText();
+
+                    PdfContentByte folio = writer.DirectContent;
+                    folio.BeginText();
+                    folio.SetFontAndSize(f_cn, 16);
+                    folio.SetTextMatrix(450, 615);  //(xPos, yPos)
+                    folio.ShowText(nuevo.ToString());
+                    folio.EndText();
+
+
+
+                    //Paragraph fecha = new Paragraph(16, "Fecha: " + DateTime.Now.Date.ToString().Substring(0, 10), font7);
+                    document.Add(new Paragraph(16, "  Vendedor: " + (Session["CompletoNombre"].ToString()), font7));                    
+                    document.Add(new Chunk("\n"));
+                    document.Add(new Paragraph(16, "  Cliente: " + txtCliente.Text, font7));
+                    document.Add(new Chunk("\n"));                    
+                    Paragraph domi = new Paragraph(16, "  Domicilio: " + (Session["domicilio"].ToString()), font8);
+
+                                      
+                    domi.Alignment = Element.ALIGN_LEFT;                  
+
+                    
+                    document.Add(domi);
+                    
+
+
+                    document.Add(new Chunk("\n"));
                     document.Add(new Chunk("\n"));
 
                     float[] widths = new float[dt.Columns.Count];
@@ -413,7 +477,7 @@ namespace ProjectPaslum.Venta
                     cell.Colspan = dt.Columns.Count;
 
                     table.AddCell("CODIGO");
-                    table.AddCell("DESCRIPCIÓN");
+                    table.AddCell("PRODUCTO");
                     table.AddCell("CANTIDAD");
                     table.AddCell("PRECIO");
                     table.AddCell("TOTAL");
@@ -472,9 +536,9 @@ namespace ProjectPaslum.Venta
                     document.Add(table);                    
                     document.Add(new Chunk("\n"));
 
-                    Paragraph total = new Paragraph(16, "Total: $" + decimal.Parse(lblTotal2.Text), font9);
-                    Paragraph efectivo = new Paragraph(16, "Efectivo: $" + decimal.Parse(txtDinero.Text), font9);
-                    Paragraph cambio = new Paragraph(16, "Cambio: $" + (decimal.Parse(txtDinero.Text) - decimal.Parse(lblTotal2.Text)), font9);
+                    Paragraph total = new Paragraph(16, "Total: $" + decimal.Parse(lblTotal2.Text) + "        ", font9);
+                    Paragraph efectivo = new Paragraph(16, "Efectivo: $" + decimal.Parse(txtDinero.Text) + "        ", font9);
+                    Paragraph cambio = new Paragraph(16, "Cambio: $" + (decimal.Parse(txtDinero.Text) - decimal.Parse(lblTotal2.Text)) + "        ", font9);
                     document.Add(new Chunk("\n"));
                     Paragraph gracias = new Paragraph(18, "Gracias por su compra, vuelva pronto.", font9);
 
@@ -515,7 +579,7 @@ namespace ProjectPaslum.Venta
             //DataRow fila = items.NewRow();
             for (i = 0; i < GridView1.Rows.Count; i++)
             {
-                cod = (GridView1.Rows[i].Cells[1].Text);
+                 cod = (GridView1.Rows[i].Cells[1].Text);
 
                 var producto = (from p in contexto.tblProducto
                                 join m in contexto.tblMarca

@@ -59,7 +59,7 @@
                         <SortedDescendingHeaderStyle BackColor="#00547E" />                    
                 </asp:GridView>
 
-                <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:XIUGARConnectionString %>" 
+                <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="Data Source=SQL5061.site4now.net;Initial Catalog=db_a7a655_rodrigom1909;User ID=db_a7a655_rodrigom1909_admin;Password=solamente19" 
                                    SelectCommand="select m.strTipo, m.fecha,
                                                 e.strNombre + ' ' +  e.strApellidoP + ' ' + e.strApellidoM,
                                                 concat('(',p.idProducto, ') ' ,' ', p.strNombre,', ', p.intPresentacion , ' ' ,uni.strNombre),
@@ -77,7 +77,7 @@
 			                                                on a.idAlmacen = p.fkAlmacen
 		                                                where strTipo = 'ENTRADA' or strTipo = 'PRODUCCIÓN'
 			                                                or strTipo = 'ENTRADA POR PRODUCCIÓN' or strTipo = 'ENTRADA POR DEVOLUCIÓN'
-		                                                ORDER BY m.fecha DESC;"></asp:SqlDataSource>
+		                                                ORDER BY m.fecha DESC;" ProviderName="System.Data.SqlClient"></asp:SqlDataSource>
 
             </div>
         </div>
@@ -92,8 +92,8 @@
         <div class="panel-heading" >
             <h4 class="panel-title">
                 <a data-toggle="collapse" data-parent="#accordion" href="#collapse">SALIDAS
-                </a>
-            </h4>
+                    </a>
+                            </h4>
         </div>
         <div id="collapse" class="panel-collapse collapse" >
             <div class="panel-body">
@@ -107,7 +107,7 @@
                         <asp:BoundField DataField="Column1" HeaderText="EMPLEADO" SortExpression="Column1" ReadOnly="True" />
 
                         <asp:BoundField DataField="Column2" HeaderText="PRODUCTO" SortExpression="Column2" ReadOnly="True" />
-                        <asp:BoundField DataField="strNombre" HeaderText="strNombre" SortExpression="strNombre" />
+                        <asp:BoundField DataField="strNombre" HeaderText="ALMACÉN" SortExpression="strNombre" />
 
                         <asp:BoundField DataField="dblValAnt" HeaderText="VALOR ANTERIOR" SortExpression="dblValAnt" />
                         <asp:BoundField DataField="dblValNvo" HeaderText="VALOR NUEVO" SortExpression="dblValNvo" />
@@ -129,8 +129,8 @@
                         <SortedDescendingHeaderStyle BackColor="#00547E" />                    
                 </asp:GridView>
 
-                <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:XIUGARConnectionString %>" 
-                                   SelectCommand="select m.strTipo, m.fecha,
+                <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString='<%$ ConnectionStrings:db_a7a655_rodrigom1909ConnectionString %>'
+                    SelectCommand="select m.strTipo, m.fecha,
                                                 e.strNombre + ' ' +  e.strApellidoP + ' ' + e.strApellidoM,
                                                 concat('(',p.idProducto, ') ' ,' ', p.strNombre,' ', p.intPresentacion , ' ' ,uni.strNombre),
                                                 a.strNombre,m.dblValAnt, m.dblValNvo, m.strNumVen, m.strFactura

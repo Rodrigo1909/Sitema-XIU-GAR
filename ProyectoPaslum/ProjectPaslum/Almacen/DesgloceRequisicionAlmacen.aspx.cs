@@ -45,7 +45,7 @@ namespace ProjectPaslum.Almacen
                                  where detalle.fkVenta == idDetalleVenta
                                  select new
                                  {
-                                     PRODUCTO = producto.strNombre,
+                                     PRODUCTO = "(" + producto.idProducto + ") " + producto.strNombre + " " + producto.intPresentacion + " " + unidad.strNombre,
                                      DESCRIPCIÓN = producto.strDescripcion,                                                                        
                                      CANTIDAD = detalle.intCantidad,
                                      PRESENTACIÓN = producto.intPresentacion,

@@ -129,14 +129,14 @@
                                     </ItemTemplate>
                                     <SelectedItemStyle BackColor="#FB2D59" Font-Bold="True" ForeColor="#FB5679" />
                                 </asp:DataList>
-                                 <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:XIUGARConnectionString %>"
+                                 <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="Data Source=SQL5061.site4now.net;Initial Catalog=db_a7a655_rodrigom1909;User ID=db_a7a655_rodrigom1909_admin;Password=solamente19"
                                  SelectCommand="select v.idVenta, c.strNombre + ' ' + c.strApellidoM + ' '+ c.strApellidoP, c.strEstablecimiento,
                                                 v.Fecha as 'Fecha de creación'
                                                 from tblVenta v
                                                 left join tblCliente c
                                                 on c.idCliente = v.fkCliente                                                
                                                 where v.strEstado = 'PENDIENTE' and v.idActivo = '1'
-                                                order by v.Fecha asc;"></asp:SqlDataSource>
+                                                order by v.Fecha asc;" ProviderName="System.Data.SqlClient"></asp:SqlDataSource>
                                 </div>
                             </div>
                         </div>
@@ -181,14 +181,14 @@
 
                                     </ItemTemplate>
                             </asp:DataList>
-                            <asp:SqlDataSource ID="SqlCreditoPendiente" runat="server" ConnectionString="<%$ ConnectionStrings:XIUGARConnectionString %>" 
+                            <asp:SqlDataSource ID="SqlCreditoPendiente" runat="server" ConnectionString="Data Source=SQL5061.site4now.net;Initial Catalog=db_a7a655_rodrigom1909;User ID=db_a7a655_rodrigom1909_admin;Password=solamente19" 
                                 SelectCommand="select v.idVenta, c.strNombre + ' ' + c.strApellidoM + ' '+ c.strApellidoP, c.strEstablecimiento,
                                                                 v.Fecha as 'Fecha de creación'
                                                                 from tblVenta v
                                                                 left join tblCliente c
                                                                 on c.idCliente = v.fkCliente                                                
                                                                 where v.strEstado = 'CREDITO' and v.idActivo = '1'
-                                                                order by v.Fecha asc;"></asp:SqlDataSource>
+                                                                order by v.Fecha asc;" ProviderName="System.Data.SqlClient"></asp:SqlDataSource>
                                 </div>
                             </div>
                         </div>
@@ -248,14 +248,14 @@
                             </ItemTemplate>
                             <SelectedItemStyle BackColor="#FEF97C"  Font-Bold="True" ForeColor="#FEF97C" />
                         </asp:DataList>
-                        <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:XIUGARConnectionString %>" 
+                        <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="Data Source=SQL5061.site4now.net;Initial Catalog=db_a7a655_rodrigom1909;User ID=db_a7a655_rodrigom1909_admin;Password=solamente19" 
                             SelectCommand="select v.idVenta, c.strNombre + ' ' + c.strApellidoM + ' '+ c.strApellidoP, c.strEstablecimiento, 
                                                 v.Fecha as 'Fecha de creación'
                                                 from tblVenta v
                                                 left join tblCliente c
                                                 on c.idCliente = v.fkCliente                                                
                                                 where v.strEstado = 'EN PROCESO' and v.idActivo = '1'
-                                                order by v.Fecha asc;"></asp:SqlDataSource>
+                                                order by v.Fecha asc;" ProviderName="System.Data.SqlClient"></asp:SqlDataSource>
                                 </div>
                             </div>
                         </div>
@@ -297,14 +297,14 @@
                             </ItemTemplate>
                             <SelectedItemStyle BackColor="#FEF97C"  Font-Bold="True" ForeColor="#FEF97C" />
                             </asp:DataList>
-                            <asp:SqlDataSource ID="SqlCreditoProceso" runat="server" ConnectionString="<%$ ConnectionStrings:XIUGARConnectionString %>" 
+                            <asp:SqlDataSource ID="SqlCreditoProceso" runat="server" ConnectionString="Data Source=SQL5061.site4now.net;Initial Catalog=db_a7a655_rodrigom1909;User ID=db_a7a655_rodrigom1909_admin;Password=solamente19" 
                                 SelectCommand="select v.idVenta, c.strNombre + ' ' + c.strApellidoM + ' '+ c.strApellidoP, c.strEstablecimiento, 
                                                             v.Fecha as 'Fecha de creación'
                                                             from tblVenta v
                                                             left join tblCliente c
                                                             on c.idCliente = v.fkCliente                                                
                                                             where v.strEstado = 'CREDITO (EN PROCESO)' and v.idActivo = '1'
-                                                            order by v.Fecha asc;"></asp:SqlDataSource>
+                                                            order by v.Fecha asc;" ProviderName="System.Data.SqlClient"></asp:SqlDataSource>
                                 </div>
                             </div>
                         </div>
@@ -400,14 +400,14 @@
                             </LayoutTemplate>
                             
                         </asp:ListView>
-                        <asp:SqlDataSource ID="SqlDataSource3" runat="server" ConnectionString="<%$ ConnectionStrings:XIUGARConnectionString %>" 
+                        <asp:SqlDataSource ID="SqlDataSource3" runat="server" ConnectionString="Data Source=SQL5061.site4now.net;Initial Catalog=db_a7a655_rodrigom1909;User ID=db_a7a655_rodrigom1909_admin;Password=solamente19" 
                             SelectCommand="select v.idVenta, c.strNombre + ' ' + c.strApellidoM + ' '+ c.strApellidoP, c.strEstablecimiento, 
                                                 v.Fecha as 'Fecha de creación'
                                                 from tblVenta v
                                                 left join tblCliente c
                                                 on c.idCliente = v.fkCliente                                                
                                                 where v.strEstado = 'FINALIZADO' and v.idActivo = '1'
-                                                order by v.Fecha desc;"></asp:SqlDataSource>
+                                                order by v.Fecha desc;" ProviderName="System.Data.SqlClient"></asp:SqlDataSource>
                     </div>
                 </div>
             </div>  

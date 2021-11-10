@@ -62,7 +62,7 @@ namespace ProjectPaslum.Almacen
                     this.Page.ClientScript.RegisterStartupScript(this.GetType(), "alert", "alert('Se cancelo la continuidad de la requisición')", true);
                 }
             }
-            Response.Redirect("/Almacen/RequisicionAlmacen.aspx");
+            //Response.Redirect("/Almacen/RequisicionAlmacen.aspx");
         }
 
         protected void DataList2_ItemCommand(object source, DataListCommandEventArgs e)
@@ -193,7 +193,7 @@ namespace ProjectPaslum.Almacen
 
             }
 
-            Response.Redirect("/Almacen/RequisicionAlmacen.aspx");
+            //Response.Redirect("/Almacen/RequisicionAlmacen.aspx");
 
         }
 
@@ -278,7 +278,7 @@ namespace ProjectPaslum.Almacen
                     this.Page.ClientScript.RegisterStartupScript(this.GetType(), "alert", "alert('Se cancelo la continuidad de la requisición')", true);
                 }
             }
-            Response.Redirect("/Almacen/RequisicionAlmacen.aspx");
+            //Response.Redirect("/Almacen/RequisicionAlmacen.aspx");
         }
 
         protected void ListView1_ItemCommand(object sender, ListViewCommandEventArgs e)
@@ -337,7 +337,7 @@ namespace ProjectPaslum.Almacen
                     this.Page.ClientScript.RegisterStartupScript(this.GetType(), "alert", "alert('Se cancelo la continuidad de la requisición')", true);
                 }
             }
-            Response.Redirect("/Almacen/RequisicionAlmacen.aspx");
+            //Response.Redirect("/Almacen/RequisicionAlmacen.aspx");
         }
 
         protected void ListCreditoProceso_ItemCommand(object source, DataListCommandEventArgs e)
@@ -468,7 +468,7 @@ namespace ProjectPaslum.Almacen
 
             }
 
-            Response.Redirect("/Almacen/RequisicionAlmacen.aspx");
+            //Response.Redirect("/Almacen/RequisicionAlmacen.aspx");
 
         }
     }

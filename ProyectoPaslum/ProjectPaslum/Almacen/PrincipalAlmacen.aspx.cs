@@ -21,7 +21,7 @@ namespace ProjectPaslum.Almacen
             {
                 if (Session["id"] != null)
                 {
-                    this.LlenarAlmacen();
+                    this.LlenarMarca();
                 }
                 else
                 {
@@ -30,17 +30,17 @@ namespace ProjectPaslum.Almacen
             }
         }
 
-        private void LlenarAlmacen()
-        {
-            ControllerAlmacen CtrlAlmacen = new ControllerAlmacen();
-            List<tblAlmacen> almacen = CtrlAlmacen.ConsultaAlmacen();
-            ddlAlmacen.Items.Add("Seleccionar");
-            ddlAlmacen.DataSource = almacen;
-            ddlAlmacen.DataValueField = "idAlmacen";
-            ddlAlmacen.DataTextField = "strNombre";
-            ddlAlmacen.DataBind();
+        //private void LlenarAlmacen()
+        //{
+        //    ControllerAlmacen CtrlAlmacen = new ControllerAlmacen();
+        //    List<tblAlmacen> almacen = CtrlAlmacen.ConsultaAlmacen();
+        //    ddlAlmacen.Items.Add("Seleccionar");
+        //    ddlAlmacen.DataSource = almacen;
+        //    ddlAlmacen.DataValueField = "idAlmacen";
+        //    ddlAlmacen.DataTextField = "strNombre";
+        //    ddlAlmacen.DataBind();
 
-        }
+        //}
 
         private void LlenarMarca()
         {
@@ -54,10 +54,10 @@ namespace ProjectPaslum.Almacen
 
         }
 
-        protected void ddlAlmacen_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            this.LlenarMarca();
-        }
+        //protected void ddlAlmacen_SelectedIndexChanged(object sender, EventArgs e)
+        //{
+        //    this.LlenarMarca();
+        //}
 
         protected void ddlMarca_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -82,7 +82,7 @@ namespace ProjectPaslum.Almacen
         {
             try
             {
-                var almacenValor = ddlAlmacen.SelectedItem.Value;
+                //var almacenValor = ddlAlmacen.SelectedItem.Value;
                 var marcaValor = ddlMarca.SelectedItem.Value;
                 var ingenioValor = ddlIngenio.SelectedItem.Value;
                 int activo = 1;
@@ -105,7 +105,7 @@ namespace ProjectPaslum.Almacen
                                     on prod.fkSubMarca equals subMarc.idSubMarca
 
                                 where alm.idActivo == activo && prod.idActivo == activo
-                                && alm.idAlmacen == Convert.ToInt32(ddlAlmacen.SelectedValue)
+                                && alm.idAlmacen == 2
                                 && marc.idMarca == Convert.ToInt32(ddlMarca.SelectedValue)
                                 && subMarc.idSubMarca == Convert.ToInt32(ddlIngenio.SelectedValue)
 

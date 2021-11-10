@@ -136,6 +136,7 @@ namespace ProjectPaslum
                     var vendedorTel = (from profeTel in contexto.tblEmpleado
                                        join tel in contexto.tblTelefono 
                                        on profeTel.fkTelefono equals tel.idTelefono
+                                       where profeTel.fkLogin == UsuarioLoggeado.idUsuario
                                        select new { celular = tel.strCelular, casa = tel.strTelCasa}).FirstOrDefault();
                    
                     Session["id"] = vendedor.idEmpleado;

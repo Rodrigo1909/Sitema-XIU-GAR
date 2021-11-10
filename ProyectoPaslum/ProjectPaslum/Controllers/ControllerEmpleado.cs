@@ -67,13 +67,15 @@ namespace Controller
 
         public tblEmpleado ConsultarEmpleado(string strNombre)
         {
-            return contexto.tblEmpleado.Where(e => e.strNombre == strNombre).FirstOrDefault<tblEmpleado>();
+            return contexto.tblEmpleado.Where(s => s.strNombre.Contains(strNombre) || s.strApellidoP.Contains(strNombre)
+            || s.strApellidoM.Contains(strNombre)).FirstOrDefault();
 
         }
 
         public tblProveedor ConsultarProveedor(string strNombre)
         {
-            return contexto.tblProveedor.Where(e => e.strNombre == strNombre).FirstOrDefault<tblProveedor>();
+            return contexto.tblProveedor.Where(s => s.strNombre.Contains(strNombre)||s.strRazonSocial.Contains(strNombre) || 
+            s.strApellidoP.Contains(strNombre) || s.strApellidoM.Contains(strNombre)).FirstOrDefault();
         }
 
         MailMessage m = new MailMessage();

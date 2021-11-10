@@ -122,6 +122,9 @@ namespace ProjectPaslum.Almacen
 
         protected void ddlAlmacen_SelectedIndexChanged(object sender, EventArgs e)
         {
+            ddlMarca.Items.Clear();
+            ddlIngenio.Items.Clear();
+            ddlProducto.Items.Clear();
             this.LlenarMarca();
         }
 

@@ -207,5 +207,11 @@ namespace ProjectPaslum.Controllers
             }
 
         }
+
+        public void EditarCliente(tblCliente cli)
+        {
+            tblCliente cliBd = contexto.tblCliente
+                .Where(c => c.idCliente == cli.idCliente).FirstOrDefault();
+        }
     }
 }

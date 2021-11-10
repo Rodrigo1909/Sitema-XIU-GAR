@@ -202,8 +202,8 @@
                 <asp:Button ID="Button1" runat="server" Text="Calcular" style="margin-left: 111px" Width="157px" OnClick="Button1_Click" CssClass="btn btn-primary" />
                  </td>
             <td>
-                <asp:Button ID="Button3" runat="server" style="margin-left: 34px" Text="Completar Venta" Width="170px"  OnClick="Button3_Click" CssClass="btn btn-primary" />
                 <asp:Button ID="Button4" runat="server" style="margin-left: 34px" Text="Visualizar PDF" Width="150px"  OnClick="Button4_Click" CssClass="btn btn-primary" />
+                <asp:Button ID="Button3" runat="server" style="margin-left: 34px" Text="Completar Venta" Width="170px"  OnClick="Button3_Click" CssClass="btn btn-primary" />                
             </td>
         </tr>
                     </table>

@@ -2,7 +2,7 @@
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
     <link href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
-    <link href="../css/modales.css" rel="stylesheet" />
+    
     <link href="../Content/bootstrap.min.css" rel="stylesheet" />
     <link href="../Alumno/scss/PersoDatos.css" rel="stylesheet" />
     
@@ -118,7 +118,7 @@
                             </ItemTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="COSTO">
-                            <ItemTemplate>
+                            <ItemTemplate>                                
                                 <asp:TextBox ID="TextBox3" runat="server" Height="19px" Width="73px" Enabled="false" >0</asp:TextBox>
                             </ItemTemplate>
                         </asp:TemplateField>
@@ -195,9 +195,9 @@
                 <asp:Button ID="Button2" runat="server" Text="Regresar"  OnClick="Button2_Click" CssClass="btn btn-primary" />
                 <asp:Button ID="Button1" runat="server" Text="Calcular" style="margin-left: 111px" Width="157px" OnClick="Button1_Click" CssClass="btn btn-primary" />
             </td>
-            <td>
-                <asp:Button ID="Button3" runat="server" style="margin-left: 34px" Text="Cobrar" Width="120px"  OnClick="Button3_Click" CssClass="btn btn-primary" />
+            <td>                
                 <asp:Button ID="Button4" runat="server" style="margin-left: 34px" Text="Visualizar PDF" Width="150px"  OnClick="Button4_Click" CssClass="btn btn-primary" />
+                <asp:Button ID="Button3" runat="server" style="margin-left: 34px" Text="Cobrar" Width="120px"  OnClick="Button3_Click" CssClass="btn btn-primary" />
             </td>
         </tr>
                     </table>

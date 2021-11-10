@@ -108,8 +108,8 @@
                             AllowPaging="True" >
                     
                     
-                            <FooterStyle BackColor="White" ForeColor="#E2C337" />
-                                <HeaderStyle BackColor="#E2C337" Font-Bold="True" ForeColor="White" HorizontalAlign="Center"/>
+                            <FooterStyle BackColor="White" ForeColor="#E2C337" />                                
+                                <HeaderStyle BackColor="#E2C337" Font-Bold="True" ForeColor="White" HorizontalAlign="Center" />
                                 <PagerStyle BackColor="White" ForeColor="#000066" HorizontalAlign="Center" Font-Size="Medium" />
                                 <RowStyle ForeColor="#000066" />
                                 <SelectedRowStyle BackColor="#669999" Font-Bold="True" ForeColor="White" />

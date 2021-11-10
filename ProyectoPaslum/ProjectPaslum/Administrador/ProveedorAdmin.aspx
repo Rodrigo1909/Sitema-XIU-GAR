@@ -20,10 +20,11 @@
              </div> 
         </div>          
     </div>
+
 <p>
   <a class="btn btn-primary" data-toggle="collapse" href="#multiCollapseExample1" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">Nuevo proveedor</a>
   <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#multiCollapseExample2" aria-expanded="false" aria-controls="multiCollapseExample2">Proveedores activos</button>
-  <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#multiCollapseExample3" aria-expanded="false" aria-controls="multiCollapseExample3">Editar o Eliminar</button>
+  <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#multiCollapseExample3" aria-expanded="false" aria-controls="multiCollapseExample3">Buscar</button>
 </p>
 <div class="row">
     <%--Boton para expandir la información para registrar un nuevo empleado--%>
@@ -216,7 +217,7 @@
                     <div class="panel panel-default">
                             <div class="panel-heading" role="tab" id="headingTelefono">
                                 <h4 class="panel-title">
-                                    <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTelefono" aria-expanded="true" aria-controls="collapseTelefono">TELÉFONO
+                                    <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTelefono" aria-expanded="true" aria-controls="collapseTelefono">CONTACTO
                                     </a>
                                 </h4>
                             </div>
@@ -237,24 +238,21 @@
 
                                                          <div class="form-group">
                                                             <label>Celular: </label>
-                                                            <asp:TextBox ID="txtCelular" runat="server" CssClass="form-control" type="number" 
-                                                                pattern="^[0-9]*" title="Ingrese solo numeros" width="332px">
+                                                            <asp:TextBox ID="txtCelular" runat="server" CssClass="form-control" width="332px">
                                                             </asp:TextBox>
                                                          </div>                                                       
                                                          <br /><br />
 
                                                          <div class="form-group">
                                                             <label>Tel. Alterno: </label>
-                                                            <asp:TextBox ID="txtTelEncargador" runat="server" CssClass="form-control" type="number" 
-                                                                pattern="^[0-9]*" title="Ingrese solo numeros" width="303px" >
+                                                            <asp:TextBox ID="txtTelEncargador" runat="server" CssClass="form-control" width="303px" >
                                                             </asp:TextBox>                                           
                                                          </div>
                                                         <br /><br />
                                                          
                                                          <div class="form-group">
                                                             <label>Otro: </label>
-                                                            <asp:TextBox ID="txtTelOtro" runat="server" CssClass="form-control" type="number" 
-                                                                pattern="^[0-9]*" title="Ingrese solo numeros" width="349px" >
+                                                            <asp:TextBox ID="txtTelOtro" runat="server" CssClass="form-control" width="349px" >
                                                             </asp:TextBox>                                           
                                                          </div>
                                                        </div>
@@ -309,14 +307,16 @@
         </div>
         <div id="collapse" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
             <div class="panel-body">
+
                       <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource1" 
                           BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" AllowPaging="True" AllowSorting="True">
                         <Columns>
+                            <asp:BoundField DataField="Column1" HeaderText="NOMBRE" SortExpression="Column1" ReadOnly="True" />
                             <asp:BoundField DataField="strRazonSocial" HeaderText="RAZÓN SOCIAL" SortExpression="strRazonSocial" />
                             <asp:BoundField DataField="strCorreo" HeaderText="CORREO" SortExpression="strCorreo" />
                             <asp:BoundField DataField="strProducto" HeaderText="PRODUCTO O SERVICIO" SortExpression="strProducto" />
-                            <asp:BoundField DataField="Column1" HeaderText="DIRECCIÓN" SortExpression="Column1" ReadOnly="True" />
-                            <asp:BoundField DataField="Column2" HeaderText="TELÉFONO" SortExpression="Column2" ReadOnly="True" />
+                            <asp:BoundField DataField="Column2" HeaderText="DIRECCIÓN" SortExpression="Column2" ReadOnly="True" />
+                            <asp:BoundField DataField="Column3" HeaderText="TELÉFONO" ReadOnly="True" SortExpression="Column3" />
                         </Columns>
                          
                          <FooterStyle BackColor="White" ForeColor="#000066" />
@@ -330,17 +330,18 @@
                         <SortedDescendingHeaderStyle BackColor="#00547E" />
                     </asp:GridView>
 
-                    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:XIUGARConnectionString %>" 
-                        SelectCommand="select e.strRazonSocial, e.strCorreo, e.strProducto,
-		                                d.strCalle + ', ' + d.strColonia + ', ' + d.intCodpost,
-                                        t.strCelular + ', ' + t.strTelCasa
+                    <asp:SqlDataSource ID="SqlDataSource1" runat="server" 
+                        ConnectionString="<%$ ConnectionStrings:db_a7a655_rodrigom1909ConnectionString %>" 
+                        SelectCommand="select e.strNombre + ' ' + e.strApellidoP + ' ' + e.strApellidoM,
+                                        e.strRazonSocial, e.strCorreo, e.strProducto,
+                                        d.strCalle + ', ' + d.strColonia + ', ' + d.intCodpost,
+                                        + '(' +t.strCelular + '),(' + t.strTelCasa + ')'
                                         from tblProveedor e
                                         inner join tblDireccion d
                                         on e.fkDireccion = d.idDireccion
                                         inner join tblTelefono t
                                         on e.fkTelefono = t.idTelefono
-		                                where e.idActivo = 1"></asp:SqlDataSource>
-
+                                        where e.idActivo = 1"></asp:SqlDataSource>
 
 
             </div>

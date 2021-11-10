@@ -25,7 +25,7 @@
 <p>
   <a class="btn btn-primary" data-toggle="collapse" href="#multiCollapseExample1" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">Nuevo empleado</a>
   <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#multiCollapseExample2" aria-expanded="false" aria-controls="multiCollapseExample2">Empleados activos</button>
-  <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#multiCollapseExample3" aria-expanded="false" aria-controls="multiCollapseExample3">Editar o Eliminar</button>
+  <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#multiCollapseExample3" aria-expanded="false" aria-controls="multiCollapseExample3">Buscar</button>
 </p>
 <div class="row">
     <%--Boton para expandir la información para registrar un nuevo empleado--%>
@@ -219,7 +219,7 @@
                     <div class="panel panel-default">
                             <div class="panel-heading" role="tab" id="headingTelefono">
                                 <h4 class="panel-title">
-                                    <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTelefono" aria-expanded="true" aria-controls="collapseTelefono">TELÉFONO
+                                    <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTelefono" aria-expanded="true" aria-controls="collapseTelefono">CONTACTO
                                     </a>
                                 </h4>
                             </div>
@@ -239,24 +239,21 @@
 
                                                          <div class="form-group">
                                                             <label>Celular: </label>
-                                                            <asp:TextBox ID="txtCelular" runat="server" CssClass="form-control" type="number" 
-                                                                pattern="^[0-9]*" title="Ingrese solo numeros" width="330px">
+                                                            <asp:TextBox ID="txtCelular" runat="server" CssClass="form-control" width="330px">
                                                             </asp:TextBox>
                                                          </div>                                                       
                                                          <br /><br />
 
                                                          <div class="form-group">
                                                             <label>Tel. Casa: </label>
-                                                            <asp:TextBox ID="txtTelCasa" runat="server" CssClass="form-control" type="number" 
-                                                                pattern="^[0-9]*" title="Ingrese solo numeros" width="315px" >
+                                                            <asp:TextBox ID="txtTelCasa" runat="server" CssClass="form-control" width="315px" >
                                                             </asp:TextBox>                                           
                                                          </div>
                                                         <br /><br />
                                                          
                                                          <div class="form-group">
                                                             <label>Otro: </label>
-                                                            <asp:TextBox ID="txtTelOtro" runat="server" CssClass="form-control" type="number" 
-                                                                pattern="^[0-9]*" title="Ingrese solo numeros" width="345px" >
+                                                            <asp:TextBox ID="txtTelOtro" runat="server" CssClass="form-control" width="345px" >
                                                             </asp:TextBox>                                           
                                                          </div>
                                                        </div>

@@ -49,7 +49,7 @@
 
                                     <div class="form-group">
                                         <label>Nombre del cliente </label><asp:DropDownList ID="ddlCliente" runat="server" AppendDataBoundItems="True"  width="500px"
-                                            OnSelectedIndexChanged="ddlCliente_SelectedIndexChanged" AutoPostBack="true" required="required" onmouseover="this.size=5;" onmouseout="this.size=1;"  style="max-height:100px; overflow:auto;"></asp:DropDownList>   
+                                            OnSelectedIndexChanged="ddlCliente_SelectedIndexChanged" AutoPostBack="true" required="required" ></asp:DropDownList>   
                                     </div>
                                     &nbsp &nbsp &nbsp &nbsp 
                                             
@@ -2692,7 +2692,7 @@
             
                                 </div>
                                 <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
-                                            <asp:Button ID="btnRegistrar" runat="server" Text="Finalizar venta" Font-Size="16px" CssClass="btn btn-block btn-sm btn-success" Width="150px" OnClick="btnRegistrar_Click" />
+                                            <asp:Button ID="btnRegistrar" runat="server" Text="Continuar" Font-Size="16px" CssClass="btn btn-block btn-sm btn-success" Width="150px" OnClick="btnRegistrar_Click" />
                                 </div> 
                             </div>
                                 

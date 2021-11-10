@@ -109,9 +109,6 @@ namespace ProjectPaslum.Venta
 
         protected void Button3_Click(object sender, EventArgs e)
         {
-        
-
-           
                 DateTime fechact = DateTime.Now;
                 ControllerCliente ctrlCli = new ControllerCliente();
 
@@ -168,32 +165,36 @@ namespace ProjectPaslum.Venta
 
                 document.Open();
 
-                String rutaLogo = Server.MapPath("../Alumno/images/XIUGAR.jpg");
+                String ruta = Server.MapPath("../ImagenesProductos/Cotizacion.jpeg");
 
-                var image = iTextSharp.text.Image.GetInstance(rutaLogo);
-                //var image = iTextSharp.text.Image.GetInstance(@"C:\Users\RodrigoM\Desktop\Sitema-XIU-GAR\ProyectoPaslum\ProjectPaslum\Alumno\images\XIUGAR.jpg");
+                var fondo = iTextSharp.text.Image.GetInstance(ruta);
+                fondo.ScaleAbsoluteWidth(600);
+                fondo.ScaleAbsoluteHeight(850);
+                fondo.SetAbsolutePosition(0, 0);
+                fondo.Alignment = iTextSharp.text.Image.UNDERLYING;
 
-                // iTextSharp.text.Image image1 = iTextSharp.text.Image.GetInstance("../../images/avatar.png");
-                //image1.ScalePercent(50f);
-                image.ScaleAbsoluteWidth(220);
-                image.ScaleAbsoluteHeight(90);
-                image.SetAbsolutePosition(350, 720);
-                document.Add(image);
+                document.Add(fondo);
 
 
 
                 Font fontTitle = FontFactory.GetFont(FontFactory.COURIER_BOLD, 25);
                 Font font9 = FontFactory.GetFont(FontFactory.TIMES, 14);
-                Font font8 = FontFactory.GetFont(FontFactory.TIMES, 9);
+                Font font8 = FontFactory.GetFont(FontFactory.TIMES, 11);
 
                 PdfPTable table = new PdfPTable(dt.Columns.Count);
 
-                //Paragraph title = new Paragraph(string.Format("XIU-GAR"), new iTextSharp.text.Font(iTextSharp.text.Font.FontFamily.HELVETICA, 20, iTextSharp.text.Font.BOLD));
-                //title.Alignment = Element.ALIGN_CENTER;
-                //document.Add(title);
-
-                //document.Add(new Paragraph(20, "Ticket XIU-GAR", fontTitle));
-
+                document.Add(new Paragraph(16, " ", font9));
+                document.Add(new Chunk("\n"));
+                document.Add(new Chunk("\n"));
+                document.Add(new Chunk("\n"));
+                document.Add(new Chunk("\n"));
+                document.Add(new Chunk("\n"));
+                document.Add(new Chunk("\n"));
+                document.Add(new Chunk("\n"));
+                document.Add(new Chunk("\n"));
+                document.Add(new Chunk("\n"));
+                document.Add(new Chunk("\n"));
+                document.Add(new Chunk("\n"));
                 document.Add(new Chunk("\n"));
 
                 document.Add(new Paragraph(16, "Vendedor: " + (Session["CompletoNombre"].ToString()), font9));
@@ -270,23 +271,35 @@ namespace ProjectPaslum.Venta
                 }
 
                 document.Add(table);
-                document.Add(new Chunk("\n"));
 
-                Paragraph Condiciones = new Paragraph(16, "Condiciones: " + txtCondiciones.Text, font9);
-                Paragraph Carlos = new Paragraph(16, "Lic. Carlos A. Mac Gregor Torres\nDirector General\n(044) 771-747-3620", font9);
+                Paragraph Condiciones = new Paragraph(16, "Condiciones comerciales: \n" +
+                                                           txtCondiciones.Text + "\n"+
+                                                           txtCondicion2.Text + "\n" +
+                                                           txtCondicion3.Text + "\n" +
+                                                           txtCondicion4.Text + "\n" +
+                                                           txtCondicion5.Text + "\n" +
+                                                           txtCondicion6.Text , font8);
+
+
+                String sello = Server.MapPath("../ImagenesProductos/Sello.jpeg");
+
+                var ImgSello = iTextSharp.text.Image.GetInstance(sello);
+                ImgSello.ScaleAbsoluteWidth(100);
+                ImgSello.ScaleAbsoluteHeight(100);
+                ImgSello.Alignment = Element.ALIGN_RIGHT;
                 
-                document.Add(new Chunk("\n"));
+                Paragraph Carlos = new Paragraph(16, "Lic. Carlos A. Mac Gregor Torres\nDirector General\n(044) 771-747-3620", font9);
                 Paragraph gracias = new Paragraph(18, "Precio autorizado: Lic. Carlos A. Mac Gregor Torres.", font9);
-
-                document.Add(new Chunk("\n"));
-
+                
                 Condiciones.Alignment = Element.ALIGN_LEFT;
                 Carlos.Alignment = Element.ALIGN_RIGHT;
                 gracias.Alignment = Element.ALIGN_CENTER;
 
                 document.Add(Condiciones);
+                document.Add(new Chunk("\n"));
                 document.Add(Carlos);
-
+                document.Add(new Chunk("\n"));
+                document.Add(ImgSello);
                 document.Add(gracias);
 
 

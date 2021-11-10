@@ -2743,7 +2743,7 @@
             
                                 </div>
                                 <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
-                                            <asp:Button ID="btnRegistrar" runat="server" Text="Finalizar venta" Font-Size="16px" CssClass="btn btn-block btn-sm btn-success" Width="150px" OnClick="btnRegistrar_Click" />
+                                            <asp:Button ID="btnRegistrar" runat="server" Text="Continuar" Font-Size="16px" CssClass="btn btn-block btn-sm btn-success" Width="150px" OnClick="btnRegistrar_Click" />
                                 </div> 
                             </div>
                                 

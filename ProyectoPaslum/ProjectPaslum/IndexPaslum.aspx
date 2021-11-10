@@ -14,13 +14,26 @@
         </div>
       </div>
 
-      <div class="slider-item" style="background-image:url(Alumno/images/FELTOR.jpg);">
+      <div class="slider-item" style="background-image:url(ImagenesProductos/logo_Feltor.png);">
         
       	<div class="overlay"></div>
         <div class="container">
           <div class="row no-gutters slider-text align-items-center justify-content-center" data-scrollax-parent="true">
           <div class="col-md-8 text-center ftco-animate">
             <h1 class="mb-4"><span>PONEMOS LO MÁS DULCE EN TUS MANOS</span></h1>
+       
+          </div>
+        </div>
+        </div>
+      </div>
+
+      <div class="slider-item" style="background-image:url(ImagenesProductos/Bolsas.jpeg);">
+        
+      	<div class="overlay"></div>
+        <div class="container">
+          <div class="row no-gutters slider-text align-items-center justify-content-center" data-scrollax-parent="true">
+          <div class="col-md-8 text-center ftco-animate">
+            
        
           </div>
         </div>

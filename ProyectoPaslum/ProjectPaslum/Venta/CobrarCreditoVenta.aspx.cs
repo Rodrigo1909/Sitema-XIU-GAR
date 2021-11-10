@@ -21,33 +21,36 @@ namespace ProjectPaslum.Venta
         {
             if (Session["id"] != null)
             {
-                cargarcarrito();
-                txtVendedor.Text = (Session["CompletoNombre"].ToString());
-                txtDomicilio.Text = (Session["domicilio"].ToString());
-
-                txtFechaFin.Text = (Session["FechaCredito"].ToString().Substring(0, 10));
-                txtFecha.Text = DateTime.Now.Date.ToString().Substring(0, 10);
-
-                var venta = (from ven in contexto.tblVenta
-                             orderby ven.idVenta descending
-                             select new { ultimo = ven.idVenta }).FirstOrDefault();
-
-                var nuevo = venta.ultimo + 1;
-
-                txtNumVen.Text = nuevo.ToString();
-
-
-                if ((Session["cliente"].ToString() == "MOSTRADOR"))
+                if (Page.IsPostBack == false)
                 {
-                    txtCliente.Text = (Session["cliente"].ToString());
-                }
-                else
-                {
-                    var cliente = (from cli in contexto.tblCliente
-                                   where cli.idCliente == int.Parse(Session["cliente"].ToString())
-                                   select new { nombre = cli.strNombre + " " + cli.strApellidoP + " " + cli.strApellidoM }).FirstOrDefault();
+                    cargarcarrito();
+                    txtVendedor.Text = (Session["CompletoNombre"].ToString());
+                    txtDomicilio.Text = (Session["domicilio"].ToString());
 
-                    txtCliente.Text = cliente.nombre;
+                    txtFechaFin.Text = (Session["FechaCredito"].ToString().Substring(0, 10));
+                    txtFecha.Text = DateTime.Now.Date.ToString().Substring(0, 10);
+
+                    var venta = (from ven in contexto.tblVenta
+                                 orderby ven.idVenta descending
+                                 select new { ultimo = ven.idVenta }).FirstOrDefault();
+
+                    var nuevo = venta.ultimo + 1;
+
+                    txtNumVen.Text = nuevo.ToString();
+
+
+                    if ((Session["cliente"].ToString() == "MOSTRADOR"))
+                    {
+                        txtCliente.Text = (Session["cliente"].ToString());
+                    }
+                    else
+                    {
+                        var cliente = (from cli in contexto.tblCliente
+                                       where cli.idCliente == int.Parse(Session["cliente"].ToString())
+                                       select new { nombre = cli.strNombre + " " + cli.strApellidoP + " " + cli.strApellidoM }).FirstOrDefault();
+
+                        txtCliente.Text = cliente.nombre;
+                    }
                 }
             }
             else
@@ -122,6 +125,7 @@ namespace ProjectPaslum.Venta
                 HisAbo.Fecha = fechact;
                 HisAbo.dblCantidad = decimal.Parse(txtDinero.Text, culture);
                 HisAbo.dblCantidadAnterior = decimal.Parse(txtDinero.Text, culture);   
+                HisAbo.fkValidacionUsuario = int.Parse(Session["id"].ToString());
                 ctrlCli.InsertarHistorialAbono(GetVenta(HisAbo));
 
                 foreach (GridViewRow row in GridView1.Rows)
@@ -144,7 +148,7 @@ namespace ProjectPaslum.Venta
                     ctrlAlmPrecio.EditarPrecioProducto(PrePro);
 
                 }
-
+                Session["credito"] = null;
                 this.Response.Redirect("./AlertaExito.aspx", true);
 
             }
@@ -207,40 +211,90 @@ namespace ProjectPaslum.Venta
 
             var nuevo = venta.ultimo + 1;
 
+            string mesNombre = (Session["FechaCredito"].ToString().Substring(5, 2));
+
+
+            string ExtraccionDia = DateTime.Now.ToShortDateString();
+            var terminoDia = ExtraccionDia.Substring(0, ExtraccionDia.IndexOf("/"));
+
+            const string ExtraccionMes = "/";
+            var principioMes = DateTime.Now.ToShortDateString().Substring(DateTime.Now.ToShortDateString().IndexOf(ExtraccionMes) + ExtraccionMes.Length);
+            var terminoMes = principioMes.Substring(0, principioMes.IndexOf("/"));
+
+            string ExtraccionYear = terminoMes + "/";
+            var principioYear = DateTime.Now.ToShortDateString().Substring(DateTime.Now.ToShortDateString().IndexOf(ExtraccionYear) + ExtraccionYear.Length);
+
+
+
             dt = (DataTable)Session["credito"];
             if (dt.Rows.Count > 0)
             {
 
                 document.Open();
-                String rutaLogo = Server.MapPath("../Alumno/images/XIUGAR.jpg");
 
-                var image = iTextSharp.text.Image.GetInstance(rutaLogo);
-                image.ScaleAbsoluteWidth(220);
-                image.ScaleAbsoluteHeight(90);
-                image.SetAbsolutePosition(350, 720);
-                document.Add(image);
+                String ruta = Server.MapPath("../ImagenesProductos/FondoCredito.jpg");
+
+                var fondo = iTextSharp.text.Image.GetInstance(ruta);
+                fondo.ScaleAbsoluteWidth(570);
+                fondo.ScaleAbsoluteHeight(800);
+                fondo.SetAbsolutePosition(0, 50);
+                fondo.Alignment = iTextSharp.text.Image.UNDERLYING;
+
+                document.Add(fondo);
 
 
                 Font fontTitle = FontFactory.GetFont(FontFactory.COURIER_BOLD, 25);
-                Font font9 = FontFactory.GetFont(FontFactory.TIMES, 12);
+                Font font9 = FontFactory.GetFont(FontFactory.TIMES, 12);                
                 Font font8 = FontFactory.GetFont(FontFactory.TIMES, 9);
 
                 PdfPTable table = new PdfPTable(dt.Columns.Count);
 
-                //Paragraph title = new Paragraph(string.Format("XIU-GAR"), new iTextSharp.text.Font(iTextSharp.text.Font.FontFamily.HELVETICA, 20, iTextSharp.text.Font.BOLD));
-                //title.Alignment = Element.ALIGN_CENTER;
-                //document.Add(title);
-
-                //document.Add(new Paragraph(20, "Ticket XIU-GAR", fontTitle));
-
+                document.Add(new Paragraph(16, " ", font8));
+                document.Add(new Chunk("\n"));
+                document.Add(new Chunk("\n"));
+                document.Add(new Chunk("\n"));
+                document.Add(new Chunk("\n"));
+                document.Add(new Chunk("\n"));
                 document.Add(new Chunk("\n"));
 
-                document.Add(new Paragraph(16, "N° Venta: " + nuevo.ToString(), font9));
-                document.Add(new Paragraph(16, "Vendedor: " + (Session["CompletoNombre"].ToString()), font9));
-                document.Add(new Paragraph(16, "Cliente: " + txtCliente.Text, font9));
-                document.Add(new Paragraph(16, "Domicilio: " + (Session["domicilio"].ToString()), font9));
-                document.Add(new Paragraph(16, "Fecha: " + DateTime.Now.Date.ToString().Substring(0, 10), font9));
+                PdfContentByte dia = writer.DirectContent;
+                dia.BeginText();
+                BaseFont f_cn = BaseFont.CreateFont("c:\\windows\\fonts\\calibri.ttf", BaseFont.CP1252, BaseFont.NOT_EMBEDDED);
+                dia.SetFontAndSize(f_cn, 16);
+                dia.SetTextMatrix(410, 655);  //(xPos, yPos)
+                dia.ShowText(terminoMes);
+                dia.EndText();
 
+                PdfContentByte mes = writer.DirectContent;
+                mes.BeginText();
+                mes.SetFontAndSize(f_cn, 16);
+                mes.SetTextMatrix(450, 655);  //(xPos, yPos)
+                mes.ShowText(terminoDia);
+                mes.EndText();
+
+                PdfContentByte year = writer.DirectContent;
+                year.BeginText();
+                year.SetFontAndSize(f_cn, 16);
+                year.SetTextMatrix(490, 655);  //(xPos, yPos)
+                year.ShowText(principioYear);
+                year.EndText();
+
+                PdfContentByte folio = writer.DirectContent;
+                folio.BeginText();
+                folio.SetFontAndSize(f_cn, 16);
+                folio.SetTextMatrix(450, 615);  //(xPos, yPos)
+                folio.ShowText(nuevo.ToString());
+                folio.EndText();
+
+
+                document.Add(new Paragraph(16, "  Vendedor: " + (Session["CompletoNombre"].ToString()), font9));
+                document.Add(new Chunk("\n"));
+                document.Add(new Paragraph(16, "  Cliente: " + txtCliente.Text, font9));
+                document.Add(new Chunk("\n"));
+                document.Add(new Paragraph(16, "   Domicilio: " + (Session["domicilio"].ToString()), font8));
+                
+
+                document.Add(new Chunk("\n"));
                 document.Add(new Chunk("\n"));
 
                 float[] widths = new float[dt.Columns.Count];
@@ -248,7 +302,7 @@ namespace ProjectPaslum.Venta
                     widths[i] = 4f;
 
                 table.SetWidths(widths);
-                table.WidthPercentage = 100;
+                table.WidthPercentage = 90;
 
                 PdfPCell cell = new PdfPCell(new Phrase("columns"));
                 cell.Colspan = dt.Columns.Count;
@@ -310,8 +364,8 @@ namespace ProjectPaslum.Venta
                 document.Add(table);
                 document.Add(new Chunk("\n"));
 
-                Paragraph total = new Paragraph(16, "Total: $" + decimal.Parse(lblTotal2.Text), font9);
-                Paragraph efectivo = new Paragraph(16, "Efectivo: $" + decimal.Parse(txtDinero.Text), font9);
+                Paragraph total = new Paragraph(16, "Total: $" + decimal.Parse(lblTotal2.Text) + "        ", font9);
+                Paragraph efectivo = new Paragraph(16, "Efectivo: $" + decimal.Parse(txtDinero.Text) + "        ", font9);
                 document.Add(new Chunk("\n"));
                 Paragraph gracias = new Paragraph(18, "Gracias por su compra, vuelva pronto.", font9);
 
@@ -324,29 +378,124 @@ namespace ProjectPaslum.Venta
                 document.Add(efectivo);
                 document.Add(gracias);
 
-                document.Add(new Chunk("\n"));
+                if (mesNombre == "1")
+                {
+                    mesNombre = "enero";
+                }
+                else if (mesNombre == "2")
+                {
+                    mesNombre = "febrero";
+                }
+                else if (mesNombre == "3")
+                {
+                    mesNombre = "marzo";
+                }
+                else if (mesNombre == "4")
+                {
+                    mesNombre = "abril";
+                }
+                else if (mesNombre == "5")
+                {
+                    mesNombre = "mayo";
+                }
+                else if (mesNombre == "6")
+                {
+                    mesNombre = "junio";
+                }
+                else if (mesNombre == "7")
+                {
+                    mesNombre = "julio";
+                }
+                else if (mesNombre == "8")
+                {
+                    mesNombre = "agosto";
+                }
+                else if (mesNombre == "9")
+                {
+                    mesNombre = "septiembre";
+                }
+                else if (mesNombre == "10")
+                {
+                    mesNombre = "agosto";
+                }
+                else if (mesNombre == "11")
+                {
+                    mesNombre = "noviembre";
+                }
+                else if (mesNombre == "12")
+                {
+                    mesNombre = "diciembre";
+                }
 
-                document.Add(new Paragraph(16, "Debo(emos) y pagaré(mos) incondicionalmente por este PAGARE a la orden de FELIPA TORRES HERNÁNDEZ," + 
-                    " precisamente en su domicilio ubicado en Carretera Pachuca Cd. Sahagún km. 55 S/N Col. Industrial La Paz C.P. 42092 " +
-                    "Pachuca de Soto Hgo., o en cualquier otro lugar donde se me requiera el pago el dia " + 
-                    (Session["FechaCredito"].ToString().Substring(8, 2)) + " de " + (Session["FechaCredito"].ToString().Substring(5, 2)) + " del " + (
-                    Session["FechaCredito"].ToString().Substring(0, 4)) +
-                    " la cantidad de $"+ decimal.Parse(lblTotal2.Text) + " MXN, importe de mercancía recibida de conformidad por conducto de " + txtCliente.Text +
-                    " reconociendo de deudor de forma solidaria haber recibido dicho importe y haber facultado a la persona que recibe, para que en su nombre se obligue " +
-                    "respecto de la cantidad referida, firmando este a su ruego. Si no se cubre su vencimiento la suma anterior causará " +
-                    "ínteres monetarios a la razón del "+ txtInteres.Text +"% mensual a partir de la fecha de su vencimiento durante todo el tiempo qué " +
-                    "estuviese insoluto sin que este considere prorroga el plazo para el cumplimiento de esta obligación, más los costos " +
-                    "y gastos que se generan en cobranza de este documento.", font9));
 
-                document.Add(new Chunk("\n"));
+                PdfContentByte pagare = writer.DirectContent;
 
-                Paragraph linea = new Paragraph(string.Format("_________________________________"), new iTextSharp.text.Font(iTextSharp.text.Font.FontFamily.HELVETICA, 20));
-                Paragraph firma = new Paragraph(string.Format("Nombre y Firma"), new iTextSharp.text.Font(iTextSharp.text.Font.FontFamily.HELVETICA, 15));
+                pagare.BeginText();
+                pagare.SetFontAndSize(f_cn, 9);
+                pagare.SetTextMatrix(37, 285);  //(xPos, yPos)
+                pagare.ShowText("Debo(emos) y pagaré(mos) incondicionalmente por este PAGARE a la orden de FELIPA TORRES HERNÁNDEZ, precisamente en su domicilio");
+                pagare.EndText();
 
-                linea.Alignment = Element.ALIGN_CENTER;
-                document.Add(linea);
-                firma.Alignment = Element.ALIGN_CENTER;
-                document.Add(firma);
+                pagare.BeginText();
+                pagare.SetFontAndSize(f_cn, 9);
+                pagare.SetTextMatrix(37, 275);  //(xPos, yPos)
+                pagare.ShowText("ubicado en Carretera Pachuca Cd.Sahagún km. 55 S / N Col.Industrial La Paz C.P. 42092 Pachuca de Soto Hgo., o en cualquier otro lugar");
+                pagare.EndText();
+
+                pagare.BeginText();
+                pagare.SetFontAndSize(f_cn, 9);
+                pagare.SetTextMatrix(37, 265);  //(xPos, yPos)
+                pagare.ShowText("donde se me requiera el pago el dia "  +
+                (Session["FechaCredito"].ToString().Substring(8, 2)) + " de " + mesNombre + " del " + (
+                Session["FechaCredito"].ToString().Substring(0, 4)) +
+                " la cantidad de $" + decimal.Parse(lblTotal2.Text) + " MXN, importe de mercancía recibida de");
+                pagare.EndText();
+
+                pagare.BeginText();
+                pagare.SetFontAndSize(f_cn, 9);
+                pagare.SetTextMatrix(37, 255);  //(xPos, yPos)
+                pagare.ShowText("conformidad por conducto de " + txtCliente.Text + " reconociendo de deudor de forma solidaria haber recibido");
+                pagare.EndText();
+
+                pagare.BeginText();
+                pagare.SetFontAndSize(f_cn, 9);
+                pagare.SetTextMatrix(37, 245);  //(xPos, yPos)
+                pagare.ShowText("dicho importe y haber facultado a la persona que recibe, para que en su nombre se obligue respecto de la cantidad referida, firmando este");
+                pagare.EndText();
+
+                pagare.BeginText();
+                pagare.SetFontAndSize(f_cn, 9);
+                pagare.SetTextMatrix(37, 235);  //(xPos, yPos)
+                pagare.ShowText("a su ruego. Si no se cubre su vencimiento la suma anterior causará ínteres monetarios a la razón del " + txtInteres.Text + "% mensual a partir de la fecha de su");
+                pagare.EndText();
+
+                pagare.BeginText();
+                pagare.SetFontAndSize(f_cn, 9);
+                pagare.SetTextMatrix(37, 225);  //(xPos, yPos)
+                pagare.ShowText("vencimiento durante todo el tiempo qué estuviese insoluto sin que este considere prorroga el plazo para el cumplimiento de esta");
+                pagare.EndText();
+
+                pagare.BeginText();
+                pagare.SetFontAndSize(f_cn, 9);
+                pagare.SetTextMatrix(37, 215);  //(xPos, yPos)
+                pagare.ShowText("obligación, más los costos y gastos que se generan en cobranza de este documento.");
+                pagare.EndText();
+
+                PdfContentByte linea = writer.DirectContent;
+
+                linea.BeginText();
+                linea.SetFontAndSize(f_cn, 12);
+                linea.SetTextMatrix(150, 160);  //(xPos, yPos)
+                linea.ShowText("_____________________________________________");
+                linea.EndText();
+
+                PdfContentByte firma = writer.DirectContent;
+
+                firma.BeginText();
+                firma.SetFontAndSize(f_cn, 12);
+                firma.SetTextMatrix(250, 130);  //(xPos, yPos)
+                firma.ShowText("Nombre y Firma");
+                firma.EndText();
 
             }
 

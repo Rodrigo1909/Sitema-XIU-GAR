@@ -39,6 +39,7 @@
                                         <asp:TextBox ID="txtHoraEntrega" runat="server" width="250px" Enabled="false" style="text-align:center" CssClass="form-control"></asp:TextBox>
                                  &nbsp &nbsp &nbsp &nbsp
                                       </div>
+                                <br /> <br />
                                 <div class="form-group">
                                         <asp:Button ID="btnRegresar" runat="server" Text="Regresar"  OnClick="btnRegresar_Click" CssClass="btn btn-success" Width="150px" Height="50px"/>
                                         
